@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-    <Folder Include="Persistence\" />
+    <Folder Include="Model\" />
+    <Folder Include="Exception\" />
   </ItemGroup>
 
 </Project>
