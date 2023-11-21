@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Persistence
 {
-    internal class AppliactionDbContext
+    public  class AppliactionDbContext:DbContext
     {
     }
 }

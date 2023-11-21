@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Exception
 {
-    public class ValidationException :ApplicationException
+    internal class InvalidDataArgumentException:ApplicationException
     {
     }
 }
