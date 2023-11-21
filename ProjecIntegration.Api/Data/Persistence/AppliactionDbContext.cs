@@ -8,5 +8,6 @@ namespace Data.Persistence
 {
     public  class AppliactionDbContext:DbContext
     {
+
     }
 }
