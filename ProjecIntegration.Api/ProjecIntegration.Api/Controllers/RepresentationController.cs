@@ -7,5 +7,6 @@ namespace ProjecIntegration.Api.Controllers
     [ApiController]
     public class RepresentationController : ControllerBase
     {
+        
     }
 }

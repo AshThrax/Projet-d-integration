@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.IRepository
 {
-    public interface ComplexeRepository: IRepository<Complexe>
+    public interface IRepresentationRepository:IRepository<Representation>
     {
     }
 }
