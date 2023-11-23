@@ -15,4 +15,9 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\ErrorLib\Domain.csproj" />
+  </ItemGroup>
+
 </Project>

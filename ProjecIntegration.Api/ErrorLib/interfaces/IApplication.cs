@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Persistence
+namespace Domain.interfaces
 {
-    public  class AppliactionDbContext:DbContext
+    internal interface IApplication
     {
 
     }
