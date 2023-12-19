@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Data.Persistence.Configuration
 {
-    public class CommandConfiguration: IEntityTypeConfiguration<Command>
+    public class EntrepriseConfiguration :IEntityTypeConfiguration<Entreprise>
     {
-        public void Configure(EntityTypeBuilder<Command> builder) 
-        {
+        public void Configure(EntityTypeBuilder<Entreprise> builder)
+        { 
             builder.HasKey(e => e.Id);
             builder.Property(t => t.AddedTime)
                 .IsRequired()

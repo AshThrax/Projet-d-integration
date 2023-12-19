@@ -13,7 +13,11 @@ namespace Data.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<Complexe> builder) 
         {
-            
+            builder.HasKey(e => e.Id);
+            builder.Property(t => t.AddedTime)
+                .IsRequired()
+                .HasColumnType("Date")
+                .HasDefaultValueSql("GetDate()");
         }
     }
 }
