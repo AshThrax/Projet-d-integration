@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjecIntegration.Api.Application.DTO;
 
 namespace ProjecIntegration.Api.Controllers
 {
@@ -7,8 +8,19 @@ namespace ProjecIntegration.Api.Controllers
     [ApiController]
     public class CatalogueController : ControllerBase
     {
-        public CatalogueController() { }
+        public CatalogueController() 
+        {
+            
+        }
+        [HttpGet("{id}")]
+        public CatalogueDto GetbyId([FromBody] int id)
+        {
+            
+        }
         [HttpGet]
-        public 
+        public IEnumerable<CatalogueDto> GetAll()
+        {
+            
+        }
     }
 }

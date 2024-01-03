@@ -5,3 +5,4 @@ C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ProjecIn
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ProjecIntegration.Api\obj\Debug\net7.0\ProjecIntegration.Api.csproj.CoreCompileInputs.cache
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ProjecIntegration.Api\obj\Debug\net7.0\ProjecIntegration.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ProjecIntegration.Api\obj\Debug\net7.0\ProjecIntegration.Api.sourcelink.json
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ProjecIntegration.Api\obj\Debug\net7.0\ProjecIntegration.Api.MvcApplicationPartsAssemblyInfo.cs
