@@ -12,8 +12,11 @@ using System.Threading.Tasks;
        
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime debutCatalogue { get; set; }
+        public IList<Representation> Representations { get; set; }
+        public Complexe Complexe { get; set; }
+        public int ComplexeId { get; set; }
+        public DateTime DebutCatalogue { get; set; }
 
-        public DateTime finCatalogue { get; set; }
+        public DateTime FinCatalogue { get; set; }
     }
 }

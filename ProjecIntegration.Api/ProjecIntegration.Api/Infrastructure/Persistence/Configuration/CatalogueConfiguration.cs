@@ -7,7 +7,13 @@ namespace ProjecIntegration.Api.infrastructure.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<Catalogue> builder)
         {
+            //-----PrimaryKeys
             builder.HasKey(e => e.Id);
+            //-----foreignKeys
+            builder.HasOne(e=>e.Complexe)
+                .WithMany(e=> e.Catalogues)
+                .HasForeignKey(e=> e.ComplexeId);
+            //----property
             builder.Property(t => t.AddedTime)
                 .IsRequired()
                 .HasColumnType("Date")

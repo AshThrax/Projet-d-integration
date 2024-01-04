@@ -12,5 +12,8 @@ namespace ProjecIntegration
         public string Nom { get; set; }
         public string Prénom { get; set; }
         public string Email { get; set; }
+
+        public IList<Command> UserCommands { get; set; }
+
     }
 }

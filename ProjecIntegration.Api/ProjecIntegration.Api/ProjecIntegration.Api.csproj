@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\services\" />
+    <Folder Include="ApiService\" />
     <Folder Include="Infrastructure\Persistence\Migration\" />
     <Folder Include="Models\Validator\" />
   </ItemGroup>

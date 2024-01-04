@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjecIntegration.Api.infrastructure.Persistence.Configuration;
 
 namespace ProjecIntegration.Api.infrastructure.Persistence
 {
@@ -21,6 +22,16 @@ namespace ProjecIntegration.Api.infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //put the configuration class inside
+            modelBuilder.ApplyConfiguration(new CatalogueConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new SalleDeTheatreConfiguration());
+            modelBuilder.ApplyConfiguration(new PrixConfiguration());
+            modelBuilder.ApplyConfiguration(new CommandConfiguration());
+            modelBuilder.ApplyConfiguration(new ComplexeConfiguration());
+            modelBuilder.ApplyConfiguration(new RepresentationConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketsConfiguration());
+            modelBuilder.ApplyConfiguration(new EntrepriseConfiguration());
+            //----------------------------end Config
             base.OnModelCreating(modelBuilder);
 
         }

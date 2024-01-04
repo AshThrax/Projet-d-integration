@@ -15,5 +15,9 @@ namespace ProjecIntegration
         public int PlaceMax { get; set; }
         
         public int PlaceCurrent { get; set; }
+        public IList<Representation> representations { get; set; }
+
+        public Complexe Complexe { get; set; }
+        public int ComplexeId { get; set; }
     }
 }

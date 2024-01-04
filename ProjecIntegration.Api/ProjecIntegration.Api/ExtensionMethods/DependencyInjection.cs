@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ProjecIntegration.Api.Application.Common.Interfaces.IRepository;
+using ProjecIntegration.Api.Application.Common.Interfaces.IService;
 using ProjecIntegration.Api.Infrastructure.Repository;
+using ProjecIntegration.Api.Infrastructure.Service;
+using System.Reflection;
 
 namespace ProjecIntegration.Api.ExtensionMethods
 {
@@ -9,6 +12,8 @@ namespace ProjecIntegration.Api.ExtensionMethods
         public static IServiceCollection AddApplication(this IServiceCollection services) 
         {
             //injection de Dependance des services 
+            //injection automapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
 
@@ -16,7 +21,7 @@ namespace ProjecIntegration.Api.ExtensionMethods
         {
             //injection de la database 
 
-            //injection des services / repository(
+            //injection des repository
 
             services.AddScoped<ICatalogueRepository, CatalogueRepository>();
             services.AddScoped<ICommandRepository, CommandRespository>();
@@ -25,10 +30,22 @@ namespace ProjecIntegration.Api.ExtensionMethods
             services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
             services.AddScoped<IRepresentationRepository,RepresentationRespository>();
             services.AddScoped<ITicketRepository, TicketRepository>();
+            //fin injection repository
+
+            //injection des Services
+            services.AddScoped<ICatalogueService, CatalogueService>();
+            services.AddScoped<ICommandService, CommandService>();
+            services.AddScoped<IComplexeService, ComplexeService>();
+            services.AddScoped<IPrixService,PrixService>();
+            services.AddScoped<ISalleDeTheatreSevice, SalleDeTheatreService>();
+            services.AddScoped<IRepresentationService, RepresentationService>();
+            services.AddScoped<ITicketService, TicketService>();
+            //fin injection service
             return services;
         }
         public static IServiceCollection AddAuthO(this IServiceCollection services,IConfiguration configuration) 
         {
+            //----injection----service Auth0
             var domain = configuration["Auth0:Domain"];
             services.AddAuthentication(options =>
             {

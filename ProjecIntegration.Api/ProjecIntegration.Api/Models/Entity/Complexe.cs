@@ -13,8 +13,8 @@ namespace ProjecIntegration
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public List<SalleDeTheatre> salleDeTheatres { get; set; }
-        
+        public List<SalleDeTheatre> SalleDeTheatres { get; set; }
+        public List<Catalogue> Catalogues { get; set; }
 
     }
 }
