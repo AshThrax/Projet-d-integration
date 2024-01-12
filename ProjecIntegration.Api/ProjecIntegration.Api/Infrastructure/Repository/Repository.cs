@@ -29,9 +29,13 @@ namespace ProjecIntegration.Api.infrastructure.Repository
             dbSet.Add(entity);
             dbContext.SaveChanges();
         }
-        public void Update(T entity)
+        public void Update(int updtId ,T entity)
         {
-            if (entity == null) { }
+            if (entity == null) { 
+
+            }
+            dbSet.Update(entity); 
+            dbContext.SaveChanges();
         }
         public void Delete(T entity)
         {

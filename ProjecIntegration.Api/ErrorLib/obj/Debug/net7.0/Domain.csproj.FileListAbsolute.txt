@@ -1,5 +1,0 @@
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ErrorLib\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ErrorLib\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ErrorLib\obj\Debug\net7.0\Domain.AssemblyInfo.cs
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ErrorLib\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ErrorLib\obj\Debug\net7.0\Domain.sourcelink.json

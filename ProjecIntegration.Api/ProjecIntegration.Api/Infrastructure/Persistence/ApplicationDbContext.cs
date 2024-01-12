@@ -5,7 +5,7 @@ namespace ProjecIntegration.Api.infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base()
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
 
         public DbSet<Command> Commands { get; set; }
@@ -17,13 +17,12 @@ namespace ProjecIntegration.Api.infrastructure.Persistence
 
         public DbSet<Catalogue> Catalogues { get; set; }
 
-        public DbSet<User> Users { get; set; }
+     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //put the configuration class inside
             modelBuilder.ApplyConfiguration(new CatalogueConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new SalleDeTheatreConfiguration());
             modelBuilder.ApplyConfiguration(new PrixConfiguration());
             modelBuilder.ApplyConfiguration(new CommandConfiguration());

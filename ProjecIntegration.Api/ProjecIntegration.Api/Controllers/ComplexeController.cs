@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ProjecIntegration.Api.Application.Common.Interfaces.IService;
-using ProjecIntegration.Api.Application.DTO;
-using System.Numerics;
-using System.Runtime.InteropServices;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjecIntegration.Api.Application.Common.Interfaces.IRepository;
+using ProjecIntegration.Api.Application.DTO.complexe;
 
 namespace ProjecIntegration.Api.Controllers
 {
@@ -11,49 +8,89 @@ namespace ProjecIntegration.Api.Controllers
     [ApiController]
     public class ComplexeController : ControllerBase
     {
-        private readonly IComplexeService _complexeService;
+        private readonly IComplexeRepository _complexeService;
 
-        public ComplexeController(IComplexeService complexeService)
+        public ComplexeController(IComplexeRepository complexeService)
         {
             _complexeService = complexeService;
         }
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById([FromBody] int id)
         {
-            var entity= await _complexeService.GetById(id);
-            return Ok(entity);
+            try
+            {
+                var entity= await _complexeService.GetById(id);
+                return Ok(entity);
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ComplexeDto>>> GetAll()
         {
-            var entity = await _complexeService.GetAll();
-            return Ok(entity);
+            try
+            {
+                var entity = await _complexeService.GetAll();
+                return Ok(entity);
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] ComplexeDto complexe)
         {
-            if (complexe == null)
+            try
             {
-                BadRequest();
+                if (complexe == null)
+                {
+                    BadRequest();
+                }
+                _complexeService.Add(complexe);
+                return Ok();
+
             }
-            _complexeService.Add(complexe);
-            return Ok();
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromBody] ComplexeDto complexe)
+        public async Task<ActionResult> Update(int updtId,[FromBody] ComplexeDto complexe)
         {
-            if (complexe == null)
+            try
             {
-                BadRequest();
+                if (complexe == null)
+                {
+                    BadRequest();
+                }
+                _complexeService.Update(updtId,complexe);
+                return Ok();
+
             }
-            _complexeService.Update(complexe);
-            return Ok();
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromBody] int id)
+        public async Task<ActionResult> Delete( int id)
         {
-            _complexeService.Delete(id);
-            return NoContent();
+            try
+            {
+                var entity = await _complexeService.GetById(id);
+                _complexeService.Delete(entity);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
     }
 }

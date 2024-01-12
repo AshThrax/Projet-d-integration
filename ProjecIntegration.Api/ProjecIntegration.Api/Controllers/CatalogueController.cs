@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ProjecIntegration.Api.Application.Common.Interfaces.IService;
-using ProjecIntegration.Api.Application.DTO;
+using ProjecIntegration.Api.Application.Common.Interfaces.IRepository;
+using ProjecIntegration.Api.Application.DTO.catalogue;
+using ProjecIntegration.Api.Application.DTO.representation;
 
 namespace ProjecIntegration.Api.Controllers
 {
@@ -9,51 +10,130 @@ namespace ProjecIntegration.Api.Controllers
     [ApiController]
     public class CatalogueController : ControllerBase
     {
-        private readonly ICatalogueService _catalogueService;
-        public CatalogueController(ICatalogueService catalogueService) 
+        private readonly ICatalogueRepository _catalogueService;
+        private readonly IMapper _mapper;
+        public CatalogueController(ICatalogueRepository catalogueService,IMapper mapper) 
         {
             _catalogueService = catalogueService;
+            _mapper = mapper;
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<CatalogueDto>> GetbyId([FromBody] int id)
         {
-            var entities =await _catalogueService.GetById(id);
-            return Ok(entities);
+            try
+            {
+                var entities = await _catalogueService.GetById(id);
+                return Ok(entities);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CatalogueDto>>> GetAll()
         {
-            var entities = await _catalogueService.GetAll();
-            return  Ok(entities);   
+            try 
+            {
+                var entities = await _catalogueService.GetAll();
+                return  Ok(entities);   
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] CatalogueDto catalogue)
-        { 
-            if(catalogue == null)
-                throw new ArgumentNullException(nameof(catalogue));
-            else
+        {
+            try 
             {
-                _catalogueService.Add(catalogue);
-                return Ok();
+                if(catalogue == null)
+                    throw new ArgumentNullException(nameof(catalogue));
+                else
+                {
+                    var convertion = _mapper.Map<CatalogueDto, Catalogue>(catalogue);
+                    _catalogueService.Insert(convertion);
+                    return Ok();
                 
+                }
+                
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
             }
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<CatalogueDto>> Update([FromBody]int id,[FromBody] CatalogueDto Updtcatalogue)
+        public async Task<ActionResult<CatalogueDto>> Update(int updtId, [FromBody] CatalogueDto Updtcatalogue)
         {
-            if (Updtcatalogue == null)
-            {
-                BadRequest();
+            try 
+            { 
+                if (Updtcatalogue == null)
+                {
+                    BadRequest();
+                }
+                var convertion = _mapper.Map<CatalogueDto, Catalogue>(Updtcatalogue);
+                _catalogueService.Update(updtId,convertion);
+                
+                return Ok(_mapper.Map<Catalogue,CatalogueDto?>(await _catalogueService.GetById(updtId)));
+            
             }
-               _catalogueService.Update(Updtcatalogue);
-            return await _catalogueService.GetById(Updtcatalogue.Id);
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
+        }
+
+        [HttpPost("{id}/add-representation")]
+        public async Task<ActionResult> AddRepresentation(int Catid, [FromBody] RepresentationDto Addrepresentation)
+        {
+            try 
+            {
+
+                if (Addrepresentation == null)
+                {
+                    BadRequest();
+                }
+                var conversion= _mapper.Map<RepresentationDto, Representation>(Addrepresentation);
+                _catalogueService.AddRepresentation(Catid,conversion);
+                return Ok();
+                
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
+        }
+        [HttpDelete("{id}/delete-representation")]
+        public async Task<ActionResult> DeleteRepresentation(int Catid, int representationid)
+        {
+            try 
+            {
+                _catalogueService.DeleteRepresentation(Catid, representationid);
+                return Ok();
+                
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete([FromBody]int id)
         {
-            await _catalogueService.Delete(id);
-            return Ok();
+            try 
+            {
+                var enti=await _catalogueService.GetById(id);
+                _catalogueService.Delete(enti);
+                return Ok();
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
     }
 }

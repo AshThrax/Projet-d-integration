@@ -7,7 +7,7 @@ namespace ProjecIntegration.Api.Application.Common.Interfaces.IRepository
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(int id);
         void Insert(T entity);
-        void Update(T entity);
+        void Update(int updtId,T entity);
         void Delete(T entity);
     }
 }

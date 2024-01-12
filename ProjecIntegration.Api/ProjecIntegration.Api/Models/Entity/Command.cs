@@ -9,9 +9,10 @@ namespace ProjecIntegration
 {
     public class Command :BaseEntity
     {
+        
+        public string AuthId { get; set; }
         public string Name { get; set; }
-        public IList<Ticket> Tickets { get; set; }   
-        public User User { get; set; }
+        public List<Ticket> Tickets { get; set; }   
         public int IdUser { get; set; } 
 
     }

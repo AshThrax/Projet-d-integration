@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ProjecIntegration.Api.Application.Common.Interfaces.IService;
-using ProjecIntegration.Api.Application.DTO;
+using ProjecIntegration.Api.Application.Common.Interfaces.IRepository;
+using ProjecIntegration.Api.Application.DTO.command;
+using ProjecIntegration.Api.Application.DTO.ticket;
+using System.Collections.Generic;
 
 namespace ProjecIntegration.Api.Controllers
 {
@@ -9,50 +11,122 @@ namespace ProjecIntegration.Api.Controllers
     [ApiController]
     public class CommandController : ControllerBase
     {
-        private readonly ICommandService _commandService;
+        private readonly ICommandRepository _commandService;
+        private readonly IMapper _mapper;
 
-        public CommandController(ICommandService commandService)
+        public CommandController(ICommandRepository commandService, IMapper mapper)
         {
             _commandService = commandService;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<CommandDto>> GetByid([FromBody] int id)
         {
-            var entities = await _commandService.GetById(id);
-            return Ok(entities);
+            try { 
+                var entities = _mapper.Map<Command,CommandDto>(await _commandService.GetById(id));
+                return Ok(entities);
+            
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
+        }
+        [HttpGet("{id}/get-command-user")]
+        public async Task<ActionResult<CommandDto>> GetByuser()
+        {
+            try
+            {
+                var entities = _mapper.Map<IEnumerable<Command>, IEnumerable<CommandDto>> (await _commandService.GetAllUserCommand());
+                return Ok(entities);
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CommandDto>>> GetAll()
         {
-            var entities = await _commandService.GetAll();
-            return Ok(entities);
+            try
+            {
+                var entities = _mapper.Map< IEnumerable < Command> ,IEnumerable <CommandDto>>(await _commandService.GetAll());
+                return Ok(entities);
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] CommandDto CmdDtot)
         {
-            if (CmdDtot == null)
+            try
             {
-                BadRequest();
-            }
+                var auth0 = HttpContext.User.FindFirst("sub")?.Value;
+                CmdDtot.AuthId = auth0;
+                if (CmdDtot == null)
+                {
+                    BadRequest();
+                }
                 await _commandService.Add(CmdDtot);
-            return Ok();
+                return Ok("Create Command");
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
+        }
+        [HttpPost("{commandid}/add-ticket")]
+        public async Task<IActionResult> AddTicketToCommand(int commandid, [FromBody] TicketsDto ticket)
+        {
+            try
+            {
+                _commandService.AddTicketToCommand(commandid, ticket);
+                return Ok("Ticket added to the command successfully.");
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] CommandDto updtdto)
+        public async Task<ActionResult> Update(int updtId,[FromBody] CommandDto updtdto)
         {
-            if (updtdto == null)
+            try
             {
-                BadRequest(); 
+                if (updtdto == null)
+                {
+                    BadRequest(); 
+                }
+                _commandService.Update(updtId,updtdto);
+                return Ok();
+
             }
-            _commandService.Update(updtdto);
-            return Ok();
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete([FromBody] CommandDto commandDto)
+        public async Task<ActionResult> Delete(int id)
         {
-           _commandService.Delete(commandDto);
-            return Ok();
+            try
+            {
+                var cmd = await _commandService.GetById(id);
+               _commandService.Delete(cmd);
+                return Ok("Command Deleted SuccesFully");
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "");
+            }
         }
     }
 }
