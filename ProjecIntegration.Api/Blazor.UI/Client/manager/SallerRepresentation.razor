@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+<h3 class="display-4">SallePiece</h3>
+@inject Blazor.UI.services.ISalleService Servsalle;
+<div class="row p-2">
+
+    <QuickGrid Items="@salleTab.AsQueryable()">
+            <PropertyColumn Property="@(p => p.Id)" Sortable="true">
+            </PropertyColumn>
+            <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+            <PropertyColumn Property="@(p =>p.PlaceMax)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
+                <TemplateColumn Context="item">
+                    <div>
+                        <button type="button" class="btn" @onclick="() => loadrepresentation(item.Representations)">represnetationDetails</button>
+                    </div>
+                </TemplateColumn>
+                <TemplateColumn Context="item">
+                    <div>
+                        <button type="button" class="btn" @onclick="() => updateSalle(item)">update salle</button>
+                    </div>
+                </TemplateColumn>
+                <TemplateColumn Context="item">
+                <div>
+                <button type="button" class="btn" @onclick="() => addpieceSalle()">addPiece</button>
+                </div>
+            </TemplateColumn>
+        </QuickGrid>
+
+</div>
+<br />
+<div class="row">
+    @if (selectsalle != null)
+    {
+        <div class="col">
+            @if (isUpdate && !isdetail && !isAddPiece)
+            {
+                <p>update</p>
+                <Blazor.UI.Client.Page.sallePage.SalleUpdate salleDeTheatre="@selectsalle"></Blazor.UI.Client.Page.sallePage.SalleUpdate>
+            }
+            else if(isAddPiece && !isUpdate && !isdetail)
+            {
+              <p> theatre</p>
+            }
+            else
+            {
+                <p>
+                   details
+                </p>
+            }
+        </div>
+    }
+    else
+    {
+        
+    }
+</div>
+@code {
+    public IEnumerable<SalleDeTheatreDto> salleTab { get; set; }
+    public IEnumerable<RepresentationDto> representation { get; set; }
+    public SalleDeTheatreDto selectsalle { get; set; }
+    public bool isUpdate { get; set; }
+    public bool isdetail { get; set; }
+    public bool isAddPiece { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        isdetail = true;
+        isUpdate = false;
+        isAddPiece = false;
+        salleTab = await Servsalle.Get();   
+    }
+    public void loadrepresentation(IEnumerable<RepresentationDto> item)
+    {
+        isdetail = true;
+        isUpdate = false;
+        isAddPiece = false;
+        representation = item;
+    }
+    public void updateSalle(SalleDeTheatreDto updtheatre)
+    {
+        isUpdate = true;
+        isdetail = false;
+     isAddPiece = false;
+        selectsalle = updtheatre;
+    }
+    public void addpieceSalle()
+    {
+        isUpdate = false;
+        isdetail = false;
+        isAddPiece = true;
+    }
+}

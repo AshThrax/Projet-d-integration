@@ -1,0 +1,44 @@
+
+<div class="theatre-container row" *ngIf="user$ | async as user; else noTCoonected">
+  <div class="theatre-dialogue ">
+    <div class="col">
+        <h3 class="col-lg">Profile Page: </h3>
+        <h5 class="col">Bonjour {{user.given_name}} Comment allez vous?</h5>
+    </div>
+    <div class="col rounded-top float-start" >
+        <div class="shadow p-3 mb-5 col col-lg rounded-top border bg-sucess">
+          <h3>Information Personnel</h3>
+          <img class="img-fluid mb-2 mt-2 rounded" src="{{user.picture}}" alt="">
+          <p>Nom : {{ user.family_name }}</p>
+          <p>Prenom : {{ user.given_name }}</p>
+          <p>Email : {{ user.email }}</p>
+          <p></p>
+          <p>
+             authid : {{this.authid}}
+            <button (click)="getauth()">recup</button>
+          </p>
+     
+        </div>
+      </div>
+    </div>
+  <div>
+      <div *ngIf="this.IsitemFill ;else itemEmty" class="col rounded-top theatre-dialogue float-end">
+        <h3>Vos Reservation</h3>
+          <app-list-command></app-list-command>
+          <p>je suis un indicateur</p>
+    </div>
+    <ng-template #itemEmty>
+      <h3>En cours de chargement</h3>
+      <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+        <span></span>
+      </div>
+    </ng-template>
+  </div>
+  
+ 
+</div>
+  
+    <ng-template  #noTCoonected>
+      <h3> Pour accedrer au profile veuiilez vous connceter a l'application </h3>
+    </ng-template>

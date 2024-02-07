@@ -5,7 +5,8 @@ namespace ProjecIntegration.Api.Application.Common.Interfaces.IRepository
     {
         Task<Command> GetCommand(int id);
         void AddCommand(Command command);
-        void AddTicketToCommand(int commandId,Ticket ticket);
-        Task<IEnumerable<Command>> GetAllUserCommand();
+        Task<IEnumerable<Command>> GetAllUserCommand(string auth0);
+        Task<IEnumerable<Command>> GetAllFromPiece(int idPiece);
+        Task<IEnumerable<Command>> GetAllFromRepresentation(int idRepresentation);
     }
 }

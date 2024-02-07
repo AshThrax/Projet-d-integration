@@ -1,0 +1,51 @@
+﻿containertheater {
+    background: url(http://ccm.uc.edu/content/dam/ccm/theatre/theatre_rotator2.jpg);
+    background-size: 100%;
+    width: 600px;
+    height: 328px;
+    position: absolute;
+    overflow: hidden;
+}
+
+.open {
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 328px;
+    position: absolute;
+    border-top: solid 10px #000;
+    z-index: 99999;
+}
+
+    .open:hover ~ .door {
+        width: 50px;
+        transition: .4s linear;
+    }
+
+    .open:hover ~ .doorB {
+        width: 50px;
+        transition: .4s linear;
+    }
+
+.door {
+    background: linear-gradient(90deg, firebrick, black);
+    background-size: 10% 100%;
+    width: 50%;
+    height: 328px;
+    position: absolute;
+    transition: width .4s linear;
+    border-bottom: solid 10px firebrick;
+    cursor: resize;
+}
+
+.doorB {
+    background: linear-gradient(90deg, firebrick, black);
+    background-size: 10% 100%;
+    width: 50%;
+    height: 328px;
+    float: right;
+    margin-left: 300px;
+    position: relative;
+    transition: width .4s linear;
+    border-bottom: solid 10px firebrick;
+    cursor: resize;
+}

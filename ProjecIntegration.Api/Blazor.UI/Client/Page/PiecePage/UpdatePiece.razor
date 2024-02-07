@@ -1,0 +1,34 @@
+﻿
+<h3></h3>
+
+@if (piece != null)
+{
+    <div>
+        <label for="titre">Titre:</label>
+        <input id="titre" @bind="piece.Titre" />
+
+        <label for="duree">Duree:</label>
+        <input id="duree" @bind="piece.Duree" type="number" />
+
+        <label for="description">Description:</label>
+        <input id="description" @bind="piece.Description" />
+
+        <button @onclick="Update">Update Piece</button>
+    </div>
+}
+else
+{
+    <p>No Piece provided</p>
+}
+
+@code {
+    [Parameter]
+    public PieceDto piece { get; set; }
+    [Parameter]
+    public SalleDeTheatreDto salle { get; set; }
+
+    public void Update()
+    {
+        
+    }
+}

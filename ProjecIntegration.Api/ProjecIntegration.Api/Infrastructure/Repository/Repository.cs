@@ -1,7 +1,8 @@
-﻿using ProjecIntegration.Api.Models.BaseEntity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjecIntegration.Api.infrastructure.Persistence;
 using ProjecIntegration.Api.Application.Common.Interfaces.IRepository;
+using ProjecIntegration.Api.Models;
+using System.Linq.Expressions;
 
 namespace ProjecIntegration.Api.infrastructure.Repository
 {
@@ -11,9 +12,27 @@ namespace ProjecIntegration.Api.infrastructure.Repository
         private DbSet<T> dbSet;
         public Repository(ApplicationDbContext dbContext)
         {
+            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             dbSet = dbContext.Set<T>();
         }
-
+        public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = dbSet;
+            foreach (var includeProperty in includeProperties) 
+            {
+                query=query.Include(includeProperty);
+            }
+            return await query.ToListAsync();
+        }
+        public async Task<T> GetById(int id,params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = dbSet;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return await query.SingleOrDefaultAsync(s => s.Id == id);
+        }
         public async Task<IEnumerable<T>> GetAll()
         {
             var entities = await dbSet.ToListAsync();
@@ -21,7 +40,7 @@ namespace ProjecIntegration.Api.infrastructure.Repository
         }
         public Task<T> GetById(int id)
         {
-            return dbSet.SingleOrDefaultAsync(s => s.Id == id);
+            return dbSet.FirstOrDefaultAsync(s => s.Id == id);
         }
         public void Insert(T entity)
         {
@@ -37,13 +56,17 @@ namespace ProjecIntegration.Api.infrastructure.Repository
             dbSet.Update(entity); 
             dbContext.SaveChanges();
         }
-        public void Delete(T entity)
+        public void Delete(int entityid)
         {
-            if (entity == null)
+            var ent = dbSet.SingleOrDefaultAsync(x =>x.Id == entityid).Result;
+            if (ent == null)
             {
+                //lance une exception qui avertit que l'entité 
+                //qu'on desire supprimer n'existe pas
+                throw new ArgumentNullException(nameof(entityid), "L'entité que vous souhaitez supprimer n'existe pas.");
 
             }
-            dbSet.Remove(entity);
+            dbSet.Remove(ent);
             dbContext.SaveChanges();
         }
     }

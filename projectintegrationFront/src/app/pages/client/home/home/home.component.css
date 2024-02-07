@@ -1,0 +1,40 @@
+.theatre-container {
+  background-color: #fff; /* Couleur de fond */
+  color: #333; /* Couleur du texte */
+  padding: 20px; /* Espace intérieur */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.theatre-title {
+  font-size: 24px; /* Taille de la police pour le titre */
+  font-weight: bold; /* Gras */
+  color: #c0392b; /* Rouge foncé */
+  margin-bottom: 15px; /* Marge inférieure */
+}
+
+.theatre-description {
+  font-size: 16px; /* Taille de la police pour la description */
+  line-height: 1.5; /* Espacement des lignes */
+  margin-bottom: 20px; /* Marge inférieure */
+}
+
+.theatre-scene {
+  display: flex; /* Utiliser la disposition en ligne */
+  justify-content: space-between; /* Espacement uniforme entre les éléments enfants */
+  align-items: center; /* Alignement central vertical */
+}
+
+.theatre-character {
+  flex-grow: 1; /* Agrandir pour occuper tout l'espace disponible */
+  text-align: center; /* Centrer le texte */
+  font-size: 18px; /* Taille de la police pour les personnages */
+  color: #3498db; /* Bleu */
+}
+
+.theatre-dialogue {
+  flex-grow: 2; /* Agrandir pour occuper plus d'espace */
+  text-align: justify; /* Justifier le texte */
+  font-size: 16px; /* Taille de la police pour le dialogue */
+  color: #2c3e50; /* Gris foncé */
+}

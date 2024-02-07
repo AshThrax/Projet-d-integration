@@ -1,0 +1,78 @@
+﻿@page "/representzation/{Id:int}"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+@inject Blazor.UI.services.IRepresentationService servRep;
+@inject Blazor.UI.services.IPieceService servPiece;
+
+<h3>Representation Summary</h3>
+if()
+@if (myPiece != null)
+{
+    <div>
+        <h4>Representation Details</h4>
+        <p><strong>Title:</strong> @myPiece.Titre</p>
+        <p><strong>Duration:</strong> @myPiece.Duree</p>
+        <p><strong>Description:</strong> @myPiece.Description</p>
+        <p><strong>Salle ID:</strong> @myPiece.idSalle</p>
+    </div>
+}
+
+<h3>Representations QuickGrid</h3>
+
+<QuickGrid Items="@Myrepresnetation.AsQueryable()">
+    <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+    <PropertyColumn Property="@(p => p.Seance)" Sortable="true" Title="Seance" />
+    <PropertyColumn Property="@(p => p.IdSalleDeTheatre)" Sortable="true" Title="SalleDeTheatre ID" />
+    <PropertyColumn Property="@(p => p.IdPiece)" Sortable="true" Title="Piece ID" />
+    <TemplateColumn Title="Action">
+        <Template Context="item">
+            <div>
+                <button @onclick="() =>seanceDetails(context)">details</button>
+            </div>
+        </Template>
+    </TemplateColumn>
+    <!-- Add more columns for Commands if needed -->
+</QuickGrid>
+@if (selectedRepresentation != null)
+{
+    <div>
+        <h4>Seance sdetails</h4>
+        <br />
+        <p><strong>Price:</strong> @selectedRepresentation.Prix</p>
+        <p><strong>Seance:</strong>@selectedRepresentation.Seance</p>
+       
+    </div>    
+    <div>
+        <p>desirer vous reserver cette seance la </p>
+        <button @onclick="() => MakeCommand(selectedRepresentation.Id)"></button>
+    </div>
+}
+@code {
+    [Parameter]
+    public int Id { get;  set;}
+    private PieceDto? myPiece;
+    private IEnumerable<RepresentationDto>? Myrepresnetation;
+    private RepresentationDto? selectedRepresentation;
+
+    // Populate yourData with actual data, for example, in the OnInitializedAsync method
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Initialize yourData with actual data
+        Myrepresnetation = await servRep.GetPiece(Id); // Replace RepresentationService with your actual service class
+        await ShowPieceDetails(Id);
+    }
+
+    private async Task ShowPieceDetails(int id)
+    {
+        myPiece = await servPiece.GetById(Id);
+    }
+    private void seanceDetails(RepresentationDto select )
+    {
+        selectedRepresentation = select;
+    }
+    public void MakeCommand(int id)
+    {
+        NavigationManager.NavigateTo("");
+    }
+}

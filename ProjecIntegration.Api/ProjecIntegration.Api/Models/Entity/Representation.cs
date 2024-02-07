@@ -1,22 +1,22 @@
-﻿using ProjecIntegration.Api.Models.BaseEntity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProjecIntegration.Api.Models;
+using ProjecIntegration.Api.Models.Entity;
 
 namespace ProjecIntegration
 {
     public class Representation :BaseEntity
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Type { get; set; }
+        
+       
+        public int Prix { get; set; }
         public DateTime Seance { get; set; }
-        public Catalogue Catalogue { get; set; }
-        public int CatalogueId { get; set; }
+        public int PlaceMaximum { get; set; }
+        public int placeCurrent { get; set; }
+        //------salle de theatre
         public SalleDeTheatre SalleDeTheatre { get; set; }
-        public int IdSalledeTheatre { get; set; }
+        public int IdSalledeTheatre { get; set; } 
+        public Piece Piece { get; set; }
+        public int IdPiece { get; set; }
+        //-----commande/reservation
+        public List<Command> Commands { get; set; }
     }
 }

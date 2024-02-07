@@ -1,0 +1,32 @@
+<h3>mettre un jour un complexe</h3>
+<div class="shadow-lg container border rounded">
+  <form class="row g-3 align-items-center mb-2 mt-2" [formGroup]="ComplexeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="id">Id: {{this.idComplexe}}</label>
+        <div class="col-sm-10">        
+          <input class="form-control" type="number" id="id" formControlName="id" [disabled]="true">
+        </div>
+    </div>
+    <div class=" form-group">
+      <label for="name">name:</label>
+        <div class="col-sm-10">        
+          <input class="form-control" type="text" id="name" formControlName="name">
+        </div>
+    </div>
+    <div class=" form-group">
+      <label for="description">Description</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="description" formControlName="description">        
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="adress">Adress:</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" for="adress" formControlName="adress">
+      </div>
+    </div>
+      <div class="form-group col-sm-10 mt-2 mb-2">
+        <button class="btn btn-primary" type="submit" [disabled]="ComplexeForm.invalid">Enregistrer</button>
+      </div>
+  </form>
+</div>

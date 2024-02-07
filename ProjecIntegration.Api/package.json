@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@angular/cli": "^17.0.10"
+    "@angular/cli": "^17.0.10",
+    "@auth0/auth0-angular": "^2.2.3"
   }
 }

@@ -1,0 +1,110 @@
+﻿@page "/manager"
+
+@using Blazor.UI.Client.Page.Comp
+
+<div class="bg-light  m-4 p-2 rounded-2 text-center">
+    <h3 class="display-4 ">Manager</h3>
+    
+</div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowComplexeSection()">Manage Complexes</button>
+    </li>
+    <li class ="nav-item">
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowPieceSection()">Manage Salle/Pieces</button>
+    </li>
+    <li class="nav-item">
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowRepresentationSection()">Manage Salle/Representations</button>
+    </li>
+    <li class="nav-item">
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowSalleSection()">Manage Complexe/Salles</button>
+    </li>
+</ul>
+<br />
+<div class="jumbotron">
+
+    @if (isComplex)
+    {
+        <div class="pe-4 ps-4 pt-2 pb-2">
+            <h4 class="display-4 mb-4">Manage Complexes</h4>
+            <div class="container bg-light rounded-2">
+               <Complexe></Complexe>
+           </div>
+        </div>
+    }
+
+    @if (isPiece)
+    {
+
+        <div class="pe-4 ps-4 pt-2 pb-2">
+            <div class="container bg-light">
+
+            </div>
+        </div>
+    }
+
+    @if (isRepresentation)
+    {
+        <div class="m-4 p-4">
+            <div class="container bg-light rounded-2 m-4 p-4">
+                <SallerRepresentation></SallerRepresentation>
+            </div>
+        </div>
+  
+    }
+
+    @if (isSalle)
+    {
+        <div class="m-4 p-4">
+            <div class="container bg-light rounded-2 mb-4 mt-4">
+                <ComplexeSalle></ComplexeSalle>
+            </div>
+      </div>
+  
+    }
+</div>
+
+@code
+{
+    public bool isComplex { get; set; } = true;
+    public bool isPiece { get; set; } = false;
+    public bool isRepresentation { get; set; } = false;
+    public bool isSalle { get; set; } = false;
+
+    public void ShowComplexeSection()
+    {
+        isComplex = true;
+        isPiece = false;
+        isRepresentation = false;
+        isSalle = false;
+    }
+
+    public void ShowPieceSection()
+    {
+        isComplex = false;
+        isPiece = true;
+        isRepresentation = false;
+        isSalle = false;
+    }
+
+    public void ShowRepresentationSection()
+    {
+        isComplex = false;
+        isPiece = false;
+        isRepresentation = true;
+        isSalle = false;
+    }
+
+    public void ShowSalleSection()
+    {
+        isComplex = false;
+        isPiece = false;
+        isRepresentation = false;
+        isSalle = true;
+    }
+
+    public void getComplexe()
+    {
+        // Implement logic to get Complexes
+    }
+}

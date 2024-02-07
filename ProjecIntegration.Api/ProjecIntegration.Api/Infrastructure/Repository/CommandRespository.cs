@@ -21,33 +21,32 @@ namespace ProjecIntegration.Api.Infrastructure.Repository
             _dbContext.SaveChanges();
         }
 
-        public void AddTicketToCommand(int commandId, Ticket ticket)
-        {
-            var command =_dbContext.Commands
-                .Include(c => c.Tickets)
-                .FirstOrDefault(c =>c.Id == commandId);
-            if(command == null) 
-            {
-                command.Tickets.Add(ticket);
-                _dbContext.SaveChanges() ;
-            }
-        }
-
         public async Task<IEnumerable<Command>> GetAllUserCommand(string auth0)
         {
             var command = await _dbContext.Commands
-            .Include(c => c.Tickets)
-               .Where(c => c.AuthId==auth0)
-               .ToListAsync();
+                                .Where(c => c.AuthId==auth0)
+                                .ToListAsync();
             return command;
         }
       
         public async Task<Command> GetCommand(int id)
         {
             var command = await  _dbContext.Commands
-                .Include(c => c.Tickets)
-                .FirstOrDefaultAsync(c => c.Id == id);
+                            .FirstOrDefaultAsync(c => c.Id == id);
             return command;
+        }
+        public async Task<IEnumerable<Command>> GetAllFromRepresentation(int idrepresentation)
+        {
+            var ent = await _dbContext.Commands
+                .Where(x=> x.IdRepresentation==idrepresentation).ToListAsync();
+            return ent;
+        }
+        public async Task<IEnumerable<Command>> GetAllFromPiece(int idPiece)
+        {
+            var ent = await _dbContext.Commands
+                .Where(x =>x.Representation.IdPiece==idPiece)
+                .ToListAsync();
+            return ent;
         }
     }
 }

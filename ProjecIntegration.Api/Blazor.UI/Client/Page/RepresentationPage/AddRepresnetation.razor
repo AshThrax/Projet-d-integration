@@ -1,0 +1,41 @@
+﻿@inject Blazor.UI.services.IRepresentationService Servrep;
+<h3>Add Representation</h3>
+
+@if (representation != null)
+{
+    <form>
+    <div class="form-group">
+        <label for="prix">Prix:</label>
+        <input id="prix" @bind="representation.Prix" type="number" step="0.01" />
+
+        <label for="seance">Seance:</label>
+        <input id="seance" @bind="representation.Seance" type="datetime-local" />
+
+        <label for="idSalleDeTheatre">Salle De Theatre ID:</label>
+        <input id="idSalleDeTheatre" @bind="representation.IdSalleDeTheatre" type="number" />
+
+        <label for="idPiece">Piece ID:</label>
+        <input id="idPiece" @bind="representation.IdPiece" type="number" />
+
+        <button @onclick="AddRepresentation">Add Representation</button>
+    </div>
+    </form>
+}
+else
+{
+    
+}
+
+@code {
+
+    public AddRepresentationDto representation { get; set; }
+
+    private void AddRepresentation()
+    {
+        Servrep.Create(representation);
+    }
+}
+
+@code {
+
+}

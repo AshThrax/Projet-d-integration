@@ -1,0 +1,55 @@
+﻿@page "/details/{Id:int}"
+
+@using Microsoft.AspNetCore.Components
+@using  Blazor.UI.services
+@using Blazor.UI.modelViews
+
+@inject Blazor.UI.services.IComplexeService comp
+@inject Blazor.UI.modelViews.ComplexeDto complexedto;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+<h3>Details for Complexe with Id: @Id</h3>
+
+<div>
+    <!-- Fetch and display details based on the provided Id -->
+    @code {
+        private ComplexeDto complexe;
+
+        [Parameter]
+        public int Id { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            complexe = await comp.GetById(Id);
+        }
+    }
+
+    @if (complexe != null)
+    {
+        <dl>
+            <dt>Id:</dt>
+            <dd>@complexe.Id</dd>
+
+            <dt>Name:</dt>
+            <dd>@complexe.Name</dd>
+
+            <dt>Description:</dt>
+            <dd>@complexe.Description</dd>
+
+            <dt>Capacity:</dt>
+            <dd>@complexe.SalleDeTheatres.Capacity</dd>
+        </dl>
+    }
+    else
+    {
+     <Shared.Load></Shared.Load>
+    }
+</div>
+
+<button @onclick="GoBack">Go Back</button>
+
+@code {
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/complexe-grid");
+    }
+}

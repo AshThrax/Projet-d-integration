@@ -1,9 +1,4 @@
-﻿using ProjecIntegration.Api.Models.BaseEntity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProjecIntegration.Api.Models;
 
 namespace ProjecIntegration
 {
@@ -12,9 +7,9 @@ namespace ProjecIntegration
        
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public string Adress { get; set; }
         public List<SalleDeTheatre> SalleDeTheatres { get; set; }
-        public List<Catalogue> Catalogues { get; set; }
-
+        //public Entreprise Entreprise { get; set; }
+        //public int EntrepriseID { get; set; }
     }
 }

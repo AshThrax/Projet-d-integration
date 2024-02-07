@@ -1,0 +1,26 @@
+﻿
+<div class="float-md-none">
+    @if (loadParam == null)
+    {
+        <h3>Load </h3>
+    }
+    else
+    {
+        <h3>Load : @loadParam</h3>
+    }
+    <h4>Page en cours de chargement veuillez patienter </h4>
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string? loadParam { get; set; }
+
+    public string dispaly { get; set; }
+    protected override Task OnInitializedAsync()
+    {
+        dispaly = loadParam;
+        return base.OnInitializedAsync();
+    }
+}

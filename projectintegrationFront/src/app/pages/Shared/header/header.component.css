@@ -1,0 +1,10 @@
+.thum{
+  height:128px;
+  width:128px;
+}
+.theatre-title {
+  font-size: 24px; /* Taille de la police pour le titre */
+  font-weight: bold; /* Gras */
+  color: #c0392b; /* Rouge foncé */
+  margin-bottom: 15px; /* Marge inférieure */
+}

@@ -1,0 +1,32 @@
+
+<div *ngIf="this.IsitemFill; else itemEmty">
+  <h3>Complexe de theatre</h3>
+    <table class="theatre-table table table-bordered table-sm table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">nom</th>
+          <th scope="col">Descrption</th>
+          <th scope="col">adress</th>
+          <th scope="col">Pièece de theatre</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of items">
+            <th scope="row">{{this.item.id}}</th>
+            <td scope="">{{this.item.name}}</td>
+            <td>{{this.item.description}}</td>
+            <td>{{this.item.adress}}</td>
+            <td><button type="button" class="btn btn-success btn-outline-warning" (click)="getPieceComposant(this.item.id)">piece de theatre</button><td>
+          </tr>
+      </tbody>
+    </table>
+</div>
+<ng-template #itemEmty >
+  <h3>En cours de chargement</h3>
+  <div class="spinner-border" role="status">
+    <span class="sr-only"></span>
+  </div>
+  <span class="ms-2">loading process</span>
+
+</ng-template>
