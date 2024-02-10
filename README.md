@@ -622,38 +622,38 @@ c'est a dire
 ``` cs
  public static IServiceCollection AddAuthO(this IServiceCollection services, IConfiguration configuration)
  {
-     var Domain= configuration["Auth0:Domain"];
-     var Audience = configuration["Auth0:Audience"];
-     var Clientid = configuration["Auth0:ClientId"];
-     var ClientSecret = configuration["Auth0:ClientSecret"];
+     var Domain= configuration["Auth0:Domain"];//necessaire pour la sécurisation
+     var Audience = configuration["Auth0:Audience"];//necessaire pour la sécurisation
+     var Clientid = configuration["Auth0:ClientId"];//necessaire pour l'integration de la manageement api
+     var ClientSecret = configuration["Auth0:ClientSecret"];//necessaire pour l'integration de la manageement api
 //----------
      services.AddAuthentication(options =>
      {
-         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;//necessaire pour la sécurisation
+         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;//necessaire pour la sécurisation
          
      }).AddJwtBearer(options =>
      {
-         options.Authority = Domain;
-         options.Audience = Audience;
-         options.TokenValidationParameters = new TokenValidationParameters
+         options.Authority = Domain; //necessaire pour la sécurisation
+         options.Audience = Audience; //necessaire pour la sécurisation
+         options.TokenValidationParameters = new TokenValidationParameters /necessaire pour récuper le token
          {
              NameClaimType = ClaimTypes.NameIdentifier
          };
      });
      services.AddAuth0AuthenticationClient(options =>
      {
-         options.Domain=Domain;
-         options.ClientId=Clientid;
-         options.ClientSecret=ClientSecret;
+         options.Domain=Domain;//necessaire pour l'integration de la manageement api
+         options.ClientId=Clientid;//necessaire pour l'integration de la manageement api
+         options.ClientSecret=ClientSecret;//necessaire pour l'integration de la manageement api
      });
      services.AddAuth0ManagementClient()//permet l'utilisation de la management api
-             .AddManagementAccessToken();
+             .AddManagementAccessToken();//necessaire pour l'integration de la manageement api
      //---------------------------------
      services.AddAuthorization();//permet l'utilisation de la balisAuthorize 
 
      services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
-     services.AddSingleton<ICustomGetToken, CustomGetToken>();
+     services.AddSingleton<ICustomGetToken, CustomGetToken>();//service permettant de tester l'authentification des                                                               //user sur l'application 
      return services;
  }
 ```
@@ -681,6 +681,7 @@ namespace WebApi.ApiService
             _contextAccessor = contextAccessor 
                 ?? throw new ArgumentNullException(nameof(_contextAccessor));
         }
+        //retourne notre token
         public async Task<string> GetToken()
         {
             var accessToken = await _contextAccessor
@@ -689,6 +690,7 @@ namespace WebApi.ApiService
             return accessToken;
             //acces token fonctionne parfaitemment
         }
+        //retourne notre userId
         public async Task<string> GetSub() 
         {
             var accessToken = await _contextAccessor
@@ -698,7 +700,7 @@ namespace WebApi.ApiService
                 .User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return subClaim;
         }
-
+        //retourne notre mail
         public async Task<string> GetEmail()
         {
             var values = _contextAccessor.HttpContext
