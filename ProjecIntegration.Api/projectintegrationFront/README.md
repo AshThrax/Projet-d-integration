@@ -1,5 +1,5 @@
 # ProjectintegrationFront
-
+## le project sous angular de rfonctionne plus a cause du package NgBoostrap Contianer
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
 
 ## Development server
