@@ -240,6 +240,21 @@ le systéme d'authentification géré avec auth0
 l'integration d'auth0 sur un project blazor web assembly  demande des ajustements bien précis 
 
 ### injection de dependant dans blazor 
-``` cs
 
+l'integration de blazor a auth0 nécéssite l'utilisation d'openId Connect
+pour fonctionner plainemment a s
+``` cs
+   public static IServiceCollection AddAuthService(this IServiceCollection services,
+                                               IConfiguration configuration)
+   {
+       
+       //oidc
+       services.AddOidcAuthentication(option => {
+           configuration.Bind("Auth0", option.ProviderOptions);
+           option.ProviderOptions.ResponseType = "code";
+           option.ProviderOptions.DefaultScopes.Add("email");
+           option.ProviderOptions.AdditionalProviderParameters.Add("audience", configuration["Auth0:Audience"] );
+       });
+       return services;
+   }
 ```
