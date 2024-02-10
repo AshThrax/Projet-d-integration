@@ -558,7 +558,7 @@ ces Methodes sont ensuite appelée dans programmes.cs
 sous la forme suivante
 
 ``` cs
-builder.services.AdddependencyInjection(builder.Configuration)
+builder.services.AddDependencyInjection(builder.Configuration);
 ```
 cette apporche permet de séparer les features dans un premier temps et de garder le project programme.cs propre.
 
