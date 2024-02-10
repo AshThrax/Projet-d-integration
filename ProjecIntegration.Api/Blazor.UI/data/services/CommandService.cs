@@ -44,7 +44,7 @@ namespace Blazor.UI.services
 
         public async Task<CommandDto[]> GetByUser()
         {
-            return await _httpClient.GetFromJsonAsync<CommandDto[]>($"{ApiUri}/get-command-user/");
+            return await _httpClient.GetFromJsonAsync<CommandDto[]>($"{ApiUri}/get-command-user");
         }
 
         public async Task<CommandDto[]> GetByPiece(int idPiece)

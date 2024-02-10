@@ -64,7 +64,7 @@ namespace Blazor.UI.services
 
             public async Task AddCommandRepresentation(int id, AddCommandDto data)
             {
-                await _httpClient.PostAsJsonAsync($"{ApiUri}/add-command/{id}", data);
+                await _httpClient.PostAsJsonAsync($"https://localhost:44337/api/Representation/add-command/{id}", data);
             }
 
             public async Task DeleteCommandRepresentation(int idRep, int idCommand)

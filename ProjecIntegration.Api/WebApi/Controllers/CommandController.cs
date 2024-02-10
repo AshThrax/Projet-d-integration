@@ -63,7 +63,7 @@ namespace WebApi.Controllers
                 return StatusCode(500, e.Message + "");
             }
         }
-        [HttpGet("get-command-user/{id}")]
+        [HttpGet("get-command-user")]
         public async Task<ActionResult<CommandDto>> GetByUser()
         {
             try
@@ -107,7 +107,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entities = _mapper.Map<IEnumerable <CommandDto>>(await _commandService.GetAll());
+                var entities = _mapper.Map<IEnumerable <CommandDto>>(await _commandService.GetAll(c=>c.Tickets));
                 return Ok(entities);
 
             }
@@ -129,14 +129,17 @@ namespace WebApi.Controllers
         {
             try
             {
-                var auth0 = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                //verifier la validiter des commande
+                var validator=new AddCommandValidator();
+                var auth0 = await gtk.GetSub();
                 CmdDtot.AuthId = auth0;
                 if (CmdDtot == null)
                 {
                     BadRequest();
                 }
-                var conversion= _mapper.Map<Command>(CmdDtot);
-                 _commandService.Insert(conversion);
+                var conversion= _mapper.Map<CommandDto>(CmdDtot);
+                var reconvert = _mapper.Map<Command>(conversion);
+                 _commandService.Insert(reconvert);
                 return Ok("Create Command");
 
             }

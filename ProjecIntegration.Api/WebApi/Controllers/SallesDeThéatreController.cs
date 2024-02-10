@@ -17,7 +17,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var conversion = _mapper.Map<SalleDeTheatreDto>(await _service.GetById(id));
+                var conversion = _mapper.Map<SalleDeTheatreDto>(await _service.GetById(id,c=>c.Pieces));
                 return Ok(conversion);
             }
             catch (Exception e)
@@ -52,7 +52,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(await _service.GetAll());
+                var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(await _service.GetAll(c=>c.Pieces));
                 return Ok(await _service.GetAll());
 
             }

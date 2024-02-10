@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Components.QuickGrid
+﻿
+@using Microsoft.AspNetCore.Components.QuickGrid
 @inject Blazor.UI.services.IRepresentationService ServP;
 <h3>GetCommand</h3>
 
@@ -9,7 +10,7 @@
 <QuickGrid Items="@lstCommand.AsQueryable()">
         <PropertyColumn Property="p =>p.Id"  Title="Id"  Sortable="true" />
         <PropertyColumn Property="p =>p.NombreDePlace" Title="nombre de place" />
-        <TemplateColumn Context="item">
+        <TemplateColumn Context="item" Title="representation">
            <div>
                <button type="button" class="btn btn-warning" @onClick="LoadRepresentation(item.IdRepresentation)" >represnetation</button>
            </div>
@@ -43,5 +44,5 @@ else
         selectRepresnetaion = await ServP.GetById(id);
     }
     public void Clean() 
-    => selectRepresnetaion = null;
+            => selectRepresnetaion = null;
 }

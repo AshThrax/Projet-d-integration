@@ -1,4 +1,7 @@
-﻿namespace ProjecIntegration.Api.Application.Common.Mapping
+﻿using Auth0.ManagementApi.Models;
+using WebApi.Application.DTO;
+
+namespace ProjecIntegration.Api.Application.Common.Mapping
 {
     public class Mapping : Profile
     {
@@ -32,6 +35,11 @@
             CreateMap<AddSalleDeTheatreDto, SalleDeTheatre>();
             CreateMap<UpdateSalleDeTheatreDto, SalleDeTheatre>();
             CreateMap<SalleDeTheatreDto, SalleDeTheatre>();
+            //-------------------------------------------
+            CreateMap<Ticket, TicketDto>();
+            CreateMap<TicketDto, Ticket>();
+            CreateMap<Ticket, AddTicketDto>();
+            CreateMap<AddTicketDto, Ticket>();
         }
     }
 }

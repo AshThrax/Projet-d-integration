@@ -35,13 +35,25 @@
 
         public async Task<IEnumerable<Piece>> GetPieceByComplexe(int idComplexe)
         {
+
+
+            //------
             var salle = await _context.SalleDeTheatres
                 .Include(c =>c.Pieces)
-                .Where(c => c.complexeId == idComplexe).FirstOrDefaultAsync();
-            IEnumerable<Piece> pieces = salle.Pieces;
+                .Where(c => c.complexeId == idComplexe).ToListAsync();
 
+            IList<Piece> pieces=new List<Piece>();
+            foreach(var item in salle) 
+            {
+                foreach(Piece play in item.Pieces)
+                {
+                    pieces.Add(play);
+
+                }
+            }
            
-            return pieces;
+            return pieces.AsEnumerable();
         }
+       
     }
 }

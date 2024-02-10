@@ -21,7 +21,8 @@
 
                 }
                 //chaque fois qu'on ajoute une commande le nombre de place diminiue
-                representation.placeCurrent++;
+                var place = command.Tickets.Count;
+                representation.placeCurrent=representation.placeCurrent+place;
                 representation.Commands.Add(command);
                 _context.SaveChanges();
             }
@@ -34,11 +35,13 @@
             
             if (representation != null)
             {
+
                 var Commanddelete = representation
                     .Commands.FirstOrDefault(r => r.Id == CommandId);
-             
+
                 //chaque fois qu'on supprime une commande le nombre de place dispo pour la reservation augmente
-                representation.placeCurrent--;
+                var place =Commanddelete.Tickets.Count;
+                representation.placeCurrent=representation.placeCurrent-place;
                 representation.Commands.Remove(Commanddelete) ;
                 _context.SaveChanges();
             }

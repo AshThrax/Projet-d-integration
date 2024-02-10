@@ -54,10 +54,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVyUmVwcmVzZW50YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Command.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tbWFuZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/AddComplexe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxBZGRDb21wbGV4ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -98,10 +94,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUGllY2VQYWdlXFVwZGF0ZVBpZWNlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/PieceReservation.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUGllY2VSZXNlcnZhdGlvbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ProfileViewer.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVZpZXdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -124,6 +116,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Reservation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationComponent/Command.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25Db21wb25lbnRcQ29tbWFuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationComponent/ComplexeDropDown.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25Db21wb25lbnRcQ29tcGxleGVEcm9wRG93bi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationComponent/PieceReservation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25Db21wb25lbnRcUGllY2VSZXNlcnZhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/sallePage/AddSalle.razor]

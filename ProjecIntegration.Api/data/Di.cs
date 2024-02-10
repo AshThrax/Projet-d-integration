@@ -13,7 +13,9 @@ namespace data
                      var conn = configuration.GetConnectionString("Default");
 
                          services.AddDbContext<ApplicationDbContext>(option =>
-                            option.UseSqlServer(conn));
+                            option.UseSqlServer(
+                            (conn),
+                            b => b.MigrationsAssembly("WebApi")));
                     //injection des repository
 
                     services.AddScoped<ICommandRepository, CommandRespository>();

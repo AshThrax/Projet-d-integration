@@ -8,10 +8,13 @@ namespace WebApi.Controllers
     {
         private readonly IRepresentationRepository _representationService;
         private readonly IMapper _mapper;
-        public RepresentationController(IRepresentationRepository representationService, IMapper mapper) 
+        private readonly ICustomGetToken gtk;
+
+        public RepresentationController(IRepresentationRepository representationService, IMapper mapper,ICustomGetToken gtk) 
         { 
             _representationService = representationService;
             _mapper = mapper;
+            gtk = gtk;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAll() 
@@ -107,6 +110,7 @@ namespace WebApi.Controllers
                    { 
                         BadRequest();
                    }
+                  
                     var conversion = _mapper.Map<AddRepresentationDto,Representation>(entity);
                    _representationService.Insert(conversion);
                    return Ok();
@@ -125,7 +129,7 @@ namespace WebApi.Controllers
             }
         }
         [HttpPost("add-command/{id}")]
-        public async Task<ActionResult> AddCommand(int id,[FromBody] AddCommandDto entity)
+        public async Task<ActionResult> AddCommand(int id,[FromForm] AddCommandDto entity)
         {
             try
             {
@@ -133,6 +137,8 @@ namespace WebApi.Controllers
                 {
                     BadRequest();
                 }
+
+                entity.AuthId = await gtk.GetSub();
                 var conversion = _mapper.Map<AddCommandDto,Command>(entity);
                 _representationService.AddCommandToRepresentation(id,conversion);
                 return Ok();
@@ -147,7 +153,7 @@ namespace WebApi.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message + "");
+                return StatusCode(500, e.Message);
             }
         }
         [HttpPut("{updtId}")]

@@ -1,17 +1,18 @@
 ﻿@using Blazor.UI.Client.Shared
-<h3>Details</h3>
+
+<h3 class="display-5 p-2 m-2">Details:</h3>
 
 @if (SelectedSalleDeTheatre != null)
 {
-    <div>
-        <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
-        <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
-        <p><strong>Place Current:</strong> @SelectedSalleDeTheatre.PlaceCurrent</p>
-        <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
-        <p><strong>reservation Number</strong> @SelectedSalleDeTheatre.Representations.Count</p>
-             
+    <div class="m-2 p-2 border border-solid">
+        <div class="m-2 p-2">
+            <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
+            <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
+            <p><strong>Place Current:</strong> @SelectedSalleDeTheatre.PlaceCurrent</p>
+            <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
+            <p><strong>reservation Number</strong> @SelectedSalleDeTheatre.Representations.Count</p>
+        </div>          
     </div>
-    <br />
 }
 else
 {

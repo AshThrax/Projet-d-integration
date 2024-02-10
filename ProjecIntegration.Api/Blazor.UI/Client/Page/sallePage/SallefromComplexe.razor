@@ -11,12 +11,12 @@
         <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
            <TemplateColumn Context="item">
             <div>
-                <button @onclick="() => LoadSalle(item)">Details salle de theatre</button>
+                <button class="shadow-sm broder rounded" type="button" @onclick="() => LoadSalle(item)">Details salle de theatre</button>
             </div>
            </TemplateColumn>
         <TemplateColumn Context="item">
             <div>
-                <button @onclick="() => UpdateSalle(item)">Update Salle de theatre</button>
+                <button class="shadow-sm broder rounded" type="button" @onclick="() => UpdateSalle(item)">Update Salle de theatre</button>
             </div>
         </TemplateColumn>
     </QuickGrid>

@@ -20,6 +20,7 @@ builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
                                         .CreateClient("projectAPI"));
 //dependency injection with all my middleware 
 //a service to controle them all
+builder.Services.AddLocalStorageServices();
 builder.Services.AddBlazor(builder.Configuration);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");

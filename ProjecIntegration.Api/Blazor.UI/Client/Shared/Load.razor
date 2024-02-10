@@ -1,17 +1,19 @@
 ﻿
-<div class="float-md-none">
-    @if (loadParam == null)
-    {
-        <h3>Load </h3>
-    }
-    else
-    {
-        <h3>Load : @loadParam</h3>
-    }
-    <h4>Page en cours de chargement veuillez patienter </h4>
-    <div class="spinner-border" role="status">
-        <span class="sr-only"></span>
-    </div>
+<div class="float-md-none bg-light rounded m-2 p-2">
+    <div class="m-2 p-2">
+        @if (loadParam == null)
+        {
+            <h3>Load </h3>
+        }
+        else
+        {
+            <h3>Load : @loadParam</h3>
+        }
+        <h4>Page en cours de chargement veuillez patienter </h4>
+        <div class="spinner-border shadow-sm" role="status">
+            <span class="sr-only"></span>
+        </div>
+   </div>
 </div>
 @code {
     [Parameter]

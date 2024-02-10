@@ -2,6 +2,38 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "Blazor.LocalStorage.WebAssembly/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Blazor.Serialization": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "Microsoft.JSInterop": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Blazor.LocalStorage.WebAssembly.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazor.LocalStorage.WebAssembly.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Blazor.Serialization/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Blazor.Serialization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazor.Serialization.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authorization/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -661,6 +693,38 @@
       }
     },
     "net8.0/browser-wasm": {
+      "Blazor.LocalStorage.WebAssembly/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Blazor.Serialization": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "Microsoft.JSInterop": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Blazor.LocalStorage.WebAssembly.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazor.LocalStorage.WebAssembly.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Blazor.Serialization/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Blazor.Serialization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazor.Serialization.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authorization/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -1315,6 +1379,42 @@
     }
   },
   "libraries": {
+    "Blazor.LocalStorage.WebAssembly/8.0.0": {
+      "sha512": "FJlpOhYjODizbajghSq/RyjUPDwK+aILaLCpCyEXorC7ZpsZYOgc2UlwZO5ZlC5EU/ABcR/9fgNUv2Veg7LBvw==",
+      "type": "package",
+      "path": "blazor.localstorage.webassembly/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "blazor.localstorage.webassembly.8.0.0.nupkg.sha512",
+        "blazor.localstorage.webassembly.nuspec",
+        "lib/net7.0/Blazor.LocalStorage.WebAssembly.dll",
+        "lib/net7.0/Blazor.LocalStorage.WebAssembly.xml",
+        "lib/net8.0/Blazor.LocalStorage.WebAssembly.dll",
+        "lib/net8.0/Blazor.LocalStorage.WebAssembly.xml",
+        "logo.png"
+      ]
+    },
+    "Blazor.Serialization/8.0.0": {
+      "sha512": "p8jlwruYLfTzDfdRIIteegRdOuXbVi1S1xqW+jJWJgd6bg7W/PzYplAH32gKIzoSAjdFEl+/u1/rx12OlJs/wA==",
+      "type": "package",
+      "path": "blazor.serialization/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "blazor.serialization.8.0.0.nupkg.sha512",
+        "blazor.serialization.nuspec",
+        "lib/net7.0/Blazor.Serialization.dll",
+        "lib/net7.0/Blazor.Serialization.xml",
+        "lib/net8.0/Blazor.Serialization.dll",
+        "lib/net8.0/Blazor.Serialization.xml",
+        "logo.png"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/8.0.1": {
       "sha512": "RYBk9d+Zb6V2u2hpgSSlCTvV6HvNf8T8OA7coLn+J4sdWLbdVkb8/b2tpRRENTGXK31ayCvtUPhP4wv2ZMn4cQ==",
       "type": "package",
@@ -2587,6 +2687,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Blazor.LocalStorage.WebAssembly >= 8.0.0",
       "Microsoft.AspNetCore.Components.QuickGrid >= 8.0.1",
       "Microsoft.AspNetCore.Components.WebAssembly >= 8.0.1",
       "Microsoft.AspNetCore.Components.WebAssembly.Authentication >= 8.0.1",
@@ -2641,6 +2742,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Blazor.LocalStorage.WebAssembly": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
           "Microsoft.AspNetCore.Components.QuickGrid": {
             "target": "Package",
             "version": "[8.0.1, )"

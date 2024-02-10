@@ -1,4 +1,6 @@
-﻿namespace data.infrastructure.Persistence
+﻿using data.Models.Entity;
+
+namespace data.infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {
@@ -82,7 +84,10 @@
                 .WithMany(x => x.Commands)
                 .HasForeignKey(x => x.IdRepresentation)
                 .OnDelete(DeleteBehavior.Restrict);
-
+            //--PieceConfiguration---------
+            modelBuilder.Entity<Tickets>().HasKey(x => x.Id);
+            modelBuilder.Entity<Tickets>().HasOne(x => x.Command)
+                .WithMany(x => x.Tickets).HasForeignKey(x => x.CommandId);
             //----------------------------end Config
             base.OnModelCreating(modelBuilder);
 
