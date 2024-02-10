@@ -609,6 +609,91 @@ la sécurisation de l'api via auth0 reste la meme que celle fournit par la doc d
 c'est a dire 
 
 ``` cs
+ public static IServiceCollection AddAuthO(this IServiceCollection services, IConfiguration configuration)
+ {
+     var Domain= configuration["Auth0:Domain"];
+     var Audience = configuration["Auth0:Audience"];
+     var Clientid = configuration["Auth0:ClientId"];
+     var ClientSecret = configuration["Auth0:ClientSecret"];
+     services.AddAuthentication(options =>
+     {
+         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+         
+     }).AddJwtBearer(options =>
+     {
+         options.Authority = Domain;
+         options.Audience = Audience;
+         options.TokenValidationParameters = new TokenValidationParameters
+         {
+             NameClaimType = ClaimTypes.NameIdentifier
+         };
+     });
+     services.AddAuth0AuthenticationClient(options =>
+     {
+         options.Domain=Domain;
+         options.ClientId=Clientid;
+         options.ClientSecret=ClientSecret;
+     });
+     services.AddAuth0ManagementClient()
+             .AddManagementAccessToken();
+     //---------------------------------
+     services.AddAuthorization();
 
+     services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+     services.AddSingleton<ICustomGetToken, CustomGetToken>();
+     return services;
+ }
 ```
 dans le cadre du project j'ai creer un service permettant de tester la récuperation du jwt totken du client via le server dans le cadre de l'integration su service
+``` cs
+using Microsoft.AspNetCore.Authentication;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
+
+namespace WebApi.ApiService
+{
+    public interface ICustomGetToken
+    {
+
+        Task<string> GetToken();
+        Task<string> GetSub();
+        Task<string> GetEmail();
+    }
+
+    public  class CustomGetToken : ICustomGetToken
+    {
+        private readonly IHttpContextAccessor _contextAccessor;
+        public CustomGetToken(IHttpContextAccessor contextAccessor)
+        {
+            _contextAccessor = contextAccessor 
+                ?? throw new ArgumentNullException(nameof(_contextAccessor));
+        }
+        public async Task<string> GetToken()
+        {
+            var accessToken = await _contextAccessor
+                .HttpContext
+                .GetTokenAsync("access_token");
+            return accessToken;
+            //acces token fonctionne parfaitemment
+        }
+        public async Task<string> GetSub() 
+        {
+            var accessToken = await _contextAccessor
+               .HttpContext
+               .GetTokenAsync("access_token");
+            var subClaim = _contextAccessor.HttpContext
+                .User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return subClaim;
+        }
+
+        public async Task<string> GetEmail()
+        {
+            var values = _contextAccessor.HttpContext
+                .User.FindFirst(ClaimTypes.CookiePath)?.Value;
+            return values;
+        }
+    }
+}
+
+```
