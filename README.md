@@ -18,7 +18,7 @@ Dans le cadre du développement de ce projet , la méthodologie utilisée sera u
 -server => implementation, d'un project .net 8 sdk
 -database Sql Server 
 
-## implémentation et dépendance
+## implémentation, Spécificité et dépendance
 
 
 -repository pattern générique
