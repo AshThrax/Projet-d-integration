@@ -235,4 +235,11 @@ coté UIClient Blazor
     }
 }
 ```
-authentification géré avec auth0 
+
+le systéme d'authentification géré avec auth0 
+l'integration d'auth0 sur un project blazor web assembly  demande des ajustements bien précis 
+
+### injection de dependant dans blazor 
+``` cs
+
+```
