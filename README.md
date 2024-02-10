@@ -9,7 +9,7 @@ Une entreprise dédié à la gestion d’une marque de salle de théâtre nous d
 
 ## Analyse Métier:
 Solution proposé concernant le cahier des charge
-La solution implémentée pour répondre à la demande du cahier des charge est la conception d’une application web composé d'une partie Back-End avec une approche code-first en .Net core et d’une partie Front -End en Angular. 
+La solution implémentée pour répondre à la demande du cahier des charge est la conception d’une application web composé d'une partie Back-End avec une approche code-first en .Net core et d’une partie Front -End en blazor
 Dans le cadre du développement de ce projet , la méthodologie utilisée sera une méthodologie de type agile , Scrum. Cette méthodologie permettra d’avoir une plus grande flexibilité concernant le projet et son avancement.
 
 ## technologies utilisée 
