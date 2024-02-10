@@ -551,6 +551,14 @@ l'integration d'auth0 sur un project blazor web assembly  demande des ajustement
 
 ### injection de dependant dans blazor 
 
+les methodes repsonsable de l'injection de dependance se trouves pour le Client et pour le server dans le dossier extensionMethods.
+ces Methodes sont ensuite appelée dans programmes.cs 
+sous la forme suivante
+
+``` cs
+builder.services.AdddependencyInjection(builder.Configuration)
+```
+
 #### Auth0:client
 l'integration de blazor a auth0 nécéssite l'utilisation d'openId Connect
 pour fonctionner correctemment
