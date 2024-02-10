@@ -494,7 +494,7 @@ namespace data
 }
 
 ```
-depdenance coté UIClient Blazor
+Dependance coté UIClient Blazor
 
 ``` cs
 
@@ -560,6 +560,7 @@ sous la forme suivante
 ``` cs
 builder.services.AdddependencyInjection(builder.Configuration)
 ```
+cette apporche permet de séparer les features dans un premier temps et de garder le project programme.cs propre.
 
 #### Auth0:client
 l'integration de blazor a auth0 nécéssite l'utilisation d'openId Connect
