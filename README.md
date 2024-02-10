@@ -604,3 +604,11 @@ builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
 cette methodes permet d'injecter automatiquement un jwttoken a toute les requeste faites vers l'url de votre api
 
 #### Auth0:server
+
+la sécurisation de l'api via auth0 reste la meme que celle fournit par la doc de auth 0
+c'est a dire 
+
+``` cs
+
+```
+dans le cadre du project j'ai creer un service permettant de tester la récuperation du jwt totken du client via le server dans le cadre de l'integration su service
