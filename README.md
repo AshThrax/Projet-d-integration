@@ -551,7 +551,7 @@ l'integration d'auth0 sur un project blazor web assembly  demande des ajustement
 
 ### injection de dependant dans blazor 
 
-#### Auth0
+#### Auth0:client
 l'integration de blazor a auth0 nécéssite l'utilisation d'openId Connect
 pour fonctionner correctemment
 ``` cs
@@ -602,3 +602,5 @@ builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
 
 ```
 cette methodes permet d'injecter automatiquement un jwttoken a toute les requeste faites vers l'url de votre api
+
+#### Auth0:server
