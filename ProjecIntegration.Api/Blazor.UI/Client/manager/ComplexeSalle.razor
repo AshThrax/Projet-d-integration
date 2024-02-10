@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+
+@inject Blazor.UI.services.IComplexeService Servsalle;
+@inject Blazor.UI.services.IComplexeService Servcomp;
+<h3 class="display-4">ComplexeSalle</h3>
+
+<div class="row m-2 p-2">
+    @if (complexetab == null)
+    {
+       <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+    }
+    else
+    {
+        <div class="col-sm-12 border rounded-2  mb-2 mt-2 pe-2 ps-2">
+            div
+           <QuickGrid Items="@complexetab.AsQueryable()">
+            <PropertyColumn Property="@(p => p.Id)" Sortable="true">
+            </PropertyColumn>
+            <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.Description)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.SalleDeTheatres.Capacity)" Sortable="true" >
+            </PropertyColumn>
+                <TemplateColumn Context="item">
+                    <div>
+                   
+                        <button type="button" class="btn" @onclick="() => Loadsalle(item.SalleDeTheatres)">View Details</button>
+                    </div>
+                </TemplateColumn>
+        </QuickGrid>
+        </div>
+        <div class="col"></div>
+
+        <div class="col-sm-12  border rounded-2  mb-2 mt-2 pe-2 ps-2">
+
+            
+        @if (Salletab != null)
+        {
+           
+            <Blazor.UI.Client.Page.sallePage.SallefromComplexe salleFromComplexe="@Salletab"></Blazor.UI.Client.Page.sallePage.SallefromComplexe>
+            <button type="button" class="btn btn-warning" @onclick="Clean">clean</button>
+        }
+        else
+        {
+            <p> choissisez un complexe complexe</p>
+        }
+        </div>
+    }
+</div>
+@code {
+    private IEnumerable<ComplexeDto>? complexetab { get; set; }
+    private IEnumerable<SalleDeTheatreDto>? Salletab { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        complexetab = await Servcomp.Get();
+    }
+    public void Loadsalle(IEnumerable<SalleDeTheatreDto> salletab)
+    {
+        Salletab = salletab;
+    }
+    public void Clean()
+    {
+        Salletab = null;   
+    }
+}

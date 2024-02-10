@@ -1,0 +1,26 @@
+<h3>ajouter une salle de theatre</h3>
+<div class="shadow-lg container border rounded">
+  <form class="row g-3 align-items-center mb-2 mt-2"  
+  [formGroup]="salleDeTheatreForm" (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="name">Name: </label>
+        <input class="form-control" class="form-control" type="text" id="name" formControlName="name">
+      </div>
+      <div class="form-group">
+          <label for="placeMax">Place Maximum</label>
+          <div class="col-sm-10">          
+            <input class="form-control" type="number" id="placeMax" formControlName="placeMax">
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="placeCurrent" >idComplexe</label>
+        <div class="col-sm-10">        
+          <input class="form-control" type="number" id="placeCurrent" formControlName="placeCurrent" [disabled]="true">
+        </div>
+      </div>
+      <div class="form-group col-sm-10 mt-2 mb-2">
+        <button class="btn btn-primary" type="submit" >Enregistrer</button>
+      </div>
+  </form>
+</div>

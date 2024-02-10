@@ -1,0 +1,14 @@
+<div *ngIf="isThisfill; else loading">
+    <ul class="row">
+        <li class="col" *ngFor="let item of listSalle">
+            
+        </li>
+    </ul>
+</div>
+<ng-template #loading>
+    <h3>En cours de chargement</h3>
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <span class="ms-2">loading process</span>
+</ng-template>

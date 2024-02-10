@@ -1,0 +1,31 @@
+﻿<h3>RepresnetationDetails</h3>
+<div class="row">
+    <div class="colbg-light rounded">
+        <div class="m-2 p-2">
+            <h3 class="display-3">Detail Representation</h3>
+            <div>
+                <p>@SelectedItem.Seance</p>
+            </div>
+            <div>
+                <p>@SelectedItem.Prix</p>
+            </div>
+        </div>  
+        <div class="col">
+            @foreach(var item in SelectedItem.Commands)
+            {
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">@item.Tickets</h6>
+                        <p class="card-text">@item.NombreDePlace</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+  
+@code {
+    [Parameter]
+    public RepresentationDto SelectedItem {get;set;}
+}

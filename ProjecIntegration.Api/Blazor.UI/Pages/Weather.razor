@@ -1,0 +1,60 @@
+﻿@page "/weather"
+@using Microsoft.AspNetCore.Components.QuickGrid;
+@inject HttpClient Http
+@attribute [Authorize]
+<PageTitle>Weather</PageTitle>
+
+<div class="jumbotron bg-light p-4 rounded">
+
+
+    <h1 class="display-4" >Weather</h1>
+
+    <p>This component demonstrates fetching data from the server.</p>
+
+    @if (forecasts == null)
+    {
+        <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+    }
+    else
+    {
+       <QuickGrid Items="@forecasts.AsQueryable()">
+           <PropertyColumn Property="f =>f.Date">
+                <TemplateColumn Context="item">
+                    <div>
+                        @item.Date
+                        <button @onclick="() => NavigateToDetails(item.Date)">View Details</button>
+                    </div>
+                </TemplateColumn>
+            </PropertyColumn>
+            <PropertyColumn Property="f =>f.TemperatureC" />
+            <PropertyColumn Property="f =>f.TemperatureF" />
+            <PropertyColumn Property="f =>f.Summary" />
+       </QuickGrid>
+       <p>
+           this is the date @d
+       </p>
+    }
+</div>
+@code {
+    private WeatherForecast[] forecasts;
+    public DateOnly d { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+    }
+
+    public class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+    public void NavigateToDetails(DateOnly id)
+    {
+        d = id;
+    }
+}

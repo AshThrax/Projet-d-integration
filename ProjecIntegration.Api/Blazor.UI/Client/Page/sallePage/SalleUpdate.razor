@@ -1,0 +1,43 @@
+﻿<h3 class="display-4">Edit SalleDeTheatre</h3>
+
+@if (salleDeTheatre != null)
+{
+    <div class="col-form-label">
+        <label for="name">Name:</label>
+        <input id="name" @bind="salleDeTheatre.Name" />
+
+        <label for="placeMax">Place Max:</label>
+        <input id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+
+        <label for="placeCurrent">Place Current:</label>
+        <input id="placeCurrent" @bind="salleDeTheatre.PlaceCurrent" type="number" />
+
+        <label for="complexeId">Complexe ID:</label>
+        <input id="complexeId" @bind="salleDeTheatre.ComplexeId" type="number" />
+
+        <button type="button" class="btn btn-success" @onclick="UpdateSalleDeTheatre">Update SalleDeTheatre</button>
+    </div>
+}
+else
+{
+    <p>No SalleDeTheatre provided</p>
+}
+
+@code {
+    [Parameter]
+    public SalleDeTheatreDto salleDeTheatre { get; set; }
+
+    private void UpdateSalleDeTheatre()
+    {
+        UpdateSalleDeTheatreDto update = new UpdateSalleDeTheatreDto
+        {
+                Id = salleDeTheatre.Id,
+                Name = salleDeTheatre.Name,
+            ComplexeId=salleDeTheatre.ComplexeId,
+                PlaceCurrent = salleDeTheatre.PlaceCurrent,
+                PlaceMax = salleDeTheatre.PlaceMax,
+                AddedTime = salleDeTheatre.AddedTime,
+            
+        }; 
+    }
+}

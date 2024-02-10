@@ -1,0 +1,183 @@
+﻿@page "/makecommand/{IdPiece:int}/{IdSalle:int}/{IdRepresnetation:int}"
+@using Blazor.UI.modelViews
+@inject Blazor.UI.services.IPieceService ServPiece;
+@inject Blazor.UI.services.ISalleService ServSalle;
+@inject Blazor.UI.services.IRepresentationService Servrep;
+@inject Blazor.UI.services.ICommandService ServCommande;
+
+@inject Microsoft.AspNetCore.Components.NavigationManager manager
+<div class="jumbotron m-2 p-2 bg-light">
+    <div class="m-2 p-2">
+        <h3 class="display-3 ">finalisation de la commande de Commande</h3>
+
+    </div>
+</div>
+<div class="row float-end">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <button type="button" class="col col-sm-3  btn btn-primary" @onclick="getProfile">back to profile page</button>
+    <button type="button" class="col col-sm-3   btn btn-warning" @onclick="getHome">backMaineMenu</button>
+    <button type="button" class="col col-sm-3   btn btn-warning" @onclick="getPrevious">back to reservation</button>
+</div>
+@if (piececlt != null && repclt != null && salleclt != null)
+{  
+<div class="row">
+    <div class="col bg-light m-2 p-2 rounded">
+        <div class="p-2 m-2">
+            <div>
+                <h3>Résumer de la commande </h3>
+            </div>
+            <div class="p-3 m-3 bg-primary rounded">
+                <div class="bg-light m-2 p-4 form-group rounded-5 border">
+                     <div>
+                         <p><strong>titre</strong>: @piececlt.Titre</p>
+                            <p><strong>durée de la pîece</strong>: @piececlt.Duree minutes</p>
+                     </div>
+                    <div>
+                         <p><strong>Salle:</strong> @salleclt.Name</p>
+                    </div>
+                    <div>
+                            <p><strong>séance:</strong> @repclt.Seance </p>
+                    </div>
+                   
+                    <div class="p-2 input-group m-3">
+                        <p><strong>nombre de ticket</strong></p>
+                        <br>
+                        <input @oninput="UpdatePrice" class="form-control p-2" type="number" />
+                    </div>
+                    <div>
+                        <h3>Prix</h3>
+                        <div>
+                            <p>@Priceclt</p>
+                        </div>
+                    </div>
+                    <div>
+                            <button type="button" class="btn btn-warning p-2" @onclick="MakingCommande">
+                                nombre de ticket désirée</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col"></div>
+    <div class="col">
+            @if (commandeMade != null)
+            {
+
+                <div class ="bg-info m-2 p-2 rounded">
+                    <h4>Commande</h4>
+                    <p>Auth: @commandeMade.AuthId</p>
+                    <p>represnetaiton: @commandeMade.IdRepresentation</p>
+                    <p>nombre de place:@commandeMade.NombreDePlace</p>
+                </div>
+                foreach (var item in commandeMade.Tickets)
+                {
+                    <div class="m-2 p-2 rounded">
+                      
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body bg-light">
+                                <h5 class="card-title">Ticket de theatre </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@item.Piecetitle</h6>
+                                <p class="card-text">@item.SalleName</p>
+                                <p class="card-text">@item.Representation</p>
+                                <p class ="card-text">@repclt.Prix</p>
+                             
+                            </div>
+                        </div>
+                     
+                  </div>
+                    
+
+                }
+            }
+    </div>
+   
+</div>
+}
+else{
+    <Blazor.UI.Client.Shared.Load loadParam="en attent de chargement"></Blazor.UI.Client.Shared.Load>
+}
+@code {
+    [Parameter]
+    public int IdPiece { get; set; }
+    [Parameter]
+    public int IdSalle { get; set; }
+    [Parameter]
+    public int IdRepresnetation { get; set;}
+
+
+    public int Priceclt { get; set; } = 0;
+
+    public PieceDto piececlt { get; set; }
+    public SalleDeTheatreDto? salleclt { get; set; }
+    public RepresentationDto? repclt{ get; set; }
+    public AddCommandDto? commandeMade { get; set; }
+    public int ticketGen { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        await Init();
+    }
+    public async Task Init()
+    {
+        piececlt = await ServPiece.GetById(IdPiece);
+        salleclt = await ServSalle.GetById(IdSalle);
+        repclt = await Servrep.GetById(IdRepresnetation);
+    }
+
+    public void UpdatePrice(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int numberOfTickets))
+        {
+            ticketGen = numberOfTickets;//nombre de ticket generer
+            int TicketPrice = CalculateTicketPrice();
+            int price =Math.Max (0,numberOfTickets *TicketPrice ); //calcule du pri
+            Priceclt = price;
+            userCommand(ticketGen);
+        }
+        else
+        {
+            // Handle invalid input
+        }
+    }
+
+    // Method to calculate the ticket price
+    private int CalculateTicketPrice()
+    {
+
+        return (int) repclt.Prix; 
+    }
+    public void userCommand(int genereate)
+    {
+        List<AddTicketDto> listCommande = new List<AddTicketDto>();
+        commandeMade = new AddCommandDto
+        {
+                AuthId ="",
+                IdRepresentation = IdRepresnetation,
+                NombreDePlace = genereate,
+                Tickets = Enumerable.Range(0, genereate)
+                                    .Select(_ => new AddTicketDto
+                                    {
+                                        Titre = piececlt.Titre,
+                                        SalleName = salleclt.Name,
+                                        Piecetitle = piececlt.Titre,
+                                        Representation = repclt.Seance.ToString(),
+                                        
+                                    })
+                                    .ToList()
+        };
+        //n'entre pas dans la methodes pour une raison inconnue pour le moment a debatre 
+    }
+    public async Task MakingCommande()
+    {
+        await ServCommande.Create(commandeMade);
+        await Task.Delay(100);
+        getProfile();
+    }
+
+    public void getProfile() => manager.NavigateTo("/profileViewer");
+    public void getHome() => manager.NavigateTo("/profileViewer");
+    public void getPrevious() => manager.NavigateTo($"/representation/{IdPiece}");
+}
+}

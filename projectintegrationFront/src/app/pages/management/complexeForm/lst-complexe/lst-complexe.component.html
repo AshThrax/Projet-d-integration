@@ -1,0 +1,23 @@
+<br>
+<h4>liste des complexe actifs</h4>
+<table class="table table-bordered table-sm table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">description</th>
+            <th scope="col">address</th>
+            <th scope="col">Piece</th>
+            <th scope="col">representation</th>
+            <th scope="col">salle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of compItem">
+            <th scope="row">{{this.item.id}}</th>
+            <td scope="row">{{this.item.name}}</td>
+            <td scope="row">{{this.item.description}}</td>
+            <td scope="row">{{this.item.adress}}</td>    
+        </tr>
+    </tbody>
+</table>

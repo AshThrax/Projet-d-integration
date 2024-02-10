@@ -1,0 +1,90 @@
+<div class="container">  
+    <div class="row float-sm-start fixed">
+        <ul class="sticky-top col col-sm-2 nav flex-column container mb-4 mt-4">
+            <li class="nav-item">
+                <a class="nav-link btn btn-warning btn-lg" (click)="getComplexe()">Complexe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-warning btn-lg" (click)="getSalle()">salle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-warning btn-lg" (click)="getrepresentation()">representation</a>
+            </li>
+            <li class="nav-item">
+                <a type="button" class="nav-link btn btn-warning btn-lg" (click)="getPiece()">piece</a>
+            </li>
+        </ul>
+        <div class="col container mb-4 mt-4">
+            <div *ngIf="isComplexe; else managing">
+                  <div class="row">
+                    <h1>Complexe </h1>
+                    <h2>liste des complexes de theatre:</h2>
+                    <br>
+                    <div class="col">
+                        <app-lst-complexe>
+                        </app-lst-complexe>
+                    </div>
+                    <div class="col">
+                        <app-add-complexe>
+                        </app-add-complexe>
+                    </div>
+                    <br>
+                    <div class="col">
+                        <app-updt-complexe>
+                        </app-updt-complexe>
+                    </div>
+                </div>
+            </div>
+            <ng-template #managing >
+                <div *ngIf="isPiece && !isComplexe && !isSalle && !isrepresentation ">
+                    <div class="row">
+                        <div class="col">
+                            <app-add-piece>
+                            </app-add-piece>
+                        </div>
+                        <br>
+                        <div class="col">
+                            <app-updt-piece>
+                            </app-updt-piece>
+                        </div>
+                        <div class="col">
+                            <h3>liste de pièce</h3>
+                            <app-lst-piece></app-lst-piece>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!isPiece && !isComplexe && isSalle && !isrepresentation ">
+                    <div class="row">
+                        <h1>Salle</h1>
+                        <div class="col">
+                            <app-add-salle>
+                            </app-add-salle>
+                        </div>
+                        <div class="col">
+                            <app-salle-from-complexe>
+                                
+                            </app-salle-from-complexe>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div *ngIf="!isPiece && !isComplexe && !isSalle && isrepresentation ">
+                    <div class="row">
+                        <h1>Representation</h1>
+                        <div>
+                            <app-lst-representation></app-lst-representation>
+                        </div>
+                        <div class="col">
+                            <app-add-representation>
+                            </app-add-representation>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
+  
+
+
+

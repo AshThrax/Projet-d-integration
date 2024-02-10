@@ -1,0 +1,54 @@
+﻿@inject Blazor.UI.services.ISalleService ServSalle;
+@inject Blazor.UI.services.IComplexeService ServComplexe;
+<h3>AddPiece</h3>
+
+@if (salle != null)
+{
+    <div>
+        <h4>Summary</h4>
+        <div>
+            <p><strong>Nom</strong>: @salle.Name</p>
+            <p><strong>PLaceMaximum</strong>: @salle.PlaceMax</p>
+            <p><strong>PleceDisponible</strong>: @salle.PlaceCurrent</p>
+            <p><strong>Nom du Complexe</strong>: @Complexe.Name</p>
+            <p><strong>adresse</strong>= @Complexe.Adress</p>
+        </div>
+    </div>
+<form>
+    <div class="form-group">
+        <label for="titre">Titre:</label>
+        <input id="titre" @bind="piece.Titre" />
+
+        <label for="duree">Duree:</label>
+        <input id="duree" @bind="piece.Duree" type="number" />
+
+        <label for="description">Description:</label>
+        <input id="description" @bind="piece.Description" />
+
+
+        <button @onclick="AddedPiece">Update Piece</button>
+    </div>
+</form>
+}
+else
+{
+    <p>what do you mean</p>
+    <p>you want to add a theater piece into nothing</p>
+    <p>you need to chillax bruh</p>
+}
+@code {
+
+    [Parameter]
+    public SalleDeTheatreDto salle { get; set; }
+
+    public AddPieceDto piece { get; set; }
+    public ComplexeDto Complexe { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        Complexe = await ServComplexe.GetById(salle.ComplexeId);
+    }
+    public void AddedPiece()
+    {
+        ServSalle.AddPiece(salle.Id,piece);
+    }
+}

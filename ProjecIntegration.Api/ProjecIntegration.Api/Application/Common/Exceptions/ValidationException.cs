@@ -8,5 +8,10 @@ namespace ProjecIntegration.Api.Application.Common.Exception
 {
     public class ValidationException : ApplicationException
     {
+        public ValidationException(string message) : base(message)
+        { }
+        public ValidationException(string message, ApplicationException innerException) : base(message, innerException)
+        {
+        }
     }
 }

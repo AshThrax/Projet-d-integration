@@ -1,0 +1,30 @@
+<p>lst-representation works!</p>
+<p>{{this.idPiece}}</p>
+
+<div *ngIf="this.IsitemFill ;else itemEmty">
+    <h3>liste des representation de la pièce</h3>
+    <table class="theatre-table table table-bordered table-sm table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Prix</th>
+                <th scope="col">seance</th>
+                <th>Prendre un ticket </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <th scope="row">{{this.item.id}}</th>
+                <td>{{this.item.prix}}</td>
+                <td>{{this.item.seance}}</td>
+                <td><button (click)="makeCommand()"> commander un ticket</button></td>
+            </tr>
+        </tbody> 
+    </table>
+    </div>
+<ng-template #itemEmty>
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+        <span>loading process</span>
+    </div>
+</ng-template>

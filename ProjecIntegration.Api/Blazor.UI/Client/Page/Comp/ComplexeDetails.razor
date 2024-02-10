@@ -1,0 +1,56 @@
+﻿<h3>Complexe Details</h3>
+@using Blazor.UI.Client.Shared
+@using Blazor.UI.Client.Page.sallePage
+
+@if (SelectedComplexe != null)
+{
+    <div class="row shadow-none ">
+        <div class="col">
+            <p><strong>Name:</strong> @SelectedComplexe.Name</p>
+            <p><strong>Description:</strong> @SelectedComplexe.Description</p>
+            <p><strong>Address:</strong> @SelectedComplexe.Adress</p>
+            <br />
+            <button @onclick="()=>ShowSalles()">show salle</button>
+        </div>
+        @if (showSalled)
+        {
+            <div class="col m-2 p-2">
+                <h4>Salle De Theatres</h4>
+                @if (SelectedComplexe.SalleDeTheatres != null && SelectedComplexe.SalleDeTheatres.Any())
+                {
+                    <ul>
+                        @foreach (var salle in SelectedComplexe.SalleDeTheatres)
+                        {
+                            <h3></h3>
+                            <SalleDetails SelectedSalleDeTheatre="@salle"></SalleDetails>
+                        }
+                    </ul>
+                }
+                else
+                {
+
+                    <Load loadParam="No Salle De Theatres available"></Load>
+                }
+            </div>
+        }
+        else
+        {
+            
+        }
+     
+    </div>
+}
+else
+{
+    <Load loadParam="No Complexe selected"></Load>
+}
+@code {
+    [Parameter]
+    public ComplexeDto? SelectedComplexe { get; set; }
+    public bool showSalled { get; set; } = false;
+
+    public void ShowSalles()
+    {
+        showSalled = !showSalled;
+    }
+}

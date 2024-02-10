@@ -1,0 +1,35 @@
+<p>lst-piece works!</p>
+<h3>Tableau de representation</h3>
+   
+<div *ngIf="isThisFill; else loading">
+    <table>
+        <Thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">titre</th>
+                <th scope="col">durée</th>
+                <th scope="col">description</th>
+                <th scope="col"></th>
+            </tr>
+        </Thead>
+        <tbody>
+            <tr *ngFor="let item of pieceitems">
+                <th scope="row">{{this.item.id}}</th>
+                <td scope="row">{{this.item.titre}}</td>
+                <td scope="row">{{this.item.duree}}</td>
+                <td scope="row">{{this.item.description}}</td>
+                <td scope="row">
+                    <button (click)="GetRepresentation(this.item.id)"></button>
+                    <button (click)="AddRepresentation(this.item.id)"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+</div>
+<ng-template #loading>
+    <h3>En cours de chargement</h3>
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <span class="ms-2">loading process</span>
+</ng-template>

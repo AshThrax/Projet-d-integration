@@ -1,0 +1,10 @@
+.crimsonClass
+    {
+      color: black;
+      background-color: crimson;
+    }
+    .crimsonClass:hover
+    {
+       color: white;
+      background-color: red;
+    }

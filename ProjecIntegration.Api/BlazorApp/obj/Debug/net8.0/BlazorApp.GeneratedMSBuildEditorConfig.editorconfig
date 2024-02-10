@@ -1,0 +1,83 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BlazorApp
+build_property.RootNamespace = BlazorApp
+build_property.ProjectDir = C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\BlazorApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\BlazorApp
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/client/Profile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xjbGllbnRcUHJvZmlsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/manager/ComponentManager.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xtYW5hZ2VyXENvbXBvbmVudE1hbmFnZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Shared/AccessControl.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcQWNjZXNzQ29udHJvbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNYWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-sjkjuecnft
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOYXZNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-3xp4a3okrg
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xsb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xsb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xfSG9zdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/BlazorApp/Components/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

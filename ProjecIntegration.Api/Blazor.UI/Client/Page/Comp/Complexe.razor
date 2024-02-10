@@ -1,0 +1,92 @@
+﻿@page "/complexe"
+
+@using Blazor.UI.Client.Shared
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Blazor.UI.services.IComplexeService comp;
+@inject HttpClient http;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+
+<h3 class="display-4" >Complexe</h3>
+<br />
+@if (complexetab == null)
+{
+   <Blazor.UI.Client.Shared.Load loadParam="table complexe est entrain de chargé">
+
+   </Blazor.UI.Client.Shared.Load>
+   <p>Page Complexe</p>
+}
+else
+{
+    <div class="border rounded-2 col m-2 p-4">
+       <QuickGrid Items="@complexetab.AsQueryable()">
+            <PropertyColumn Property="@(p => p.Id)" Sortable="true">
+                <TemplateColumn Context="item">
+                    <div>
+                        @item.Id
+                        <button @onclick="() =>GetDetails(item.Id)">View Details</button>
+                    </div>
+                </TemplateColumn>
+            </PropertyColumn>
+            <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.Description)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.SalleDeTheatres.Capacity)" Sortable="true" >
+            </PropertyColumn>
+            <TemplateColumn Context="item">
+                   <div>
+                    <button type="button" class="btn" @onclick="() => LoadComplexe(item)">Details</button>
+                   </div>
+            </TemplateColumn>
+            <TemplateColumn Context="item">
+                <div>
+                    <button type="button" class="btn" @onclick="() => UpdateComplexe(item)">Update</button>
+                </div>
+            </TemplateColumn>
+    </QuickGrid>
+
+   </div>
+   <div class="col"></div>
+    <div class="border rounded-2 col  m-2 p-4">
+        @if (isdetails)
+        {
+            <div class="m-2 p-4">
+                <ComplexeDetails SelectedComplexe="@selectedComp"></ComplexeDetails>
+            </div>
+        }
+        else
+        {
+            <div class="m-2 p-4">
+                <ComplexeUpdatet updateComplexe="@selectedComp"></ComplexeUpdatet>
+            </div>
+        
+        }
+
+   </div>
+}
+@code {
+    private IEnumerable<ComplexeDto>? complexetab;
+    private ComplexeDto? selectedComp { get; set; }
+    public bool isdetails { get; set; } = true;
+    public bool Isupdate { get; set; } = false;
+    protected override async Task OnInitializedAsync()
+    {
+       complexetab = await comp.Get();
+      
+    }
+    private void GetDetails(int id)
+    {
+        Console.WriteLine(id);
+    }
+    public void LoadComplexe(ComplexeDto items)
+    {
+        selectedComp = items;
+        isdetails = true;
+        Isupdate = false;
+    }
+    public void UpdateComplexe(ComplexeDto items)
+    {
+        selectedComp = items;
+        isdetails = false;
+        Isupdate = true;
+    }
+
+}

@@ -1,0 +1,31 @@
+<div>
+    <h3>Complexe de theatre</h3>
+    <table class="theatre-table table table-primary border border-dark">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">nom</th>
+                <th scope="col">complexe</th>
+                <th scope="col">place dispopnible</th>
+                <th scope="col">place maximum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of Sallelst">
+                <th scope="row">{{this.item.id}}</th>
+                <td>{{this.item.name}}</td>
+                <td>{{this.item.complexe.name}}</td>
+                <td>{{this.item.placeCurrent}}</td>
+                <td>{{this.item.placeMax}}</td>
+                <td>
+                    <button class="btn btn-success btn-outline-warning" 
+                    (click)="AddPiece(item.id)">AddPiece</button>
+                <td>
+                <td>
+                    <button class="btn btn-success btn-outline-warning" 
+                    (click)="updateSalle(item)">UpdateSalle</button>
+                <td>
+            </tr>
+        </tbody>
+    </table>
+</div>

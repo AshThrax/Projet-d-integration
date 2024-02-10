@@ -1,0 +1,78 @@
+﻿@page "/mananger";
+
+<PageTitle>Manager Page</PageTitle>
+<ul>
+    <li>
+        <button class="">Complexe</button>
+    </li>
+    <li>
+        <button>Piece</button>
+    </li>
+    <li>
+        <button>Representation</button>
+    </li>
+    <li>
+        <button>Salle de theatre</button>
+    </li>
+</ul>
+@if(IsComplexe)
+{
+    <p>Loading</p>
+}
+@if(IsPiece)
+{
+     <p>Loading</p>
+}
+@if (IsRepresnetation)
+{
+    <p>Loading</p>
+}
+@if (IsSalle)
+{
+    <p>Loading</p>
+}
+
+@code {
+
+    public bool IsComplexe;
+    public bool IsPiece;
+    public bool IsRepresnetation;
+    public bool IsSalle;
+    protected override async Task OnInitializedAsync()
+    {
+        IsComplexe = false;
+        IsPiece = false;
+        IsRepresnetation = false;
+        IsSalle = false;
+        base.OnInitializedAsync();
+
+    }
+    public void getComplexe()
+    {
+        IsComplexe = true;
+        IsPiece = false;
+        IsRepresnetation = false;
+        IsSalle = false;
+    }
+    public void getPiece()
+    {
+        IsComplexe = false;
+        IsPiece = true;
+        IsRepresnetation = false;
+        IsSalle = false;
+    }
+    public void getrepresnetation()
+    {
+        IsComplexe = false;
+        IsPiece = false;
+        IsRepresnetation = true;
+        IsSalle = false;
+    }
+      public void getSalle()
+    {
+        IsComplexe = false;
+        IsPiece = false ;
+        IsRepresnetation = false;
+        IsSalle = true ;
+    }
+}

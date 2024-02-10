@@ -1,0 +1,32 @@
+<p>representation-lst works!</p>
+<div *ngIf="isThisFill; else loading">
+<table>
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Seance</th>
+            <th scope="col">Salle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngForm="let item in repitems">
+            <th scope="row">{{this.item.id}}</th>
+            <td>{{this.item.piece.name}}</td>
+            <td>{{this.item.description}}</td>
+            <td>{{this.item.seance}}</td>
+            <td>{{this.item.salleDetheatre.name}}</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+<ng-template #loading>
+    <h3>En cours de chargement</h3>
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <span class="ms-2">loading process</span>
+</ng-template>

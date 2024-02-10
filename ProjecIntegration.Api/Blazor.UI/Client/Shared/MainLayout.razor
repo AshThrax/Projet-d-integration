@@ -1,0 +1,22 @@
+﻿@* Client/Shared/MainLayout.razor *@
+@inherits LayoutComponentBase
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main class="float-none">
+        <div class="top-row px-4">
+             <AccessControl />    /
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+        <div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

@@ -1,0 +1,61 @@
+﻿@page "/command/{Id:int}"
+
+@inject Blazor.UI.services.IRepresentationService ServRep;
+@inject Blazor.UI.services.IPieceService servPiece;
+@inject Blazor.UI.services.ISalleService servSalle;
+
+@if (RepresentationSum != null)
+{
+    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+}
+else
+{
+    <div>
+        <h4>Summary</h4>
+        <div>
+            @if (PieceSum == null)
+            {
+                <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+            }
+            else
+            {
+        
+               <div>
+                   <p>reservation pour la Pièce: @PieceSum.Titre</p>
+                   <p>titre: @PieceSum.Description</p>
+                   <p>duréee du spectacle: @PieceSum.Duree</p>
+               </div>
+            }
+                    <div>
+                        <p>séance: @RepresentationSum.Seance</p>
+                        <p>Prix: @RepresentationSum.Prix </p>
+                        <p>Prix: @RepresentationSum. </p>
+                        <p></p>
+                    </div>
+                    <div>
+                        <p>salle : @SalleSum.Name</p>
+                    </div>
+                </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public AddCommandDto? nouvelCommande;
+    public RepresentationDto? RepresentationSum;
+    public PieceDto? PieceSum;
+    public SalleDeTheatreDto? SalleSum;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        RepresentationSum = await ServRep.GetById(Id);
+        if (RepresentationSum == null)
+        {
+            PieceSum = await servPiece.GetById(RepresentationSum.IdPiece );
+            SalleSum = await servSalle.GetById(RepresentationSum.IdSalleDeTheatre);        
+        }
+    }
+}

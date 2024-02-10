@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Blazor.UI.services.ISalleService ServSalle;
+<h3>SallefromComplexe</h3>
+
+@if(salleFromComplexe !=null)
+{
+    <QuickGrid Items="@salleFromComplexe.AsQueryable()">
+        <PropertyColumn Property="@(p => p.Id)" Sortable="true"/>
+        <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
+           <TemplateColumn Context="item">
+            <div>
+                <button class="shadow-sm broder rounded" type="button" @onclick="() => LoadSalle(item)">Details salle de theatre</button>
+            </div>
+           </TemplateColumn>
+        <TemplateColumn Context="item">
+            <div>
+                <button class="shadow-sm broder rounded" type="button" @onclick="() => UpdateSalle(item)">Update Salle de theatre</button>
+            </div>
+        </TemplateColumn>
+    </QuickGrid>
+    
+    if(selectedsalle!=null)
+    {
+        if(Isdetail)
+        {
+            <SalleDetails SelectedSalleDeTheatre="@selectedsalle"></SalleDetails>
+
+        }
+       else if(IsUpdate)
+        {
+            <SalleUpdate salleDeTheatre="@selectedsalle"></SalleUpdate>
+        }
+        else if(isAddedPiece)
+        {
+            
+        }
+        <div>
+            <br />
+            <button type="button" class="btn btn sucess" @onclick="Clean"> clean</button>
+        </div>
+    }
+    else
+    {
+           <p>choissez une salle </p>
+    }
+}
+else
+{
+   <Blazor.UI.Client.Shared.Load loadParam="aucune salle na été fournis"></Blazor.UI.Client.Shared.Load>
+}
+
+
+@code {
+    [Parameter]
+    public IEnumerable<SalleDeTheatreDto>? salleFromComplexe { get; set; }
+    public SalleDeTheatreDto? selectedsalle { get; set; }
+    //bool
+    public bool Isdetail { get; set; } = true;
+    public bool IsUpdate { get; set; } = false;
+    public bool isAddedPiece { get; set; } = false;
+    public void LoadSalle(SalleDeTheatreDto theatre)
+    {
+        selectedsalle = theatre;
+        Isdetail  = true;
+        IsUpdate  = false;
+        isAddedPiece = false;
+    }
+    public void UpdateSalle(SalleDeTheatreDto theatre)
+    {
+        selectedsalle = theatre;
+        Isdetail = false;
+        IsUpdate = true;
+        isAddedPiece = false;
+    }
+    public void addPiece(SalleDeTheatreDto theatre)
+    {
+        selectedsalle = theatre;
+        Isdetail = true;
+        IsUpdate = true;
+        isAddedPiece = true;
+    }
+    public void Clean()
+    {
+        selectedsalle = null;    
+        Isdetail = true;
+        IsUpdate = false;
+        isAddedPiece = false;
+    }
+}

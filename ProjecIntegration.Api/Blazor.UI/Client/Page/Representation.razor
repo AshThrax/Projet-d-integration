@@ -1,0 +1,108 @@
+﻿@page "/representation/{Id:int}"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+@inject Blazor.UI.services.IRepresentationService servRep;
+@inject Blazor.UI.services.IPieceService servPiece;
+@inject Blazor.UI.services.ISalleService servsalle;
+<div class="jumbotron bg-light m-2 p-2 rounded">
+    <div class="m-2 p-2  m-2 p-2 border rounded-4">
+        <h3 class="dispaly-1">Representation Summary</h3>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+
+  
+        @if (myPiece != null)
+        {
+            <div class="m-2 p-2 bg-light border rounded">
+                <div class="m-2 p-2">
+                    <h4>Representation Details</h4>
+                    <p><strong>Title:</strong> @myPiece.Titre</p>
+                    <p><strong>Duration:</strong> @myPiece.Duree</p>
+                    <p><strong>Description:</strong> @myPiece.Description</p>
+                    <p><strong>Salle ID:</strong> @myPiece.idSalle</p>
+                </div>
+            </div>
+        }  
+    </div>
+        <div class="col">
+   
+            <div class="m-2 p-2">
+                <div class="m-2 p-2">
+        
+                    <h3 class="dispaly-1">Representations: @myPiece.Titre </h3>
+                </div>
+            </div>
+
+            <div class="m-2 p-2 bg-light rounded">
+                <div class="m-2 p-2">
+                    <QuickGrid Items="@Myrepresnetation.AsQueryable()">
+                        <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+                        <PropertyColumn Property="@(p => p.Seance)" Sortable="true" Title="Seance" />     
+                        <TemplateColumn Title="Selectioner une represnentation">
+                         
+                                <div>
+                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context)">details</button>
+                                </div>
+                            
+                        </TemplateColumn>
+                        <!-- Add more columns for Commands if needed -->
+                    </QuickGrid>
+
+                </div>
+            </div>
+    </div>
+</div>
+@if (selectedRepresentation != null)
+{
+    <div class="bg-light p-2 m-2 rounded">
+
+        <div class="p-2 m-2">
+            <h4>Seance details</h4>
+            <br />
+            <p><strong>Price:</strong> @selectedRepresentation.Prix</p>
+            <p><strong>Seance:</strong>@selectedRepresentation.Seance</p>
+            <p><strong>Salle</strong>: @Piecesalle.Name</p>
+        </div>    
+        <div class="p-2 m-2 ">
+            <p>desirer vous reserver cette seance la </p>
+            <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(selectedRepresentation.Id)">Commander</button>
+        </div>
+    </div>
+}
+else
+{
+<Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>    
+}
+@code {
+    [Parameter]
+    public int Id { get;  set;}
+    private PieceDto? myPiece;
+    private IEnumerable<RepresentationDto>? Myrepresnetation;
+    private RepresentationDto? selectedRepresentation;
+    private SalleDeTheatreDto? Piecesalle;
+    // Populate yourData with actual data, for example, in the OnInitializedAsync method
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Initialize yourData with actual data
+        Myrepresnetation = await servRep.GetPiece(Id); // Replace RepresentationService with your actual service class
+        await ShowPieceDetails(Id);
+    }
+
+    private async Task ShowPieceDetails(int id)
+    {
+        myPiece = await servPiece.GetById(Id);
+        Piecesalle = await servsalle.GetById(myPiece.idSalle);
+    }
+    private void seanceDetails(RepresentationDto select )
+    {
+        selectedRepresentation = select;
+    }
+    public void MakeCommand(int id)
+    {
+        NavigationManager.NavigateTo($"/makecommand/{myPiece.Id}/{Piecesalle.Id}/{id}");
+    }
+}

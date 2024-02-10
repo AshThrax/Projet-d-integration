@@ -1,0 +1,32 @@
+.theatre-table {
+  width: 100%; /* Largeur du tableau à 100% du conteneur parent */
+  border-collapse: collapse; /* Fusionner les bordures de cellule */
+  margin: 20px 0; /* Marge autour du tableau */
+  font-family: 'Arial', sans-serif; /* Police de caractères générique */
+  background-color: #f9f9f9; /* Couleur de fond du tableau */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.theatre-table th,
+.theatre-table td {
+  padding: 15px; /* Espace intérieur des cellules */
+  text-align: center; /* Centrer le texte */
+  border: 1px solid #ddd; /* Bordure de cellule */
+}
+
+.theatre-table th {
+  background-color: #2c3e50; /* Couleur de fond pour les cellules d'en-tête */
+  color: #ecf0f1; /* Couleur du texte pour les cellules d'en-tête */
+}
+
+.theatre-table td {
+  background-color: #ecf0f1; /* Couleur de fond pour les cellules de données */
+}
+
+.theatre-table tr:nth-child(even) td {
+  background-color: #dcdde1; /* Couleur de fond pour les lignes paires */
+}
+
+.theatre-table tr:hover td {
+  background-color: #bdc3c7; /* Couleur de fond au survol */
+}
