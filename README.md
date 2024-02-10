@@ -114,7 +114,7 @@ namespace data.Infrastructure.Repository
 
 
 ```
-
+un services par entités present dans l'application
 httpClient :
 
 ``` cs
