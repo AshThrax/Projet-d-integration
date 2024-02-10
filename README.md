@@ -491,8 +491,7 @@ namespace data
 }
 
 ```
-
-coté UIClient Blazor
+depdenance coté UIClient Blazor
 
 ``` cs
 
