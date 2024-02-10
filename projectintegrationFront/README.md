@@ -1,5 +1,4 @@
 # ProjectintegrationFront
-## le project sous angular de fonctionne plus a cause du package NgBoostrap Container 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
 
 ## Development server
