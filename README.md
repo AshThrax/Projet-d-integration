@@ -14,14 +14,16 @@ Dans le cadre du développement de ce projet , la méthodologie utilisée sera u
 
 ## technologies utilisée 
 
--Blazor => utilisation de blazor entant qu'interface utilisa  teur 
--server => implementation, d'un project .net 8 sdk
--database Sql Server 
+Blazor: utilisation de blazor entant qu'interface utilisa  teur 
+server: implementation, d'un project .net 8 sdk
+database: Sql Server 
 
 ## implémentation, Spécificité et dépendance
 
 ## Repository:
--repository pattern générique
+
+repository pattern générique
+pour faciliter l'implementation de l'application
 ``` cs
 namespace data.Interfaces.IRepository
 {
@@ -117,6 +119,7 @@ namespace data.Infrastructure.Repository
 ## Controlller:
 
 un controlleur de donnée par entitée
+pour plus de flexibilitée 
 ``` cs 
 using data.Interfaces.IRepository;
 namespace ProjecIntegration.Api.Controllers
