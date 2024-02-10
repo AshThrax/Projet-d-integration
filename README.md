@@ -18,7 +18,7 @@ Dans le cadre du développement de ce projet , la méthodologie utilisée sera u
 -server => implementation, d'un project .net 8 sdk
 -database Sql Server 
 
-## design pattern 
+## implémentation et dépendance
 
 
 -repository pattern générique
@@ -235,4 +235,4 @@ coté UIClient Blazor
     }
 }
 ```
-
+authentification géré avec auth0 
