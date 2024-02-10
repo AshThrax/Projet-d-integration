@@ -258,3 +258,36 @@ pour fonctionner correctemment
        return services;
    }
 ```
+l'injection du jwt token se fait via la créarion d'un middleware dédié a cela ,
+si vous utiliser une api.net comme part i server et non un project blazor.server vous devez opµbligatoirement creer un middleware comme ceci :
+
+``` cs
+ 
+        public class CustomAuthorizationMessageHandler : AuthorizationMessageHandler
+        {
+            public CustomAuthorizationMessageHandler(IAccessTokenProvider provider,
+                NavigationManager navigationManager)
+                : base(provider, navigationManager)
+            {
+                ConfigureHandler(
+                   authorizedUrls: new[] { "my_api_url_netcore" });
+
+            }
+        }
+```
+
+une fois le middleware creer il doit être injecter dans les requète http, de la manière suivante 
+``` cs
+ 
+        public class CustomAuthorizationMessageHandler : AuthorizationMessageHandler
+        {
+            public CustomAuthorizationMessageHandler(IAccessTokenProvider provider,
+                NavigationManager navigationManager)
+                : base(provider, navigationManager)
+            {
+                ConfigureHandler(
+                   authorizedUrls: new[] { "https://localhost:44337" });
+
+            }
+        }
+```
