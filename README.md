@@ -313,16 +313,16 @@ si vous utiliser une api.net comme part i server et non un project blazor.server
 
 une fois le middleware creer il doit être injecter dans les requète http, de la manière suivante 
 ``` cs
- 
-        public class CustomAuthorizationMessageHandler : AuthorizationMessageHandler
-        {
-            public CustomAuthorizationMessageHandler(IAccessTokenProvider provider,
-                NavigationManager navigationManager)
-                : base(provider, navigationManager)
-            {
-                ConfigureHandler(
-                   authorizedUrls: new[] { "https://localhost:44337" });
 
-            }
-        }
+ builder.Services.AddTransient<CustomAuthorizationMessageHandler>(); //
+//inject in all htpcclient my jwt token in my header allowing my request to be validated in my
+//api side 
+builder.Services.AddHttpClient("projectAPI",client => //you need to register your api  base url here
+                 client.BaseAddress = new Uri("my_api_url_netcore" ))
+    .AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
+
+builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
+                                        .CreateClient("projectAPI"));
+
 ```
+cette methodes permet d'injecter automatiquement un jwttoken a toute les requeste faites vers l'url de votre api
