@@ -626,6 +626,7 @@ c'est a dire
      var Audience = configuration["Auth0:Audience"];
      var Clientid = configuration["Auth0:ClientId"];
      var ClientSecret = configuration["Auth0:ClientSecret"];
+//----------
      services.AddAuthentication(options =>
      {
          options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -646,10 +647,10 @@ c'est a dire
          options.ClientId=Clientid;
          options.ClientSecret=ClientSecret;
      });
-     services.AddAuth0ManagementClient()
+     services.AddAuth0ManagementClient()//permet l'utilisation de la management api
              .AddManagementAccessToken();
      //---------------------------------
-     services.AddAuthorization();
+     services.AddAuthorization();//permet l'utilisation de la balisAuthorize 
 
      services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
      services.AddSingleton<ICustomGetToken, CustomGetToken>();
