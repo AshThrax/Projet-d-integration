@@ -1,0 +1,81 @@
+﻿<h3>CommandDropDown</h3>
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Blazor.UI.services.IRepresentationService ServRep;
+@inject Blazor.UI.services.ICommandService ServCommand;
+@inject NavigationManager namanager;
+
+<h3>PieceDropDown</h3>
+@if (RepresentationtDtos != null)
+{
+    <select @bind="selectedrepId" @oninput="SelectionChanged" class="form-control">
+        <option value="">Select Pièce</option>
+        @foreach (var complexe in RepresentationtDtos)
+        {
+            <option value="@complexe.Id">@complexe.Seance</option>
+
+        }
+    </select>
+    <br />
+    @if (CommandTab != null)
+    {
+        <div class="bg-light m-2 p-2 rounded-4">
+            <div class="m-2 p-2">
+                <GetAllCommand getrepresnetation="@CommandTab"></GetAllCommand>
+            </div>
+        </div>
+    }
+    else
+    {
+        <Blazor.UI.Client.Shared.Load loadParam="en attente des represnetaion"></Blazor.UI.Client.Shared.Load>
+    }
+}
+else
+{
+    <Blazor.UI.Client.Shared.Load loadParam="en attente des represnetaion"></Blazor.UI.Client.Shared.Load>
+}
+@code
+{
+
+    [Parameter]
+    public IEnumerable<RepresentationDto>? RepresentationtDtos { get; set; }
+
+    public IEnumerable<CommandDto>?CommandTab { get; set; }
+
+    public RepresentationDto? SingleRepresnetation{ get; set; }
+
+    private int? selectedrepId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        RepresentationtDtos = await ServRep.Get();
+    }
+    protected override void OnParametersSet()
+    {
+        if (RepresentationtDtos != null && selectedrepId.HasValue)
+        {
+            SingleRepresnetation = RepresentationtDtos.FirstOrDefault(c => c.Id == selectedrepId);
+        }
+
+
+    }
+
+    public async Task SearchCommand()
+    {
+        CommandTab = SingleRepresnetation.Commands;
+    }
+
+    public async Task SelectionChanged(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SingleRepresnetation = RepresentationtDtos.Where(x => x.Id == selectedrepId).FirstOrDefault();
+            selectedrepId = selectedId;
+            await SearchCommand();
+        }
+    }
+
+}
+
+@code {
+
+}

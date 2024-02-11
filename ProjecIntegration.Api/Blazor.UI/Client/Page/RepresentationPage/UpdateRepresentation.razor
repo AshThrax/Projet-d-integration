@@ -4,17 +4,17 @@
 @if (updateRepresentation != null)
 {
     <div>
-        <label for="prix">Prix:</label>
-        <input id="prix" @bind="updateRepresentation.Prix" type="number" step="0.01" />
+        <label class="form-label" for="prix">Prix:</label>
+        <input class="form-control" id="prix" @bind="updateRepresentation.Prix" type="number" step="0.01" />
 
-        <label for="seance">Seance:</label>
-        <input id="seance" @bind="updateRepresentation.Seance" type="datetime-local" />
+        <label class="form-label" for="seance">Seance:</label>
+        <input class="form-control" id="seance" @bind="updateRepresentation.Seance" type="datetime-local" />
 
-        <label for="idSalleDeTheatre">Salle De Theatre ID:</label>
-        <input id="idSalleDeTheatre" @bind="updateRepresentation.IdSalleDeTheatre" type="number" />
+        <label class="form-label" for="idSalleDeTheatre">Salle De Theatre ID:</label>
+        <input class="form-control" id="idSalleDeTheatre" @bind="updateRepresentation.IdSalleDeTheatre" type="number" />
 
-        <label for="idPiece">Piece ID:</label>
-        <input id="idPiece" @bind="updateRepresentation.IdPiece" type="number" />
+        <label class="form-label" for="idPiece">Piece ID:</label>
+        <input class="form-control" id="idPiece" @bind="updateRepresentation.IdPiece" type="number" />
 
         <button @onclick="Update">Update Representation</button>
     </div>

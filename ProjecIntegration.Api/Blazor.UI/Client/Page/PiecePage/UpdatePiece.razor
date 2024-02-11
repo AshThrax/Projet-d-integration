@@ -3,15 +3,15 @@
 
 @if (piece != null)
 {
-    <div>
-        <label for="titre">Titre:</label>
-        <input id="titre" @bind="piece.Titre" />
+    <div class="form-group mb-3">
+        <label class="form-label" for="titre">Titre:</label>
+        <input class="form-control" id="titre" @bind="piece.Titre" />
 
-        <label for="duree">Duree:</label>
-        <input id="duree" @bind="piece.Duree" type="number" />
+        <label class="form-label for="duree">Duree:</label>
+        <input class="form-control" id="duree" @bind="piece.Duree" type="number" />
 
-        <label for="description">Description:</label>
-        <input id="description" @bind="piece.Description" />
+        <label class="form-label for="description">Description:</label>
+        <input class="form-control" id="description" @bind="piece.Description" />
 
         <button @onclick="Update">Update Piece</button>
     </div>

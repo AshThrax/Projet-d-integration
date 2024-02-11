@@ -3,17 +3,17 @@
 @if (salleDeTheatre != null)
 {
     <div class="col-form-label">
-        <label for="name">Name:</label>
-        <input id="name" @bind="salleDeTheatre.Name" />
+        <label class="form-label" for="name">Name:</label>
+        <input class="formcontrol" id="name" @bind="salleDeTheatre.Name" />
 
-        <label for="placeMax">Place Max:</label>
-        <input id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+        <label class="form-label" for="placeMax">Place Max:</label>
+        <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
 
-        <label for="placeCurrent">Place Current:</label>
-        <input id="placeCurrent" @bind="salleDeTheatre.PlaceCurrent" type="number" />
+        <label class="form-label" for="placeCurrent">Place Current:</label>
+        <input class="form-control" id="placeCurrent" @bind="salleDeTheatre.PlaceCurrent" type="number" />
 
-        <label for="complexeId">Complexe ID:</label>
-        <input id="complexeId" @bind="salleDeTheatre.ComplexeId" type="number" />
+        <label class="form-label" for="complexeId">Complexe ID:</label>
+        <input class="form-control" id="complexeId" @bind="salleDeTheatre.ComplexeId" type="number" />
 
         <button type="button" class="btn btn-success" @onclick="UpdateSalleDeTheatre">Update SalleDeTheatre</button>
     </div>

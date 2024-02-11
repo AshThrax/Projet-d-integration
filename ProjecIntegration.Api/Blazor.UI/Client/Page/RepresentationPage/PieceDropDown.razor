@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Blazor.UI.services.IRepresentationService ServRep;
+@inject Blazor.UI.services.IPieceService ServPiece;
+@inject NavigationManager namanager;
+
+<h3>PieceDropDown</h3>
+@if (PieceDtos !=null)
+{
+    <select @bind="selectedPieceId" @oninput="SelectionChanged" class="form-control">
+        <option value="">Select Pièce</option>
+        @foreach (var complexe in PieceDtos)
+        {
+            <option value="@complexe.Id">@complexe.Titre</option>
+
+        }
+    </select>
+    <br />
+    @if (RepresentationTab != null)
+    {
+        <div class="bg-light m-2 p-2 rounded-4">
+            <div class="m-2 p-2">
+                <GetAllRepresentation getrepresnetation="@RepresentationTab" ></GetAllRepresentation>
+            </div>
+        </div>
+    }
+    else
+    {
+        <Blazor.UI.Client.Shared.Load loadParam="en attente des represnetaion"></Blazor.UI.Client.Shared.Load>
+    }
+}
+else
+{
+    <Blazor.UI.Client.Shared.Load loadParam="en attente des represnetaion"></Blazor.UI.Client.Shared.Load>
+}
+@code 
+{
+
+    [Parameter]
+    public IEnumerable<PieceDto>? PieceDtos {get;set;}
+
+    public IEnumerable<RepresentationDto>? RepresentationTab { get; set; }
+
+    public PieceDto? SinglePiece { get; set; }
+
+    private int? selectedPieceId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PieceDtos = await ServPiece.Get();
+    }
+    protected override void OnParametersSet()
+    {
+        if (PieceDtos != null && selectedPieceId.HasValue)
+        {
+            SinglePiece = PieceDtos.FirstOrDefault(c => c.Id == selectedPieceId);
+        }
+
+
+    }
+
+    public async Task SearchRepresnetation(int id)
+    {
+        RepresentationTab = await ServRep.GetPiece(id);
+    }
+
+    public async Task SelectionChanged(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SinglePiece = PieceDtos.Where(x => x.Id == selectedPieceId).FirstOrDefault();
+            selectedPieceId = selectedId;
+            await SearchRepresnetation(selectedId);
+        }
+    }
+
+}

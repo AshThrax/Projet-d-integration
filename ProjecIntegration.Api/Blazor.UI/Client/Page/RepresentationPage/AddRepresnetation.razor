@@ -4,21 +4,21 @@
 @if (representation != null)
 {
     <form>
-    <div class="form-group">
-        <label for="prix">Prix:</label>
-        <input id="prix" @bind="representation.Prix" type="number" step="0.01" />
+        <div class="form-group">
+            <label class="form-label" for="prix">Prix:</label>
+            <input class="form-control" id="prix" @bind="representation.Prix" type="number" step="0.01" />
 
-        <label for="seance">Seance:</label>
-        <input id="seance" @bind="representation.Seance" type="datetime-local" />
+            <label class="form-label" for="seance">Seance:</label>
+            <input class="form-control" id="seance" @bind="representation.Seance" type="datetime-local" />
 
-        <label for="idSalleDeTheatre">Salle De Theatre ID:</label>
-        <input id="idSalleDeTheatre" @bind="representation.IdSalleDeTheatre" type="number" />
+            <label class="form-label" for="idSalleDeTheatre">Salle De Theatre ID:</label>
+            <input class="form-control" id="idSalleDeTheatre" @bind="representation.IdSalleDeTheatre" type="number" />
 
-        <label for="idPiece">Piece ID:</label>
-        <input id="idPiece" @bind="representation.IdPiece" type="number" />
+            <label class="form-label" for="idPiece">Piece ID:</label>
+            <input class="form-control" id="idPiece" @bind="representation.IdPiece" type="number" />
 
-        <button @onclick="AddRepresentation">Add Representation</button>
-    </div>
+            <button @onclick="AddRepresentation">Add Representation</button>
+        </div>
     </form>
 }
 else

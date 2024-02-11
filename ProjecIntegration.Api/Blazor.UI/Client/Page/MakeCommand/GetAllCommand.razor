@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Blazor.UI.services.ICommandService ServCom;
+
+<h3>GetAllCommand</h3>
+
+@if (CommandeTab != null)
+{
+   <QuickGrid Items="CommandeTab.AsQueryable()">
+       <PropertyColumn Property="p=>p.Id" Title="#" />
+        <PropertyColumn Property="p=>p.AuthId" Title="UserID" />
+        <PropertyColumn Property="p=>p.NombreDePlace" Title="Nombre de place " />
+        <TemplateColumn>
+            <div>
+                <button class="btn btn-warning" type="button" @onclick=""> add</button>
+            </div>
+        </TemplateColumn>
+        <TemplateColumn>
+            <div>
+                <button class="btn btn-warning" type="button" @onclick="">Update</button>
+            </div>
+        </TemplateColumn>
+        <TemplateColumn>
+            <div>
+                <button class="btn btn-warning" type="button" @onclick="">Delete</button>
+            </div>
+        </TemplateColumn>
+   </QuickGrid>
+}
+else
+{
+    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+}
+@code {
+    [Parameter]
+    public IEnumerable<CommandDto> CommandeTab { get; set; }
+   
+    public CommandDto SingleCommande { get; set; }
+}

@@ -122,6 +122,10 @@ namespace WebApi.Migrations
                     b.Property<DateTime?>("AddedTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Auteur")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

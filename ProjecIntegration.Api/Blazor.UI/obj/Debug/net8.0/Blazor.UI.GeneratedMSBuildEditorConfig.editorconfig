@@ -70,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxDb21wbGV4ZVVwZGF0ZXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/GetAllCommand.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcR2V0QWxsQ29tbWFuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/GetCommand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcR2V0Q29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -104,6 +108,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/AddRepresnetation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXEFkZFJlcHJlc25ldGF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/CommandDropDown.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXENvbW1hbmREcm9wRG93bi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/GetAllRepresentation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXEdldEFsbFJlcHJlc2VudGF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/PieceDropDown.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXFBpZWNlRHJvcERvd24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/RepresnetationDetails.razor]

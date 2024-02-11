@@ -1,5 +1,43 @@
-﻿<h3>AddComplexe</h3>
+﻿@inject Blazor.UI.services.IComplexeService ServComp;
+<h3>AddComplexe</h3>
+@if (updateComplexe != null)
+{
+    <form>
+        <div class=" form-group mb-3">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-control" id="name" @bind="updateComplexe.Name" />
 
+            <label class="form-label" for="description">Description:</label>
+            <input class="form-control" id="description" @bind="updateComplexe.Description" />
+
+            <label class="form-label" for="address">Address:</label>
+            <input class="form-control" id="address" @bind="updateComplexe.Adress" />
+
+            <!-- Add other input fields based on your UpdateComplexeDto properties -->
+
+            <button type="button" class="btn btn-warning" @onclick="UpdateComplexe">Update Complexe</button>
+        </div>
+    </form>
+}
+else
+{
+    <Blazor.UI.Client.Shared.Load loadParam="No Complexe provided"></Blazor.UI.Client.Shared.Load>
+}
 @code {
+    
+    public ComplexeDto updateComplexe { get; set; }
 
+    private void UpdateComplexe()
+    {
+        AddComplexeDto UpdtoDate = new AddComplexeDto
+            {
+               
+                Name = updateComplexe.Name,
+                Adress = updateComplexe.Adress,
+                Description = updateComplexe.Description,
+                
+            };
+        ServComp.Create(UpdtoDate);
+
+    }
 }
