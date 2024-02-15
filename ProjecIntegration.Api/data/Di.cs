@@ -24,11 +24,13 @@ namespace data
                     services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
                     services.AddScoped<IRepresentationRepository, RepresentationRespository>();
                     services.AddScoped<IPieceRepository, PieceRepository>();
+                   
                     //fin injection reposi
                     //fin injection service
                     return services;
               }
-        }
+            
+    }
 }
 
 

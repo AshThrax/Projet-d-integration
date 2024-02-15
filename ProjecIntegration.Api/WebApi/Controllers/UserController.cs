@@ -43,5 +43,12 @@ namespace WebApi.Controllers
           
             }   
          */
+        [HttpPost]
+        public async Task<ActionResult> UpdateUserInfo([FromBody] UserUpdateRequest request)
+        {
+            var userId = await _tok.GetSub();
+            var UpdateUser = await _managementApiClient.Users.UpdateAsync(userId,request);
+            return Ok();
+        }
     }
 }

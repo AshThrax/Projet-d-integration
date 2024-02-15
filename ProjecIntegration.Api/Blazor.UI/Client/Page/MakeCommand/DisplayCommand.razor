@@ -1,0 +1,39 @@
+﻿
+
+<div class="w-50 m-2 shadow">
+
+    <div class="card">
+        <div class="card-header">
+            Commande
+        </div>
+        @if (CommandDone != null)
+        {
+             <div class="card-body">
+                <h5 class="card-title">Commande</h5>
+
+                @foreach(var item in CommandDone)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                }
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div> 
+        }
+        else
+        {
+            <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+        }
+    </div>
+  
+</div>
+@code {
+    [Parameter]
+    public List<CommandDto>? CommandDone { get; set; }
+}

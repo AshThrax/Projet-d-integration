@@ -10,6 +10,12 @@ using ProjecIntegration.Api.Application.DTO;
 using System.Security.Claims;
 using WebApi.ApiService;
 using Auth0Net.DependencyInjection;
+using WebApi.BusinessService;
+using WebApi.BusinessService;
+using WebApi.BusinessService.RepresentationBusiness;
+using WebApi.BusinessService.salle;
+using WebApi.BusinessService.Complexe;
+using WebApi.BusinessService.Piece;
 
 namespace ProjecIntegration.Api.ExtensionMethods
 {
@@ -23,6 +29,20 @@ namespace ProjecIntegration.Api.ExtensionMethods
             services.AddAuthO(configuration);
             services.AddCustomValidator();
             services.AddHttpContextAccessor();
+            services.AddBusiness();
+            return services;
+        }
+        /*
+         * injection des business services en tant que service dans l'application
+         */
+        public static IServiceCollection AddBusiness(this IServiceCollection services)
+        {
+            services.AddScoped<IBusinessCommandService,BusinessCommandService>();//commande services user
+            services.AddScoped<IBusinessRepresentation,BusinessRepresntation>();//Represnetation business Service
+            services.AddScoped<IBusinessSalle, BusinessSalle>();//Business Salle Services
+            services.AddScoped<IBusinessComplexe, BusinessComplexe>(); //business Complexe Service
+            services.AddScoped<IBusinessPiece, BusinessPiece>(); //Business Piece Service
+            services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
             return services;
         }
         public static IServiceCollection AddApplication(this IServiceCollection services)

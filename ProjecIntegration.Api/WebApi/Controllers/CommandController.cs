@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using ProjecIntegration.Api.Application.Common.Exception;
 using ProjecIntegration.Api.Application.Common.Exceptions;
 using data.Interfaces.IRepository;
+using Auth0.ManagementApi.Models;
+using WebApi.Application.DTO;
+using data.Models.Entity;
 
 namespace WebApi.Controllers
 {
@@ -137,9 +140,10 @@ namespace WebApi.Controllers
                 {
                     BadRequest();
                 }
-                var conversion= _mapper.Map<CommandDto>(CmdDtot);
-                var reconvert = _mapper.Map<Command>(conversion);
-                 _commandService.Insert(reconvert);
+                //generation du ticket
+
+
+             
                 return Ok("Create Command");
 
             }

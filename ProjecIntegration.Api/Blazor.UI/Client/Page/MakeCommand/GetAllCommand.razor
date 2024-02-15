@@ -11,17 +11,17 @@
         <PropertyColumn Property="p=>p.NombreDePlace" Title="Nombre de place " />
         <TemplateColumn>
             <div>
-                <button class="btn btn-warning" type="button" @onclick=""> add</button>
+                <button class="btn btn-warning" type="button" @onclick="()=> add()"> add</button>
             </div>
         </TemplateColumn>
         <TemplateColumn>
             <div>
-                <button class="btn btn-warning" type="button" @onclick="">Update</button>
+                <button class="btn btn-warning" type="button" @onclick="()=> update()">Update</button>
             </div>
         </TemplateColumn>
         <TemplateColumn>
             <div>
-                <button class="btn btn-warning" type="button" @onclick="">Delete</button>
+                <button class="btn btn-warning" type="button" @onclick="()=> Delete()">Delete</button>
             </div>
         </TemplateColumn>
    </QuickGrid>
@@ -33,6 +33,10 @@ else
 @code {
     [Parameter]
     public IEnumerable<CommandDto> CommandeTab { get; set; }
-   
+
     public CommandDto SingleCommande { get; set; }
+
+    public void add() => Console.WriteLine("add");
+    public void update() => Console.WriteLine("add");
+    public void Delete() => Console.WriteLine("delete");
 }

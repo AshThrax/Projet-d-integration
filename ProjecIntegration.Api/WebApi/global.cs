@@ -11,7 +11,7 @@ global using ProjecIntegration.Api.Application.DTO;
 global using System.Security.Claims;
 global using WebApi.ApiService;
 global using AutoMapper;
-
+global using WebApi.BusinessService;
 global using data.Models;
 global using Microsoft.AspNetCore.Mvc;
 
