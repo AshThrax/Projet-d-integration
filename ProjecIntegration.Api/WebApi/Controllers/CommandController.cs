@@ -142,8 +142,8 @@ namespace WebApi.Controllers
                 }
                 //generation du ticket
 
-
-             
+                var conversion = _mapper.Map<Command>(CmdDtot);
+                _commandService.Insert(conversion);
                 return Ok("Create Command");
 
             }

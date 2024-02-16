@@ -14,7 +14,7 @@ namespace WebApi.Controllers
         { 
             _representationService = representationService;
             _mapper = mapper;
-            gtk = gtk;
+            this.gtk = gtk;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAll() 
@@ -44,7 +44,8 @@ namespace WebApi.Controllers
             try
             {
                 var entities = await _representationService.GetById(id,c =>c.SalleDeTheatre);
-                return Ok(_mapper.Map<RepresentationDto>(entities));
+                var conversion=_mapper.Map<RepresentationDto>(entities);
+                return Ok(conversion);
             }
             catch (ValidationException ex)
             {

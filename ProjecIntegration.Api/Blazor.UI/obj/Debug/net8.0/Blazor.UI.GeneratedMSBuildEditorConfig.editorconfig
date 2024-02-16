@@ -70,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxDb21wbGV4ZVVwZGF0ZXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/infoPage/PieceInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcaW5mb1BhZ2VcUGllY2VJbmZvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/DisplayCommand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcRGlzcGxheUNvbW1hbmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,12 +154,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25Db21wb25lbnRcUGllY2VSZXNlcnZhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationComponent/ReservationCommande.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25Db21wb25lbnRcUmVzZXJ2YXRpb25Db21tYW5kZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationV2.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25WMi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/sallePage/AddSalle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2Vcc2FsbGVQYWdlXEFkZFNhbGxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/sallePage/GetAllSalle.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2Vcc2FsbGVQYWdlXEdldEFsbFNhbGxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/sallePage/SalleDetails.razor]

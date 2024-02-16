@@ -39,13 +39,13 @@
             }
             else if(isAddPiece && !isUpdate && !isdetail)
             {
-              <p> theatre</p>
+             <Blazor.UI.Client.Page.sallePage.AddSalle></Blazor.UI.Client.Page.sallePage.AddSalle>
             }
             else
             {
-                <p>
-                   details
-                </p>
+             
+                <Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation getrepresnetation="@representation"></Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation>
+                 
             }
         </div>
     }
@@ -64,6 +64,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        Task.Delay(1000);
         isdetail = true;
         isUpdate = false;
         isAddPiece = false;

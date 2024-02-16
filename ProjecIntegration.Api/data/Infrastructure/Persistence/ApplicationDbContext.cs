@@ -14,8 +14,8 @@ namespace data.infrastructure.Persistence
    
         public DbSet<Piece> Pieces { get; set; }
 
-
-     
+        public DbSet<Tickets> Tickets { get; set; }
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

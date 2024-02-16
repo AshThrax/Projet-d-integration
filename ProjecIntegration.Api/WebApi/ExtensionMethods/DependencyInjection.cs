@@ -14,8 +14,7 @@ using WebApi.BusinessService;
 using WebApi.BusinessService;
 using WebApi.BusinessService.RepresentationBusiness;
 using WebApi.BusinessService.salle;
-using WebApi.BusinessService.Complexe;
-using WebApi.BusinessService.Piece;
+
 
 namespace ProjecIntegration.Api.ExtensionMethods
 {

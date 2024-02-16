@@ -53,7 +53,7 @@ namespace WebApi.Controllers
             try
             {
                 var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(await _service.GetAll(c=>c.Pieces));
-                return Ok(await _service.GetAll());
+                return Ok(conversion);
 
             }
             catch (ValidationException ex)

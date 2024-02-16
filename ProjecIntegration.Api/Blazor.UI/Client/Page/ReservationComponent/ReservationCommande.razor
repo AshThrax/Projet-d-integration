@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid;
+@inject Blazor.UI.services.IRepresentationService Servrep;
+@inject Blazor.UI.services.ICommandService SerCom;
+<h3>ReservationCommande</h3>
+
+<p>representation</p>
+@if(GetRePrensatation != null)
+{
+
+}
+else
+{
+   <Blazor.UI.Client.Shared.Load loadParam=""></Blazor.UI.Client.Shared.Load>   
+}
+@code 
+{
+
+    public IEnumerable<RepresentationDto>? GetRePrensatation { get; set; }
+    public RepresentationDto? SelectedRepresentation { get; set; }
+    public IEnumerable<RepresentationDto>? CommandRepredentation { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        GetRePrensatation = await Servrep.Get();
+        
+    }
+}

@@ -27,7 +27,7 @@ namespace Blazor.UI.services
 
         public async Task<IEnumerable<ComplexeDto>> Get()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
+            return  await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
         }
 
         public async Task<ComplexeDto> GetById(int id)

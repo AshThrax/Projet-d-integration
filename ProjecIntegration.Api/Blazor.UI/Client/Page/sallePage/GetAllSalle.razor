@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid;
+@inject Blazor.UI.services.ISalleService ServSalle;
+<div class="m-4 p-2">
+    <h3 class="display-2">GetAllSalle</h3>
+    <div class="m-4 p-2">
+        @if(Salles !=null)
+        {
+            <QuickGrid Items="@Salles?.AsQueryable()">
+                <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
+                <TemplateColumn Context="item">
+                    <div>
+                        <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() => OnSelecteSalle(item)">Details salle de theatre</button>
+                    </div>
+                </TemplateColumn>
+               
+            </QuickGrid>
+        }
+        else
+        {
+            <Blazor.UI.Client.Shared.Load loadParam="En cours de chargement"></Blazor.UI.Client.Shared.Load>
+        }
+    </div>
+</div>
+
+@code {
+    public IEnumerable<SalleDeTheatreDto> Salles { get; set; }
+    public SalleDeTheatreDto SelectedSalle { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Salles = await ServSalle.Get();
+    }
+
+    public void OnSelecteSalle(SalleDeTheatreDto item)
+    {
+        SelectedSalle = item;   
+    }
+}

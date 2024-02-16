@@ -1,7 +1,8 @@
 ﻿@page "/manager"
 
 @using Blazor.UI.Client.Page.Comp
-
+@using Blazor.UI.Client.Page.sallePage
+@using Blazor.UI.Client.Page
 <div class="bg-light  m-4 p-2 rounded-2 text-center">
     <h3 class="display-4 ">Manager</h3>
     
@@ -38,18 +39,14 @@
 
         <div class="pe-4 ps-4 pt-2 pb-2">
             <div class="container bg-light">
-
+                <SallerRepresentation></SallerRepresentation>
             </div>
         </div>
     }
 
     @if (isRepresentation)
     {
-        <div class="m-4 p-4">
-            <div class="container bg-light rounded-2 m-4 p-4">
-                <SallerRepresentation></SallerRepresentation>
-            </div>
-        </div>
+       
         <div class="m-4 p-4">
             <div class="container bg-light rounded-2 m-4 p-4">
                 <Blazor.UI.Client.Page.RepresentationPage.PieceDropDown></Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>

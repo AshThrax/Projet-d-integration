@@ -1,5 +1,34 @@
-﻿<h3>AddSalle</h3>
+﻿@inject Blazor.UI.services.ISalleService SalleServ;
 
+<div class="m-4 p-4">
+    <h3>AddSalle</h3>
+    <div class="m-4 p-4">
+        <div class="col-form-label">
+                <label class="form-label" for="name">Name:</label>
+                <input class="formcontrol" id="name" @bind="salleDeTheatre.Name" />
+
+                <label class="form-label" for="placeMax">Place Max:</label>
+                <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+
+                <label class="form-label" for="placeCurrent">Place Current:</label>
+                <input class="form-control" id="placeCurrent" @bind="salleDeTheatre.PlaceCurrent" type="number" />
+
+                <label class="form-label" for="complexeId">Complexe ID:</label>
+                <input class="form-control" id="complexeId" @bind="salleDeTheatre.ComplexeId" type="number" />
+
+                <button type="button" class="btn btn-success" @onclick="AddSalldetheatre">Update SalleDeTheatre</button>
+            </div>
+    </div>
+</div>
 @code {
-    
+    public AddSalleDeTheatreDto salleDeTheatre { get; set; }
+
+    public async Task AddSalldetheatre()
+    {
+        if (salleDeTheatre != null)
+        {
+            await SalleServ.Create(salleDeTheatre);
+        }
+        
+    }
 }

@@ -1,0 +1,1023 @@
+[
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "GetAll",
+    "RelativePath": "api/Command",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProjecIntegration.Api.Application.DTO.CommandDto, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "Create",
+    "RelativePath": "api/Command",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CmdDtot",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddCommandDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "GetByid",
+    "RelativePath": "api/Command/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.CommandDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "Delete",
+    "RelativePath": "api/Command/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "Update",
+    "RelativePath": "api/Command/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updtdto",
+        "Type": "ProjecIntegration.Api.Application.DTO.UpdateCommandDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "GetAuth",
+    "RelativePath": "api/Command/get-auth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "GetByUser",
+    "RelativePath": "api/Command/get-command-user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.CommandDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CommandController",
+    "Method": "GetByPiece",
+    "RelativePath": "api/Command/get-piece/{idPiece}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPiece",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[data.Models.Command, data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "GetAll",
+    "RelativePath": "api/Complexe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProjecIntegration.Api.Application.DTO.ComplexeDto, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "Create",
+    "RelativePath": "api/Complexe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "complexe",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddComplexeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "Delete",
+    "RelativePath": "api/Complexe",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "GetById",
+    "RelativePath": "api/Complexe/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "Update",
+    "RelativePath": "api/Complexe/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "complexe",
+        "Type": "ProjecIntegration.Api.Application.DTO.UpdateComplexeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "AddSalle",
+    "RelativePath": "api/Complexe/add-Salle/{idComplexe}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idComplexe",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "salle",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddSalleDeTheatreDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjecIntegration.Api.Controllers.ComplexeController",
+    "Method": "Delete",
+    "RelativePath": "api/Complexe/delete-salle/{idComplexe}/{idSalle}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idComplexe",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "idSalle",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "Get",
+    "RelativePath": "api/Piece",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProjecIntegration.Api.Application.DTO.PieceDto, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "Create",
+    "RelativePath": "api/Piece",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "piece",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddPieceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "GetById",
+    "RelativePath": "api/Piece/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.PieceDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "Delete",
+    "RelativePath": "api/Piece/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "Put",
+    "RelativePath": "api/Piece/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "piece",
+        "Type": "ProjecIntegration.Api.Application.DTO.UpdatePieceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "AddRepresnetation",
+    "RelativePath": "api/Piece/add-representation/{idPIece}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPIece",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "addRepresentation",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddRepresentationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "DeleteRepresentation",
+    "RelativePath": "api/Piece/delete-representation/{id}/{idrepresentaion}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "idrepresentaion",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PieceController",
+    "Method": "GetbyComplexe",
+    "RelativePath": "api/Piece/get-complexe/{idComplexe}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idComplexe",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProjecIntegration.Api.Application.DTO.PieceDto, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "GetAll",
+    "RelativePath": "api/Representation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProjecIntegration.Api.Application.DTO.RepresentationDto, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "Create",
+    "RelativePath": "api/Representation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddRepresentationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "GetById",
+    "RelativePath": "api/Representation/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.RepresentationDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "Delete",
+    "RelativePath": "api/Representation/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "Update",
+    "RelativePath": "api/Representation/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "entity",
+        "Type": "ProjecIntegration.Api.Application.DTO.UpdateRepresentationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "AddCommand",
+    "RelativePath": "api/Representation/add-command/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "AuthId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NombreDePlace",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdRepresentation",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "Delete",
+    "RelativePath": "api/Representation/delete-command/{idrepre}/{commandid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idrepre",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commandid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "GetAllpieceById",
+    "RelativePath": "api/Representation/get-piece/{idpiece}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idpiece",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.RepresentationDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.RepresentationController",
+    "Method": "GetAllSalleById",
+    "RelativePath": "api/Representation/get-salle/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSalle",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.RepresentationDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "GetAll",
+    "RelativePath": "api/SallesDeTheatre",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProjecIntegration.Api.Application.DTO.SalleDeTheatreDto, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "Create",
+    "RelativePath": "api/SallesDeTheatre",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Entity",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddSalleDeTheatreDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "GetById",
+    "RelativePath": "api/SallesDeTheatre/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.SalleDeTheatreDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "Delete",
+    "RelativePath": "api/SallesDeTheatre/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "Update",
+    "RelativePath": "api/SallesDeTheatre/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Entity",
+        "Type": "ProjecIntegration.Api.Application.DTO.UpdateSalleDeTheatreDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "AddPiece",
+    "RelativePath": "api/SallesDeTheatre/add-piece/{idSalle}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSalle",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Entity",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddPieceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "Delete",
+    "RelativePath": "api/SallesDeTheatre/delete-piece/{idSalle}/{IdPiece}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSalle",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "IdPiece",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "DeleteRepresentation",
+    "RelativePath": "api/SallesDeTheatre/delete-representation/{idSalle}/{idrepresentation}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSalle",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "idrepresentation",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.SallesDeTheatreController",
+    "Method": "GetByComplexe",
+    "RelativePath": "api/SallesDeTheatre/get-complexe/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProjecIntegration.Api.Application.DTO.SalleDeTheatreDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.TheatreController",
+    "Method": "GetAllPieceFromComplexe",
+    "RelativePath": "api/Theatre/{IdComplexe}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdComplexe",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.TheatreController",
+    "Method": "GetRepresnetationFromPiece",
+    "RelativePath": "api/Theatre/{IdPiece}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPiece",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.TheatreController",
+    "Method": "GetRepresnetationFromSalle",
+    "RelativePath": "api/Theatre/{IdSalle}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdSalle",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.TheatreController",
+    "Method": "Deleterepresnetation",
+    "RelativePath": "api/Theatre/{pieceId}/{repId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pieceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "repId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.TheatreController",
+    "Method": "SetPieceSalle",
+    "RelativePath": "api/Theatre/{pieceId}/{SalleId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pieceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "SalleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.TheatreController",
+    "Method": "CreateRepresentaion",
+    "RelativePath": "api/Theatre/{pieceId}/{SalleId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pieceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "SalleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "represnetation",
+        "Type": "ProjecIntegration.Api.Application.DTO.AddRepresentationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserController",
+    "Method": "GetUserinfo",
+    "RelativePath": "api/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "WebApi.Application.DTO.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserController",
+    "Method": "UpdateUserInfo",
+    "RelativePath": "api/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Auth0.ManagementApi.Models.UserUpdateRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.ValuesController",
+    "Method": "Get",
+    "RelativePath": "api/Values",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.ValuesController",
+    "Method": "Gette",
+    "RelativePath": "api/Values/map",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

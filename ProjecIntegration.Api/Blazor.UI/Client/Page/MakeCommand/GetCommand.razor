@@ -1,47 +1,71 @@
 ﻿
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject Blazor.UI.services.IRepresentationService ServP;
-<h3>GetCommand</h3>
+@inject Blazor.UI.services.IPieceService ServPiece;
+<div class="m-4 p-4 row">
+    <h3>GetCommand</h3>
 
-<br>    
-@if (lstCommand != null)
-{
-
-<QuickGrid Items="@lstCommand.AsQueryable()">
-        <PropertyColumn Property="p =>p.Id"  Title="Id"  Sortable="true" />
-        <PropertyColumn Property="p =>p.NombreDePlace" Title="nombre de place" />
-        <TemplateColumn Context="item" Title="representation">
-           <div>
-               <button type="button" class="btn btn-warning" @onClick="LoadRepresentation(item.IdRepresentation)" >represnetation</button>
-           </div>
-          </TemplateColumn>
-    </QuickGrid>
-
-    if (selectRepresnetaion != null)
+    <br>    
+    @if (lstCommand != null)
     {
-        <Representation></Representation>
-        <br>
-        <div>
-            <button type="btn btn-warning" @onclick="Clean"> clean</button>
+        <div class="col ">
+            <QuickGrid Items="@lstCommand.AsQueryable()">
+                <PropertyColumn Property="p =>p.Id"  Title="Id"  Sortable="true" />
+                <PropertyColumn Property="p =>p.NombreDePlace" Title="nombre de place" />
+                <TemplateColumn Title="representation">
+                   <div>
+                       <button type="button" class="btn btn-warning" @onclick="() =>LoadRepresentation(context.IdRepresentation)">
+                           represnetation</button>
+                   </div>
+                  </TemplateColumn>
+            </QuickGrid>
         </div>
+
+        if (selectRepresnetaion != null)
+        {
+            <div class="col border border-end text-center">
+                <div class="m-4 p-4">
+                    <h3 class="display-1">@PIecerep.Titre</h3>
+                </div>
+            <Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails SelectedItem="@selectRepresnetaion">
+            </Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails>
+            <br>
+            </div>
+            <div>
+                <button type="btn btn-warning" @onclick="Clean"> clean</button>
+            </div>
+        }
+        else
+        {
+            <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+        }
     }
     else
     {
-        
+        <Blazor.UI.Client.Shared.Load loadParam="en attente de chargement">
+        </Blazor.UI.Client.Shared.Load>
     }
-}
-else
-{
-    <Blazor.UI.Client.Shared.Load loadParam="en attente de chargement"></Blazor.UI.Client.Shared.Load>
-}
+
+</div>
 @code {
     [Parameter]
-    public IEnumerable<CommandDto>? lstCommand { get; set; }
+    public IEnumerable<CommandDto> lstCommand { get; set; }
     public RepresentationDto? selectRepresnetaion { get; set; }
+    int pieceid { get; set; }
+    public PieceDto? PIecerep { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        int id = lstCommand.ElementAt(0).IdRepresentation;
+        selectRepresnetaion = await ServP.GetById(id);
+        pieceid = selectRepresnetaion.IdPiece;
+        PIecerep = await ServPiece.GetById(pieceid);
+    }
 
     public async Task LoadRepresentation(int id)
     {
         selectRepresnetaion = await ServP.GetById(id);
+        pieceid = selectRepresnetaion.IdPiece;
+        PIecerep = await ServPiece.GetById(pieceid);
     }
     public void Clean() 
             => selectRepresnetaion = null;
