@@ -1,4 +1,6 @@
 ﻿@page "/reservation"
+@attribute [Authorize]
+@attribute [StreamRendering]
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using Blazor.UI.Client.Page.ReservationComponent
 @inject Blazor.UI.services.IComplexeService servpm;

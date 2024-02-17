@@ -1,9 +1,12 @@
 ﻿@page "/representation/{Id:int}"
+@attribute [Authorize]
+@attribute [StreamRendering]
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
 @inject Blazor.UI.services.IRepresentationService servRep;
 @inject Blazor.UI.services.IPieceService servPiece;
 @inject Blazor.UI.services.ISalleService servsalle;
+
 <div class="jumbotron bg-light m-2 p-2 rounded">
     <div class="m-2 p-2  m-2 p-2 border rounded-4">
         <h3 class="dispaly-1">Representation Summary</h3>

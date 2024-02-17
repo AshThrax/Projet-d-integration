@@ -22,8 +22,13 @@
                 }
                 //chaque fois qu'on ajoute une commande le nombre de place diminiue
                 var place = command.NombreDePlace;
-                representation.placeCurrent= representation.placeCurrent+place;
+                if((representation.placeCurrent+place)
+                    < representation.PlaceMaximum)
+                {
+                      representation.placeCurrent= representation.placeCurrent+place;
                 representation.Commands.Add(command);
+                }
+              
                 
                 _context.SaveChanges();
             }

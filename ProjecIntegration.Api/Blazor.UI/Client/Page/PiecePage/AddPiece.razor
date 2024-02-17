@@ -1,6 +1,9 @@
 ﻿@page "/addPiece/{Id:int}"
 @inject Blazor.UI.services.ISalleService ServSalle;
 @inject Blazor.UI.services.IComplexeService ServComplexe;
+<div>
+ 
+</div>
 <div class="card m-4 p-4">
     <h3 class="card-title">AddPiece</h3>
    <div class="card-body">
@@ -42,7 +45,7 @@
     public SalleDeTheatreDto salle { get; set; }
 
     public AddPieceDto piece { get; set; } = new AddPieceDto();
-    public ComplexeDto Complexe { get; set; }
+    public ComplexeDto Complexe { get; set; }//remettre pour tfe
     protected override async Task OnInitializedAsync()
     {
         salle = await ServSalle.GetById(Id);
