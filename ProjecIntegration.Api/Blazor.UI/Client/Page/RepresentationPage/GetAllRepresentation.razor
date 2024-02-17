@@ -80,7 +80,7 @@
     [Parameter]
     public IEnumerable<RepresentationDto> getrepresnetation { get; set; }
 
-    public RepresentationDto selectRepresnetation { get; set; }
+    public RepresentationDto selectRepresnetation { get; set; } = new RepresentationDto();
 
     public bool isDetail { get; set; } = true;
     public bool IsAdded { get; set; } = false;

@@ -1,10 +1,10 @@
-﻿@page "/pieceinfo{ID:int}"
+﻿@page "/pieceinfo/{ID:int}"
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject Blazor.UI.services.IPieceService Servp;
 @inject Blazor.UI.services.IRepresentationService PieceRep;
 @inject Microsoft.AspNetCore.Components.NavigationManager manager;
 
-<h3>PieceInfo</h3>
+<h3>InfoRmation</h3>
 @if (selectPieces != null)
 {
     <div class="row">
@@ -19,11 +19,20 @@
                     <p class="card-text">@selectPieces.Duree: minutes</p>
                    
                 </div>
+                <div class="card-footer">
+                    <div class="m-3 float-end ">
+                        <button type="button" class="btn btn-warning" @onclick="() =>getbackreservation()">Reservation</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col">
-              <div class="m-2 p-2 bg-light rounded">
-                <div class="m-2 p-2">
+              <div class="card m-2 p-2 bg-light rounded">
+                  <div class="card-header">
+                      <h5><strong>Representation</strong></h5>
+                  </div>
+                <div class="card-body m-2 p-2">
+
                     <QuickGrid Items="@Myrepresnetation.AsQueryable()">
                         <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
                         <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
@@ -37,7 +46,7 @@
             </div>
         </div>
     </div>
-
+    
 
 }
 else
@@ -55,5 +64,8 @@ else
         selectPieces = await Servp.GetById(ID);
         Myrepresnetation = await PieceRep.GetPiece(ID);
     }
-    
+    public void getbackreservation()
+    {
+        manager.NavigateTo($"/representation/{ID}");
+    }
 }

@@ -60,7 +60,7 @@ namespace WebApi.Controllers
                 return StatusCode(500, e.Message + "");
             }
         }
-        [HttpGet("get-salle/{id}")]
+        [HttpGet("get-salle/{idSalle}")]
         public async Task<ActionResult<RepresentationDto>> GetAllSalleById( int idSalle)
         {
             try
@@ -129,18 +129,19 @@ namespace WebApi.Controllers
                 return StatusCode(500, e.Message + "");
             }
         }
-        [HttpPost("add-command/{id}")]
-        public async Task<ActionResult> AddCommand(int id,[FromForm] AddCommandDto entity)
+        [HttpPost("add-command/{id}/{IdPlace}")]
+        public async Task<ActionResult> AddCommand(int id,int idPlace, [FromForm] AddCommandDto entityCommand)
         {
             try
             {
-                if (entity == null)
-                {
-                    BadRequest();
-                }
-
-                entity.AuthId = await gtk.GetSub();
-                var conversion = _mapper.Map<AddCommandDto,Command>(entity);
+               
+                var auth = await gtk.GetSub();
+                AddCommandDto entity =new AddCommandDto {
+                    AuthId=auth,
+                    IdRepresentation=id,
+                    NombreDePlace=idPlace
+                };
+                var conversion = _mapper.Map<Command>(entity);
                 _representationService.AddCommandToRepresentation(id,conversion);
                 return Ok();
             }

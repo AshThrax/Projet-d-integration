@@ -8,68 +8,89 @@
 <div class="bg-light m-4 p-2 rounded-2 text-center">
     <h3>Profile page </h3>
 </div>
-<div class="col-10">
-    <div class="bg-light rounded-2 m-4 p-2 float-start align-content-center">
-        <img class="border-1 rounded-3"
-            src="@Profile" />
-        <div class=" text-start p-2">
-            <h3>Bonjour : @givenName</h3>
-            <h4>Comment allez vous?</h4>  
-            <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
-                <h3>Information</h3>
-                <div class="p-2">
-                    <p>Prénom: @givenName</p>
-                    <p>Nom de famille : @familyName</p>
-                    <p>nom d'utilisateur': @Username</p>
-                    <p>mail : @Mail</p>
+<div class="row ">
+    <div class="col ">
+        <div class="card w-50">
+            <div class="bg-light rounded-2 m-4 p-2 float-start align-content-center ">
+                <img class="border-1 rounded-3"
+                     src="@Profile" />
+                <div class=" text-start p-2">
+                    <div class="card-body">
+                        <h3>Bonjour : @givenName</h3>
+                        <h4>Comment allez vous?</h4>
+                    </div>
+                
+                    <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
+                        <h3 class="card-">Information</h3>
+                        <ul class="p-2 list-group list-group-flush">
+                            <li class="list-group-item">
+                                <p>Prénom: @givenName</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p>Nom de famille : @familyName</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p>nom d'utilisateur: @Username</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p>mail : @Mail</p>
+                            </li>
+                            <div class="card-footer">
+
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <br />
-    <br />
+   
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <button type="button" class="btn btn-primary btn-success nav-link alert-success" @onclick="() => ShowProfile()">
-                 Profile
-            </button>
-        </li>
-        <li class="nav-item">
-            <button type="button" class="btn btn-primary btn-success nav-link alert-success" @onclick="() => ShowCommand()">
-                Commande
-            </button>
-        </li>
-    </ul>
-    <br />
-    @if (isProfile)
-    {
+    <div class="col">
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary btn-success nav-link alert-success" @onclick="() => ShowProfile()">
+                     Profile
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary btn-success nav-link alert-success" @onclick="() => ShowCommand()">
+                    Commande
+                </button>
+            </li>
+        </ul>
+        <br />
+  
+        @if (isProfile)
+        {
     
-            <div class="row shadow-sm ps-2 pe-2 pb-4 bg-light rounded-3">
+                <div class="row shadow-sm ps-2 pe-2 pb-4 bg-light rounded-3">
 
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col-sm-9">
-                    <p class="lead"> Rappel tester l'auth coté server depuis blazor</p>
-                    <button type="button" class="col-sm-9 btn btn-warning" @onclick="() => GetAuth()">
-                        test auth
-                    </button>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col-sm-9">
+                        <p class="lead"> Rappel tester l'auth coté server depuis blazor</p>
+                        <button type="button" class="col-sm-9 btn btn-warning" @onclick="() => GetAuth()">
+                            test auth
+                        </button>
+                    </div>
                 </div>
-            </div>
       
        
    
-    }
-    else
-    {
-        <div class="row shadow-sm ps-2 pe-2 pb-4 bg-light rounded-3">
-            <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
-                <Blazor.UI.Client.Page.MakeCommand.GetCommand  lstCommand="CommandUser"></Blazor.UI.Client.Page.MakeCommand.GetCommand>
+        }
+        else
+        {
+            <div class="row shadow-sm ps-2 pe-2 pb-4 bg-light rounded-3">
+                <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
+                    <Blazor.UI.Client.Page.MakeCommand.GetCommand  lstCommand="CommandUser"></Blazor.UI.Client.Page.MakeCommand.GetCommand>
+                </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+    </div>
 @code {
     [CascadingParameter]
     public Task<AuthenticationState> AuthenticationStateTask { get; set; }

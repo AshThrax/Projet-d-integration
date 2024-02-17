@@ -1,5 +1,5 @@
-﻿
-<div class="col text-md-start">
+﻿@inject Microsoft.AspNetCore.Components.NavigationManager manager;
+<div class="text-md-start">
     <div class="col bg-light rounded">
         <div class="m-2 p-2">
             <div class="card">
@@ -19,8 +19,8 @@
                         <p><strong>Prix:</strong>@SelectedItem.Prix</p>
                     </div>
                </div>
-               <div class="Card-footer">
-
+               <div class="Card-footer m-2">
+                   <button class="btn btn-warning shadow" @onclick="() =>getinfo(SelectedItem.IdPiece)">Info</button>
                </div>
             </div>
         </div>  
@@ -34,5 +34,9 @@
     [Parameter]
     public int PlaceCommand {get;set;}
 
-    
+    public void getinfo(int id)
+    {
+        manager.NavigateTo($"/pieceinfo/{id}");
+    }
+
 }

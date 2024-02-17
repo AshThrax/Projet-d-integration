@@ -554,13 +554,18 @@
   {
     "ContainingType": "WebApi.Controllers.RepresentationController",
     "Method": "AddCommand",
-    "RelativePath": "api/Representation/add-command/{id}",
+    "RelativePath": "api/Representation/add-command/{id}/{IdPlace}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "idPlace",
         "Type": "System.Int32",
         "IsRequired": true
       },
@@ -632,7 +637,7 @@
   {
     "ContainingType": "WebApi.Controllers.RepresentationController",
     "Method": "GetAllSalleById",
-    "RelativePath": "api/Representation/get-salle/{id}",
+    "RelativePath": "api/Representation/get-salle/{idSalle}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -640,11 +645,6 @@
       {
         "Name": "idSalle",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],

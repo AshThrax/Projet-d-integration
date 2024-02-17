@@ -5,8 +5,10 @@
 @inject Blazor.UI.services.IComplexeService comp;
 @inject HttpClient http;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+<div class="card-header">
 
 <h3 class="display-4" >Complexe</h3>
+</div>
 <br />
 @if (complexetab == null)
 {
@@ -17,15 +19,10 @@
 }
 else
 {
-    <div class="border rounded-2 col m-2 p-4 w-50">
+    <div class="border rounded-2 m-2 p-4">
        <QuickGrid Items="@complexetab.AsQueryable()">
             <PropertyColumn Property="@(p => p.Id)" Sortable="true">
-                <TemplateColumn Context="item">
-                    <div>
-                        @item.Id
-                        <button @onclick="() =>GetDetails(item.Id)">View Details</button>
-                    </div>
-                </TemplateColumn>
+              
             </PropertyColumn>
             <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
             <PropertyColumn Property="@(p => p.Description)" Sortable="true" />
@@ -41,6 +38,11 @@ else
                     <button type="button" class="btn" @onclick="() => UpdateComplexe(item)">Update</button>
                 </div>
             </TemplateColumn>
+            <TemplateColumn Context="item">
+                <div>
+                    <button type="button" class="btn" @onclick="() => AddComplexe()">Add</button>
+                </div>
+            </TemplateColumn>
     </QuickGrid>
 
    </div>
@@ -52,25 +54,33 @@ else
                 <ComplexeDetails SelectedComplexe="@selectedComp"></ComplexeDetails>
             </div>
         }
-        else
+        else if(Isupdate)
         {
             <div class="m-2 p-4">
                 <ComplexeUpdatet updateComplexe="@selectedComp"></ComplexeUpdatet>
             </div>
-        
-        }
 
-   </div>
+        }
+        else if (isAdded)
+        {
+            <AddComplexe></AddComplexe>
+        }
+        else
+        {
+            
+        }
+    </div>
 }
 @code {
     private IEnumerable<ComplexeDto>? complexetab;
     private ComplexeDto? selectedComp { get; set; }
     public bool isdetails { get; set; } = true;
     public bool Isupdate { get; set; } = false;
+    public bool isAdded { get; set; } = false;
     protected override async Task OnInitializedAsync()
     {
-       complexetab = await comp.Get();
-      
+        complexetab = await comp.Get();
+
     }
     private void GetDetails(int id)
     {
@@ -81,12 +91,19 @@ else
         selectedComp = items;
         isdetails = true;
         Isupdate = false;
+        isAdded = false;
     }
     public void UpdateComplexe(ComplexeDto items)
     {
         selectedComp = items;
         isdetails = false;
         Isupdate = true;
+        isAdded = false;
     }
-
+    public void AddComplexe()
+    {
+        isAdded = true;
+        isdetails = false;
+        Isupdate = false;
+    }
 }

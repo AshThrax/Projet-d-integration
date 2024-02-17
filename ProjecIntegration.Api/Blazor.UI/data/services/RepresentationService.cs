@@ -13,7 +13,7 @@ namespace Blazor.UI.services
         Task Delete(int id);
         Task<IEnumerable<RepresentationDto>> GetSalle(int idSalle);
         Task<IEnumerable<RepresentationDto>> GetPiece(int idPiece);
-        Task AddCommandRepresentation(int id, AddCommandDto data);
+        Task AddCommandRepresentation(int id ,int idPlace,AddCommandDto data);
         Task DeleteCommandRepresentation(int idRep, int idCommand);
     }
    
@@ -62,9 +62,9 @@ namespace Blazor.UI.services
                 return await _httpClient.GetFromJsonAsync<IEnumerable<RepresentationDto>>($"{ApiUri}/get-piece/{idPiece}");
             }
 
-            public async Task AddCommandRepresentation(int id, AddCommandDto data)
+            public async Task AddCommandRepresentation(int id,int idplace,AddCommandDto data)
             {
-                await _httpClient.PostAsJsonAsync($"https://localhost:44337/api/Representation/add-command/{id}", data);
+                await _httpClient.PostAsJsonAsync($"https://localhost:44337/api/Representation/add-command/{id}/{idplace}",data);
             }
 
             public async Task DeleteCommandRepresentation(int idRep, int idCommand)

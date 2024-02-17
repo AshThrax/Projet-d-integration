@@ -1,34 +1,68 @@
 ﻿@inject Blazor.UI.services.ISalleService SalleServ;
-
-<div class="m-4 p-4">
-    <h3>AddSalle</h3>
+@inject Blazor.UI.services.IComplexeService SerComp;
+<div class="m-4 p-4 card">
+    <div class="card-header">
+        <h3>AddSalle</h3>
+    </div>
+   
     <div class="m-4 p-4">
-        <div class="col-form-label">
-                <label class="form-label" for="name">Name:</label>
-                <input class="formcontrol" id="name" @bind="salleDeTheatre.Name" />
+        <form class="">
+            <div class="col-form-label">
+                <div>
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control" id="name" @bind="salleDeTheatre.Name" />
 
-                <label class="form-label" for="placeMax">Place Max:</label>
-                <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+                </div>
+                <div>
 
-                <label class="form-label" for="placeCurrent">Place Current:</label>
-                <input class="form-control" id="placeCurrent" @bind="salleDeTheatre.PlaceCurrent" type="number" />
-
-                <label class="form-label" for="complexeId">Complexe ID:</label>
-                <input class="form-control" id="complexeId" @bind="salleDeTheatre.ComplexeId" type="number" />
-
+                    <label class="form-label" for="placeMax">Place Max:</label>
+                    <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+                </div>
+                <div>
+                    <label class="form-label" for="placeCurrent">Place Current:</label>
+                    <input class="form-control" id="placeCurrent" @bind="salleDeTheatre.PlaceCurrent" type="number" />
+                </div>
+                   
+                <div>
+                    <label class="form-label" for="complexeId">Complexe </label>
+                    <select class="form-control" @bind="selectedComplexeId" @oninput="OnselcteChange">
+                        <option>choissisez le complexe </option>
+                        @foreach (var item in SelctedComplexe)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                  
+                <br />
                 <button type="button" class="btn btn-success" @onclick="AddSalldetheatre">Update SalleDeTheatre</button>
             </div>
+        </form>
     </div>
 </div>
 @code {
-    public AddSalleDeTheatreDto salleDeTheatre { get; set; }
-
+    public AddSalleDeTheatreDto salleDeTheatre { get; set; } = new();
+    public IEnumerable<ComplexeDto> SelctedComplexe { get; set; }
+    public int selectedComplexeId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        SelctedComplexe = await SerComp.Get();
+    }
+    public int selectComplexe;
     public async Task AddSalldetheatre()
     {
         if (salleDeTheatre != null)
         {
             await SalleServ.Create(salleDeTheatre);
         }
-        
+
+    }
+    public void OnselcteChange(ChangeEventArgs args)
+    {
+
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            selectedComplexeId = selectedId;
+        }
     }
 }

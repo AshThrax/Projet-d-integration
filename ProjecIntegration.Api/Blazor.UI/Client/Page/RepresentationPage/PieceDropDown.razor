@@ -2,10 +2,11 @@
 @inject Blazor.UI.services.IRepresentationService ServRep;
 @inject Blazor.UI.services.IPieceService ServPiece;
 @inject NavigationManager namanager;
-
-<h3>PieceDropDown</h3>
 @if (PieceDtos !=null)
 {
+    <div class="card-header">
+        <h3>PieceDropDown</h3>
+    </div>
     <select @bind="selectedPieceId" @oninput="SelectionChanged" class="form-control">
         <option value="">Select Pièce</option>
         @foreach (var complexe in PieceDtos)
@@ -36,9 +37,9 @@ else
 {
 
     [Parameter]
-    public IEnumerable<PieceDto>? PieceDtos {get;set;}
+    public IEnumerable<PieceDto>? PieceDtos { get; set; } 
 
-    public IEnumerable<RepresentationDto>? RepresentationTab { get; set; }
+    public IEnumerable<RepresentationDto>? RepresentationTab { get; set; } 
 
     public PieceDto? SinglePiece { get; set; }
 

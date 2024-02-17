@@ -1,21 +1,21 @@
 ﻿@inject Blazor.UI.services.IComplexeService ServComp;
 <h3>AddComplexe</h3>
-@if (updateComplexe != null)
+@if (MyAddComplexe != null)
 {
     <form>
         <div class=" form-group mb-3">
             <label class="form-label" for="name">Name:</label>
-            <input class="form-control" id="name" @bind="updateComplexe.Name" />
+            <input class="form-control" id="name" @bind="AddedComplexe .Name" />
 
             <label class="form-label" for="description">Description:</label>
-            <input class="form-control" id="description" @bind="updateComplexe.Description" />
+            <input class="form-control" id="description" @bind="AddedComplexe .Description" />
 
             <label class="form-label" for="address">Address:</label>
-            <input class="form-control" id="address" @bind="updateComplexe.Adress" />
+            <input class="form-control" id="address" @bind="AddedComplexe .Adress" />
 
             <!-- Add other input fields based on your UpdateComplexeDto properties -->
 
-            <button type="button" class="btn btn-warning" @onclick="UpdateComplexe">Update Complexe</button>
+            <button type="button" class="btn btn-warning" @onclick="MyAddComplexe">Update Complexe</button>
         </div>
     </form>
 }
@@ -24,17 +24,16 @@ else
     <Blazor.UI.Client.Shared.Load loadParam="No Complexe provided"></Blazor.UI.Client.Shared.Load>
 }
 @code {
-    
-    public ComplexeDto updateComplexe { get; set; }
+    public AddComplexeDto AddedComplexe { get; set; } = new AddComplexeDto();
 
-    private void UpdateComplexe()
+    public void MyAddComplexe()
     {
         AddComplexeDto UpdtoDate = new AddComplexeDto
             {
                
-                Name = updateComplexe.Name,
-                Adress = updateComplexe.Adress,
-                Description = updateComplexe.Description,
+                Name = AddedComplexe.Name,
+                Adress = AddedComplexe.Adress,
+                Description = AddedComplexe.Description,
                 
             };
         ServComp.Create(UpdtoDate);

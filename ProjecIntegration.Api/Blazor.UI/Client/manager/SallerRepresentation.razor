@@ -1,32 +1,46 @@
 ﻿@using Microsoft.AspNetCore.Components.QuickGrid
+@inject NavigationManager manager;
 @inject Blazor.UI.services.ISalleService Servsalle;
-<div class="m-4 p-4">
-    <h3 class="display-4">SallePiece</h3>
-    <div class="row p-2">
+@inject Blazor.UI.services.IRepresentationService Servrep;
 
+<div class="m-4 p-4">
+    <h3 class="card-header display-4">SallePiece</h3>
+    <div class="row p-2">
+        @if (salleTab != null)
+        {
         <QuickGrid Items="@salleTab.AsQueryable()">
                 <PropertyColumn Property="@(p => p.Id)" Sortable="true">
                 </PropertyColumn>
                 <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
                 <PropertyColumn Property="@(p =>p.PlaceMax)" Sortable="true" />
                 <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
-                    <TemplateColumn Context="item">
+                    <TemplateColumn >
                         <div>
-                            <button type="button" class="btn" @onclick="() => loadrepresentation(item.Representations)">Details</button>
+                        <button type="button" class="btn shadow btn-warning" @onclick="() => loadrepresentation(context.Id)">Details</button>
                         </div>
                     </TemplateColumn>
-                    <TemplateColumn Context="item">
+                    <TemplateColumn >
                         <div>
-                            <button type="button" class="btn" @onclick="() => updateSalle(item)">update salle</button>
+                        <button type="button" class="btn shadow btn-warning" @onclick="() => updateSalle(context)">update une salle</button>
                         </div>
                     </TemplateColumn>
-                    <TemplateColumn Context="item">
+                    <TemplateColumn >
                     <div>
-                    <button type="button" class="btn" @onclick="() => addpieceSalle()">addPiece</button>
+                        <button type="button" class="btn  shadow btn-warning" @onclick="() => addpieceSalle()">ajouter une salle</button>
+                    </div>
+                </TemplateColumn>
+                <TemplateColumn>
+                    <div>
+                        <button type="button" class="btn  shadow btn-warning" @onclick="() => addpiecePage(context.Id)">ajoutd'un Piece</button>
                     </div>
                 </TemplateColumn>
             </QuickGrid>
 
+        }
+        else
+        {
+            <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+        }
     </div>
     <br />
     <div class="row">
@@ -35,18 +49,32 @@
             <div class="col">
                 @if (isUpdate && !isdetail && !isAddPiece)
                 {
-                    <p>update</p>
-                    <Blazor.UI.Client.Page.sallePage.SalleUpdate salleDeTheatre="@selectsalle"></Blazor.UI.Client.Page.sallePage.SalleUpdate>
+                    
+                    <Blazor.UI.Client.Page.sallePage.SalleUpdate salleDeTheatre="@selectsalle">
+
+                    </Blazor.UI.Client.Page.sallePage.SalleUpdate>
                 }
-                else if(isAddPiece && !isUpdate && !isdetail)
+                else if (isAddPiece && !isUpdate && !isdetail)
                 {
-                 <Blazor.UI.Client.Page.sallePage.AddSalle></Blazor.UI.Client.Page.sallePage.AddSalle>
+                    <Blazor.UI.Client.Page.sallePage.AddSalle > 
+
+                    </Blazor.UI.Client.Page.sallePage.AddSalle>
+                }
+                else if (!isAddPiece && !isUpdate && isdetail)
+                {
+
+                    <Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation getrepresnetation="@representation">
+
+                    </Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation>
+
                 }
                 else
                 {
-             
-                    <Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation getrepresnetation="@representation"></Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation>
-                 
+                    <div class="card pe-4 ps-4 pt-2 pb-2">
+                        <div class="container bg-light">
+                            <Blazor.UI.Client.Page.PiecePage.AddPiece salle="@selectsalle"></Blazor.UI.Client.Page.PiecePage.AddPiece>
+                        </div>
+                    </div>
                 }
             </div>
         }
@@ -57,33 +85,35 @@
     </div>
 </div>
 @code {
-    public IEnumerable<SalleDeTheatreDto> salleTab { get; set; }
-    public IEnumerable<RepresentationDto> representation { get; set; }
-    public SalleDeTheatreDto selectsalle { get; set; }
+    public IEnumerable<SalleDeTheatreDto>? salleTab { get; set; } 
+    public IEnumerable<RepresentationDto>? representation { get; set; }
+    public SalleDeTheatreDto? selectsalle { get; set; }
     public bool isUpdate { get; set; }
     public bool isdetail { get; set; }
     public bool isAddPiece { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Task.Delay(1000);
+        salleTab = await Servsalle.Get();
+        await Task.Delay(1000);
         isdetail = true;
         isUpdate = false;
         isAddPiece = false;
-        salleTab = await Servsalle.Get();   
+
     }
-    public void loadrepresentation(IEnumerable<RepresentationDto> item)
+    public async Task loadrepresentation(int item)
     {
+        representation = await Servrep.GetSalle(item);
+        await Task.Delay(100);
         isdetail = true;
         isUpdate = false;
         isAddPiece = false;
-        representation = item;
     }
     public void updateSalle(SalleDeTheatreDto updtheatre)
     {
         isUpdate = true;
         isdetail = false;
-     isAddPiece = false;
+        isAddPiece = false;
         selectsalle = updtheatre;
     }
     public void addpieceSalle()
@@ -91,5 +121,9 @@
         isUpdate = false;
         isdetail = false;
         isAddPiece = true;
+    }
+    public void addpiecePage(int id)
+    {
+        manager.NavigateTo($"/addPiece/{id}");
     }
 }

@@ -21,9 +21,10 @@
 
                 }
                 //chaque fois qu'on ajoute une commande le nombre de place diminiue
-                var place = command.Tickets.Count;
-                representation.placeCurrent=representation.placeCurrent+place;
+                var place = command.NombreDePlace;
+                representation.placeCurrent= representation.placeCurrent+place;
                 representation.Commands.Add(command);
+                
                 _context.SaveChanges();
             }
         }
@@ -40,7 +41,7 @@
                     .Commands.FirstOrDefault(r => r.Id == CommandId);
 
                 //chaque fois qu'on supprime une commande le nombre de place dispo pour la reservation augmente
-                var place =Commanddelete.Tickets.Count;
+                var place =Commanddelete.NombreDePlace;
                 representation.placeCurrent=representation.placeCurrent-place;
                 representation.Commands.Remove(Commanddelete) ;
                 _context.SaveChanges();
@@ -62,13 +63,16 @@
         }
         public async Task<IEnumerable<Representation>> GetAllBySalleId(int idSalle)
         {
-            var salle= await _context.SalleDeTheatres
-                .Include(c =>c.Representations)
-                .Where(c =>c.Id==idSalle)
+            var salle = await _context.SalleDeTheatres
+                .Include(c => c.Representations)
+                .Where(c => c.Id == idSalle)
                 .FirstOrDefaultAsync();
-
-            var Entities = salle.Representations;
-            return Entities;
+            if (salle.Representations != null)
+            {       
+                var Entities = salle.Representations;
+                return Entities;
+            }
+          return Enumerable.Empty<Representation>();
         }
     }
 }

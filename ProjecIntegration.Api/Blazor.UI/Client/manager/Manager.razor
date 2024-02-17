@@ -20,15 +20,16 @@
     <li class="nav-item">
         <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowSalleSection()">Manage Complexe/Salles</button>
     </li>
+   
 </ul>
 <br />
 <div class="jumbotron">
 
     @if (isComplex)
     {
-        <div class="pe-4 ps-4 pt-2 pb-2">
-            <h4 class="display-4 mb-4">Manage Complexes</h4>
-            <div class="container bg-light rounded-2">
+        <div class="card pe-4 ps-4 pt-2 pb-2">
+            <h4 class="card-header-tabs display-4 mb-4">Manage Complexes</h4>
+            <div class="container bg-light rounded-2 w-50">
                <Complexe></Complexe>
            </div>
         </div>
@@ -37,26 +38,29 @@
     @if (isPiece)
     {
 
-        <div class="pe-4 ps-4 pt-2 pb-2">
+        <div class="card pe-4 ps-4 pt-2 pb-2">
             <div class="container bg-light">
                 <SallerRepresentation></SallerRepresentation>
             </div>
         </div>
+     
+       
     }
 
     @if (isRepresentation)
     {
-       
-        <div class="m-4 p-4">
+
+        <div class="card m-4 p-4">
             <div class="container bg-light rounded-2 m-4 p-4 w-50">
-                <Blazor.UI.Client.Page.RepresentationPage.PieceDropDown></Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
+                <Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
+                </Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
             </div>
         </div>
     }
 
     @if (isSalle)
     {
-        <div class="m-4 p-4">
+        <div class="card m-4 p-4">
             <div class="container bg-light rounded-2 mb-4 mt-4">
                 <ComplexeSalle></ComplexeSalle>
             </div>

@@ -1,54 +1,55 @@
-﻿@inject Blazor.UI.services.ISalleService ServSalle;
+﻿@page "/addPiece/{Id:int}"
+@inject Blazor.UI.services.ISalleService ServSalle;
 @inject Blazor.UI.services.IComplexeService ServComplexe;
-<h3>AddPiece</h3>
+<div class="card m-4 p-4">
+    <h3 class="card-title">AddPiece</h3>
+   <div class="card-body">
+        <form>
+            <div class="form-group mb-3 w-50">
+                <div>
+                    <label class="form-label for="titre">Titre:</label>
+                    <input class="form-control" id="titre" @bind="piece.Titre" />
+                </div>
+               
+                <div>
+                    <label class="form-label for="duree">Duree:</label>
+                    <input class="form-control" id="duree" @bind="piece.Duree" type="number" />
+                </div>
+              
+                <div>
+                    <label class="form-label for="description">Description:</label>
+                    <textarea class="form-control " id="description" @bind="piece.Description" rows="3">
+                    </textarea>
+                </div>
+              
+                <br />
+                <div>
+                    <button @onclick="AddedPiece">ajouter</button>
+                </div>
+                
+            </div>
+        </form>
+   </div>
+ 
 
-@if (salle != null)
-{
-    <div>
-        <h4>Summary</h4>
-        <div>
-            <p><strong>Nom</strong>: @salle.Name</p>
-            <p><strong>PLaceMaximum</strong>: @salle.PlaceMax</p>
-            <p><strong>PleceDisponible</strong>: @salle.PlaceCurrent</p>
-            <p><strong>Nom du Complexe</strong>: @Complexe.Name</p>
-            <p><strong>adresse</strong>= @Complexe.Adress</p>
-        </div>
-    </div>
-<form>
-        <div class="form-group mb-3">
-                <label class="form-label for="titre">Titre:</label>
-            <input class="form-control" id="titre" @bind="piece.Titre" />
-
-                <label class="form-label for="duree">Duree:</label>
-            <input class="form-control" id="duree" @bind="piece.Duree" type="number" />
-
-            <label class="form-label for="description">Description:</label>
-            <input class="form-control" id="description" @bind="piece.Description" />
+</div>
 
 
-        <button @onclick="AddedPiece">Update Piece</button>
-    </div>
-</form>
-}
-else
-{
-    <p>what do you mean</p>
-    <p>you want to add a theater piece into nothing</p>
-    <p>you need to chillax bruh</p>
-}
 @code {
-
     [Parameter]
+    public int Id { get; set; }
+
     public SalleDeTheatreDto salle { get; set; }
 
-    public AddPieceDto piece { get; set; }
+    public AddPieceDto piece { get; set; } = new AddPieceDto();
     public ComplexeDto Complexe { get; set; }
     protected override async Task OnInitializedAsync()
     {
+        salle = await ServSalle.GetById(Id);
         Complexe = await ServComplexe.GetById(salle.ComplexeId);
     }
     public void AddedPiece()
     {
-        ServSalle.AddPiece(salle.Id,piece);
+        ServSalle.AddPiece(Id,piece);
     }
 }

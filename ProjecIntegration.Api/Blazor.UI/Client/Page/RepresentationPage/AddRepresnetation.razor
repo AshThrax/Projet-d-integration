@@ -3,8 +3,8 @@
 @inject Blazor.UI.services.IPieceService ServPiece;
 <h3>Add Representation</h3>
 
-    <form class="form w-50 text-md-start">
-        <div class="form-group">
+    <form class="card form w-50 text-md-start">
+    <div class="form-group card-body">
             <div>
                 <label class="form-label" for="prix">Prix:</label>
                 <input class="form-control" id="prix" @bind="representation.Prix" type="number" step="0.01" />
@@ -55,11 +55,11 @@
     public IEnumerable<SalleDeTheatreDto>? selectSalle {get; set;}
     public int SelectPieceID { get; set; }
     public int SelectSalleId { get; set; }
-    //-------
+    //-------heure
     public DateTime Date { get; set; }
     public int heure { get; set; }
     public int minute { get; set; }
-    //-------
+    //-------enti
     public AddRepresentationDto? representation { get; set; }
 
     protected override async Task OnInitializedAsync()

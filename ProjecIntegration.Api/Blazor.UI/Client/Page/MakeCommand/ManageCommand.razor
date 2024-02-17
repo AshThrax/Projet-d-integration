@@ -81,25 +81,7 @@
                         <p>nombre de place:@commandeMade.NombreDePlace</p>
                     </div>
                 </div>
-                foreach (var item in commandeMade.Tickets)
-                {
-                    <div class="m-2 p-2 rounded ">
-                      
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body bg-light">
-                                <h5 class="card-title">Ticket de theatre </h5>
-                                <h6 class="card-subtitle mb-2 text-muted">@item.Piecetitle</h6>
-                                <p class="card-text">@item.SalleName</p>
-                                <p class="card-text">@item.Representation</p>
-                                <p class ="card-text">@repclt.Prix</p>
-                             
-                            </div>
-                        </div>
-                     
-                  </div>
-                    
-
-                }
+               
             }
     </div>
    
@@ -122,10 +104,11 @@ else{
     public PieceDto piececlt { get; set; }
     public SalleDeTheatreDto? salleclt { get; set; }
     public RepresentationDto? repclt{ get; set; }
-    public AddCommandDto? commandeMade { get; set; }
+    public AddCommandDto commandeMade { get; set; } 
     public int ticketGen { get; set; }
     protected override async Task OnInitializedAsync()
     {
+        commandeMade = new AddCommandDto();
         await Init();
     }
     public async Task Init()
@@ -172,7 +155,7 @@ else{
                                         SalleName = salleclt.Name,
                                         Piecetitle = piececlt.Titre,
                                         Representation = repclt.Seance.ToString(),
-                                        
+
                                     })
                                     .ToList()
         };
@@ -180,7 +163,9 @@ else{
     }
     public async Task MakingCommande()
     {
-        await ServCommande.Create(commandeMade);
+        commandeMade.NombreDePlace = ticketGen;
+        commandeMade.IdRepresentation = IdRepresnetation;
+        await Servrep.AddCommandRepresentation( IdRepresnetation,ticketGen,commandeMade);
         await Task.Delay(100);
         getProfile();
     }
@@ -188,5 +173,4 @@ else{
     public void getProfile() => manager.NavigateTo("/profileViewer");
     public void getHome() => manager.NavigateTo("/profileViewer");
     public void getPrevious() => manager.NavigateTo($"/representation/{IdPiece}");
-}
 }

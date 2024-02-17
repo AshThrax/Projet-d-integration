@@ -21,13 +21,17 @@
                 <QuickGrid Items="@PieceTab.AsQueryable()">
                     <PropertyColumn Property="@(p => p.Titre)" Sortable="true" Title="Title" />
                     <PropertyColumn Property="@(p => p.Duree)" Sortable="true" Title="Duration" />
-                    <PropertyColumn Property="@(p => p.Description)" Sortable="true" Title="Description" />
-                   
-                    <TemplateColumn Title="Action">
+                    
+                    <TemplateColumn Title="Representation">
                         <div>
                             <button class="btn btn-warning" type="button" @onclick="() =>GetRepresnetation(context.Id) ">Representation</button>
                         </div>
                         </TemplateColumn>
+                    <TemplateColumn Title="Representation">
+                        <div>
+                            <button class="btn btn-warning" type="button" @onclick="() =>GetInfo(context.Id) ">info</button>
+                        </div>
+                    </TemplateColumn>
                 </QuickGrid >
             </div>
         </div>
@@ -82,5 +86,9 @@ else
     public async Task GetRepresnetation(int id)
     {
         namanager.NavigateTo($"/representation/{id}");
+    }
+    public void GetInfo(int id)
+    {
+        namanager.NavigateTo($"/pieceinfo/{id}");
     }
 }
