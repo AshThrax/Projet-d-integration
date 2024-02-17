@@ -3,19 +3,19 @@
 @inject Blazor.UI.services.IRepresentationService ServP;
 @inject Blazor.UI.services.IPieceService ServPiece;
 <div class="m-4 p-4 row">
-    <h3>GetCommand</h3>
+    <h3>Vos Commandes</h3>
 
     <br>    
     @if (lstCommand != null)
     {
         <div class="col ">
             <QuickGrid Items="@lstCommand.AsQueryable()">
-                <PropertyColumn Property="p =>p.Id"  Title="Id"  Sortable="true" />
+                <PropertyColumn Property="p =>p.Id"  Title="#"  Sortable="true" />
                 <PropertyColumn Property="p =>p.NombreDePlace" Title="nombre de place" />
                 <TemplateColumn Title="representation">
                    <div>
                        <button type="button" class="btn btn-warning" @onclick="() =>LoadRepresentation(context.IdRepresentation)">
-                           represnetation</button>
+                           representation</button>
                    </div>
                   </TemplateColumn>
             </QuickGrid>
@@ -25,14 +25,17 @@
         {
             <div class="col border border-end text-center">
                 <div class="m-4 p-4">
-                    <h3 class="display-1">@PIecerep.Titre</h3>
+                    <h5 class="">@PIecerep.Titre</h5>
                 </div>
-            <Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails SelectedItem="@selectRepresnetaion">
-            </Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails>
+                <div class="w-50 h-25">
+                    <Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails PlaceCommand="@SelecteCommand" SelectedItem="@selectRepresnetaion">
+                     </Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails>
+
+                </div>
             <br>
             </div>
             <div>
-                <button type="btn btn-warning" @onclick="Clean"> clean</button>
+                <button type="button" class="btn btn-warning" @onclick="Clean"> clean</button>
             </div>
         }
         else
@@ -51,11 +54,13 @@
     [Parameter]
     public IEnumerable<CommandDto> lstCommand { get; set; }
     public RepresentationDto? selectRepresnetaion { get; set; }
+    public int SelecteCommand { get; set; }
     int pieceid { get; set; }
     public PieceDto? PIecerep { get; set; }
     protected override async Task OnInitializedAsync()
     {
         int id = lstCommand.ElementAt(0).IdRepresentation;
+        SelecteCommand = lstCommand.ElementAt(0).NombreDePlace;
         selectRepresnetaion = await ServP.GetById(id);
         pieceid = selectRepresnetaion.IdPiece;
         PIecerep = await ServPiece.GetById(pieceid);
@@ -63,6 +68,7 @@
 
     public async Task LoadRepresentation(int id)
     {
+        SelecteCommand = lstCommand.ElementAt(id).NombreDePlace;
         selectRepresnetaion = await ServP.GetById(id);
         pieceid = selectRepresnetaion.IdPiece;
         PIecerep = await ServPiece.GetById(pieceid);

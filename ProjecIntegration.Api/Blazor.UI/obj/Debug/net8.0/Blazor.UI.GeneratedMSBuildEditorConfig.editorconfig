@@ -94,6 +94,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUGllY2VQYWdlXEFkZFBpZWNlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/PiecePage/ManagePiece.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUGllY2VQYWdlXE1hbmFnZVBpZWNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classic web/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/PiecePage/PieceRepresnetation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUGllY2VQYWdlXFBpZWNlUmVwcmVzbmV0YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

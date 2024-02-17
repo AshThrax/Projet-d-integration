@@ -1,5 +1,59 @@
-﻿<h3>PieceInfo</h3>
+﻿@page "/pieceinfo{ID:int}"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject Blazor.UI.services.IPieceService Servp;
+@inject Blazor.UI.services.IRepresentationService PieceRep;
+@inject Microsoft.AspNetCore.Components.NavigationManager manager;
+
+<h3>PieceInfo</h3>
+@if (selectPieces != null)
+{
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                   <h5><strong>Titre :</strong> @selectPieces.Titre</h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Description</h5>
+                    <p class="card-text">@selectPieces.Description</p>
+                    <p class="card-text">@selectPieces.Duree: minutes</p>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="col">
+              <div class="m-2 p-2 bg-light rounded">
+                <div class="m-2 p-2">
+                    <QuickGrid Items="@Myrepresnetation.AsQueryable()">
+                        <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+                        <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
+                        <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true"  />
+                        <PropertyColumn Property="@(p => p.Seance.Day)" Sortable="true"  />
+                        <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true"  />
+                       
+                    </QuickGrid>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+else
+{
+    
+}
 
 @code {
-
+    [Parameter]
+    public int ID { get; set; }
+    public PieceDto selectPieces { get; set; }
+    public IEnumerable<RepresentationDto> Myrepresnetation { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        selectPieces = await Servp.GetById(ID);
+        Myrepresnetation = await PieceRep.GetPiece(ID);
+    }
+    
 }

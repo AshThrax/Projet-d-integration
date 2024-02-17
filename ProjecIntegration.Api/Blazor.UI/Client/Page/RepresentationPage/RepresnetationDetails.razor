@@ -1,31 +1,38 @@
 ﻿
-<div class="col">
-    <div class="colbg-light rounded">
+<div class="col text-md-start">
+    <div class="col bg-light rounded">
         <div class="m-2 p-2">
-            <p class="lead">Detail Representation</p>
-            <div>
-                <p><strong>Seance :</strong>@SelectedItem.Seance</p>
-            </div>
-            <div>
-                <p><strong>Prix:</strong>@SelectedItem.Prix</p>
+            <div class="card">
+                <div class="card-header">
+                    <p class="lead">Detail Representation</p>
+                </div>
+               <div class="card-body">
+                    <div>
+                        <p><strong>nombre de place:</strong>@PlaceCommand</p>
+                    </div>
+                    <div>
+                        <p><strong>Date :</strong>@SelectedItem.Seance.Date.Year/@SelectedItem.Seance.Date.Month/@SelectedItem.Seance.Date.Day</p>
+                        <p><strong>heure:</strong>@SelectedItem.Seance.Hour:@SelectedItem.Seance.Minute </p>
+                        
+                    </div>
+                    <div>
+                        <p><strong>Prix:</strong>@SelectedItem.Prix</p>
+                    </div>
+               </div>
+               <div class="Card-footer">
+
+               </div>
             </div>
         </div>  
-        <div class="col">
-            @foreach(var item in SelectedItem.Commands)
-            {
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">nombre de tickets:@item.Tickets</h6>
-                        <p class="card-text">@item.NombreDePlace</p>
-                    </div>
-                </div>
-            }
-        </div>
+       
     </div>
 </div>
   
 @code {
     [Parameter]
     public RepresentationDto SelectedItem {get;set;}
+    [Parameter]
+    public int PlaceCommand {get;set;}
+
+    
 }

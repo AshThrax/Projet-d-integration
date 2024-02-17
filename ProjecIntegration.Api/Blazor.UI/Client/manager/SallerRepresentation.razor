@@ -1,58 +1,60 @@
 ﻿@using Microsoft.AspNetCore.Components.QuickGrid
-<h3 class="display-4">SallePiece</h3>
 @inject Blazor.UI.services.ISalleService Servsalle;
-<div class="row p-2">
+<div class="m-4 p-4">
+    <h3 class="display-4">SallePiece</h3>
+    <div class="row p-2">
 
-    <QuickGrid Items="@salleTab.AsQueryable()">
-            <PropertyColumn Property="@(p => p.Id)" Sortable="true">
-            </PropertyColumn>
-            <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
-            <PropertyColumn Property="@(p =>p.PlaceMax)" Sortable="true" />
-            <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
-                <TemplateColumn Context="item">
+        <QuickGrid Items="@salleTab.AsQueryable()">
+                <PropertyColumn Property="@(p => p.Id)" Sortable="true">
+                </PropertyColumn>
+                <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+                <PropertyColumn Property="@(p =>p.PlaceMax)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
+                    <TemplateColumn Context="item">
+                        <div>
+                            <button type="button" class="btn" @onclick="() => loadrepresentation(item.Representations)">Details</button>
+                        </div>
+                    </TemplateColumn>
+                    <TemplateColumn Context="item">
+                        <div>
+                            <button type="button" class="btn" @onclick="() => updateSalle(item)">update salle</button>
+                        </div>
+                    </TemplateColumn>
+                    <TemplateColumn Context="item">
                     <div>
-                        <button type="button" class="btn" @onclick="() => loadrepresentation(item.Representations)">represnetationDetails</button>
+                    <button type="button" class="btn" @onclick="() => addpieceSalle()">addPiece</button>
                     </div>
                 </TemplateColumn>
-                <TemplateColumn Context="item">
-                    <div>
-                        <button type="button" class="btn" @onclick="() => updateSalle(item)">update salle</button>
-                    </div>
-                </TemplateColumn>
-                <TemplateColumn Context="item">
-                <div>
-                <button type="button" class="btn" @onclick="() => addpieceSalle()">addPiece</button>
-                </div>
-            </TemplateColumn>
-        </QuickGrid>
+            </QuickGrid>
 
-</div>
-<br />
-<div class="row">
-    @if (selectsalle != null)
-    {
-        <div class="col">
-            @if (isUpdate && !isdetail && !isAddPiece)
-            {
-                <p>update</p>
-                <Blazor.UI.Client.Page.sallePage.SalleUpdate salleDeTheatre="@selectsalle"></Blazor.UI.Client.Page.sallePage.SalleUpdate>
-            }
-            else if(isAddPiece && !isUpdate && !isdetail)
-            {
-             <Blazor.UI.Client.Page.sallePage.AddSalle></Blazor.UI.Client.Page.sallePage.AddSalle>
-            }
-            else
-            {
+    </div>
+    <br />
+    <div class="row">
+        @if (selectsalle != null)
+        {
+            <div class="col">
+                @if (isUpdate && !isdetail && !isAddPiece)
+                {
+                    <p>update</p>
+                    <Blazor.UI.Client.Page.sallePage.SalleUpdate salleDeTheatre="@selectsalle"></Blazor.UI.Client.Page.sallePage.SalleUpdate>
+                }
+                else if(isAddPiece && !isUpdate && !isdetail)
+                {
+                 <Blazor.UI.Client.Page.sallePage.AddSalle></Blazor.UI.Client.Page.sallePage.AddSalle>
+                }
+                else
+                {
              
-                <Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation getrepresnetation="@representation"></Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation>
+                    <Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation getrepresnetation="@representation"></Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation>
                  
-            }
-        </div>
-    }
-    else
-    {
+                }
+            </div>
+        }
+        else
+        {
         
-    }
+        }
+    </div>
 </div>
 @code {
     public IEnumerable<SalleDeTheatreDto> salleTab { get; set; }

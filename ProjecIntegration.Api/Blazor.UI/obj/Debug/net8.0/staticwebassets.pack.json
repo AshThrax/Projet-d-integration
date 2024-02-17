@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
+      "Id": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\images\\image_processing20191110-10396-o8clav.gif",
+      "PackagePath": "staticwebassets\\images\\image_processing20191110-10396-o8clav.gif"
+    },
+    {
       "Id": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

@@ -19,10 +19,10 @@
             <div class="m-2 p-2 bg-light border rounded">
                 <div class="m-2 p-2">
                     <h4>Representation Details</h4>
-                    <p><strong>Title:</strong> @myPiece.Titre</p>
-                    <p><strong>Duration:</strong> @myPiece.Duree</p>
-                    <p><strong>Description:</strong> @myPiece.Description</p>
-                    <p><strong>Salle ID:</strong> @myPiece.idSalle</p>
+                    <p><strong>Title: </strong> @myPiece.Titre</p>
+                    <p><strong>Duration: </strong> @myPiece.Duree</p>
+                    <p><strong>Description: </strong> @myPiece.Description</p>
+                    <p><strong>Salle : </strong>@Piecesalle.Name</p>
                 </div>
             </div>
         }  
@@ -40,15 +40,18 @@
                 <div class="m-2 p-2">
                     <QuickGrid Items="@Myrepresnetation.AsQueryable()">
                         <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
-                        <PropertyColumn Property="@(p => p.Seance)" Sortable="true" Title="Seance" />     
+                        <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
+                        <PropertyColumn Property="@(p => p.Seance.Month)" Title="Mois" Sortable="true" />
+                        <PropertyColumn Property="@(p => p.Seance.Day)" Title="Jour" Sortable="true" />
+                        <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true" />
                         <TemplateColumn Title="Selectioner une represnentation">
                          
-                                <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context)">details</button>
-                                </div>
+                                    <div>
+                                        <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context)">Details</button>
+                                    </div>
                             
-                        </TemplateColumn>
-                        <!-- Add more columns for Commands if needed -->
+                            </TemplateColumn>
+                       
                     </QuickGrid>
 
                 </div>
@@ -57,18 +60,26 @@
 </div>
 @if (selectedRepresentation != null)
 {
-    <div class="bg-light p-2 m-2 rounded">
+    <div class="bg-light p-2 m-2 rounded w-25">
+        <div class=" text-md-start">
+            <div class="p-2 m-2">
+                <h4>Seance details</h4>
+                <br />
+                <p><strong>Price:</strong> @selectedRepresentation.Prix</p>
+                <div>
+                    <p><strong>Seance</strong></p>
+                    <div class="m-4">
+                        <p><strong>Date :</strong>@selectedRepresentation.Seance.Date.Year/@selectedRepresentation.Seance.Date.Month/@selectedRepresentation.Seance.Date.Day</p>
+                        <p><strong>Heure:</strong>@selectedRepresentation.Seance.Hour:@selectedRepresentation.Seance.Minute </p>
+                    </div>
+                </div>
+                <p><strong>Salle</strong>: @Piecesalle.Name</p>
+            </div>    
+            <div class="p-2 m-2 ">
+                <p class="lead">Desirer vous reserver cette seance la </p>
+                <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(selectedRepresentation.Id)">Commander</button>
+            </div>
 
-        <div class="p-2 m-2">
-            <h4>Seance details</h4>
-            <br />
-            <p><strong>Price:</strong> @selectedRepresentation.Prix</p>
-            <p><strong>Seance:</strong>@selectedRepresentation.Seance</p>
-            <p><strong>Salle</strong>: @Piecesalle.Name</p>
-        </div>    
-        <div class="p-2 m-2 ">
-            <p>desirer vous reserver cette seance la </p>
-            <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(selectedRepresentation.Id)">Commander</button>
         </div>
     </div>
 }

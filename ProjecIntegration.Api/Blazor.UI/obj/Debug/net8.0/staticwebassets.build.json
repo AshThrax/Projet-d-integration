@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LXsPUxBYYa3IW1X1AobXCXEmDamDB7es5Ecpp91nh7w=",
+  "Hash": "wM0T7wte6i8yu3mcEbq01lvMtaxzMr5ZE+v0YolbJDQ=",
   "Source": "Blazor.UI",
   "BasePath": "/",
   "Mode": "Root",
@@ -8337,6 +8337,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icon-192.png"
+    },
+    {
+      "Identity": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\images\\image_processing20191110-10396-o8clav.gif",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "images/image_processing20191110-10396-o8clav.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\image_processing20191110-10396-o8clav.gif"
     },
     {
       "Identity": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\index.html",

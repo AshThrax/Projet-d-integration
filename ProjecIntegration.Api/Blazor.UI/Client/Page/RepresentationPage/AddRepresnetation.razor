@@ -1,41 +1,94 @@
 ﻿@inject Blazor.UI.services.IRepresentationService Servrep;
+@inject Blazor.UI.services.ISalleService ServSalle;
+@inject Blazor.UI.services.IPieceService ServPiece;
 <h3>Add Representation</h3>
 
-@if (representation != null)
-{
-    <form>
+    <form class="form w-50 text-md-start">
         <div class="form-group">
-            <label class="form-label" for="prix">Prix:</label>
-            <input class="form-control" id="prix" @bind="representation.Prix" type="number" step="0.01" />
-
-            <label class="form-label" for="seance">Seance:</label>
-            <input class="form-control" id="seance" @bind="representation.Seance" type="datetime-local" />
-
-            <label class="form-label" for="idSalleDeTheatre">Salle De Theatre ID:</label>
-            <input class="form-control" id="idSalleDeTheatre" @bind="representation.IdSalleDeTheatre" type="number" />
-
-            <label class="form-label" for="idPiece">Piece ID:</label>
-            <input class="form-control" id="idPiece" @bind="representation.IdPiece" type="number" />
-
-            <button @onclick="AddRepresentation">Add Representation</button>
+            <div>
+                <label class="form-label" for="prix">Prix:</label>
+                <input class="form-control" id="prix" @bind="representation.Prix" type="number" step="0.01" />
+            </div>
+            <div>
+                <!-- manage the date -->
+                <label class="form-label" for="seance">Seance:</label>
+                <input class="form-control" id="seance" @bind="Date" type="datetime-local" />
+                <label class="form-label" for="heure">heure:</label>
+                 <input class="form-control" id="heure" @bind="heure" type="number" />
+                <label class="form-label" for="minute">Minute:</label>
+                <input class="form-control" id="minute" @bind="minute" type="number" />
+            </div>
+            <div>
+                <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
+              
+                <select class="form-control" @bind="SelectSalleId" @oninput="selectionSalle">
+                    <option>Choisissez une Salle</option>
+                    @foreach (var item in selectSalle)
+                    {
+                        <option value="@item.Id">@item.Name</option>    
+                    }
+                </select>
+            </div>
+            <div>
+                <label class="form-label" for="idPiece">Piece</label>
+               
+                <div>
+                <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
+                        <option>Choisissez une piece</option>
+                        <option>Choisissez une Piece</option>
+                        @foreach (var item in SelectPiece)
+                        {
+                            <option value="@item.Id">@item.Titre.ToString()</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="p-4 m-4">
+                <button @onclick="AddRepresentation">Add Representation</button>
+            </div>
         </div>
     </form>
-}
-else
-{
-    
-}
+
 
 @code {
+    public IEnumerable<PieceDto>? SelectPiece { get; set; }
+    public IEnumerable<SalleDeTheatreDto>? selectSalle {get; set;}
+    public int SelectPieceID { get; set; }
+    public int SelectSalleId { get; set; }
+    //-------
+    public DateTime Date { get; set; }
+    public int heure { get; set; }
+    public int minute { get; set; }
+    //-------
+    public AddRepresentationDto? representation { get; set; }
 
-    public AddRepresentationDto representation { get; set; }
-
+    protected override async Task OnInitializedAsync()
+    {
+        representation = new AddRepresentationDto();
+        SelectPiece = await ServPiece.Get();
+        selectSalle = await ServSalle.Get();
+    }
     private void AddRepresentation()
     {
+        representation.Seance = Date;
+        representation.Seance.AddHours(heure);
+        representation.Seance.AddMinutes(minute);
         Servrep.Create(representation);
     }
-}
+    public async Task selectionPiece(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectPieceID = selectedId;
+           
+        }
+    }
+    public async Task selectionSalle(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectSalleId = selectedId;
 
-@code {
-
+        }
+    }
 }
