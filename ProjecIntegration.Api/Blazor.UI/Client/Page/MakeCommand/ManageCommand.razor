@@ -1,9 +1,11 @@
 ﻿@page "/makecommand/{IdPiece:int}/{IdSalle:int}/{IdRepresnetation:int}"
-@using Blazor.UI.modelViews
-@inject Blazor.UI.services.IPieceService ServPiece;
-@inject Blazor.UI.services.ISalleService ServSalle;
-@inject Blazor.UI.services.IRepresentationService Servrep;
-@inject Blazor.UI.services.ICommandService ServCommande;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+
+@inject IPieceService ServPiece;
+@inject ISalleService ServSalle;
+@inject IRepresentationService Servrep;
+@inject ICommandService ServCommande;
 
 @inject Microsoft.AspNetCore.Components.NavigationManager manager
 <div class="jumbotron m-2 p-2 bg-light text-lg-center">

@@ -1,9 +1,11 @@
 ﻿using data.Infrastructure.Repository;
-using data.Interfaces.IRepository;
+using dataInfraTheather.Models.Entity;
+using dataInfraTheather.Repository.Interfaces.IRepository;
+using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService
+namespace WebApi.BusinessService.Complexe
 {
- 
+
     public class BusinessComplexe : IBusinessComplexe
     {
         private readonly IMapper _mapper;
@@ -17,9 +19,9 @@ namespace WebApi.BusinessService
 
         public void CreateAsync(ComplexeDto complexeDto)
         {
-            var entity =  _mapper.Map<Complexe>(complexeDto);
-            _complexeRepository.Insert(entity); 
-             
+            var entity = _mapper.Map<Complexe>(complexeDto);
+            _complexeRepository.Insert(entity);
+
         }
 
         public async Task Delete(int id)
@@ -33,7 +35,7 @@ namespace WebApi.BusinessService
 
         public async Task<IEnumerable<ComplexeDto>> GetAllComplexe()
         {
-           var GetEntity= await _complexeRepository.GetAll();
+            var GetEntity = await _complexeRepository.GetAll();
             return _mapper.Map<IEnumerable<ComplexeDto>>(GetEntity);
         }
 
@@ -41,9 +43,9 @@ namespace WebApi.BusinessService
         {
 
             var GetEntity = await _complexeRepository.GetById(id);
-            
-            
-                return _mapper.Map<ComplexeDto>(GetEntity);
+
+
+            return _mapper.Map<ComplexeDto>(GetEntity);
         }
 
         public async Task UpdateAsync(int id, UpdateComplexeDto complexeDto)
@@ -52,7 +54,7 @@ namespace WebApi.BusinessService
             if (getEntity != null)
             {
                 var conversion = _mapper.Map<Complexe>(getEntity);
-                _complexeRepository.Update(id,conversion);
+                _complexeRepository.Update(id, conversion);
             }
 
         }

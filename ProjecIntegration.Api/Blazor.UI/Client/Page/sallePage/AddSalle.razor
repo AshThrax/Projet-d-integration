@@ -1,5 +1,7 @@
-﻿@inject Blazor.UI.services.ISalleService SalleServ;
-@inject Blazor.UI.services.IComplexeService SerComp;
+﻿@inject ISalleService SalleServ;
+@inject IComplexeService SerComp;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
 <div class="m-4 p-4 card">
     <div class="card-header">
         <h3>AddSalle</h3>

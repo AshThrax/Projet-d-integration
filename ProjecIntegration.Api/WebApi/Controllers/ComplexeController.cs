@@ -1,5 +1,8 @@
-﻿using data.Interfaces.IRepository;
-namespace ProjecIntegration.Api.Controllers
+﻿using dataInfraTheather.Models.Entity;
+using dataInfraTheather.Repository.Interfaces.IRepository;
+using WebApi.Application.Common.Exceptions;
+using WebApi.Application.DTO;
+namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -12,15 +15,15 @@ namespace ProjecIntegration.Api.Controllers
             IComplexeRepository complexeService,
             IMapper mapper)
         {
-            _mapper=mapper;
+            _mapper = mapper;
             _complexeService = complexeService;
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById( int id)
+        public async Task<ActionResult> GetById(int id)
         {
             try
             {
-                var entity= await _complexeService.GetById(id, c =>c.SalleDeTheatres);
+                var entity = await _complexeService.GetById(id, c => c.SalleDeTheatres);
                 var conversion = _mapper.Map<ComplexeDto>(entity);
                 return Ok(conversion);
 
@@ -40,8 +43,9 @@ namespace ProjecIntegration.Api.Controllers
         }
         [HttpGet]
         //[Authorize]
-        public async Task<ActionResult<IEnumerable<ComplexeDto>>> GetAll() { 
-        
+        public async Task<ActionResult<IEnumerable<ComplexeDto>>> GetAll()
+        {
+
             try
             {
                 var entity = await _complexeService.GetAll(c => c.SalleDeTheatres);
@@ -87,7 +91,7 @@ namespace ProjecIntegration.Api.Controllers
             }
         }
         [HttpPost("add-Salle/{idComplexe}")]
-        public ActionResult AddSalle(int idComplexe,[FromBody] AddSalleDeTheatreDto salle)
+        public ActionResult AddSalle(int idComplexe, [FromBody] AddSalleDeTheatreDto salle)
         {
             Console.WriteLine("entering api ");
             try
@@ -156,11 +160,11 @@ namespace ProjecIntegration.Api.Controllers
             }
         }
         [HttpDelete("delete-salle/{idComplexe}/{idSalle}")]
-        public ActionResult Delete(int idComplexe,int idSalle)
+        public ActionResult Delete(int idComplexe, int idSalle)
         {
             try
             {
-                _complexeService.DeletesalleDetheatre(idComplexe,idSalle);
+                _complexeService.DeletesalleDetheatre(idComplexe, idSalle);
                 return NoContent();
             }
             catch (ValidationException ex)

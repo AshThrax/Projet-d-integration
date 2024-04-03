@@ -1,6 +1,6 @@
-﻿namespace ProjecIntegration.Api.Application.DTO
+﻿namespace WebApi.Application.DTO
 {
-    public class EntrepriseDto :BaseDto
+    public class EntrepriseDto : BaseDto
     {
         public string Nom { get; set; }
         public string Adress { get; set; }

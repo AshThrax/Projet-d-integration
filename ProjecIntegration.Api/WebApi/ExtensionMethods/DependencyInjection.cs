@@ -1,27 +1,29 @@
-﻿using data.Models.Validator;
-using data;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
-using ProjecIntegration.Api.ApiService.Authorization;
-using ProjecIntegration.Api.Application.Common.Mapping;
-using ProjecIntegration.Api.Application.DTO;
 using System.Security.Claims;
 using WebApi.ApiService;
 using Auth0Net.DependencyInjection;
-using WebApi.BusinessService;
-using WebApi.BusinessService;
 using WebApi.BusinessService.RepresentationBusiness;
 using WebApi.BusinessService.salle;
+using dataInfraTheather;
+using WebApi.Validator;
+using WebApi.Application.DTO;
+using WebApi.Application.Common.Mapping;
+using WebApi.BusinessService.Complexe;
+using WebApi.ApiService.Authorization;
+using WebApi.BusinessService.Command;
+using WebApi.BusinessService.Theatrebusiness;
+using WebApi.BusinessService.Piece;
 
 
-namespace ProjecIntegration.Api.ExtensionMethods
+namespace WebApi.ExtensionMethods
 {
     public static class DependencyInjection
     {
 
-        public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration) 
+        public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddApplication();
             services.AddInfrastructure(configuration);
@@ -36,8 +38,8 @@ namespace ProjecIntegration.Api.ExtensionMethods
          */
         public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
-            services.AddScoped<IBusinessCommandService,BusinessCommandService>();//commande services user
-            services.AddScoped<IBusinessRepresentation,BusinessRepresntation>();//Represnetation business Service
+            services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
+            services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service
             services.AddScoped<IBusinessSalle, BusinessSalle>();//Business Salle Services
             services.AddScoped<IBusinessComplexe, BusinessComplexe>(); //business Complexe Service
             services.AddScoped<IBusinessPiece, BusinessPiece>(); //Business Piece Service
@@ -54,13 +56,13 @@ namespace ProjecIntegration.Api.ExtensionMethods
         /*
             static methods in order to add authentication the programm.cs files
          */
-       
+
         /*
         static methods in order to add authentication the programm.cs files
       */
         public static IServiceCollection AddAuthO(this IServiceCollection services, IConfiguration configuration)
         {
-            var Domain= configuration["Auth0:Domain"];
+            var Domain = configuration["Auth0:Domain"];
             var Audience = configuration["Auth0:Audience"];
             var Clientid = configuration["Auth0:ClientId"];
             var ClientSecret = configuration["Auth0:ClientSecret"];
@@ -68,7 +70,7 @@ namespace ProjecIntegration.Api.ExtensionMethods
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                
+
             }).AddJwtBearer(options =>
             {
                 options.Authority = Domain;
@@ -80,9 +82,9 @@ namespace ProjecIntegration.Api.ExtensionMethods
             });
             services.AddAuth0AuthenticationClient(options =>
             {
-                options.Domain=Domain;
-                options.ClientId=Clientid;
-                options.ClientSecret=ClientSecret;
+                options.Domain = Domain;
+                options.ClientId = Clientid;
+                options.ClientSecret = ClientSecret;
             });
             services.AddAuth0ManagementClient()
                     .AddManagementAccessToken();

@@ -1,4 +1,7 @@
-﻿using data.Interfaces.IRepository;
+﻿using ApplicationTheather.Common.Interfaces.IRepository;
+using Domain.Entity.TheatherEntity;
+using WebApi.Application.Common.Exceptions;
+using WebApi.Application.DTO;
 
 namespace WebApi.Controllers
 {

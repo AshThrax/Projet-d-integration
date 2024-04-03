@@ -1,11 +1,11 @@
 using Blazor.UI.Client.Page;
-using Blazor.UI.modelViews;
+using Blazor.UI.data.modelViews;
 using System.Net.Http.Json;
 using static System.Net.WebRequestMethods;
 
-namespace Blazor.UI.services
+namespace Blazor.UI.data.services
 {
-    public interface IComplexeService 
+    public interface IComplexeService
     {
         Task<IEnumerable<ComplexeDto>> Get();
         Task<ComplexeDto> GetById(int id);
@@ -17,17 +17,17 @@ namespace Blazor.UI.services
     public class ComplexeService : IComplexeService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri= "https://localhost:44337/api/Complexe";
+        private const string ApiUri = "https://localhost:44337/api/Complexe";
 
         public ComplexeService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-          
+
         }
 
         public async Task<IEnumerable<ComplexeDto>> Get()
         {
-            return  await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
         }
 
         public async Task<ComplexeDto> GetById(int id)

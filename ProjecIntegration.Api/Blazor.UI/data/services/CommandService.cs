@@ -1,11 +1,9 @@
-
-using Blazor.UI.modelViews;
-using Blazor.UI.services;
 using System.Net.Http.Json;
 using Microsoft.Extensions.Http;
-namespace Blazor.UI.services
+using Blazor.UI.data.modelViews;
+namespace Blazor.UI.data.services
 {
-    public interface ICommandService 
+    public interface ICommandService
     {
         Task<CommandDto[]> Get();
         Task<string> GetAuth();

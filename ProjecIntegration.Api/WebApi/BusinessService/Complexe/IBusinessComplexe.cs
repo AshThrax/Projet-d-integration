@@ -1,4 +1,6 @@
-﻿namespace WebApi.BusinessService
+﻿using WebApi.Application.DTO;
+
+namespace WebApi.BusinessService.Complexe
 {
     public interface IBusinessComplexe
     {

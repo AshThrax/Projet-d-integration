@@ -1,35 +1,38 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using dataInfraTheather.Infrastructure.Persistence;
+using dataInfraTheather.Infrastructure.Repository;
+using dataInfraTheather.Repository.Interfaces.IRepository;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace data
+namespace dataInfraTheather
 {
-    public  static class DependencyInjection
+    public static class DependencyInjection
     {
 
-              public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-              {
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
             //injection de la database 
 
-                     var conn = configuration.GetConnectionString("Default");
+            var conn = configuration.GetConnectionString("Default");
 
-                         services.AddDbContext<ApplicationDbContext>(option =>
-                            option.UseSqlServer(
-                            (conn),
-                            b => b.MigrationsAssembly("WebApi")));
-                    //injection des repository
+            services.AddDbContext<ApplicationDbContext>(option =>
+               option.UseSqlServer(
+               conn,
+               b => b.MigrationsAssembly("WebApi")));
+            //injection des repository
 
-                    services.AddScoped<ICommandRepository, CommandRespository>();
-                    services.AddScoped<IComplexeRepository, ComplexeRepository>();
-                    services.AddScoped<IPieceRepository, PieceRepository>();
-                    services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
-                    services.AddScoped<IRepresentationRepository, RepresentationRespository>();
-                    services.AddScoped<IPieceRepository, PieceRepository>();
-                   
-                    //fin injection reposi
-                    //fin injection service
-                    return services;
-              }
-            
+            services.AddScoped<ICommandRepository, CommandRespository>();
+            services.AddScoped<IComplexeRepository, ComplexeRepository>();
+            services.AddScoped<IPieceRepository, PieceRepository>();
+            services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
+            services.AddScoped<IRepresentationRepository, RepresentationRespository>();
+            services.AddScoped<IPieceRepository, PieceRepository>();
+
+            //fin injection reposi
+            //fin injection service
+            return services;
+        }
+
     }
 }
 

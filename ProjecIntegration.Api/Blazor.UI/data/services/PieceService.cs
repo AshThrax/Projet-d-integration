@@ -5,12 +5,11 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Blazor.UI.Client.manager;
-using Blazor.UI.modelViews;
+using Blazor.UI.data.modelViews;
 
-
-namespace Blazor.UI.services
+namespace Blazor.UI.data.services
 {
-    public interface IPieceService 
+    public interface IPieceService
     {
         Task<IEnumerable<PieceDto>> Get();
         Task<PieceDto> GetById(int id);
@@ -26,12 +25,12 @@ namespace Blazor.UI.services
     {
         private readonly HttpClient _httpClient;
         private const string ApiUri = "https://localhost:44337/api/Piece";
-     
+
         public PieceService(HttpClient httpClient)
         {
 
             _httpClient = httpClient;
-            
+
         }
 
         public async Task<IEnumerable<PieceDto>> Get()

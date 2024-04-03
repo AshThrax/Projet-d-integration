@@ -1,9 +1,10 @@
 ﻿
 using data.Infrastructure.Repository;
-using data.Interfaces.IRepository;
+using dataInfraTheather.Models.Entity;
+using dataInfraTheather.Repository.Interfaces.IRepository;
 using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService
+namespace WebApi.BusinessService.Command
 {
     public class BusinessCommandService : IBusinessCommandService
     {
@@ -22,8 +23,8 @@ namespace WebApi.BusinessService
         {
             _mapper = mapper;
             _sallerepository = sallerepository;
-            _piecerepository= pieceRepository;
-             _commandRepository = commandRepository;
+            _piecerepository = pieceRepository;
+            _commandRepository = commandRepository;
             _representationRepository = representationRepository;
         }
 
@@ -36,13 +37,13 @@ namespace WebApi.BusinessService
             }
         }
 
-        public async  Task GenerateCommandTicket(AddCommandDto command, string auth)
+        public async Task GenerateCommandTicket(AddCommandDto command, string auth)
         {
-            var representation = await  _representationRepository.GetById(command.IdRepresentation);//récuperation de la seance 
-            int PieceID =  representation.IdPiece;    //recuperation de la piece
-            var Piece = await  _piecerepository.GetById(PieceID);
+            var representation = await _representationRepository.GetById(command.IdRepresentation);//récuperation de la seance 
+            int PieceID = representation.IdPiece;    //recuperation de la piece
+            var Piece = await _piecerepository.GetById(PieceID);
             var salle = await _sallerepository.GetById(Piece.IdSalle);
-            var DateToString= representation.Seance.ToString();
+            var DateToString = representation.Seance.ToString();
             //génération du ticket
             CommandDto commandeMade = new CommandDto
             {
@@ -59,9 +60,9 @@ namespace WebApi.BusinessService
                                     }).ToList()
             };
             //conversion Dto
-            var Conversion= _mapper.Map<Command>(commandeMade);
+            var Conversion = _mapper.Map<Command>(commandeMade);
             //appel du controller pour inserer les ticket data base 
-             _commandRepository.AddCommand(Conversion);
+            _commandRepository.AddCommand(Conversion);
         }
 
         public async Task<IEnumerable<CommandDto>> GetAllCommand()
@@ -78,10 +79,10 @@ namespace WebApi.BusinessService
 
         public async Task<IEnumerable<CommandDto>> GetCommandUSer(string Auth)
         {
-            var getAll = await _commandRepository   .GetAll();
-            var userCommand = getAll.Where(x =>x.AuthId==Auth)
-                                    .ToList();   
-                
+            var getAll = await _commandRepository.GetAll();
+            var userCommand = getAll.Where(x => x.AuthId == Auth)
+                                    .ToList();
+
             return _mapper.Map<IEnumerable<CommandDto>>(userCommand);
         }
     }

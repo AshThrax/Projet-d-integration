@@ -1490,6 +1490,30 @@
             "rid": "win"
           }
         }
+      },
+      "ApplicationTheather/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ApplicationTheather.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApplicationTheather.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
       }
     }
   },
@@ -4044,10 +4068,22 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "ApplicationTheather/1.0.0": {
+      "type": "project",
+      "path": "../ApplicationTheather/ApplicationTheather.csproj",
+      "msbuildProject": "../ApplicationTheather/ApplicationTheather.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "ApplicationTheather >= 1.0.0",
+      "Domain >= 1.0.0",
       "FluentValidation >= 11.9.0",
       "Microsoft.EntityFrameworkCore >= 8.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.1",
@@ -4063,9 +4099,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\data\\data.csproj",
-      "projectName": "data",
-      "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\data\\data.csproj",
+      "projectUniqueName": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj",
+      "projectName": "DataInfraTheather",
+      "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj",
       "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\data\\obj\\",
       "projectStyle": "PackageReference",
@@ -4088,7 +4124,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
+              "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
+            },
+            "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

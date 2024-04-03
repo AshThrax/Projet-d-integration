@@ -1,11 +1,13 @@
 ﻿@page "/representation/{Id:int}"
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
 @attribute [Authorize]
 @attribute [StreamRendering]
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
-@inject Blazor.UI.services.IRepresentationService servRep;
-@inject Blazor.UI.services.IPieceService servPiece;
-@inject Blazor.UI.services.ISalleService servsalle;
+@inject  IRepresentationService servRep;
+@inject  IPieceService servPiece;
+@inject  ISalleService servsalle;
 
 <div class="jumbotron bg-light m-2 p-2 rounded">
     <div class="m-2 p-2  m-2 p-2 border rounded-4">

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components;
 using System.Security.Claims;
+using Blazor.UI.data.modelViews;
 
 namespace Blazor.UI.data.services.authorization
 {

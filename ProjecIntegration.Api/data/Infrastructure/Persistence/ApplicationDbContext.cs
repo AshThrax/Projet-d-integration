@@ -1,6 +1,6 @@
-﻿using data.Models.Entity;
+﻿using dataInfraTheather.Models.Entity;
 
-namespace data.infrastructure.Persistence
+namespace dataInfraTheather.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {
@@ -11,11 +11,11 @@ namespace data.infrastructure.Persistence
         public DbSet<Complexe> Complexe { get; set; }
         public DbSet<Representation> Representations { get; set; }
         public DbSet<SalleDeTheatre> SalleDeTheatres { get; set; }
-   
+
         public DbSet<Piece> Pieces { get; set; }
 
         public DbSet<Tickets> Tickets { get; set; }
-    
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,21 +23,21 @@ namespace data.infrastructure.Persistence
             //modelBuilder.Entity<Entreprise>().HasKey();
 
             //modelBuilder.Entity<Complexe>()
-                //.HasOne(x =>x.Entreprise)
-                //.WithMany(x =>x.Complexes)
-                //.HasForeignKey(x=>x.EntrepriseID).
-               // OnDelete(DeleteBehavior.Restrict);
-          
+            //.HasOne(x =>x.Entreprise)
+            //.WithMany(x =>x.Complexes)
+            //.HasForeignKey(x=>x.EntrepriseID).
+            // OnDelete(DeleteBehavior.Restrict);
+
 
             //complexe Configuration
             modelBuilder.Entity<Complexe>()
-                .HasKey(x =>x.Id);
+                .HasKey(x => x.Id);
             modelBuilder.Entity<Complexe>()
                 .Property(x => x.AddedTime)
                 .IsRequired(false);
             // salle Configuration
             modelBuilder.Entity<SalleDeTheatre>()
-                .HasKey(x =>x.Id);
+                .HasKey(x => x.Id);
             modelBuilder.Entity<SalleDeTheatre>()
               .Property(x => x.AddedTime)
               .IsRequired(false);
@@ -49,24 +49,24 @@ namespace data.infrastructure.Persistence
 
             // representation Configuration
             modelBuilder.Entity<Representation>()
-                .HasKey(x =>x.Id);
+                .HasKey(x => x.Id);
             modelBuilder.Entity<Representation>()
               .Property(x => x.AddedTime)
               .IsRequired(false);
             modelBuilder.Entity<Representation>()
                 .HasOne(x => x.Piece)
-                .WithMany(x =>x.Representations)
-                .HasForeignKey(x =>x.IdPiece)
+                .WithMany(x => x.Representations)
+                .HasForeignKey(x => x.IdPiece)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Representation>()
                 .HasOne(x => x.SalleDeTheatre)
                 .WithMany(x => x.Representations)
                 .HasForeignKey(x => x.IdSalledeTheatre)
-                .OnDelete(DeleteBehavior.Restrict);   
+                .OnDelete(DeleteBehavior.Restrict);
             //--piece Configuration
             modelBuilder.Entity<Piece>()
-                .HasKey(x =>x.Id);
+                .HasKey(x => x.Id);
             modelBuilder.Entity<Piece>()
               .Property(x => x.AddedTime)
               .IsRequired(false);

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace ProjecIntegration.Api.ApiService.Authorization
+namespace WebApi.ApiService.Authorization
 {
-    public class HasScopeHandler: AuthorizationHandler<HasScopeRequirement>
+    public class HasScopeHandler : AuthorizationHandler<HasScopeRequirement>
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, HasScopeRequirement requirement)
         {

@@ -1,10 +1,4 @@
-using Blazor.UI.services;
-using Blazor.UI.services;
-using Blazor.UI.services;
-using BlazorApp.data.services.authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using Blazor.UI.data.services;
 
 namespace Blazor.UI.extensionMethods
 {

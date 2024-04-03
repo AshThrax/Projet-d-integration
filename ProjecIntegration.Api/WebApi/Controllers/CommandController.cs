@@ -1,13 +1,8 @@
-﻿using AutoMapper;
-using data.Interfaces.IRepository;
-using data.Models;
-using Microsoft.AspNetCore.Mvc;
-using ProjecIntegration.Api.Application.Common.Exception;
-using ProjecIntegration.Api.Application.Common.Exceptions;
-using data.Interfaces.IRepository;
-using Auth0.ManagementApi.Models;
-using WebApi.Application.DTO;
-using data.Models.Entity;
+﻿using WebApi.Application.DTO;
+using WebApi.Application.Common.Exceptions;
+using WebApi.Validator;
+using ApplicationTheather.Common.Interfaces.IRepository;
+using Domain.Entity.TheatherEntity;
 
 namespace WebApi.Controllers
 {

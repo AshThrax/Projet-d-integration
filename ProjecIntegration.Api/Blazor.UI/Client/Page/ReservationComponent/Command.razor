@@ -1,8 +1,9 @@
 ﻿@page "/command/{Id:int}"
-
-@inject Blazor.UI.services.IRepresentationService ServRep;
-@inject Blazor.UI.services.IPieceService servPiece;
-@inject Blazor.UI.services.ISalleService servSalle;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+@inject IRepresentationService ServRep;
+@inject  IPieceService servPiece;
+@inject  ISalleService servSalle;
 
 @if (RepresentationSum != null)
 {

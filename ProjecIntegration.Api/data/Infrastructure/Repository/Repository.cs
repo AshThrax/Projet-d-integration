@@ -1,6 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using Application.Common.Repository;
+using dataInfraTheather.Infrastructure.Persistence;
+using Domain.Entity;
+using System.Linq.Expressions;
 
-namespace data.Infrastructure.Repository
+namespace dataInfraTheather.Infrastructure.Repository
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
@@ -14,13 +17,13 @@ namespace data.Infrastructure.Repository
         public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = dbSet;
-            foreach (var includeProperty in includeProperties) 
+            foreach (var includeProperty in includeProperties)
             {
-                query=query.Include(includeProperty);
+                query = query.Include(includeProperty);
             }
             return await query.ToListAsync();
         }
-        public async Task<T> GetById(int id,params Expression<Func<T, object>>[] includeProperties)
+        public async Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = dbSet;
             foreach (var includeProperty in includeProperties)
@@ -44,17 +47,18 @@ namespace data.Infrastructure.Repository
             dbSet.Add(entity);
             dbContext.SaveChanges();
         }
-        public void Update(int updtId ,T entity)
+        public void Update(int updtId, T entity)
         {
-            if (entity == null) { 
+            if (entity == null)
+            {
 
             }
-            dbSet.Update(entity); 
+            dbSet.Update(entity);
             dbContext.SaveChanges();
         }
         public void Delete(int entityid)
         {
-            var ent = dbSet.SingleOrDefaultAsync(x =>x.Id == entityid).Result;
+            var ent = dbSet.SingleOrDefaultAsync(x => x.Id == entityid).Result;
             if (ent == null)
             {
                 //lance une exception qui avertit que l'entité 

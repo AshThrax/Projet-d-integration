@@ -1,5 +1,5 @@
 using Microsoft.OpenApi.Models;
-using ProjecIntegration.Api.ExtensionMethods;
+using WebApi.ExtensionMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 

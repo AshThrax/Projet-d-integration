@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.QuickGrid
-@inject Blazor.UI.services.IPieceService ServPiece;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+@inject IPieceService ServPiece;
 <h3>Pieces</h3>
 <p>Piece Composant</p>
 <QuickGrid Items="@Piecetab.AsQueryable()">

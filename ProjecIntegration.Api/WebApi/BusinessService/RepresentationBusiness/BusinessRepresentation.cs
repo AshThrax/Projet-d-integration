@@ -1,4 +1,6 @@
-﻿using data.Interfaces.IRepository;
+﻿using dataInfraTheather.Models.Entity;
+using dataInfraTheather.Repository.Interfaces.IRepository;
+using WebApi.Application.DTO;
 
 namespace WebApi.BusinessService.RepresentationBusiness
 {

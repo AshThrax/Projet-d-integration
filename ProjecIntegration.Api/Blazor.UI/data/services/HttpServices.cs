@@ -1,7 +1,7 @@
-using Blazor.UI.modelViews;
+using Blazor.UI.data.modelViews;
 using System.Net.Http.Json;
 
-namespace Blazor.UI.services
+namespace Blazor.UI.data.services
 {
     public interface IHttpClient<T> where T : Baseview
     {

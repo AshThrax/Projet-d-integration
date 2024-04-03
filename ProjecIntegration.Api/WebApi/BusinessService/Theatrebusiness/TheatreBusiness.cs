@@ -1,13 +1,13 @@
-﻿
-using data.Interfaces.IRepository;
+﻿using dataInfraTheather.Repository.Interfaces.IRepository;
+using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService
+namespace WebApi.BusinessService.Theatrebusiness
 {
     /*
      * cette classe s'occuper de la partie businessde l'application complexe
      * Theatre
      * on retrouvez preincipalement a log lié aux interaction entre les salle les piece et les representation 
-     */  
+     */
     public class TheatreBusiness : ITheatreBusiness
     {
         private readonly IMapper _mapper;
@@ -17,7 +17,7 @@ namespace WebApi.BusinessService
         private readonly IComplexeRepository _complexeRepository;
 
         public TheatreBusiness(
-            IMapper mapper, 
+            IMapper mapper,
             IRepresentationRepository representationRepository,
             ISalleDeTheatreRepository sallerepository,
             IPieceRepository peceRepository,
@@ -53,13 +53,13 @@ namespace WebApi.BusinessService
                     }
                 }
             }
-            return ;
+            return;
         }
 
-        public async  Task<IEnumerable<PieceDto>> GetallPieceFromComplexe(int IdComplexe)
+        public async Task<IEnumerable<PieceDto>> GetallPieceFromComplexe(int IdComplexe)
         {
             var getall = await _peceRepository.GetAll();
-            var FromComplexe = getall.Where(x => x.SalleDeTheatre.Complexe.Id ==IdComplexe);
+            var FromComplexe = getall.Where(x => x.SalleDeTheatre.Complexe.Id == IdComplexe);
 
             return _mapper.Map<IEnumerable<PieceDto>>(FromComplexe);
         }
@@ -67,7 +67,7 @@ namespace WebApi.BusinessService
         public async Task<IEnumerable<RepresentationDto>> GetRepresentationFromPiece(int IdPiece)
         {
             var getall = await _representationRepository.GetAll();
-            var FromComplexe = getall.Where(x => x.IdPiece==IdPiece).ToList();
+            var FromComplexe = getall.Where(x => x.IdPiece == IdPiece).ToList();
 
             return _mapper.Map<IEnumerable<RepresentationDto>>(FromComplexe);
         }

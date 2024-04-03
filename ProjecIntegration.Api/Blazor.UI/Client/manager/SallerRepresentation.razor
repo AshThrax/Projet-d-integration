@@ -1,7 +1,10 @@
-﻿@using Microsoft.AspNetCore.Components.QuickGrid
+﻿
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
 @inject NavigationManager manager;
-@inject Blazor.UI.services.ISalleService Servsalle;
-@inject Blazor.UI.services.IRepresentationService Servrep;
+@inject ISalleService Servsalle;
+@inject IRepresentationService Servrep;
 
 <div class="m-4 p-4">
     <h3 class="card-header display-4">SallePiece</h3>

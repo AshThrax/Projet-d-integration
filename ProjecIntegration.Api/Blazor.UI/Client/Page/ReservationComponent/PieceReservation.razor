@@ -1,7 +1,9 @@
 ﻿@page "/pieceClient/{Id:int}"
 @using Microsoft.AspNetCore.Components.QuickGrid
-@inject Blazor.UI.services.IPieceService servPiece;
-@inject Blazor.UI.services.IComplexeService Servcomp;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+@inject             IPieceService servPiece;
+@inject             IComplexeService Servcomp;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
 
 <h3>Piece</h3>

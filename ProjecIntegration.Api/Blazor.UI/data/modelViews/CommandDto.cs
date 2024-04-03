@@ -1,6 +1,4 @@
-﻿
-
-namespace Blazor.UI.modelViews
+﻿namespace Blazor.UI.data.modelViews
 {
     public class CommandDto : Baseview
     {
@@ -18,7 +16,7 @@ namespace Blazor.UI.modelViews
     }
     public class UpdateCommandDto : Baseview
     {
-       
+
         public int NombreDePlace { get; set; }
         public int IdRepresentation { get; set; }
     }

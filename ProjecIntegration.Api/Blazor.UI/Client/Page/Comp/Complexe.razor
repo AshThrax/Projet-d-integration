@@ -1,8 +1,10 @@
 ﻿@page "/complexe"
 
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
 @using Blazor.UI.Client.Shared
 @using Microsoft.AspNetCore.Components.QuickGrid
-@inject Blazor.UI.services.IComplexeService comp;
+@inject IComplexeService comp;
 @inject HttpClient http;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
 <div class="card-header">

@@ -1,8 +1,12 @@
 ﻿@page "/modulereservation"
-@inject Blazor.UI.services.IComplexeService CompServ;
-@inject Blazor.UI.services.IPieceService PieceServ;
-@inject Blazor.UI.services.IRepresentationService repServ;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+@inject IComplexeService CompServ;
+@inject IPieceService PieceServ;
+@inject  IRepresentationService repServ;
 @using Microsoft.AspNetCore.Components.QuickGrid;
+@using Blazor.UI.data.modelViews;
+@using Blazor.UI.data.services;
 <h3>ReservationV2</h3>
 
 <div class="jumbotron m-2 p-2 mb-4 pb-2 rounded border align-items-start flex-fill">

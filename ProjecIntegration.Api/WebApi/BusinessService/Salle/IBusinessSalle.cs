@@ -1,4 +1,6 @@
-﻿namespace WebApi.BusinessService.salle
+﻿using WebApi.Application.DTO;
+
+namespace WebApi.BusinessService.salle
 {
     public interface IBusinessSalle
     {

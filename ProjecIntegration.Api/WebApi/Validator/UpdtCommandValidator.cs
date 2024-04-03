@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
-using ProjecIntegration.Api.Application.DTO;
+using WebApi.Application.DTO;
 
-namespace data.Models.Validator
+namespace WebApi.Validator
 {
     public class UpdtCommandValidator : AbstractValidator<UpdateCommandDto>
     {
-        public UpdtCommandValidator() 
+        public UpdtCommandValidator()
         {
-            RuleFor(x =>x.Id).NotNull();
-        }   
+            RuleFor(x => x.Id).NotNull();
+        }
     }
 }

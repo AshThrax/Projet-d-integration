@@ -1,12 +1,13 @@
 ﻿using Auth0.ManagementApi.Models;
+using dataInfraTheather.Models.Entity;
 using WebApi.Application.DTO;
 
-namespace ProjecIntegration.Api.Application.Common.Mapping
+namespace WebApi.Application.Common.Mapping
 {
     public class Mapping : Profile
     {
         public Mapping()
-        {   
+        {
             //-----------------------------------------
             CreateMap<CommandDto, Command>();
             CreateMap<AddCommandDto, Command>();
@@ -19,17 +20,17 @@ namespace ProjecIntegration.Api.Application.Common.Mapping
             CreateMap<Complexe, ComplexeDto>();
             //-----------------------------------------
             //CreateMap<Entreprise, EntrepriseDto>();
-           // CreateMap<EntrepriseDto, Entreprise>();
+            // CreateMap<EntrepriseDto, Entreprise>();
             //-----------------------------------------
             CreateMap<Piece, PieceDto>();
-            CreateMap<AddPieceDto,Piece>();
+            CreateMap<AddPieceDto, Piece>();
             CreateMap<UpdatePieceDto, Piece>();
-            CreateMap<PieceDto,Piece>();
+            CreateMap<PieceDto, Piece>();
             //-----------------------------------------
-            CreateMap<Representation,RepresentationDto>();
+            CreateMap<Representation, RepresentationDto>();
             CreateMap<AddRepresentationDto, Representation>();
-            CreateMap<UpdateRepresentationDto,Representation>();
-            CreateMap<RepresentationDto,RepresentationDto>();
+            CreateMap<UpdateRepresentationDto, Representation>();
+            CreateMap<RepresentationDto, RepresentationDto>();
             //-----------------------------------------
             CreateMap<SalleDeTheatre, SalleDeTheatreDto>();
             CreateMap<AddSalleDeTheatreDto, SalleDeTheatre>();

@@ -1,11 +1,11 @@
 ﻿@page "/details/{Id:int}"
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+@using Microsoft.AspNetCore.Components;
+@using Blazor.UI.data.modelViews;
 
-@using Microsoft.AspNetCore.Components
-@using  Blazor.UI.services
-@using Blazor.UI.modelViews
-
-@inject Blazor.UI.services.IComplexeService comp
-@inject Blazor.UI.modelViews.ComplexeDto complexedto;
+@inject IComplexeService comp
+@inject ComplexeDto complexedto;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 <h3>Details for Complexe with Id: @Id</h3>
 

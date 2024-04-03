@@ -1,4 +1,6 @@
-﻿namespace WebApi.BusinessService
+﻿using WebApi.Application.DTO;
+
+namespace WebApi.BusinessService.Command
 {
     public interface IBusinessCommandService
     {
@@ -8,7 +10,7 @@
         /// <param name="command"></param>
         /// <param name="Auth"></param>
         /// <returns></returns>
-        Task GenerateCommandTicket(AddCommandDto command,string Auth);
+        Task GenerateCommandTicket(AddCommandDto command, string Auth);
         /// <summary>
         /// 
         /// </summary>

@@ -1,4 +1,7 @@
-﻿namespace data.Infrastructure.Repository
+﻿using ApplicationTheather.Common.Interfaces.IRepository;
+using dataInfraTheather.Infrastructure.Persistence;
+using Domain.Entity.TheatherEntity;
+namespace dataInfraTheather.Infrastructure.Repository
 {
     public class SalleDeTheatreRepository : Repository<SalleDeTheatre>, ISalleDeTheatreRepository
     {
@@ -20,7 +23,7 @@
 
         public void AddRepresentationToSalle(int Idsalle, Representation Addrepresentation)
         {
-            var salleDetheatre= _dbcontext.SalleDeTheatres.FirstOrDefault(r=>r.Id==Idsalle);
+            var salleDetheatre = _dbcontext.SalleDeTheatres.FirstOrDefault(r => r.Id == Idsalle);
             if (salleDetheatre != null)
             {
                 salleDetheatre.Representations.Add(Addrepresentation);
@@ -33,8 +36,8 @@
             var salleDetheatre = _dbcontext.SalleDeTheatres.SingleOrDefault(r => r.Id == idSalle);
             if (salleDetheatre != null)
             {
-                var PieceToDelete=salleDetheatre.Pieces.FirstOrDefault(r => r.Id == idPiece);
-                if (PieceToDelete !=null)
+                var PieceToDelete = salleDetheatre.Pieces.FirstOrDefault(r => r.Id == idPiece);
+                if (PieceToDelete != null)
                 {
                     salleDetheatre.Pieces.Remove(PieceToDelete);
                     _dbcontext.SaveChanges();
@@ -60,9 +63,9 @@
         }
         public async Task<IEnumerable<SalleDeTheatre>> GetByIdComplexe(int idComplexe)
         {
-            var sallebyComplexe= await _dbcontext.SalleDeTheatres
-                .Include(c=>c.Pieces)
-                .Where(c =>c.complexeId==idComplexe)
+            var sallebyComplexe = await _dbcontext.SalleDeTheatres
+                .Include(c => c.Pieces)
+                .Where(c => c.complexeId == idComplexe)
                 .ToListAsync();
             return sallebyComplexe;
         }

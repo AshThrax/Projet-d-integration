@@ -1,6 +1,7 @@
 ﻿using data.Interfaces.IRepository;
+using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService
+namespace WebApi.BusinessService.RepresentationBusiness
 {
     public interface IBusinessRepresentation
     {
@@ -32,14 +33,14 @@ namespace WebApi.BusinessService
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task Create (RepresentationDto dto);
+        Task Create(RepresentationDto dto);
         /// <summary>
         /// mest a jour une represnetaion
         /// </summary>
         /// <param name="id"></param>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task Update (int id ,RepresentationDto dto);
+        Task Update(int id, RepresentationDto dto);
         /// <summary>
         /// supprimùe un represnetation
         /// </summary>
@@ -47,5 +48,5 @@ namespace WebApi.BusinessService
         /// <returns></returns>
         Task Delete(int id);
     }
-   
+
 }

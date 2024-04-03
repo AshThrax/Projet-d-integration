@@ -1,6 +1,7 @@
 ﻿<h3>ComplexeUpdate</h3>
-@inject Blazor.UI.services.IComplexeService ServComp;
-
+@inject IComplexeService ServComp;
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
 @if (updateComplexe != null)
 {
     <form>

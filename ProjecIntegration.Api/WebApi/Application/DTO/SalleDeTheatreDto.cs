@@ -1,6 +1,6 @@
-﻿namespace ProjecIntegration.Api.Application.DTO
+﻿namespace WebApi.Application.DTO
 {
-    public class SalleDeTheatreDto:BaseDto
+    public class SalleDeTheatreDto : BaseDto
     {
         public string Name { get; set; }
         public int PlaceMax { get; set; }
@@ -14,14 +14,14 @@
         public int PlaceMax { get; set; }
         public int PlaceCurrent { get; set; }
         public int ComplexeId { get; set; }
-        
+
     }
-    public class UpdateSalleDeTheatreDto:BaseDto
+    public class UpdateSalleDeTheatreDto : BaseDto
     {
         public string Name { get; set; }
         public int PlaceMax { get; set; }
         public int PlaceCurrent { get; set; }
         public int ComplexeId { get; set; }
-      
+
     }
 }

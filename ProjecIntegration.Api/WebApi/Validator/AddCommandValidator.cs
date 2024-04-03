@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
-using ProjecIntegration.Api.Application.DTO;
+using WebApi.Application.DTO;
 
-namespace data.Models.Validator
+namespace WebApi.Validator
 {
-    public class AddCommandValidator: AbstractValidator<AddCommandDto>
+    public class AddCommandValidator : AbstractValidator<AddCommandDto>
     {
-        public AddCommandValidator() {
-           
+        public AddCommandValidator()
+        {
+
         }
     }
 }

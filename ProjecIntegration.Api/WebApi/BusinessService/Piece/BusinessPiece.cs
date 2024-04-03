@@ -1,7 +1,8 @@
-﻿
-using data.Interfaces.IRepository;
+﻿using dataInfraTheather.Models.Entity;
+using dataInfraTheather.Repository.Interfaces.IRepository;
+using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService
+namespace WebApi.BusinessService.Piece
 {
     /*
      * classe chargée de la logique business de l'applciation
@@ -15,19 +16,19 @@ namespace WebApi.BusinessService
 
         public BusinessPiece(IPieceRepository pieceRepository, IMapper mapper)
         {
-            this._pieceRepository = pieceRepository;
-            this._mapper = mapper;
+            _pieceRepository = pieceRepository;
+            _mapper = mapper;
         }
 
         public async Task Create(AddPieceDto Entity)
         {
-            var entittyConversion= _mapper.Map<Piece>(Entity);
-           _pieceRepository.Insert(entittyConversion);
+            var entittyConversion = _mapper.Map<Piece>(Entity);
+            _pieceRepository.Insert(entittyConversion);
         }
 
         public async Task Delete(int idPIece)
         {
-            var getPiece =await _pieceRepository.GetById(idPIece);
+            var getPiece = await _pieceRepository.GetById(idPIece);
             if (getPiece != null)
             {
                 _pieceRepository.Delete(idPIece);
@@ -52,7 +53,7 @@ namespace WebApi.BusinessService
             if (getPiece != null)
             {
                 var getConvertion = _mapper.Map<Piece>(Entity);
-                _pieceRepository.Update(idPiece,getConvertion);
+                _pieceRepository.Update(idPiece, getConvertion);
             }
         }
     }

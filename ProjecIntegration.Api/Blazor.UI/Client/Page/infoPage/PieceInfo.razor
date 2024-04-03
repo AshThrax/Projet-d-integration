@@ -1,7 +1,9 @@
 ﻿@page "/pieceinfo/{ID:int}"
+@using Blazor.UI.data.services
+@using Blazor.UI.data.modelViews
 @using Microsoft.AspNetCore.Components.QuickGrid
-@inject Blazor.UI.services.IPieceService Servp;
-@inject Blazor.UI.services.IRepresentationService PieceRep;
+@inject IPieceService Servp;
+@inject IRepresentationService PieceRep;
 @inject Microsoft.AspNetCore.Components.NavigationManager manager;
 
 <h3>InfoRmation</h3>

@@ -1,4 +1,7 @@
-﻿using data.Interfaces.IRepository;
+﻿using dataInfraTheather.Models.Entity;
+using dataInfraTheather.Repository.Interfaces.IRepository;
+using WebApi.Application.Common.Exceptions;
+using WebApi.Application.DTO;
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]

@@ -1,6 +1,8 @@
-﻿ using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Application.DTO;
+using WebApi.BusinessService.Theatrebusiness;
 
 namespace WebApi.Controllers
 {

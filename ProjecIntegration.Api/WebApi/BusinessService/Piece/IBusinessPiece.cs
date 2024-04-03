@@ -1,4 +1,6 @@
-﻿namespace WebApi.BusinessService
+﻿using WebApi.Application.DTO;
+
+namespace WebApi.BusinessService.Piece
 {
     public interface IBusinessPiece
     {
@@ -20,7 +22,7 @@
         /// <param name="idPiece">id de la pîece qu'on désire </param>
         /// <param name="Entity">l'entité a metre a jour</param>
         /// <returns></returns>
-        Task Update(int idPiece ,UpdatePieceDto Entity);
+        Task Update(int idPiece, UpdatePieceDto Entity);
         /// <summary>
         /// récupère une liste de pièce de theatre
         /// </summary>

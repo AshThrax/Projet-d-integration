@@ -1,4 +1,7 @@
-﻿namespace data.Infrastructure.Repository
+﻿using dataInfraTheather.Infrastructure.Persistence;
+using Domain.Entity.TheatherEntity;
+
+namespace dataInfraTheather.Infrastructure.Repository
 {
     public class RepresentationRespository : Repository<Representation>, IRepresentationRepository
     {
@@ -22,14 +25,14 @@
                 }
                 //chaque fois qu'on ajoute une commande le nombre de place diminiue
                 var place = command.NombreDePlace;
-                if((representation.placeCurrent+place)
+                if (representation.placeCurrent + place
                     < representation.PlaceMaximum)
                 {
-                      representation.placeCurrent= representation.placeCurrent+place;
-                representation.Commands.Add(command);
+                    representation.placeCurrent = representation.placeCurrent + place;
+                    representation.Commands.Add(command);
                 }
-              
-                
+
+
                 _context.SaveChanges();
             }
         }
@@ -38,7 +41,7 @@
         {
             var representation = _context.Representations
                 .FirstOrDefault(r => r.Id == idrepresentation);
-            
+
             if (representation != null)
             {
 
@@ -46,25 +49,25 @@
                     .Commands.FirstOrDefault(r => r.Id == CommandId);
 
                 //chaque fois qu'on supprime une commande le nombre de place dispo pour la reservation augmente
-                var place =Commanddelete.NombreDePlace;
-                representation.placeCurrent=representation.placeCurrent-place;
-                representation.Commands.Remove(Commanddelete) ;
+                var place = Commanddelete.NombreDePlace;
+                representation.placeCurrent = representation.placeCurrent - place;
+                representation.Commands.Remove(Commanddelete);
                 _context.SaveChanges();
             }
         }
 
         public async Task<IEnumerable<Representation>> GetAllByPieceId(int idPIece)
         {
-           var piece= _context.Pieces.Include(c =>c.Representations)
-               .Where(c => c.Id == idPIece)
-                .FirstOrDefault();
+            var piece = _context.Pieces.Include(c => c.Representations)
+                .Where(c => c.Id == idPIece)
+                 .FirstOrDefault();
             if (piece != null)
             {
                 var result = piece.Representations;
                 return result;
             }
 
-            return null; 
+            return null;
         }
         public async Task<IEnumerable<Representation>> GetAllBySalleId(int idSalle)
         {
@@ -73,11 +76,11 @@
                 .Where(c => c.Id == idSalle)
                 .FirstOrDefaultAsync();
             if (salle.Representations != null)
-            {       
+            {
                 var Entities = salle.Representations;
                 return Entities;
             }
-          return Enumerable.Empty<Representation>();
+            return Enumerable.Empty<Representation>();
         }
     }
 }

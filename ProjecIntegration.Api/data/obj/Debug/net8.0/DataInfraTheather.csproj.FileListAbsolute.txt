@@ -1,0 +1,6 @@
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.csproj.AssemblyReference.cache
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.AssemblyInfoInputs.cache
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.AssemblyInfo.cs
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.csproj.CoreCompileInputs.cache
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.sourcelink.json

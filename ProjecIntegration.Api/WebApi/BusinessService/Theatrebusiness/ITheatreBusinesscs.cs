@@ -1,4 +1,6 @@
-﻿namespace WebApi.BusinessService
+﻿using WebApi.Application.DTO;
+
+namespace WebApi.BusinessService.Theatrebusiness
 {
     public interface ITheatreBusiness
     {

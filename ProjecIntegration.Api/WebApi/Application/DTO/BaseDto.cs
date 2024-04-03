@@ -1,8 +1,8 @@
-﻿namespace ProjecIntegration.Api.Application.DTO
+﻿namespace WebApi.Application.DTO
 {
     public class BaseDto
     {
         public int Id { get; set; }
-        public DateTime AddedTime { get; set; }= DateTime.Now;
+        public DateTime AddedTime { get; set; } = DateTime.Now;
     }
 }

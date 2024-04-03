@@ -3,8 +3,10 @@
 @using System.Security.Claims
 @attribute [Authorize]      
 @attribute [StreamRendering]
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services
+@inject ICommandService ServCom;
 
-@inject Blazor.UI.services.ICommandService ServCom;
 <div class="bg-light m-4 p-2 rounded-2 text-center">
     <h3>Profile page </h3>
 </div>

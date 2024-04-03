@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Blazor.UI.modelViews
+namespace Blazor.UI.data.modelViews
 {
     public class UserView
     {

@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using ProjecIntegration.Api.Application.DTO;
+using WebApi.Application.DTO;
 
-namespace data.Models.Validator
+namespace WebApi.Validator
 {
-    public class UpdtSalleValidator: AbstractValidator<UpdateSalleDeTheatreDto>
+    public class UpdtSalleValidator : AbstractValidator<UpdateSalleDeTheatreDto>
     {
         public UpdtSalleValidator()
         {
