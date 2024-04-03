@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.publicationEntity
 {
-    public class RePost
+    public class RePost:BaseMongoEntity
     {
+        public string Content { get; set; }
+        public string UserId { get; set; }
+      
     }
 }

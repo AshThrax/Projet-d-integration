@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.publicationEntity
 {
-    public class Publication:BaseEntity
+    public class Publication: BaseMongoEntity
     {
         public string Title { get; set; }
         public string Review { get; set; }
-        public int USerId { get; set; }
-        public User User { get; set; }
+        public string  UserId { get; set; }
+       
 
-        public ICollection<Post> Publications { get; set; } = new List<Post>();
+        public ICollection<string> Publications { get; set; } = new List<string>();
     }
 }

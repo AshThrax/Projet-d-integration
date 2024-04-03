@@ -16,6 +16,10 @@ using WebApi.ApiService.Authorization;
 using WebApi.BusinessService.Command;
 using WebApi.BusinessService.Theatrebusiness;
 using WebApi.BusinessService.Piece;
+using Infrastructure;
+using InfraPublication;
+using Application;
+using ApplciationPublication;
 
 
 namespace WebApi.ExtensionMethods
@@ -27,7 +31,15 @@ namespace WebApi.ExtensionMethods
         {
             services.AddApplication();
             services.AddInfrastructure(configuration);
+            //ajoout des service liée au service  notification
+            services.AddAppNotifi();
+            services.AddInfraNotif(configuration);
+            //ajout des service liée au service de publication
+            services.AddAppPublication();
+            services.AddInfraPublication(configuration);
+            //ajout service auth0
             services.AddAuthO(configuration);
+            //ajout des custom Validator
             services.AddCustomValidator();
             services.AddHttpContextAccessor();
             services.AddBusiness();

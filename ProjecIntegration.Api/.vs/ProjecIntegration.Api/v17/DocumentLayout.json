@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|c:\\users\\quentin\\classic web\\projet-d-integration\\projecintegration.api\\infrapublication\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|solutionrelative:infrapublication\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classic web\\projet-d-integration\\projecintegration.api\\webapi\\extensionmethods\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\extensionmethods\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9148B7-2A03-4481-8168-99FFCD44528D}|Infrastructure\\Infrastructure.csproj|c:\\users\\quentin\\classic web\\projet-d-integration\\projecintegration.api\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9148B7-2A03-4481-8168-99FFCD44528D}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classic web\\projet-d-integration\\projecintegration.api\\domain\\datatype\\pagination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\datatype\\pagination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classic web\\projet-d-integration\\projecintegration.api\\domain\\entity\\theatherentity\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\theatherentity\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,8 +30,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\ExtensionMethods\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "WebApi\\ExtensionMethods\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\ExtensionMethods\\DependencyInjection.cs",
+              "RelativeToolTip": "WebApi\\ExtensionMethods\\DependencyInjection.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAxwEoAAABxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T16:13:26.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "InfraPublication\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\DependencyInjection.cs",
+              "RelativeToolTip": "InfraPublication\\DependencyInjection.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAvwBIAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T16:04:57.096Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -26,7 +68,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T16:03:53.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Pagination.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\DataType\\Pagination.cs",
+              "RelativeDocumentMoniker": "Domain\\DataType\\Pagination.cs",
+              "ToolTip": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\DataType\\Pagination.cs",
+              "RelativeToolTip": "Domain\\DataType\\Pagination.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T14:31:48.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Piece.cs",
               "DocumentMoniker": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Entity\\TheatherEntity\\Piece.cs",
               "RelativeDocumentMoniker": "Domain\\Entity\\TheatherEntity\\Piece.cs",

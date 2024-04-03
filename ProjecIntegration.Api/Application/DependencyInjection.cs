@@ -5,7 +5,7 @@ namespace Application
     public static class Dependencyinjection
     {
 
-        public static IServiceCollection AddNotification(this IServiceCollection services)
+        public static IServiceCollection AddAppNotifi(this IServiceCollection services)
         {
             return services;
         }

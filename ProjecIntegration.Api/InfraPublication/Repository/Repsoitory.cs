@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace InfraPublication.Repository
 {
-    public class MongoRepository<T> : IRepository<T> where T : BaseEntity
+    public class MongoRepository<T> : IRepository<T> where T : BaseMongoEntity
     {
         private readonly IMongoCollection<T> _mongoCollection;
 
@@ -22,7 +22,7 @@ namespace InfraPublication.Repository
             return await _mongoCollection.Find(_ => true).ToListAsync();
         }
 
-        public async Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
+        public async Task<T> GetById(string id, params Expression<Func<T, object>>[] includeProperties)
         {
             return await _mongoCollection.FindSync(x => x.Id == id).FirstOrDefaultAsync();
         }
@@ -32,7 +32,7 @@ namespace InfraPublication.Repository
             return await _mongoCollection.Find(_ => true).ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(string id)
         {
             return await _mongoCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
@@ -46,7 +46,7 @@ namespace InfraPublication.Repository
             _mongoCollection.InsertOne(entity);
         }
 
-        public void Update(int entityId, T entity)
+        public void Update(string entityId, T entity)
         {
             if (entity == null)
             {
@@ -55,7 +55,7 @@ namespace InfraPublication.Repository
             _mongoCollection.ReplaceOne(x => x.Id == entityId, entity);
         }
 
-        public void Delete(int entityId)
+        public void Delete(string entityId)
         {
             _mongoCollection.DeleteOne(x => x.Id == entityId);
         }

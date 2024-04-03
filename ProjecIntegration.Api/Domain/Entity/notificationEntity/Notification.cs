@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.notificationEntity
 {
-    public class Notification
+    public class Notification:BaseMongoEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }

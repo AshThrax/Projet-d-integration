@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entity.publicationEntity
+namespace Application.Common.businessService
 {
-    public  class User:BaseEntity
+    public interface INotificationBl
     {
-        
     }
 }

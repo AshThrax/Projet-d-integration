@@ -4,17 +4,16 @@ using System.Linq.Expressions;
 
 namespace Application.Common.Repository
 {
-    public interface IRepository<T> where T : class
+  
+        public interface IRepository<T> where T : BaseMongoEntity
     {
-        public interface IRepository<T> where T : BaseEntity
-        {
             Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties);
-            Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties);
+            Task<T> GetById(string id, params Expression<Func<T, object>>[] includeProperties);
             Task<IEnumerable<T>> GetAll();
-            Task<T> GetById(int id);
+            Task<T> GetById(string id);
             void Insert(T entity);
-            void Update(int entityId, T entity);
-            void Delete(int entityId);
+            void Update(string entityId, T entity);
+            void Delete(string entityId);
         }
     }
-}
+

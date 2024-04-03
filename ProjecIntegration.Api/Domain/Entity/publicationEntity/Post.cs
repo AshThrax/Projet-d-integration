@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.publicationEntity
 {
-    public class Post :BaseEntity
+    public class Post : BaseMongoEntity
     {
         public string Content { get; set; }
-        public User User { get; set; }
-        public int USerID { get; set; }
+        public string UserId { get; set; }
+        public ICollection<RePost> Repost { get; set; } = new List<RePost>();
     }
 }
