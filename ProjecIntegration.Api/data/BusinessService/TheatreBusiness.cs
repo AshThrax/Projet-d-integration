@@ -1,7 +1,8 @@
-﻿using dataInfraTheather.Repository.Interfaces.IRepository;
+﻿using ApplicationTheather.BusinessService;
+using dataInfraTheather.Repository.Interfaces.IRepository;
 using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService.Theatrebusiness
+namespace DataInfraTheather.BusinessService
 {
     /*
      * cette classe s'occuper de la partie businessde l'application complexe

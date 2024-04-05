@@ -1,6 +1,6 @@
 ﻿using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService.salle
+namespace ApplicationTheather.BusinessService
 {
     public interface IBusinessSalle
     {
@@ -23,7 +23,7 @@ namespace WebApi.BusinessService.salle
         /// <param name="idSalle">l'identifiant de la salle de theatre</param>
         /// <param name="entity">salle de theatre a mettre a jour</param>
         /// <returns></returns>
-        Task Updatesalle(int idSalle,UpdateSalleDeTheatreDto entity);
+        Task Updatesalle(int idSalle, UpdateSalleDeTheatreDto entity);
         /// <summary>
         /// recupére toutes les salles present en database
         /// </summary>

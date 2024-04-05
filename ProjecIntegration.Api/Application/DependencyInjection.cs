@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Common.mapping;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
 {
@@ -7,6 +8,7 @@ namespace Application
 
         public static IServiceCollection AddAppNotifi(this IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(NotifProfile));
             return services;
         }
     }

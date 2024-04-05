@@ -1,6 +1,7 @@
 ﻿using Application.Common.businessService;
 using Application.Common.Repository;
 using Infrastructure.BusinessService;
+using Infrastructure.Persistence;
 using Infrastructure.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,12 @@ namespace Infrastructure
         {
             services.AddScoped<INotificationBl, NotificationBl>();
             services.AddScoped<INotificationRepository, NotificiationRepository>();
+            services.AddScoped<IAnnonceRepository, AnnonceRepository>();
+            services.Configure<NotificationStettings>(options =>
+            {
+                options.ConnectionString = configure.GetConnectionString("MongoDb");
+                options.DatabaseName = "Notification";
+            });
             return services;
         }
     }

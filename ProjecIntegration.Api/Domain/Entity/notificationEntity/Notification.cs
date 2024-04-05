@@ -1,4 +1,5 @@
 ﻿using Domain.Enum;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,15 @@ namespace Domain.Entity.notificationEntity
 {
     public class Notification:BaseMongoEntity
     {
-        public int Id { get; set; }
+        [BsonElement("Notif_Title")]
         public string Title { get; set; }
+        [BsonElement("Notif_Message")]
         public string Message { get; set; }
+        [BsonElement("Notif_Priority")]
         public EPrioirity Prioirity { get; set; }
+        [BsonElement("Notif_UserId")]
         public string UserId { get; set; }
-        public DateTime CreateTime { get; set; }
+       
 
     }
 }

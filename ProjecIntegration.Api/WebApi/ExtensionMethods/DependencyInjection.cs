@@ -1,25 +1,15 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using WebApi.ApiService;
-using Auth0Net.DependencyInjection;
-using WebApi.BusinessService.RepresentationBusiness;
-using WebApi.BusinessService.salle;
+﻿using Auth0Net.DependencyInjection;
 using dataInfraTheather;
 using WebApi.Validator;
 using WebApi.Application.DTO;
 using WebApi.Application.Common.Mapping;
-using WebApi.BusinessService.Complexe;
 using WebApi.ApiService.Authorization;
-using WebApi.BusinessService.Command;
-using WebApi.BusinessService.Theatrebusiness;
-using WebApi.BusinessService.Piece;
 using Infrastructure;
 using InfraPublication;
 using Application;
 using ApplciationPublication;
+using ApplicationTheather.BusinessService;
+using DataInfraTheather.BusinessService;
 
 
 namespace WebApi.ExtensionMethods

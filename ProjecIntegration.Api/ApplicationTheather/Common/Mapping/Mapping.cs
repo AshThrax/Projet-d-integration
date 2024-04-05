@@ -1,5 +1,5 @@
-﻿using Auth0.ManagementApi.Models;
-using dataInfraTheather.Models.Entity;
+﻿using AutoMapper;
+using Domain.Entity.TheatherEntity;
 using WebApi.Application.DTO;
 
 namespace WebApi.Application.Common.Mapping
@@ -37,10 +37,7 @@ namespace WebApi.Application.Common.Mapping
             CreateMap<UpdateSalleDeTheatreDto, SalleDeTheatre>();
             CreateMap<SalleDeTheatreDto, SalleDeTheatre>();
             //-------------------------------------------
-            CreateMap<Ticket, TicketDto>();
-            CreateMap<TicketDto, Ticket>();
-            CreateMap<Ticket, AddTicketDto>();
-            CreateMap<AddTicketDto, Ticket>();
+           
         }
     }
 }

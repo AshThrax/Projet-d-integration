@@ -17,7 +17,11 @@ namespace InfraPublication
             service.AddScoped<IPublicationRepository, PublicationRepository>();
             service.AddScoped<IPostRepository, PostRepository>();
             service.AddScoped<IPublicationBl, PublicationBL>();
-            service.Configure<PublicationSetttings>(configure.GetSection("MongoDbSettings"));
+            service.Configure<PublicationSetttings>(options => 
+            {
+                options.ConnectionString = configure.GetConnectionString("MongoDb");
+                options.DatabaseName = "Publication";
+            });
 
            
             return service;

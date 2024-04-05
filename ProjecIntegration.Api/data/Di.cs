@@ -1,6 +1,8 @@
-﻿using dataInfraTheather.Infrastructure.Persistence;
+﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Interfaces.IRepository;
+using dataInfraTheather.Infrastructure.Persistence;
 using dataInfraTheather.Infrastructure.Repository;
-using dataInfraTheather.Repository.Interfaces.IRepository;
+using DataInfraTheather.BusinessService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,18 +23,21 @@ namespace dataInfraTheather
                b => b.MigrationsAssembly("WebApi")));
             //injection des repository
 
-            services.AddScoped<ICommandRepository, CommandRespository>();
-            services.AddScoped<IComplexeRepository, ComplexeRepository>();
-            services.AddScoped<IPieceRepository, PieceRepository>();
-            services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
-            services.AddScoped<IRepresentationRepository, RepresentationRespository>();
-            services.AddScoped<IPieceRepository, PieceRepository>();
-
+            services.AddBusiness();
             //fin injection reposi
             //fin injection service
             return services;
         }
-
+        public static IServiceCollection AddBusiness(this IServiceCollection services)
+        {
+            services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
+            services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service
+            services.AddScoped<IBusinessSalle, BusinessSalle>();//Business Salle Services
+            services.AddScoped<IBusinessComplexe, BusinessComplexe>(); //business Complexe Service
+            services.AddScoped<IBusinessPiece, BusinessPiece>(); //Business Piece Service
+            services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
+            return services;
+        }
     }
 }
 

@@ -8,7 +8,7 @@ namespace InfraPublication.Persistence
 {
     public class PublicationSetttings
     {
-        public string ConnectionString { get; set; } = null;
-        public string DatabaseName { get; set; } = null;
+        public string? ConnectionString { get; set; } = null;
+        public string? DatabaseName { get; set; } = null;
     }
 }

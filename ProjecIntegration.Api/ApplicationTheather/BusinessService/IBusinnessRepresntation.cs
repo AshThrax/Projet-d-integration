@@ -1,7 +1,7 @@
 ﻿using data.Interfaces.IRepository;
 using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService.RepresentationBusiness
+namespace ApplicationTheather.BusinessService
 {
     public interface IBusinessRepresentation
     {

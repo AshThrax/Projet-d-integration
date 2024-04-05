@@ -1,8 +1,10 @@
-﻿using dataInfraTheather.Models.Entity;
-using dataInfraTheather.Repository.Interfaces.IRepository;
+﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Interfaces.IRepository;
+using AutoMapper;
+using Domain.Entity.TheatherEntity;
 using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService.RepresentationBusiness
+namespace DataInfraTheather.BusinessService
 {
     public class BusinessRepresntation : IBusinessRepresentation
     {
@@ -28,8 +30,9 @@ namespace WebApi.BusinessService.RepresentationBusiness
         public async Task Delete(int id)
         {
             var doExistEntity = _repservice.GetById(id);
-            if (doExistEntity != null) {
-                    throw new ArgumentNullException($"there is no entity with the id {id}");
+            if (doExistEntity != null)
+            {
+                throw new ArgumentNullException($"there is no entity with the id {id}");
             } //si l'entité n'existe pas exception
 
             _repservice.Delete(id);
@@ -66,11 +69,11 @@ namespace WebApi.BusinessService.RepresentationBusiness
 
         public async Task Update(int id, RepresentationDto dto)
         {
-            var getrep= await _repservice.GetById(id);
+            var getrep = await _repservice.GetById(id);
             if (getrep != null)
-            { 
+            {
                 var entityToUpdate = _mapper.Map<Representation>(dto);
-                _repservice.Update(id, entityToUpdate);          
+                _repservice.Update(id, entityToUpdate);
             }
 
         }

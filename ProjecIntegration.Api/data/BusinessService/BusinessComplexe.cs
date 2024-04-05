@@ -1,9 +1,10 @@
-﻿using data.Infrastructure.Repository;
-using dataInfraTheather.Models.Entity;
-using dataInfraTheather.Repository.Interfaces.IRepository;
+﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Interfaces.IRepository;
+using AutoMapper;
+using Domain.Entity.TheatherEntity;
 using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService.Complexe
+namespace DataInfraTheather.BusinessService
 {
 
     public class BusinessComplexe : IBusinessComplexe

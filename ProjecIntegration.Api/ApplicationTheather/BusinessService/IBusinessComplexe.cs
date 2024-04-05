@@ -1,6 +1,6 @@
 ﻿using WebApi.Application.DTO;
 
-namespace WebApi.BusinessService.Complexe
+namespace ApplicationTheather.BusinessService
 {
     public interface IBusinessComplexe
     {

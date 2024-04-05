@@ -20,7 +20,9 @@ namespace Domain.Entity
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        [BsonElement("CreatedDate")]
         public DateTime CreatedDate { get; set; }
+        [BsonElement("UpdatedDate")]
         public DateTime UpdatedDate { get; set; }
     }
 }

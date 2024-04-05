@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,13 @@ namespace Domain.Entity.publicationEntity
 {
     public class Publication: BaseMongoEntity
     {
+        [BsonElement("Pub_Title")]
         public string Title { get; set; }
+        [BsonElement("Pub_Review")]
         public string Review { get; set; }
+        [BsonElement("Pub_UserId")]
         public string  UserId { get; set; }
-       
-
-        public ICollection<string> Publications { get; set; } = new List<string>();
+        [BsonElement("Pub_Post")]
+        public ICollection<string> post { get; set; } = new List<string>();
     }
 }

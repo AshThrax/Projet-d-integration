@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using WebApi.Application.Common.Mapping;
 
 namespace ApplicationTheather
 {
@@ -6,6 +7,7 @@ namespace ApplicationTheather
     {
         public static IServiceCollection AddTheatherApp(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddAutoMapper(typeof(Mapping));
             return serviceCollection;
         }
     }

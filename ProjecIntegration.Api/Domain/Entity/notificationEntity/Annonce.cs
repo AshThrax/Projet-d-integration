@@ -1,4 +1,5 @@
 ﻿using Domain.Enum;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,17 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.notificationEntity
 {
-    public class Annonce
+    public class Annonce: BaseMongoEntity
     {
-        public int Id { get; set; }
+        [BsonElement("Ann_Title")]
         public string Title { get; set; }
+        [BsonElement("Ann_Description")]
         public string Description { get; set; }
+        [BsonElement("Ann_PieceId")]
+        public int PieceId { get; set; }
+        [BsonElement("Ann_Priority")]
+
         public EPrioirity Priority { get; set; }
-        public DateTime Createtime { get; set; }
+      
     }
 }
