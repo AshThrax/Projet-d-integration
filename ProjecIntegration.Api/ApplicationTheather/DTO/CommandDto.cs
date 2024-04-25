@@ -6,7 +6,7 @@
         public int NombreDePlace { get; set; }
         public int IdRepresentation { get; set; }
 
-        public List<TicketDto>? Tickets { get; set; }
+       
     }
     public class AddCommandDto
     {

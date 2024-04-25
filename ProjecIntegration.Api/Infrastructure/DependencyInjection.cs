@@ -14,7 +14,11 @@ namespace Infrastructure
         {
             services.AddScoped<INotificationBl, NotificationBl>();
             services.AddScoped<INotificationRepository, NotificiationRepository>();
+            //---------
+            services.AddScoped<IAnnonceBl, AnnonceBl>();
             services.AddScoped<IAnnonceRepository, AnnonceRepository>();
+            //BUsiness service
+            
             services.Configure<NotificationStettings>(options =>
             {
                 options.ConnectionString = configure.GetConnectionString("MongoDb");

@@ -11,7 +11,7 @@ namespace Infrastructure.Repository
 {
     public class AnnonceRepository : MongoRepository<Annonce>, IAnnonceRepository
     {
-        public AnnonceRepository(IMongoDatabase database, string collectionName) : base(database, collectionName)
+        public AnnonceRepository(IMongoDatabase database) : base(database)
         {
         }
     }

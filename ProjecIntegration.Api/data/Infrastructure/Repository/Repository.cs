@@ -1,4 +1,4 @@
-﻿using Application.Common.Repository;
+﻿using ApplicationTheather.Common.Interfaces.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using Domain.Entity;
 using System.Linq.Expressions;

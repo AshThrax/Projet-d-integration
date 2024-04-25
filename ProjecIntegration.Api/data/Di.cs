@@ -30,6 +30,13 @@ namespace dataInfraTheather
         }
         public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
+            services.AddScoped<ICommandRepository,CommandRespository>();
+            services.AddScoped<IRepresentationRepository, RepresentationRespository>();
+            services.AddScoped<IComplexeRepository,ComplexeRepository>();
+            services.AddScoped<IPieceRepository,PieceRepository>();
+            services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
+            
+
             services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
             services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service
             services.AddScoped<IBusinessSalle, BusinessSalle>();//Business Salle Services

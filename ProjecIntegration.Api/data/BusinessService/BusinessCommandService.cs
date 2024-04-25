@@ -2,6 +2,7 @@
 using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using AutoMapper;
+using DataInfraTheather.Services;
 using Domain.Entity.TheatherEntity;
 using WebApi.Application.DTO;
 
@@ -38,32 +39,28 @@ namespace DataInfraTheather.BusinessService
             }
         }
 
-        public async Task GenerateCommandTicket(AddCommandDto command, string auth)
+        public async Task<List<TicketDto>> GenerateCommandTicket(int CommandeId)
         {
+            Command command = await  _commandRepository.GetCommand(CommandeId);
+
             var representation = await _representationRepository.GetById(command.IdRepresentation);//récuperation de la seance 
             int PieceID = representation.IdPiece;    //recuperation de la piece
             var Piece = await _piecerepository.GetById(PieceID);
             var salle = await _sallerepository.GetById(Piece.IdSalle);
-            var DateToString = representation.Seance.ToString();
+            var DateToString = representation.Seance;
             //génération du ticket
-            CommandDto commandeMade = new CommandDto
+            return TicketGenerator.GetTicketUser(command.NombreDePlace, Piece.Titre, salle.Name, DateToString);
+        }
+
+        public async Task AddCommand(AddCommandDto command)
+        {
+            if (command != null)
             {
-                AuthId = auth,
-                IdRepresentation = command.IdRepresentation,
-                NombreDePlace = command.NombreDePlace,
-                Tickets = Enumerable.Range(0, command.NombreDePlace)//génére le nombre de ticket requis
-                                    .Select(_ => new TicketDto
-                                    {
-                                        Titre = Piece.Titre,
-                                        SalleName = salle.Name,
-                                        Piecetitle = Piece.Titre,
-                                        Representation = DateToString
-                                    }).ToList()
-            };
-            //conversion Dto
-            var Conversion = _mapper.Map<Command>(commandeMade);
-            //appel du controller pour inserer les ticket data base 
-            _commandRepository.AddCommand(Conversion);
+                //conversion Dto
+                var Conversion = _mapper.Map<Command>(command);
+                _commandRepository.AddCommand(Conversion);
+                //appel du controller pour inserer les ticket da
+            }
         }
 
         public async Task<IEnumerable<CommandDto>> GetAllCommand()

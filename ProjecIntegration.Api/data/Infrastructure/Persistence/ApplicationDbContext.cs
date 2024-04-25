@@ -1,4 +1,4 @@
-﻿using dataInfraTheather.Models.Entity;
+﻿using Domain.Entity.TheatherEntity;
 
 namespace dataInfraTheather.Infrastructure.Persistence
 {
@@ -33,13 +33,13 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<Complexe>()
                 .HasKey(x => x.Id);
             modelBuilder.Entity<Complexe>()
-                .Property(x => x.AddedTime)
+                .Property(x => x.CreatedDate)
                 .IsRequired(false);
             // salle Configuration
             modelBuilder.Entity<SalleDeTheatre>()
                 .HasKey(x => x.Id);
             modelBuilder.Entity<SalleDeTheatre>()
-              .Property(x => x.AddedTime)
+              .Property(x => x.CreatedDate)
               .IsRequired(false);
             modelBuilder.Entity<SalleDeTheatre>()
                 .HasOne(x => x.Complexe)
@@ -51,7 +51,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<Representation>()
                 .HasKey(x => x.Id);
             modelBuilder.Entity<Representation>()
-              .Property(x => x.AddedTime)
+              .Property(x => x.CreatedDate)
               .IsRequired(false);
             modelBuilder.Entity<Representation>()
                 .HasOne(x => x.Piece)
@@ -68,7 +68,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<Piece>()
                 .HasKey(x => x.Id);
             modelBuilder.Entity<Piece>()
-              .Property(x => x.AddedTime)
+              .Property(x => x.CreatedDate)
               .IsRequired(false);
             modelBuilder.Entity<Piece>().HasOne(x => x.SalleDeTheatre)
                 .WithMany(x => x.Pieces)
@@ -77,17 +77,14 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<Command>()
                 .HasKey(x => x.Id);
             modelBuilder.Entity<Command>()
-              .Property(x => x.AddedTime)
+              .Property(x => x.CreatedDate)
               .IsRequired(false);
             modelBuilder.Entity<Command>()
                 .HasOne(x => x.Representation)
                 .WithMany(x => x.Commands)
                 .HasForeignKey(x => x.IdRepresentation)
                 .OnDelete(DeleteBehavior.Restrict);
-            //--PieceConfiguration---------
-            modelBuilder.Entity<Tickets>().HasKey(x => x.Id);
-            modelBuilder.Entity<Tickets>().HasOne(x => x.Command)
-                .WithMany(x => x.Tickets).HasForeignKey(x => x.CommandId);
+          
             //----------------------------end Config
             base.OnModelCreating(modelBuilder);
 

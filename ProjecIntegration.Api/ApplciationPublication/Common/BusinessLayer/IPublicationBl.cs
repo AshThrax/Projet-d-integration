@@ -1,4 +1,5 @@
-﻿using Domain.Entity.publicationEntity;
+﻿using ApplciationPublication.Dto;
+using Domain.Entity.publicationEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +12,12 @@ namespace ApplciationPublication.Common.BusinessLayer
     {
         #region publication
         Task DeletePublication(string pubId);
-        Task<Publication> GetPublicationById(string pubId);
-        Task<IEnumerable<Publication>> GetAllbyPublicationID(string userId);
-        Task CreatePublication(Publication pub);
-        Task UpdatePublication(string pubId,Publication pub);
+        Task<IEnumerable<PublicationDto>> GetAllPublication();
+        Task<PublicationDto> GetPublicationById(string pubId);
+        Task<IEnumerable<PublicationDto>> GetAllbyPublicationID(string userId);
+        Task CreatePublication(PublicationDto pub);
+        Task UpdatePublication(string pubId,string content);
         #endregion
-
-        #region post
-        Task DeletePost(string postId);
-        Task<Post> GetPostById(string postId);
-        Task<IEnumerable<Post>> GetAllPostFromPUblicationId(string PubId);
-        Task UpdatePost(string postId, Post post);
-        Task Createasync(Post pub);
-        #endregion
-
-        #region repost
-        Task DeleteRePost(string repostId);
-        Task UpdatePost(string repostId, RePost post);
-        Task CreateAsync(RePost pub);
-        Task<Post> GetRePostById(string repostId);
-        Task<IEnumerable<Post>> GetAllRePostFromPostId(string PostId);
-        #endregion
+      
     }
 }

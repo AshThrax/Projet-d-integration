@@ -1,4 +1,5 @@
-﻿using Domain.Entity.notificationEntity;
+﻿using Application.DTO;
+using Domain.Entity.notificationEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Application.Common.businessService
 {
     public interface INotificationBl
     {
-        Task CreateNotification(Notification notification);
-        Task UpdateNotification(string  notificationId,Notification notification);
+        Task CreateNotification(AddNotificationDto notification);
+        Task UpdateNotification(string  notificationId,UpdateNotificationDto notification);
         Task DeleteNotification(string notificationId);
-        Task<Notification> GetNotificationById(string id);
-        Task<IEnumerable<Notification>> GetNotificationByUserId(string userId);
+        Task<NotificationDto> GetNotificationById(string id);
+        Task<IEnumerable<NotificationDto>> GetNotificationByUserId(string userId);
     }
 }

@@ -16,5 +16,9 @@ namespace Infrastructure.Persistence
         public IMongoCollection<Notification> GetNotification() {
             return _database.GetCollection<Notification>("Notification");
         }
+        public IMongoCollection<Annonce> GetAnnonce()
+        {
+            return _database.GetCollection<Annonce>("Annonce");
+        }
     }
 }

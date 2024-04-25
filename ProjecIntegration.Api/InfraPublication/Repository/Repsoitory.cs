@@ -12,9 +12,9 @@ namespace InfraPublication.Repository
     {
         private readonly IMongoCollection<T> _mongoCollection;
 
-        public MongoRepository(IMongoDatabase database, string collectionName)
+        public MongoRepository(IMongoDatabase database)
         {
-            _mongoCollection = database.GetCollection<T>(collectionName);
+            _mongoCollection = database.GetCollection<T>(nameof(T));
         }
 
         public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties)

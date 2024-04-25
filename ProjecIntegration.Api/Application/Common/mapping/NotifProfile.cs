@@ -16,6 +16,11 @@ namespace Application.Common.mapping
             CreateMap<AddAnnonceDto, Annonce>();
             CreateMap<Annonce, GetAnnonceDto>();
             CreateMap<UpdateNotificationDto,Annonce>();
+            //--------------------------------------------
+            CreateMap<AddNotificationDto, Notification>();
+            CreateMap<Notification, NotificationDto>();
+            CreateMap<UpdateNotificationDto, Notification>();
+
         }
     }
 }

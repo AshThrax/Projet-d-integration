@@ -7,10 +7,16 @@ namespace ApplicationTheather.BusinessService
         /// <summary>
         ///  construit les ticket lié a une commande 
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="CommandeId"></param>
         /// <param name="Auth"></param>
         /// <returns></returns>
-        Task GenerateCommandTicket(AddCommandDto command, string Auth);
+        Task<List<TicketDto>> GenerateCommandTicket(int CommandeId);
+        /// <summary>
+        /// ajout une nouvelle commmande a la base de donnée
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        Task AddCommand(AddCommandDto command);
         /// <summary>
         /// 
         /// </summary>

@@ -1,5 +1,6 @@
 ﻿using Application.Common.businessService;
 using Application.Common.Repository;
+using Application.DTO;
 using Domain.Entity.notificationEntity;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Infrastructure.BusinessService
             _notificationRepository = notificationRepository;
         }
 
-        public Task CreateNotification(Notification notification)
+        public Task CreateNotification(AddNotificationDto notification)
         {
             throw new NotImplementedException();
         }
@@ -28,17 +29,17 @@ namespace Infrastructure.BusinessService
             throw new NotImplementedException();
         }
 
-        public Task<Notification> GetNotificationById(string id)
+        public Task<NotificationDto> GetNotificationById(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Notification>> GetNotificationByUserId(string userId)
+        public Task<IEnumerable<NotificationDto>> GetNotificationByUserId(string userId)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateNotification(string notificationId, Notification notification)
+        public Task UpdateNotification(string notificationId, UpdateNotificationDto notification)
         {
             throw new NotImplementedException();
         }

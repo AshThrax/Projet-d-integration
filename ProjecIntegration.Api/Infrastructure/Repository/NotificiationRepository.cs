@@ -11,8 +11,10 @@ namespace Infrastructure.Repository
 {
     public class NotificiationRepository : MongoRepository<Notification>, INotificationRepository
     {
-        public NotificiationRepository(IMongoDatabase database, string collectionName) : base(database, collectionName)
+        private readonly IMongoCollection<Notification> _notificationCollection;
+        public NotificiationRepository(IMongoDatabase database) : base(database)
         {
+            _notificationCollection = database.GetCollection<Notification>(nameof(Notification));
         }
     }
 }

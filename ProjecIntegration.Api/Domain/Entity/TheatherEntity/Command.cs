@@ -9,7 +9,6 @@
         public Representation? Representation { get; set; }
         public int IdRepresentation { get; set; }
 
-        public List<Tickets>? Tickets { get; set; }
 
     }
 }

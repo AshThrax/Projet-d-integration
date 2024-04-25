@@ -1,5 +1,4 @@
-﻿using data.Interfaces.IRepository;
-using WebApi.Application.DTO;
+﻿using WebApi.Application.DTO;
 
 namespace ApplicationTheather.BusinessService
 {
