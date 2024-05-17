@@ -1,4 +1,4 @@
-﻿using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Dto;
 using Domain.Entity.publicationEntity;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Common.BusinessLayer
+namespace ApplicationPublication.Common.BusinessLayer
 {
     public interface IPostBL
     {
@@ -42,7 +42,7 @@ namespace ApplciationPublication.Common.BusinessLayer
         /// <param name="publicationtid">identifiant de la publication</param>
         /// <param name="pub">object post provenant du client</param>
         /// <returns></returns>
-        Task Createasync(string publicationtid,PostDto pub);
+        Task Createasync(string publicationtid, PostDto pub);
         #endregion
 
     }

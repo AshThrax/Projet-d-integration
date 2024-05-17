@@ -7,17 +7,14 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Common.Repository
+namespace ApplicationPublication.Common.Repository
 {
-    public interface IPublicationRepository
+    public interface IPublicationRepository:IRepository<Publication>
     {
-        Task<IEnumerable<Annonce>> GetAll(params Expression<Func<Publication, object>>[] includeProperties);
-        Task<Annonce> GetById(string id, params Expression<Func<Publication, object>>[] includeProperties);
-        Task<IEnumerable<Publication>> GetAll();
-        Task<Publication> GetById(string id);
-        void Insert(Publication entity);
-        void Update(string entityId, Publication entity);
-        void Delete(string entityId);
-        Task UpdatePublicationContent(string publicationid, string content);
+        Task<IEnumerable<Publication>> GetAllbyPublicationByUserId(string userId);
+       
+        Task UpdatePublicationContent(string publicationid,string title, string content);
+        
+      
     }
 }

@@ -50,6 +50,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.Features": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[2.24.0, )"
@@ -71,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,11 +1,13 @@
-﻿using ApplciationPublication.Common.BusinessLayer;
-using ApplciationPublication.Common.Repository;
-using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Common.BusinessLayer;
+using ApplicationPublication.Common.Repository;
+using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
+using InfraPublication.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,7 @@ namespace InfraPublication.BusinessLayer
     public class IPublicationBL : IPublicationBl
     {
         private readonly IPublicationRepository _publicationRepository;
+     
         private readonly IMapper _mapper;
 
         public IPublicationBL(IPublicationRepository publicationRepository, IMapper mapper)
@@ -25,67 +28,115 @@ namespace InfraPublication.BusinessLayer
 
 
         #region publication
-        public async Task CreatePublication(PublicationDto pub)
+        public async Task CreatePublication(AddPublicationDto pub)
         {
-            if( pub == null )
+            try
             {
-                //----
-                var mapped= _mapper.Map<Publication>(pub);
+                Publication mapped= _mapper.Map<Publication>(pub);
+                mapped.UpdatedDate=DateTime.Now;
+                mapped.CreatedDate=DateTime.Now;
                 _publicationRepository.Insert(mapped);
                 //----
             }
+            catch (Exception)
+            {
+                
+            }//----
+              
         }
 
         public async Task DeletePublication(string pubId)
         {
-            var getPub = await _publicationRepository.GetById(pubId);
-            if (pubId != null)
+            try
             {
-                //----
-                var mapped = _mapper.Map<Publication>(getPub);
-                _publicationRepository.Insert(mapped);
-                //----
+                Publication getPub = await _publicationRepository.GetById(pubId) ?? throw new NullReferenceException();
+                 //----
+                 if(getPub != null) 
+                {
+                    _publicationRepository.Delete(pubId);
+                    
+                }
+                 //----
+           
+            }
+            catch(Exception )
+            {
+
             }
         }
-        public async Task<IEnumerable<PublicationDto>> GetAllbyPublicationID(string userId)
+        public async Task<IEnumerable<PublicationDto>> GetAllbyPublicationByUserId(string userId)
         {
-            var getPub = await _publicationRepository.GetAll();
-            if (getPub != null)
+            try
             {
-                //----
+                IEnumerable<Publication> getPub = await _publicationRepository.GetAllbyPublicationByUserId(userId) 
+                                                                 ?? throw new NullReferenceException("no user found inside ") ;
                 return _mapper.Map<IEnumerable<PublicationDto>>(getPub);
-                
-                //----
+                 
             }
-            return null;
+            catch(ArgumentException)
+            {
+                IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
+                return Empty;
+            }
+            catch(Exception)
+            {
+                IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
+                return Empty;
+            }
+           
         }
 
-        public Task<IEnumerable<PublicationDto>> GetAllPublication()
+        public async Task<IEnumerable<PublicationDto>> GetAllPublication()
         {
-            throw new NotImplementedException();
+            try
+            { 
+                return _mapper.Map<IEnumerable<PublicationDto>>(await _publicationRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
+                return Empty;
+            }
+           
         }
 
         public async Task<PublicationDto> GetPublicationById(string pubId)
         {
-            var getPub = await _publicationRepository.GetById(pubId);
-            if (getPub != null)
+            try
             {
-                //----
-                return _mapper.Map<PublicationDto>(getPub);
+               Publication getPublic = await _publicationRepository.GetById(pubId) 
+                                             ?? throw new ArgumentException() ;
+                if (string.IsNullOrEmpty(getPublic.Review))
+                {
+                    //----
+                    return _mapper.Map<PublicationDto>(getPublic);
 
-                //----
+                    //----
+                }
+                return new PublicationDto();  
+            } catch (Exception ex) 
+            { 
+                return new PublicationDto();
             }
-            return null;
-        } 
-        public async Task UpdatePublication(string pubId, string content)
+           
+        }
+        public async Task UpdatePublication(string pubId, string title, string content)
         {
-            var getPub = await _publicationRepository.GetById(pubId);
-            if (pubId != null)
+            try
             {
-                //----
-               
-                _publicationRepository.UpdatePublicationContent(pubId,content);
-                //----
+                Publication getPub = await _publicationRepository.GetById(pubId)
+                                    ?? throw new NullReferenceException("null reference");
+                if (getPub != null)
+                {
+                    await _publicationRepository.UpdatePublicationContent(pubId ,title,content);
+                    //----
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
         #endregion    

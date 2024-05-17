@@ -1,4 +1,4 @@
-﻿namespace WebApi.Application.DTO
+﻿namespace ApplicationTheather.DTO
 {
     //class crée pour manager les user auth0
     //via la management Api

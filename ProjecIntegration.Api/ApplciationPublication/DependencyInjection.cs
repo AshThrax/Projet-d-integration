@@ -1,7 +1,7 @@
-﻿using ApplciationPublication.Common.Mapping;
+﻿using ApplicationPublication.Common.Mapping;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ApplciationPublication
+namespace ApplicationPublication
 {
     public static class DependencyInjection
     {

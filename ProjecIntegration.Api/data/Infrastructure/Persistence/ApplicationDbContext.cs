@@ -13,8 +13,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
         public DbSet<SalleDeTheatre> SalleDeTheatres { get; set; }
 
         public DbSet<Piece> Pieces { get; set; }
-
-        public DbSet<Tickets> Tickets { get; set; }
+        public DbSet<Theme> Theme {get;set;}
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +34,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<Complexe>()
                 .Property(x => x.CreatedDate)
                 .IsRequired(false);
+
             // salle Configuration
             modelBuilder.Entity<SalleDeTheatre>()
                 .HasKey(x => x.Id);
@@ -44,15 +44,17 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<SalleDeTheatre>()
                 .HasOne(x => x.Complexe)
                 .WithMany(x => x.SalleDeTheatres)
-                .HasForeignKey(x => x.complexeId)
+                .HasForeignKey(x => x.ComplexeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // representation Configuration
             modelBuilder.Entity<Representation>()
                 .HasKey(x => x.Id);
+
             modelBuilder.Entity<Representation>()
               .Property(x => x.CreatedDate)
               .IsRequired(false);
+
             modelBuilder.Entity<Representation>()
                 .HasOne(x => x.Piece)
                 .WithMany(x => x.Representations)
@@ -67,12 +69,13 @@ namespace dataInfraTheather.Infrastructure.Persistence
             //--piece Configuration
             modelBuilder.Entity<Piece>()
                 .HasKey(x => x.Id);
+
             modelBuilder.Entity<Piece>()
               .Property(x => x.CreatedDate)
               .IsRequired(false);
-            modelBuilder.Entity<Piece>().HasOne(x => x.SalleDeTheatre)
-                .WithMany(x => x.Pieces)
-                .HasForeignKey(x => x.IdSalle);
+
+            modelBuilder.Entity<Piece>()
+                .HasOne(x => x.Theme);
             //--command Configuration
             modelBuilder.Entity<Command>()
                 .HasKey(x => x.Id);
@@ -84,6 +87,13 @@ namespace dataInfraTheather.Infrastructure.Persistence
                 .WithMany(x => x.Commands)
                 .HasForeignKey(x => x.IdRepresentation)
                 .OnDelete(DeleteBehavior.Restrict);
+            //-----Theme
+            modelBuilder.Entity<Theme>()
+                        .HasKey(x => x.Id);
+
+                        
+                
+            //-----Image
           
             //----------------------------end Config
             base.OnModelCreating(modelBuilder);

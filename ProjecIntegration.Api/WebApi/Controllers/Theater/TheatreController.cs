@@ -1,9 +1,10 @@
 ﻿using ApplicationTheather.BusinessService;
-using WebApi.Application.DTO;
+using ApplicationTheather.Common.Exceptions;
+using ApplicationTheather.DTO;
 
 namespace WebApi.Controllers.Theater
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class TheatreController : ControllerBase
     {
@@ -15,27 +16,7 @@ namespace WebApi.Controllers.Theater
             _theatreBusiness = theatreBusiness;
             this.logger = logger;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pieceId"></param>
-        /// <param name="SalleId"></param>
-        /// <returns></returns>
-        [HttpPut("{pieceId}/{SalleId}")]
-        public async Task<ActionResult> SetPieceSalle(int pieceId, int SalleId)
-        {
-            try
-            {
-                await _theatreBusiness.SetPieceSalle(pieceId, SalleId);
-
-                return Ok();
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+       
         /// <summary>
         /// 
         /// </summary>
@@ -51,9 +32,17 @@ namespace WebApi.Controllers.Theater
                 await _theatreBusiness.CreateRepresentationForPiece(pieceId, SalleId, represnetation);
                 return Ok();
             }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
         /// <summary>
@@ -70,9 +59,17 @@ namespace WebApi.Controllers.Theater
                 await _theatreBusiness.DeleteRepresentationForPiece(pieceId, repId);
                 return NoContent();
             }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
             catch (Exception ex)
             {
-                return Content(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -88,6 +85,14 @@ namespace WebApi.Controllers.Theater
             {
                 var GetRepPiece = await _theatreBusiness.GetRepresentationFromPiece(IdPiece);
                 return Ok(GetRepPiece);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
@@ -108,28 +113,19 @@ namespace WebApi.Controllers.Theater
                 var GetRep = await _theatreBusiness.GetRepresentationFromPiece(IdSalle);
                 return Ok(GetRep);
             }
-            catch (Exception ex)
+            catch (ValidationException ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Complexe"></param>
-        /// <returns></returns>
-        [HttpGet("{IdComplexe}")]
-        public async Task<ActionResult> GetAllPieceFromComplexe(int IdComplexe)
-        {
-            try
+            catch (NotFoundException ex)
             {
-                var getComplexe = await _theatreBusiness.GetallPieceFromComplexe(IdComplexe);
-                return Ok(getComplexe);
+                return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
-                return Content(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
+
     }
 }

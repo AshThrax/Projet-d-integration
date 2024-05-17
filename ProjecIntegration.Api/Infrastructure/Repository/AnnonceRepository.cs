@@ -1,5 +1,6 @@
 ﻿using Application.Common.Repository;
 using Domain.Entity.notificationEntity;
+using Infrastructure.Persistence;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,12 @@ namespace Infrastructure.Repository
 {
     public class AnnonceRepository : MongoRepository<Annonce>, IAnnonceRepository
     {
-        public AnnonceRepository(IMongoDatabase database) : base(database)
+        private readonly IMongoCollection<Annonce> _annonceCollection;
+        private readonly NotificationMongoContext _database;
+        public AnnonceRepository(NotificationMongoContext database) : base(database)
         {
+            _database = database;
+            _annonceCollection=database.Dbset<Annonce>();
         }
     }
 }

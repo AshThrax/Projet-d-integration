@@ -10,9 +10,11 @@ namespace Domain.Entity.publicationEntity
     public class Post : BaseMongoEntity
     {
         [BsonElement("Post_Content")]
-        public string Content { get; set; }
+        public string? Content { get; set; }
         [BsonElement("Post_UserId")]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
+        [BsonElement("Post_PublicationId")]
+        public string? PublicationId { get; set; }
         [BsonElement("Post_Repost")]
         public ICollection<RePost> Repost { get; set; } = new List<RePost>();
     }

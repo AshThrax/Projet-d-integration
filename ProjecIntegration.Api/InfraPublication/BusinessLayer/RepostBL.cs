@@ -1,6 +1,6 @@
-﻿using ApplciationPublication.Common.BusinessLayer;
-using ApplciationPublication.Common.Repository;
-using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Common.BusinessLayer;
+using ApplicationPublication.Common.Repository;
+using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
 using InfraPublication.Repository;
@@ -25,21 +25,40 @@ namespace InfraPublication.BusinessLayer
 
         public async Task CreateAsync(RepostDto pub)
         {
-            if (pub != null)
+            try
             {
-                var mapped=mapper.Map<RePost>(pub);
-                repostrepository.Insert(mapped);
+                 if (pub != null)
+                 {
+                   RePost mappedRepost=mapper.Map<RePost>(pub);
+                   mappedRepost.UpdatedDate = DateTime.Now;
+                   mappedRepost.CreatedDate = DateTime.Now;
+                   repostrepository.Insert(mappedRepost);
+                 }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+       
         }
 
         public async Task DeleteRePost(string repostId)
         {
-            var doExist= await repostrepository.GetById(repostId);
-            if (doExist != null)
+            try
             {
-               
-                repostrepository.Delete(repostId);
+                RePost doExist= await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
+                if (doExist != null)
+                {
+                    repostrepository.Delete(repostId);
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
 
         public async Task<IEnumerable<RepostDto>> GetAllRePostFromPostId(string PostId)
@@ -51,19 +70,36 @@ namespace InfraPublication.BusinessLayer
 
         public async Task<RepostDto> GetRePostById(string repostId)
         {
+            try
+            {
+                  RePost doExist = await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
+                  return mapper.Map<RepostDto>(doExist);
+            }
+            catch (Exception)
+            {
 
-            var doExist = await repostrepository.GetById(repostId);
-            return mapper.Map<RepostDto>(doExist);
+                throw;
+            }
+          
         }
 
         public async Task UpdatePost(string repostId, RepostDto post)
         {
-            var doExist = await repostrepository.GetById(repostId);
-            if (doExist != null)
+            try
             {
-                var mapped= mapper.Map<RePost>(post); 
+              RePost doExist = await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
+              if (doExist != null)
+              {
+                RePost mapped= mapper.Map<RePost>(post); 
                 repostrepository.Update(repostId, mapped);
+              }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
     }
 }

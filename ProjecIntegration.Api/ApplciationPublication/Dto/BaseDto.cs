@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Dto
+namespace ApplicationPublication.Dto
 {
     public class BaseDto
     {

@@ -1,5 +1,7 @@
 ﻿using Application.Common.businessService;
 using Application.DTO;
+using ApplicationPublication.Dto;
+using Domain.DataType;
 using Domain.Entity.notificationEntity;
 using Infrastructure.BusinessService;
 using Microsoft.AspNetCore.Http;
@@ -7,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Notification
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class NotificationController : ControllerBase
     {
@@ -22,19 +24,28 @@ namespace WebApi.Controllers.Notification
             _notificationBl = notificationBl;
         }
         [HttpGet("get-notification")]
-        public async Task<ActionResult> GetAll()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<NotificationDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetAll([FromQuery] int pageNumber)
         {
             try
             {
-                return Ok(await _notificationBl.GetNotificationByUserId(await _customGetToken.GetSub()));
+                Pagination<NotificationDto> paged = await _notificationBl.GetNotificationByUserId(await _customGetToken.GetSub(),pageNumber);
+                return Ok(paged);
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
         }
 
         [HttpGet("get-notification/{notificationId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetById(string notificationId)
         {
             try
@@ -48,12 +59,21 @@ namespace WebApi.Controllers.Notification
         }
 
         [HttpPost("post-notification")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddNotificationDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> CreateAnnonce([FromBody] AddNotificationDto notificationDto)
         {
             try
             {
-                await _notificationBl.CreateNotification(notificationDto);
-                return Ok();
+                if(!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                
+                _notificationBl.CreateNotification(notificationDto);
+                return NoContent();
             }
             catch (ArgumentException ex)
             {
@@ -65,6 +85,10 @@ namespace WebApi.Controllers.Notification
             }
         }
         [HttpPut("update-notification/{notifId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateAnnonce(string notifId, [FromBody] UpdateNotificationDto annonce)
         {
             try
@@ -88,6 +112,10 @@ namespace WebApi.Controllers.Notification
             }
         }
         [HttpDelete("supress-notification/{notificationId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateAnnonce(string notificationId)
         {
             try

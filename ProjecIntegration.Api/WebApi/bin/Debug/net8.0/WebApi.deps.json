@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "WebApi/1.0.0": {
         "dependencies": {
-          "ApplciationPublication": "1.0.0",
           "Application": "1.0.0",
+          "ApplicationPublication": "1.0.0",
           "ApplicationTheather": "1.0.0",
           "Auth0Net.DependencyInjection": "3.1.0",
           "AutoMapper": "13.0.1",
@@ -214,6 +214,12 @@
             "assemblyVersion": "8.0.1.0",
             "fileVersion": "8.0.123.58008"
           }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/5.0.17": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "System.IO.Pipelines": "6.0.3"
         }
       },
       "Microsoft.AspNetCore.JsonPatch/8.0.1": {
@@ -682,6 +688,14 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "Microsoft.Extensions.Options": "8.0.0",
           "System.Diagnostics.DiagnosticSource": "8.0.0"
+        }
+      },
+      "Microsoft.Extensions.Features/8.0.4": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Features.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.424.17014"
+          }
         }
       },
       "Microsoft.Extensions.Http/8.0.0": {
@@ -1254,16 +1268,6 @@
           }
         }
       },
-      "ApplciationPublication/1.0.0": {
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "Domain": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
-        },
-        "runtime": {
-          "ApplciationPublication.dll": {}
-        }
-      },
       "Application/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
@@ -1272,6 +1276,16 @@
         },
         "runtime": {
           "Application.dll": {}
+        }
+      },
+      "ApplicationPublication/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Domain": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "ApplicationPublication.dll": {}
         }
       },
       "ApplicationTheather/1.0.0": {
@@ -1299,6 +1313,8 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "Microsoft.Extensions.Features": "8.0.4",
           "MongoDB.Bson": "2.24.0"
         },
         "runtime": {
@@ -1307,7 +1323,7 @@
       },
       "InfraPublication/1.0.0": {
         "dependencies": {
-          "ApplciationPublication": "1.0.0",
+          "ApplicationPublication": "1.0.0",
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
@@ -1450,6 +1466,13 @@
       "sha512": "sha512-6xI3L6n8ucpUSkVn0Ax0MOtSJKIT6lrIkYGxIRda9LgmAjOFS3wPj2J2Y75dGUFkgTgpxPNq9K0oDCMPS2zBMg==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.1",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/5.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
+      "path": "microsoft.aspnetcore.http.features/5.0.17",
+      "hashPath": "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512"
     },
     "Microsoft.AspNetCore.JsonPatch/8.0.1": {
       "type": "package",
@@ -1667,6 +1690,13 @@
       "sha512": "sha512-JHYCQG7HmugNYUhOl368g+NMxYE/N/AiclCYRNlgCY9eVyiBkOHMwK4x60RYMxv9EL3+rmj1mqHvdCiPpC+D4Q==",
       "path": "microsoft.extensions.diagnostics.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.diagnostics.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Features/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ym56/tUtFHFHucqiyQq42Ha6n1CT3CkrSZmbb3Szfkl/KNEaNqotKXFQMWHlFk2WMvU4fepqUsW8VK5WEjMChA==",
+      "path": "microsoft.extensions.features/8.0.4",
+      "hashPath": "microsoft.extensions.features.8.0.4.nupkg.sha512"
     },
     "Microsoft.Extensions.Http/8.0.0": {
       "type": "package",
@@ -2123,12 +2153,12 @@
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     },
-    "ApplciationPublication/1.0.0": {
+    "Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Application/1.0.0": {
+    "ApplicationPublication/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

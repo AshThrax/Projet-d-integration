@@ -1,5 +1,5 @@
-﻿using ApplciationPublication.Common.BusinessLayer;
-using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Common.BusinessLayer;
+using ApplicationPublication.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +21,10 @@ namespace WebApi.Controllers.Publication
         }
 
         [HttpGet("publication-all")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicationDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAllPublication()
         {
             try
@@ -33,6 +37,10 @@ namespace WebApi.Controllers.Publication
             }
         }
         [HttpGet("publication-by-id/{publicationId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicationDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetPublicationById(string publicationId)
         {
             try
@@ -46,12 +54,16 @@ namespace WebApi.Controllers.Publication
             }
         }
         [HttpGet("publication-by-user")]
-        public async Task<ActionResult> GetPublicationByUser(string publicationId)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicationDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetPublicationByUser()
         {
             try
             {
                 var auth = await _customGetToken.GetSub();
-                return Ok(await _publicationBl.GetAllbyPublicationID(auth));
+                return Ok(await _publicationBl.GetAllbyPublicationByUserId(auth));
             }
             catch
             {
@@ -72,7 +84,11 @@ namespace WebApi.Controllers.Publication
             }
         }
         [HttpPut("update-publication/{publicationById}")]
-        public async Task<ActionResult> UpdatePublication(string publicationById,string Content)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> UpdatePublication(string publicationById,string Title, string Content)
         {
             try
             {
@@ -80,7 +96,7 @@ namespace WebApi.Controllers.Publication
                 {
                     return BadRequest();
                 }
-                await _publicationBl.UpdatePublication(publicationById,Content);
+                await _publicationBl.UpdatePublication(publicationById,Title,Content);
                 return NoContent(); 
             }
             catch
@@ -89,8 +105,12 @@ namespace WebApi.Controllers.Publication
 
             }
         }
-        [HttpPost("create-publication/{publicationById}")]
-        public async Task<ActionResult> CreatePublication( [FromBody] PublicationDto AddPublication)
+        [HttpPost("create-publication")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddPublicationDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> CreatePublication( [FromBody] AddPublicationDto AddPublication)
         {
             try
             {
@@ -98,6 +118,8 @@ namespace WebApi.Controllers.Publication
                 {
                     return BadRequest();
                 }
+                string UserId = await _customGetToken.GetSub();
+                AddPublication.UserId = UserId;
                 await _publicationBl.CreatePublication(AddPublication);
                 return NoContent();
             }

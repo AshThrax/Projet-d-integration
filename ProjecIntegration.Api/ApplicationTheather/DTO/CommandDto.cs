@@ -1,4 +1,4 @@
-﻿namespace WebApi.Application.DTO
+﻿namespace ApplicationTheather.DTO
 {
     public class CommandDto : BaseDto
     {
@@ -6,7 +6,7 @@
         public int NombreDePlace { get; set; }
         public int IdRepresentation { get; set; }
 
-       
+
     }
     public class AddCommandDto
     {

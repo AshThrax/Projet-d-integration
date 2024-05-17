@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Dto
+namespace ApplicationPublication.Dto
 {
-    public class PostDto :BaseDto
-    {   
-        public string Content { get; set; }    
+    public class PostDto : BaseDto
+    {
+        public string Content { get; set; }
         public string UserId { get; set; }
         public ICollection<RePost> Repost { get; set; } = new List<RePost>();
     }

@@ -1,6 +1,6 @@
-﻿using ApplciationPublication.Common.BusinessLayer;
-using ApplciationPublication.Common.Repository;
-using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Common.BusinessLayer;
+using ApplicationPublication.Common.Repository;
+using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
 using System;
@@ -14,32 +14,54 @@ namespace InfraPublication.BusinessLayer
     public class PostBL : IPostBL
     {
         private readonly IPostRepository _postrepository;
-        private readonly IPublicationRepository _publicationBL;
         private readonly IMapper _mapper;
 
-        public PostBL(IPostRepository postrepository, IPublicationRepository publicationBL, IMapper mapper)
+        public PostBL(IPostRepository postrepository, IMapper mapper)
         {
-            this._postrepository = postrepository;
             _postrepository = postrepository;
+          
             _mapper = mapper;
         }
 
         public async Task Createasync(string publicationId,PostDto pub)
         {
-            if (pub != null)
+            try
             {
-                var mapped= _mapper.Map<Post>(pub);
-                _postrepository.Insert(mapped);
+                
+                  if (string.IsNullOrEmpty(publicationId))
+                  {
+                      Post mapped= _mapper.Map<Post>(pub);
+                      mapped.UpdatedDate = DateTime.Now;
+                      mapped.CreatedDate = DateTime.Now;
+                      _postrepository.Insert(mapped);
+                  }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
 
         public async Task DeletePost(string postId)
         {
-            var Getdeleted=await _postrepository.GetById(postId);
-            if (Getdeleted != null)
-            {
-                _postrepository.Delete(postId);
+            try
+             { 
+                Post Getdeleted=await _postrepository.GetById(postId)
+                                                     ?? throw new NullReferenceException("null reference");
+                if (Getdeleted != null)
+                {
+                    _postrepository.Delete(postId);
+                }
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         public Task<IEnumerable<PostDto>> GetAllPostFromPUblicationId(string PubId)
@@ -49,22 +71,40 @@ namespace InfraPublication.BusinessLayer
 
         public async Task<Post> GetPostById(string postId)
         {
-            var Getdeleted = await _postrepository.GetById(postId);
-            if (Getdeleted != null)
+            try
             {
-                return Getdeleted;
+                Post Getdeleted = await _postrepository.GetById(postId) ?? throw new NullReferenceException("null reference");
+                if (Getdeleted != null)
+                {
+                    return Getdeleted;
+                }
+                return new Post();
+
             }
-            return null;
+            catch (Exception)
+            {
+
+                return new Post();
+
+            }
         }
 
         public async Task UpdatePost(string postId, string content)
         {
-            var Getdeleted = await _postrepository.GetById(postId);
-            if (Getdeleted != null)
+            try
             {
-                
-                await _postrepository.Update(postId,content);
+              Post Getdeleted = await _postrepository.GetById(postId) ?? throw new NullReferenceException("null reference");
+              if (Getdeleted != null)
+              {
+               await _postrepository.Update(postId,content);
+              }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
            
         }
     }

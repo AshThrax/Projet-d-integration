@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 namespace Application.Common.Repository
 {
   
-        public interface IRepository 
-    {
+        public interface IRepository<T> where T : BaseMongoEntity
+        {
             Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties);
             Task<T> GetById(string id, params Expression<Func<T, object>>[] includeProperties);
             Task<IEnumerable<T>> GetAll();

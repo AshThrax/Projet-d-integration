@@ -1,4 +1,4 @@
-﻿namespace WebApi.Application.DTO
+﻿namespace ApplicationTheather.DTO
 {
     public class SalleDeTheatreDto : BaseDto
     {

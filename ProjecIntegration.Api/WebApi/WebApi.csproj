@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Auth0Net.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Stripe.net" Version="44.8.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="dotenv.net" Version="3.1.3" />
@@ -30,12 +31,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApplciationPublication\ApplciationPublication.csproj" />
+    <ProjectReference Include="..\ApplciationPublication\ApplicationPublication.csproj" />
     <ProjectReference Include="..\ApplicationTheather\ApplicationTheather.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\data\DataInfraTheather.csproj" />
     <ProjectReference Include="..\InfraPublication\InfraPublication.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ApiService\FileService\" />
   </ItemGroup>
 
 </Project>

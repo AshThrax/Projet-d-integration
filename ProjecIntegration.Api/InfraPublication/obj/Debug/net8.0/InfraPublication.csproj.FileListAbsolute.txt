@@ -7,12 +7,12 @@ C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPub
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\InfraPublication.deps.json
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\InfraPublication.dll
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\InfraPublication.pdb
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\ApplciationPublication.dll
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\Domain.dll
-C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\ApplciationPublication.pdb
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\Domain.pdb
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\obj\Debug\net8.0\InfraPub.6A6A9E2C.Up2Date
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\obj\Debug\net8.0\InfraPublication.dll
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\obj\Debug\net8.0\refint\InfraPublication.dll
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\obj\Debug\net8.0\InfraPublication.pdb
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\obj\Debug\net8.0\ref\InfraPublication.dll
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\ApplicationPublication.dll
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\InfraPublication\bin\Debug\net8.0\ApplicationPublication.pdb

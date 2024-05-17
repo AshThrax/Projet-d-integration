@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace Application.Common.Repository
 {
-    public interface IAnnonceRepository
+    public interface IAnnonceRepository: IRepository<Annonce>
     {
-        Task<IEnumerable<Annonce>> GetAll(params Expression<Func<Annonce, object>>[] includeProperties);
-        Task<Annonce> GetById(string id, params Expression<Func<Annonce, object>>[] includeProperties);
-        Task<IEnumerable<Annonce>> GetAll();
-        Task<Annonce> GetById(string id);
-        void Insert(Annonce entity);
-        void Update(string entityId,Annonce entity);
-        void Delete(string entityId);
+       
     }
 }

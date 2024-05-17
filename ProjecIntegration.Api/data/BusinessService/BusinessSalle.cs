@@ -1,8 +1,8 @@
 ﻿using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.DTO;
 using AutoMapper;
 using Domain.Entity.TheatherEntity;
-using WebApi.Application.DTO;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -41,7 +41,7 @@ namespace DataInfraTheather.BusinessService
         public async Task<IEnumerable<SalleDeTheatreDto>> GetFromComplexe(int idComplexe)
         {
             var GetEntity = await _salleDeTheatreRepository.GetAll();
-            var FromComplexe = GetEntity.Where(x => x.complexeId == idComplexe).ToList();
+            var FromComplexe = GetEntity.Where(x => x.ComplexeId == idComplexe).ToList();
             return _mapper.Map<IEnumerable<SalleDeTheatreDto>>(FromComplexe);
         }
 

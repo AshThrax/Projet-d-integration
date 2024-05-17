@@ -1,4 +1,5 @@
-﻿using Application.Common.Repository;
+﻿using Application.Common.businessService;
+using Application.Common.Repository;
 using Application.DTO;
 using AutoMapper;
 using Domain.DataType;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Common.businessService
+namespace Infrastructure.BusinessService
 {
     public class AnnonceBl : IAnnonceBl
     {
@@ -25,45 +26,92 @@ namespace Application.Common.businessService
 
         public async Task CreateAnnonce(AddAnnonceDto addAnnonceDto)
         {
-          if(addAnnonceDto != null)
+            try
             {
-                 _annonceRepository.Insert(_mapper.Map<Annonce>(addAnnonceDto));
+                if (addAnnonceDto != null)
+                {
+                    _annonceRepository.Insert(_mapper.Map<Annonce>(addAnnonceDto));
+                }
+
+            }
+            catch (Exception)
+            {
+
+                
             }
         }
 
         public async Task DeleteAnnonce(string annonceId)
         {
-           var annonce= _annonceRepository.GetById(annonceId);
-            if(annonce != null)
+            try
             {
-                _annonceRepository.Delete(annonceId);
+              Annonce annonce =await _annonceRepository.GetById(annonceId);
+              if (annonce != null)
+              {
+                 _annonceRepository.Delete(annonceId);
+              }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
 
-        public async  Task<GetAnnonceDto> GetAnnonceById(string annonceId)
+        public async Task<GetAnnonceDto> GetAnnonceById(string annonceId)
         {
-            var annonce = await _annonceRepository.GetById(annonceId);
-            if (annonce != null)
+            try
             {
-                var mapped = _mapper.Map<GetAnnonceDto>(annonce);
-                return mapped;
+                Annonce annonce = await _annonceRepository.GetById(annonceId);
+                if (annonce != null)
+                {
+                   GetAnnonceDto mapped = _mapper.Map<GetAnnonceDto>(annonce);
+                   return mapped;
+                }
+                return new GetAnnonceDto();
             }
-            return null; 
+            catch (Exception)
+            {
+
+                return new GetAnnonceDto();
+            }
+           
         }
 
-        public Task<Pagination<GetAnnonceDto>> GetAnnonces()
+        public async Task<Pagination<GetAnnonceDto>> GetAnnonces(int pageNumber)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IEnumerable<Annonce> getAllAnnonce = await _annonceRepository.GetAll();
+                return Pagination<GetAnnonceDto>.ToPagedList(_mapper.Map<List<GetAnnonceDto>>(getAllAnnonce.ToList()), pageNumber, 10);
+            
+            }
+            catch (Exception)
+            {
+
+                return Pagination<GetAnnonceDto>.ToPagedList(new List<GetAnnonceDto>(), pageNumber, 10);
+            }
+         
         }
 
-        public async Task UpdateAnnonce(string annonceId,UpdateAnnonceDto annonceDto)
+        public async Task UpdateAnnonce(string annonceId, UpdateAnnonceDto annonceDto)
         {
-            var annonce = await _annonceRepository.GetById(annonceId);
-            if (annonce != null)
+            try
             {
-                var mapped= _mapper.Map<Annonce>(annonceDto);
-                _annonceRepository.Update(annonceId, mapped);
+                  Annonce annonce = await _annonceRepository.GetById(annonceId);
+                  if (annonce != null)
+                  {
+                      Annonce mapped = _mapper.Map<Annonce>(annonceDto);
+                      _annonceRepository.Update(annonceId, mapped);
+                  }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
     }
 }

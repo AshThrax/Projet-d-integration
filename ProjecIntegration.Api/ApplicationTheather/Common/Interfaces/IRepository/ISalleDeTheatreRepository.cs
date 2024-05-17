@@ -9,7 +9,6 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
 
         Task<IEnumerable<SalleDeTheatre>> GetByIdComplexe(int idComplexe);
 
-        void AddPieceToSalle(int idSalle, Piece piece);
-        void DeletePieceToSalle(int idSalle, int idPiece);
+     
     }
 }

@@ -4,12 +4,12 @@
     "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj": {
+    "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj",
-        "projectName": "ApplciationPublication",
-        "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj",
+        "projectName": "ApplicationPublication",
+        "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj",
         "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\obj\\",
         "projectStyle": "PackageReference",
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -158,7 +158,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -237,7 +237,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -298,6 +298,10 @@
               "target": "Package",
               "version": "[11.9.0, )"
             },
+            "Microsoft.AspNetCore.Hosting": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -339,7 +343,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -389,6 +393,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.Features": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[2.24.0, )"
@@ -410,7 +422,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -443,8 +455,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj": {
-                "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj"
+              "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj"
               },
               "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
@@ -500,7 +512,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -590,7 +602,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -623,8 +635,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj": {
-                "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplciationPublication.csproj"
+              "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj"
               },
               "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
                 "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
@@ -703,6 +715,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[44.8.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -731,7 +747,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

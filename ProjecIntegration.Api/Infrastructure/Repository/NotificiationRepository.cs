@@ -1,5 +1,6 @@
 ﻿using Application.Common.Repository;
 using Domain.Entity.notificationEntity;
+using Infrastructure.Persistence;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,29 @@ namespace Infrastructure.Repository
     public class NotificiationRepository : MongoRepository<Notification>, INotificationRepository
     {
         private readonly IMongoCollection<Notification> _notificationCollection;
-        public NotificiationRepository(IMongoDatabase database) : base(database)
+        private readonly NotificationMongoContext _database;
+        public NotificiationRepository(NotificationMongoContext database) : base(database)
         {
-            _notificationCollection = database.GetCollection<Notification>(nameof(Notification));
+            _database = database;
+            _notificationCollection = database.Dbset<Notification>();
+        }
+         
+        public async Task<IEnumerable<Notification>> GetNotificationByUserId(string userId)
+        {
+            IEnumerable<Notification> listNotification= new List<Notification>();
+            try
+            {
+                FilterDefinitionBuilder<Notification> Builder = Builders<Notification>
+                                                                                        .Filter;
+                FilterDefinition<Notification> filter = Builder.Eq(x => x.UserId, userId);
+
+                listNotification= await _notificationCollection.Find(filter)
+                                                     .ToListAsync();
+            }
+            catch(Exception ) 
+            {
+            }
+           return listNotification;
         }
     }
 }

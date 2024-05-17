@@ -16,27 +16,53 @@ namespace dataInfraTheather.Infrastructure.Repository
 
         public void AddSalledeTheatre(int complexeId, SalleDeTheatre salleDeTheatre)
         {
-            var Complexe = _dbcontext.Complexe
-               .Include(x => x.SalleDeTheatres)
-               .FirstOrDefault(x => x.Id == complexeId);
-            if (Complexe != null)
+            try
             {
-                Complexe.SalleDeTheatres.Add(salleDeTheatre);
-                _dbcontext.SaveChanges();
+                Complexe Complexe = _dbcontext.Complexe
+                   .Include(x => x.SalleDeTheatres)
+                   .FirstOrDefault(x => x.Id == complexeId) ?? throw new NullReferenceException("null reference s");
+                if (Complexe != null)
+                {
+                    Complexe?.SalleDeTheatres?.Add(salleDeTheatre);
+                    _dbcontext.SaveChanges();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
 
+        public void DeleteSalleDetheatre(int complexeId, int salleId)
+        {
+            try
+            {
+                Complexe Complexe = _dbcontext.Complexe
+                 .Include(x => x.SalleDeTheatres)
+                 .FirstOrDefault(x => x.Id == complexeId) 
+                 ?? throw new NullReferenceException("null refenrece");
+
+                SalleDeTheatre salleRemoved = _dbcontext.SalleDeTheatres
+                                              .FirstOrDefault(x => x.Id == salleId) 
+                                              ?? throw new NullReferenceException("null refenrece");
+
+                Complexe?.SalleDeTheatres?.Remove(salleRemoved);
+                _dbcontext.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void DeletesalleDetheatre(int complexeId, int salleId)
         {
-            var Complexe = _dbcontext.Complexe
-             .Include(x => x.SalleDeTheatres)
-             .FirstOrDefault(x => x.Id == complexeId);
-
-            var salleRemoved = _dbcontext.SalleDeTheatres.FirstOrDefault(x => x.Id == salleId);
-
-            Complexe.SalleDeTheatres.Remove(salleRemoved);
-            _dbcontext.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

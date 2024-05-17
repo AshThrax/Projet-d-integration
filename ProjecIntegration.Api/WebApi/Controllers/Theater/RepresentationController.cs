@@ -1,192 +1,171 @@
-﻿using ApplicationTheather.Common.Interfaces.IRepository;
+﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Exceptions;
+using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.DTO;
 using Domain.Entity.TheatherEntity;
-using WebApi.Application.Common.Exceptions;
-using WebApi.Application.DTO;
 
 namespace WebApi.Controllers.Theater
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class RepresentationController : ControllerBase
     {
-        private readonly IRepresentationRepository _representationService;
+       
+        private readonly IBusinessRepresentation _representationService;
+        private readonly IBusinessCommandService _commandService;
         private readonly IMapper _mapper;
         private readonly ICustomGetToken gtk;
 
-        public RepresentationController(IRepresentationRepository representationService, IMapper mapper, ICustomGetToken gtk)
+        public RepresentationController(IBusinessRepresentation representationService, IMapper mapper,IBusinessCommandService comandService, ICustomGetToken gtk)
         {
+            _commandService = comandService;
             _representationService = representationService;
             _mapper = mapper;
             this.gtk = gtk;
         }
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RepresentationDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAll()
         {
             try
             {
-                var entities = await _representationService.GetAll(c => c.SalleDeTheatre);
+                var entities = await _representationService.GetAll();
                 return Ok(_mapper.Map<IEnumerable<RepresentationDto>>(entities));
 
             }
             catch (ValidationException ex)
             {
-                return StatusCode(400, ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (NotFoundException ex)
             {
-                return StatusCode(404, ex.Message);
+                return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(500, e.Message + "");
+                return BadRequest(ex.Message);
             }
         }
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RepresentationDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RepresentationDto>> GetById(int id)
         {
             try
             {
-                var entities = await _representationService.GetById(id, c => c.SalleDeTheatre);
+                var entities = await _representationService.GetById(id);
                 var conversion = _mapper.Map<RepresentationDto>(entities);
                 return Ok(conversion);
             }
             catch (ValidationException ex)
             {
-                return StatusCode(400, ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (NotFoundException ex)
             {
-                return StatusCode(404, ex.Message);
+                return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(500, e.Message + "");
+                return BadRequest(ex.Message);
             }
         }
-        [HttpGet("get-salle/{idSalle}")]
-        public async Task<ActionResult<RepresentationDto>> GetAllSalleById(int idSalle)
-        {
-            try
-            {
-                var entities = await _representationService.GetAllBySalleId(idSalle);
-                return Ok(_mapper.Map<IEnumerable<RepresentationDto>>(entities));
-            }
-            catch (ValidationException ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return StatusCode(404, ex.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message + "");
-            }
-        }
+      
         [HttpGet("get-piece/{idpiece}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RepresentationDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RepresentationDto>> GetAllpieceById(int idpiece)
         {
             try
             {
-                var entities = await _representationService.GetAllByPieceId(idpiece);
+                var entities = await _representationService.GetAllFromPiece(idpiece);
                 return Ok(_mapper.Map<IEnumerable<RepresentationDto>>(entities));
             }
             catch (ValidationException ex)
             {
-                return StatusCode(400, ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (NotFoundException ex)
             {
-                return StatusCode(404, ex.Message);
+                return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(500, e.Message + "");
+                return BadRequest(ex.Message);
             }
         }
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddRepresentationDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] AddRepresentationDto entity)
         {
             try
             {
-                if (entity == null)
+                if (!ModelState.IsValid)
                 {
                     BadRequest();
                 }
-
-                var conversion = _mapper.Map<AddRepresentationDto, Representation>(entity);
-                _representationService.Insert(conversion);
+                
+                await _representationService.Create(entity);
                 return Ok();
             }
             catch (ValidationException ex)
             {
-                return StatusCode(400, ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (NotFoundException ex)
             {
-                return StatusCode(404, ex.Message);
+                return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(500, e.Message + "");
+                return BadRequest(ex.Message);
             }
         }
-        [HttpPost("add-command/{id}/{IdPlace}")]
-        public async Task<ActionResult> AddCommand(int id, int idPlace, [FromForm] AddCommandDto entityCommand)
-        {
-            try
-            {
-
-                var auth = await gtk.GetSub();
-                AddCommandDto entity = new AddCommandDto
-                {
-                    AuthId = auth,
-                    IdRepresentation = id,
-                    NombreDePlace = idPlace
-                };
-                var conversion = _mapper.Map<Command>(entity);
-                _representationService.AddCommandToRepresentation(id, conversion);
-                return Ok();
-            }
-            catch (ValidationException ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return StatusCode(404, ex.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
+       
         [HttpPut("{updtId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update(int updtId, [FromBody] UpdateRepresentationDto entity)
         {
             try
             {
-                if (entity == null)
+                if (!ModelState.IsValid)
                 {
                     BadRequest();
                 }
-                var conversion = _mapper.Map<UpdateRepresentationDto, Representation>(entity);
-                _representationService.Update(updtId, conversion);
+                
+                await _representationService.Update(updtId,entity);
                 return NoContent();
 
             }
             catch (ValidationException ex)
             {
-                return StatusCode(400, ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (NotFoundException ex)
             {
-                return StatusCode(404, ex.Message);
+                return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(500, e.Message + "");
+                return BadRequest(ex.Message);
             }
         }
         [HttpDelete("{id}")]
@@ -195,43 +174,22 @@ namespace WebApi.Controllers.Theater
             try
             {
 
-                _representationService.Delete(id);
+                await _representationService.Delete(id);
                 return NoContent();
             }
             catch (ValidationException ex)
             {
-                return StatusCode(400, ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (NotFoundException ex)
             {
-                return StatusCode(404, ex.Message);
+                return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(500, e.Message + "");
+                return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("delete-command/{idrepre}/{commandid}")]
-        public async Task<ActionResult> Delete(int idrepre, int commandid)
-        {
-            try
-            {
-
-                _representationService.DeleteCommandRepresnetation(idrepre, commandid);
-                return NoContent();
-            }
-            catch (ValidationException ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return StatusCode(404, ex.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message + "");
-            }
-        }
+       
     }
 }

@@ -1,10 +1,10 @@
-﻿using ApplicationTheather.Common.Interfaces.IRepository;
+﻿using ApplicationTheather.Common.Exceptions;
+using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.DTO;
 using Domain.Entity.TheatherEntity;
-using WebApi.Application.Common.Exceptions;
-using WebApi.Application.DTO;
 namespace WebApi.Controllers.Theater
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class SallesDeTheatreController : ControllerBase
     {
@@ -16,11 +16,16 @@ namespace WebApi.Controllers.Theater
             _mapper = mapper;
         }
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SalleDeTheatreDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<SalleDeTheatreDto>> GetById(int id)
         {
             try
             {
-                var conversion = _mapper.Map<SalleDeTheatreDto>(await _service.GetById(id, c => c.Pieces));
+                var conversion = _mapper.Map<SalleDeTheatreDto>(await _service.GetById(id));
                 return Ok(conversion);
             }
             catch (Exception e)
@@ -29,6 +34,11 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("get-complexe/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalleDeTheatreDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<SalleDeTheatreDto>> GetByComplexe(int id)
         {
             try
@@ -51,11 +61,16 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SalleDeTheatreDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<SalleDeTheatreDto>>> GetAll()
         {
             try
             {
-                var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(await _service.GetAll(c => c.Pieces));
+                var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(await _service.GetAll());
                 return Ok(conversion);
 
             }
@@ -73,6 +88,11 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddSalleDeTheatreDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] AddSalleDeTheatreDto Entity)
         {
             try
@@ -95,30 +115,13 @@ namespace WebApi.Controllers.Theater
                 return StatusCode(500, e.Message + "");
             }
         }
-        [HttpPost("add-piece/{idSalle}")]
-        public async Task<ActionResult> AddPiece(int idSalle, [FromBody] AddPieceDto Entity)
-        {
-            try
-            {
-                var conversion = _mapper.Map<Piece>(Entity);
-                _service.AddPieceToSalle(idSalle, conversion);
-                return Ok();
-
-            }
-            catch (ValidationException ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return StatusCode(404, ex.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message + "");
-            }
-        }
+       
         [HttpPut("{updtId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update(int updtId, [FromBody] UpdateSalleDeTheatreDto Entity)
         {
             try
@@ -143,6 +146,11 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Delete(int id)
         {
             try
@@ -187,27 +195,6 @@ namespace WebApi.Controllers.Theater
                 return StatusCode(500, e.Message + "");
             }
         }
-        [HttpDelete("delete-piece/{idSalle}/{IdPiece}")]
-        public async Task<ActionResult> Delete(int idSalle, int IdPiece)
-        {
-            try
-            {
-
-                _service.DeletePieceToSalle(idSalle, IdPiece);
-                return NoContent();
-            }
-            catch (ValidationException ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return StatusCode(404, ex.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message + "");
-            }
-        }
+    
     }
 }

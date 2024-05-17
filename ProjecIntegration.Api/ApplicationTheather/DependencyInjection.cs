@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using WebApi.Application.Common.Mapping;
+﻿using ApplicationTheather.Common.Mapping;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationTheather
 {

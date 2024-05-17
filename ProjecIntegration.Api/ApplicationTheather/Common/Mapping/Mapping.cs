@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using ApplicationTheather.DTO;
+using AutoMapper;
 using Domain.Entity.TheatherEntity;
-using WebApi.Application.DTO;
 
-namespace WebApi.Application.Common.Mapping
+namespace ApplicationTheather.Common.Mapping
 {
     public class Mapping : Profile
     {
@@ -37,7 +37,7 @@ namespace WebApi.Application.Common.Mapping
             CreateMap<UpdateSalleDeTheatreDto, SalleDeTheatre>();
             CreateMap<SalleDeTheatreDto, SalleDeTheatre>();
             //-------------------------------------------
-           
+
         }
     }
 }

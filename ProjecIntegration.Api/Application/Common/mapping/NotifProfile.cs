@@ -11,15 +11,15 @@ namespace Application.Common.mapping
 {
     public class NotifProfile : Profile
     {
-        protected NotifProfile()
+        public NotifProfile()
         {
-            CreateMap<AddAnnonceDto, Annonce>();
-            CreateMap<Annonce, GetAnnonceDto>();
-            CreateMap<UpdateNotificationDto,Annonce>();
+            CreateMap<AddAnnonceDto, Annonce>().ReverseMap();
+            CreateMap<Annonce, GetAnnonceDto>().ReverseMap();
+            CreateMap<UpdateNotificationDto,Annonce>().ReverseMap();
             //--------------------------------------------
-            CreateMap<AddNotificationDto, Notification>();
-            CreateMap<Notification, NotificationDto>();
-            CreateMap<UpdateNotificationDto, Notification>();
+            CreateMap<AddNotificationDto, Notification>().ReverseMap();
+            CreateMap<Notification, NotificationDto>().ReverseMap();
+            CreateMap<UpdateNotificationDto, Notification>().ReverseMap();
 
         }
     }

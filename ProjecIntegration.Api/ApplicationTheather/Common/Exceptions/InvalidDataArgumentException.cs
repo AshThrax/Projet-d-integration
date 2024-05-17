@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApi.Application.Common.Exceptions
+namespace ApplicationTheather.Common.Exceptions
 {
     public class InvalidDataArgumentException : ApplicationException
     {

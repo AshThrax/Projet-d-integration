@@ -11,9 +11,9 @@ namespace Domain.Entity.notificationEntity
     public class Annonce: BaseMongoEntity
     {
         [BsonElement("Ann_Title")]
-        public string Title { get; set; }
+        public string Title { get; set; } =string.Empty;
         [BsonElement("Ann_Description")]
-        public string Description { get; set; }
+        public string Description { get; set; } =string.Empty;
         [BsonElement("Ann_PieceId")]
         public int PieceId { get; set; }
         [BsonElement("Ann_Priority")]

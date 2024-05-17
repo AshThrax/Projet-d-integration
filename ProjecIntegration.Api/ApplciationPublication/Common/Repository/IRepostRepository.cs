@@ -6,16 +6,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Common.Repository
+namespace ApplicationPublication.Common.Repository
 {
-    public interface IRepostRepository 
+    public interface IRepostRepository : IRepository<RePost>
     {
-        Task<IEnumerable<RePost>> GetAll(params Expression<Func<RePost, object>>[] includeProperties);
-        Task<RePost> GetById(string id, params Expression<Func<RePost, object>>[] includeProperties);
-        Task<IEnumerable<RePost>> GetAll();
-        Task<RePost> GetById(string id);
-        void Insert(RePost entity);
-        void Update(string entityId, RePost entity);
-        void Delete(string entityId);
+        Task<IEnumerable<RePost>> GetAllFromPostId(int postId);
+        Task<RePost?> GetById(string id);
+        Task Update(string entityId, string content);
     }
 }

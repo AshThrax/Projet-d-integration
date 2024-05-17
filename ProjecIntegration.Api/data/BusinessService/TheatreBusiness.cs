@@ -1,7 +1,7 @@
 ﻿using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.DTO;
 using AutoMapper;
-using WebApi.Application.DTO;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -58,13 +58,7 @@ namespace DataInfraTheather.BusinessService
             return;
         }
 
-        public async Task<IEnumerable<PieceDto>> GetallPieceFromComplexe(int IdComplexe)
-        {
-            var getall = await _peceRepository.GetAll();
-            var FromComplexe = getall.Where(x => x.SalleDeTheatre.Complexe.Id == IdComplexe);
-
-            return _mapper.Map<IEnumerable<PieceDto>>(FromComplexe);
-        }
+       
 
         public async Task<IEnumerable<RepresentationDto>> GetRepresentationFromPiece(int IdPiece)
         {
@@ -82,15 +76,6 @@ namespace DataInfraTheather.BusinessService
             return _mapper.Map<IEnumerable<RepresentationDto>>(FromComplexe);
         }
 
-        public async Task SetPieceSalle(int IdPiece, int idSalle)
-        {
-            var getPiece = await _peceRepository.GetById(IdPiece);
-            if (getPiece != null)
-            {
-                getPiece.IdSalle = idSalle;
-                _peceRepository.Update(IdPiece, getPiece);
-            }
-
-        }
+       
     }
 }

@@ -11,13 +11,13 @@ namespace Domain.Entity.notificationEntity
     public class Notification:BaseMongoEntity
     {
         [BsonElement("Notif_Title")]
-        public string Title { get; set; }
+        public string Title { get; set; } =string.Empty;
         [BsonElement("Notif_Message")]
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
         [BsonElement("Notif_Priority")]
         public EPrioirity Prioirity { get; set; }
         [BsonElement("Notif_UserId")]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
        
 
     }

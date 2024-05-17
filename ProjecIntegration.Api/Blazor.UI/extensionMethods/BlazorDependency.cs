@@ -16,6 +16,7 @@ namespace Blazor.UI.extensionMethods
             services.CustomService();
             return services;
         } 
+       
         public static IServiceCollection AddAuthService(this IServiceCollection services,
                                                     IConfiguration configuration)
         {

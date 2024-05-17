@@ -1,6 +1,8 @@
 ﻿using Application.Common.businessService;
 using Application.Common.Repository;
 using Application.DTO;
+using AutoMapper;
+using Domain.DataType;
 using Domain.Entity.notificationEntity;
 using System;
 using System.Collections.Generic;
@@ -12,36 +14,91 @@ namespace Infrastructure.BusinessService
 {
     public class NotificationBl : INotificationBl
     {
-        private readonly INotificationRepository _notificationRepository;
 
-        public NotificationBl(INotificationRepository notificationRepository)
+        private readonly INotificationRepository _notificationRepository;
+        private readonly IMapper _mapper;
+        public NotificationBl(INotificationRepository notificationRepository,IMapper mapper)
         {
+            _mapper = mapper;
             _notificationRepository = notificationRepository;
         }
 
-        public Task CreateNotification(AddNotificationDto notification)
+        public void CreateNotification(AddNotificationDto notification)
         {
-            throw new NotImplementedException();
+            try 
+            {
+                 Notification notificationEntity = _mapper.Map<Notification>(notification);
+                 _notificationRepository.Insert(notificationEntity);    
+            }
+            catch(Exception)
+            { 
+
+            }
+
         }
 
-        public Task DeleteNotification(string notificationId)
+        public async Task DeleteNotification(string notificationId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                 Notification notification=await _notificationRepository.GetById(notificationId) 
+                                           ?? throw new NullReferenceException("il n'existe pas de reference ");
+
+                _notificationRepository.Delete(notificationId);
+            }
+            catch(NullReferenceException) 
+            { 
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
-        public Task<NotificationDto> GetNotificationById(string id)
+        public async Task<NotificationDto> GetNotificationById(string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _mapper.Map<NotificationDto>( await _notificationRepository.GetById(id))
+                       ?? throw new NullReferenceException("null reference");
+            }
+            catch (Exception)
+            {
+                return new NotificationDto() { Id = id };
+                throw;
+            }
         }
 
-        public Task<IEnumerable<NotificationDto>> GetNotificationByUserId(string userId)
+        public async Task<Pagination<NotificationDto>> GetNotificationByUserId(string userId, int pageNumber)
         {
-            throw new NotImplementedException();
+            Pagination<NotificationDto> notificationDtoPaginated;
+            try
+            {
+                IEnumerable<Notification> getdata = await _notificationRepository.GetNotificationByUserId(userId);
+                IEnumerable<NotificationDto> notificationDto=_mapper.Map<IEnumerable<NotificationDto>>(getdata);
+                return  notificationDtoPaginated=Pagination<NotificationDto>    
+                                                                     .ToPagedList(notificationDto.ToList() ,pageNumber,5);
+            }
+            catch(Exception ex)
+            {
+               return notificationDtoPaginated = Pagination<NotificationDto>.ToPagedList(new List<NotificationDto>(), pageNumber, 5);
+            }
         }
 
-        public Task UpdateNotification(string notificationId, UpdateNotificationDto notification)
+        public async Task UpdateNotification(string notificationId, UpdateNotificationDto updtNotification)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Notification Getnotification = await _notificationRepository.GetById(notificationId)
+                                          ?? throw new NullReferenceException("il n'existe pas de reference ");
+
+                _notificationRepository.Update(notificationId,_mapper.Map<Notification>(updtNotification));
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

@@ -1,16 +1,10 @@
-﻿using WebApi.Application.DTO;
+﻿using ApplicationTheather.DTO;
 
 namespace ApplicationTheather.BusinessService
 {
     public interface ITheatreBusiness
     {
-        /// <summary>
-        /// Attribuer une piece a une salle de theatre 
-        /// </summary>
-        /// <param name="IdPiece">identifiant de la piece </param>
-        /// <param name="idSalle">identiffiant de la salle</param>
-        /// <returns></returns>
-        Task SetPieceSalle(int IdPiece, int idSalle);
+      
         /// <summary>
         /// Créer une representation pour une piéce donnée
         /// </summary>
@@ -42,6 +36,6 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="IdPiece">l'identifiant du complexe</param>
         /// <returns>une liste de piece</returns>
-        Task<IEnumerable<PieceDto>> GetallPieceFromComplexe(int IdComplexe);
+        
     }
 }

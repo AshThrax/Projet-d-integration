@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using WebApi.Application.DTO;
+﻿using ApplicationTheather.DTO;
+using FluentValidation;
 
 namespace WebApi.Validator
 {

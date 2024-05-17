@@ -1,12 +1,12 @@
-﻿using ApplciationPublication.Common.BusinessLayer;
-using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Common.BusinessLayer;
+using ApplicationPublication.Dto;
 using InfraPublication.BusinessLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Publication
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class PostController : ControllerBase
     {
@@ -19,11 +19,14 @@ namespace WebApi.Controllers.Publication
             this.logger = logger;
         }
         [HttpGet("publication-all/{publicationId}")]
+        [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(IEnumerable<PostDto>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetAllPostFromPublication(string publicationId)
         {
             try
             {
-                var GetPost = await postBL.GetAllPostFromPUblicationId(publicationId);
+                IEnumerable<PostDto> GetPost = await postBL.GetAllPostFromPUblicationId(publicationId);
                 return Ok(GetPost);
             }
             catch(Exception ex)
@@ -45,6 +48,9 @@ namespace WebApi.Controllers.Publication
             }
         }
         [HttpDelete("delete-publication/{postById}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> DeletePostFromPublication(string postById)
         {
             try
@@ -58,6 +64,9 @@ namespace WebApi.Controllers.Publication
             }
         }
         [HttpPut("update-publication/{publicationById}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UpdatePostfromPublication(string postById,string content)
         {
             try
@@ -75,7 +84,11 @@ namespace WebApi.Controllers.Publication
             }
         }
         [HttpPost("create-publication/{publicationById}")]
-        public async Task<ActionResult> createPublication(string publicationById, [FromBody] PostDto AddPost)
+        [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(PostDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> CreatePublication(string publicationById, [FromBody] PostDto AddPost)
         {
             try
             {

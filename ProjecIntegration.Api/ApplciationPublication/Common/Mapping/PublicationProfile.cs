@@ -1,4 +1,4 @@
-﻿using ApplciationPublication.Dto;
+﻿using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
 using System;
@@ -7,19 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Common.Mapping
+namespace ApplicationPublication.Common.Mapping
 {
     public class PublicationProfile : Profile
     {
-        protected PublicationProfile()
+        public PublicationProfile()
         {
-            CreateMap<AddPublicationDto, Publication>();
-            CreateMap<Publication,PublicationDto>();
-            CreateMap<UpdatePublicationDto, Publication>();
+            CreateMap<AddPublicationDto, Publication>().ReverseMap();
+            CreateMap<Publication, PublicationDto>().ReverseMap();
+            CreateMap<UpdatePublicationDto, Publication>().ReverseMap();
 
-            CreateMap<Post,PostDto>();
-            CreateMap<RePost, RepostDto>();
-           
+            CreateMap<Post, PostDto>().ReverseMap();
+            CreateMap<RePost, RepostDto>().ReverseMap();
+
         }
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using WebApi.ExtensionMethods;
 
@@ -62,6 +63,12 @@ app.UseCors(x => x
           .AllowAnyMethod()
           .AllowAnyHeader());
 app.UseHttpsRedirection();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+                Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+    RequestPath = "/Resources"
+});
 app.UseAuthentication();
 app.UseAuthorization();
 

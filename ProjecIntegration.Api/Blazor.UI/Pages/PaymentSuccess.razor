@@ -1,0 +1,20 @@
+﻿@page "/payment-success"
+@using Stripe
+@using Stripe.Checkout
+
+<h3>PaymentSuccess</h3>
+
+@code {
+    [SupplyParameterFromQuery(Name = "session-id")]
+    public string CheckoutSessionId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IStripeClient stripeClient = new StripeClient(apiKey: "pk_test_51PH98ZP7zrjxHIPVVmteGre99oSbcz9gnetBxVexQzFLUXYtMrBVTZVx7jWFneRgDeekorJjuZGPu70mw6J5jtbv009aXbGsOM");
+        var service = new SessionService(stripeClient);
+        var sessionService = new SessionService();
+        var session = await sessionService.GetAsync(CheckoutSessionId);
+
+    }
+
+}

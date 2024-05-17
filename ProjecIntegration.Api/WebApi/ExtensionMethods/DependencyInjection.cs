@@ -1,15 +1,17 @@
 ﻿using Auth0Net.DependencyInjection;
 using dataInfraTheather;
 using WebApi.Validator;
-using WebApi.Application.DTO;
-using WebApi.Application.Common.Mapping;
 using WebApi.ApiService.Authorization;
 using Infrastructure;
 using InfraPublication;
 using Application;
-using ApplciationPublication;
 using ApplicationTheather.BusinessService;
 using DataInfraTheather.BusinessService;
+using ApplicationPublication;
+using ApplicationTheather.Common.Mapping;
+using ApplicationTheather.DTO;
+using Domain.settings;
+using Microsoft.Extensions.DependencyInjection;
 
 
 namespace WebApi.ExtensionMethods
@@ -33,6 +35,8 @@ namespace WebApi.ExtensionMethods
             services.AddCustomValidator();
             services.AddHttpContextAccessor();
             services.AddBusiness();
+
+            services.Configure<StripeSettings>(configuration.GetSection("StripeSettings"));
             return services;
         }
         /*
@@ -115,5 +119,7 @@ namespace WebApi.ExtensionMethods
             services.AddScoped<IValidator<UpdateSalleDeTheatreDto>, UpdtSalleValidator>();
             return services;
         }
+
+    
     }
 }

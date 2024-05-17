@@ -1,5 +1,6 @@
 ﻿using Application.Common.businessService;
 using Application.DTO;
+using ApplicationPublication.Dto;
 using Domain.Entity.notificationEntity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace WebApi.Controllers.Notification
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class AnnonceController : ControllerBase
     {
@@ -21,54 +22,84 @@ namespace WebApi.Controllers.Notification
         }
 
         [HttpGet("get-annonce")]
-        public async Task<ActionResult> GetAll()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<GetAnnonceDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetAll([FromQuery]int pageNumber)
+        
         {
             try
             {
-                return Ok(await annonceBl.GetAnnonces());
+                return Ok(await annonceBl.GetAnnonces(pageNumber));
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpGet("get-annonce/{annonceId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetAnnonceDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetById(string annonceId) 
         {
             try
             { 
                 return Ok(await annonceBl.GetAnnonceById(annonceId));
             }
-            catch(Exception ex)
+            catch (ArgumentNullException ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpPost("post-annonce")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddAnnonceDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> CreateAnnonce([FromBody] AddAnnonceDto annonce)
         {
             try
             {
-                await annonceBl.CreateAnnonce(annonce);
+                if (ModelState.IsValid)
+                {
+                    await annonceBl.CreateAnnonce(annonce);
+                   
+                    
+                } 
                 return Ok();
             }
-            catch (ArgumentException ex)
+            catch (ArgumentNullException ex)
             {
-                return BadRequest();
+                return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
         [HttpPut("update-annonce/{annonceId}")]
-        public async Task<ActionResult> UpdateAnnonce(string annonceId,[FromBody] UpdateAnnonceDto annonce)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> UpdateAnnonce(string annonceId,[FromBody] UpdateAnnonceDto? annonce)
         {
             try
             {
-                if (annonce ==null)
+                if (ModelState.IsValid)
                 {  
                     await annonceBl.UpdateAnnonce(annonceId,annonce);
                     return NoContent();
@@ -87,6 +118,10 @@ namespace WebApi.Controllers.Notification
             }
         }
         [HttpDelete("supress-annonce/{annonceId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateAnnonce(string annonceId)
         {
             try 
@@ -94,13 +129,13 @@ namespace WebApi.Controllers.Notification
                 await annonceBl.DeleteAnnonce(annonceId);
                 return NoContent();
             }
-            catch (ArgumentNullException exception)
+            catch (ArgumentNullException ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using WebApi.Application.DTO;
+﻿using ApplicationTheather.DTO;
 
 namespace ApplicationTheather.BusinessService
 {

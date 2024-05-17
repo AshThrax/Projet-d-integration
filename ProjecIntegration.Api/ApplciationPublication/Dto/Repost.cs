@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplciationPublication.Dto
+namespace ApplicationPublication.Dto
 {
-    public class RepostDto :BaseDto
+    public class RepostDto : BaseDto
     {
-       
+
         public string Content { get; set; }
-      
+
         public string UserId { get; set; }
     }
 }

@@ -22,27 +22,47 @@ namespace WebApi.ApiService
         }
         public async Task<string> GetToken()
         {
-            var accessToken = await _contextAccessor
-                .HttpContext
-                .GetTokenAsync("access_token");
-            return accessToken;
+            try
+            {
+                string? accessToken = await _contextAccessor
+                                            .HttpContext
+                                            .GetTokenAsync("access_token") 
+                                            ?? throw new Exception("invalid token");
+
+                return accessToken;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             //acces token fonctionne parfaitemment
         }
         public async Task<string> GetSub() 
         {
-            var accessToken = await _contextAccessor
-               .HttpContext
-               .GetTokenAsync("access_token");
-            var subClaim = _contextAccessor.HttpContext
-                .User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return subClaim;
+            string? accessToken = await _contextAccessor
+                                        ?.HttpContext.GetTokenAsync("access_token") ?? "";
+
+            string? subClaim = _contextAccessor.HttpContext
+                .User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "";
+            return subClaim ;
         }
 
         public async Task<string> GetEmail()
         {
-            var values = _contextAccessor.HttpContext
-                .User.FindFirst(ClaimTypes.CookiePath)?.Value;
-            return values;
+            try
+            {
+                string? values = _contextAccessor.HttpContext
+                    .User.FindFirst(ClaimTypes.CookiePath)?.Value;
+                return values;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

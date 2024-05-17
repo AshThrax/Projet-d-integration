@@ -14,7 +14,7 @@ namespace Application.Common.businessService
     {
         Task CreateAnnonce(AddAnnonceDto addAnnonceDto);
         Task DeleteAnnonce(string annonceId);
-        Task<Pagination<GetAnnonceDto>> GetAnnonces();
+        Task<Pagination<GetAnnonceDto>> GetAnnonces(int pageNumber);
         Task<GetAnnonceDto> GetAnnonceById(string annonceId);
         Task UpdateAnnonce(string annonceId, UpdateAnnonceDto annonceDto);
     }

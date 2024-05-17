@@ -3,7 +3,7 @@ using Auth0.ManagementApi.Paging;
 using Auth0.ManagementApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Application.DTO;
+using ApplicationTheather.DTO;
 
 namespace WebApi.Controllers
 {

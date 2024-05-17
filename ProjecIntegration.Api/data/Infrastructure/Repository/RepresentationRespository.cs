@@ -15,73 +15,111 @@ namespace dataInfraTheather.Infrastructure.Repository
 
         public void AddCommandToRepresentation(int idRepresentation, Command command)
         {
-            var representation = _context.Representations.FirstOrDefault(r => r.Id == idRepresentation);
-
-            if (representation != null)
+            try
             {
-                if (representation.Commands == null)
+                Representation representation = _context.Representations.FirstOrDefault(r => r.Id == idRepresentation) ?? new Representation();
+
+                if (representation != null)
                 {
-                    representation.Commands = new List<Command>();
+                    if (representation.Commands == null)
+                    {
+                        representation.Commands = new List<Command>();
 
+                    }
+                    //chaque fois qu'on ajoute une commande le nombre de place diminiue
+                    int place = command.NombreDePlace;
+                    if ((representation.PlaceCurrent + place) < representation.PlaceMaximum)
+                    {
+                        representation.PlaceCurrent += +place;
+                        representation.Commands.Add(command);
+                    }
+
+
+                    _context.SaveChanges();
                 }
-                //chaque fois qu'on ajoute une commande le nombre de place diminiue
-                var place = command.NombreDePlace;
-                if (representation.placeCurrent + place
-                    < representation.PlaceMaximum)
-                {
-                    representation.placeCurrent = representation.placeCurrent + place;
-                    representation.Commands.Add(command);
-                }
-
-
-                _context.SaveChanges();
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public void DeleteCommandRepresnetation(int idrepresentation, int CommandId)
         {
-            var representation = _context.Representations
-                .FirstOrDefault(r => r.Id == idrepresentation);
+            try
+            {
+                Representation representation = _context.Representations
+                    .FirstOrDefault(r => r.Id == idrepresentation) ?? throw new NullReferenceException("null references"); ;
 
-            if (representation != null)
+                if (representation != null)
+                {
+
+                    Command Commanddelete = representation
+                        .Commands?.FirstOrDefault(r => r.Id == CommandId) 
+                        ?? throw new NullReferenceException("null references");
+
+                    //chaque fois qu'on supprime une commande le nombre de place dispo pour la reservation augmente
+                    int place = Commanddelete.NombreDePlace;
+                    representation.PlaceCurrent -=  - place;
+                    representation.Commands.Remove(Commanddelete);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception)
             {
 
-                var Commanddelete = representation
-                    .Commands.FirstOrDefault(r => r.Id == CommandId);
-
-                //chaque fois qu'on supprime une commande le nombre de place dispo pour la reservation augmente
-                var place = Commanddelete.NombreDePlace;
-                representation.placeCurrent = representation.placeCurrent - place;
-                representation.Commands.Remove(Commanddelete);
-                _context.SaveChanges();
+                throw;
             }
         }
 
         public async Task<IEnumerable<Representation>> GetAllByPieceId(int idPIece)
         {
-            var piece = _context.Pieces.Include(c => c.Representations)
-                .Where(c => c.Id == idPIece)
-                 .FirstOrDefault();
-            if (piece != null)
+            try
             {
-                var result = piece.Representations;
-                return result;
-            }
+                Piece piece =await _context.Pieces.Include(c => c.Representations)
+                     .FirstOrDefaultAsync(c => c.Id == idPIece) ?? throw new NullReferenceException("null references"); ;
+                if (piece != null)
+                {
+                    IEnumerable<Representation> result = piece.Representations 
+                                                         ?? new List<Representation>();
+                    return result;
+                }
 
-            return null;
+                return new List<Representation>();
+                
+            }
+            catch (Exception )
+            {
+                return new List<Representation>();
+
+            }
         }
         public async Task<IEnumerable<Representation>> GetAllBySalleId(int idSalle)
         {
-            var salle = await _context.SalleDeTheatres
-                .Include(c => c.Representations)
-                .Where(c => c.Id == idSalle)
-                .FirstOrDefaultAsync();
-            if (salle.Representations != null)
+            try
             {
-                var Entities = salle.Representations;
-                return Entities;
+                SalleDeTheatre salle = await _context.SalleDeTheatres
+                    .Include(c => c.Representations)
+                    .Where(c => c.Id == idSalle)
+                    .FirstOrDefaultAsync() 
+                    ?? throw new NullReferenceException();
+
+
+                if (salle?.Representations != null)
+                {
+                    var Entities = salle.Representations;
+                    return Entities;
+                }
+                return Enumerable.Empty<Representation>();
+
             }
-            return Enumerable.Empty<Representation>();
+            catch (Exception)
+            {
+                return Enumerable.Empty<Representation>();
+                throw;
+            }
         }
     }
 }

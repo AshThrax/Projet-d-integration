@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WebApi.Application.Common.Exceptions
+namespace ApplicationTheather.Common.Exceptions
 {
     public class NotFoundException : ApplicationException
     {

@@ -1,10 +1,12 @@
 ﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Interfaces;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using dataInfraTheather.Infrastructure.Repository;
 using DataInfraTheather.BusinessService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace dataInfraTheather
 {
@@ -35,7 +37,6 @@ namespace dataInfraTheather
             services.AddScoped<IComplexeRepository,ComplexeRepository>();
             services.AddScoped<IPieceRepository,PieceRepository>();
             services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
-            
 
             services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
             services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service
@@ -45,6 +46,10 @@ namespace dataInfraTheather
             services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
             return services;
         }
+
+     
+
+       
     }
 }
 

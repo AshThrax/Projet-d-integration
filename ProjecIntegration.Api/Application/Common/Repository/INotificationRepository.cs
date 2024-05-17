@@ -8,13 +8,8 @@ using System.Threading.Tasks;
 
 namespace Application.Common.Repository
 {
-    public interface INotificationRepository { 
-        Task<IEnumerable<Notification>> GetAll(params Expression<Func<Notification, object>>[] includeProperties);
-        Task<Notification> GetById(string id, params Expression<Func<Notification, object>>[] includeProperties);
-        Task<IEnumerable<Notification>> GetAll();
-        Task<Notification> GetById(string id);
-        void Insert(Notification entity);
-        void Update(string entityId, Notification entity);
-        void Delete(string entityId);
+    public interface INotificationRepository : IRepository<Notification> 
+    { 
+       Task<IEnumerable<Notification>> GetNotificationByUserId(string userId);
     }
 }

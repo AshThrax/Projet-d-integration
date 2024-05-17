@@ -1,4 +1,4 @@
-﻿using ApplciationPublication.Common.Repository;
+﻿using ApplicationPublication.Common.Repository;
 using Domain.Entity;
 using InfraPublication.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +12,9 @@ namespace InfraPublication.Repository
     {
         private readonly IMongoCollection<T> _mongoCollection;
 
-        public MongoRepository(IMongoDatabase database)
+        public MongoRepository(PublicationMongoContext database )
         {
-            _mongoCollection = database.GetCollection<T>(nameof(T));
+            _mongoCollection =database.DbSet<T>();
         }
 
         public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties)
@@ -24,7 +24,15 @@ namespace InfraPublication.Repository
 
         public async Task<T> GetById(string id, params Expression<Func<T, object>>[] includeProperties)
         {
-            return await _mongoCollection.FindSync(x => x.Id == id).FirstOrDefaultAsync();
+           
+                if (string.IsNullOrEmpty(id))
+                {
+                    throw new ArgumentNullException(nameof(id));
+                }
+                return await _mongoCollection.FindSync(x => x.Id == id).FirstOrDefaultAsync();
+            
+           
+          
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -32,32 +40,70 @@ namespace InfraPublication.Repository
             return await _mongoCollection.Find(_ => true).ToListAsync();
         }
 
-        public async Task<T> GetById(string id)
+        public async Task<T?> GetById(string id)
         {
-            return await _mongoCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
+            else 
+            { 
+                return await _mongoCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+
+            }
         }
 
         public void Insert(T entity)
         {
-            if (entity == null)
+            try 
             {
-                throw new ArgumentNullException(nameof(entity));
+               if (entity ==null)
+               {
+                    throw new ArgumentNullException(nameof(entity));
+               }
+                _mongoCollection.InsertOne(entity);
             }
-            _mongoCollection.InsertOne(entity);
+            catch(ArgumentNullException)
+            { 
+                // dans le cas ou l'entité passé en argument n'est pas 
+                //bon
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
 
         public void Update(string entityId, T entity)
         {
-            if (entity == null)
+            try 
             {
-                throw new ArgumentNullException(nameof(entity));
+                if (string.IsNullOrEmpty(entityId))
+                {
+                    throw new ArgumentNullException(nameof(entity));
+                }
+                _mongoCollection.ReplaceOne(x => x.Id == entityId, entity);  
             }
-            _mongoCollection.ReplaceOne(x => x.Id == entityId, entity);
+            catch (Exception )
+            {
+
+            }
         }
 
         public void Delete(string entityId)
         {
-            _mongoCollection.DeleteOne(x => x.Id == entityId);
+            try
+            {
+                if (string.IsNullOrEmpty(entityId))
+                {
+                    _mongoCollection.DeleteOne(x => x.Id == entityId);
+                }
+            }
+            catch(Exception )
+            {
+
+            }
         }
     }
 }

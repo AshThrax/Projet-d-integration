@@ -24,6 +24,7 @@ namespace Infrastructure
                 options.ConnectionString = configure.GetConnectionString("MongoDb");
                 options.DatabaseName = "Notification";
             });
+            services.AddSingleton<NotificationMongoContext>();
             return services;
         }
     }

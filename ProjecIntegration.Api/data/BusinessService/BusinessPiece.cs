@@ -1,8 +1,8 @@
 ﻿using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.DTO;
 using AutoMapper;
 using Domain.Entity.TheatherEntity;
-using WebApi.Application.DTO;
 
 namespace DataInfraTheather.BusinessService
 {

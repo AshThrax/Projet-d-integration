@@ -1,0 +1,16 @@
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\bin\Debug\net8.0\ApplicationPublication.deps.json
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\bin\Debug\net8.0\ApplicationPublication.dll
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\bin\Debug\net8.0\ApplicationPublication.pdb
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\bin\Debug\net8.0\Domain.dll
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\bin\Debug\net8.0\Domain.pdb
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.csproj.AssemblyReference.cache
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.AssemblyInfoInputs.cache
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.AssemblyInfo.cs
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.csproj.CoreCompileInputs.cache
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.sourcelink.json
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\Applicat.9413577C.Up2Date
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.dll
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\refint\ApplicationPublication.dll
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ApplicationPublication.pdb
+C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\ApplciationPublication\obj\Debug\net8.0\ref\ApplicationPublication.dll

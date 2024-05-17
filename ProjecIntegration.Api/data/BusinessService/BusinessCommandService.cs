@@ -1,10 +1,10 @@
 ﻿
 using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.DTO;
 using AutoMapper;
 using DataInfraTheather.Services;
 using Domain.Entity.TheatherEntity;
-using WebApi.Application.DTO;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -32,56 +32,117 @@ namespace DataInfraTheather.BusinessService
 
         public async Task DeleteCommand(int id)
         {
-            var getEntity = await _commandRepository.GetById(id);
-            if (getEntity != null)
+            try 
             {
-                _commandRepository.Delete(id);
+                
+                Command getEntity = await _commandRepository.GetById(id);
+                if (getEntity != null)
+                {
+                    _commandRepository.Delete(id);
+                }
+            }
+            catch (Exception ex) 
+            { 
             }
         }
 
         public async Task<List<TicketDto>> GenerateCommandTicket(int CommandeId)
         {
-            Command command = await  _commandRepository.GetCommand(CommandeId);
 
-            var representation = await _representationRepository.GetById(command.IdRepresentation);//récuperation de la seance 
-            int PieceID = representation.IdPiece;    //recuperation de la piece
-            var Piece = await _piecerepository.GetById(PieceID);
-            var salle = await _sallerepository.GetById(Piece.IdSalle);
-            var DateToString = representation.Seance;
-            //génération du ticket
-            return TicketGenerator.GetTicketUser(command.NombreDePlace, Piece.Titre, salle.Name, DateToString);
+            Command command = await  _commandRepository.GetCommand(CommandeId);
+            try
+            {
+                
+                Representation representation = await _representationRepository.GetById(command.IdRepresentation);//récuperation de la seance 
+                int PieceID = representation.IdPiece;    //recuperation de la piece
+                var Piece = await _piecerepository.GetById(PieceID);
+                var salle = await _sallerepository.GetById(representation.IdSalledeTheatre);
+                var DateToString = representation.Seance;
+                //génération du ticket
+                return TicketGenerator.GetTicketUser(command.NombreDePlace, Piece.Titre, salle.Name,representation.Id,DateToString);
+            }
+            catch (Exception)
+            {
+                return new List<TicketDto>();
+            }
         }
 
         public async Task AddCommand(AddCommandDto command)
         {
-            if (command != null)
+            try
             {
-                //conversion Dto
-                var Conversion = _mapper.Map<Command>(command);
-                _commandRepository.AddCommand(Conversion);
-                //appel du controller pour inserer les ticket da
+                //vérification du nombre de place a ssocié avec la commande et la representation
+               if (command != null)
+                {
+                    var vérification =await _representationRepository.GetById(command.IdRepresentation);
+                    SalleDeTheatre salle = await _sallerepository.GetById(vérification.SalleDeTheatre.Id);
+                    int maxPlace= salle.PlaceMax;
+                    if (vérification.PlaceCurrent + command.NombreDePlace <= vérification.PlaceMaximum)
+                    {
+                        //validation
+                        //conversion Dto
+                        Command Conversion = _mapper.Map<Command>(command);
+                        _commandRepository.AddCommand(Conversion);
+                        //appel du controller pour inserer les ticket da
+                    }
+                    else
+                    {
+                     //faire un truc
+                    }
+
+                } 
             }
+            catch(Exception)
+            { 
+
+            }
+          
         }
 
         public async Task<IEnumerable<CommandDto>> GetAllCommand()
         {
-            var getAll = await _commandRepository.GetAll();
-            return _mapper.Map<IEnumerable<CommandDto>>(getAll);
+            try
+            { 
+                var getAll = await _commandRepository.GetAll();
+                return _mapper.Map<IEnumerable<CommandDto>>(getAll);
+            }
+            catch (Exception ex)
+            {
+                return new List<CommandDto>();
+            }
+           
         }
 
         public async Task<CommandDto> GetCommand(int id)
         {
-            var getEntity = await _commandRepository.GetById(id);
-            return _mapper.Map<CommandDto>(getEntity);
+            try 
+            { 
+                    var getEntity = await _commandRepository.GetById(id);
+                    return _mapper.Map<CommandDto>(getEntity);
+            }
+            catch(Exception ex)
+            {
+                return new CommandDto();
+            }
+           
+            
         }
 
         public async Task<IEnumerable<CommandDto>> GetCommandUSer(string Auth)
         {
-            var getAll = await _commandRepository.GetAll();
-            var userCommand = getAll.Where(x => x.AuthId == Auth)
+            try 
+            {
+                IEnumerable<Command> getAll = await _commandRepository.GetAll();
+                IEnumerable<Command> userCommand = getAll.Where(x => x.AuthId == Auth)
                                     .ToList();
+                return _mapper.Map<IEnumerable<CommandDto>>(userCommand);
+            }
+            catch(Exception ex) 
+            { 
+                return  Enumerable.Empty<CommandDto>();
+            }
+          
 
-            return _mapper.Map<IEnumerable<CommandDto>>(userCommand);
         }
     }
 }

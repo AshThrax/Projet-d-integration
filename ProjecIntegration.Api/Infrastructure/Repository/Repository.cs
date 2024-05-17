@@ -11,11 +11,11 @@ namespace Infrastructure.Repository
     public class MongoRepository<T> : IRepository<T> where T : BaseMongoEntity
     {
         private readonly IMongoCollection<T> _mongoCollection;
-        private readonly NotificationDbContext _notificationDbContext;
-        public MongoRepository(NotificationDbContext notificationDbContext)
+        private readonly NotificationMongoContext _notificationMongoContext;
+        public MongoRepository(NotificationMongoContext database)
         {
-
-            _mongoCollection = database.GetCollection<T>(nameof(T));
+             _notificationMongoContext = database;
+            _mongoCollection = database.Dbset<T>();
         }
 
         public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties)
