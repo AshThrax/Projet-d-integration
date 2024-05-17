@@ -10,10 +10,9 @@ namespace ApplicationPublication.Common.Repository
 {
     public interface IPostRepository:IRepository<Post>
     {
-       
+        Task<IEnumerable<Post>> GetAllFromUserId(string userId);
         Task<IEnumerable<Post>> GetAllFromPublication(string publicationId);
-        Task Insert(string publicationId, Post entity);
-        void Update(string entityId, Post entity);
+        Task UpdateEntity(string entityId, Post entity);
         Task Update(string postId, string content);
     }
 }

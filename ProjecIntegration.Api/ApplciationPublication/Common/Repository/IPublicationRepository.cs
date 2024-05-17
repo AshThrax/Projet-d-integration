@@ -11,10 +11,9 @@ namespace ApplicationPublication.Common.Repository
 {
     public interface IPublicationRepository:IRepository<Publication>
     {
-        Task<IEnumerable<Publication>> GetAllbyPublicationByUserId(string userId);
-       
+        Task<IEnumerable<Publication>> GetAllPublicationByPieceId(int pieceId);
+        Task<IEnumerable<Publication>> GetAllPublicationByUserId(string userId);
         Task UpdatePublicationContent(string publicationid,string title, string content);
-        
       
     }
 }

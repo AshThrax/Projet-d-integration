@@ -35,9 +35,9 @@ namespace InfraPublication.Persistence
         {
             return _database.GetCollection<Post>("Post");
         }
-        public IMongoCollection<RePost> GetRePost()
+        public IMongoCollection<Repost> GetRePost()
         {
-            return _database.GetCollection<RePost>("RePost");
+            return _database.GetCollection<Repost>("RePost");
         }
       
     }

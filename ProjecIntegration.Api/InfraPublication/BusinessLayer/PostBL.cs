@@ -64,9 +64,19 @@ namespace InfraPublication.BusinessLayer
            
         }
 
-        public Task<IEnumerable<PostDto>> GetAllPostFromPUblicationId(string PubId)
+        public async Task<IEnumerable<PostDto>> GetAllPostFromPublicationId(string PubId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IEnumerable<Post> post = await _postrepository.GetAllFromPublication(PubId);
+                return _mapper.Map<IEnumerable<PostDto>>(post);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public async Task<Post> GetPostById(string postId)
@@ -86,6 +96,20 @@ namespace InfraPublication.BusinessLayer
 
                 return new Post();
 
+            }
+        }
+
+        public async  Task<IEnumerable<PostDto>> GetPostFromUserId(string userId)
+        {
+            try
+            {
+                IEnumerable<Post> post = await _postrepository.GetAllFromUserId(userId);
+                return _mapper.Map<IEnumerable<PostDto>>(post);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

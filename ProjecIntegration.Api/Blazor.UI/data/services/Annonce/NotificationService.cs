@@ -1,0 +1,30 @@
+﻿using Blazor.UI.data.modelViews;
+using Blazor.UI.data.modelViews.Annonce;
+using System.Net.Http.Json;
+
+namespace Blazor.UI.data.services;
+
+public interface INotificaitonService
+{ 
+    Task<IEnumerable<NotificationDto>> GetAll();
+   
+}
+public class NotificationService : INotificaitonService
+{
+    private readonly HttpClient _httpClient;
+    private const string ApiUri = "https://localhost:44337/api/v1/notification";
+
+    public NotificationService(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
+
+
+
+    public async Task<IEnumerable<NotificationDto>?> GetAll()
+    {
+        return await _httpClient.GetFromJsonAsync<NotificationDto[]?>(ApiUri);
+    }
+
+ 
+}

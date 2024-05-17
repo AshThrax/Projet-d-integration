@@ -10,11 +10,11 @@ namespace ApplicationPublication.Dto
     public class PublicationDto : BaseDto
     {
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Review { get; set; }
+        public string Review { get; set; } = string.Empty;
 
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
         public int PieceId { get; set; }
         public ICollection<string> post { get; set; } = new List<string>();
@@ -22,11 +22,11 @@ namespace ApplicationPublication.Dto
     public class AddPublicationDto
     {
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Review { get; set; }
+        public string Review { get; set; } = string.Empty;
 
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
         public int PieceId { get; set; }
         public ICollection<string> post { get; set; } = new List<string>();
@@ -34,12 +34,12 @@ namespace ApplicationPublication.Dto
     public class UpdatePublicationDto : BaseDto
     {
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Review { get; set; }
+        public string Review { get; set; } = string.Empty;
 
         public int PieceId { get; set; }
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
         public ICollection<string> post { get; set; } = new List<string>();
     }

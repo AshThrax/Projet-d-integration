@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj": {}
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj",
         "projectName": "Blazor.UI",
-        "projectPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Blazor.UI.csproj",
         "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\quentin\\classic web\\Projet-d-integration\\ProjecIntegration.Api\\Blazor.UI\\obj\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,6 +70,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",

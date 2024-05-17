@@ -99,16 +99,16 @@ namespace WebApi.Controllers.Notification
                     return NoContent();
                 }
 
-                return BadRequest();
+                return BadRequest("contenue null");
 
             }
             catch (ArgumentException ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
         [HttpDelete("supress-notification/{notificationId}")]
@@ -123,13 +123,13 @@ namespace WebApi.Controllers.Notification
                 await _notificationBl.DeleteNotification(notificationId);
                 return NoContent();
             }
-            catch (ArgumentNullException exception)
+            catch (ArgumentNullException ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }

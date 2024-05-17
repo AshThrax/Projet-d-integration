@@ -9,7 +9,9 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="Entity">entité pièce de theatre a ajoutée</param>
         /// <returns></returns>
-        Task Create(AddPieceDto Entity);
+        void Create(AddPieceDto Entity, string ImageName);
+
+        Task Addrepresnetation(int PieceId ,AddRepresentationDto Entity);
         /// <summary>
         /// suprrimer une piece de theatre de la database 
         /// </summary>

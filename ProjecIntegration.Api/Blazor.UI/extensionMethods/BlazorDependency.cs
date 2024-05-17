@@ -1,4 +1,6 @@
 using Blazor.UI.data.services;
+using Blazor.UI.data.services.Publication;
+using Blazor.UI.data.services.TheatherService;
 
 namespace Blazor.UI.extensionMethods
 {
@@ -48,9 +50,11 @@ namespace Blazor.UI.extensionMethods
             services.AddTransient<IRepresentationService, RepresentationService>();
             ;
 
-
-
-
+            services.AddTransient < IThemeService , ThemeService > ();
+            services.AddTransient<IAnnonceService, AnnonceService>();
+            services.AddTransient<IPublicationService,PublicationService>();
+            services.AddTransient<IPostService,PostService>();
+            services.AddTransient<INotificaitonService,NotificationService>();
             return services;
         }
     }

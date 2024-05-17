@@ -1,9 +1,11 @@
-﻿using ApplicationPublication.Common.BusinessLayer;
+﻿using Amazon.Runtime.Internal.Util;
+using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Common.Repository;
 using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
 using InfraPublication.Repository;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +15,15 @@ using System.Threading.Tasks;
 
 namespace InfraPublication.BusinessLayer
 {
-    public class IPublicationBL : IPublicationBl
+    public class PublicationBL : IPublicationBl
     {
         private readonly IPublicationRepository _publicationRepository;
-     
+        private readonly ILogger<PublicationBL> _logger;
         private readonly IMapper _mapper;
 
-        public IPublicationBL(IPublicationRepository publicationRepository, IMapper mapper)
+        public PublicationBL(IPublicationRepository publicationRepository, IMapper mapper, ILogger<PublicationBL> logger)
         {
+            _logger = logger;
             _publicationRepository = publicationRepository;
             _mapper = mapper;
         }
@@ -38,9 +41,9 @@ namespace InfraPublication.BusinessLayer
                 _publicationRepository.Insert(mapped);
                 //----
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
             }//----
               
         }
@@ -59,16 +62,16 @@ namespace InfraPublication.BusinessLayer
                  //----
            
             }
-            catch(Exception )
+            catch (Exception ex)
             {
-
-            }
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
+            }//----
         }
         public async Task<IEnumerable<PublicationDto>> GetAllbyPublicationByUserId(string userId)
         {
             try
             {
-                IEnumerable<Publication> getPub = await _publicationRepository.GetAllbyPublicationByUserId(userId) 
+                IEnumerable<Publication> getPub = await _publicationRepository.GetAllPublicationByUserId(userId) 
                                                                  ?? throw new NullReferenceException("no user found inside ") ;
                 return _mapper.Map<IEnumerable<PublicationDto>>(getPub);
                  
@@ -78,12 +81,13 @@ namespace InfraPublication.BusinessLayer
                 IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
                 return Empty;
             }
-            catch(Exception)
+            catch (Exception ex)
             {
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
                 IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
                 return Empty;
-            }
-           
+            }//----
+
         }
 
         public async Task<IEnumerable<PublicationDto>> GetAllPublication()
@@ -94,6 +98,7 @@ namespace InfraPublication.BusinessLayer
             }
             catch (Exception ex)
             {
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
                 IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
                 return Empty;
             }
@@ -115,7 +120,8 @@ namespace InfraPublication.BusinessLayer
                 }
                 return new PublicationDto();  
             } catch (Exception ex) 
-            { 
+            {
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
                 return new PublicationDto();
             }
            
@@ -133,10 +139,10 @@ namespace InfraPublication.BusinessLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
+               
             }
         }
         #endregion    

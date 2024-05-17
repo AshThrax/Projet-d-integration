@@ -18,3 +18,23 @@ C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.pdb
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.genruntimeconfig.cache
 C:\Users\quentin\classic web\Projet-d-integration\ProjecIntegration.Api\data\obj\Debug\net8.0\ref\DataInfraTheather.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\DataInfraTheather.deps.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\DataInfraTheather.runtimeconfig.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\DataInfraTheather.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\DataInfraTheather.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\ApplicationTheather.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\Domain.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\ApplicationTheather.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\bin\Debug\net8.0\Domain.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.csproj.AssemblyReference.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.AssemblyInfoInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.AssemblyInfo.cs
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.csproj.CoreCompileInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.sourcelink.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfr.F2D83FCB.Up2Date
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\refint\DataInfraTheather.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\DataInfraTheather.genruntimeconfig.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\data\obj\Debug\net8.0\ref\DataInfraTheather.dll

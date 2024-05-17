@@ -1,4 +1,0 @@
-﻿namespace Domain.Entity.TheatherEntity
-{
-
-}

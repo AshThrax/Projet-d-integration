@@ -4,114 +4,52 @@
 @using Blazor.UI.Client.Page.Comp
 @using Blazor.UI.Client.Page.sallePage
 @using Blazor.UI.Client.Page
+@inject NavigationManager manager;
 <div class="bg-light  m-4 p-2 rounded-2 text-center">
     <h3 class="display-4 ">Manager</h3>
     
 </div>
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowComplexeSection()">Manage Complexes</button>
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToComplexeSection()">Manage Complexes</button>
     </li>
     <li class ="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowPieceSection()">Manage Salle/Pieces</button>
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToPieceSection()">Manage Salle/Pieces</button>
     </li>
     <li class="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowRepresentationSection()">Manage Salle/Representations</button>
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToRepresentationSection()">Manage Salle/Representations</button>
     </li>
     <li class="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => ShowSalleSection()">Manage Complexe/Salles</button>
+        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToSalleSection()">Manage Complexe/Salles</button>
     </li>
    
 </ul>
 <br />
 <div class="jumbotron">
-
-    @if (isComplex)
-    {
-        <div class="card pe-4 ps-4 pt-2 pb-2">
-            <h4 class="card-header-tabs display-4 mb-4">Manage Complexes</h4>
-            <div class="container bg-light rounded-2 w-50">
-               <Complexe></Complexe>
-           </div>
-        </div>
-    }
-
-    @if (isPiece)
-    {
-
-        <div class="card pe-4 ps-4 pt-2 pb-2">
-            <div class="container bg-light">
-                <SallerRepresentation></SallerRepresentation>
-            </div>
-        </div>
-     
-       
-    }
-
-    @if (isRepresentation)
-    {
-
-        <div class="card m-4 p-4">
-            <div class="container bg-light rounded-2 m-4 p-4 w-50">
-                <Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
-                </Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
-            </div>
-        </div>
-    }
-
-    @if (isSalle)
-    {
-        <div class="card m-4 p-4">
-            <div class="container bg-light rounded-2 mb-4 mt-4">
-                <ComplexeSalle></ComplexeSalle>
-            </div>
-      </div>
-  
-    }
+    <p>Bienvenu administrateur </p> 
 </div>
 
 @code
 {
-    public bool isComplex { get; set; } = true;
-    public bool isPiece { get; set; } = false;
-    public bool isRepresentation { get; set; } = false;
-    public bool isSalle { get; set; } = false;
 
-    public void ShowComplexeSection()
+    public void GetToComplexeSection()
     {
-        isComplex = true;
-        isPiece = false;
-        isRepresentation = false;
-        isSalle = false;
+        manager.NavigateTo("manager/complexe");
     }
 
-    public void ShowPieceSection()
+    public void GetToPieceSection()
     {
-        isComplex = false;
-        isPiece = true;
-        isRepresentation = false;
-        isSalle = false;
+        manager.NavigateTo("manager/piece");
     }
 
-    public void ShowRepresentationSection()
+    public void GetToRepresentationSection()
     {
-        isComplex = false;
-        isPiece = false;
-        isRepresentation = true;
-        isSalle = false;
+        manager.NavigateTo("manager/representation");
     }
 
-    public void ShowSalleSection()
+    public void GetToSalleSection()
     {
-        isComplex = false;
-        isPiece = false;
-        isRepresentation = false;
-        isSalle = true;
-    }
-
-    public void getComplexe()
-    {
-        // Implement logic to get Complexes
+        manager.NavigateTo("manager/salle");
     }
    
 }

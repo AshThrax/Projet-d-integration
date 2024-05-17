@@ -15,6 +15,8 @@ namespace Domain.Entity.publicationEntity
         public string Review { get; set; }
         [BsonElement("Pub_UserId")]
         public string  UserId { get; set; }
+        [BsonElement("Pub_Piece_Id")]
+        public int PieceId { get; set; }
         [BsonElement("Pub_Post")]
         public ICollection<string> post { get; set; } = new List<string>();
     }

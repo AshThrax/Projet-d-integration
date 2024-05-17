@@ -16,6 +16,6 @@ namespace Domain.Entity.publicationEntity
         [BsonElement("Post_PublicationId")]
         public string? PublicationId { get; set; }
         [BsonElement("Post_Repost")]
-        public ICollection<RePost> Repost { get; set; } = new List<RePost>();
+        public ICollection<Repost> Repost { get; set; } = new List<Repost>();
     }
 }

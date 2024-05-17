@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationPublication.Common.Repository
 {
-    public interface IRepostRepository : IRepository<RePost>
+    public interface IRepostRepository : IRepository<Repost>
     {
-        Task<IEnumerable<RePost>> GetAllFromPostId(int postId);
-        Task<RePost?> GetById(string id);
+        Task<IEnumerable<Repost>> GetAllFromPostId(int postId);
         Task Update(string entityId, string content);
     }
 }

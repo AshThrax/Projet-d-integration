@@ -8,6 +8,7 @@ using Stripe.Checkout;
 
 namespace WebApi.Controllers
 {
+   
     [Route("api/v1/[controller]")]
     [ApiController]
     public class StripeController : ControllerBase
@@ -19,7 +20,7 @@ namespace WebApi.Controllers
             _stripeSettings = stripeSettings.Value;
             _looger = logger;
         }
-
+        [HttpPost]
         public async Task<IActionResult> CreateCheckoutSession(string amount, int Quantity)
         {
             string currency = "eur";//currency

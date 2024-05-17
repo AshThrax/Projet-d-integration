@@ -2,11 +2,10 @@
 {
     public class CommandDto : BaseDto
     {
-        public string AuthId { get; set; }
+        public string? AuthId { get; set; }
         public int NombreDePlace { get; set; }
+       
         public int IdRepresentation { get; set; }
-
-
     }
     public class AddCommandDto
     {

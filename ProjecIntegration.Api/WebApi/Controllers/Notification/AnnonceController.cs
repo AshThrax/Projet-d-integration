@@ -21,7 +21,7 @@ namespace WebApi.Controllers.Notification
             this.annonceBl = annonceBl;
         }
 
-        [HttpGet("get-annonce")]
+        [HttpGet()]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<GetAnnonceDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
@@ -43,7 +43,7 @@ namespace WebApi.Controllers.Notification
             }
         }
 
-        [HttpGet("get-annonce/{annonceId}")]
+        [HttpGet("{annonceId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetAnnonceDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
@@ -64,7 +64,7 @@ namespace WebApi.Controllers.Notification
             }
         }
 
-        [HttpPost("post-annonce")]
+        [HttpPost("")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddAnnonceDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
@@ -90,7 +90,7 @@ namespace WebApi.Controllers.Notification
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("update-annonce/{annonceId}")]
+        [HttpPut("{annonceId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
@@ -110,14 +110,14 @@ namespace WebApi.Controllers.Notification
             }
             catch (ArgumentException ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("supress-annonce/{annonceId}")]
+        [HttpDelete("{annonceId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found

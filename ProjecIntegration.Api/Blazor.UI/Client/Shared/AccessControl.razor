@@ -1,22 +1,20 @@
 ﻿@* Client/Shared/AccessControl.razor *@
-@using Blazor.UI.data.modelViews
-@using Blazor.UI.data.services
-@using Microsoft.AspNetCore.Components.Authorization
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Blazor.UI.data.services;
+@using Microsoft.AspNetCore.Components.Authorization;
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 @using System.Security.Claims;
-    using Blazor.UI.data.modelViews;
 @inject NavigationManager Navigation;
 @inject SignOutSessionStateManager SignOutManager;
 
 <AuthorizeView>
     <Authorized>
-        Hello, @context.User.Identity.Name
-        @if (@context.User.Identity.Name! == null)
+        <p>Hello, @context?.User?.Identity?.Name
+        @if (@context?.User?.Identity?.Name! == null)
         {
-            @context.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value;
-        }
+            @context?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value;
+        }</p>
         <a class="nav-link" href="profileViewer"
-            <img class="img-fluid border rounded" style="height:50px; width:50px" src="@context.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value" />
+            <img class="img-fluid border rounded" style="height:50px; width:50px" src="@context?.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value" />
         </a>
         <a href="#" @onclick="BeginSignOut">Log out</a>
     </Authorized>
@@ -26,9 +24,9 @@
 </AuthorizeView>
 
 @code {
-    
-    public UserView? Userlog { get; set; }
-   
+
+    public data.modelViews.UserView? Userlog { get; set; }
+
     private async Task BeginSignOut(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();

@@ -1,4 +1,7 @@
-﻿namespace Domain.Entity.TheatherEntity
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Entity.TheatherEntity
 {
     public class Piece : BaseEntity
     {
@@ -7,9 +10,9 @@
         public string Description { get; set; } = string.Empty;
         public string Auteur { get; set; } = string.Empty;
         public List<Representation>? Representations { get; set; }
-        public int ImageId { get; set; }
-
+        public string? Image { get; set; }
         public Theme? Theme { get; set; }
+        [ForeignKey(nameof(Theme))]
         public int ThemeId { get; set; }
 
     }

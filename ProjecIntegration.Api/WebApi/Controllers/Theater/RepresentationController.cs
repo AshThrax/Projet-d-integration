@@ -24,11 +24,7 @@ namespace WebApi.Controllers.Theater
             this.gtk = gtk;
         }
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RepresentationDto>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        
         public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAll()
         {
             try
@@ -51,11 +47,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RepresentationDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+     
         public async Task<ActionResult<RepresentationDto>> GetById(int id)
         {
             try
@@ -79,11 +71,7 @@ namespace WebApi.Controllers.Theater
         }
       
         [HttpGet("get-piece/{idpiece}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RepresentationDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+     
         public async Task<ActionResult<RepresentationDto>> GetAllpieceById(int idpiece)
         {
             try
@@ -105,11 +93,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddRepresentationDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    
         public async Task<ActionResult> Create([FromBody] AddRepresentationDto entity)
         {
             try
@@ -137,11 +121,7 @@ namespace WebApi.Controllers.Theater
         }
        
         [HttpPut("{updtId}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+     
         public async Task<ActionResult> Update(int updtId, [FromBody] UpdateRepresentationDto entity)
         {
             try

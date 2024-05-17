@@ -1,5 +1,6 @@
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
+using WebApi.ApiService.FileService;
 using WebApi.ExtensionMethods;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddDependencyInjection(builder.Configuration);
 builder.Services.AddControllers().AddNewtonsoftJson(); ;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddSwaggerGen(opt =>
 {
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "MyAPI", Version = "v1" });
@@ -63,12 +65,14 @@ app.UseCors(x => x
           .AllowAnyMethod()
           .AllowAnyHeader());
 app.UseHttpsRedirection();
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
                 Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
     RequestPath = "/Resources"
 });
+
 app.UseAuthentication();
 app.UseAuthorization();
 

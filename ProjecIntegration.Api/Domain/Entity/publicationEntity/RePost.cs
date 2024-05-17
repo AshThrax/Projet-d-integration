@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.publicationEntity
 {
-    public class RePost:BaseMongoEntity
+    public class Repost:BaseMongoEntity
     {
         [BsonElement("Repost_Content")]
         public string Content { get; set; } = string.Empty;

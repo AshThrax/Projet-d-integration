@@ -10,8 +10,8 @@ namespace ApplicationPublication.Dto
 {
     public class PostDto : BaseDto
     {
-        public string Content { get; set; }
-        public string UserId { get; set; }
-        public ICollection<RePost> Repost { get; set; } = new List<RePost>();
+        public string Content { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
+        public ICollection<RepostDto> Repost { get; set; } = new List<RepostDto>();
     }
 }

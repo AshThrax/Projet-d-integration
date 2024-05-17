@@ -20,7 +20,7 @@ namespace InfraPublication
 
             services.AddScoped<IRepostBL, RepostBL>();
             services.AddScoped<IPostBL, PostBL>();
-            services.AddScoped<IPublicationBl, IPublicationBL>();
+            services.AddScoped<IPublicationBl, PublicationBL>();
             services.Configure<PublicationSetttings>(options => 
             {
                 options.ConnectionString = configure.GetConnectionString("MongoDb");

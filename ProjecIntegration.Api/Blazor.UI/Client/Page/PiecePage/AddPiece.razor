@@ -1,8 +1,12 @@
-﻿@page "/addPiece/{Id:int}"
+﻿@page "/addPiece"
 @using Blazor.UI.data.modelViews
 @using Blazor.UI.data.services
-@inject  ISalleService ServSalle;
-@inject  IComplexeService ServComplexe;
+@using Blazor.UI.data.services.TheatherService
+@using Microsoft.AspNetCore.Http
+
+@inject IPieceService pieceService;
+@inject IThemeService themeService;
+@inject NavigationManager manager;
 <div>
  
 </div>
@@ -26,10 +30,17 @@
                     <textarea class="form-control " id="description" @bind="piece.Description" rows="3">
                     </textarea>
                 </div>
-              
+                <div>
+                    <label class="form-label for="auteur">Auteur :</label>
+                    <input class="form-control" id="titre" @bind="piece.Auteur" />
+                </div>
+                <div>
+                    <label class="form-label for="File" >Photo :</label>
+                    <InputFile type="file"  id="File" OnChange="@setFil"/>
+                </div>
                 <br />
                 <div>
-                    <button @onclick="AddedPiece">ajouter</button>
+                    <button @onclick="AddPieceToDatabase">ajouter</button>
                 </div>
                 
             </div>
@@ -44,17 +55,20 @@
     [Parameter]
     public int Id { get; set; }
 
-    public SalleDeTheatreDto salle { get; set; }
+
 
     public AddPieceDto piece { get; set; } = new AddPieceDto();
-    public ComplexeDto Complexe { get; set; }//remettre pour tfe
     protected override async Task OnInitializedAsync()
     {
-        salle = await ServSalle.GetById(Id);
-        Complexe = await ServComplexe.GetById(salle.ComplexeId);
+
     }
-    public void AddedPiece()
+    public void setFil(InputFileChangeEventArgs e)
     {
-        ServSalle.AddPiece(Id,piece);
+        piece.ImageFile =(IFormFile) e.File;   
+    }
+    public void AddPieceToDatabase()
+    {
+       pieceService.Create(piece);
+       manager.NavigateTo("/manager");
     }
 }

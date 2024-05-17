@@ -28,7 +28,7 @@ namespace ApplicationPublication.Common.BusinessLayer
         /// </summary>
         /// <param name="PubId">identifiant de la publication</param>
         /// <returns></returns>
-        Task<IEnumerable<PostDto>> GetAllPostFromPUblicationId(string PubId);
+        Task<IEnumerable<PostDto>> GetAllPostFromPublicationId(string PubId);
         /// <summary>
         ///   mets a jours un object de type poste
         /// </summary>
@@ -45,5 +45,6 @@ namespace ApplicationPublication.Common.BusinessLayer
         Task Createasync(string publicationtid, PostDto pub);
         #endregion
 
+        Task<IEnumerable<PostDto>> GetPostFromUserId(string userId);
     }
 }

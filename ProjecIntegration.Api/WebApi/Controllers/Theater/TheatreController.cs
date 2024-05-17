@@ -79,7 +79,7 @@ namespace WebApi.Controllers.Theater
         /// <param name="pieceId"></param>
         /// <returns></returns>
         [HttpGet("{IdPiece}")]
-        public async Task<ActionResult> GetRepresnetationFromPiece(int IdPiece)
+        public async Task<ActionResult> GetRepresentationFromPiece(int IdPiece)
         {
             try
             {

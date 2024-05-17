@@ -11,7 +11,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
         public DbSet<Complexe> Complexe { get; set; }
         public DbSet<Representation> Representations { get; set; }
         public DbSet<SalleDeTheatre> SalleDeTheatres { get; set; }
-
+        public DbSet<CataloguePiece> cataloguePieces { get; set; }  
         public DbSet<Piece> Pieces { get; set; }
         public DbSet<Theme> Theme {get;set;}
 
@@ -91,10 +91,19 @@ namespace dataInfraTheather.Infrastructure.Persistence
             modelBuilder.Entity<Theme>()
                         .HasKey(x => x.Id);
 
-                        
-                
+            modelBuilder.Entity<Catalogue>()
+                        .HasKey(x => x.Id);
+
+            modelBuilder.Entity<Catalogue>()
+                        .HasOne(x=>x.Complexe)
+                        .WithMany(x=>x.Catalogue)
+                        .HasForeignKey(x=>x.ComplexeId);
+
+            modelBuilder.Entity<CataloguePiece>()
+                         .HasKey(CataloguePiece => new { CataloguePiece.PieceId, CataloguePiece.CatalogueId });
+
             //-----Image
-          
+
             //----------------------------end Config
             base.OnModelCreating(modelBuilder);
 

@@ -27,12 +27,8 @@ namespace WebApi.Controllers.Theater
             _mapper = mapper;
         }
         [HttpGet("get-auth")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAuth()
+      
+        private async Task<ActionResult> GetAuth()
         {
             try
             {
@@ -47,11 +43,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicationDto>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    
         public async Task<ActionResult<CommandDto>> GetByid(int id)
         
         {
@@ -71,11 +63,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("get-command-user")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CommandDto>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+     
         public async Task<ActionResult<CommandDto>> GetByUser()
         {
             try
@@ -96,11 +84,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("get-piece/{idPiece}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CommandDto>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    
         public async Task<ActionResult<IEnumerable<Command>>> GetByPiece(int idPiece)
         {
             try
@@ -151,11 +135,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddCommandDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+     
         public async Task<ActionResult> Create([FromBody] AddCommandDto CmdDtot)
         {
             try
@@ -190,11 +170,7 @@ namespace WebApi.Controllers.Theater
         }
 
         [HttpPut("{updtId}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+       
         public async Task<ActionResult> UpdateCommand(int updtId, [FromBody] UpdateCommandDto updtdto)
         {
             try
@@ -222,11 +198,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+       
         public async Task<ActionResult> Delete(int id)
         {
             try

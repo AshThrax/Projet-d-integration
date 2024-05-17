@@ -20,12 +20,12 @@ namespace WebApi.ApiService
             _contextAccessor = contextAccessor 
                 ?? throw new ArgumentNullException(nameof(_contextAccessor));
         }
-        public async Task<string> GetToken()
+        public async Task<string?> GetToken()
         {
             try
             {
                 string? accessToken = await _contextAccessor
-                                            .HttpContext
+                                            ?.HttpContext?
                                             .GetTokenAsync("access_token") 
                                             ?? throw new Exception("invalid token");
 
@@ -41,19 +41,17 @@ namespace WebApi.ApiService
         }
         public async Task<string> GetSub() 
         {
-            string? accessToken = await _contextAccessor
-                                        ?.HttpContext.GetTokenAsync("access_token") ?? "";
 
-            string? subClaim = _contextAccessor.HttpContext
+            string? subClaim =  _contextAccessor?.HttpContext?
                 .User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "";
             return subClaim ;
         }
 
-        public async Task<string> GetEmail()
+        public async Task<string?> GetEmail()
         {
             try
             {
-                string? values = _contextAccessor.HttpContext
+                string? values = _contextAccessor?.HttpContext?
                     .User.FindFirst(ClaimTypes.CookiePath)?.Value;
                 return values;
 

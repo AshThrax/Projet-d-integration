@@ -20,12 +20,20 @@ namespace InfraPublication.Repository
            _collection=database.DbSet<Publication>();   
         }
 
-      
-
-        public async Task<IEnumerable<Publication>> GetAllbyPublicationByUserId(string userId)
+        public async Task<IEnumerable<Publication>> GetAllPublicationByPieceId(int PieceId)
         {
             FilterDefinitionBuilder<Publication> builder = Builders<Publication>.Filter;
-            FilterDefinition<Publication> filter = builder.Where(a =>a.UserId == userId);
+            FilterDefinition<Publication> filter = builder.Eq(x=>x.PieceId,PieceId);
+
+            return await _collection.Find(filter)
+                                    .ToListAsync();
+        }
+    
+
+        public async Task<IEnumerable<Publication>> GetAllPublicationByUserId(string userId)
+        {
+            FilterDefinitionBuilder<Publication> builder = Builders<Publication>.Filter;
+            FilterDefinition<Publication> filter = builder.Eq(a =>a.UserId,userId);
 
             return await _collection.Find(filter)
                                     .ToListAsync();

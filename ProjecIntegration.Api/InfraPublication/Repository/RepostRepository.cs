@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace InfraPublication.Repository
 {
-    public class RepostRepository : MongoRepository<RePost>, IRepostRepository
+    public class RepostRepository : MongoRepository<Repost>, IRepostRepository
     {
         
-        private readonly IMongoCollection<RePost> _reposts;
+        private readonly IMongoCollection<Repost> _reposts;
         public RepostRepository(PublicationMongoContext database) :base(database) 
         {
-            _reposts = database.DbSet<RePost>();
+            _reposts = database.DbSet<Repost>();
         }
 
-        public Task<IEnumerable<RePost>> GetAllFromPostId(int postId)
+        public Task<IEnumerable<Repost>> GetAllFromPostId(int postId)
         {
             throw new NotImplementedException();
         }

@@ -1,7 +1,9 @@
-﻿using ApplicationTheather.Common.Exceptions;
+﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using Domain.Entity.TheatherEntity;
+using WebApi.ApiService.FileService;
 namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
@@ -9,19 +11,17 @@ namespace WebApi.Controllers.Theater
     public class PieceController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IPieceRepository _pieceRepository;
+        private readonly IBusinessPiece _pieceRepository;
+        private readonly IFileService fileService;
 
-        public PieceController(IMapper mapper, IPieceRepository pieceRepository)
+        public PieceController(IMapper mapper, IBusinessPiece pieceRepository,IFileService fileService)
         {
+            this.fileService = fileService;
             _mapper = mapper;
             _pieceRepository = pieceRepository;
         }
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<AddPieceDto>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        
         public async Task<ActionResult<IEnumerable<PieceDto>>> Get()
         {
             try
@@ -49,16 +49,12 @@ namespace WebApi.Controllers.Theater
         }
        
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PieceDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+       
         public async Task<ActionResult<PieceDto>> GetById(int id)
         {
             try
             {
-                var entity = await _pieceRepository.GetById(id);
+                var entity = await _pieceRepository.Get(id);
                 var Conversion = _mapper.Map<PieceDto>(entity);
                 if (Conversion == null)
                 {
@@ -80,21 +76,20 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddPieceDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Create([FromBody] AddPieceDto piece)
+     
+        public async Task<ActionResult> Create([FromForm] AddPieceDto addpiece)
         {
             try
             {
-                var Conversion = _mapper.Map<AddPieceDto, Piece>(piece);
-                if (Conversion == null)
+                if (addpiece.ImageFile?.Length > 1 * 1024 * 1024)
                 {
-                    BadRequest();
+                    return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
                 }
-                _pieceRepository.Insert(Conversion);
+                string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+                string createdImageName = await fileService.SaveFileAsync(addpiece.ImageFile, allowedFileExtentions);
+
+                _pieceRepository.Create(addpiece, createdImageName);
+                      
                 return Ok();
 
             }
@@ -111,57 +106,27 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("add-representation/{idPIece}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddRepresentationDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddRepresnetation(int idPIece, [FromBody] AddRepresentationDto addRepresentation)
-        {
-            try
-            {
-                var Conversion = _mapper.Map<AddRepresentationDto, Representation>(addRepresentation);
-                if (Conversion == null)
-                {
-                    BadRequest();
-                }
-                _pieceRepository.AddRepresentation(idPIece, Conversion);
-                return Ok();
-
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+      
         [HttpPut("{updtId}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Put(int updtId, UpdatePieceDto piece)
+      
+        public async Task<ActionResult> Put(int updtId,[FromForm]UpdatePieceDto updatepiece)
         {
 
             try
             {
-
-                var Conversion = _mapper.Map<UpdatePieceDto, Piece>(piece);
-
-                if (Conversion == null)
+                 
+                if (updatepiece.ImageFile != null)
                 {
-                    BadRequest();
+                    if (updatepiece.ImageFile?.Length > 1 * 1024 * 1024)
+                    {
+                        return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
+                    }
+                    string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+                    string createdImageName = await fileService.SaveFileAsync(updatepiece.ImageFile, allowedFileExtentions);
+                    updatepiece.Image = createdImageName;
                 }
-                _pieceRepository.Insert(Conversion);
+
+                await _pieceRepository.Update(updtId, updatepiece);
                 return Ok();
             }
             catch (ValidationException ex)
@@ -179,40 +144,19 @@ namespace WebApi.Controllers.Theater
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      
         public async Task<ActionResult> Delete(int id)
         {
 
             try
             {
-                _pieceRepository.Delete(id);
-                return NoContent();
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+                PieceDto piece = await  _pieceRepository.Get(id);
+                if(piece !=null)
+                {
+                  
+                   await _pieceRepository.Delete(id);
 
-        [HttpDelete("delete-representation/{id}/{idrepresentaion}")]
-        public async Task<ActionResult> DeleteRepresentation(int id, int idrepresentaion)
-        {
-
-            try
-            {
-                _pieceRepository.DeleteRepresnetation(id, idrepresentaion);
+                }
                 return NoContent();
             }
             catch (ValidationException ex)

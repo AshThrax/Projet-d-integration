@@ -14,6 +14,7 @@ namespace DataInfraTheather.BusinessService
     public class BusinessPiece : IBusinessPiece
     {
         private readonly IPieceRepository _pieceRepository;
+    
         private IMapper _mapper;
 
         public BusinessPiece(IPieceRepository pieceRepository, IMapper mapper)
@@ -22,9 +23,15 @@ namespace DataInfraTheather.BusinessService
             _mapper = mapper;
         }
 
-        public async Task Create(AddPieceDto Entity)
+        public Task Addrepresnetation(int PieceId, AddRepresentationDto Entity)
         {
-            var entittyConversion = _mapper.Map<Piece>(Entity);
+            throw new NotImplementedException();
+        }
+
+        public async void Create(AddPieceDto Entity,string ImageName)
+        {
+            Piece entittyConversion = _mapper.Map<Piece>(Entity);
+            entittyConversion.Image=ImageName;
             _pieceRepository.Insert(entittyConversion);
         }
 

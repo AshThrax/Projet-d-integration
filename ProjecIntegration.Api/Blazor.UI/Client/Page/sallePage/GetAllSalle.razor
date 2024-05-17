@@ -11,7 +11,7 @@
             <QuickGrid Items="@Salles?.AsQueryable()">
                 <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
                 <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
-                <PropertyColumn Property="@(p => p.PlaceCurrent)" Sortable="true" />
+               
                 <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
                 <TemplateColumn Context="item">
                     <div>

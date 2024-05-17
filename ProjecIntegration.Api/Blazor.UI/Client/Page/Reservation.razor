@@ -5,7 +5,8 @@
 @using Blazor.UI.data.services
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using Blazor.UI.Client.Page.ReservationComponent
-@inject IComplexeService servpm;
+@inject IComplexeService _complexeServie;
+@inject IPieceService _pieceservice;
 <h3 class=" bg-light  m-4 p-2 rounded-2 text-center">Reservation</h3>
 
 
@@ -14,17 +15,20 @@
         <div class="col">
             <ComplexeDropDown Complexes="getComplexe" SingleComplexe="myItem" ></ComplexeDropDown>
         </div>
-       
+       <div class="col">
+           <Blazor.UI.Client.Page.RepresentationPage.PieceDropDown PieceDtos="pieceDtos"></Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
+       </div>
     </div>
 </div>
 @code {
-    public IEnumerable<ComplexeDto> getComplexe { get; set; }
-    public ComplexeDto myItem { get; set; }
-    public IEnumerable<PieceDto> pieceDtos { get; set; }
+    public IEnumerable<ComplexeDto>? getComplexe { get; set; }
+    public ComplexeDto? myItem { get; set; }
+    public IEnumerable<PieceDto>? pieceDtos { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        var convert  = await servpm.Get();
-        getComplexe = convert;
+        //var convert  = await _complexeService.Get();
+        pieceDtos = await _pieceservice.Get();
+       // getComplexe = convert;
 
     }
 }

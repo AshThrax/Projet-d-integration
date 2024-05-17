@@ -150,16 +150,7 @@ else{
                 AuthId ="",
                 IdRepresentation = IdRepresnetation,
                 NombreDePlace = genereate,
-                Tickets = Enumerable.Range(0, genereate)
-                                    .Select(_ => new AddTicketDto
-                                    {
-                                        Titre = piececlt.Titre,
-                                        SalleName = salleclt.Name,
-                                        Piecetitle = piececlt.Titre,
-                                        Representation = repclt.Seance.ToString(),
-
-                                    })
-                                    .ToList()
+               
         };
         //n'entre pas dans la methodes pour une raison inconnue pour le moment a debatre 
     }

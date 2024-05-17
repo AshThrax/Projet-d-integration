@@ -28,13 +28,13 @@ else
                </div>
             }
                     <div>
-                        <p>séance: @RepresentationSum.Seance</p>
-                        <p>Prix: @RepresentationSum.Prix </p>
-                        <p>Prix: @RepresentationSum. </p>
+                        <p>séance: @RepresentationSum?.Seance</p>
+                        <p>Prix: @RepresentationSum?.Prix </p>
+                        <p>Prix: @RepresentationSum?.PlaceCurrent </p>
                         <p></p>
                     </div>
                     <div>
-                        <p>salle : @SalleSum.Name</p>
+                        <p>salle : @SalleSum?.Name</p>
                     </div>
                 </div>
     </div>
@@ -56,7 +56,7 @@ else
         if (RepresentationSum == null)
         {
             PieceSum = await servPiece.GetById(RepresentationSum.IdPiece );
-            SalleSum = await servSalle.GetById(RepresentationSum.IdSalleDeTheatre);        
+            SalleSum = await servSalle.GetById(RepresentationSum.IdSalledeTheatre);        
         }
     }
 }

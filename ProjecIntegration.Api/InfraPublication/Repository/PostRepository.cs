@@ -33,9 +33,13 @@ namespace InfraPublication.Repository
                                     .ToListAsync();
         }
 
-        public Task Insert(string publicationId, Post entity)
+        public async Task<IEnumerable<Post>> GetAllFromUserId(string userId)
         {
-            throw new NotImplementedException();
+            FilterDefinitionBuilder<Post> builder = Builders<Post>.Filter;
+            FilterDefinition<Post> filter = builder.Eq(x=>x.UserId,userId);
+
+            return await _mongoCollection.Find(filter)
+                                    .ToListAsync();
         }
 
         public async Task Update(string postId, string content)

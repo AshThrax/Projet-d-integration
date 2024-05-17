@@ -29,7 +29,7 @@ namespace InfraPublication.BusinessLayer
             {
                  if (pub != null)
                  {
-                   RePost mappedRepost=mapper.Map<RePost>(pub);
+                   Repost mappedRepost=mapper.Map<Repost>(pub);
                    mappedRepost.UpdatedDate = DateTime.Now;
                    mappedRepost.CreatedDate = DateTime.Now;
                    repostrepository.Insert(mappedRepost);
@@ -47,7 +47,7 @@ namespace InfraPublication.BusinessLayer
         {
             try
             {
-                RePost doExist= await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
+                Repost doExist= await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
                 if (doExist != null)
                 {
                     repostrepository.Delete(repostId);
@@ -72,7 +72,7 @@ namespace InfraPublication.BusinessLayer
         {
             try
             {
-                  RePost doExist = await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
+                  Repost doExist = await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
                   return mapper.Map<RepostDto>(doExist);
             }
             catch (Exception)
@@ -87,10 +87,10 @@ namespace InfraPublication.BusinessLayer
         {
             try
             {
-              RePost doExist = await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
+              Repost doExist = await repostrepository.GetById(repostId) ?? throw new NullReferenceException("null reference");
               if (doExist != null)
               {
-                RePost mapped= mapper.Map<RePost>(post); 
+                Repost mapped= mapper.Map<Repost>(post); 
                 repostrepository.Update(repostId, mapped);
               }
             }
