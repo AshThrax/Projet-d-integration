@@ -1,8 +1,7 @@
-﻿namespace Blazor.UI.data.modelViews
+﻿namespace Blazor.UI.Data.modelViews;
+
+public class Baseview
 {
-    public class Baseview
-    {
-        public int Id { get; set; }
-        public DateTime AddedTime { get; set; } = DateTime.Now;
-    }
+    public int Id { get; set; }
+    public DateTime AddedTime { get; set; } = DateTime.Now;
 }

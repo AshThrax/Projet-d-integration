@@ -12,10 +12,10 @@ namespace dataInfraTheather.Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public void AddCommand(Command command)
+        public async Task AddCommand(Command command)
         {
-            _dbContext.Commands.Add(command);
-            _dbContext.SaveChanges();
+            await _dbContext.Commands.AddAsync(command);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Command>> GetAllUserCommand(string auth0)

@@ -2439,7 +2439,7 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "Application/1.0.0": {
+      "ApplicationAnnonce/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2448,10 +2448,10 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
         },
         "compile": {
-          "bin/placeholder/Application.dll": {}
+          "bin/placeholder/ApplicationAnnonce.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Application.dll": {}
+          "bin/placeholder/ApplicationAnnonce.dll": {}
         }
       },
       "ApplicationPublication/1.0.0": {
@@ -2536,11 +2536,11 @@
           "bin/placeholder/InfraPublication.dll": {}
         }
       },
-      "Infrastructure/1.0.0": {
+      "InfrastructureAnnonce/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Application": "1.0.0",
+          "ApplicationAnnonce": "1.0.0",
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
@@ -2548,10 +2548,10 @@
           "MongoDB.Driver": "2.24.0"
         },
         "compile": {
-          "bin/placeholder/Infrastructure.dll": {}
+          "bin/placeholder/InfrastructureAnnonce.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Infrastructure.dll": {}
+          "bin/placeholder/InfrastructureAnnonce.dll": {}
         }
       }
     }
@@ -6276,10 +6276,10 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "Application/1.0.0": {
+    "ApplicationAnnonce/1.0.0": {
       "type": "project",
-      "path": "../Application/Application.csproj",
-      "msbuildProject": "../Application/Application.csproj"
+      "path": "../Application/ApplicationAnnonce.csproj",
+      "msbuildProject": "../Application/ApplicationAnnonce.csproj"
     },
     "ApplicationPublication/1.0.0": {
       "type": "project",
@@ -6306,15 +6306,15 @@
       "path": "../InfraPublication/InfraPublication.csproj",
       "msbuildProject": "../InfraPublication/InfraPublication.csproj"
     },
-    "Infrastructure/1.0.0": {
+    "InfrastructureAnnonce/1.0.0": {
       "type": "project",
-      "path": "../Infrastructure/Infrastructure.csproj",
-      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+      "path": "../Infrastructure/InfrastructureAnnonce.csproj",
+      "msbuildProject": "../Infrastructure/InfrastructureAnnonce.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Application >= 1.0.0",
+      "ApplicationAnnonce >= 1.0.0",
       "ApplicationPublication >= 1.0.0",
       "ApplicationTheather >= 1.0.0",
       "Auth0Net.DependencyInjection >= 3.1.0",
@@ -6322,7 +6322,7 @@
       "DataInfraTheather >= 1.0.0",
       "FluentValidation.AspNetCore >= 11.3.0",
       "InfraPublication >= 1.0.0",
-      "Infrastructure >= 1.0.0",
+      "InfrastructureAnnonce >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.1",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.1",
       "Microsoft.AspNetCore.OpenApi >= 8.0.1",
@@ -6374,8 +6374,8 @@
             "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
               "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
             },
-            "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj"
+            "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
+              "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
             },
             "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj": {
               "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj"
@@ -6383,8 +6383,8 @@
             "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj": {
               "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj"
             },
-            "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
+              "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj"
             }
           }
         }

@@ -12,7 +12,6 @@ namespace Domain.Entity.TheatherEntity
         public List<Representation>? Representations { get; set; }
         public string? Image { get; set; }
         public Theme? Theme { get; set; }
-        [ForeignKey(nameof(Theme))]
         public int ThemeId { get; set; }
 
     }

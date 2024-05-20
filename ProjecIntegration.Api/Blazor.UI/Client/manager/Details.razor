@@ -1,8 +1,7 @@
 ﻿@page "/details/{Id:int}"
-@using Blazor.UI.data.modelViews
-@using Blazor.UI.data.services
-@using Microsoft.AspNetCore.Components;
-@using Blazor.UI.data.modelViews;
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+
 
 @inject IComplexeService comp
 @inject ComplexeDto complexedto;
@@ -11,17 +10,6 @@
 
 <div>
     <!-- Fetch and display details based on the provided Id -->
-    @code {
-        private ComplexeDto complexe;
-
-        [Parameter]
-        public int Id { get; set; }
-
-        protected override async Task OnInitializedAsync()
-        {
-            complexe = await comp.GetById(Id);
-        }
-    }
 
     @if (complexe != null)
     {
@@ -36,20 +24,29 @@
             <dd>@complexe.Description</dd>
 
             <dt>Capacity:</dt>
-            <dd>@complexe.SalleDeTheatres.Capacity</dd>
+            <dd>@complexe?.SalleDeTheatres?.Capacity</dd>
         </dl>
     }
     else
     {
-     <Shared.Load></Shared.Load>
+     <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
     }
 </div>
 
 <button @onclick="GoBack">Go Back</button>
 
 @code {
+    private ComplexeDto? complexe;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        complexe = await comp.GetById(Id);
+    }
     private void GoBack()
     {
-        NavigationManager.NavigateTo("/complexe-grid");
+        NavigationManager.NavigateTo("/manager/complexe");
     }
 }

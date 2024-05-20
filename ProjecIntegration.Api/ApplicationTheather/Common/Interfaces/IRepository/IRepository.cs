@@ -11,6 +11,6 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
         Task<T> GetById(int id);
         void Insert(T entity);
         void Update(int updtId, T entity);
-        void Delete(int entityid);
+        Task Delete(int entityid);
     }
 }

@@ -6,10 +6,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Common.Repository
+namespace ApplicationAnnonce.Common.Repository
 {
-    public interface IAnnonceRepository: IRepository<Annonce>
+    public interface IAnnonceRepository : IRepository<Annonce>
     {
-       
+
     }
 }

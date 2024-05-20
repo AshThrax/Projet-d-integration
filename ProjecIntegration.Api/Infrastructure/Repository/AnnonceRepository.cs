@@ -1,6 +1,6 @@
-﻿using Application.Common.Repository;
+﻿using ApplicationAnnonce.Common.Repository;
 using Domain.Entity.notificationEntity;
-using Infrastructure.Persistence;
+using InfrastructureAnnonce.Persistence;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repository
+namespace InfrastructureAnnonce.Repository
 {
     public class AnnonceRepository : MongoRepository<Annonce>, IAnnonceRepository
     {
@@ -17,7 +17,7 @@ namespace Infrastructure.Repository
         public AnnonceRepository(NotificationMongoContext database) : base(database)
         {
             _database = database;
-            _annonceCollection=database.Dbset<Annonce>();
+            _annonceCollection = database.Dbset<Annonce>();
         }
     }
 }

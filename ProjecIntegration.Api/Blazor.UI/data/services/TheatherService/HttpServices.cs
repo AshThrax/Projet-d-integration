@@ -1,7 +1,8 @@
 using Blazor.UI.data.modelViews;
+using Blazor.UI.Data.modelViews;
 using System.Net.Http.Json;
 
-namespace Blazor.UI.data.services
+namespace Blazor.UI.Data.services.TheatherService
 {
     public interface IHttpClient<T> where T : Baseview
     {
@@ -24,28 +25,28 @@ namespace Blazor.UI.data.services
             this.apiBaseUrl = apiBaseUrl ?? throw new ArgumentNullException(nameof(apiBaseUrl));
         }
 
-        public async Task<T> GetAsync(int id)
+        public async Task<T?> GetAsync(int id)
         {
             var response = await httpClient.GetAsync($"{apiBaseUrl}/{id}");
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<T>();
+            return await response.Content.ReadFromJsonAsync<T?>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>?> GetAllAsync()
         {
             var response = await httpClient.GetAsync(apiBaseUrl);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<IEnumerable<T>>();
         }
 
-        public async Task<T> CreateAsync(T entity)
+        public async Task<T?> CreateAsync(T entity)
         {
             var response = await httpClient.PostAsJsonAsync(apiBaseUrl, entity);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<T>();
         }
 
-        public async Task<T> UpdateAsync(int id, T entity)
+        public async Task<T?> UpdateAsync(int id, T entity)
         {
             var response = await httpClient.PutAsJsonAsync($"{apiBaseUrl}/{id}", entity);
             response.EnsureSuccessStatusCode();

@@ -1,7 +1,7 @@
-using Blazor.UI.data.modelViews;
+using Blazor.UI.Data.modelViews.Theater;
 using System.Net.Http.Json;
 
-namespace Blazor.UI.data.services
+namespace Blazor.UI.Data.services.TheatherService
 {
     public interface ISalleService
     {

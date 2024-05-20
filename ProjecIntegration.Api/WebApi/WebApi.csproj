@@ -33,10 +33,10 @@
   <ItemGroup>
     <ProjectReference Include="..\ApplciationPublication\ApplicationPublication.csproj" />
     <ProjectReference Include="..\ApplicationTheather\ApplicationTheather.csproj" />
-    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Application\ApplicationAnnonce.csproj" />
     <ProjectReference Include="..\data\DataInfraTheather.csproj" />
     <ProjectReference Include="..\InfraPublication\InfraPublication.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Infrastructure\InfrastructureAnnonce.csproj" />
   </ItemGroup>
 
 </Project>

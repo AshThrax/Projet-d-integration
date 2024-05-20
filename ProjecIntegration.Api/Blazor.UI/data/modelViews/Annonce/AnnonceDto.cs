@@ -1,6 +1,5 @@
-﻿namespace Blazor.UI.data.modelViews.Annonce
+﻿namespace Blazor.UI.data.modelViews.Annonce;
+
+public class AnnonceDto
 {
-    public class AnnonceDto
-    {
-    }
 }

@@ -1,7 +1,7 @@
-﻿using Blazor.UI.data.modelViews;
+﻿using Blazor.UI.Data.modelViews.Publication;
 using System.Net.Http.Json;
 
-namespace Blazor.UI.data.services
+namespace Blazor.UI.Data.services.Publication
 {
     public interface IPublicationService
     {
@@ -28,17 +28,17 @@ namespace Blazor.UI.data.services
 
         public async Task AddPublication(PublicationDto catalogueDto)
         {
-          await _httpClient.PostAsJsonAsync(ApiUri, catalogueDto);
+            await _httpClient.PostAsJsonAsync(ApiUri, catalogueDto);
         }
 
-        public async  Task DeletePublication(string catalogueId)
+        public async Task DeletePublication(string catalogueId)
         {
             await _httpClient.DeleteAsync($"{ApiUri}/{catalogueId}");
         }
 
         public async Task<PublicationDto?> GetPublication(int catalogueId)
         {
-          return  await _httpClient.GetFromJsonAsync<PublicationDto>($"{ApiUri}/{catalogueId}");
+            return await _httpClient.GetFromJsonAsync<PublicationDto>($"{ApiUri}/{catalogueId}");
         }
 
         public Task<PublicationDto> UpdatePublication(int catalogueId, PublicationDto catalogue)

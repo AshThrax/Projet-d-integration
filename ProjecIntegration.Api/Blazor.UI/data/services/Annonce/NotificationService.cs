@@ -1,13 +1,13 @@
-﻿using Blazor.UI.data.modelViews;
-using Blazor.UI.data.modelViews.Annonce;
+﻿using Blazor.UI.data.modelViews.Annonce;
+using Blazor.UI.Data.modelViews.Annonce;
 using System.Net.Http.Json;
 
-namespace Blazor.UI.data.services;
+namespace Blazor.UI.Data.services.Annonce;
 
 public interface INotificaitonService
-{ 
+{
     Task<IEnumerable<NotificationDto>> GetAll();
-   
+
 }
 public class NotificationService : INotificaitonService
 {
@@ -26,5 +26,5 @@ public class NotificationService : INotificaitonService
         return await _httpClient.GetFromJsonAsync<NotificationDto[]?>(ApiUri);
     }
 
- 
+
 }

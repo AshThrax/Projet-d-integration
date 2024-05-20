@@ -6,10 +6,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Common.Repository
+namespace ApplicationAnnonce.Common.Repository
 {
-    public interface INotificationRepository : IRepository<Notification> 
-    { 
-       Task<IEnumerable<Notification>> GetNotificationByUserId(string userId);
+    public interface INotificationRepository : IRepository<Notification>
+    {
+        Task<IEnumerable<Notification>> GetNotificationByUserId(string userId);
     }
 }

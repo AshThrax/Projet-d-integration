@@ -1,9 +1,9 @@
 ﻿@page "/pieceClient/{Id:int}"
-@using Microsoft.AspNetCore.Components.QuickGrid
-@using Blazor.UI.data.modelViews
-@using Blazor.UI.data.services
-@inject             IPieceService servPiece;
-@inject             IComplexeService Servcomp;
+@using Microsoft.AspNetCore.Components.QuickGrid;
+@using Blazor.UI.Data.modelViews.Theater;
+@using Blazor.UI.Data.services.TheatherService;
+@inject IPieceService servPiece;
+@inject IComplexeService Servcomp;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
 
 <h3>Piece</h3>
@@ -28,7 +28,7 @@ else
     {
         <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
     }
-    <QuickGrid Items="@Piecetab.AsQueryable()">
+    <Microsoft.AspNetCore.Components.QuickGrid.QuickGrid Items="@Piecetab.AsQueryable()">
     <PropertyColumn Property="@(p => p.Titre)" Sortable="true" Title="Title" />
     <PropertyColumn Property="@(p => p.Duree)" Sortable="true" Title="Duration" />
     <PropertyColumn Property="@(p => p.Description)" Sortable="true" Title="Description" />
@@ -37,7 +37,7 @@ else
             <button Context="item" @onclick="() => HandleButtonClick()">Get ID</button>
         </div>
     </TemplateColumn>
-</QuickGrid>
+</Microsoft.AspNetCore.Components.QuickGrid.QuickGrid>
 }
 @code {
     [Parameter]

@@ -38,10 +38,10 @@ namespace DataInfraTheather.BusinessService
                 Command getEntity = await _commandRepository.GetById(id);
                 if (getEntity != null)
                 {
-                    _commandRepository.Delete(id);
+                    await _commandRepository.Delete(id);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception) 
             { 
             }
         }
@@ -82,7 +82,7 @@ namespace DataInfraTheather.BusinessService
                         //validation
                         //conversion Dto
                         Command Conversion = _mapper.Map<Command>(command);
-                        _commandRepository.AddCommand(Conversion);
+                        await _commandRepository.AddCommand(Conversion);
                         //appel du controller pour inserer les ticket da
                     }
                     else
@@ -106,7 +106,7 @@ namespace DataInfraTheather.BusinessService
                 var getAll = await _commandRepository.GetAll();
                 return _mapper.Map<IEnumerable<CommandDto>>(getAll);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return new List<CommandDto>();
             }
@@ -120,7 +120,7 @@ namespace DataInfraTheather.BusinessService
                     var getEntity = await _commandRepository.GetById(id);
                     return _mapper.Map<CommandDto>(getEntity);
             }
-            catch(Exception ex)
+            catch(Exception )
             {
                 return new CommandDto();
             }
@@ -137,7 +137,7 @@ namespace DataInfraTheather.BusinessService
                                     .ToList();
                 return _mapper.Map<IEnumerable<CommandDto>>(userCommand);
             }
-            catch(Exception ex) 
+            catch(Exception ) 
             { 
                 return  Enumerable.Empty<CommandDto>();
             }

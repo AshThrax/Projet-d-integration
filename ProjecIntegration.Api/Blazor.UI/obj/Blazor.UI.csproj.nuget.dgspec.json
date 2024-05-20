@@ -56,24 +56,24 @@
             },
             "Microsoft.AspNetCore.Components.QuickGrid": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.Authentication": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[2.2.2, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
@@ -81,7 +81,7 @@
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
@@ -97,7 +97,7 @@
             },
             "Stripe.net": {
               "target": "Package",
-              "version": "[44.7.0, )"
+              "version": "[44.8.0, )"
             }
           },
           "imports": [

@@ -1,16 +1,16 @@
-﻿using Application.Common.businessService;
-using Application.Common.Repository;
-using Infrastructure.BusinessService;
-using Infrastructure.Persistence;
-using Infrastructure.Repository;
+﻿using ApplicationAnnonce.Common.businessService;
+using ApplicationAnnonce.Common.Repository;
+using InfrastructureAnnonce.BusinessService;
+using InfrastructureAnnonce.Persistence;
+using InfrastructureAnnonce.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure
+namespace InfrastructureAnnonce
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfraNotif(this IServiceCollection services,IConfiguration configure) 
+        public static IServiceCollection AddInfraNotif(this IServiceCollection services, IConfiguration configure)
         {
             services.AddScoped<INotificationBl, NotificationBl>();
             services.AddScoped<INotificationRepository, NotificiationRepository>();
@@ -18,7 +18,7 @@ namespace Infrastructure
             services.AddScoped<IAnnonceBl, AnnonceBl>();
             services.AddScoped<IAnnonceRepository, AnnonceRepository>();
             //BUsiness service
-            
+
             services.Configure<NotificationStettings>(options =>
             {
                 options.ConnectionString = configure.GetConnectionString("MongoDb");

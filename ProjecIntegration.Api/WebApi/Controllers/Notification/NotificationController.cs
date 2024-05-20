@@ -1,11 +1,6 @@
-﻿using Application.Common.businessService;
-using Application.DTO;
-using ApplicationPublication.Dto;
+﻿using ApplicationAnnonce.Common.businessService;
+using ApplicationAnnonce.DTO;
 using Domain.DataType;
-using Domain.Entity.notificationEntity;
-using Infrastructure.BusinessService;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Notification
 {
@@ -54,7 +49,7 @@ namespace WebApi.Controllers.Notification
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
         }
 
@@ -77,11 +72,11 @@ namespace WebApi.Controllers.Notification
             }
             catch (ArgumentException ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
         [HttpPut("update-notification/{notifId}")]

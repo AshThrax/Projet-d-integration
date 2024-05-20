@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Threading.Tasks;
 using Blazor.UI.Client.manager;
-using Blazor.UI.data.modelViews;
+using Blazor.UI.Data.modelViews.Theater;
+using Newtonsoft.Json;
 
-namespace Blazor.UI.data.services
+namespace Blazor.UI.Data.services.TheatherService
 {
     public interface IPieceService
     {
@@ -33,24 +35,26 @@ namespace Blazor.UI.data.services
 
         }
 
-        public async Task<IEnumerable<PieceDto?>> Get()
+        public async Task<IEnumerable<PieceDto?>?> Get()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto?>>(ApiUri);
+            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto?>?>(ApiUri);
         }
 
-        public async Task<PieceDto> GetById(int id)
+        public async Task<PieceDto?> GetById(int id)
         {
             return await _httpClient.GetFromJsonAsync<PieceDto?>($"{ApiUri}/{id}");
         }
 
-        public async Task<IEnumerable<PieceDto?>> GetByComplexe(int id)
+        public async Task<IEnumerable<PieceDto?>?> GetByComplexe(int id)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto?>>($"{ApiUri}/get-complexe/{id}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto?>?>($"{ApiUri}/get-complexe/{id}");
         }
 
-        public async Task Create(AddPieceDto data)
+        public async Task Create(AddPieceDto piecedata)
         {
-            await _httpClient.PostAsJsonAsync(ApiUri, data);
+            var data = JsonConvert.SerializeObject(piecedata);
+            var sendData = new StringContent(data, Encoding.UTF8, "application/json");
+            await _httpClient.PostAsync(ApiUri, sendData);
         }
 
         public async Task AddRepresentation(int idPiece, AddRepresentationDto data)

@@ -14,7 +14,7 @@ namespace dataInfraTheather.Infrastructure.Repository
 
 
 
-        public void AddSalledeTheatre(int complexeId, SalleDeTheatre salleDeTheatre)
+        public async Task AddSalledeTheatre(int complexeId, SalleDeTheatre salleDeTheatre)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace dataInfraTheather.Infrastructure.Repository
                 if (Complexe != null)
                 {
                     Complexe?.SalleDeTheatres?.Add(salleDeTheatre);
-                    _dbcontext.SaveChanges();
+                   await _dbcontext.SaveChangesAsync();
                 }
 
             }
@@ -36,7 +36,7 @@ namespace dataInfraTheather.Infrastructure.Repository
         }
 
 
-        public void DeleteSalleDetheatre(int complexeId, int salleId)
+        public async Task DeleteSalleDetheatre(int complexeId, int salleId)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace dataInfraTheather.Infrastructure.Repository
                                               ?? throw new NullReferenceException("null refenrece");
 
                 Complexe?.SalleDeTheatres?.Remove(salleRemoved);
-                _dbcontext.SaveChanges();
+               await _dbcontext.SaveChangesAsync();
 
             }
             catch (Exception)
@@ -60,7 +60,7 @@ namespace dataInfraTheather.Infrastructure.Repository
             }
         }
 
-        public void DeletesalleDetheatre(int complexeId, int salleId)
+        public Task DeletesalleDetheatre(int complexeId, int salleId)
         {
             throw new NotImplementedException();
         }

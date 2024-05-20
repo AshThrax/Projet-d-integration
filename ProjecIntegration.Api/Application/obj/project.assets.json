@@ -417,9 +417,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj",
-      "projectName": "Application",
-      "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
+      "projectName": "ApplicationAnnonce",
+      "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
       "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\obj\\",
       "projectStyle": "PackageReference",

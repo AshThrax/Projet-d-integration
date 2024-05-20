@@ -162,12 +162,12 @@
         }
       }
     },
-    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj",
-        "projectName": "Application",
-        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
+        "projectName": "ApplicationAnnonce",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
         "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\obj\\",
         "projectStyle": "PackageReference",
@@ -516,12 +516,12 @@
         }
       }
     },
-    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj",
-        "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj",
+        "projectName": "InfrastructureAnnonce",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj",
         "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
@@ -545,8 +545,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
               },
               "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
@@ -641,8 +641,8 @@
               "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
                 "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
               },
-              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\Application.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
               },
               "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj": {
                 "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj"
@@ -650,8 +650,8 @@
               "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj": {
                 "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj"
               },
-              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj"
               }
             }
           }

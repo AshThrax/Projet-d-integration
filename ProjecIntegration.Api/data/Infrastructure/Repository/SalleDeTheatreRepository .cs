@@ -1,27 +1,29 @@
 ﻿using ApplicationTheather.Common.Interfaces.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using Domain.Entity.TheatherEntity;
+using Microsoft.EntityFrameworkCore;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 namespace dataInfraTheather.Infrastructure.Repository
 {
     public class SalleDeTheatreRepository : Repository<SalleDeTheatre>, ISalleDeTheatreRepository
     {
-        private readonly ApplicationDbContext _dbcontext;
+        private readonly ApplicationDbContext _dbContext;
         public SalleDeTheatreRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
-            _dbcontext = dbContext;
+            _dbContext = dbContext;
         }
 
        
 
-        public void AddRepresentationToSalle(int Idsalle, Representation Addrepresentation)
+        public async Task AddRepresentationToSalle(int Idsalle, Representation Addrepresentation)
         {
             try
             {
-                SalleDeTheatre salleDetheatre = _dbcontext.SalleDeTheatres.FirstOrDefault(r => r.Id == Idsalle) ?? throw new NullReferenceException("null reference ");
+                SalleDeTheatre salleDetheatre = _dbContext.SalleDeTheatres.FirstOrDefault(r => r.Id == Idsalle) ?? throw new NullReferenceException("null reference ");
                 if (salleDetheatre != null)
                 {
                     salleDetheatre.Representations?.Add(Addrepresentation);
-                    _dbcontext.SaveChanges();
+                    await _dbContext.SaveChangesAsync();
                 }
 
             }
@@ -32,11 +34,11 @@ namespace dataInfraTheather.Infrastructure.Repository
         }
 
 
-        public void DeleteRepresentationToSalle(int Idsalle, int idRepresentation)
+        public async Task DeleteRepresentationToSalle(int Idsalle, int idRepresentation)
         {
             try
             {
-                SalleDeTheatre salleDetheatre = _dbcontext.SalleDeTheatres.FirstOrDefault(r => r.Id == Idsalle) 
+                SalleDeTheatre salleDetheatre = _dbContext.SalleDeTheatres.FirstOrDefault(r => r.Id == Idsalle) 
                                                         ?? throw new NullReferenceException("Null references"); ;
 
                 if (salleDetheatre != null)
@@ -47,7 +49,7 @@ namespace dataInfraTheather.Infrastructure.Repository
                     if (RepresentationToDelete != null)
                     {
                         salleDetheatre.Representations.Remove(RepresentationToDelete);
-                        _dbcontext.SaveChanges();
+                        await _dbContext.SaveChangesAsync();
                     }
                 }
             }
@@ -60,7 +62,7 @@ namespace dataInfraTheather.Infrastructure.Repository
         {
             try
             {
-                IEnumerable<SalleDeTheatre> sallebyComplexe = await _dbcontext.SalleDeTheatres
+                IEnumerable<SalleDeTheatre> sallebyComplexe = await _dbContext.SalleDeTheatres
                     .Include(c => c.Representations)
                     .Where(c => c.ComplexeId == idComplexe)
                     .ToListAsync();

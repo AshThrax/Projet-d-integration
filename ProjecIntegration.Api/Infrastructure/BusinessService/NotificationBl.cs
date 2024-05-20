@@ -1,6 +1,6 @@
-﻿using Application.Common.businessService;
-using Application.Common.Repository;
-using Application.DTO;
+﻿using ApplicationAnnonce.Common.businessService;
+using ApplicationAnnonce.Common.Repository;
+using ApplicationAnnonce.DTO;
 using AutoMapper;
 using Domain.DataType;
 using Domain.Entity.notificationEntity;
@@ -10,14 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.BusinessService
+namespace InfrastructureAnnonce.BusinessService
 {
     public class NotificationBl : INotificationBl
     {
 
         private readonly INotificationRepository _notificationRepository;
         private readonly IMapper _mapper;
-        public NotificationBl(INotificationRepository notificationRepository,IMapper mapper)
+        public NotificationBl(INotificationRepository notificationRepository, IMapper mapper)
         {
             _mapper = mapper;
             _notificationRepository = notificationRepository;
@@ -25,13 +25,13 @@ namespace Infrastructure.BusinessService
 
         public void CreateNotification(AddNotificationDto notification)
         {
-            try 
+            try
             {
-                 Notification notificationEntity = _mapper.Map<Notification>(notification);
-                 _notificationRepository.Insert(notificationEntity);    
+                Notification notificationEntity = _mapper.Map<Notification>(notification);
+                _notificationRepository.Insert(notificationEntity);
             }
-            catch(Exception)
-            { 
+            catch (Exception)
+            {
 
             }
 
@@ -41,13 +41,13 @@ namespace Infrastructure.BusinessService
         {
             try
             {
-                 Notification notification=await _notificationRepository.GetById(notificationId) 
-                                           ?? throw new NullReferenceException("il n'existe pas de reference ");
+                Notification notification = await _notificationRepository.GetById(notificationId)
+                                          ?? throw new NullReferenceException("il n'existe pas de reference ");
 
                 _notificationRepository.Delete(notificationId);
             }
-            catch(NullReferenceException) 
-            { 
+            catch (NullReferenceException)
+            {
             }
             catch (Exception)
             {
@@ -60,7 +60,7 @@ namespace Infrastructure.BusinessService
         {
             try
             {
-                return _mapper.Map<NotificationDto>( await _notificationRepository.GetById(id))
+                return _mapper.Map<NotificationDto>(await _notificationRepository.GetById(id))
                        ?? throw new NullReferenceException("null reference");
             }
             catch (Exception)
@@ -76,13 +76,13 @@ namespace Infrastructure.BusinessService
             try
             {
                 IEnumerable<Notification> getdata = await _notificationRepository.GetNotificationByUserId(userId);
-                IEnumerable<NotificationDto> notificationDto=_mapper.Map<IEnumerable<NotificationDto>>(getdata);
-                return  notificationDtoPaginated=Pagination<NotificationDto>    
-                                                                     .ToPagedList(notificationDto.ToList() ,pageNumber,5);
+                IEnumerable<NotificationDto> notificationDto = _mapper.Map<IEnumerable<NotificationDto>>(getdata);
+                return notificationDtoPaginated = Pagination<NotificationDto>
+                                                                     .ToPagedList(notificationDto.ToList(), pageNumber, 5);
             }
-            catch(Exception ex)
+            catch (Exception)
             {
-               return notificationDtoPaginated = Pagination<NotificationDto>.ToPagedList(new List<NotificationDto>(), pageNumber, 5);
+                return notificationDtoPaginated = Pagination<NotificationDto>.ToPagedList(new List<NotificationDto>(), pageNumber, 5);
             }
         }
 
@@ -93,7 +93,7 @@ namespace Infrastructure.BusinessService
                 Notification Getnotification = await _notificationRepository.GetById(notificationId)
                                           ?? throw new NullReferenceException("il n'existe pas de reference ");
 
-                _notificationRepository.Update(notificationId,_mapper.Map<Notification>(updtNotification));
+                _notificationRepository.Update(notificationId, _mapper.Map<Notification>(updtNotification));
             }
             catch (Exception)
             {

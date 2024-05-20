@@ -1,0 +1,16 @@
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\bin\Debug\net8.0\ApplicationAnnonce.deps.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\bin\Debug\net8.0\ApplicationAnnonce.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\bin\Debug\net8.0\ApplicationAnnonce.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\bin\Debug\net8.0\Domain.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\bin\Debug\net8.0\Domain.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.csproj.AssemblyReference.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.AssemblyInfoInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.AssemblyInfo.cs
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.csproj.CoreCompileInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.sourcelink.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\Applicat.614735D8.Up2Date
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\refint\ApplicationAnnonce.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ApplicationAnnonce.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Application\obj\Debug\net8.0\ref\ApplicationAnnonce.dll

@@ -1,8 +1,8 @@
 ﻿@page "/representation/{Id:int}"
-@using Blazor.UI.data.modelViews
-@using Blazor.UI.data.services
+@using Blazor.UI.Data.modelViews.Theater
 @attribute [Authorize]
 @attribute [StreamRendering]
+@using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
 @inject  IRepresentationService servRep;
@@ -27,7 +27,7 @@
                     <p><strong>Title: </strong> @myPiece.Titre</p>
                     <p><strong>Duration: </strong> @myPiece.Duree</p>
                     <p><strong>Description: </strong> @myPiece.Description</p>
-                    <p><strong>Salle : </strong>@Piecesalle.Name</p>
+                    <p><strong>Salle : </strong>@Piecesalle?.Name</p>
                 </div>
             </div>
         }  
@@ -37,13 +37,13 @@
             <div class="m-2 p-2">
                 <div class="m-2 p-2">
         
-                    <h3 class="dispaly-1">Representations: @myPiece.Titre </h3>
+                    <h3 class="dispaly-1">Representations: @myPiece?.Titre </h3>
                 </div>
             </div>
 
             <div class="m-2 p-2 bg-light rounded">
                 <div class="m-2 p-2">
-                    <QuickGrid Items="@Myrepresnetation.AsQueryable()">
+                    <QuickGrid Items="@Myrepresnetation?.AsQueryable()">
                         <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
                         <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
                         <PropertyColumn Property="@(p => p.Seance.Month)" Title="Mois" Sortable="true" />
@@ -78,7 +78,7 @@
                         <p><strong>Heure:</strong>@selectedRepresentation.Seance.Hour:@selectedRepresentation.Seance.Minute </p>
                     </div>
                 </div>
-                <p><strong>Salle</strong>: @Piecesalle.Name</p>
+                <p><strong>Salle</strong>: @Piecesalle?.Name</p>
             </div>    
             <div class="p-2 m-2 ">
                 <p class="lead">Desirer vous reserver cette seance la </p>

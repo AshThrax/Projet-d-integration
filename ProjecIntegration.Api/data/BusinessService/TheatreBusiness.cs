@@ -51,7 +51,7 @@ namespace DataInfraTheather.BusinessService
 
                     if (representation != null)
                     {
-                        _representationRepository.Delete(idRepresentation);
+                        await _representationRepository.Delete(idRepresentation);
                     }
                 }
             }

@@ -1,6 +1,6 @@
-﻿@using Blazor.UI.Client.Shared
-@using Blazor.UI.data.modelViews
-@using Blazor.UI.data.services
+﻿@using Microsoft.AspNetCore.Components.QuickGrid;
+@using Blazor.UI.Data.modelViews.Theater;
+@using Blazor.UI.Data.services.TheatherService;
 <h3 class="display-5 p-2 m-2">Details:</h3>
 
 @if (SelectedSalleDeTheatre != null)
@@ -21,8 +21,8 @@ else
 
 @code {
     [Parameter]
-    public SalleDeTheatreDto SelectedSalleDeTheatre { get; set; }
-    public IEnumerable<RepresentationDto> representationDto { get; set; }
+    public SalleDeTheatreDto? SelectedSalleDeTheatre { get; set; }
+    public IEnumerable<RepresentationDto>? representationDto { get; set; }
 
     protected  void OnInitilized() => representationDto = SelectedSalleDeTheatre.Representations;
 }

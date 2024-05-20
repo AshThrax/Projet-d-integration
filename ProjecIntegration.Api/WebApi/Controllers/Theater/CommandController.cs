@@ -151,7 +151,7 @@ namespace WebApi.Controllers.Theater
                 //generation du ticket
 
                 var conversion = _mapper.Map<Command>(CmdDtot);
-                _commandService.Insert(conversion);
+               _commandService.Insert(conversion);
                 return Ok("Create Command");
 
             }
@@ -180,7 +180,7 @@ namespace WebApi.Controllers.Theater
                     BadRequest(ModelState);
                 }
                 var conversion = _mapper.Map<UpdateCommandDto, Command>(updtdto);
-                _commandService.Update(updtId, conversion);
+                 _commandService.Update(updtId, conversion);
                 return Ok();
 
             }
@@ -204,7 +204,7 @@ namespace WebApi.Controllers.Theater
             try
             {
 
-                _commandService.Delete(id);
+                await _commandService.Delete(id);
                 return Ok("Command Deleted SuccesFully");
 
             }

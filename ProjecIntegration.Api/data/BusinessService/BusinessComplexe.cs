@@ -30,7 +30,7 @@ namespace DataInfraTheather.BusinessService
             var getEntity = await _complexeRepository.GetById(id);
             if (getEntity != null)
             {
-                _complexeRepository.Delete(id);
+               await _complexeRepository.Delete(id);
             }
         }
 
@@ -55,7 +55,7 @@ namespace DataInfraTheather.BusinessService
             if (getEntity != null)
             {
                 var conversion = _mapper.Map<Complexe>(getEntity);
-                _complexeRepository.Update(id, conversion);
+               _complexeRepository.Update(id, conversion);
             }
 
         }

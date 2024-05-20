@@ -23,7 +23,7 @@ namespace DataInfraTheather.BusinessService
 
         public async Task Create(AddRepresentationDto dto)
         {
-            _repservice.Insert(_mapper.Map<Representation>(dto));
+           _repservice.Insert(_mapper.Map<Representation>(dto));
             await Task.CompletedTask;
         }
 
@@ -35,7 +35,7 @@ namespace DataInfraTheather.BusinessService
                 throw new ArgumentNullException($"there is no entity with the id {id}");
             } //si l'entité n'existe pas exception
 
-            _repservice.Delete(id);
+            await _repservice.Delete(id);
         }
 
         public async Task<IEnumerable<RepresentationDto>> GetAll()

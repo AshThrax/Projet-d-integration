@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.DTO
-{  
-        public class BaseDto
-        {
-            public string Id { get; set; }
-            public DateTime CreatedDate { get; set; }
-            public DateTime UpdatedDate { get; set; }
-        }
+namespace ApplicationAnnonce.DTO
+{
+    public class BaseDto
+    {
+        public string Id { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
+    }
 }

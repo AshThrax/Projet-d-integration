@@ -1993,7 +1993,6 @@ C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\scopedcss\Layout\NavMenu.razor.rz.scp.css
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\scopedcss\bundle\Blazor.UI.styles.css
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\scopedcss\projectbundle\Blazor.UI.bundle.scp.css
-C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\2kz68ffcal.gz
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\wg3ay1af67.gz
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\ed7ip789z6.gz
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\a7zrqe9us5.gz
@@ -2252,3 +2251,4 @@ C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\3ki2wi3f5x.gz
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\651oaholy7.gz
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\2hp5ivz2ho.gz
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\obj\Debug\net8.0\compressed\rv8nufkvp9.gz

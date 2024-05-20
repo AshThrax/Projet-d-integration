@@ -1,9 +1,9 @@
 using Blazor.UI.Client.Page;
-using Blazor.UI.data.modelViews;
+using Blazor.UI.Data.modelViews.Theater;
 using System.Net.Http.Json;
 using static System.Net.WebRequestMethods;
 
-namespace Blazor.UI.data.services
+namespace Blazor.UI.Data.services.TheatherService
 {
     public interface IComplexeService
     {
@@ -32,27 +32,27 @@ namespace Blazor.UI.data.services
 
         public async Task<ComplexeDto?> GetById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<ComplexeDto?>($"{ApiUri}/api/Complexe/{id}");
+            return await _httpClient.GetFromJsonAsync<ComplexeDto?>($"{ApiUri}/{id}");
         }
 
         public async Task Create(AddComplexeDto data)
         {
-            await _httpClient.PostAsJsonAsync($"{ApiUri}/api/Complexe", data);
+            await _httpClient.PostAsJsonAsync($"{ApiUri}", data);
         }
 
         public async Task Update(int id, UpdateComplexeDto data)
         {
-            await _httpClient.PutAsJsonAsync($"{ApiUri}/api/Complexe/{id}", data);
+            await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
         }
 
         public async Task Delete(int id)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/api/Complexe/{id}");
+            await _httpClient.DeleteAsync($"{ApiUri}/{id}");
         }
 
         public async Task AddSalle(int id, AddSalleDeTheatreDto data)
         {
-            await _httpClient.PostAsJsonAsync($"{ApiUri}/api/Complexe/add-salle/{id}", data);
+            await _httpClient.PostAsJsonAsync($"{ApiUri}/{id}", data);
         }
     }
 }

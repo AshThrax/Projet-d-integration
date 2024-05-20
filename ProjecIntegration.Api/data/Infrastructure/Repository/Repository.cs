@@ -23,7 +23,7 @@ namespace dataInfraTheather.Infrastructure.Repository
             }
             return await query.ToListAsync();
         }
-        public async Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
+        public async Task<T?> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = dbSet;
             foreach (var includeProperty in includeProperties)
@@ -37,14 +37,14 @@ namespace dataInfraTheather.Infrastructure.Repository
             var entities = await dbSet.ToListAsync();
             return entities;
         }
-        public Task<T> GetById(int id)
+        public async Task<T?> GetById(int id)
         {
-            return dbSet.FirstOrDefaultAsync(s => s.Id == id);
+            return await dbSet.FirstOrDefaultAsync(s => s.Id == id);
         }
         public void Insert(T entity)
         {
             if (entity == null) { }
-            dbSet.Add(entity);
+             dbSet.Add(entity);
             dbContext.SaveChanges();
         }
         public void Update(int updtId, T entity)
@@ -54,9 +54,9 @@ namespace dataInfraTheather.Infrastructure.Repository
 
             }
             dbSet.Update(entity);
-            dbContext.SaveChanges();
+           dbContext.SaveChanges();
         }
-        public void Delete(int entityid)
+        public async Task Delete(int entityid)
         {
             var ent = dbSet.SingleOrDefaultAsync(x => x.Id == entityid).Result;
             if (ent == null)
@@ -66,8 +66,8 @@ namespace dataInfraTheather.Infrastructure.Repository
                 throw new ArgumentNullException(nameof(entityid), "L'entité que vous souhaitez supprimer n'existe pas.");
 
             }
-            dbSet.Remove(ent);
-            dbContext.SaveChanges();
+                dbSet.Remove(ent);
+                await dbContext.SaveChangesAsync();
         }
     }
 }

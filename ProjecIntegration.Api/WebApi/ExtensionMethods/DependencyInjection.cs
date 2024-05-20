@@ -2,9 +2,7 @@
 using dataInfraTheather;
 using WebApi.Validator;
 using WebApi.ApiService.Authorization;
-using Infrastructure;
 using InfraPublication;
-using Application;
 using ApplicationTheather.BusinessService;
 using DataInfraTheather.BusinessService;
 using ApplicationPublication;
@@ -12,6 +10,8 @@ using ApplicationTheather.Common.Mapping;
 using ApplicationTheather.DTO;
 using Domain.settings;
 using Microsoft.Extensions.DependencyInjection;
+using ApplicationAnnonce;
+using InfrastructureAnnonce;
 
 
 namespace WebApi.ExtensionMethods

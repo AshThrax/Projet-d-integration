@@ -1,6 +1,6 @@
-﻿using Application.Common.businessService;
-using Application.Common.Repository;
-using Application.DTO;
+﻿using ApplicationAnnonce.Common.businessService;
+using ApplicationAnnonce.Common.Repository;
+using ApplicationAnnonce.DTO;
 using AutoMapper;
 using Domain.DataType;
 using Domain.Entity.notificationEntity;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.BusinessService
+namespace InfrastructureAnnonce.BusinessService
 {
     public class AnnonceBl : IAnnonceBl
     {
@@ -37,7 +37,7 @@ namespace Infrastructure.BusinessService
             catch (Exception)
             {
 
-                
+
             }
         }
 
@@ -45,18 +45,18 @@ namespace Infrastructure.BusinessService
         {
             try
             {
-              Annonce annonce =await _annonceRepository.GetById(annonceId);
-              if (annonce != null)
-              {
-                 _annonceRepository.Delete(annonceId);
-              }
+                Annonce annonce = await _annonceRepository.GetById(annonceId);
+                if (annonce != null)
+                {
+                    _annonceRepository.Delete(annonceId);
+                }
             }
             catch (Exception)
             {
 
                 throw;
             }
-          
+
         }
 
         public async Task<GetAnnonceDto> GetAnnonceById(string annonceId)
@@ -66,8 +66,8 @@ namespace Infrastructure.BusinessService
                 Annonce annonce = await _annonceRepository.GetById(annonceId);
                 if (annonce != null)
                 {
-                   GetAnnonceDto mapped = _mapper.Map<GetAnnonceDto>(annonce);
-                   return mapped;
+                    GetAnnonceDto mapped = _mapper.Map<GetAnnonceDto>(annonce);
+                    return mapped;
                 }
                 return new GetAnnonceDto();
             }
@@ -76,7 +76,7 @@ namespace Infrastructure.BusinessService
 
                 return new GetAnnonceDto();
             }
-           
+
         }
 
         public async Task<Pagination<GetAnnonceDto>> GetAnnonces(int pageNumber)
@@ -85,33 +85,33 @@ namespace Infrastructure.BusinessService
             {
                 IEnumerable<Annonce> getAllAnnonce = await _annonceRepository.GetAll();
                 return Pagination<GetAnnonceDto>.ToPagedList(_mapper.Map<List<GetAnnonceDto>>(getAllAnnonce.ToList()), pageNumber, 10);
-            
+
             }
             catch (Exception)
             {
 
                 return Pagination<GetAnnonceDto>.ToPagedList(new List<GetAnnonceDto>(), pageNumber, 10);
             }
-         
+
         }
 
         public async Task UpdateAnnonce(string annonceId, UpdateAnnonceDto annonceDto)
         {
             try
             {
-                  Annonce annonce = await _annonceRepository.GetById(annonceId);
-                  if (annonce != null)
-                  {
-                      Annonce mapped = _mapper.Map<Annonce>(annonceDto);
-                      _annonceRepository.Update(annonceId, mapped);
-                  }
+                Annonce annonce = await _annonceRepository.GetById(annonceId);
+                if (annonce != null)
+                {
+                    Annonce mapped = _mapper.Map<Annonce>(annonceDto);
+                    _annonceRepository.Update(annonceId, mapped);
+                }
             }
             catch (Exception)
             {
 
                 throw;
             }
-          
+
         }
     }
 }

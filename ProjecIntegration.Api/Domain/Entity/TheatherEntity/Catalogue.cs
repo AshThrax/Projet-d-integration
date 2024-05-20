@@ -15,7 +15,6 @@ namespace Domain.Entity.TheatherEntity
         public string? Description { get; set; }
 
         public Complexe? Complexe { get; set; }
-        [ForeignKey(nameof(Complexe))]
         public int ComplexeId { get; set; }
     }
 }

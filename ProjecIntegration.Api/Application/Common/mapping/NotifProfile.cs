@@ -1,4 +1,4 @@
-﻿using Application.DTO;
+﻿using ApplicationAnnonce.DTO;
 using AutoMapper;
 using Domain.Entity.notificationEntity;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Common.mapping
+namespace ApplicationAnnonce.Common.mapping
 {
     public class NotifProfile : Profile
     {
@@ -15,7 +15,7 @@ namespace Application.Common.mapping
         {
             CreateMap<AddAnnonceDto, Annonce>().ReverseMap();
             CreateMap<Annonce, GetAnnonceDto>().ReverseMap();
-            CreateMap<UpdateNotificationDto,Annonce>().ReverseMap();
+            CreateMap<UpdateNotificationDto, Annonce>().ReverseMap();
             //--------------------------------------------
             CreateMap<AddNotificationDto, Notification>().ReverseMap();
             CreateMap<Notification, NotificationDto>().ReverseMap();

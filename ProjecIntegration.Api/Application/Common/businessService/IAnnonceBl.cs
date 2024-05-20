@@ -1,4 +1,4 @@
-﻿using Application.DTO;
+﻿using ApplicationAnnonce.DTO;
 using Domain.DataType;
 using Domain.Entity.notificationEntity;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Common.businessService
+namespace ApplicationAnnonce.Common.businessService
 {
     public interface IAnnonceBl
     {

@@ -9,11 +9,9 @@ namespace Domain.Entity.TheatherEntity
 {
     public class CataloguePiece
     {
-        [ForeignKey(nameof(Catalogue))]
         public int CatalogueId { get; set; }
-        public Catalogue Catalogue { get; set; }
-        [ForeignKey(nameof(Piece))]
+        public Catalogue? Catalogue { get; set; }
         public int PieceId { get; set; }
-        public Piece Piece { get; set; }
+        public Piece? Piece { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Blazor.UI.data.modelViews;
+﻿using Blazor.UI.Data.modelViews.Publication;
 
 namespace Blazor.UI.data.services.Publication
 {

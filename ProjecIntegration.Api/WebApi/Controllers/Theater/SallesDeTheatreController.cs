@@ -82,13 +82,12 @@ public class SallesDeTheatreController : ControllerBase
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
-    
+        [HttpPost("")]
         public async Task<ActionResult> Create([FromBody] AddSalleDeTheatreDto Entity)
         {
             try
             {
-                var conversion = _mapper.Map<AddSalleDeTheatreDto, SalleDeTheatre>(Entity);
+                var conversion = _mapper.Map<SalleDeTheatre>(Entity);
                 _service.Insert(conversion);
                 return Ok();
 
@@ -115,7 +114,7 @@ public class SallesDeTheatreController : ControllerBase
             {
                 if (Entity == null) { return BadRequest(); }
                 var conversion = _mapper.Map<UpdateSalleDeTheatreDto, SalleDeTheatre>(Entity);
-                _service.Update(updtId, conversion);
+               _service.Update(updtId, conversion);
                 return Ok(_mapper.Map<SalleDeTheatre, SalleDeTheatreDto>(await _service.GetById(updtId)));
 
             }
@@ -139,7 +138,7 @@ public class SallesDeTheatreController : ControllerBase
             try
             {
 
-                _service.Delete(id);
+                await _service.Delete(id);
                 return NoContent();
 
             }
@@ -161,7 +160,7 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                _service.DeleteRepresentationToSalle(idSalle, idrepresentation);
+                await _service.DeleteRepresentationToSalle(idSalle, idrepresentation);
                 return NoContent();
 
             }

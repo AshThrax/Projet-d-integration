@@ -1,7 +1,7 @@
 using System.Net.Http.Json;
 using Microsoft.Extensions.Http;
-using Blazor.UI.data.modelViews;
-namespace Blazor.UI.data.services
+using Blazor.UI.Data.modelViews.Theater;
+namespace Blazor.UI.Data.services.TheatherService
 {
     public interface ICommandService
     {

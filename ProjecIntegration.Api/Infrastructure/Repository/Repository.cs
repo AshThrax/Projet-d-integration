@@ -1,12 +1,11 @@
-﻿
-using Application.Common.Repository;
+﻿using ApplicationAnnonce.Common.Repository;
 using Domain.Entity;
-using Infrastructure.Persistence;
+using InfrastructureAnnonce.Persistence;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using System.Linq.Expressions;
 
-namespace Infrastructure.Repository
+namespace InfrastructureAnnonce.Repository
 {
     public class MongoRepository<T> : IRepository<T> where T : BaseMongoEntity
     {
@@ -14,7 +13,7 @@ namespace Infrastructure.Repository
         private readonly NotificationMongoContext _notificationMongoContext;
         public MongoRepository(NotificationMongoContext database)
         {
-             _notificationMongoContext = database;
+            _notificationMongoContext = database;
             _mongoCollection = database.Dbset<T>();
         }
 
@@ -38,27 +37,54 @@ namespace Infrastructure.Repository
             return await _mongoCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public void Insert(T entity)
+        public async Task Insert(T entity)
         {
-            if (entity == null)
+            try
             {
-                throw new ArgumentNullException(nameof(entity));
+                if (entity == null)
+                {
+                    throw new ArgumentNullException(nameof(entity));
+                }
+                await _mongoCollection.InsertOneAsync(entity);
+
+
             }
-            _mongoCollection.InsertOne(entity);
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task Update(string entityId, T entity)
+        {
+            try
+            {
+                if (entity == null)
+                {
+                    throw new ArgumentNullException(nameof(entity));
+                }
+                await _mongoCollection.ReplaceOneAsync(x => x.Id == entityId, entity);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public void Update(string entityId, T entity)
+        public async Task Delete(string entityId)
         {
-            if (entity == null)
+            try
             {
-                throw new ArgumentNullException(nameof(entity));
-            }
-            _mongoCollection.ReplaceOne(x => x.Id == entityId, entity);
-        }
+                await _mongoCollection.DeleteOneAsync(x => x.Id == entityId);
 
-        public void Delete(string entityId)
-        {
-            _mongoCollection.DeleteOne(x => x.Id == entityId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

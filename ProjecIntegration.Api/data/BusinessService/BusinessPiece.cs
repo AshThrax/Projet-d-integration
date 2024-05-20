@@ -40,7 +40,7 @@ namespace DataInfraTheather.BusinessService
             var getPiece = await _pieceRepository.GetById(idPIece);
             if (getPiece != null)
             {
-                _pieceRepository.Delete(idPIece);
+               await _pieceRepository.Delete(idPIece);
             }
         }
 

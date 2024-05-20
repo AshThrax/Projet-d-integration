@@ -1,4 +1,6 @@
-﻿namespace Blazor.UI.data.modelViews
+﻿using Blazor.UI.data.modelViews;
+
+namespace Blazor.UI.Data.modelViews.Theater
 {
     public class EntrepriseDto : Baseview
     {

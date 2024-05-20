@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "WebApi/1.0.0": {
         "dependencies": {
-          "Application": "1.0.0",
+          "ApplicationAnnonce": "1.0.0",
           "ApplicationPublication": "1.0.0",
           "ApplicationTheather": "1.0.0",
           "Auth0Net.DependencyInjection": "3.1.0",
@@ -16,7 +16,7 @@
           "DataInfraTheather": "1.0.0",
           "FluentValidation.AspNetCore": "11.3.0",
           "InfraPublication": "1.0.0",
-          "Infrastructure": "1.0.0",
+          "InfrastructureAnnonce": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.1",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "8.0.1",
           "Microsoft.AspNetCore.OpenApi": "8.0.1",
@@ -1378,14 +1378,14 @@
           }
         }
       },
-      "Application/1.0.0": {
+      "ApplicationAnnonce/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Domain": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
         },
         "runtime": {
-          "Application.dll": {}
+          "ApplicationAnnonce.dll": {}
         }
       },
       "ApplicationPublication/1.0.0": {
@@ -1445,9 +1445,9 @@
           "InfraPublication.dll": {}
         }
       },
-      "Infrastructure/1.0.0": {
+      "InfrastructureAnnonce/1.0.0": {
         "dependencies": {
-          "Application": "1.0.0",
+          "ApplicationAnnonce": "1.0.0",
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
@@ -1455,7 +1455,7 @@
           "MongoDB.Driver": "2.24.0"
         },
         "runtime": {
-          "Infrastructure.dll": {}
+          "InfrastructureAnnonce.dll": {}
         }
       }
     }
@@ -2376,7 +2376,7 @@
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     },
-    "Application/1.0.0": {
+    "ApplicationAnnonce/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -2406,7 +2406,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Infrastructure/1.0.0": {
+    "InfrastructureAnnonce/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

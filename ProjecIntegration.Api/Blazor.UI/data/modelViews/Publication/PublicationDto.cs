@@ -1,6 +1,6 @@
-﻿namespace Blazor.UI.data.modelViews
-{
-    public class PublicationDto 
+﻿namespace Blazor.UI.Data.modelViews.Publication;
+
+    public class PublicationDto
     {
         public string Id { get; set; }
         public DateTime CreatedDate { get; set; }
@@ -26,7 +26,7 @@
         public int PieceId { get; set; }
         public ICollection<string> post { get; set; } = new List<string>();
     }
-    public class UpdatePublicationDto 
+    public class UpdatePublicationDto
     {
         public string Id { get; set; }
         public DateTime CreatedDate { get; set; }
@@ -40,4 +40,4 @@
 
         public ICollection<string> post { get; set; } = new List<string>();
     }
-}
+

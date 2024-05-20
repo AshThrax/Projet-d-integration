@@ -1,8 +1,6 @@
-﻿@* Client/Shared/AccessControl.razor *@
-@using Blazor.UI.data.services;
-@using Microsoft.AspNetCore.Components.Authorization;
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-@using System.Security.Claims;
+﻿@using Blazor.UI.Data.modelViews.Theater
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@* Client/Shared/AccessControl.razor *@
 @inject NavigationManager Navigation;
 @inject SignOutSessionStateManager SignOutManager;
 
@@ -25,7 +23,7 @@
 
 @code {
 
-    public data.modelViews.UserView? Userlog { get; set; }
+    public UserView? Userlog { get; set; }
 
     private async Task BeginSignOut(MouseEventArgs args)
     {

@@ -4,8 +4,8 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
 {
     public interface IComplexeRepository : IRepository<Complexe>
     {
-        void AddSalledeTheatre(int complexeId, SalleDeTheatre salleDeTheatre);
-        void DeletesalleDetheatre(int complexeId, int salleId);
+        Task AddSalledeTheatre(int complexeId, SalleDeTheatre salleDeTheatre);
+        Task DeletesalleDetheatre(int complexeId, int salleId);
 
 
     }

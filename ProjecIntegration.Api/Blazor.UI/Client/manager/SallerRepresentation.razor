@@ -1,10 +1,12 @@
-﻿
+﻿@page "/manager/salle"
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
-@using Blazor.UI.data.modelViews
-@using Blazor.UI.data.services
+
 @inject NavigationManager manager;
 @inject ISalleService Servsalle;
 @inject IRepresentationService Servrep;
+
 
 <div class="m-4 p-4">
     <h3 class="card-header display-4">SallePiece</h3>
@@ -52,29 +54,20 @@
                 @if (isUpdate && !isdetail && !isAddPiece)
                 {
                     
-                    <Blazor.UI.Client.Page.sallePage.SalleUpdate salleDeTheatre="@selectsalle">
-
-                    </Blazor.UI.Client.Page.sallePage.SalleUpdate>
                 }
                 else if (isAddPiece && !isUpdate && !isdetail)
                 {
-                    <Blazor.UI.Client.Page.sallePage.AddSalle > 
-
-                    </Blazor.UI.Client.Page.sallePage.AddSalle>
                 }
                 else if (!isAddPiece && !isUpdate && isdetail)
                 {
 
-                    <Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation getrepresnetation="@representation">
-
-                    </Blazor.UI.Client.Page.RepresentationPage.GetAllRepresentation>
-
+               
                 }
                 else
                 {
                     <div class="card pe-4 ps-4 pt-2 pb-2">
                         <div class="container bg-light">
-                            <Blazor.UI.Client.Page.PiecePage.AddPiece salle="@selectsalle"></Blazor.UI.Client.Page.PiecePage.AddPiece>
+                            
                         </div>
                     </div>
                 }
@@ -86,6 +79,7 @@
         }
     </div>
 </div>
+
 @code {
     public IEnumerable<SalleDeTheatreDto>? salleTab { get; set; } 
     public IEnumerable<RepresentationDto>? representation { get; set; }

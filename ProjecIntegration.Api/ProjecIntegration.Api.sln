@@ -22,9 +22,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publicationlibs", "publicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{D7A604A4-B0C3-446D-B585-07BFE3293BE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationAnnonce", "Application\ApplicationAnnonce.csproj", "{D7A604A4-B0C3-446D-B585-07BFE3293BE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EA9148B7-2A03-4481-8168-99FFCD44528D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfrastructureAnnonce", "Infrastructure\InfrastructureAnnonce.csproj", "{EA9148B7-2A03-4481-8168-99FFCD44528D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationPublication", "ApplciationPublication\ApplicationPublication.csproj", "{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}"
 EndProject

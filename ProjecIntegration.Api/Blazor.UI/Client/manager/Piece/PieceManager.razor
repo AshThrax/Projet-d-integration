@@ -1,0 +1,100 @@
+﻿@page "/manager/Piece"
+
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject NavigationManager manager;
+@inject IPieceService PieceService;
+<h3>PieceManager</h3>
+<h4> Piece </h4>
+
+<div class=" m-4 p-4">
+    <div class=" btn-group rounded float-end">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <button type="button" class="col col-sm-3  btn btn-primary" @onclick="GetAllPiece">back to profile page</button>
+        <button type="button" class="col col-sm-3   btn btn-warning" @onclick="GetHome">backMaineMenu</button>
+        <button type="button" class="col col-sm-3   btn btn-warning" @onclick="Previous">back to reservation</button>
+    </div>
+
+</div>
+<br />
+<div class="jumbotron m-4 p-4">
+    <div class="row">
+        <div class="col bg-white m-4 p-4 w-50" >
+          <QuickGrid Items="@GetPiece?.AsQueryable()">
+            <PropertyColumn Property="@(p => p.Id)" Sortable="true"/>
+            <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+            <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+            <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                <TemplateColumn Context="item">
+                    <div>
+                        <button type="button" @onclick="() => SetPiece(item)">details</button>
+                    </div>
+                </TemplateColumn>
+        </QuickGrid>
+        </div>
+        <br />
+        <br />
+        <div class="row m-2 p-2 w-25 bg-white">
+  
+                <div class="col">
+                    <div>
+                        <h4 cclass="form-label for="titre">Titre:</h4>
+                        <p>@SelectedPiece.Titre</p>
+                    </div>
+
+                    <div class="">
+
+                        <h4 class="form-label for="duree">Duree:</h4>
+                        <p>@SelectedPiece.Duree</p>
+                    </div>
+
+                    <div>
+                        <h4 c class="form-label for="description">Description:</h4>
+                        <p>@SelectedPiece.Description</p>
+                    </div>
+                    <div>
+                        <h4 cclass="form-label for="auteur">Auteur :</h4>
+                        <p>@SelectedPiece.Auteur</p>
+                    </div>
+              
+          
+                    <br />
+                </div>
+            <div class="col">
+                <div>
+                    <h4 class="form-label for="File">Photo :</h4>
+                    <img class="img-fluid" src="https://localhost:44337/Resources/@SelectedPiece.Image" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    public IEnumerable<PieceDto>?  GetPiece { get; set; }
+    public PieceDto? SelectedPiece { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetPiece = await PieceService.Get();
+    }
+    public void SetPiece(PieceDto piece)
+    {
+        SelectedPiece = piece;   
+    }
+    public void GetAllPiece()
+    {
+        manager.NavigateTo("/manager/piece");
+    }
+    public void GetHome()
+    {
+        manager.NavigateTo("/");
+    }
+    public void Previous()
+    {
+        manager.NavigateTo("/");
+    }
+}

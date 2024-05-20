@@ -71,7 +71,7 @@ namespace WebApi.Controllers.Publication
         {
             try
             {
-                var GetPost =  postBL.DeletePost(postById);
+                  await postBL.DeletePost(postById);
                 return NoContent();
             }
             catch (Exception ex)

@@ -28,7 +28,7 @@ namespace DataInfraTheather.BusinessService
 
         public async Task DeleteSalle(int idSalle)
         {
-            _salleDeTheatreRepository.Delete(idSalle);
+           await _salleDeTheatreRepository.Delete(idSalle);
         }
 
         public async Task<IEnumerable<SalleDeTheatreDto>> GetAllSalle()

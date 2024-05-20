@@ -46,7 +46,7 @@ namespace dataInfraTheather.Infrastructure.Repository
             
         }
 
-        public void DeleteCommandRepresnetation(int idrepresentation, int CommandId)
+        public async void DeleteCommandRepresnetation(int idrepresentation, int CommandId)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace dataInfraTheather.Infrastructure.Repository
                     int place = Commanddelete.NombreDePlace;
                     representation.PlaceCurrent -=  - place;
                     representation.Commands.Remove(Commanddelete);
-                    _context.SaveChanges();
+                   await _context.SaveChangesAsync();
                 }
             }
             catch (Exception)

@@ -1,6 +1,44 @@
 ﻿@page "/manager/representation"
+@using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services;
+@using Blazor.UI.Data.modelViews.Theater;
+@using Blazor.UI.Data.services.TheatherService
+
+@inject NavigationManager Manager;
+@inject IPieceService pieceService;
+
 <h3>Representation</h3>
 
+<div class="jumbotron">
+    @if (IsAdding)
+    {
+        <div class="m-2 p-2">
+            <h3>Ajout de Representation</h3>
+           <div>
+               <Blazor.UI.Client.Page.RepresentationPage.AddRepresnetation></Blazor.UI.Client.Page.RepresentationPage.AddRepresnetation>
+           </div>
+        </div>
+    }
+    else
+    {
+        <div class="m-2 p-2">
+            <h3>Update Representation</h3>
+            <div>
+                <Blazor.UI.Client.Page.RepresentationPage.UpdateRepresentation ></Blazor.UI.Client.Page.RepresentationPage.UpdateRepresentation>
+            </div>
+        </div>     
+    }
+</div>
 @code {
 
+    public IEnumerable<PieceDto>? GetPieceDto { get; set; }
+    public bool IsAdding { get; set; } = true;
+    public int? SelectePieceId { get; set; } 
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        GetPieceDto = await pieceService.Get();
+    }
+  
 }

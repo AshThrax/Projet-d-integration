@@ -80,17 +80,24 @@ namespace WebApi.Controllers.Theater
         public async Task<ActionResult> Create([FromForm] AddPieceDto addpiece)
         {
             try
-            {
-                if (addpiece.ImageFile?.Length > 1 * 1024 * 1024)
-                {
-                    return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
-                }
-                string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
-                string createdImageName = await fileService.SaveFileAsync(addpiece.ImageFile, allowedFileExtentions);
+            {       if(ModelState.IsValid)
+                    {
 
-                _pieceRepository.Create(addpiece, createdImageName);
+                        if (addpiece.ImageFile?.Length > 1 * 1024 * 1024)
+                        {
+                            return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
+                        }
+                        string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+                        string createdImageName = await fileService.SaveFileAsync(addpiece.ImageFile, allowedFileExtentions);
+
+                        _pieceRepository.Create(addpiece, createdImageName);
                       
-                return Ok();
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
 
             }
             catch (ValidationException ex)
@@ -108,7 +115,6 @@ namespace WebApi.Controllers.Theater
         }
       
         [HttpPut("{updtId}")]
-      
         public async Task<ActionResult> Put(int updtId,[FromForm]UpdatePieceDto updatepiece)
         {
 
