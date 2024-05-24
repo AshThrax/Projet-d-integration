@@ -54,9 +54,9 @@ namespace DataInfraTheather.BusinessService
             {
                 
                 Representation representation = await _representationRepository.GetById(command.IdRepresentation);//récuperation de la seance 
-                int PieceID = representation.IdPiece;    //recuperation de la piece
+                int PieceID = representation.PieceId;    //recuperation de la piece
                 var Piece = await _piecerepository.GetById(PieceID);
-                var salle = await _sallerepository.GetById(representation.IdSalledeTheatre);
+                var salle = await _sallerepository.GetById(representation.SalledeTheatreId);
                 var DateToString = representation.Seance;
                 //génération du ticket
                 return TicketGenerator.GetTicketUser(command.NombreDePlace, Piece.Titre, salle.Name,representation.Id,DateToString);
@@ -74,7 +74,7 @@ namespace DataInfraTheather.BusinessService
                 //vérification du nombre de place a ssocié avec la commande et la representation
                if (command != null)
                 {
-                    var vérification =await _representationRepository.GetById(command.IdRepresentation);
+                    Representation vérification =await _representationRepository.GetById(command.IdRepresentation);
                     SalleDeTheatre salle = await _sallerepository.GetById(vérification.SalleDeTheatre.Id);
                     int maxPlace= salle.PlaceMax;
                     if (vérification.PlaceCurrent + command.NombreDePlace <= vérification.PlaceMaximum)
@@ -117,7 +117,7 @@ namespace DataInfraTheather.BusinessService
         {
             try 
             { 
-                    var getEntity = await _commandRepository.GetById(id);
+                    Command getEntity = await _commandRepository.GetById(id);
                     return _mapper.Map<CommandDto>(getEntity);
             }
             catch(Exception )

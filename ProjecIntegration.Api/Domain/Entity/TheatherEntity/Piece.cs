@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿
 
 namespace Domain.Entity.TheatherEntity
 {
@@ -10,9 +9,10 @@ namespace Domain.Entity.TheatherEntity
         public string Description { get; set; } = string.Empty;
         public string Auteur { get; set; } = string.Empty;
         public List<Representation>? Representations { get; set; }
-        public string? Image { get; set; }
-        public Theme? Theme { get; set; }
+        public int ImageId { get; set; }
+        public Image? Image { get; set; }
         public int ThemeId { get; set; }
+        public Theme? Theme { get; set; }
 
     }
 }

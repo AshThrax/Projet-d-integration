@@ -23,23 +23,23 @@ namespace dataInfraTheather.Infrastructure.Repository
             }
             return await query.ToListAsync();
         }
-        public async Task<T?> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
+        public async Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = dbSet;
             foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
             }
-            return await query.SingleOrDefaultAsync(s => s.Id == id);
+            return await query.SingleOrDefaultAsync(s => s.Id == id) ?? throw new NullReferenceException();
         }
         public async Task<IEnumerable<T>> GetAll()
         {
             var entities = await dbSet.ToListAsync();
             return entities;
         }
-        public async Task<T?> GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            return await dbSet.FirstOrDefaultAsync(s => s.Id == id);
+            return await dbSet.FirstOrDefaultAsync(s => s.Id == id) ?? throw new NullReferenceException();
         }
         public void Insert(T entity)
         {
@@ -49,12 +49,12 @@ namespace dataInfraTheather.Infrastructure.Repository
         }
         public void Update(int updtId, T entity)
         {
-            if (entity == null)
+            if (entity != null)
             {
+                dbSet.Update(entity);
+                dbContext.SaveChanges();
 
             }
-            dbSet.Update(entity);
-           dbContext.SaveChanges();
         }
         public async Task Delete(int entityid)
         {

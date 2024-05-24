@@ -1,0 +1,30 @@
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Entity
+{
+    public class BaseEntity
+    {
+        [Key]
+        public int Id { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set;}
+    }
+
+    public class BaseMongoEntity
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonElement("CreatedDate")]
+        public DateTime CreatedDate { get; set; }
+        [BsonElement("UpdatedDate")]
+        public DateTime UpdatedDate { get; set; }
+    }
+}

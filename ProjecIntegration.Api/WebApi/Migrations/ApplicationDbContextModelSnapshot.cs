@@ -54,17 +54,31 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.CataloguePiece", b =>
                 {
-                    b.Property<int>("PieceId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CatalogueId")
                         .HasColumnType("int");
 
-                    b.HasKey("PieceId", "CatalogueId");
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PieceId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CatalogueId");
 
-                    b.ToTable("cataloguePieces");
+                    b.HasIndex("PieceId");
+
+                    b.ToTable("CataloguePiece");
                 });
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Command", b =>
@@ -128,6 +142,29 @@ namespace WebApi.Migrations
                     b.ToTable("Complexe");
                 });
 
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageRessource")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Piece", b =>
                 {
                     b.Property<int>("Id")
@@ -150,8 +187,8 @@ namespace WebApi.Migrations
                     b.Property<int>("Duree")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ThemeId")
                         .HasColumnType("int");
@@ -164,6 +201,8 @@ namespace WebApi.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("ThemeId");
 
@@ -181,10 +220,7 @@ namespace WebApi.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdPiece")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdSalledeTheatre")
+                    b.Property<int>("PieceId")
                         .HasColumnType("int");
 
                     b.Property<int>("PlaceCurrent")
@@ -196,6 +232,9 @@ namespace WebApi.Migrations
                     b.Property<int>("Prix")
                         .HasColumnType("int");
 
+                    b.Property<int>("SalledeTheatreId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Seance")
                         .HasColumnType("datetime2");
 
@@ -204,9 +243,9 @@ namespace WebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPiece");
+                    b.HasIndex("PieceId");
 
-                    b.HasIndex("IdSalledeTheatre");
+                    b.HasIndex("SalledeTheatreId");
 
                     b.ToTable("Representations");
                 });
@@ -240,6 +279,39 @@ namespace WebApi.Migrations
                     b.HasIndex("ComplexeId");
 
                     b.ToTable("SalleDeTheatres");
+                });
+
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.Siege", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CommandId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SalleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommandId");
+
+                    b.HasIndex("SalleId");
+
+                    b.ToTable("Siege");
                 });
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Theme", b =>
@@ -307,11 +379,17 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Piece", b =>
                 {
+                    b.HasOne("Domain.Entity.TheatherEntity.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
+
                     b.HasOne("Domain.Entity.TheatherEntity.Theme", "Theme")
                         .WithMany()
                         .HasForeignKey("ThemeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Image");
 
                     b.Navigation("Theme");
                 });
@@ -320,13 +398,13 @@ namespace WebApi.Migrations
                 {
                     b.HasOne("Domain.Entity.TheatherEntity.Piece", "Piece")
                         .WithMany("Representations")
-                        .HasForeignKey("IdPiece")
+                        .HasForeignKey("PieceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Domain.Entity.TheatherEntity.SalleDeTheatre", "SalleDeTheatre")
                         .WithMany("Representations")
-                        .HasForeignKey("IdSalledeTheatre")
+                        .HasForeignKey("SalledeTheatreId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -344,6 +422,26 @@ namespace WebApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Complexe");
+                });
+
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.Siege", b =>
+                {
+                    b.HasOne("Domain.Entity.TheatherEntity.Command", null)
+                        .WithMany("sieges")
+                        .HasForeignKey("CommandId");
+
+                    b.HasOne("Domain.Entity.TheatherEntity.SalleDeTheatre", "SalleDeTheatre")
+                        .WithMany("sieges")
+                        .HasForeignKey("SalleId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("SalleDeTheatre");
+                });
+
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.Command", b =>
+                {
+                    b.Navigation("sieges");
                 });
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Complexe", b =>
@@ -366,6 +464,8 @@ namespace WebApi.Migrations
             modelBuilder.Entity("Domain.Entity.TheatherEntity.SalleDeTheatre", b =>
                 {
                     b.Navigation("Representations");
+
+                    b.Navigation("sieges");
                 });
 #pragma warning restore 612, 618
         }

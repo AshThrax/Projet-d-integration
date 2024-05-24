@@ -2,6 +2,7 @@
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
+using Domain.Entity.TheatherEntity;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -13,69 +14,85 @@ namespace DataInfraTheather.BusinessService
     public class TheatreBusiness : ITheatreBusiness
     {
         private readonly IMapper _mapper;
-        private readonly IRepresentationRepository _representationRepository;
-        private readonly ISalleDeTheatreRepository _Sallerepository;
-        private readonly IPieceRepository _peceRepository;
-        private readonly IComplexeRepository _complexeRepository;
+        private readonly IThemeRepository _themeRepository;
 
         public TheatreBusiness(
-            IMapper mapper,
-            IRepresentationRepository representationRepository,
-            ISalleDeTheatreRepository sallerepository,
-            IPieceRepository peceRepository,
-            IComplexeRepository complexeRepository)
+            IMapper mapper, IThemeRepository themeRepository)
         {
             _mapper = mapper;
-            _representationRepository = representationRepository;
-            _Sallerepository = sallerepository;
-            _peceRepository = peceRepository;
-            _complexeRepository = complexeRepository;
+            _themeRepository = themeRepository;
         }
 
-        public Task CreateRepresentationForPiece(int IdPiece, int idSalle, AddRepresentationDto represnetaion)
+        public void CreateTheme(ThemeDto theme)
         {
-            throw new NotImplementedException();
-        }
 
-        public async Task DeleteRepresentationForPiece(int idRepresentation, int IdPiece)
-        {
-            ////verification que la representation est bien liée a la piece en question
-            var getPiece = await _peceRepository.GetById(IdPiece);
-            //si getpiece existe ent tant qu'object
-            if (getPiece != null)
+            try
             {
-                //si la liste existe 
-                if (getPiece.Representations != null)
-                {
-                    var representation = await _representationRepository.GetById(idRepresentation);
+               Theme addTheme = _mapper.Map<Theme>(theme);
 
-                    if (representation != null)
-                    {
-                        await _representationRepository.Delete(idRepresentation);
-                    }
-                }
+               _themeRepository.Insert(addTheme);
+
             }
-            return;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-       
-
-        public async Task<IEnumerable<RepresentationDto>> GetRepresentationFromPiece(int IdPiece)
+        public void Deletetheme(int themeId)
         {
-            var getall = await _representationRepository.GetAll();
-            var FromComplexe = getall.Where(x => x.IdPiece == IdPiece).ToList();
+            try
+            {
+                _themeRepository.Delete(themeId);
+            }
+            catch (Exception)
+            {
 
-            return _mapper.Map<IEnumerable<RepresentationDto>>(FromComplexe);
+                throw;
+            }
         }
 
-        public async Task<IEnumerable<RepresentationDto>> GetRepresentationFromSalle(int IdSalle)
+        public async Task<IEnumerable<ThemeDto>> GetAllTheme()
         {
-            var getall = await _representationRepository.GetAll();
-            var FromComplexe = getall.Where(x => x.IdSalledeTheatre == IdSalle).ToList();
+            try
+            {
+                return _mapper.Map<IEnumerable<ThemeDto>>(await  _themeRepository.GetAll());
+            }
+            catch (Exception)
+            {
 
-            return _mapper.Map<IEnumerable<RepresentationDto>>(FromComplexe);
+                throw;
+            }
         }
 
-       
+        public async Task<ThemeDto> GetThemeById(int themeId)
+        {
+            try
+            {
+                return _mapper.Map<ThemeDto>(await _themeRepository.GetById(themeId));
+            
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void UpdateTheme(int themeId,ThemeDto updtTheme)
+        {
+            try
+            {
+                Theme entityConvert =_mapper.Map<Theme>(updtTheme);
+                _themeRepository.Update(themeId, entityConvert);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

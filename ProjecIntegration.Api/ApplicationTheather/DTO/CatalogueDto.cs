@@ -7,7 +7,23 @@ using System.Threading.Tasks;
 
 namespace ApplicationTheather.DTO
 {
-    public class CatalogueDto :BaseEntity
+    public class CatalogueDto :BaseDto
+    {
+        public string? Name { get; set; }
+
+        public string? Description { get; set; }
+
+        public int ComplexeId { get; set; }
+    }
+    public class AddCatalogueDto 
+    {
+        public string? Name { get; set; }
+
+        public string? Description { get; set; }
+
+        public int ComplexeId { get; set; }
+    }
+    public class UpdateCatalogueDto : BaseDto
     {
         public string? Name { get; set; }
 

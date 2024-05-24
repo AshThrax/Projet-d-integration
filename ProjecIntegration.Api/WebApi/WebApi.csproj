@@ -39,4 +39,8 @@
     <ProjectReference Include="..\Infrastructure\InfrastructureAnnonce.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -39,6 +39,14 @@ namespace ApplicationTheather.Common.Mapping
             //-------------------------------------------
             CreateMap<Theme,ThemeDto>().ReverseMap();
             CreateMap<Catalogue, CatalogueDto>().ReverseMap();
+
+            CreateMap<AddCatalogueDto,Catalogue>().ReverseMap();
+            CreateMap<UpdateCatalogueDto,Catalogue>().ReverseMap();
+
+            CreateMap<Siege, SiegeDto>().ReverseMap();
+            CreateMap<AddSiegeDto , Siege>();
+            CreateMap<UpdateSiegeDto, Siege>();
+            
         }
     }
 }

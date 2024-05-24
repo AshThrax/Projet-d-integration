@@ -14,55 +14,142 @@ namespace DataInfraTheather.BusinessService
     public class BusinessPiece : IBusinessPiece
     {
         private readonly IPieceRepository _pieceRepository;
-    
+        private readonly IImageRepository _imageRepository; 
+        private readonly ICataloguePieceRepository _cataloguePieceRepository; 
         private IMapper _mapper;
 
-        public BusinessPiece(IPieceRepository pieceRepository, IMapper mapper)
+        public BusinessPiece(IPieceRepository pieceRepository,IImageRepository imageRepository, ICataloguePieceRepository cataloguePieceRepository, IMapper mapper)
         {
             _pieceRepository = pieceRepository;
+            _imageRepository = imageRepository;
+            _cataloguePieceRepository = cataloguePieceRepository;
             _mapper = mapper;
         }
 
-        public Task Addrepresnetation(int PieceId, AddRepresentationDto Entity)
+        public void Create(AddPieceDto Entity,Image ImageName)
         {
-            throw new NotImplementedException();
-        }
-
-        public async void Create(AddPieceDto Entity,string ImageName)
-        {
-            Piece entittyConversion = _mapper.Map<Piece>(Entity);
-            entittyConversion.Image=ImageName;
-            _pieceRepository.Insert(entittyConversion);
-        }
-
-        public async Task Delete(int idPIece)
-        {
-            var getPiece = await _pieceRepository.GetById(idPIece);
-            if (getPiece != null)
+            try
             {
-               await _pieceRepository.Delete(idPIece);
+                Piece entittyConversion = _mapper.Map<Piece>(Entity);
+                ImageName.CreatedDate = DateTime.Now;
+                entittyConversion.Image=ImageName;
+                _pieceRepository.Insert(entittyConversion);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task Delete(int idPiece)
+        {
+            try
+            {
+                Piece getPiece = await _pieceRepository.GetById(idPiece);
+                if (getPiece != null)
+                {
+                   await _pieceRepository.Delete(idPiece);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         public async Task<PieceDto> Get(int idPIece)
         {
-            var GetPiece = await _pieceRepository.GetById(idPIece);
-            return _mapper.Map<PieceDto>(GetPiece);
-        }
+            try
+            {
+                Piece GetPiece = await _pieceRepository.GetById(idPIece);
+                return _mapper.Map<PieceDto>(GetPiece);
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<PieceDto>> GetAll()
         {
-            var GetPiece = await _pieceRepository.GetAll();
-            return _mapper.Map<IEnumerable<PieceDto>>(GetPiece);
+            try
+            {
+                IEnumerable<Piece> GetPiece = await _pieceRepository.GetAll();
+                return _mapper.Map<IEnumerable<PieceDto>>(GetPiece);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
+        public async Task<IEnumerable<PieceDto>> GetPieceByTheme(int themeId)
+        {
+            try
+            {
+                IEnumerable<Piece?> getPiece = await _pieceRepository.GetPieceByTheme(themeId);
+
+                return _mapper.Map<IEnumerable<PieceDto>>(getPiece);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="catalogueId"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<PieceDto>> GetPiecefromCatalogue(int catalogueId)
+        {
+            try
+            {
+                IEnumerable<int> getPieceIds = await _cataloguePieceRepository.GetPieceFromCatalogue(catalogueId);
+                IEnumerable<Piece> getPieces = await _pieceRepository.GetPieceByListId(getPieceIds.ToList());
+                return _mapper.Map<IEnumerable<PieceDto>>(getPieces);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// mise a jour des piece de theatre
+        /// </summary>
+        /// <param name="idPiece"></param>
+        /// <param name="Entity"></param>
+        /// <returns></returns>
         public async Task Update(int idPiece, UpdatePieceDto Entity)
         {
-            var getPiece = await _pieceRepository.GetById(idPiece);
-            if (getPiece != null)
+            try
             {
-                var getConvertion = _mapper.Map<Piece>(Entity);
-                _pieceRepository.Update(idPiece, getConvertion);
+                Piece getPiece = await _pieceRepository.GetById(idPiece);
+                if (getPiece != null)
+                {
+                    Piece getConvertion = _mapper.Map<Piece>(Entity);
+                    _pieceRepository.Update(idPiece, getConvertion);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

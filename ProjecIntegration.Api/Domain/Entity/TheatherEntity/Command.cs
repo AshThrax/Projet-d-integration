@@ -11,6 +11,6 @@ namespace Domain.Entity.TheatherEntity
         public int IdRepresentation { get; set; }
         public Representation? Representation { get; set; }
 
-
+        public List<Siege> sieges { get; set; }
     }
 }

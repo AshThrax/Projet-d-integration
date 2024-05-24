@@ -9,6 +9,6 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
 {
     public interface ICatalogueRepository :IRepository<Catalogue>
     {
-
+        Task<IEnumerable<Catalogue>> GetCatalogueFromComplexe(int complexeId);
     }
 }

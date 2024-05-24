@@ -20,42 +20,84 @@ namespace DataInfraTheather.BusinessService
 
         public void CreateAsync(ComplexeDto complexeDto)
         {
-            var entity = _mapper.Map<Complexe>(complexeDto);
-            _complexeRepository.Insert(entity);
+            try
+            {
+                var entity = _mapper.Map<Complexe>(complexeDto);
+                _complexeRepository.Insert(entity);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 
         public async Task Delete(int id)
         {
-            var getEntity = await _complexeRepository.GetById(id);
-            if (getEntity != null)
+            try
             {
-               await _complexeRepository.Delete(id);
+                var getEntity = await _complexeRepository.GetById(id);
+                if (getEntity != null)
+                {
+                   await _complexeRepository.Delete(id);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         public async Task<IEnumerable<ComplexeDto>> GetAllComplexe()
         {
-            var GetEntity = await _complexeRepository.GetAll();
-            return _mapper.Map<IEnumerable<ComplexeDto>>(GetEntity);
+            try
+            {
+                var GetEntity = await _complexeRepository.GetAll();
+                return _mapper.Map<IEnumerable<ComplexeDto>>(GetEntity);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<ComplexeDto> GetComplexe(int id)
         {
+            try
+            {
+                var GetEntity = await _complexeRepository.GetById(id);
+                return _mapper.Map<ComplexeDto>(GetEntity);
 
-            var GetEntity = await _complexeRepository.GetById(id);
+            }
+            catch (Exception)
+            {
 
-
-            return _mapper.Map<ComplexeDto>(GetEntity);
+                throw;
+            }
         }
 
         public async Task UpdateAsync(int id, UpdateComplexeDto complexeDto)
         {
-            var getEntity = await _complexeRepository.GetById(id);
-            if (getEntity != null)
+            try
             {
-                var conversion = _mapper.Map<Complexe>(getEntity);
-               _complexeRepository.Update(id, conversion);
+                var getEntity = await _complexeRepository.GetById(id);
+                if (getEntity != null)
+                {
+                    var conversion = _mapper.Map<Complexe>(getEntity);
+                   _complexeRepository.Update(id, conversion);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
         }

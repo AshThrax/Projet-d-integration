@@ -11,15 +11,15 @@ namespace WebApi.Controllers.Theater
     public class RepresentationController : ControllerBase
     {
        
-        private readonly IBusinessRepresentation _representationService;
-        private readonly IBusinessCommandService _commandService;
+        private readonly IBusinessRepresentation _businessRepService;
+        private readonly IBusinessCommandService _businessComService;
         private readonly IMapper _mapper;
         private readonly ICustomGetToken gtk;
 
-        public RepresentationController(IBusinessRepresentation representationService, IMapper mapper,IBusinessCommandService comandService, ICustomGetToken gtk)
+        public RepresentationController(IBusinessRepresentation businessRepService, IMapper mapper,IBusinessCommandService businessComService, ICustomGetToken gtk)
         {
-            _commandService = comandService;
-            _representationService = representationService;
+            _businessComService = businessComService;
+            _businessRepService = businessRepService;
             _mapper = mapper;
             this.gtk = gtk;
         }
@@ -29,8 +29,8 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entities = await _representationService.GetAll();
-                return Ok(_mapper.Map<IEnumerable<RepresentationDto>>(entities));
+                IEnumerable<RepresentationDto> entities = await _businessRepService.GetAll();
+                return Ok(entities);
 
             }
             catch (ValidationException ex)
@@ -52,9 +52,9 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entities = await _representationService.GetById(id);
-                var conversion = _mapper.Map<RepresentationDto>(entities);
-                return Ok(conversion);
+                RepresentationDto entities = await _businessRepService.GetById(id);
+             
+                return Ok(entities);
             }
             catch (ValidationException ex)
             {
@@ -70,14 +70,36 @@ namespace WebApi.Controllers.Theater
             }
         }
       
-        [HttpGet("get-piece/{idpiece}")]
+        [HttpGet("from-piece/{idpiece}")]
      
-        public async Task<ActionResult<RepresentationDto>> GetAllpieceById(int idpiece)
+        public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAllpieceById(int pieceId)
         {
             try
             {
-                var entities = await _representationService.GetAllFromPiece(idpiece);
-                return Ok(_mapper.Map<IEnumerable<RepresentationDto>>(entities));
+                IEnumerable<RepresentationDto> entities = await _businessRepService.GetAllFromPiece(pieceId);
+                return Ok(entities);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("from-salle/{salleId}")]
+
+        public async Task<ActionResult<RepresentationDto>> GetAllSalleById(int salleId)
+        {
+            try
+            {
+              IEnumerable<RepresentationDto> getfromsalle=  await _businessRepService.GetAllFromSalle(salleId);
+                return Ok(getfromsalle);
             }
             catch (ValidationException ex)
             {
@@ -94,7 +116,7 @@ namespace WebApi.Controllers.Theater
         }
         [HttpPost]
     
-        public async Task<ActionResult> Create([FromBody] AddRepresentationDto entity)
+        public async Task<ActionResult> Createrepresentation([FromBody] AddRepresentationDto entity)
         {
             try
             {
@@ -103,7 +125,7 @@ namespace WebApi.Controllers.Theater
                     BadRequest();
                 }
                 
-                await _representationService.Create(entity);
+                await _businessRepService.Create(entity);
                 return Ok();
             }
             catch (ValidationException ex)
@@ -122,7 +144,7 @@ namespace WebApi.Controllers.Theater
        
         [HttpPut("{updtId}")]
      
-        public async Task<ActionResult> Update(int updtId, [FromBody] UpdateRepresentationDto entity)
+        public async Task<ActionResult> UpdateRepresentation(int updtId, [FromBody] UpdateRepresentationDto entity)
         {
             try
             {
@@ -131,7 +153,7 @@ namespace WebApi.Controllers.Theater
                     BadRequest();
                 }
                 
-                await _representationService.Update(updtId,entity);
+                await _businessRepService.Update(updtId,entity);
                 return NoContent();
 
             }
@@ -149,12 +171,12 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> DeleteRepresentation(int id)
         {
             try
             {
 
-                await _representationService.Delete(id);
+                await _businessRepService.Delete(id);
                 return NoContent();
             }
             catch (ValidationException ex)

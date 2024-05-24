@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Domain.Entity.TheatherEntity;
+using Microsoft.AspNetCore.Http;
 
 namespace ApplicationTheather.DTO
 {
@@ -10,7 +11,8 @@ namespace ApplicationTheather.DTO
         public string Description { get; set; } = string.Empty;
         public string Auteur { get; set; } = string.Empty;
         public List<RepresentationDto>? Representations { get; set; }
-        public string? Image { get; set; }
+        public int ImageId { get; set; }
+        public string ImageRessource { get; set; } =string .Empty;
         public int ThemeId { get; set; }
     }
     //ajoute une piece 

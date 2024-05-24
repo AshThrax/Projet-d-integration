@@ -1,4 +1,5 @@
 ﻿using ApplicationTheather.DTO;
+using Domain.Entity.TheatherEntity;
 
 namespace ApplicationTheather.BusinessService
 {
@@ -10,7 +11,7 @@ namespace ApplicationTheather.BusinessService
         /// <param name="idComplexe">identifiant du complexe</param>
         /// <param name="entity">nouvvelle salled e hteatre</param>
         /// <returns></returns>
-        Task CreateSalle(int idComplexe, AddSalleDeTheatreDto entity);
+        void CreateSalle(int idComplexe, AddSalleDeTheatreDto entity);
         /// <summary>
         ///  supprimer une salle de theatre
         /// </summary>
@@ -41,5 +42,7 @@ namespace ApplicationTheather.BusinessService
         /// <param name="idComplexe"></param>
         /// <returns>une liste de salle de theatre affiliée a un complexe</returns>
         Task<IEnumerable<SalleDeTheatreDto>> GetFromComplexe(int idComplexe);
+
+    
     }
 }

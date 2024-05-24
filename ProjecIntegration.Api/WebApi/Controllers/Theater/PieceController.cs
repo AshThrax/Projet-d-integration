@@ -12,16 +12,17 @@ namespace WebApi.Controllers.Theater
     {
         private readonly IMapper _mapper;
         private readonly IBusinessPiece _pieceRepository;
+        private readonly IBusinessCatalogue _businessCatalogue;
         private readonly IFileService fileService;
 
-        public PieceController(IMapper mapper, IBusinessPiece pieceRepository,IFileService fileService)
+        public PieceController(IMapper mapper, IBusinessPiece pieceRepository,IBusinessCatalogue businessCatalogue,IFileService fileService)
         {
             this.fileService = fileService;
             _mapper = mapper;
             _pieceRepository = pieceRepository;
+            _businessCatalogue = businessCatalogue;
         }
         [HttpGet]
-        
         public async Task<ActionResult<IEnumerable<PieceDto>>> Get()
         {
             try
@@ -49,7 +50,6 @@ namespace WebApi.Controllers.Theater
         }
        
         [HttpGet("{id}")]
-       
         public async Task<ActionResult<PieceDto>> GetById(int id)
         {
             try
@@ -75,9 +75,53 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("theme/{themeId}")]
+        public async Task<ActionResult<PieceDto>> GetByThemeId(int themeId)
+        {
+            try
+            {
+                var entity = await _pieceRepository.GetPieceByTheme(themeId);
+              
+                return Ok(entity);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("catalogue/{catalogueId}")]
+        public async Task<ActionResult<PieceDto>> GetByCatalogueId(int catalogueId)
+        {
+            try
+            {
+                var entity = await _pieceRepository.GetPiecefromCatalogue(catalogueId);
+               
+           
+                return Ok(entity);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpPost]
-     
-        public async Task<ActionResult> Create([FromForm] AddPieceDto addpiece)
+        public async Task<ActionResult> CreatePiece([FromForm] AddPieceDto addpiece)
         {
             try
             {       if(ModelState.IsValid)
@@ -90,7 +134,10 @@ namespace WebApi.Controllers.Theater
                         string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
                         string createdImageName = await fileService.SaveFileAsync(addpiece.ImageFile, allowedFileExtentions);
 
-                        _pieceRepository.Create(addpiece, createdImageName);
+                        Image CreateImg=new Image();
+                        CreateImg.ImageRessource = createdImageName;
+                        
+                        _pieceRepository.Create(addpiece, CreateImg);
                       
                         return Ok();
                     }
@@ -113,9 +160,59 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-      
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="catalogueId"></param>
+        /// <param name="pieceId"></param>
+        /// <returns></returns>
+        [HttpPost("add-catalogue/{catalogueId}/{pieceId}")]
+        public async Task<ActionResult> AddPieceToCatalogue(int catalogueId,int pieceId)
+        {
+            try
+            {
+                if (catalogueId == 0 && pieceId == 0)
+                {
+                    return BadRequest();
+                }
+
+                await _businessCatalogue.AddPieceToCatalogue(catalogueId, pieceId);
+                return Ok();
+
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("remove-catalogue/{catalogueId}/{pieceId}")]
+        public async Task<ActionResult> RemovePieceFromCatalogue(int catalogueId, int pieceId)
+        {
+            try
+            {
+                if (catalogueId == 0 && pieceId == 0)
+                {
+                    return BadRequest();
+                }
+                await _businessCatalogue.RemovePieceToCataogue(catalogueId, pieceId);
+                return NoContent();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         [HttpPut("{updtId}")]
-        public async Task<ActionResult> Put(int updtId,[FromForm]UpdatePieceDto updatepiece)
+        public async Task<ActionResult> updatePiece(int updtId,[FromForm]UpdatePieceDto updatepiece)
         {
 
             try
@@ -150,7 +247,6 @@ namespace WebApi.Controllers.Theater
         }
 
         [HttpDelete("{id}")]
-      
         public async Task<ActionResult> Delete(int id)
         {
 

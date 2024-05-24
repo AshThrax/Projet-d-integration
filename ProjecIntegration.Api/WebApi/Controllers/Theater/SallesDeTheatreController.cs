@@ -1,4 +1,5 @@
-﻿using ApplicationTheather.Common.Exceptions;
+﻿using ApplicationTheather.BusinessService;
+using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using Domain.Entity.TheatherEntity;
@@ -8,21 +9,23 @@ namespace WebApi.Controllers.Theater;
 [ApiController]
 public class SallesDeTheatreController : ControllerBase
 {
-    private readonly ISalleDeTheatreRepository _service;
-    private readonly IMapper _mapper;
-    public SallesDeTheatreController(ISalleDeTheatreRepository service, IMapper mapper)
-    {
-        _service = service;
-        _mapper = mapper;
-    }
+        private readonly IBusinessSalle _bussinessServices;
+      
+        private readonly IMapper _mapper;
+        public SallesDeTheatreController(IBusinessSalle bussinessServices, IMapper mapper)
+        {
+            _bussinessServices= bussinessServices;
+            _mapper = mapper;
+        }
         [HttpGet("{id}")]
   
-        public async Task<ActionResult<SalleDeTheatreDto>> GetById(int id)
+        public async Task<ActionResult<SalleDeTheatreDto>> GetSalleById(int id)
         {
             try
             {
-                var conversion = _mapper.Map<SalleDeTheatreDto>(await _service.GetById(id));
-                return Ok(conversion);
+                SalleDeTheatreDto getSalle= await _bussinessServices.GetSalle(id);
+
+                return Ok(getSalle);
             }
           catch (ValidationException ex)
             {
@@ -38,13 +41,12 @@ public class SallesDeTheatreController : ControllerBase
             }
         }
         [HttpGet("get-complexe/{id}")]
-        public async Task<ActionResult<SalleDeTheatreDto>> GetByComplexe(int id)
+        public async Task<ActionResult<SalleDeTheatreDto>> GetSalleByComplexe(int id)
         {
             try
             {
-                var entities = await _service.GetByIdComplexe(id);
-                var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(entities);
-                return Ok(conversion);
+                IEnumerable<SalleDeTheatreDto> getSalles= await _bussinessServices.GetFromComplexe(id);
+                return Ok(getSalles);
             }
             catch (ValidationException ex)
             {
@@ -61,12 +63,12 @@ public class SallesDeTheatreController : ControllerBase
         }
         [HttpGet]
 
-        public async Task<ActionResult<IEnumerable<SalleDeTheatreDto>>> GetAll()
+        public async Task<ActionResult<IEnumerable<SalleDeTheatreDto>>> GetAllSalle()
         {
             try
             {
-                var conversion = _mapper.Map<IEnumerable<SalleDeTheatreDto>>(await _service.GetAll());
-                return Ok(conversion);
+                IEnumerable<SalleDeTheatreDto> getSalles = await _bussinessServices.GetAllSalle();
+                return Ok(getSalles);
 
             }
             catch (ValidationException ex)
@@ -83,14 +85,12 @@ public class SallesDeTheatreController : ControllerBase
             }
         }
         [HttpPost("")]
-        public async Task<ActionResult> Create([FromBody] AddSalleDeTheatreDto Entity)
+        public async Task<ActionResult> CreateSalle([FromBody] AddSalleDeTheatreDto Entity)
         {
             try
             {
-                var conversion = _mapper.Map<SalleDeTheatre>(Entity);
-                _service.Insert(conversion);
-                return Ok();
-
+                _bussinessServices.CreateSalle(Entity.ComplexeId,Entity);
+                return Ok(Entity);
             }
             catch (ValidationException ex)
             {
@@ -110,12 +110,17 @@ public class SallesDeTheatreController : ControllerBase
       
         public async Task<ActionResult<SalleDeTheatreDto>> Update(int updtId, [FromBody] UpdateSalleDeTheatreDto Entity)
         {
+            if (updtId <= 0)
+            {
+                return BadRequest(updtId);
+            }
             try
             {
                 if (Entity == null) { return BadRequest(); }
-                var conversion = _mapper.Map<UpdateSalleDeTheatreDto, SalleDeTheatre>(Entity);
-               _service.Update(updtId, conversion);
-                return Ok(_mapper.Map<SalleDeTheatre, SalleDeTheatreDto>(await _service.GetById(updtId)));
+               
+                await _bussinessServices.Updatesalle(updtId,Entity);
+
+                return NoContent();
 
             }
             catch (ValidationException ex)
@@ -133,12 +138,15 @@ public class SallesDeTheatreController : ControllerBase
         }
         [HttpDelete("{id}")]
        
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> DeleteSalle(int id)
         {
+            if(id <= 0)
+            {
+                return BadRequest();
+            }
             try
             {
-
-                await _service.Delete(id);
+                await _bussinessServices.DeleteSalle(id);
                 return NoContent();
 
             }
@@ -155,28 +163,7 @@ public class SallesDeTheatreController : ControllerBase
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("delete-representation/{idSalle}/{idrepresentation}")]
-        public async Task<ActionResult> DeleteRepresentation(int idSalle, int idrepresentation)
-        {
-            try
-            {
-                await _service.DeleteRepresentationToSalle(idSalle, idrepresentation);
-                return NoContent();
-
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+     
 }
 
 

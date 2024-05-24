@@ -72,7 +72,7 @@ namespace dataInfraTheather.Infrastructure.Repository
             try
             {
                 IEnumerable<Command> getAllFromPiece = await _dbContext.Commands
-                    .Where(x => x.Representation.IdPiece == idPiece)
+                    .Where(x => x.Representation.PieceId == idPiece)
                     .ToListAsync();
                 return getAllFromPiece;
 

@@ -7,13 +7,17 @@ namespace dataInfraTheather.Infrastructure.Persistence
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
 
-        public DbSet<Command> Commands { get; set; }
-        public DbSet<Complexe> Complexe { get; set; }
-        public DbSet<Representation> Representations { get; set; }
-        public DbSet<SalleDeTheatre> SalleDeTheatres { get; set; }
-        public DbSet<CataloguePiece> cataloguePieces { get; set; }  
-        public DbSet<Piece> Pieces { get; set; }
-        public DbSet<Theme> Theme {get;set;}
+        public DbSet<Command> Commands =>Set<Command>();
+        public DbSet<Complexe> Complexe => Set<Complexe>();
+        public DbSet<Representation> Representations => Set<Representation>();
+        public DbSet<SalleDeTheatre> SalleDeTheatres => Set<SalleDeTheatre>();
+        public DbSet<CataloguePiece> CataloguePiece => Set<CataloguePiece>();  
+        public DbSet<Catalogue> Catalogue => Set<Catalogue>();
+        public DbSet<Piece> Pieces => Set<Piece>();
+        public DbSet<Theme> Theme => Set<Theme>();
+        public DbSet<Siege> Siege => Set<Siege>();
+        public DbSet<Image> Image => Set<Image>();
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,81 +34,132 @@ namespace dataInfraTheather.Infrastructure.Persistence
 
             //complexe Configuration
             modelBuilder.Entity<Complexe>()
-                .HasKey(x => x.Id);
+                        .HasKey(x => x.Id);
             modelBuilder.Entity<Complexe>()
-                .Property(x => x.CreatedDate)
-                .IsRequired(false);
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
 
             // salle Configuration
             modelBuilder.Entity<SalleDeTheatre>()
-                .HasKey(x => x.Id);
+                        .HasKey(x => x.Id);
             modelBuilder.Entity<SalleDeTheatre>()
-              .Property(x => x.CreatedDate)
-              .IsRequired(false);
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
+
+
             modelBuilder.Entity<SalleDeTheatre>()
-                .HasOne(x => x.Complexe)
-                .WithMany(x => x.SalleDeTheatres)
-                .HasForeignKey(x => x.ComplexeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                        .HasOne(x => x.Complexe)
+                        .WithMany(x => x.SalleDeTheatres)
+                        .HasForeignKey(x => x.ComplexeId)
+                        .OnDelete(DeleteBehavior.Restrict);
 
             // representation Configuration
             modelBuilder.Entity<Representation>()
-                .HasKey(x => x.Id);
+                        .HasKey(x => x.Id);
 
             modelBuilder.Entity<Representation>()
-              .Property(x => x.CreatedDate)
-              .IsRequired(false);
+                          .Property(x => x.CreatedDate)
+                          .IsRequired(false);
 
             modelBuilder.Entity<Representation>()
-                .HasOne(x => x.Piece)
-                .WithMany(x => x.Representations)
-                .HasForeignKey(x => x.IdPiece)
-                .OnDelete(DeleteBehavior.Restrict);
+                        .HasOne(x => x.Piece)
+                        .WithMany(x => x.Representations)
+                        .HasForeignKey(x => x.PieceId)
+                        .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Representation>()
-                .HasOne(x => x.SalleDeTheatre)
-                .WithMany(x => x.Representations)
-                .HasForeignKey(x => x.IdSalledeTheatre)
-                .OnDelete(DeleteBehavior.Restrict);
+                        .HasOne(x => x.SalleDeTheatre)
+                        .WithMany(x => x.Representations)
+                        .HasForeignKey(x => x.SalledeTheatreId)
+                        .OnDelete(DeleteBehavior.Restrict);
+
             //--piece Configuration
             modelBuilder.Entity<Piece>()
-                .HasKey(x => x.Id);
+                        .HasKey(x => x.Id);
 
             modelBuilder.Entity<Piece>()
-              .Property(x => x.CreatedDate)
-              .IsRequired(false);
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
 
             modelBuilder.Entity<Piece>()
-                .HasOne(x => x.Theme);
-            //--command Configuration
+                        .HasOne(x => x.Theme);
+
+            modelBuilder.Entity<Piece>()
+                        .HasOne(x => x.Image)
+                        .WithMany()
+                        .HasForeignKey(x=>x.ImageId)
+                        .IsRequired(false);
+                         
+
+            //----command Configuration
             modelBuilder.Entity<Command>()
-                .HasKey(x => x.Id);
+                        .HasKey(x => x.Id);
             modelBuilder.Entity<Command>()
-              .Property(x => x.CreatedDate)
-              .IsRequired(false);
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
+
             modelBuilder.Entity<Command>()
-                .HasOne(x => x.Representation)
-                .WithMany(x => x.Commands)
-                .HasForeignKey(x => x.IdRepresentation)
-                .OnDelete(DeleteBehavior.Restrict);
+                        .HasOne(x => x.Representation)
+                        .WithMany(x => x.Commands)
+                        .HasForeignKey(x => x.IdRepresentation)
+                        .OnDelete(DeleteBehavior.Restrict);
+
             //-----Theme
             modelBuilder.Entity<Theme>()
                         .HasKey(x => x.Id);
+            modelBuilder.Entity<Image>()
+                      .Property(x => x.CreatedDate)
+                      .IsRequired(false);
 
+            modelBuilder.Entity<Image>()
+                        .HasKey(x => x.Id);
+            modelBuilder.Entity<Image>()
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
+            //-----Catalogue
             modelBuilder.Entity<Catalogue>()
                         .HasKey(x => x.Id);
-
+            modelBuilder.Entity<Catalogue>()
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
             modelBuilder.Entity<Catalogue>()
                         .HasOne(x=>x.Complexe)
                         .WithMany(x=>x.Catalogue)
                         .HasForeignKey(x=>x.ComplexeId);
+            //
+            modelBuilder.Entity<CataloguePiece>()
+                         .HasKey(x=>x.Id);
 
             modelBuilder.Entity<CataloguePiece>()
-                         .HasKey(CataloguePiece => new { CataloguePiece.PieceId, CataloguePiece.CatalogueId });
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
 
-            //-----Image
+            modelBuilder.Entity<CataloguePiece>().HasOne(x =>x.Piece)
+                                                 .WithMany()
+                                                 .HasForeignKey(x=>x.PieceId);
+
+            modelBuilder.Entity<CataloguePiece>().HasOne(c => c.Catalogue)
+                                                .WithMany()
+                                                .HasForeignKey(x => x.CatalogueId);
+            //-----Siege
+
+            modelBuilder.Entity<Siege>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<Siege>()
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
+
+            modelBuilder.Entity<Siege>()
+                        .HasOne(x=>x.SalleDeTheatre)
+                        .WithMany(x=>x.sieges)
+                        .HasForeignKey(x=>x.SalleId)
+                        .OnDelete(DeleteBehavior.NoAction);
+
+         
+            //-----------image
 
             //----------------------------end Config
+
             base.OnModelCreating(modelBuilder);
 
         }

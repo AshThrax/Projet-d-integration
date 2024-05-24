@@ -10,12 +10,11 @@ namespace Domain.Entity.TheatherEntity
         public DateTime Seance { get; set; }
         public int PlaceMaximum { get; set; }
         public int PlaceCurrent { get; set; }
-        public int IdSalledeTheatre { get; set; }
-     
+        public int SalledeTheatreId { get; set; }
         public SalleDeTheatre? SalleDeTheatre { get; set; }
 
         //-----PIece
-        public int IdPiece { get; set; }
+        public int PieceId { get; set; }
         public Piece? Piece { get; set; }
         //-----commande/reservation
         public List<Command>? Commands { get; set; }

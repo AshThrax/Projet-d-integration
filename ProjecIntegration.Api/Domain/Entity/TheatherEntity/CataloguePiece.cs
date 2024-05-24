@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.TheatherEntity
 {
-    public class CataloguePiece
+    public class CataloguePiece:BaseEntity
     {
         public int CatalogueId { get; set; }
         public Catalogue? Catalogue { get; set; }

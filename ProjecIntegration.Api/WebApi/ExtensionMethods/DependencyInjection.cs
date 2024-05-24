@@ -81,10 +81,12 @@ namespace WebApi.ExtensionMethods
             {
                 options.Authority = Domain;
                 options.Audience = Audience;
+                
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     NameClaimType = ClaimTypes.NameIdentifier
                 };
+                
             });
             services.AddAuth0AuthenticationClient(options =>
             {

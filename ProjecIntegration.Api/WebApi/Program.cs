@@ -1,3 +1,6 @@
+using dataInfraTheather.Infrastructure.Persistence;
+using DataInfraTheather.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using WebApi.ApiService.FileService;
@@ -51,13 +54,21 @@ builder.Services.AddCors(options =>
         });
 });
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    using (IServiceScope scope = app.Services.CreateScope())
+    {
+        ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    
+        await context.Database.MigrateAsync();
+        await new SeedDbContext().SeedAsync(context);
+    }
 }
 
 app.UseCors(x => x

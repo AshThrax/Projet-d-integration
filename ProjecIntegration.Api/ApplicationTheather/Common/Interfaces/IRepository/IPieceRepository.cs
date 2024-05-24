@@ -6,6 +6,9 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
     {
         void AddRepresentation(int idPiece, Representation represnetation);
         void DeleteRepresnetation(int idPiece, int idrepresentation);
-      
+
+        Task<IEnumerable<Piece>> GetPieceByTheme(int themeId);
+
+        Task<IEnumerable<Piece>> GetPieceByListId(List<int> pieceIds);
     }
 }

@@ -11,6 +11,6 @@ namespace Domain.Entity.TheatherEntity
         public Complexe? Complexe { get; set; }
         public List<Representation>? Representations { get; set; }
  
-
+        public List<Siege> sieges { get; set; }
     }
 }

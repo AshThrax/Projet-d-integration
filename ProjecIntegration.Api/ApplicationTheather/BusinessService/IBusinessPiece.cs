@@ -1,4 +1,5 @@
 ﻿using ApplicationTheather.DTO;
+using Domain.Entity.TheatherEntity;
 
 namespace ApplicationTheather.BusinessService
 {
@@ -9,9 +10,7 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="Entity">entité pièce de theatre a ajoutée</param>
         /// <returns></returns>
-        void Create(AddPieceDto Entity, string ImageName);
-
-        Task Addrepresnetation(int PieceId ,AddRepresentationDto Entity);
+        void Create(AddPieceDto Entity,Image ImageName);
         /// <summary>
         /// suprrimer une piece de theatre de la database 
         /// </summary>
@@ -36,5 +35,13 @@ namespace ApplicationTheather.BusinessService
         /// <param name="idPIece"></param>
         /// <returns> une piece de theatre</returns>
         Task<PieceDto> Get(int idPIece);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idPiece"></param>
+        /// <returns></returns>
+        Task<IEnumerable<PieceDto>> GetPiecefromCatalogue(int idPiece);
+
+        Task<IEnumerable<PieceDto>> GetPieceByTheme(int themeId);
     }
 }

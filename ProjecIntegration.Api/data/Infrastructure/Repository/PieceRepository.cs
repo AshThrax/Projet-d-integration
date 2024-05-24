@@ -19,10 +19,7 @@ namespace dataInfraTheather.Infrastructure.Repository
                 Piece piece = _context.Pieces.FirstOrDefault(x => x.Id == idPiece) ?? throw new NullReferenceException("reference null");
                 if (piece != null)
                 {
-                    if (piece.Representations == null)
-                    {
-                        piece.Representations = new List<Representation>();
-                    }
+                    piece.Representations ??= new List<Representation>();
                     piece.Representations.Add(represnetation);
                     _context.SaveChanges();
                 }
@@ -56,7 +53,32 @@ namespace dataInfraTheather.Infrastructure.Repository
             }
         }
 
-       
+        public async Task<IEnumerable<Piece>> GetPieceByListId(List<int> pieceIds)
+        {
+            try
+            {
+                return await _context.Pieces.Where(x => pieceIds.Contains(x.Id)).ToListAsync();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Piece>> GetPieceByTheme(int themeId)
+        {
+            try
+            {
+                IEnumerable<Piece> getPiece= await _context.Pieces.Where(x=>x.ThemeId == themeId).ToListAsync();
+
+                return getPiece;
+            }
+            catch (Exception)
+            {
+                return Enumerable.Empty<Piece>();
+           
+            }
+        }
     }
 }

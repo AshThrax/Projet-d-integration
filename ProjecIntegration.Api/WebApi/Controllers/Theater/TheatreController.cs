@@ -1,6 +1,7 @@
 ﻿using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.DTO;
+using Domain.Entity.TheatherEntity;
 
 namespace WebApi.Controllers.Theater
 {
@@ -16,116 +17,88 @@ namespace WebApi.Controllers.Theater
             _theatreBusiness = theatreBusiness;
             this.logger = logger;
         }
-       
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pieceId"></param>
-        /// <param name="SalleId"></param>
-        /// <param name="represnetation"></param>
-        /// <returns></returns>
-        [HttpPost("{pieceId}/{SalleId}")]
-        public async Task<ActionResult> CreateRepresentaion(int pieceId, int SalleId, AddRepresentationDto represnetation)
+        [HttpGet("")]
+        public async Task<ActionResult<IEnumerable<ThemeDto>>> GetAllTheme() 
         {
             try
             {
-                await _theatreBusiness.CreateRepresentationForPiece(pieceId, SalleId, represnetation);
+                return Ok(await _theatreBusiness.GetAllTheme());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpGet("{themeId}")]
+        public async Task<ActionResult<ThemeDto>> GetThemeById(int themeId)
+        {
+            try
+            {
+                return Ok(await _theatreBusiness.GetThemeById(themeId));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost("")]
+        public async Task<ActionResult<ThemeDto>> CreateTheme([FromBody] ThemeDto theme)
+        {
+            try
+            {
+                if(!ModelState.IsValid) 
+                {
+                    return BadRequest();
+                }
+
+                _theatreBusiness.CreateTheme(theme);
                 return Ok();
             }
-            catch (ValidationException ex)
+            catch (Exception)
             {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
+
+                throw;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pieceId"></param>
-        /// <param name="repId"></param>
-        /// <returns></returns>
-        [HttpDelete("{pieceId}/{repId}")]
-        public async Task<ActionResult> Deleterepresnetation(int pieceId, int repId)
+        [HttpPut("")]
+        public async Task<ActionResult<ThemeDto>> UpdateTheme(int themeId, [FromBody] ThemeDto theme)
         {
             try
             {
-                await _theatreBusiness.DeleteRepresentationForPiece(pieceId, repId);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                _theatreBusiness.UpdateTheme(themeId,theme);
                 return NoContent();
             }
-            catch (ValidationException ex)
+            catch (Exception)
             {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
+
+                throw;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pieceId"></param>
-        /// <returns></returns>
-        [HttpGet("{IdPiece}")]
-        public async Task<ActionResult> GetRepresentationFromPiece(int IdPiece)
+        [HttpDelete("")]
+        public async Task<ActionResult<ThemeDto>> DeleteTheme(int themeId)
         {
             try
             {
-                var GetRepPiece = await _theatreBusiness.GetRepresentationFromPiece(IdPiece);
-                return Ok(GetRepPiece);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                _theatreBusiness.Deletetheme(themeId);
+                return NoContent();
             }
-            catch (ValidationException ex)
+            catch (Exception)
             {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
+
+                throw;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pieceId"></param>
-        /// <returns></returns>
-        [HttpGet("{IdSalle}")]
-        public async Task<ActionResult> GetRepresnetationFromSalle(int IdSalle)
-        {
-            try
-            {
-                var GetRep = await _theatreBusiness.GetRepresentationFromPiece(IdSalle);
-                return Ok(GetRep);
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
     }
 }

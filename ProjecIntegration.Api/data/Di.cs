@@ -4,6 +4,7 @@ using ApplicationTheather.Common.Interfaces.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using dataInfraTheather.Infrastructure.Repository;
 using DataInfraTheather.BusinessService;
+using DataInfraTheather.Infrastructure.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -37,6 +38,12 @@ namespace dataInfraTheather
             services.AddScoped<IComplexeRepository,ComplexeRepository>();
             services.AddScoped<IPieceRepository,PieceRepository>();
             services.AddScoped<ISalleDeTheatreRepository, SalleDeTheatreRepository>();
+            services.AddScoped<ICatalogueRepository, CatalogueRepository>();
+            services.AddScoped<ISiegeRepository, SiegeRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<ICatalogueRepository, CatalogueRepository>();
+            services.AddScoped<ICataloguePieceRepository, CataloguePieceRepository>();
+            services.AddScoped<IThemeRepository, ThemeRepository>();
 
             services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
             services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service
@@ -44,6 +51,9 @@ namespace dataInfraTheather
             services.AddScoped<IBusinessComplexe, BusinessComplexe>(); //business Complexe Service
             services.AddScoped<IBusinessPiece, BusinessPiece>(); //Business Piece Service
             services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
+            services.AddScoped<IBusinessCatalogue, BusinessCatalogue>();
+            services.AddScoped<IBusinessSiege, BusinessSiege>();
+           
             return services;
         }
 

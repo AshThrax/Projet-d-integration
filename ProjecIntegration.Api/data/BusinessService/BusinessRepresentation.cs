@@ -23,57 +23,139 @@ namespace DataInfraTheather.BusinessService
 
         public async Task Create(AddRepresentationDto dto)
         {
-           _repservice.Insert(_mapper.Map<Representation>(dto));
-            await Task.CompletedTask;
+            try
+            {
+               _repservice.Insert(_mapper.Map<Representation>(dto));
+                await Task.CompletedTask;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task Delete(int id)
         {
-            Representation doExistEntity =await _repservice.GetById(id);
-            if (doExistEntity != null)
+            try
             {
-                throw new ArgumentNullException($"there is no entity with the id {id}");
-            } //si l'entité n'existe pas exception
+                Representation doExistEntity =await _repservice.GetById(id);
+                if (doExistEntity != null)
+                {
+                    throw new ArgumentNullException($"there is no entity with the id {id}");
+                } //si l'entité n'existe pas exception
 
-            await _repservice.Delete(id);
+                await _repservice.Delete(id);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<IEnumerable<RepresentationDto>> GetAll()
         {
-            var entity = await _repservice.GetAll();
-            var conversion = _mapper.Map<IEnumerable<RepresentationDto>>(entity);
-            return conversion;
+            try
+            {
+                IEnumerable<Representation> entity = await _repservice.GetAll();
+                IEnumerable<RepresentationDto> conversion = _mapper.Map<IEnumerable<RepresentationDto>>(entity);
+                return conversion;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+        /// <summary>
+        /// get from poece 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<RepresentationDto>> GetAllFromPiece(int id)
         {
-            var entity = await _repservice.GetAll();
-            var FromPiece = entity.Where(x => x.IdPiece == id).ToList();
-            return _mapper.Map<IEnumerable<RepresentationDto>>(FromPiece);
+            try
+            {
+                IEnumerable<Representation> entity = await _repservice.GetAll();
+                IEnumerable<Representation> FromPiece = entity.Where(x => x.PieceId == id).ToList();
+                return _mapper.Map<IEnumerable<RepresentationDto>>(FromPiece);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+        /// <summary>
+        /// get from Complexe
+        /// </summary>
+        /// <param name="IdComplexe"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<RepresentationDto>> GetAllFromComplexe(int IdComplexe)
         {
-            var entity = await _repservice.GetAll();
+            try
+            {
+                IEnumerable<Representation> entity = await _repservice.GetAll();
 
-            var fromComplexe = entity.Where(x => x.SalleDeTheatre?.ComplexeId == IdComplexe)
-                                    .ToList();
-            var conversion = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
-            return conversion;
+                IEnumerable<Representation> fromComplexe = entity.Where(x => x.SalleDeTheatre?.ComplexeId == IdComplexe)
+                                        .ToList();
+                var conversion = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
+                return conversion;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
-
+        /// <summary>
+        /// get by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<RepresentationDto> GetById(int id)
         {
-            var entity = await _repservice.GetById(id);
-            return _mapper.Map<RepresentationDto>(entity);
+            try
+            {
+                Representation entity = await _repservice.GetById(id);
+                return _mapper.Map<RepresentationDto>(entity);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
-
+        /// <summary>
+        /// update representation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task Update(int id, UpdateRepresentationDto dto)
         {
-            Representation getrep = await _repservice.GetById(id);
-            if (getrep != null)
+            try
             {
-                Representation entityToUpdate = _mapper.Map<Representation>(dto);
-                _repservice.Update(id, entityToUpdate);
+                Representation getrep = await _repservice.GetById(id);
+                if (getrep != null)
+                {
+                    Representation entityToUpdate = _mapper.Map<Representation>(dto);
+                    _repservice.Update(id, entityToUpdate);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
         }
@@ -81,6 +163,29 @@ namespace DataInfraTheather.BusinessService
         public Task AddCommandtoRepresentation(AddCommandDto addCommandDto)
         {
             throw new NotImplementedException();
+        }
+        /// <summary>
+        /// get from salle
+        /// </summary>
+        /// <param name="salleId"></param>
+        /// <returns></returns>
+        public async  Task<IEnumerable<RepresentationDto>> GetAllFromSalle(int salleId)
+        {
+            try
+            {
+                IEnumerable<Representation> entity = await _repservice.GetAll();
+
+                IEnumerable<Representation> fromComplexe = entity.Where(x => x.SalleDeTheatre.Id == salleId)
+                                        .ToList();
+                IEnumerable<RepresentationDto> conversion = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
+                return conversion;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
