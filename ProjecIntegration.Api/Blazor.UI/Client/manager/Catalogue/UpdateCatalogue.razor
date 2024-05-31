@@ -1,0 +1,81 @@
+﻿@page "/manager/updatecatalogue/{Id:int}"
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+
+@inject IComplexeService ComplexeService;
+@inject ICatalogueService CatalogeService;
+
+
+<div class="flex-fill m-4">
+    <div class="card m-2">
+        <form class="w-50">
+            <h3 class="card-header">Mise a jour d'un catalogue'</h3>
+            <div class="form-group card-body mb-3 w-50">
+
+                <div>
+                    <label class="form-label" for="name">Name :</label>
+                    <input class="form-control " id="name"/>
+                </div>
+                <div>
+                    <label class="form-label" for="description">Description </label>
+                    <textarea @bind="selectCatalogue.Description" class="form-control" id="description" rows="3"  >
+                    </textarea>
+                </div>
+                <div>
+                    <label class="form-label" for="complexe">Complexe</label>
+                     <select class="form-control" @bind="SelectedComplexeId" @oninput="OnSelectedChange" >
+                        <option value="value">text</option>
+                        @foreach (var item in GetAllComplexe)
+                        {
+                         <option value="@item.Id">@item.Name</option>    
+                                                    }
+                    </select>
+                </div>
+               
+                <div class ="p-2">
+                    <button type="submit" class="btn btn-warning btn" @onclick="() => UpdatetheCatalogue(selectCatalogue)">Mise a jour </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public CatalogueDto selectCatalogue { get; set; }
+    public UpdateCatalogueDto updateCatalogue { get; set; }
+
+    public List<ComplexeDto> GetAllComplexe { get; set; }
+    public int SelectedComplexeId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetAllComplexe = (await ComplexeService.Get()).ToList();
+        selectCatalogue = (await CatalogeService.GetCatalogue(Id));
+    }
+    public void OnSelectedChange(ChangeEventArgs args)
+    {
+
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectedComplexeId = selectedId;
+        }
+    }
+    public async Task UpdatetheCatalogue(CatalogueDto selectedCatalogue)
+    {
+            updateCatalogue = new UpdateCatalogueDto
+            {
+                Id=selectedCatalogue.Id,
+                Name = selectedCatalogue.Name,
+                Description = selectedCatalogue.Description,
+                ComplexeId = SelectedComplexeId,
+                AddedTime = DateTime.Now,
+            };
+
+        await CatalogeService.UpdateCatalogue(selectedCatalogue.Id, updateCatalogue);
+    }
+
+
+}

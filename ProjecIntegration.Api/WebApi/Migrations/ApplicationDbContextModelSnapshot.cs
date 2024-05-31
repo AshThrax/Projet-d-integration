@@ -289,9 +289,6 @@ namespace WebApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CommandId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -307,11 +304,38 @@ namespace WebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommandId");
-
                     b.HasIndex("SalleId");
 
                     b.ToTable("Siege");
+                });
+
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.SiegeCommand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CommandId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SiegeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommandId");
+
+                    b.HasIndex("SiegeId");
+
+                    b.ToTable("SiegeCommand");
                 });
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Theme", b =>
@@ -426,10 +450,6 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Siege", b =>
                 {
-                    b.HasOne("Domain.Entity.TheatherEntity.Command", null)
-                        .WithMany("sieges")
-                        .HasForeignKey("CommandId");
-
                     b.HasOne("Domain.Entity.TheatherEntity.SalleDeTheatre", "SalleDeTheatre")
                         .WithMany("sieges")
                         .HasForeignKey("SalleId")
@@ -439,9 +459,23 @@ namespace WebApi.Migrations
                     b.Navigation("SalleDeTheatre");
                 });
 
-            modelBuilder.Entity("Domain.Entity.TheatherEntity.Command", b =>
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.SiegeCommand", b =>
                 {
-                    b.Navigation("sieges");
+                    b.HasOne("Domain.Entity.TheatherEntity.Command", "Command")
+                        .WithMany()
+                        .HasForeignKey("CommandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entity.TheatherEntity.Siege", "Siege")
+                        .WithMany()
+                        .HasForeignKey("SiegeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Command");
+
+                    b.Navigation("Siege");
                 });
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Complexe", b =>

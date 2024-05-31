@@ -1,0 +1,189 @@
+﻿@page "/manager/addpiecetocatalogue/{Id:int}"
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+@inject IPieceService Pieceservice;
+@inject ICatalogueService catalogueService;
+
+<h3>AddPieceToCatalogue</h3>
+
+<div class="flex-fill m-4 p-4">
+        <div class="row btn-group-lg float-md-start">
+            <div class="col">
+            <div class="card  m-2 p-2">
+                    <h3>Catalogue</h3>
+                    <select class="form-control" @bind="selectCatalogueId" @oninput="OnSelectedCatalogue">
+                        <option value="value">text</option>
+                        @foreach (var item in GetCatalogue)
+                        {
+                            <option value="@item.Id">@item.Name</option>   
+                        }
+                    </select>
+                </div>
+           
+
+            </div>
+            <div class="card-footer"></div>
+        </div>
+        <div class="row m-4 p-4">
+            <div>
+              <div class="col m-2">
+                  <div class="card">
+                      <div>
+                          <h3 class="card-header">Details </h3>
+                      </div>
+                      <div class="card-body">
+                          <div>
+                              <p><strong>Name</strong> : @selectCatalogue.Name</p>
+                          </div>
+                        <div>
+                            <p><strong>description</strong> : @selectCatalogue.Description</p>
+                        </div>
+                        <div>
+                            <p><strong>description</strong> : @selectCatalogue.AddedTime</p>
+                        </div>
+                      </div>
+                      <div class="card-footer p-2">
+                        <button class="btn btn btn-secondary" type="button" @onclick="()=>GetListOfPiece()">liste des piece </button>
+                        <button class="btn btn btn-secondary" type="button" @onclick="()=>GetListOfCatalogues()"> liste du catalogue</button>
+                      </div>
+                  </div>
+              </div>
+              <br />
+            @if (getlistofPiece)
+            {
+
+                <div class="col m-2 ">
+                    <div class="card ">
+                        <div class="m-1">
+                            <h3 class="card-header">Liste des pieces </h3>
+                        </div>
+                        <div class="colcard-body">
+                            @if (GetPieces != null)
+                            {
+                                <QuickGrid Items="GetPieces.AsQueryable()">
+                                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                                    <TemplateColumn Context="item">
+                                        <button type="button" class="btn btn-outline-success" @onclick="() =>AddaNewPieceToCatalogue(item.Id)">ajouter au catalogue</button>
+                                    </TemplateColumn>
+                                </QuickGrid>
+                            }
+                            else
+                            {
+
+                            }
+
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+            }
+            else
+            {
+                
+                <div class="col m-2 ">
+                    <div class="card ">
+                        <div class="m-1">
+                            <h3 class="card-header">Piece presente dans le catalogue</h3>
+                        </div>
+                        <div class="colcard-body">
+                            @if (GetPieces != null)
+                            {
+                                <QuickGrid Items="PieceFromcatalogue.AsQueryable()">
+                                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                                    <TemplateColumn Context="item">
+                                        <button type="button" class="btn btn-outline-success" @onclick="() =>RemoveFromCatalogue(item.Id)"> Supprimer du catalogue</button>
+                                    </TemplateColumn>
+                                </QuickGrid>
+                            }
+                            else
+                            {
+
+                            }
+
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public List<PieceDto> GetPieces{ get; set; }
+    public List<PieceDto> PieceFromcatalogue { get; set; } = new();
+    public PieceDto selectPieceDto { get; set; }
+    public List<CatalogueDto> GetCatalogue { get; set; }
+    public CatalogueDto selectCatalogue { get; set; }
+    public int selectCatalogueId { get; set; }
+    public int selectePieceId { get; set; }
+
+    public bool getlistofPiece { get; set; } = true;
+    public bool getlistfromcatalogue { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        selectCatalogueId = Id;
+        GetPieces = (await Pieceservice.Get()).ToList();
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId)).ToList();
+        GetCatalogue = (await catalogueService.GetAllCatalogue()).ToList();
+        selectCatalogue = await catalogueService.GetCatalogue(Id);
+        await Task.Delay(1000);
+    }
+
+    public async Task OnSelectedCatalogue(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            selectCatalogueId = selectedId;
+        }
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectedId)).ToList();
+    }
+    public void OnselectedPiece(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            selectePieceId = selectedId;
+        }
+
+    }
+    public void GetListOfPiece()
+    {
+        getlistofPiece= true;
+        getlistfromcatalogue =  false;
+    }
+    public void GetListOfCatalogues()
+    {
+        getlistofPiece=false;
+        getlistfromcatalogue = true;
+    }
+
+    public async Task AddaNewPieceToCatalogue(int pieceId)
+    {
+        await Pieceservice.AddToCatalogue(selectCatalogueId, pieceId);
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId)).ToList();
+    }
+    public async Task RemoveFromCatalogue(int pieceId)
+    {
+        await Pieceservice.RemovefromCatalogue(selectCatalogueId, pieceId);
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId)).ToList();
+    }
+}

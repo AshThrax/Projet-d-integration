@@ -8,8 +8,9 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
         Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties);
         Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties);
         Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetByListIds(List<int> ListIds);
         Task<T> GetById(int id);
-        void Insert(T entity);
+        Task<T> Insert(T entity);
         void Update(int updtId, T entity);
         Task Delete(int entityid);
     }

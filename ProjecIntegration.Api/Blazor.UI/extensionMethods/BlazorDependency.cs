@@ -1,8 +1,10 @@
 using Blazor.UI.data.services.Publication;
 using Blazor.UI.data.services.TheatherService;
 using Blazor.UI.Data.services.Annonce;
+using Blazor.UI.Data.services.authorization;
 using Blazor.UI.Data.services.Publication;
 using Blazor.UI.Data.services.TheatherService;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace Blazor.UI.extensionMethods
 {
@@ -31,7 +33,8 @@ namespace Blazor.UI.extensionMethods
                 option.ProviderOptions.ResponseType = "code";
                 option.ProviderOptions.DefaultScopes.Add("email");
                 option.ProviderOptions.AdditionalProviderParameters.Add("audience", "https://hello-world.example.com" );
-            });
+               
+            }).AddAccountClaimsPrincipalFactory<ArrayClaimsPrincipalFactory<RemoteUserAccount>>(); ;
             return services;
         }
         public static IServiceCollection CustomService(this IServiceCollection services)
@@ -51,7 +54,7 @@ namespace Blazor.UI.extensionMethods
 
             services.AddTransient<IRepresentationService, RepresentationService>();
             ;
-
+            services.AddTransient<ICatalogueService, CataloguesService>();
             services.AddTransient < IThemeService , ThemeService > ();
             services.AddTransient<IAnnonceService, AnnonceService>();
             services.AddTransient<IPublicationService,PublicationService>();

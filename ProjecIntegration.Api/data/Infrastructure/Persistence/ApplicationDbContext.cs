@@ -126,7 +126,8 @@ namespace dataInfraTheather.Infrastructure.Persistence
                         .HasOne(x=>x.Complexe)
                         .WithMany(x=>x.Catalogue)
                         .HasForeignKey(x=>x.ComplexeId);
-            //
+            //------CataloguePiece----------------------
+
             modelBuilder.Entity<CataloguePiece>()
                          .HasKey(x=>x.Id);
 
@@ -155,7 +156,20 @@ namespace dataInfraTheather.Infrastructure.Persistence
                         .HasForeignKey(x=>x.SalleId)
                         .OnDelete(DeleteBehavior.NoAction);
 
-         
+            //-------SiegeCommand
+
+            modelBuilder.Entity<SiegeCommand>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<SiegeCommand>()
+                        .Property(x => x.CreatedDate)
+                        .IsRequired(false);
+
+            modelBuilder.Entity<SiegeCommand>().HasOne(x=>x.Siege).WithMany()
+                                               .HasForeignKey(x=>x.SiegeId);
+
+            modelBuilder.Entity<SiegeCommand>().HasOne(x => x.Command).WithMany()
+                                              .HasForeignKey(x => x.CommandId);
+
             //-----------image
 
             //----------------------------end Config

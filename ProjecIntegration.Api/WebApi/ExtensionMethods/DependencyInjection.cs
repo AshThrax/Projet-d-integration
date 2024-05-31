@@ -84,7 +84,14 @@ namespace WebApi.ExtensionMethods
                 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    NameClaimType = ClaimTypes.NameIdentifier
+                    NameClaimType = ClaimTypes.NameIdentifier,
+                    
+                };
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "Roles",
+                    RoleClaimType = "https://schemas.quickstarts.com/roles"
                 };
                 
             });

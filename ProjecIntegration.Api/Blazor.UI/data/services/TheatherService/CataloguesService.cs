@@ -1,4 +1,5 @@
 ﻿using Blazor.UI.Data.modelViews.Theater;
+using System.Net.Http.Json;
 
 namespace Blazor.UI.Data.services.TheatherService
 {
@@ -7,8 +8,7 @@ namespace Blazor.UI.Data.services.TheatherService
         Task AddCatalogue(CatalogueDto catalogueDto);
         Task DeleteCatalogue(int catalogueId);
         Task<CatalogueDto> GetCatalogue(int catalogueId);
-        Task<CatalogueDto> UpdateCatalogue(int catalogueId, CatalogueDto catalogue);
-        Task<CatalogueDto> GetCatalogue();
+        Task UpdateCatalogue(int catalogueId, UpdateCatalogueDto catalogue);
         Task<IEnumerable<CatalogueDto>> GetAllCatalogue();
         Task<IEnumerable<CatalogueDto>> GetAllCatalogueByComplexeId(int complexeId);
     }
@@ -23,39 +23,36 @@ namespace Blazor.UI.Data.services.TheatherService
             _httpClient = httpClient;
         }
 
-        public Task AddCatalogue(CatalogueDto catalogueDto)
+        public async Task AddCatalogue(CatalogueDto catalogueDto)
         {
-            throw new NotImplementedException();
+            await _httpClient.PostAsJsonAsync<CatalogueDto>($"{ApiUri}", catalogueDto);
         }
 
-        public Task DeleteCatalogue(int catalogueId)
+        public async  Task DeleteCatalogue(int catalogueId)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"{ApiUri}/{catalogueId}");
         }
 
-        public Task<IEnumerable<CatalogueDto>> GetAllCatalogue()
+        public async Task<IEnumerable<CatalogueDto>> GetAllCatalogue()
         {
-            throw new NotImplementedException();
+            return await _httpClient.GetFromJsonAsync<IEnumerable<CatalogueDto>>($"{ApiUri}");
         }
 
-        public Task<IEnumerable<CatalogueDto>> GetAllCatalogueByComplexeId(int complexeId)
+        public async Task<IEnumerable<CatalogueDto>> GetAllCatalogueByComplexeId(int complexeId)
         {
-            throw new NotImplementedException();
+            return await _httpClient.GetFromJsonAsync<IEnumerable<CatalogueDto>>($"{ApiUri}/complexe/{complexeId}");
         }
 
-        public Task<CatalogueDto> GetCatalogue(int catalogueId)
+        public async Task<CatalogueDto> GetCatalogue(int catalogueId)
         {
-            throw new NotImplementedException();
+            return await _httpClient.GetFromJsonAsync<CatalogueDto>($"{ApiUri}/{catalogueId}");
         }
 
-        public Task<CatalogueDto> GetCatalogue()
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public Task<CatalogueDto> UpdateCatalogue(int catalogueId, CatalogueDto catalogue)
+        public async Task UpdateCatalogue(int catalogueId, UpdateCatalogueDto catalogue)
         {
-            throw new NotImplementedException();
+            await _httpClient.PutAsJsonAsync<UpdateCatalogueDto>($"{ApiUri}/{catalogueId}",catalogue);
         }
     }
 }

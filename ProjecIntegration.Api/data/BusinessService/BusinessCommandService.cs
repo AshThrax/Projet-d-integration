@@ -14,6 +14,8 @@ namespace DataInfraTheather.BusinessService
         private readonly IRepresentationRepository _representationRepository;
         private readonly IPieceRepository _piecerepository;
         private readonly ISalleDeTheatreRepository _sallerepository;
+        private readonly ISiegeCommandRepository _siegeCommandRepository;
+        private readonly ISiegeRepository _siegeRepository;
         private readonly IMapper _mapper;
 
         public BusinessCommandService(
@@ -21,13 +23,18 @@ namespace DataInfraTheather.BusinessService
             IPieceRepository pieceRepository,
             ISalleDeTheatreRepository sallerepository,
             IMapper mapper,
-            IRepresentationRepository representationRepository)
+            IRepresentationRepository representationRepository,
+            ISiegeRepository siegeRepository,
+            ISiegeCommandRepository siegeCommandRepository
+            )
         {
             _mapper = mapper;
             _sallerepository = sallerepository;
             _piecerepository = pieceRepository;
             _commandRepository = commandRepository;
             _representationRepository = representationRepository;
+            _siegeRepository=siegeRepository;
+            _siegeCommandRepository=siegeCommandRepository;
         }
 
         public async Task DeleteCommand(int id)
@@ -67,7 +74,7 @@ namespace DataInfraTheather.BusinessService
             }
         }
 
-        public async Task AddCommand(AddCommandDto command)
+        public async Task AddCommand( AddCommandDto command)
         {
             try
             {
@@ -82,8 +89,24 @@ namespace DataInfraTheather.BusinessService
                         //validation
                         //conversion Dto
                         Command Conversion = _mapper.Map<Command>(command);
-                        await _commandRepository.AddCommand(Conversion);
-                        //appel du controller pour inserer les ticket da
+                        Conversion =await _commandRepository.AddCommand(Conversion);
+
+
+                        //inserer les sieges a la commande 
+                        IEnumerable<Siege> addSiegeToCommand = await _siegeRepository.GetFromListIds(command.SiegeIds);
+
+                        foreach (Siege Item in addSiegeToCommand)
+                        {
+                            SiegeCommand siegeCommand = new SiegeCommand 
+                            {
+                                CommandId=Conversion.Id,
+                                Command = Conversion,
+                                SiegeId=Item.Id,
+                                Siege=Item,
+                            };
+
+                            await _siegeCommandRepository.Insert(siegeCommand);
+                        }
                     }
                     else
                     {
@@ -143,6 +166,34 @@ namespace DataInfraTheather.BusinessService
             }
           
 
+        }
+
+        public async Task<IEnumerable<CommandDto>> GetCommandByPiece(int PieceId)
+        {
+            try
+            {
+                return _mapper.Map<IEnumerable<CommandDto>>(await _commandRepository.GetAllFromPiece(PieceId));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task UpdateCommand(int id,UpdateCommandDto command)
+        {
+            try
+            {
+                var entityToUpdate= _mapper.Map<Command>(command);
+                 _commandRepository.Update(id, entityToUpdate);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

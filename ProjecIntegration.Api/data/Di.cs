@@ -44,6 +44,7 @@ namespace dataInfraTheather
             services.AddScoped<ICatalogueRepository, CatalogueRepository>();
             services.AddScoped<ICataloguePieceRepository, CataloguePieceRepository>();
             services.AddScoped<IThemeRepository, ThemeRepository>();
+            services.AddScoped<ISiegeCommandRepository, SiegeCommandRepository>();
 
             services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
             services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service

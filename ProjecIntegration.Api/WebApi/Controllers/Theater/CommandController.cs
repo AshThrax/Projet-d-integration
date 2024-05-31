@@ -4,6 +4,7 @@ using Domain.Entity.TheatherEntity;
 using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.DTO;
 using ApplicationPublication.Dto;
+using ApplicationTheather.BusinessService;
 
 namespace WebApi.Controllers.Theater
 {
@@ -13,11 +14,11 @@ namespace WebApi.Controllers.Theater
     [Authorize]
     public class CommandController : ControllerBase
     {
-        private readonly ICommandRepository _commandService;
+        private readonly IBusinessCommandService _commandService;
         private readonly IMapper _mapper;
         private readonly ICustomGetToken gtk;
         public CommandController(
-            ICommandRepository commandService,
+            IBusinessCommandService commandService,
             IMapper mapper,
             ICustomGetToken gtk
             )
@@ -44,12 +45,12 @@ namespace WebApi.Controllers.Theater
         }
         [HttpGet("{id}")]
     
-        public async Task<ActionResult<CommandDto>> GetByid(int id)
+        public async Task<ActionResult<CommandDto>> GetById(int id)
         
         {
             try
             {
-                var entities = _mapper.Map<Command, CommandDto>(await _commandService.GetById(id));
+                var entities = await _commandService.GetCommand(id);
                 return Ok(entities);
 
             }
@@ -70,7 +71,7 @@ namespace WebApi.Controllers.Theater
             {
                 var auth0UserId = gtk.GetSub().Result;
 
-                var entities = _mapper.Map<IEnumerable<CommandDto>>(await _commandService.GetAllUserCommand(auth0UserId));
+                var entities = _mapper.Map<IEnumerable<CommandDto>>(await _commandService.GetCommandUSer(auth0UserId));
                 return Ok(entities);
 
             }
@@ -90,7 +91,7 @@ namespace WebApi.Controllers.Theater
             try
             {
                 var entities = _mapper.Map<IEnumerable<CommandDto>>
-                    (await _commandService.GetAllFromPiece(idPiece));
+                    (await _commandService.GetCommandByPiece(idPiece));
                 return Ok(entities);
 
             }
@@ -117,7 +118,7 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entities = _mapper.Map<IEnumerable<CommandDto>>(await _commandService.GetAll());
+                IEnumerable<CommandDto> entities = await _commandService.GetAllCommand();
                 return Ok(entities);
 
             }
@@ -144,14 +145,11 @@ namespace WebApi.Controllers.Theater
                 var validator = new AddCommandValidator();
                 var auth0 = await gtk.GetSub();
                 CmdDtot.AuthId = auth0;
-                if (CmdDtot == null)
+                if (!ModelState.IsValid)
                 {
                     BadRequest();
                 }
-                //generation du ticket
-
-                var conversion = _mapper.Map<Command>(CmdDtot);
-               _commandService.Insert(conversion);
+                await _commandService.AddCommand(CmdDtot);
                 return Ok("Create Command");
 
             }
@@ -179,8 +177,8 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest(ModelState);
                 }
-                var conversion = _mapper.Map<UpdateCommandDto, Command>(updtdto);
-                 _commandService.Update(updtId, conversion);
+              
+                 await _commandService.UpdateCommand(updtId,updtdto);
                 return Ok();
 
             }
@@ -204,7 +202,7 @@ namespace WebApi.Controllers.Theater
             try
             {
 
-                await _commandService.Delete(id);
+                await _commandService.DeleteCommand(id);
                 return Ok("Command Deleted SuccesFully");
 
             }

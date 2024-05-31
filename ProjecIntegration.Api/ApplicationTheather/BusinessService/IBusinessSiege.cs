@@ -27,7 +27,7 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="siege"></param>
         /// <returns></returns>
-        Task CreateSiegeForSalle(AddSiegeDto siege);
+        Task<SiegeDto> CreateSiegeForSalle(AddSiegeDto siege);
         /// <summary>
         /// 
         /// </summary>

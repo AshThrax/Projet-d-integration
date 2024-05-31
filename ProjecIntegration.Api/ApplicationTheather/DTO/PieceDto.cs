@@ -12,7 +12,7 @@ namespace ApplicationTheather.DTO
         public string Auteur { get; set; } = string.Empty;
         public List<RepresentationDto>? Representations { get; set; }
         public int ImageId { get; set; }
-        public string ImageRessource { get; set; } =string .Empty;
+        public ImageDto? Image { get; set; }
         public int ThemeId { get; set; }
     }
     //ajoute une piece 

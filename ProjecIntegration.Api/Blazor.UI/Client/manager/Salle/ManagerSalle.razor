@@ -1,5 +1,5 @@
 ﻿@page "/manager/sallebycomplexe/{Id:int}"
-
+@page "/manager/sallebycomplexe"
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
@@ -7,96 +7,162 @@
 @inject IComplexeService ComplexesService;
 @inject ISalleService SalleService;
 <h3>Gestion des Salle</h3>
+<div class="flex-fill m-4 p-4">
+    <div class="m-4 p-4">
+        <div class=" btn-group rounded float-end">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
 
-<div class="m-4 p-4">
-    <div class=" btn-group rounded float-end">
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col"></div>
-
-        <button type="button" class="col col-sm-3   btn btn-warning" @onclick="AddSalle">Ajouter une Salle</button>
-    </div>
-</div>
-<br />
-<div class="w-25">
-    <label class="form-label" for="complexeId">Complexe </label>
-    <select class="form-control" @bind="SelectComplexeId" @oninput="OnSelectedChange">
-        <option>choissisez le complexe </option>
-        @foreach (ComplexeDto? item in GetComplexes)
-        {
-            <option value="@item.Id">@item.Name <p>@item.Id</p></option>
-        }
-    </select>
-</div>
-<br />
-@if (SelectComplexeId !=null)
-{
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col">
-                <QuickGrid Items="@GetSalles.AsQueryable()">
-                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                    <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
-
-                    <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
-                    <TemplateColumn Context="item">
-                        <div>
-                            <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>SelectSalle(item)">Details salle de theatre</button>
-                        </div>
-                    </TemplateColumn>
-                </QuickGrid>
-            </div>
-            <div class="col">
-                <div class="m-2 p-2 border border-solid">
-                    <div class="m-2 p-2">
-                        <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
-                        <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
-                        <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
-                        <p><strong>Representation Number</strong> @SelectedSalleDeTheatre?.Representations?.Count</p>
-                    </div>
-                </div>
-            </div>
-
+            <button type="button" class="col col-sm-3   btn btn-warning" @onclick="AddSalle">Ajouter une Salle</button>
         </div>
     </div>
-}
-else
-{
-   <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
-}
+    <br />
+    <div class="w-25">
+        <h3>Complexe </h3>
+        <select class="form-control" @bind="SelectComplexeId" @oninput="OnSelectedChange">
+            <option>choissisez le complexe </option>
+            @foreach (ComplexeDto item in GetComplexes)
+            {
+                <option value="@item.Id">@item.Name <p>@item.Id</p></option>
+            }
+        </select>
+    </div>
+    <br />
+    @if (SelectedComplexe != null && GetComplexes != null)
+    {
+        <div class="jumbotron m-2 p-2 rounded">
+            <div class="row m-2 p-2">
+                <div class="col-sm-6 m-2 p-2">
+                    <div class="card">   
+                        <h3 class="card-header">Salle du complexe</h3>
+                    @if (GetSalles != null)
+                    {
+                       <div class="card-body">
+                            <QuickGrid Items="@GetSalles.AsQueryable()">
+                            <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                            <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
+
+                            <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
+                            <TemplateColumn Context="item">
+                                <div>
+                                    <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>SelectSalle(item)">Details salle de theatre</button>
+                                </div>
+                            </TemplateColumn>
+                        </QuickGrid>    
+
+                       </div>
+                    }
+                    </div>
+                </div>
+                @if (SelectedSalleDeTheatre !=null)
+                {
+                    <div class="col-sm -6 card m-2 p-2">
+                        <div class="card m-2 p-2">
+                            <h3 class="card-header"> Details</h3>
+                            <div class="m-2 p-2 card-body">
+                                <div class="m-2 p-2">
+                                    <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
+                                    <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
+                                    <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
+                                    <p><strong>Representation Number</strong> @SelectedSalleDeTheatre?.Representations?.Count</p>
+                                </div>
+                                <br/>
+                                <div class="m-2 p-2 btn-group rounded float-end">
+                                    <button type="button" class="btn btn-primary" @onclick="() =>UpdateSalle(selectedSalleId)">Update</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-sm-6">
+                        <div class="m-2 p-2 ">
+                            <div class="m-2 p-2">
+                         
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    }
+    else
+    {
+       <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+    }
+</div>
 
 @code {
     [Parameter]
     public int Id { get; set; }
-    public IEnumerable<ComplexeDto>? GetComplexes { get; set; } 
-    public ComplexeDto? SelectedComplexe { get; set; } = new();
+    public List<ComplexeDto> GetComplexes { get; set; } = new();
+    public ComplexeDto SelectedComplexe { get; set; } = new();
     public int SelectComplexeId { get; set; }
-    public IEnumerable<SalleDeTheatreDto>? GetSalles { get; set; }
-    public SalleDeTheatreDto SelectedSalleDeTheatre { get; set; } = new();
+    public List<SalleDeTheatreDto>? GetSalles { get; set; }
+    public SalleDeTheatreDto? SelectedSalleDeTheatre { get; set; } 
+    public int selectedSalleId { get; set; }
     protected override async Task OnInitializedAsync()
     {
         SelectComplexeId = Id;
-        GetComplexes = await ComplexesService.Get();
+        GetComplexes = (await ComplexesService.Get()).ToList();
         SelectedComplexe = await ComplexesService.GetById(SelectComplexeId);
         GetSalles = SelectedComplexe?.SalleDeTheatres;
+        await Task.Delay(1000);
     }
     public void SelectSalle(SalleDeTheatreDto salleDeTheatreDto)
     {
-        SelectedSalleDeTheatre = salleDeTheatreDto;
+        try
+        {
+            SelectedSalleDeTheatre = salleDeTheatreDto;
+            selectedSalleId = SelectedSalleDeTheatre.Id;
+
+        }
+        catch (Exception)
+        {
+            SelectedSalleDeTheatre = new();
+
+        }
     }
     public async Task OnSelectedChange(ChangeEventArgs args)
     {
+
 
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
             SelectComplexeId = selectedId;
         }
-        SelectedComplexe = await ComplexesService.GetById(SelectComplexeId);
-        GetSalles = SelectedComplexe.SalleDeTheatres;
+        try
+        {
+            SelectedComplexe = await ComplexesService.GetById(SelectComplexeId);
+            if (SelectedComplexe.SalleDeTheatres?.Count >= 0)
+            {
+                GetSalles = SelectedComplexe.SalleDeTheatres;
+                SelectedSalleDeTheatre = null;
+            }
+            else
+            {
+                GetSalles = new List<SalleDeTheatreDto>();   
+            }
+
+        }
+        catch (Exception)
+        {
+
+            SelectedComplexe = new();
+        }
     }
     
     private void AddSalle()
     {
         manager.NavigateTo("/manager/addSalle");
+    }
+    private void UpdateSalle(int Id)
+    {
+        manager.NavigateTo($"/manager/updateSalle/{Id}");
     }
 }

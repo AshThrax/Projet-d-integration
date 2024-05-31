@@ -1,0 +1,113 @@
+﻿@page "/manager/updateSalle/{Id:int}"
+
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject NavigationManager manager;
+@inject IComplexeService ComplexesService;
+@inject ISalleService SalleService;
+
+<div class="flex-fill m-4 p-4">
+    <h3>Mise a jour d'une sallede théatre</h3>
+
+    <div class="m-4 p-4">
+        <div class=" btn-group rounded float-end">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <button type="button" class="col col-sm-3  btn btn-warning" @onclick="() => GetAllSalle(SelectComplexeId)">Voir Toute les Salles</button>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="display-4">Edit SalleDeTheatre</h3>
+
+        </div>
+        <div class="card-body">
+
+            @if (SelectedSalle != null)
+            {
+                <form>
+                    <div class="col-form-label">
+                        <div>
+                            <label class="form-label" for="name">Name:</label>
+                            <input class="form-control" id="name" @bind="SelectedSalle .Name" />
+                        </div>
+                        <div>
+                            <label class="form-label" for="placeMax">Place Max:</label>
+                            <input class="form-control" id="placeMax" @bind="SelectedSalle.PlaceMax" type="number" />
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="complexeId">Complexe ID:</label>
+                            <select class="form-control" @bind="SelectComplexeId" @oninput="OnSelectedChange">
+                                <option>choissisez le complexe </option>
+                                @foreach (ComplexeDto item in AllComplexe)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="m-2 p-2">
+                            <button type="button" class="btn btn-success" @onclick="() => UpdateSalleDeTheatre(SelectedSalle)">Update SalleDeTheatre</button>
+                        </div>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <p>No SalleDeTheatre provided</p>
+            }
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public SalleDeTheatreDto SelectedSalle { get; set; } = new();
+    public int SelecteSalleId { get; set; }
+    public List<ComplexeDto> AllComplexe { get; set; } = new(); 
+    public int SelectComplexeId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    { 
+        if (Id == 0)
+        { 
+            Id = 1;
+        }
+        AllComplexe = (await ComplexesService.Get()).ToList();
+        SelectedSalle = await SalleService.GetById(Id);
+        await Task.Delay(1000);
+        SelecteSalleId = Id;
+
+    }
+    private async Task UpdateSalleDeTheatre(SalleDeTheatreDto updateInfo)
+    {
+        UpdateSalleDeTheatreDto updatedsalle = new UpdateSalleDeTheatreDto
+            {
+                Name = updateInfo.Name,
+                ComplexeId = SelectComplexeId,
+                PlaceMax = updateInfo.PlaceMax,
+                AddedTime = DateTime.Now,
+                Id = SelecteSalleId
+        };
+        await SalleService.Update(SelecteSalleId, updatedsalle);
+    }
+    public void OnSelectedChange(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectComplexeId = selectedId;
+        }
+
+    }
+    private void GetAllSalle(int complexeId)
+    {
+        manager.NavigateTo($"/manager/sallebycomplexe/{complexeId}");
+    }
+}

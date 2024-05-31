@@ -1,6 +1,6 @@
 ﻿@page "/representation/{Id:int}"
 @using Blazor.UI.Data.modelViews.Theater
-@attribute [Authorize]
+@attribute [Authorize(Roles ="Admin")]
 @attribute [StreamRendering]
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
@@ -95,7 +95,7 @@ else
 @code {
     [Parameter]
     public int Id { get;  set;}
-    private PieceDto? myPiece;
+    private PieceDto? myPiece { get; set; } = new();
     private IEnumerable<RepresentationDto>? Myrepresnetation;
     private RepresentationDto? selectedRepresentation;
     private SalleDeTheatreDto? Piecesalle;

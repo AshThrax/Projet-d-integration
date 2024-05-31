@@ -1,0 +1,207 @@
+﻿@page "/manager/catalogue/{Id:int}"
+@page "/manager/catalogue"
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+@inject IComplexeService ComplexeService;
+@inject ICatalogueService CatalogueService;
+@inject IPieceService PieceService;
+@inject NavigationManager manager;
+
+<div class="flex-fill m-4 p-4">
+
+    <div class="jumbotron bg-white w-25  rounded">
+        <h1 class="">Gestion des Catalogue</h1>
+
+    </div>
+    <div class="p-2">
+        <div class="w-25">
+            <select class="form-control" @bind="SelectedComplexeId" @oninput="OnSelectedChange">
+                <option value="value">choose Complexe</option>
+                @foreach (var item in GetComplexe)
+                {
+                    <option value="@item.Id">@item.Name</option>
+
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row w-50">
+        @if (GetCatalogue != null)
+        {
+
+           <div class="col w-25">
+                <div class="card">
+                   <h3 class="card-header">les catalogues</h3>
+                   <div class="card-body">
+                        <QuickGrid Items="GetCatalogue.AsQueryable()" >
+                                <PropertyColumn Property="p =>p.Name" Sortable="true"/>
+                                <PropertyColumn Property="p =>p.Description" Sortable="true" />
+                                <PropertyColumn Property="p =>p.AddedTime" Sortable="true" />
+                                <TemplateColumn Context="item">
+                                    <button type="button" class="btn btn-warning" @onclick="() => SelecteCatalogue(item)">details</button>
+                                </TemplateColumn>
+                        </QuickGrid>
+
+                   </div>
+               </div>
+            </div>
+      
+        }
+        else
+        {
+           <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>    
+        }
+    </div>
+    <br />
+    <div class="row rounded">
+  
+        @if (SelectedCatalogue != null)
+        {
+           <div class="col w-25">
+            
+                <div class="card">
+                      
+                    <h3 class="card-header">Details</h3>
+                    <div class="w-25 row card-body">
+                        <div class="col">
+                                <div class="">
+                                    <p><strong>Id</strong> : @SelectedCatalogue.Id</p>
+                                </div>
+                                <div class="">
+                                    <p><strong>Name</strong> : @SelectedCatalogue.Name</p>
+                                </div>
+                                <div class="">
+                                    <p><strong>Description</strong> : @SelectedCatalogue.Description</p>
+                                </div>
+                                <div class="">
+                                    <p><strong> Date de creation</strong> : @SelectedCatalogue.AddedTime</p>
+                                </div>
+                        </div>
+                         <div class="m-1 ">
+                       
+                            <div class="col">
+                                <div class="col col-10 btn-group float-lg-end m-4">
+                                    <button type="button"
+                                            class="btn btn-warning"
+                                            @onclick="() =>GetToAddCatalog()">
+                                       Ajouter un catalogue
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-warning"
+                                            @onclick="() =>GetToUpdateCatalog(SelectedCatalogueId)">
+                                        Update
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-warning"
+                                            @onclick="() =>GetPieceFromcatalogue(SelectedCatalogueId)">
+                                        Ajouter une piece
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-danger"
+                                            @onclick="() =>GetToDeleteCatalog(SelectedCatalogueId)">
+                                        Delete
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-warning"
+                                            @onclick="() =>GetPieceFromcatalogue(SelectedCatalogueId)">
+                                        Liste de Piece
+                                    </button>
+
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+           </div>
+      
+        }
+        else
+        {
+            <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+        }
+        <div class="col w-25">
+            <div class="card ">
+              <div class="m-1">
+                  <h3 class="card-header"> liste des Pieces de théatre</h3>
+              </div>
+                <div class="col w-25 card-body">
+                  @if (GetPieceDto != null)
+                  {
+           
+                    <QuickGrid Items="GetPieceDto.AsQueryable()">
+                        <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                        <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                        <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                        <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                       <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                    </QuickGrid>
+                  }
+                  else
+                  {
+               
+                  }
+              </div>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    List<ComplexeDto>? GetComplexe { get; set; } 
+    ComplexeDto? SelectedComplexe { get; set; } 
+    public int SelectedComplexeId { get; set; }
+    List<CatalogueDto>? GetCatalogue { get; set; }
+    CatalogueDto? SelectedCatalogue { get; set; } 
+    public int SelectedCatalogueId { get; set; }
+    List<PieceDto>? GetPieceDto { get; set; } 
+    protected async override Task OnInitializedAsync()
+    {
+        SelectedComplexeId = Id;
+        GetComplexe = (await ComplexeService.Get()).ToList();
+        GetCatalogue = (await CatalogueService.GetAllCatalogueByComplexeId(SelectedComplexeId)).ToList();
+        await Task.Delay(1000);
+    }
+    public void SelecteCatalogue(CatalogueDto selected)
+    {
+        SelectedCatalogue = selected;
+        SelectedCatalogueId = SelectedCatalogue.Id;
+    }
+    public async Task GetPieceFromcatalogue(int catalogueId)
+    {
+        GetPieceDto = (await PieceService.GetByCatalogue(catalogueId)).ToList();
+        await Task.Delay(1000);
+    }
+    public async Task OnSelectedChange(ChangeEventArgs args)
+    {
+
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectedComplexeId = selectedId;
+        }
+
+        await LoadCatalogue(SelectedComplexeId);
+    }
+    public async Task LoadCatalogue(int selectedid)
+    {
+        GetCatalogue = (await CatalogueService.GetAllCatalogueByComplexeId(SelectedComplexeId)).ToList();
+        await Task.Delay(1000);
+    }
+    public void GetToAddCatalog()
+    {
+        manager.NavigateTo("/manager/addcatalogue");
+    }
+    public void GetToUpdateCatalog(int catalogueId)
+    {
+        manager.NavigateTo($"/manager/updatecatalogue/{catalogueId}");
+    }
+    public void GetToDeleteCatalog(int catalogueId)
+    {
+        manager.NavigateTo($"/manager/Deletecatalogue/{catalogueId}");
+    }
+}

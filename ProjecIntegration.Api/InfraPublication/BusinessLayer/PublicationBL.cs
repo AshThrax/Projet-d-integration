@@ -38,7 +38,7 @@ namespace InfraPublication.BusinessLayer
                 Publication mapped= _mapper.Map<Publication>(pub);
                 mapped.UpdatedDate=DateTime.Now;
                 mapped.CreatedDate=DateTime.Now;
-                _publicationRepository.Insert(mapped);
+                await _publicationRepository.Insert(mapped);
                 //----
             }
             catch (Exception ex)

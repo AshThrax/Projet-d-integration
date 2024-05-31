@@ -4,33 +4,137 @@
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.modelViews
+@using Blazor.UI.data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using Blazor.UI.Client.Page.ReservationComponent
-@inject IComplexeService _complexeServie;
-@inject IPieceService _pieceservice;
+@inject IComplexeService complexeService;
+@inject ICatalogueService catalogueService;
+@inject IPieceService pieceService;
+@inject IThemeService themeService;
+@inject NavigationManager manager;
+<div class="flex-fill m-4 p-4">
+<h3 class=" bg-light  m-4 p-2 rounded-2 text-center">Recherche de pièce de théatre</h3>
 
+    <div class="container-fluid">
+        <ul class=" nav nav-tabs">
+            <li class=" nav-item m-2">
+                <h3>Theme</h3>
+                <select @oninput="OnSelectedTheme" @bind="SelectedThemeId" class="form-control form-control-sm m-2 p-2">
+                    <option>choissir un theme</option>
+                    @foreach (ThemeDto item in GetAllTheme)
+                    {
+                      <option value="@item.Id">@item.Libelle</option>  
+                    }
+                </select>
 
-<h3 class=" bg-light  m-4 p-2 rounded-2 text-center">Reservation</h3>
-
-
-<div class="container text-center ">
-    <div class="row align-items-start">
-      <div class="col">
-           <div class="col w-50">
-               <Blazor.UI.Client.Page.RepresentationPage.PieceDropDown  PieceDtos="pieceDtos"></Blazor.UI.Client.Page.RepresentationPage.PieceDropDown>
-           </div>
-
-      </div> 
+            </li>
+            <li class="nav-item m-2">
+                <h3>complexe</h3>
+                <select @bind="SelectComplexeId" @oninput="OnSelectedComplexe" class="form-control form-control-sm  m-2 p-2">
+                    <option> choisir un complexe</option>
+                    @foreach (var item in GetComplexes)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </li>
+            <li class="nav-item m-2">
+                <h3> catalogue</h3>
+                <select @bind="SelectCatalogueId" @oninput="OnSelectedCatalogue" class="form-control form-control-sm  m-2 p-2">
+                    <option > Choisir un catalogue</option>
+                    @foreach (var item in GetCatalogues)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </li>
+        </ul>
+    </div>
+    <br />
+    <div class="col-sm-6 float-end">
+        @if (pieceDtos != null)
+    {
+        @foreach (var item in pieceDtos)
+        {
+            <div class="row m-2 p-2">
+                <div class=" m-2 p-2">
+                    <div class="m-2 p-2">
+                        <div class="card m-2 p-2">
+                            <div class="card-img">
+                                <img class="img-fluid" src="https://localhost:44337/Resources/@item.Image" />
+                                <p>@item.Image</p>
+                            </div>
+                            <p><strong>Auteur :</strong>@item.Auteur</p>
+                            <p><strong>Descirption :</strong>@item.Description</p>
+                            <p><strong>Durée de la pièce :</strong>@item.Duree</p>
+                            <div class="btn-group float-end m-2 p-2">
+                                <button @onclick="() => GetDescription(item.Id)" type="button" class="btn btn-secondary p-1">info</button>
+                                    <button @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1">Seance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
     </div>
 </div>
+
 @code {
-   
-    public IEnumerable<PieceDto>? pieceDtos { get; set; }
+    public List<PieceDto> pieceDtos { get; set; } = new();
+    public List<ThemeDto> GetAllTheme { get; set; }=new();
+    public ThemeDto singleTheme { get; set; } = new();
+    public int SelectedThemeId { get; set; }
+    public List<ComplexeDto> GetComplexes { get; set; } = new();
+    public ComplexeDto singleComplexe { get; set; } = new();
+    public int SelectComplexeId { get; set; }
+    public List<CatalogueDto> GetCatalogues { get; set; } = new();
+    public CatalogueDto singleCatalogue{ get; set; } = new();
+    public int SelectCatalogueId { get; set; }
     protected override async Task OnInitializedAsync()
     {
         //var convert  = await _complexeService.Get();
-        pieceDtos = await _pieceservice.Get();
-       // getComplexe = convert;
+        pieceDtos = (await pieceService.Get()).ToList();
+        GetAllTheme = (await themeService.GetAllTheme()).ToList();
+        GetComplexes = (await complexeService.Get()).ToList();
+        // getComplexe = convert;
+        await Task.Delay(1000);
+    }
 
+    public async Task OnSelectedComplexe(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectComplexeId = selectedId;
+            singleComplexe = await complexeService.GetById(SelectComplexeId);
+            GetCatalogues = (await catalogueService.GetAllCatalogueByComplexeId(selectedId)).ToList();
+        }
+    }
+    public async Task OnSelectedCatalogue(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectCatalogueId = selectedId;
+            singleCatalogue = await catalogueService.GetCatalogue(SelectCatalogueId);
+            pieceDtos = (await pieceService.GetByCatalogue(SelectCatalogueId)).ToList();
+        }
+    }
+
+    public async Task OnSelectedTheme(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectedThemeId = selectedId;
+            pieceDtos = (await pieceService.GetByTheme(SelectedThemeId)).ToList();
+        }
+    }
+
+    public void GetDescription(int id)
+    {
+        manager.NavigateTo($"/pieceinfo/{id}");
+    }
+    public void GetSeance(int id)
+    {
+        manager.NavigateTo($"/representation/{id}"); 
     }
 }

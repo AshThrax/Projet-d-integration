@@ -27,12 +27,30 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task<IEnumerable<ComplexeDto>> Get()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
+
+            }
+            catch (Exception)
+            {
+
+               return new List<ComplexeDto>();
+            }
         }
 
-        public async Task<ComplexeDto?> GetById(int id)
+        public async Task<ComplexeDto> GetById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<ComplexeDto?>($"{ApiUri}/{id}");
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<ComplexeDto?>($"{ApiUri}/{id}");
+
+            }
+            catch (Exception)
+            {
+
+              return new ComplexeDto();
+            }
         }
 
         public async Task Create(AddComplexeDto data)

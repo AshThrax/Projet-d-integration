@@ -8,8 +8,8 @@ public class ComplexeDto : Baseview
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Adress { get; set; } = string.Empty;
-    public List<SalleDeTheatreDto>? SalleDeTheatres { get; set; }
-    public List<CatalogueDto>? Catalogue { get; set; }
+    public List<SalleDeTheatreDto>? SalleDeTheatres { get; set; } = new();
+    public List<CatalogueDto>? Catalogue { get; set; }=new List<CatalogueDto>();
     //public Entreprise Entreprise { get; set; }
     //public int EntrepriseID { get; set; }
 }

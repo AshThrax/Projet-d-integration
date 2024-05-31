@@ -93,6 +93,19 @@ namespace DataInfraTheather.BusinessService
             }
         }
 
+        public async Task<IEnumerable<CatalogueDto>> GetAllCatalogue()
+        {
+            try
+            {
+                return _mapper.Map<IEnumerable<CatalogueDto>>(await _catalogueRepository.GetAll());
+            }
+            catch (Exception)
+            {
+
+               return Enumerable.Empty<CatalogueDto>();
+            }
+        }
+
         public async Task<IEnumerable<CatalogueDto>> GetCatalogueByComplexe(int complexeId)
         {
             try

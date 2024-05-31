@@ -23,7 +23,7 @@ namespace InfraPublication.BusinessLayer
             _mapper = mapper;
         }
 
-        public async Task Createasync(string publicationId,PostDto pub)
+        public async Task CreateAsync(string publicationId,PostDto pub)
         {
             try
             {

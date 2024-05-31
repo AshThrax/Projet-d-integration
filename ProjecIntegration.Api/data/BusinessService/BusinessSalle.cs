@@ -20,12 +20,12 @@ namespace DataInfraTheather.BusinessService
             _mapper = mapper;
         }
 
-        public  void CreateSalle(int idComplexe, AddSalleDeTheatreDto entity)
+        public async Task CreateSalle(int idComplexe, AddSalleDeTheatreDto entity)
         {
             try
             {
                 SalleDeTheatre newEntity = _mapper.Map<SalleDeTheatre>(entity);
-                _salleDeTheatreRepository.Insert(newEntity);
+                await _salleDeTheatreRepository.Insert(newEntity);
 
             }
             catch (Exception)

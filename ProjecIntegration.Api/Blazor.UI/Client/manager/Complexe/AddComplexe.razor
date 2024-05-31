@@ -9,41 +9,49 @@
     <p>ajout de complexe</p>
     <div class="m-4 p-4">
         <div class=" btn-group rounded float-end">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
+           
             <button type="button" class="col col-sm-3  btn btn-warning" @onclick="GetAll">Voir les Complexes</button>
            
         </div>
     </div>
     <br />
 </div>
-<div class="m-2 p-2 w-25">
-    <div>
-        @if (MyAddComplexe != null)
-        {
-            <form>
-                <div class=" form-group mb-3">
-                    <label class="form-label" for="name">Name:</label>
-                    <input class="form-control" id="name" @bind="AddedComplexe .Name" />
-
-                    <label class="form-label" for="description">Description:</label>
-                    <input class="form-control" id="description" @bind="AddedComplexe .Description" />
-
-                    <label class="form-label" for="address">Address:</label>
-                    <input class="form-control" id="address" @bind="AddedComplexe .Adress" />
-
-                    <!-- Add other input fields based on your UpdateComplexeDto properties -->
-                    <br />
-                    <button type="button" class="btn btn-warning" @onclick="MyAddComplexe">Update Complexe</button>
+<div class="m-4 p-4">
+    <div class="m-2 p-2">
+        <div class="m-2 p-2 card rounded w-50">
+            @if (AddedComplexe != null)
+            {
+                <div class="card-header">
+                    <h3> ajouter un complexe a la base de donnéé</h3>
                 </div>
-            </form>
-        }
-        else
-        {
-            <Blazor.UI.Client.Shared.Load loadParam="No Complexe provided"></Blazor.UI.Client.Shared.Load>
-        }
+                <form class="m-1 bg-white">
+                    <div class="col-form-label">
+                        <div>
+                            <label class="form-label" for="name">Name:</label>
+                            <input class="form-control" id="name" @bind="AddedComplexe .Name" />
+
+                        </div>
+                        <div>
+                            <label class="form-label" for="description">Description:</label>
+                            <input class="form-control" id="description" @bind="AddedComplexe .Description" />
+                        </div>
+                        <div>
+                            <label class="form-label" for="address">Address:</label>
+                            <input class="form-control" id="address" @bind="AddedComplexe .Adress" />
+                        </div>
+
+                        <!-- Add other input fields based on your UpdateComplexeDto properties -->
+                        <br />
+                        <button type="button" class="btn btn-warning" @onclick="MyAddComplexe">Update Complexe</button>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <Blazor.UI.Client.Shared.Load loadParam="No Complexe provided"></Blazor.UI.Client.Shared.Load>
+            }
       
+        </div>
     </div>
 </div>
 @code {

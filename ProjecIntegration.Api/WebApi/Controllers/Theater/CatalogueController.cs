@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Theater
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class CatalogueController : ControllerBase
     {
@@ -16,12 +16,26 @@ namespace WebApi.Controllers.Theater
         {
             _businessCatalogue = businessCatalogue;
         }
+       
         [HttpGet("complexe/{complexeId}")]
         public async Task<ActionResult<IEnumerable<CatalogueDto>>> GetCatalogues(int complexeId)
         {
             try
             {
                 return Ok(await _businessCatalogue.GetCatalogueByComplexe(complexeId));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CatalogueDto>>> GetAll()
+        {
+            try
+            {
+                return Ok(await _businessCatalogue.GetAllCatalogue());
             }
             catch (Exception)
             {

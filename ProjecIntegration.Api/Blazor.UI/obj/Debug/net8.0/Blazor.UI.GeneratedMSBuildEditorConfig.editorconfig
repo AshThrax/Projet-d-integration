@@ -30,6 +30,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XEF1dGhlbnRpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/AddCatalogue.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXEFkZENhdGFsb2d1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/GetAllCatalogue.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXEdldEFsbENhdGFsb2d1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/UpdateCatalogue.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXFVwZGF0ZUNhdGFsb2d1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/ComplexeSalle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ29tcGxleGVTYWxsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,8 +74,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcQWRkUGllY2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/AddPieceToCatalogue.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcQWRkUGllY2VUb0NhdGFsb2d1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/PieceManager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcUGllY2VNYW5hZ2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/RemovePieceFromCatalogue.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcUmVtb3ZlUGllY2VGcm9tQ2F0YWxvZ3VlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/UpdatePiece.razor]
@@ -80,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/ManagerSalle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVcTWFuYWdlclNhbGxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/UpdateSalle.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVcVXBkYXRlU2FsbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/AddComplexe.razor]

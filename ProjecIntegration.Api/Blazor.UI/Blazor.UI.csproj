@@ -32,7 +32,8 @@
 
   <ItemGroup>
     <Folder Include="Client\Client page\" />
-    <Folder Include="Client\manager\Catalogue\" />
+    <Folder Include="Client\manager\Representation\" />
+    <Folder Include="Client\manager\Siege\" />
     <Folder Include="Client\Page\PiecePage\" />
   </ItemGroup>
 

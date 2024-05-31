@@ -112,7 +112,7 @@ namespace WebApi.Controllers.Publication
                 {
                     return BadRequest();
                 }
-                    await postBL.Createasync(publicationById,AddPost);
+                    await postBL.CreateAsync(publicationById,AddPost);
                     return Ok();
             }
             catch (Exception ex)

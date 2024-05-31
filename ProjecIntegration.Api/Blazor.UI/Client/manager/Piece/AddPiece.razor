@@ -3,93 +3,91 @@
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.services.TheatherService
 @using Microsoft.AspNetCore.Http
+@using Microsoft.Net.Http.Headers
 
 
 @inject IPieceService pieceService;
 @inject IThemeService themeService;
 @inject NavigationManager manager;
-<div>
-</div>
-<div class="card m-4 p-4">
-    <h3 class="card-title">AddPiece</h3>
-    <div class="card-body">
-        <form>
-            <div class="form-group mb-3 w-50">
-                <div>
-                    <label class="form-label for="titre">Titre:</label>
-                    <input class="form-control" id="titre" @bind="piece.Titre" />
-                </div>
+<div class="flex-fill m-4">
+    <div class="card m-4 p-4">
+        <h3 class="card-title">AddPiece</h3>
+        <div class="card-body">
+            <div class="col-sm-6">
 
-                <div>
-                    <label class="form-label for="duree">Duree:</label>
-                    <input class="form-control" id="duree" @bind="piece.Duree" type="number" />
-                </div>
+                <form>
+                    <div class="form-group mb-3 w-50">
+                        <div>
+                            <label class="form-label for="titre">Titre:</label>
+                            <input class="form-control" id="titre" @bind="addedpiece.Titre" />
+                        </div>
 
-                <div>
-                    <label class="form-label for="description">Description:</label>
-                    <textarea class="form-control " id="description" @bind="piece.Description" rows="3">
-                    </textarea>
-                </div>
-                <div>
-                    <label class="form-label for="auteur">Auteur :</label>
-                    <input class="form-control" id="titre" @bind="piece.Auteur" />
-                </div>
-                <div>
-                    <label class="form-label for="File">Photo :</label>
-                    <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" multiple />
-                </div>
-                <div>
-                </div>
-                <br />
-                <div>
-                    <button class="btn-primary" type="btn" @onclick="AddPieceToDatabase">ajouter</button>
-                </div>
+                        <div>
+                            <label class="form-label for="duree">Duree:</label>
+                            <input class="form-control" id="duree" @bind="addedpiece.Duree" type="number" />
+                        </div>
 
+                        <div>
+                            <label class="form-label for="description">Description:</label>
+                            <textarea class="form-control " id="description" @bind="addedpiece.Description" rows="3">
+                            </textarea>
+                        </div>
+                        <div>
+                            <label class="form-label for="auteur">Auteur :</label>
+                            <input class="form-control" id="titre" @bind="addedpiece.Auteur" />
+                        </div>
+                        <div>
+                            <label class="form-label for="File">Photo :</label>
+                            <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" multiple />
+                        </div>
+                        <div>
+                        </div>
+                        <br />
+                        <div>
+                            <button class="btn-primary" type="btn" @onclick="() => AddPieceToDatabase(addedpiece)">ajouter</button>
+                        </div>
+                       
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-3">
                 <div>
-                    <p>@piece.Auteur</p>
-                    <p>@piece.Description</p>
-                    <p>@piece.Duree</p>
-                    <p>@piece.ThemeId</p>
-                    <p>@piece.Auteur</p>
-                    <p>@piece.Auteur</p>
+                    <p>@addedpiece.Auteur</p>
+                    <p>@addedpiece.Description</p>
+                    <p>@addedpiece.Duree</p>
+                    <p>@addedpiece.ThemeId</p>
+
                     <p>@ImageFile?.Name</p>
                 </div>
             </div>
-        </form>
+        </div>
+
+
     </div>
-
-
 </div>
 
 
 @code {
     [Parameter]
     public int Id { get; set; }
-
-
-    public IFormFile? ImageFile { get; set; }
-    public AddPieceDto piece { get; set; } = new AddPieceDto();
+    private int maxAllowedFiles = 1;
+    private long maxFileSize = long.MaxValue;
+    IFormFile ImageFile { get; set; } 
+    public AddPieceDto addedpiece { get; set; } = new AddPieceDto();
     protected override async Task OnInitializedAsync()
     {
-        piece = new AddPieceDto();
+        addedpiece = new AddPieceDto();
+        await Task.Delay(1000);
     }
     private void OnFileSelected(InputFileChangeEventArgs e)
     {
-        ImageFile = (IFormFile)e.File;
+        addedpiece.ImageFile =(IFormFile) e.File;
+
     }
-    public void AddPieceToDatabase()
+    public void AddPieceToDatabase(AddPieceDto PieceToAdd)
     {
-        AddPieceDto createPiece = new AddPieceDto
-            {
-                Auteur = piece.Auteur,
-                Description = piece.Description,
-                Duree = piece.Duree,
-                ThemeId = piece.ThemeId,
-                ImageFile = this.ImageFile,
-                Titre = piece.Titre
-            };
-        piece.ImageFile = ImageFile;
-        pieceService.Create(createPiece);
+       
+        pieceService.Create(PieceToAdd);
 
     }
 }

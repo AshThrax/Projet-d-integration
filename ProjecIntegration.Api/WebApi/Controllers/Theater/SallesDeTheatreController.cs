@@ -89,7 +89,7 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                _bussinessServices.CreateSalle(Entity.ComplexeId,Entity);
+                 await _bussinessServices.CreateSalle(Entity.ComplexeId,Entity);
                 return Ok(Entity);
             }
             catch (ValidationException ex)

@@ -16,13 +16,19 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        Task AddCommand(AddCommandDto command);
+        Task AddCommand( AddCommandDto command);
         /// <summary>
-        /// 
+        /// get Command By User
         /// </summary>
         /// <param name="Auth"></param>
         /// <returns></returns>
         Task<IEnumerable<CommandDto>> GetCommandUSer(string Auth);
+        /// <summary>
+        /// get Command byPiece
+        /// </summary>
+        /// <param name="PieceId"></param>
+        /// <returns></returns>
+        Task<IEnumerable<CommandDto>> GetCommandByPiece(int PieceId);
         /// <summary>
         /// 
         /// </summary>
@@ -40,5 +46,12 @@ namespace ApplicationTheather.BusinessService
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteCommand(int id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        Task UpdateCommand(int id,UpdateCommandDto command);
     }
 }

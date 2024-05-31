@@ -1,20 +1,32 @@
 ﻿@using Blazor.UI.Data.modelViews.Theater
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using System.Security.Claims
 @* Client/Shared/AccessControl.razor *@
 @inject NavigationManager Navigation;
 @inject SignOutSessionStateManager SignOutManager;
 
 <AuthorizeView>
     <Authorized>
-        <p>Hello, @context?.User?.Identity?.Name
+        <p>Hello, @context?.User?.Identity?.Name</p>
         @if (@context?.User?.Identity?.Name! == null)
         {
-            @context?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value;
-        }</p>
+            <p><span>@context?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value</span></p>
+        
+
+            @if (context.User.IsInRole("Admin"))
+            {
+                <p>Admin</p>
+            }
+            else
+            {
+                <p>visiteur</p>
+            }
+
+        }
         <a class="nav-link" href="profileViewer"
             <img class="img-fluid border rounded" style="height:50px; width:50px" src="@context?.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value" />
         </a>
-        <a href="#" @onclick="BeginSignOut">Log out</a>
+        <a class="me-1 pe-1" href="#" @onclick="BeginSignOut">Log out</a>
     </Authorized>
     <NotAuthorized>
         <a href="authentication/login">Log in</a>
@@ -24,13 +36,12 @@
 @code {
 
     public UserView? Userlog { get; set; }
+    private List<Claim>? claims { get; set; }
 
     private async Task BeginSignOut(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
-     
-      
-        
+          
     }
 }

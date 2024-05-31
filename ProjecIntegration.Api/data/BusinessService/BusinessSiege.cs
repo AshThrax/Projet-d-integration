@@ -27,27 +27,13 @@ namespace DataInfraTheather.BusinessService
             _commandRepository = commandRepository;
         }
 
-        public async Task CreateSiegeForSalle(AddSiegeDto siege)
+        public async Task<SiegeDto> CreateSiegeForSalle(AddSiegeDto siege)
         {
             try
             {
                Siege siegeAdd= _mapper.Map<Siege>(siege);
-               _siegeRepository.Insert(siegeAdd);
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public async Task AddSiegeToCommand(int Siege,AddCommandDto command)
-        {
-            try
-            {
-                Siege siegeforCommand=await _siegeRepository.GetById(Siege);
-
-             
+               Siege Added= await  _siegeRepository.Insert(siegeAdd);
+                return _mapper.Map<SiegeDto>(Added);
             }
             catch (Exception)
             {
@@ -87,7 +73,7 @@ namespace DataInfraTheather.BusinessService
                 return new SiegeDto();
             }
         }
-
+     
         public async Task<IEnumerable<SiegeDto>> GetSiegeFromCommand(int commandId)
         {
             try
@@ -95,7 +81,7 @@ namespace DataInfraTheather.BusinessService
 
                 var entity = await _commandRepository.GetById(commandId);
 
-                return(_mapper.Map<IEnumerable<SiegeDto>>(entity.sieges));
+                return new  List<SiegeDto>();
                
             }
             catch (Exception)

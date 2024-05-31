@@ -11,7 +11,7 @@ namespace ApplicationTheather.BusinessService
         /// <param name="idComplexe">identifiant du complexe</param>
         /// <param name="entity">nouvvelle salled e hteatre</param>
         /// <returns></returns>
-        void CreateSalle(int idComplexe, AddSalleDeTheatreDto entity);
+        Task CreateSalle(int idComplexe, AddSalleDeTheatreDto entity);
         /// <summary>
         ///  supprimer une salle de theatre
         /// </summary>

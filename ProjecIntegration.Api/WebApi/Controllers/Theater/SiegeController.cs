@@ -62,8 +62,8 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                await _businessSiege.CreateSiegeForSalle(dto);
-                return Ok();
+                var entity = await _businessSiege.CreateSiegeForSalle(dto);
+                return Ok(entity);
             }
             catch (Exception)
             {

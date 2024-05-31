@@ -10,6 +10,7 @@ namespace ApplicationTheather.BusinessService
 {
     public interface IBusinessCatalogue
     {
+        Task<IEnumerable<CatalogueDto>> GetAllCatalogue();
         /// <summary>
         /// récupération d'un catalogue par id 
         /// </summary>

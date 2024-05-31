@@ -10,30 +10,24 @@ namespace WebApi.Controllers.Theater
     [ApiController]
     public class PieceController : ControllerBase
     {
-        private readonly IMapper _mapper;
+        
         private readonly IBusinessPiece _pieceRepository;
         private readonly IBusinessCatalogue _businessCatalogue;
         private readonly IFileService fileService;
 
-        public PieceController(IMapper mapper, IBusinessPiece pieceRepository,IBusinessCatalogue businessCatalogue,IFileService fileService)
+        public PieceController( IBusinessPiece pieceRepository,IBusinessCatalogue businessCatalogue,IFileService fileService)
         {
             this.fileService = fileService;
-            _mapper = mapper;
             _pieceRepository = pieceRepository;
             _businessCatalogue = businessCatalogue;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PieceDto>>> Get()
+        public async Task<ActionResult<IEnumerable<PieceDto>>> GetAllPiece()
         {
             try
-            {
-                var entity = await _pieceRepository.GetAll();
-                IEnumerable<PieceDto> Conversion = _mapper.Map<IEnumerable<PieceDto>>(entity);
-                if (Conversion == null)
-                {
-                    BadRequest();
-                }
-                return Ok(Conversion);
+            { 
+              
+                return Ok(await _pieceRepository.GetAll());
             }
             catch (ValidationException ex)
             {
@@ -55,12 +49,7 @@ namespace WebApi.Controllers.Theater
             try
             {
                 var entity = await _pieceRepository.Get(id);
-                var Conversion = _mapper.Map<PieceDto>(entity);
-                if (Conversion == null)
-                {
-                    BadRequest();
-                }
-                return Ok(Conversion);
+                return Ok(entity);
             }
             catch (ValidationException ex)
             {
@@ -102,10 +91,7 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entity = await _pieceRepository.GetPiecefromCatalogue(catalogueId);
-               
-           
-                return Ok(entity);
+                return Ok(await _pieceRepository.GetPiecefromCatalogue(catalogueId));
             }
             catch (ValidationException ex)
             {
@@ -121,7 +107,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-        public async Task<ActionResult> CreatePiece([FromForm] AddPieceDto addpiece)
+        public async Task<ActionResult> CreatePiece(AddPieceDto addpiece)
         {
             try
             {       if(ModelState.IsValid)
@@ -166,7 +152,7 @@ namespace WebApi.Controllers.Theater
         /// <param name="catalogueId"></param>
         /// <param name="pieceId"></param>
         /// <returns></returns>
-        [HttpPost("add-catalogue/{catalogueId}/{pieceId}")]
+        [HttpGet("add-catalogue/{catalogueId}/{pieceId}")]
         public async Task<ActionResult> AddPieceToCatalogue(int catalogueId,int pieceId)
         {
             try
@@ -193,7 +179,7 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("remove-catalogue/{catalogueId}/{pieceId}")]
+        [HttpGet("remove-catalogue/{catalogueId}/{pieceId}")]
         public async Task<ActionResult> RemovePieceFromCatalogue(int catalogueId, int pieceId)
         {
             try
@@ -212,7 +198,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPut("{updtId}")]
-        public async Task<ActionResult> updatePiece(int updtId,[FromForm]UpdatePieceDto updatepiece)
+        public async Task<ActionResult> UpdatePiece(int updtId,[FromForm]UpdatePieceDto updatepiece)
         {
 
             try
@@ -230,7 +216,7 @@ namespace WebApi.Controllers.Theater
                 }
 
                 await _pieceRepository.Update(updtId, updatepiece);
-                return Ok();
+                return NoContent();
             }
             catch (ValidationException ex)
             {

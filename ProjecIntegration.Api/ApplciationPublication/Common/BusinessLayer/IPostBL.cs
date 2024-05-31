@@ -42,7 +42,7 @@ namespace ApplicationPublication.Common.BusinessLayer
         /// <param name="publicationtid">identifiant de la publication</param>
         /// <param name="pub">object post provenant du client</param>
         /// <returns></returns>
-        Task Createasync(string publicationtid, PostDto pub);
+        Task CreateAsync(string publicationtid, PostDto pub);
         #endregion
 
         Task<IEnumerable<PostDto>> GetPostFromUserId(string userId);

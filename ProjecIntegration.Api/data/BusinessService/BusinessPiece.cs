@@ -66,8 +66,11 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 Piece GetPiece = await _pieceRepository.GetById(idPIece);
-                return _mapper.Map<PieceDto>(GetPiece);
+                
+               PieceDto GetPieceDto= _mapper.Map<PieceDto>(GetPiece);
 
+              
+               return GetPieceDto;
             }
             catch (Exception)
             {
@@ -84,8 +87,10 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 IEnumerable<Piece> GetPiece = await _pieceRepository.GetAll();
-                return _mapper.Map<IEnumerable<PieceDto>>(GetPiece);
+                List<PieceDto> PieceDtos=new List<PieceDto>();
 
+             
+                return PieceDtos;
             }
             catch (Exception)
             {
@@ -98,9 +103,12 @@ namespace DataInfraTheather.BusinessService
         {
             try
             {
-                IEnumerable<Piece?> getPiece = await _pieceRepository.GetPieceByTheme(themeId);
+                IEnumerable<Piece?> GetPiece = await _pieceRepository.GetPieceByTheme(themeId);
 
-                return _mapper.Map<IEnumerable<PieceDto>>(getPiece);
+                List<PieceDto> PieceDtos = new List<PieceDto>();
+
+               
+                return PieceDtos;
             }
             catch (Exception)
             {
@@ -120,7 +128,10 @@ namespace DataInfraTheather.BusinessService
             {
                 IEnumerable<int> getPieceIds = await _cataloguePieceRepository.GetPieceFromCatalogue(catalogueId);
                 IEnumerable<Piece> getPieces = await _pieceRepository.GetPieceByListId(getPieceIds.ToList());
-                return _mapper.Map<IEnumerable<PieceDto>>(getPieces);
+                List<PieceDto> PieceDtos = new List<PieceDto>();
+
+                
+                return PieceDtos;
             }
             catch (Exception)
             {

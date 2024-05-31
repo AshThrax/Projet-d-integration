@@ -53,7 +53,7 @@ namespace InfraPublication.Repository
             }
         }
 
-        public void Insert(T entity)
+        public async Task Insert(T entity)
         {
             try 
             {
@@ -61,7 +61,7 @@ namespace InfraPublication.Repository
                {
                     throw new ArgumentNullException(nameof(entity));
                }
-                _mongoCollection.InsertOne(entity);
+                await _mongoCollection.InsertOneAsync(entity);
             }
             catch(ArgumentNullException)
             { 

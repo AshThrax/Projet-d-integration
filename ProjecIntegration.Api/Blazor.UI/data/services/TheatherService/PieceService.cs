@@ -16,8 +16,12 @@ namespace Blazor.UI.Data.services.TheatherService
         Task<IEnumerable<PieceDto>> Get();
         Task<PieceDto> GetById(int id);
         Task<IEnumerable<PieceDto>> GetByComplexe(int id);
+        Task<IEnumerable<PieceDto>> GetByCatalogue(int id);
+        Task<IEnumerable<PieceDto>> GetByTheme(int id);
         Task Create(AddPieceDto data);
-        Task AddRepresentation(int idPiece, AddRepresentationDto data);
+        Task AddRepresentation(int pieceId, AddRepresentationDto data);
+        Task AddToCatalogue(int catalogueId, int pieceId);
+        Task RemovefromCatalogue(int catalogueId, int pieceId);
         Task Update(int id, UpdatePieceDto data);
         Task Delete(PieceDto data);
         Task DeleteRepresentation(int idPiece, int idRepresentation);
@@ -75,6 +79,25 @@ namespace Blazor.UI.Data.services.TheatherService
         public async Task DeleteRepresentation(int idPiece, int idRepresentation)
         {
             await _httpClient.DeleteAsync($"{ApiUri}/delete-representation/{idPiece}/{idRepresentation}");
+        }
+
+        public async Task<IEnumerable<PieceDto>?> GetByCatalogue(int id)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto>>($"{ApiUri}/catalogue/{id}");
+        }
+        public async  Task<IEnumerable<PieceDto>?> GetByTheme(int id)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto>>($"{ApiUri}/theme/{id}");
+        }
+
+        public async Task AddToCatalogue(int catalogueId, int pieceId)
+        {
+            await _httpClient.GetAsync($"{ApiUri}/add-catalogue/{catalogueId}/{pieceId}");
+        }
+
+        public async Task RemovefromCatalogue(int catalogueId, int pieceId)
+        {
+            await _httpClient.GetAsync($"{ApiUri}/remove-catalogue/{catalogueId}/{pieceId}");
         }
     }
 }

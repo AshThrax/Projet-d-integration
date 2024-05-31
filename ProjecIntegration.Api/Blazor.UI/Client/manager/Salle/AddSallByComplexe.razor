@@ -3,41 +3,55 @@
 @using Blazor.UI.Data.services.TheatherService
 @inject ISalleService SalleServ;
 @inject IComplexeService SerComp;
-
-<div class="m-4 p-4 card">
-    <div class="card-header">
-        <h3>AddSalle</h3>
-    </div>
+@inject NavigationManager Manager;
+<div class="flex-fill m-4 p-4">
 
     <div class="m-4 p-4">
-        <form class="">
-            <div class="col-form-label">
-                <div>
-                    <label class="form-label" for="name">Name:</label>
-                    <input class="form-control" id="name" @bind="salleDeTheatre.Name" />
+        <div class=" btn-group rounded float-end">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <button type="button" class="col col-sm-3  btn btn-warning" @onclick="() => GetAll(selectedComplexeId)">Voir Toute les Salles</button>
 
+        </div>
+    </div>
+    <div class="m-4 p-4 card w-50 rounded">
+        <div class="card-header">
+            <h3>AddSalle</h3>
+        </div>
+        <div class="">
+            <form class="m-1 ">
+                <div class="col-form-label">
+                    <div class="p1">
+                        <label class="form-label" for="name">Name:</label>
+                        <input class="form-control" id="name" @bind="salleDeTheatre.Name" />
+
+                    </div>
+                    <div class ="p-1">
+
+                        <label class="form-label" for="placeMax">Place Max:</label>
+                        <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+                    </div>
+
+                    <div class="p-1">
+                        <label class="form-label" for="complexeId">Complexe </label>
+                        <select class="form-control" @bind="selectedComplexeId" @oninput="OnSelectedChange">
+                            <option>choissisez le complexe </option>
+                            @foreach (var item in SelctedComplexe)
+                            {
+                                <option value="@item.Id">@item.Name <p>@item.Id</p></option>
+                            }
+                        </select>
+                    </div>
+
+                    <br />
+                    <div class="p1">
+
+                        <button type="button" class="btn btn-success" @onclick="AddSalldetheatre">Update SalleDeTheatre</button>
+                    </div>
                 </div>
-                <div>
-
-                    <label class="form-label" for="placeMax">Place Max:</label>
-                    <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
-                </div>
-
-                <div>
-                    <label class="form-label" for="complexeId">Complexe </label>
-                    <select class="form-control" @bind="selectedComplexeId" @oninput="OnSelectedChange">
-                        <option>choissisez le complexe </option>
-                        @foreach (var item in SelctedComplexe)
-                        {
-                            <option value="@item.Id">@item.Name <p>@item.Id</p></option>
-                        }
-                    </select>
-                </div>
-
-                <br />
-                <button type="button" class="btn btn-success" @onclick="AddSalldetheatre">Update SalleDeTheatre</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 @code {
@@ -47,6 +61,7 @@
     protected override async Task OnInitializedAsync()
     {
         SelctedComplexe = await SerComp.Get();
+        await Task.Delay(1000);
     }
     public int selectComplexe;
     public async Task AddSalldetheatre()
@@ -65,5 +80,10 @@
         {
             selectedComplexeId = selectedId;
         }
+    }
+
+    public void GetAll(int complexeId)
+    {
+        Manager.NavigateTo($"/manager/sallebycomplexe/{complexeId}");    
     }
 }

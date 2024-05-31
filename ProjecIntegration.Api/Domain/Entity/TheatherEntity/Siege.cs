@@ -11,5 +11,6 @@ namespace Domain.Entity.TheatherEntity
         public string Name {get; set;}= string .Empty;
         public int SalleId { get; set;}
         public SalleDeTheatre SalleDeTheatre { get; set;}
+
     }
 }

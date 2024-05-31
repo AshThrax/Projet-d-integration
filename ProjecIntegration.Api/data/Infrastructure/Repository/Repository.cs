@@ -7,58 +7,94 @@ namespace dataInfraTheather.Infrastructure.Repository
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly ApplicationDbContext dbContext;
-        private DbSet<T> dbSet;
+        private readonly ApplicationDbContext _dbContext;
+        private DbSet<T> _dbSet;
         public Repository(ApplicationDbContext dbContext)
         {
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            dbSet = dbContext.Set<T>();
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _dbSet = dbContext.Set<T>();
         }
         public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
-            IQueryable<T> query = dbSet;
-            foreach (var includeProperty in includeProperties)
+            IQueryable<T> query = _dbSet;
+            try
             {
-                query = query.Include(includeProperty);
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+                return await query.ToListAsync();
+
             }
-            return await query.ToListAsync();
+            catch (Exception)
+            {
+
+              return Enumerable.Empty<T>();
+            }
         }
         public async Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
         {
-            IQueryable<T> query = dbSet;
-            foreach (var includeProperty in includeProperties)
+            IQueryable<T> query = _dbSet;
+            try
             {
-                query = query.Include(includeProperty);
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+                return await query.SingleOrDefaultAsync(s => s.Id == id) ?? throw new NullReferenceException();
+
             }
-            return await query.SingleOrDefaultAsync(s => s.Id == id) ?? throw new NullReferenceException();
+            catch (Exception)
+            {
+
+               return query.First() ;
+            }
         }
         public async Task<IEnumerable<T>> GetAll()
         {
-            var entities = await dbSet.ToListAsync();
-            return entities;
+            try
+            {
+                var entities = await _dbSet.ToListAsync();
+                return entities;
+
+            }
+            catch (Exception)
+            {
+
+                return Enumerable.Empty<T>();
+            }
         }
         public async Task<T> GetById(int id)
         {
-            return await dbSet.FirstOrDefaultAsync(s => s.Id == id) ?? throw new NullReferenceException();
+            try
+            {
+                return await _dbSet.FirstOrDefaultAsync(s => s.Id == id) ?? throw new NullReferenceException();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
-        public void Insert(T entity)
+        public async Task<T> Insert(T entity)
         {
-            if (entity == null) { }
-             dbSet.Add(entity);
-            dbContext.SaveChanges();
+            T data= _dbSet.Add(entity).Entity;
+            await _dbContext.SaveChangesAsync();
+            return data;
         }
         public void Update(int updtId, T entity)
         {
             if (entity != null)
             {
-                dbSet.Update(entity);
-                dbContext.SaveChanges();
+                _dbSet.Update(entity);
+                _dbContext.SaveChanges();
 
             }
         }
         public async Task Delete(int entityid)
         {
-            var ent = dbSet.SingleOrDefaultAsync(x => x.Id == entityid).Result;
+            var ent = _dbSet.SingleOrDefaultAsync(x => x.Id == entityid).Result;
             if (ent == null)
             {
                 //lance une exception qui avertit que l'entité 
@@ -66,8 +102,15 @@ namespace dataInfraTheather.Infrastructure.Repository
                 throw new ArgumentNullException(nameof(entityid), "L'entité que vous souhaitez supprimer n'existe pas.");
 
             }
-                dbSet.Remove(ent);
-                await dbContext.SaveChangesAsync();
+            _dbSet.Remove(ent);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetByListIds(List<int> ListIds)
+        {
+            IEnumerable<T> values= await _dbSet.Where(x => ListIds.Contains(x.Id)).ToListAsync();
+
+            return values;
         }
     }
 }

@@ -1,0 +1,57 @@
+﻿@using Blazor.UI.Data.modelViews.Theater
+@using Microsoft.AspNetCore.Components.QuickGrid
+<h3>RemovePieceFromCatalogue</h3>
+ <div class="row">
+            <div>
+                  <div class="col w-25">
+                <div class="card ">
+                  <div class="m-1">
+                      <h3 class="card-header"> liste des Pieces de théatre</h3>
+                  </div>
+                    <div class="col w-25 card-body">
+                      @if (GetPieces != null)
+                      {
+           
+                        <QuickGrid Items="GetPieces.AsQueryable()">
+                            <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                            <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                            <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                            <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                           <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                        </QuickGrid>
+                      }
+                      else
+                      {
+               
+                      }
+                  </div>
+
+            </div>
+            </div>
+        </div>
+</div>
+@code {
+        public List<PieceDto> GetPieces { get; set; }
+        public PieceDto selectPieceDto { get; set; }
+        public List<CatalogueDto> GetCatalogue { get; set; }
+        public CatalogueDto selectCatalogue { get; set; }
+        public int selectCatalogueId { get; set; }
+        public int selectePieceId { get; set; }
+
+        public void OnSelectedCatalogue(ChangeEventArgs args)
+        {
+            if (int.TryParse(args.Value?.ToString(), out int selectedId))
+            {
+                selectCatalogueId = selectedId;
+            }
+
+        }
+        public void OnselectedPiece(ChangeEventArgs args)
+        {
+            if (int.TryParse(args.Value?.ToString(), out int selectedId))
+            {
+                selectePieceId = selectedId;
+            }
+
+        }
+}
