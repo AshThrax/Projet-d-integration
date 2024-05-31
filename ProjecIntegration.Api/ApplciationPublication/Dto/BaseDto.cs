@@ -8,7 +8,7 @@ namespace ApplicationPublication.Dto
 {
     public class BaseDto
     {
-        public string Id { get; set; }
+        public string Id { get; set; }=string.Empty;
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
     }

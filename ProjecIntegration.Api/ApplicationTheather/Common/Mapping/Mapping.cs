@@ -38,6 +38,7 @@ namespace ApplicationTheather.Common.Mapping
             CreateMap<SalleDeTheatreDto, SalleDeTheatre>();
             //-------------------------------------------
             CreateMap<Theme,ThemeDto>().ReverseMap();
+            CreateMap<Image, ImageDto>().ReverseMap();
             CreateMap<Catalogue, CatalogueDto>().ReverseMap();
 
             CreateMap<AddCatalogueDto,Catalogue>().ReverseMap();

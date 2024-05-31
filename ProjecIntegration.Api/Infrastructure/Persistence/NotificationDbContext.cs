@@ -17,7 +17,7 @@ namespace InfrastructureAnnonce.Persistence
         }
         public IMongoCollection<T> Dbset<T>()
         {
-            return _database.GetCollection<T>(nameof(T));
+            return _database.GetCollection<T>(typeof(T).ToString());
         }
         public IMongoCollection<Notification> GetNotification()
         {

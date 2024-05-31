@@ -126,6 +126,21 @@ namespace InfraPublication.BusinessLayer
             }
            
         }
+
+        public async Task<IEnumerable<PublicationDto>> GetPublicationByPiece(int pieceId)
+        {
+            try
+            {
+                IEnumerable<Publication> Getpublication = await _publicationRepository.GetAllPublicationByPieceId(pieceId);
+                return _mapper.Map<IEnumerable<PublicationDto>>(Getpublication);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
+                return Enumerable.Empty<PublicationDto>();
+            }
+        }
+
         public async Task UpdatePublication(string pubId, string title, string content)
         {
             try

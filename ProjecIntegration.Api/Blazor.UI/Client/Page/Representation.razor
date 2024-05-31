@@ -9,58 +9,61 @@
 @inject  IPieceService servPiece;
 @inject  ISalleService servsalle;
 
-<div class="jumbotron bg-light m-2 p-2 rounded">
-    <div class="m-2 p-2  m-2 p-2 border rounded-4">
-        <h3 class="dispaly-1">Representation Summary</h3>
 
+<div class="flex-fill m-4 p-4">
+    <div class="jumbotron bg-light m-2 p-2 rounded">
+        <div class="m-2 p-2  m-2 p-2 border rounded-4">
+            <h3 class="dispaly-1">Representation Summary</h3>
+
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col">
+    <div class="row">
+        <div class="col-sm-3">
 
   
-        @if (myPiece != null)
-        {
-            <div class="m-2 p-2 bg-light border rounded">
-                <div class="m-2 p-2">
-                    <h4>Representation Details</h4>
-                    <p><strong>Title: </strong> @myPiece.Titre</p>
-                    <p><strong>Duration: </strong> @myPiece.Duree</p>
-                    <p><strong>Description: </strong> @myPiece.Description</p>
-                    <p><strong>Salle : </strong>@Piecesalle?.Name</p>
+            @if (myPiece != null)
+            {
+                <div class="m-2 p-2 bg-light border rounded">
+                    <div class="m-2 p-2">
+                        <h4>Representation Details</h4>
+                        <p><strong>Title: </strong> @myPiece.Titre</p>
+                        <p><strong>Duration: </strong> @myPiece.Duree</p>
+                        <p><strong>Description: </strong> @myPiece.Description</p>
+                        <p><strong>Salle : </strong>@Piecesalle?.Name</p>
+                    </div>
                 </div>
-            </div>
-        }  
-    </div>
-        <div class="col">
+            }  
+        </div>
+        <div class="col-sm-6">
    
-            <div class="m-2 p-2">
                 <div class="m-2 p-2">
+                    <div class="m-2 p-2">
         
-                    <h3 class="dispaly-1">Representations: @myPiece?.Titre </h3>
+                        <h3 class="dispaly-1">Representations: @myPiece?.Titre </h3>
+                    </div>
                 </div>
-            </div>
 
-            <div class="m-2 p-2 bg-light rounded">
-                <div class="m-2 p-2">
-                    <QuickGrid Items="@Myrepresnetation?.AsQueryable()">
-                        <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
-                        <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
-                        <PropertyColumn Property="@(p => p.Seance.Month)" Title="Mois" Sortable="true" />
-                        <PropertyColumn Property="@(p => p.Seance.Day)" Title="Jour" Sortable="true" />
-                        <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true" />
-                        <TemplateColumn Title="Selectioner une represnentation">
+                <div class="m-2 p-2 bg-light rounded">
+                    <div class="m-2 p-2">
+                        <QuickGrid Items="@Myrepresnetation?.AsQueryable()">
+                            <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+                            <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
+                            <PropertyColumn Property="@(p => p.Seance.Month)" Title="Mois" Sortable="true" />
+                            <PropertyColumn Property="@(p => p.Seance.Day)" Title="Jour" Sortable="true" />
+                            <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true" />
+                            <TemplateColumn Title="Selectioner une represnentation">
                          
-                                    <div>
-                                        <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context)">Details</button>
-                                    </div>
+                                        <div>
+                                            <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context)">Details</button>
+                                        </div>
                             
-                            </TemplateColumn>
+                                </TemplateColumn>
                        
-                    </QuickGrid>
+                        </QuickGrid>
 
+                    </div>
                 </div>
-            </div>
+        </div>
     </div>
 </div>
 @if (selectedRepresentation != null)

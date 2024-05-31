@@ -14,6 +14,7 @@ namespace ApplicationPublication.Common.BusinessLayer
         Task DeletePublication(string pubId);
         Task<IEnumerable<PublicationDto>> GetAllPublication();
         Task<PublicationDto> GetPublicationById(string pubId);
+        Task<IEnumerable<PublicationDto>> GetPublicationByPiece(int pieceId);
         Task<IEnumerable<PublicationDto>> GetAllbyPublicationByUserId(string userId);
         Task CreatePublication(AddPublicationDto pub);
         Task UpdatePublication(string pubId,string Title, string content);

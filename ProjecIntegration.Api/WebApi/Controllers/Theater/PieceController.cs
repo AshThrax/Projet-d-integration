@@ -107,23 +107,13 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-        public async Task<ActionResult> CreatePiece(AddPieceDto addpiece)
+        public async Task<ActionResult> CreatePiece([FromBody]AddPieceDto addpiece)
         {
             try
             {       if(ModelState.IsValid)
                     {
 
-                        if (addpiece.ImageFile?.Length > 1 * 1024 * 1024)
-                        {
-                            return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
-                        }
-                        string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
-                        string createdImageName = await fileService.SaveFileAsync(addpiece.ImageFile, allowedFileExtentions);
-
-                        Image CreateImg=new Image();
-                        CreateImg.ImageRessource = createdImageName;
-                        
-                        _pieceRepository.Create(addpiece, CreateImg);
+                        _pieceRepository.Create(addpiece);
                       
                         return Ok();
                     }

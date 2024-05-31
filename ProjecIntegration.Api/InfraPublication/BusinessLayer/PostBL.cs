@@ -3,6 +3,7 @@ using ApplicationPublication.Common.Repository;
 using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,14 @@ namespace InfraPublication.BusinessLayer
             try
             {
                 
-                  if (string.IsNullOrEmpty(publicationId))
+                  if (!string.IsNullOrEmpty(publicationId))
                   {
                       Post mapped= _mapper.Map<Post>(pub);
+                      mapped.PublicationId = publicationId;
+                      mapped.Id = new ObjectId().ToString();
                       mapped.UpdatedDate = DateTime.Now;
                       mapped.CreatedDate = DateTime.Now;
-                      _postrepository.Insert(mapped);
+                      await _postrepository.Insert(mapped);
                   }
             }
             catch (Exception)

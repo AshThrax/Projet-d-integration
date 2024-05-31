@@ -1,4 +1,4 @@
-﻿@page "/pieceinfo/{ID:int}"
+﻿@page "/pieceinfo/{Id:int}"
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.services
@@ -8,7 +8,7 @@
 @inject IRepresentationService PieceRep;
 @inject Microsoft.AspNetCore.Components.NavigationManager manager;
 
-<h3>InfoRmation</h3>
+<h3>Information</h3>
 @if (selectPieces != null)
 {
     <div class="row">
@@ -18,36 +18,49 @@
                    <h5><strong>Titre :</strong> @selectPieces.Titre</h5>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Description</h5>
-                    <p class="card-text">@selectPieces.Description</p>
-                    <p class="card-text">@selectPieces.Duree: minutes</p>
+                    <div class="card-img">
+                        <img class="img-fluid" src="https://localhost:44337/Resources/@selectPieces.Image" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Description</h5>
+                        <p class="card-text">@selectPieces.Description</p>
+                        <p class="card-text">@selectPieces.Duree: minutes</p>
+                    </div>
                    
                 </div>
                 <div class="card-footer">
                     <div class="m-3 float-end ">
+                        <button type="button" class="btn btn-warning" @onclick="() =>GetRepresentation()">Voir les Séance</button>
                         <button type="button" class="btn btn-warning" @onclick="() =>getbackreservation()">Reservation</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-              <div class="card m-2 p-2 bg-light rounded">
-                  <div class="card-header">
-                      <h5><strong>Representation</strong></h5>
-                  </div>
-                <div class="card-body m-2 p-2">
-
-                    <QuickGrid Items="@Myrepresnetation.AsQueryable()">
-                        <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
-                        <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
-                        <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true"  />
-                        <PropertyColumn Property="@(p => p.Seance.Day)" Sortable="true"  />
-                        <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true"  />
+            @if (Myrepresnetation != null)
+            {
+                <div class="card m-2 p-2 bg-light rounded">
+                      <div class="card-header">
+                          <h5><strong>Representation</strong></h5>
+                      </div>
+                    <div class="card-body m-2 p-2">
+                        <QuickGrid Items="@Myrepresnetation.AsQueryable()">
+                            <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+                            <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
+                            <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true"  />
+                            <PropertyColumn Property="@(p => p.Seance.Day)" Sortable="true"  />
+                            <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true"  />
                        
-                    </QuickGrid>
+                        </QuickGrid>
 
+                    </div>
                 </div>
-            </div>
+
+            }
+            else
+            {
+                
+            }
         </div>
     </div>
     
@@ -55,21 +68,26 @@
 }
 else
 {
-    
+    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
 }
 
 @code {
     [Parameter]
-    public int ID { get; set; }
-    public PieceDto selectPieces { get; set; }
-    public IEnumerable<RepresentationDto> Myrepresnetation { get; set; }
+    public int Id { get; set; }
+    public PieceDto? selectPieces { get; set; }
+    public List<RepresentationDto> Myrepresnetation { get; set; } = new();
     protected override async Task OnInitializedAsync()
     {
-        selectPieces = await Servp.GetById(ID);
-        Myrepresnetation = await PieceRep.GetPiece(ID);
+        selectPieces = await Servp.GetById(Id);
+        await Task.Delay(100);
+      
+    }
+    public async Task GetRepresentation()
+    {
+        Myrepresnetation = (await PieceRep.GetPiece(Id)).ToList();
     }
     public void getbackreservation()
     {
-        manager.NavigateTo($"/representation/{ID}");
+        manager.NavigateTo($"/representation/{Id}");
     }
 }

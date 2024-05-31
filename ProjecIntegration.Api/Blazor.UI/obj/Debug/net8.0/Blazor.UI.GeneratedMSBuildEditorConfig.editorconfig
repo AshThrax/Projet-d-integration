@@ -142,6 +142,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcTWFuYWdlQ29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/NewFolder/PublicationForPublication.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTmV3Rm9sZGVyXFB1YmxpY2F0aW9uRm9yUHVibGljYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/ProfileViewer.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVZpZXdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -224,6 +228,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/Load.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxMb2FkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/UploadsFilesTest.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFVwbG9hZHNGaWxlc1Rlc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Counter.razor]

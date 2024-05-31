@@ -3,8 +3,8 @@
     public class PublicationDto
     {
         public string Id { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public string Title { get; set; } = string.Empty;
 
         public string Review { get; set; } = string.Empty;

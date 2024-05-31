@@ -10,7 +10,7 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="Entity">entité pièce de theatre a ajoutée</param>
         /// <returns></returns>
-        void Create(AddPieceDto Entity,Image ImageName);
+        void Create(AddPieceDto Entity);
         /// <summary>
         /// suprrimer une piece de theatre de la database 
         /// </summary>

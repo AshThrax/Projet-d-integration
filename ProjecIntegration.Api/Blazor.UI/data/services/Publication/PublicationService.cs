@@ -53,7 +53,7 @@ namespace Blazor.UI.Data.services.Publication
 
         public async Task<IEnumerable<PublicationDto>?> GetAllPublicationByPieceId(int id)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PublicationDto>?>($"{ApiUri}/{id}");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<PublicationDto>?>($"{ApiUri}/by-piece/{id}");
         }
     }
 }

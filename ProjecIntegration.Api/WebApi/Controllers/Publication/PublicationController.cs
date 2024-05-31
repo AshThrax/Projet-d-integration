@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Publication
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class PublicationController : ControllerBase
     {
@@ -51,6 +51,24 @@ namespace WebApi.Controllers.Publication
             catch
             {
                 return NotFound();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pieceId"></param>
+        /// <returns></returns>
+        [HttpGet("by-piece/{pieceId}")]
+        public async Task<ActionResult> GetpublicationByPieceId(int pieceId)
+        {
+            try
+            {
+                return Ok(await _publicationBl.GetPublicationByPiece(pieceId));
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
         [HttpGet("publication-by-user")]

@@ -25,7 +25,7 @@ namespace InfraPublication.Persistence
 
         public IMongoCollection<T> DbSet<T>()
         {
-            return _database.GetCollection<T>(nameof(T));   
+            return _database.GetCollection<T>(typeof(T).ToString());   
         }
         public IMongoCollection<Publication> GetPublication()
         {

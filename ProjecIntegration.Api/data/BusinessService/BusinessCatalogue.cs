@@ -50,7 +50,7 @@ namespace DataInfraTheather.BusinessService
 
                 };
 
-                _catPieceRepository.Insert(addcataloguePiece);
+                await _catPieceRepository.Insert(addcataloguePiece);
             }
             catch (Exception)
             {

@@ -57,7 +57,7 @@ namespace dataInfraTheather.Infrastructure.Repository
         {
             try
             {
-                return await _context.Pieces.Where(x => pieceIds.Contains(x.Id)).ToListAsync();
+                return await _context.Pieces.Include(x => x.Image).Where(x => pieceIds.Contains(x.Id)).ToListAsync();
             }
             catch (Exception)
             {
@@ -70,7 +70,7 @@ namespace dataInfraTheather.Infrastructure.Repository
         {
             try
             {
-                IEnumerable<Piece> getPiece= await _context.Pieces.Where(x=>x.ThemeId == themeId).ToListAsync();
+                IEnumerable<Piece> getPiece= await _context.Pieces.Include(x => x.Image).Where(x=>x.ThemeId == themeId).ToListAsync();
 
                 return getPiece;
             }

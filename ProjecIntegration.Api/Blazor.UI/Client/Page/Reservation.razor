@@ -61,12 +61,13 @@
                     <div class="m-2 p-2">
                         <div class="card m-2 p-2">
                             <div class="card-img">
-                                <img class="img-fluid" src="https://localhost:44337/Resources/@item.Image" />
-                                <p>@item.Image</p>
+                                   <img class="img-fluid" src="https://localhost:44337/Resources/@item.Image" />
                             </div>
-                            <p><strong>Auteur :</strong>@item.Auteur</p>
-                            <p><strong>Descirption :</strong>@item.Description</p>
-                            <p><strong>Durée de la pièce :</strong>@item.Duree</p>
+                            <div class="card-body">
+                                <p class="card-text"><strong>Auteur :</strong>@item?.Auteur</p>
+                                <p class="card-text"><strong>Descirption :</strong>@item?.Description</p>
+                                <p class="card-text"><strong>Durée de la pièce :</strong>@item?.Duree</p>
+                            </div>
                             <div class="btn-group float-end m-2 p-2">
                                 <button @onclick="() => GetDescription(item.Id)" type="button" class="btn btn-secondary p-1">info</button>
                                     <button @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1">Seance</button>
@@ -81,7 +82,7 @@
 </div>
 
 @code {
-    public List<PieceDto> pieceDtos { get; set; } = new();
+    public List<PieceDto>? pieceDtos { get; set; } = new();
     public List<ThemeDto> GetAllTheme { get; set; }=new();
     public ThemeDto singleTheme { get; set; } = new();
     public int SelectedThemeId { get; set; }
@@ -125,7 +126,15 @@
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
             SelectedThemeId = selectedId;
-            pieceDtos = (await pieceService.GetByTheme(SelectedThemeId)).ToList();
+            if (SelectedThemeId == 0)
+            {
+                pieceDtos = (await pieceService.Get()).ToList();
+            }
+            else
+            {
+                pieceDtos = (await pieceService.GetByTheme(SelectedThemeId)).ToList();
+                
+            }
         }
     }
 

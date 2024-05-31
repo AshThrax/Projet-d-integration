@@ -3,116 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\theater\\piececontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\theater\\piececontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\newfolder\\publicationforpublication.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\newfolder\\publicationforpublication.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\representationpage\\represnetationdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\representationpage\\represnetationdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\publication\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\publication\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\services\\annonce\\annonceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\services\\annonce\\annonceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0C0CCE4-5B21-4174-A833-C799D55238D3}|data\\DataInfraTheather.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\data\\infrastructure\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0C0CCE4-5B21-4174-A833-C799D55238D3}|data\\DataInfraTheather.csproj|solutionrelative:data\\infrastructure\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\makecommand\\getcommand.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\makecommand\\getcommand.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\profileviewer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\profileviewer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\representation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\representation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\services\\theatherservice\\pieceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\services\\theatherservice\\pieceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\salle\\updatesalle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\salle\\updatesalle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\complexe\\updatecomplexe.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\complexe\\updatecomplexe.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\complexe\\complexeggrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\complexe\\complexeggrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\reservationcomponent\\complexedropdown.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\reservationcomponent\\complexedropdown.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\reservation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\reservation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\modelviews\\theater\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\modelviews\\theater\\imagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CF94A4D7-0239-4A8E-824C-A6E28E45881F}|ApplicationTheather\\ApplicationTheather.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationtheather\\dto\\piecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF94A4D7-0239-4A8E-824C-A6E28E45881F}|ApplicationTheather\\ApplicationTheather.csproj|solutionrelative:applicationtheather\\dto\\piecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\modelviews\\theater\\piecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\modelviews\\theater\\piecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\shared\\accesscontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\shared\\accesscontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\extensionmethods\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\extensionmethods\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\extensionmethods\\blazordependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\extensionmethods\\blazordependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\shared\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\services\\theatherservice\\cataloguesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\services\\theatherservice\\cataloguesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\salle\\addsallbycomplexe.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\salle\\addsallbycomplexe.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0C0CCE4-5B21-4174-A833-C799D55238D3}|data\\DataInfraTheather.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\data\\businessservice\\businesspiece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0C0CCE4-5B21-4174-A833-C799D55238D3}|data\\DataInfraTheather.csproj|solutionrelative:data\\businessservice\\businesspiece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\notification\\annoncecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\notification\\annoncecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\piece\\piecemanager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\piece\\piecemanager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\salle\\managersalle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\salle\\managersalle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrapublication\\businesslayer\\postbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|solutionrelative:infrapublication\\businesslayer\\postbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\publication\\publicationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,28 +23,64 @@
       "RelativeMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|solutionrelative:infrapublication\\businesslayer\\publicationbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\catalogue\\getallcatalogue.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\catalogue\\getallcatalogue.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{EA9148B7-2A03-4481-8168-99FFCD44528D}|Infrastructure\\InfrastructureAnnonce.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructure\\persistence\\notificationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9148B7-2A03-4481-8168-99FFCD44528D}|Infrastructure\\InfrastructureAnnonce.csproj|solutionrelative:infrastructure\\persistence\\notificationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\piece\\addpiece.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\piece\\addpiece.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrapublication\\persistence\\publicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B47054D4-A965-4EC7-8F10-4104677A159F}|InfraPublication\\InfraPublication.csproj|solutionrelative:infrapublication\\persistence\\publicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\manager\\piece\\addpiecetocatalogue.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\manager\\piece\\addpiecetocatalogue.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applciationpublication\\common\\mapping\\publicationprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|solutionrelative:applciationpublication\\common\\mapping\\publicationprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\modelviews\\annonce\\annoncedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\modelviews\\annonce\\annoncedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\services\\publication\\publicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\services\\publication\\publicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\modelviews\\baseview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\modelviews\\baseview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CF94A4D7-0239-4A8E-824C-A6E28E45881F}|ApplicationTheather\\ApplicationTheather.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationtheather\\businessservice\\ibusinesspiece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF94A4D7-0239-4A8E-824C-A6E28E45881F}|ApplicationTheather\\ApplicationTheather.csproj|solutionrelative:applicationtheather\\businessservice\\ibusinesspiece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\comp\\addcomplexe.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\comp\\addcomplexe.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\domain\\entity\\publicationentity\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\publicationentity\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applciationpublication\\dto\\basedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|solutionrelative:applciationpublication\\dto\\basedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applciationpublication\\dto\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|solutionrelative:applciationpublication\\dto\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\reservation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\reservation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\services\\publication\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\services\\publication\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\data\\modelviews\\publication\\publicationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\data\\modelviews\\publication\\publicationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applciationpublication\\common\\businesslayer\\ipublicationbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168EB1C2-4A3F-4A19-910F-A96F40D2FD42}|ApplciationPublication\\ApplicationPublication.csproj|solutionrelative:applciationpublication\\common\\businesslayer\\ipublicationbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\theater\\piececontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\theater\\piececontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\representation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\representation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\blazor.ui\\client\\page\\infopage\\pieceinfo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23C53B01-8727-4D6A-917D-4B110457DC47}|Blazor.UI\\Blazor.UI.csproj|solutionrelative:blazor.ui\\client\\page\\infopage\\pieceinfo.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -154,8 +90,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 15,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IBusinessPiece.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\BusinessService\\IBusinessPiece.cs",
+              "RelativeDocumentMoniker": "ApplicationTheather\\BusinessService\\IBusinessPiece.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\BusinessService\\IBusinessPiece.cs",
+              "RelativeToolTip": "ApplicationTheather\\BusinessService\\IBusinessPiece.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowAUAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T11:49:11.184Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -166,477 +116,249 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RepresnetationDetails.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\RepresentationPage\\RepresnetationDetails.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\RepresentationPage\\RepresnetationDetails.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\RepresentationPage\\RepresnetationDetails.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\RepresentationPage\\RepresnetationDetails.razor",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAABoAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-31T09:20:12.854Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AnnonceService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\Annonce\\AnnonceService.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\services\\Annonce\\AnnonceService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\Annonce\\AnnonceService.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\services\\Annonce\\AnnonceService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAA1wCAAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T09:18:52.955Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetCommand.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\MakeCommand\\GetCommand.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\MakeCommand\\GetCommand.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\MakeCommand\\GetCommand.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\MakeCommand\\GetCommand.razor",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACgAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-31T09:14:48.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\Infrastructure\\Repository\\Repository.cs",
-              "RelativeDocumentMoniker": "data\\Infrastructure\\Repository\\Repository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\Infrastructure\\Repository\\Repository.cs",
-              "RelativeToolTip": "data\\Infrastructure\\Repository\\Repository.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAuwEYAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T08:16:37.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ImageDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Theater\\ImageDto.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\modelViews\\Theater\\ImageDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Theater\\ImageDto.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\modelViews\\Theater\\ImageDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T08:21:43.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ProfileViewer.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\ProfileViewer.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\ProfileViewer.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\ProfileViewer.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\ProfileViewer.razor",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAAAGAAAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T16:06:38.659Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PieceController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Theater\\PieceController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Theater\\PieceController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Theater\\PieceController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Theater\\PieceController.cs",
-              "ViewState": "AQIAAJQAAAAAAAAAAADwv0QAAAAIAAAA",
+              "Title": "NotificationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Persistence\\NotificationDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\NotificationDbContext.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\Persistence\\NotificationDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\NotificationDbContext.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA1wBMAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T19:32:23.929Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ComplexegGrid.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Complexe\\ComplexegGrid.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Complexe\\ComplexegGrid.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Complexe\\ComplexegGrid.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Complexe\\ComplexegGrid.razor",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAAACcAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:39:21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UpdateSalle.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Salle\\UpdateSalle.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Salle\\UpdateSalle.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Salle\\UpdateSalle.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Salle\\UpdateSalle.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGQAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:29:39.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateComplexe.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Complexe\\UpdateComplexe.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Complexe\\UpdateComplexe.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Complexe\\UpdateComplexe.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Complexe\\UpdateComplexe.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-31T09:02:51.377Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PieceService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\TheatherService\\PieceService.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\services\\TheatherService\\PieceService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\TheatherService\\PieceService.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\services\\TheatherService\\PieceService.cs",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAAACkAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T18:38:58.058Z",
+              "WhenOpened": "2024-05-31T15:35:22.82Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Representation.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Representation.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\Representation.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Representation.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\Representation.razor",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAtwGQAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T16:03:01.515Z",
+              "Title": "PublicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\Persistence\\PublicationDbContext.cs",
+              "RelativeDocumentMoniker": "InfraPublication\\Persistence\\PublicationDbContext.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\Persistence\\PublicationDbContext.cs",
+              "RelativeToolTip": "InfraPublication\\Persistence\\PublicationDbContext.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwBsAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T15:34:13.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PublicationProfile.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Common\\Mapping\\PublicationProfile.cs",
+              "RelativeDocumentMoniker": "ApplciationPublication\\Common\\Mapping\\PublicationProfile.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Common\\Mapping\\PublicationProfile.cs",
+              "RelativeToolTip": "ApplciationPublication\\Common\\Mapping\\PublicationProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T15:34:00.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BaseDto.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Dto\\BaseDto.cs",
+              "RelativeDocumentMoniker": "ApplciationPublication\\Dto\\BaseDto.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Dto\\BaseDto.cs",
+              "RelativeToolTip": "ApplciationPublication\\Dto\\BaseDto.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T15:25:34.943Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Reservation.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Reservation.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\Reservation.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Reservation.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\Reservation.razor",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAACoAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T20:00:50.304Z",
+              "Title": "PostDto.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Dto\\PostDto.cs",
+              "RelativeDocumentMoniker": "ApplciationPublication\\Dto\\PostDto.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Dto\\PostDto.cs",
+              "RelativeToolTip": "ApplciationPublication\\Dto\\PostDto.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAADwvw0AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T15:22:08.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "PieceDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\DTO\\PieceDto.cs",
-              "RelativeDocumentMoniker": "ApplicationTheather\\DTO\\PieceDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\DTO\\PieceDto.cs",
-              "RelativeToolTip": "ApplicationTheather\\DTO\\PieceDto.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAiwA4AAAAXAAAA",
+              "DocumentIndex": 10,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\publicationEntity\\Post.cs",
+              "RelativeDocumentMoniker": "Domain\\Entity\\publicationEntity\\Post.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\publicationEntity\\Post.cs",
+              "RelativeToolTip": "Domain\\Entity\\publicationEntity\\Post.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBIAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:39:58.728Z",
+              "WhenOpened": "2024-05-31T15:21:25.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PostController.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PostController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\Publication\\PostController.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PostController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\Publication\\PostController.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAQwBkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T15:12:53.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PostBL.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\BusinessLayer\\PostBL.cs",
+              "RelativeDocumentMoniker": "InfraPublication\\BusinessLayer\\PostBL.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\BusinessLayer\\PostBL.cs",
+              "RelativeToolTip": "InfraPublication\\BusinessLayer\\PostBL.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAiwFIAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T15:12:28.642Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "PieceDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Theater\\PieceDto.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\modelViews\\Theater\\PieceDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Theater\\PieceDto.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\modelViews\\Theater\\PieceDto.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAATAAAA",
+              "Title": "PublicationDto.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Publication\\PublicationDto.cs",
+              "RelativeDocumentMoniker": "Blazor.UI\\Data\\modelViews\\Publication\\PublicationDto.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Publication\\PublicationDto.cs",
+              "RelativeToolTip": "Blazor.UI\\Data\\modelViews\\Publication\\PublicationDto.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAxwAYAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T18:37:32.892Z",
+              "WhenOpened": "2024-05-31T15:02:17.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PostService.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\Publication\\PostService.cs",
+              "RelativeDocumentMoniker": "Blazor.UI\\Data\\services\\Publication\\PostService.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\Publication\\PostService.cs",
+              "RelativeToolTip": "Blazor.UI\\Data\\services\\Publication\\PostService.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAwCIAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T14:57:57.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PublicationService.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\Publication\\PublicationService.cs",
+              "RelativeDocumentMoniker": "Blazor.UI\\Data\\services\\Publication\\PublicationService.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\Publication\\PublicationService.cs",
+              "RelativeToolTip": "Blazor.UI\\Data\\services\\Publication\\PublicationService.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAwDcAAABnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T14:30:48.64Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "AccessControl.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Shared\\AccessControl.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Shared\\AccessControl.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Shared\\AccessControl.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Shared\\AccessControl.razor",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T14:45:22.255Z",
+              "Title": "IPublicationBl.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Common\\BusinessLayer\\IPublicationBl.cs",
+              "RelativeDocumentMoniker": "ApplciationPublication\\Common\\BusinessLayer\\IPublicationBl.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\Common\\BusinessLayer\\IPublicationBl.cs",
+              "RelativeToolTip": "ApplciationPublication\\Common\\BusinessLayer\\IPublicationBl.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T14:25:40.67Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\ExtensionMethods\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "WebApi\\ExtensionMethods\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\ExtensionMethods\\DependencyInjection.cs",
-              "RelativeToolTip": "WebApi\\ExtensionMethods\\DependencyInjection.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T15:17:28.45Z",
+              "DocumentIndex": 0,
+              "Title": "PublicationForPublication.razor",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\NewFolder\\PublicationForPublication.razor",
+              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\NewFolder\\PublicationForPublication.razor",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\NewFolder\\PublicationForPublication.razor",
+              "RelativeToolTip": "Blazor.UI\\Client\\Page\\NewFolder\\PublicationForPublication.razor",
+              "ViewState": "AQIAABQAAAAAAAAAAADgvxEAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-31T14:09:19.694Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "BlazorDependency.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\extensionMethods\\BlazorDependency.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\extensionMethods\\BlazorDependency.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\extensionMethods\\BlazorDependency.cs",
-              "RelativeToolTip": "Blazor.UI\\extensionMethods\\BlazorDependency.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAkwCQAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T15:56:40.624Z",
+              "DocumentIndex": 13,
+              "Title": "Reservation.razor",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Reservation.razor",
+              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\Reservation.razor",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Reservation.razor",
+              "RelativeToolTip": "Blazor.UI\\Client\\Page\\Reservation.razor",
+              "ViewState": "AQIAAC8AAAAAAAAAAADwv0MAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-31T13:53:17.416Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Shared\\MainLayout.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Shared\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Shared\\MainLayout.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Shared\\MainLayout.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T17:19:01.632Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "Blazor.UI\\Layout\\NavMenu.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T16:04:14.56Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CataloguesService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\TheatherService\\CataloguesService.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\services\\TheatherService\\CataloguesService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\services\\TheatherService\\CataloguesService.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\services\\TheatherService\\CataloguesService.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAADwvzUAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:26:19.601Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "AddSallByComplexe.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Salle\\AddSallByComplexe.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Salle\\AddSallByComplexe.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Salle\\AddSallByComplexe.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Salle\\AddSallByComplexe.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:28:15.624Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ManagerSalle.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Salle\\ManagerSalle.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Salle\\ManagerSalle.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Salle\\ManagerSalle.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Salle\\ManagerSalle.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:29:09.336Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Pages\\Home.razor",
-              "RelativeToolTip": "Blazor.UI\\Pages\\Home.razor",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAD8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T19:33:56.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "PieceManager.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Piece\\PieceManager.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Piece\\PieceManager.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Piece\\PieceManager.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Piece\\PieceManager.razor",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEsAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:30:08.935Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "BusinessPiece.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\BusinessService\\BusinessPiece.cs",
-              "RelativeDocumentMoniker": "data\\BusinessService\\BusinessPiece.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\BusinessService\\BusinessPiece.cs",
-              "RelativeToolTip": "data\\BusinessService\\BusinessPiece.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIQAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T20:26:37.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "AnnonceController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T18:38:58.028Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "PublicationController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAgwIIAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:30:37.088Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 4,
               "Title": "PublicationBL.cs",
               "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\BusinessLayer\\PublicationBL.cs",
               "RelativeDocumentMoniker": "InfraPublication\\BusinessLayer\\PublicationBL.cs",
               "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\BusinessLayer\\PublicationBL.cs",
               "RelativeToolTip": "InfraPublication\\BusinessLayer\\PublicationBL.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAYwDAAAAAIAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAUwCIAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:30:37.081Z",
+              "WhenOpened": "2024-05-31T13:42:20.621Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "GetAllCatalogue.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Catalogue\\GetAllCatalogue.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Catalogue\\GetAllCatalogue.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Catalogue\\GetAllCatalogue.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Catalogue\\GetAllCatalogue.razor",
-              "ViewState": "AQIAAJMAAAAAAAAAAAAAAJoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:30:50.841Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "AddPieceToCatalogue.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Piece\\AddPieceToCatalogue.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Piece\\AddPieceToCatalogue.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Piece\\AddPieceToCatalogue.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Piece\\AddPieceToCatalogue.razor",
-              "ViewState": "AQIAAIcAAAAAAAAAAAAqwJQAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-25T17:47:50.123Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "AddPiece.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Piece\\AddPiece.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\manager\\Piece\\AddPiece.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\manager\\Piece\\AddPiece.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\manager\\Piece\\AddPiece.razor",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAE8AAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T17:40:34.626Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "AnnonceDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Annonce\\AnnonceDto.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\modelViews\\Annonce\\AnnonceDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\Annonce\\AnnonceDto.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\modelViews\\Annonce\\AnnonceDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAiAAAA",
+              "DocumentIndex": 3,
+              "Title": "PublicationController.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PublicationController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\Publication\\PublicationController.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PublicationController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\Publication\\PublicationController.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAiwIwAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:48:02.64Z"
+              "WhenOpened": "2024-05-31T13:42:20.629Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "BaseView.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\BaseView.cs",
-              "RelativeDocumentMoniker": "Blazor.UI\\Data\\modelViews\\BaseView.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Data\\modelViews\\BaseView.cs",
-              "RelativeToolTip": "Blazor.UI\\Data\\modelViews\\BaseView.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAtAAAA",
+              "DocumentIndex": 18,
+              "Title": "Representation.razor",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Representation.razor",
+              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\Representation.razor",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Representation.razor",
+              "RelativeToolTip": "Blazor.UI\\Client\\Page\\Representation.razor",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-31T14:00:15.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PieceController.cs",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Theater\\PieceController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\Theater\\PieceController.cs",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Theater\\PieceController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\Theater\\PieceController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAtwC8AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T19:55:04.408Z"
+              "WhenOpened": "2024-05-31T13:42:20.656Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "AddComplexe.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Comp\\AddComplexe.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\Comp\\AddComplexe.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\Comp\\AddComplexe.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\Comp\\AddComplexe.razor",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 19,
+              "Title": "PieceInfo.razor",
+              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\infoPage\\PieceInfo.razor",
+              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\infoPage\\PieceInfo.razor",
+              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\infoPage\\PieceInfo.razor",
+              "RelativeToolTip": "Blazor.UI\\Client\\Page\\infoPage\\PieceInfo.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T19:13:00.223Z"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "97d25786-8bc5-4daf-ae93-4e3bee66279e",
-        "Display": 0,
-        "X": 1017,
-        "Y": 136,
-        "Width": 1336,
-        "Height": 617,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ComplexeDropDown.razor",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\ReservationComponent\\ComplexeDropDown.razor",
-              "RelativeDocumentMoniker": "Blazor.UI\\Client\\Page\\ReservationComponent\\ComplexeDropDown.razor",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\Client\\Page\\ReservationComponent\\ComplexeDropDown.razor",
-              "RelativeToolTip": "Blazor.UI\\Client\\Page\\ReservationComponent\\ComplexeDropDown.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFYAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-31T08:32:01.351Z",
+              "WhenOpened": "2024-05-31T13:36:59.773Z",
               "EditorCaption": ""
             }
           ]

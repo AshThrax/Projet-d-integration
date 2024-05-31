@@ -1,10 +1,11 @@
 ﻿using Blazor.UI.Data.modelViews.Publication;
+using System.Net.Http.Json;
 
 namespace Blazor.UI.data.services.Publication
 {
     public interface IPostService
     {
-        Task<PostDto> GetAllByPublicationId(string publicationId);
+        Task<IEnumerable<PostDto>> GetAllByPublicationId(string publicationId);
 
         Task<PostDto> GetPostById(string postId);
         Task DeletePost(string postId);
@@ -31,9 +32,9 @@ namespace Blazor.UI.data.services.Publication
             throw new NotImplementedException();
         }
 
-        public Task<PostDto> GetAllByPublicationId(string publicationId)
+        public async Task<IEnumerable<PostDto>?> GetAllByPublicationId(string publicationId)
         {
-            throw new NotImplementedException();
+            return await _httpClient.GetFromJsonAsync<IEnumerable<PostDto>?>($"{ApiUri}/publication-all/{publicationId}");
         }
 
         public Task<PostDto> GetPostById(string postId)

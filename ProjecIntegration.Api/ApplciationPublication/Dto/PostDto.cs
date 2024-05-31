@@ -12,6 +12,5 @@ namespace ApplicationPublication.Dto
     {
         public string Content { get; set; } = string.Empty;
         public string UserId { get; set; } = string.Empty;
-        public ICollection<RepostDto> Repost { get; set; } = new List<RepostDto>();
     }
 }
