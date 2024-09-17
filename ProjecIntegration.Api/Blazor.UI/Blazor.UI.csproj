@@ -8,11 +8,14 @@
 
   <ItemGroup>
     <Content Remove="Client\complexe-grid.razor" />
+    <Content Remove="Client\Page\publication\PostComponent.razor" />
+    <Content Remove="Client\Page\publication\PostPublicationComponent.razor" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Bootstrap" Version="2.2.1" />
     <PackageReference Include="Blazor.LocalStorage.WebAssembly" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.5" PrivateAssets="all" />
@@ -20,6 +23,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.5" />
     <PackageReference Include="Stripe.net" Version="44.8.0" />
+    <PackageReference Include="WMBlazorSlickCarousel" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,13 +32,30 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Client\complexe-grid.razor" />
+    <_ContentIncludedByDefault Remove="Client\Page\publication\PostComponent.razor" />
+    <_ContentIncludedByDefault Remove="Client\Page\publication\PostPublicationComponent.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Client\Client page\" />
-    <Folder Include="Client\manager\Representation\" />
-    <Folder Include="Client\manager\Siege\" />
+    <Folder Include="Client\manager\Catalogue\Component\" />
+    <Folder Include="Client\manager\Complexe\Component\" />
+    <Folder Include="Client\manager\Piece\Component\" />
+    <Folder Include="Client\manager\Salle\Component\" />
+    <Folder Include="Client\manager\Siege\Component\" />
+    <Folder Include="Client\Page\MakeCommand\Component\" />
     <Folder Include="Client\Page\PiecePage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Client\Page\publication\PostComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Client\Page\publication\Post\PostPublicationComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Client\Page\publication\PostPublicationComponent.razor" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using ApplicationTheather.DTO;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,37 +16,37 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="salleId"></param>
         /// <returns></returns>
-        Task<IEnumerable<SiegeDto>> GetSiegeFromSalleId(int salleId);
+        Task<ServiceResponse<IEnumerable<SiegeDto>>> GetSiegeFromSalleId(int salleId);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="siegeId"></param>
         /// <returns></returns>
-        Task<SiegeDto>GetSiegeById(int siegeId);
+        Task<ServiceResponse<SiegeDto>>GetSiegeById(int siegeId);
         /// <summary>
         /// /
         /// </summary>
         /// <param name="siege"></param>
         /// <returns></returns>
-        Task<SiegeDto> CreateSiegeForSalle(AddSiegeDto siege);
+        Task<ServiceResponse<SiegeDto>> CreateSiegeForSalle(AddSiegeDto siege);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="SiegeId"></param>
         /// <returns></returns>
-        Task DeleteSiegeById(int SiegeId);
+        Task<ServiceResponse<SiegeDto>> DeleteSiegeById(int SiegeId);
         /// <summary>
         /// mets a jour les information lier a un siege 
         /// </summary>
         /// <param name="SiegeId"></param>
         /// <param name="siege"></param>
         /// <returns></returns>
-        Task UpdateSiegeById(int SiegeId,UpdateSiegeDto siege);
+        Task<ServiceResponse<SiegeDto>> UpdateSiegeById(int SiegeId,UpdateSiegeDto siege);
         /// <summary>
         /// récupère les Sieges
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        Task<IEnumerable<SiegeDto>> GetSiegeFromCommand(int command);
+        Task<ServiceResponse<IEnumerable<SiegeDto>>> GetSiegeFromCommand(int command);
     }
 }

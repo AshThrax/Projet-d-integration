@@ -1,0 +1,6 @@
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\InfrastructureChat\obj\Debug\net8.0\InfrastructureChat.csproj.AssemblyReference.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\InfrastructureChat\obj\Debug\net8.0\InfrastructureChat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\InfrastructureChat\obj\Debug\net8.0\InfrastructureChat.AssemblyInfoInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\InfrastructureChat\obj\Debug\net8.0\InfrastructureChat.AssemblyInfo.cs
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\InfrastructureChat\obj\Debug\net8.0\InfrastructureChat.csproj.CoreCompileInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\InfrastructureChat\obj\Debug\net8.0\InfrastructureChat.sourcelink.json

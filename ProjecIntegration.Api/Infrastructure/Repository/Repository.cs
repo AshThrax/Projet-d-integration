@@ -86,5 +86,20 @@ namespace InfrastructureAnnonce.Repository
                 throw;
             }
         }
+
+        public async Task<bool> DoYouExist(string id)
+        {
+            try
+            {
+                int count = (int) await _mongoCollection.Find(x=>x.Id==id).CountDocumentsAsync();
+
+                return count > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

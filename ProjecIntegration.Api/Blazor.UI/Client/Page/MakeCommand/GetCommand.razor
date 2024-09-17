@@ -9,7 +9,7 @@
     <h3>Vos Commandes</h3>
 
     <br>    
-    @if (lstCommand != null )
+    @if (lstCommand != null && lstCommand.Count>0)
     {
         <div class="col ">
             <QuickGrid Items="@lstCommand.AsQueryable()">
@@ -31,8 +31,7 @@
                     <h5 class="">@Piecerep.Titre</h5>
                 </div>
                 <div class="w-50 h-25 float-end">
-                    <Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails PlaceCommand="@SelecteCommand" SelectedItem="@selectRepresnetaion">
-                     </Blazor.UI.Client.Page.RepresentationPage.RepresnetationDetails>
+                    
 
                 </div>
             <br>
@@ -63,20 +62,25 @@
 
     protected override async Task OnInitializedAsync()
     {
-        int id = lstCommand.ElementAt(0).IdRepresentation;
-        SelecteCommand = lstCommand.ElementAt(0).NombreDePlace;
-        selectRepresnetaion = await ServP.GetById(id);
-        pieceid = selectRepresnetaion.IdPiece;
-        Piecerep = await ServPiece.GetById(pieceid);
-        await Task.Delay(1000);
+        if (lstCommand !=null)
+        {
+            int id = lstCommand.ElementAt(0).IdRepresentation;
+            SelecteCommand = lstCommand.ElementAt(0).NombreDePlace;
+            selectRepresnetaion = await ServP.GetById(id);
+            pieceid = selectRepresnetaion.PieceId;
+            Piecerep = await ServPiece.GetById(pieceid);
+            await Task.Delay(1000);
+            
+        }
     }
 
     public async Task LoadRepresentation(int id)
     {
         SelecteCommand = lstCommand.ElementAt(id).NombreDePlace;
         selectRepresnetaion = await ServP.GetById(id);
-        pieceid = selectRepresnetaion.IdPiece;
+        pieceid = selectRepresnetaion.PieceId;
         Piecerep = await ServPiece.GetById(pieceid);
+        await Task.Delay(1000);
     }
     public void Clean() 
             => selectRepresnetaion = null;

@@ -1,12 +1,12 @@
-﻿using Amazon.Runtime.Internal;
-using ApplicationPublication.Common.BusinessLayer;
+﻿using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Common.Repository;
+using ApplicationTheather.Common.Interfaces.IRepository;
 using InfraPublication.BusinessLayer;
+using InfraPublication.Infrastructure.Repository;
 using InfraPublication.Persistence;
 using InfraPublication.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace InfraPublication
 {
@@ -17,6 +17,7 @@ namespace InfraPublication
             services.AddScoped<IPublicationRepository, PublicationRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IRepostRepository, RepostRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<IRepostBL, RepostBL>();
             services.AddScoped<IPostBL, PostBL>();

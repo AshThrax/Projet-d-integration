@@ -1,6 +1,6 @@
 ﻿
 
-namespace Blazor.UI.Data.modelViews.Theater;
+namespace Blazor.UI.Data.ModelViews.Theater;
 
 public class RepresentationDto : Baseview
 {
@@ -9,10 +9,9 @@ public class RepresentationDto : Baseview
     public int PlaceMaximum { get; set; }
     public int PlaceCurrent { get; set; }
     //------salle de theatre
-    public int IdSalledeTheatre { get; set; }
-
+    public int SalledeTheatreId { get; set; }
     //-----PIece
-    public int IdPiece { get; set; }
+    public int PieceId { get; set; }
 
     //-----commande/reservation
     public List<CommandDto>? Commands { get; set; }
@@ -25,9 +24,12 @@ public class AddRepresentationDto
     public int PlaceMaximum { get; set; }
     public int PlaceCurrent { get; set; }
     //------salle de theatre
-    public int IdSalledeTheatre { get; set; }
+    public int SalledeTheatreId { get; set; }
     //-----PIece
-    public int IdPiece { get; set; }
+    public int PieceId { get; set; }
+
+    //-----commande/reservation
+
 }
 //mets a jout une representation dans la database
 public class UpdateRepresentationDto : Baseview
@@ -37,7 +39,8 @@ public class UpdateRepresentationDto : Baseview
     public int PlaceMaximum { get; set; }
     public int PlaceCurrent { get; set; }
     //------salle de theatre
-    public int IdSalledeTheatre { get; set; }
+    public int SalledeTheatreId { get; set; }
     //-----PIece
-    public int IdPiece { get; set; }
+    public int PieceId { get; set; }
+
 }

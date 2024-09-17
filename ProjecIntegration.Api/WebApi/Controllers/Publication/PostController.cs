@@ -1,5 +1,6 @@
 ﻿using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Dto;
+using Domain.DataType;
 using InfraPublication.BusinessLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,23 +12,26 @@ namespace WebApi.Controllers.Publication
     public class PostController : ControllerBase
     {
         private readonly IPostBL postBL;
+        private readonly ICustomGetToken _customGetToken;
         private readonly ILogger<PostController> logger;
 
-        public PostController(IPostBL postBL, ILogger<PostController> logger)
+        public PostController(IPostBL postBL,ICustomGetToken customGetToken, ILogger<PostController> logger)
         {
             this.postBL = postBL;
             this.logger = logger;
+            _customGetToken=customGetToken;
         }
-        [HttpGet("publication-all/{publicationId}")]
+        [HttpGet("publication-all/{publicationId}/{page}")]
         [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(IEnumerable<PostDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> GetAllPostFromPublication(string publicationId)
+        public async Task<ActionResult<Pagination<PostDto>>> GetAllPostFromPublication(string publicationId,int page)
         {
             try
             {
                 IEnumerable<PostDto> GetPost = await postBL.GetAllPostFromPublicationId(publicationId);
-                return Ok(GetPost);
+                Pagination<PostDto> PagePost = Pagination<PostDto>.ToPagedList(GetPost.ToList(), page, 5);
+                return Ok(PagePost);
             }
             catch(Exception ex)
             {
@@ -104,7 +108,7 @@ namespace WebApi.Controllers.Publication
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> CreatePublication(string publicationById, [FromBody] PostDto AddPost)
+        public async Task<ActionResult> CreatePublication(string publicationById, [FromBody] AddPostDto AddPost)
         {
             try
             {
@@ -112,8 +116,10 @@ namespace WebApi.Controllers.Publication
                 {
                     return BadRequest();
                 }
-                    await postBL.CreateAsync(publicationById,AddPost);
-                    return Ok();
+                AddPost.UserId = await _customGetToken.GetSub();
+                AddPost.PublicationId=publicationById;
+                await postBL.CreateAsync(publicationById,AddPost);
+                return Ok();
             }
             catch (Exception ex)
             {

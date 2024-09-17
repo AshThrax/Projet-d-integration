@@ -1,5 +1,6 @@
 ﻿@page "/manager/catalogue/{Id:int}"
 @page "/manager/catalogue"
+@using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
@@ -130,7 +131,7 @@
                   @if (GetPieceDto != null)
                   {
            
-                    <QuickGrid Items="GetPieceDto.AsQueryable()">
+                    <QuickGrid Items="GetPieceDto.Items.AsQueryable()">
                         <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
                         <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
                         <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
@@ -159,7 +160,8 @@
     List<CatalogueDto>? GetCatalogue { get; set; }
     CatalogueDto? SelectedCatalogue { get; set; } 
     public int SelectedCatalogueId { get; set; }
-    List<PieceDto>? GetPieceDto { get; set; } 
+    Pagination<PieceDto>? GetPieceDto { get; set; }
+    public int pageIndex = 1;
     protected async override Task OnInitializedAsync()
     {
         SelectedComplexeId = Id;
@@ -174,10 +176,10 @@
     }
     public async Task GetPieceFromcatalogue(int catalogueId)
     {
-        GetPieceDto = (await PieceService.GetByCatalogue(catalogueId)).ToList();
+        GetPieceDto = (await PieceService.GetByCatalogue(catalogueId,pageIndex));
         await Task.Delay(1000);
     }
-    public async Task OnSelectedChange(ChangeEventArgs args)
+    public async Task OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
 
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
@@ -203,5 +205,21 @@
     public void GetToDeleteCatalog(int catalogueId)
     {
         manager.NavigateTo($"/manager/Deletecatalogue/{catalogueId}");
+    }
+    public async Task NextPage()
+    {
+        if (GetPieceDto.HasNextPage)
+        {
+            pageIndex++;  
+            GetPieceDto = await PieceService.GetByCatalogue(SelectedCatalogueId, pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (GetPieceDto.HasPreviousPage)
+        {
+            pageIndex--;
+            GetPieceDto = await PieceService.GetByCatalogue(SelectedCatalogueId, pageIndex);
+        }
     }
 }

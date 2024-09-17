@@ -1,93 +1,113 @@
 ﻿@page "/pieceinfo/{Id:int}"
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.modelViews.Publication
 @using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.Publication
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.services
 @using Blazor.UI.data.modelViews
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject IPieceService Servp;
 @inject IRepresentationService PieceRep;
+@inject IPublicationService pubService;
 @inject Microsoft.AspNetCore.Components.NavigationManager manager;
 
-<h3>Information</h3>
-@if (selectPieces != null)
-{
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                   <h5><strong>Titre :</strong> @selectPieces.Titre</h5>
-                </div>
-                <div class="card-body">
-                    <div class="card-img">
-                        <img class="img-fluid" src="https://localhost:44337/Resources/@selectPieces.Image" />
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Description</h5>
-                        <p class="card-text">@selectPieces.Description</p>
-                        <p class="card-text">@selectPieces.Duree: minutes</p>
-                    </div>
-                   
-                </div>
-                <div class="card-footer">
-                    <div class="m-3 float-end ">
-                        <button type="button" class="btn btn-warning" @onclick="() =>GetRepresentation()">Voir les Séance</button>
-                        <button type="button" class="btn btn-warning" @onclick="() =>getbackreservation()">Reservation</button>
-                    </div>
+<div class="flex-fill m-4 p-4">
+    <h3>Information</h3>
+    @if (selectPieces != null)
+    {
+        <div class="container">
+            <div class="row">
+                        <div class="">
+                               <h5><strong>Titre :</strong> @selectPieces.Titre</h5>
+                        </div>
+                        <div class="col-md-5">
+                                
+                                <img class="img-fluid card-img" src="https://localhost:44337/Resources/@selectPieces.Image" />
+                        </div>
+                        <div class="col-md-7">
+                                <div class="card m-2 p-2">
+                                    <h5 class="card-title">Description</h5>
+                                    <p class="card-text">@selectPieces.Description</p>
+                                    <p class="card-text">@selectPieces.Duree: minutes</p>
+                                </div>
+                        </div>
+                        <div class="">
+                            <div class="m-3 float-end btn-group">
+                                <a type="button" class="btn btn-warning shadow-sm" @onclick="GetRepresentation">Voir les Séance: @getSeance</a>
+                                <a type="button" class="btn btn-warning shadow-sm" @onclick="getbackreservation">Reservation</a>
+                                <a type="button" class="btn btn-warning shadow-sm" @onclick="() => GetToPublication(Id)">Publication</a>
+                            </div>
+                        </div>
+                <div class="col">
+                    @if (getSeance)
+                    {
+                            <Blazor.UI.Client.manager.Representation.Component.GetAllRepresentationComponent Id="@Id">
+                            </Blazor.UI.Client.manager.Representation.Component.GetAllRepresentationComponent>
+                    }
+                    else
+                    {
+                
+                    }
                 </div>
             </div>
         </div>
-        <div class="col">
-            @if (Myrepresnetation != null)
-            {
-                <div class="card m-2 p-2 bg-light rounded">
-                      <div class="card-header">
-                          <h5><strong>Representation</strong></h5>
-                      </div>
-                    <div class="card-body m-2 p-2">
-                        <QuickGrid Items="@Myrepresnetation.AsQueryable()">
-                            <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
-                            <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
-                            <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true"  />
-                            <PropertyColumn Property="@(p => p.Seance.Day)" Sortable="true"  />
-                            <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true"  />
-                       
-                        </QuickGrid>
 
-                    </div>
-                </div>
+    }
+    else
+    {
+        <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+    }
+</div>
 
-            }
-            else
-            {
-                
-            }
-        </div>
-    </div>
-    
-
-}
-else
+@code 
 {
-    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
-}
-
-@code {
     [Parameter]
     public int Id { get; set; }
     public PieceDto? selectPieces { get; set; }
-    public List<RepresentationDto> Myrepresnetation { get; set; } = new();
+    public Pagination<RepresentationDto>? Myrepresnetation { get; set; }
+    public Pagination<PublicationDto>? PiecePublication { get; set; }
+    public bool getSeance = false;
+    public int pageIndex = 1;
+    public int pageIndexPub = 1;
     protected override async Task OnInitializedAsync()
     {
         selectPieces = await Servp.GetById(Id);
+        PiecePublication = await pubService.GetAllPublicationByPieceId(1,Id);
         await Task.Delay(100);
-      
     }
     public async Task GetRepresentation()
     {
-        Myrepresnetation = (await PieceRep.GetPiece(Id)).ToList();
+        getSeance = true;
+        Myrepresnetation = (await PieceRep.GetPiece(Id,pageIndex));
     }
     public void getbackreservation()
     {
         manager.NavigateTo($"/representation/{Id}");
     }
+    public void GetPost(string annId)
+    {
+        manager.NavigateTo($"/publication/{annId}");
+    }
+    public void GetToPublication(int Id)
+    {
+        manager.NavigateTo($"/publicationbypiece/{Id}");
+    }
+    public async Task NextPage()
+    {
+        if (Myrepresnetation.HasNextPage)
+        {
+            pageIndex++;
+            Myrepresnetation = await PieceRep.GetPiece(Id, pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (Myrepresnetation.HasPreviousPage)
+        {
+            pageIndex--;
+            Myrepresnetation = await PieceRep.GetPiece(Id, pageIndex);
+        }
+    }
+  
 }

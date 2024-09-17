@@ -1,8 +1,7 @@
 ﻿@page "/manager"
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin")]
 @attribute [StreamRendering]
 @using Blazor.UI.Client.Page.Comp
-@using Blazor.UI.Client.Page.sallePage
 @using Blazor.UI.Client.Page
 @inject NavigationManager manager;
 <div class="bg-light  m-4 p-2 rounded-2 text-center">
@@ -11,24 +10,42 @@
 </div>
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToComplexeSection()">Manage Complexes</button>
+        <a type="button" class="btn btn-primary nav-link text-black" @onclick="() => GetToComplexeSection()">Complexes</a>
     </li>
     <li class ="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToPieceSection()">Manage Salle/Pieces</button>
-    </li>
-    <li class="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToRepresentationSection()">Manage Salle/Representations</button>
-    </li>
-    <li class="nav-item">
-        <button type="button" class="btn btn-primary nav-link" @onclick="() => GetToSalleSection()">Manage Complexe/Salles</button>
-    </li>
-   
+        <a type="button" class="btn btn-primary nav-link text-black" @onclick="() => GetToPieceSection()">Pieces</a>
+    </li>    
 </ul>
 <br />
-<div class="jumbotron">
-    <p>Bienvenu administrateur </p> 
+<div class="jumbotron bg-white">
+    <div class="text-center p-2 m-2">
+        <h3>Bienvenu dans l'espace Administrateur </h3>
+        <section>
+            cette espace est dédié aux Administrateur pour la gestion des ressource de l'application
+        </section>
+    </div> 
 </div>
+<div class="row featurette m-2 p-2 shadow-sm">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">
+                    Fonctionnalité
+                </h2>
+            </div>
+            <div class="col-md-5">
+               <p class="lead">
+                   la Section Manager a pour but de gerer les Ressource de la plateforme
 
+                   <ul class="list-group">
+                        <li class="list-group-item"><a href="#">les Complexes</a> </li>
+                        <li class ="list-group-item">Gestion des Salles lié au complexe</li>
+                        <li class="list-group-item">Gestion des Siege lié au Salle</li>
+                        <li class="list-group-item">Gestion des Pièce </li>
+                        <li class="list-group-item">Gestion des PIece lié a un catalogue</li>
+                 
+                   </ul>
+               </p>
+            </div>
+</div>
 @code
 {
 

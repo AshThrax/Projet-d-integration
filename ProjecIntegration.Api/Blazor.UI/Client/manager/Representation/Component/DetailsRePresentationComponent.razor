@@ -1,0 +1,43 @@
+﻿@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@inject IRepresentationService Servrep;
+@inject ISalleService ServSalle;
+@inject IPieceService ServPiece;
+@inject IComplexeService ServComp;
+ @if (SelecteRepresentation != null && GetComplexe !=null && GetSalle !=null)
+ {
+                    <div class="card m-2 p-2">
+                        <h3 class="card-title">Representation</h3>
+                        <div class="card-body">
+                            <p class="card-text"><strong>Seance :</strong> @SelecteRepresentation.Seance</p>
+                            <p class="card-text"><strong>Complexe :</strong> @GetComplexe?.Name</p>
+                            <p class="card-text"><strong>Salle :</strong> @GetSalle?.Name</p>
+                            <p class="card-text"><strong>Place Current :</strong> @SelecteRepresentation.PlaceCurrent</p>
+                            <p class="card-text"><strong>Place Maximum :</strong> @SelecteRepresentation.PlaceMaximum</p>
+                            <p class="card-text"><strong>Nombre de Commande :</strong> @SelecteRepresentation.Commands?.Count</p>
+                        </div>
+                    </div>
+ }
+ else
+ {
+                
+ }
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public RepresentationDto? SelecteRepresentation { get; set; } 
+    public ComplexeDto? GetComplexe { get; set; }
+    public SalleDeTheatreDto? GetSalle { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        SelecteRepresentation = await Servrep.GetById(Id);
+        if (SelecteRepresentation != null)
+        {
+            int salleId = SelecteRepresentation.SalledeTheatreId;
+            GetSalle = await ServSalle.GetById(salleId);
+            GetComplexe = await ServComp.GetById(GetSalle.ComplexeId);
+            await Task.Delay(100);      
+        }
+    }
+}

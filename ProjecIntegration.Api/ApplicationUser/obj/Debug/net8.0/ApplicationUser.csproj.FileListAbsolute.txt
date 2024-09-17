@@ -1,0 +1,16 @@
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\bin\Debug\net8.0\ApplicationUser.deps.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\bin\Debug\net8.0\ApplicationUser.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\bin\Debug\net8.0\ApplicationUser.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\bin\Debug\net8.0\Domain.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\bin\Debug\net8.0\Domain.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.csproj.AssemblyReference.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.AssemblyInfoInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.AssemblyInfo.cs
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.csproj.CoreCompileInputs.cache
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.sourcelink.json
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\Applicat.13CE3805.Up2Date
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\refint\ApplicationUser.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ApplicationUser.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationUser\obj\Debug\net8.0\ref\ApplicationUser.dll

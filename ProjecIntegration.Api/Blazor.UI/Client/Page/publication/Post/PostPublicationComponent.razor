@@ -1,0 +1,68 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.data.services.Publication
+@inject IPostService PostService;
+
+<div class="h-50 w-75">
+    @if (GetPostFromPublication != null)
+    {
+        @foreach (PostDto subItem in GetPostFromPublication.Items)
+        {   <br/>
+            <div class="row featurette shadow">
+                <div class="col-sm-3 me-2">
+                    <GetUserComponent UserId="@subItem.UserId"></GetUserComponent>
+                </div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-7 ms-4">
+                    <h3 class="ms-2 mb-0"><strong>Reponse :</strong></h3>
+                    <div class="mt-2 mb-2">
+                        <p class="ps-2 pt-4 pb-2 text-body-secondary">@subItem.Content</p>
+                        <p class="ps-2 bottom blog-post-meta">@subItem.CreatedDate</p>
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+    <div class="row">
+        
+        <nav class="nav float-end">
+            <a @onclick="() =>PreviousPage()" class="nav-item btn btn-outline-dark">Previous</a>
+            <a @onclick="()=>NextPage()" class="nav-item btn btn-outline-dark">suivant</a>
+        </nav>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    public Pagination<PostDto>? GetPostFromPublication { get; set; }
+    public int pageIndex = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetPostFromPublication = await PostService.GetAllByPublicationId(Id, pageIndex);
+        pageIndex = GetPostFromPublication.PageIndex;
+
+    }
+    public async Task NextPage()
+    {
+        if (GetPostFromPublication.HasNextPage)
+        {
+            pageIndex++;
+            GetPostFromPublication = await PostService.GetAllByPublicationId(Id, pageIndex);
+
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (GetPostFromPublication.HasPreviousPage)
+        {
+            pageIndex--;
+            GetPostFromPublication = await PostService.GetAllByPublicationId(Id, pageIndex);
+
+        }
+    }
+}

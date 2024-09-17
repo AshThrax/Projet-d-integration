@@ -2,7 +2,9 @@
 using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
+using Domain.DataType;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 namespace WebApi.Controllers.Theater;
 
 [Route("api/v1/[controller]")]
@@ -17,13 +19,13 @@ public class SallesDeTheatreController : ControllerBase
             _bussinessServices= bussinessServices;
             _mapper = mapper;
         }
-        [HttpGet("{id}")]
+        [HttpGet("single/{id}")]
   
         public async Task<ActionResult<SalleDeTheatreDto>> GetSalleById(int id)
         {
             try
             {
-                SalleDeTheatreDto getSalle= await _bussinessServices.GetSalle(id);
+                ServiceResponse<SalleDeTheatreDto> getSalle= await _bussinessServices.GetSalle(id);
 
                 return Ok(getSalle);
             }
@@ -40,13 +42,14 @@ public class SallesDeTheatreController : ControllerBase
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("get-complexe/{id}")]
-        public async Task<ActionResult<SalleDeTheatreDto>> GetSalleByComplexe(int id)
+        [HttpGet("get-complexe/{id}/{page}")]
+        public async Task<ActionResult<Pagination<SalleDeTheatreDto>>> GetSalleByComplexe(int id, int page)
         {
             try
             {
-                IEnumerable<SalleDeTheatreDto> getSalles= await _bussinessServices.GetFromComplexe(id);
-                return Ok(getSalles);
+                ServiceResponse<IEnumerable<SalleDeTheatreDto>> getSalles= await _bussinessServices.GetFromComplexe(id);
+                Pagination<SalleDeTheatreDto> pageSalle = Pagination<SalleDeTheatreDto>.ToPagedList(getSalles.Data.ToList(), page, 10);
+                return Ok(pageSalle);
             }
             catch (ValidationException ex)
             {
@@ -61,13 +64,37 @@ public class SallesDeTheatreController : ControllerBase
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet]
+        [HttpGet("{page}")]
 
-        public async Task<ActionResult<IEnumerable<SalleDeTheatreDto>>> GetAllSalle()
+        public async Task<ActionResult<Pagination<SalleDeTheatreDto>>> GetAllSalle(int page)
         {
             try
             {
-                IEnumerable<SalleDeTheatreDto> getSalles = await _bussinessServices.GetAllSalle();
+                ServiceResponse<IEnumerable<SalleDeTheatreDto>> getSalles = await _bussinessServices.GetAllSalle();
+                Pagination<SalleDeTheatreDto> pageSalle = Pagination<SalleDeTheatreDto>.ToPagedList(getSalles.Data.ToList(), page, 10);
+                return Ok(pageSalle);
+
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("list")]
+        public async Task<ActionResult<IEnumerable<SalleDeTheatreDto>>> GetAllSallelist()
+        {
+            try
+            {
+                ServiceResponse<IEnumerable<SalleDeTheatreDto>> getSalles = await _bussinessServices.GetAllSalle();
+
                 return Ok(getSalles);
 
             }

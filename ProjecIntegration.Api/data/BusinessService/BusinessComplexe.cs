@@ -3,6 +3,7 @@ using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -18,88 +19,116 @@ namespace DataInfraTheather.BusinessService
             _complexeRepository = complexeRepository;
         }
 
-        public void CreateAsync(ComplexeDto complexeDto)
+        public async Task<ServiceResponse<ComplexeDto>> CreateAsync(ComplexeDto complexeDto)
         {
+            ServiceResponse<ComplexeDto> response = new();
             try
             {
                 var entity = _mapper.Map<Complexe>(complexeDto);
-                _complexeRepository.Insert(entity);
+                await _complexeRepository.Insert(entity);
 
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'operation";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
-
+            return response;
         }
 
-        public async Task Delete(int id)
+        public async Task<ServiceResponse<ComplexeDto>> Delete(int id)
         {
+            ServiceResponse<ComplexeDto> response = new();
             try
             {
                 var getEntity = await _complexeRepository.GetById(id);
                 if (getEntity != null)
                 {
                    await _complexeRepository.Delete(id);
+                    response.Success = true;
+                    response.Message = "opération réussi";
+                    response.Errortype = Domain.Enum.Errortype.Good;
                 }
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'operation";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<IEnumerable<ComplexeDto>> GetAllComplexe()
+        public async Task<ServiceResponse<IEnumerable<ComplexeDto>>> GetAllComplexe()
         {
+            ServiceResponse<IEnumerable<ComplexeDto>> response = new();
             try
             {
                 var GetEntity = await _complexeRepository.GetAll();
-                return _mapper.Map<IEnumerable<ComplexeDto>>(GetEntity);
-
+                response.Data=_mapper.Map<IEnumerable<ComplexeDto>>(GetEntity);
+                response.Success=true;
+                response.Message = "opération réussi";
+                response.Errortype=Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'operation";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<ComplexeDto> GetComplexe(int id)
+        public async Task<ServiceResponse<ComplexeDto>> GetComplexe(int id)
         {
+            ServiceResponse < ComplexeDto >response = new();
             try
             {
                 var GetEntity = await _complexeRepository.GetById(id);
-                return _mapper.Map<ComplexeDto>(GetEntity);
-
+                response.Data= _mapper.Map<ComplexeDto>(GetEntity);
+                response.Success = true;
+                response.Message = "operation réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'operation";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task UpdateAsync(int id, UpdateComplexeDto complexeDto)
+        public async Task<ServiceResponse<ComplexeDto>> UpdateAsync(int id, UpdateComplexeDto complexeDto)
         {
+            ServiceResponse<ComplexeDto> response = new();
             try
             {
                 var getEntity = await _complexeRepository.GetById(id);
                 if (getEntity != null)
                 {
-                    var conversion = _mapper.Map<Complexe>(getEntity);
-                   _complexeRepository.Update(id, conversion);
+                    Complexe conversion = _mapper.Map<Complexe>(getEntity);
+                    await _complexeRepository.Update(id, conversion);
+                    
+                    response.Success = true;
+                    response.Message = "operation réussi";
+                    response.Errortype =Domain.Enum.Errortype.Good;
+       
                 }
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
-
+            return response;
         }
     }
 }

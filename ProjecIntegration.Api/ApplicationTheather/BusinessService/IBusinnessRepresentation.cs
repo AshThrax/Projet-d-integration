@@ -1,4 +1,5 @@
 ﻿using ApplicationTheather.DTO;
+using Domain.ServiceResponse;
 
 namespace ApplicationTheather.BusinessService
 {
@@ -8,37 +9,37 @@ namespace ApplicationTheather.BusinessService
         /// récupere toutes les rpesentation
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<RepresentationDto>> GetAll();
+        Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAll();
         /// <summary>
         /// récupère toutes les represnetaion en fcontion d'un complexe
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<IEnumerable<RepresentationDto>> GetAllFromComplexe(int ComplexeId);
+        Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAllFromComplexe(int ComplexeId);
         /// <summary>
         /// recupère toutes les represnetation liée a une pièce de theatre
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<IEnumerable<RepresentationDto>> GetAllFromPiece(int pieceId);
+        Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAllFromPiece(int pieceId);
         /// <summary>
         /// récupèrer les representation par salle
         /// </summary>
         /// <param name="salleId"></param>
         /// <returns></returns>
-        Task<IEnumerable<RepresentationDto>> GetAllFromSalle(int salleId);
+        Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAllFromSalle(int salleId);
         /// <summary>
         /// récupère une representation
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<RepresentationDto> GetById(int id);
+        Task<ServiceResponse<RepresentationDto>> GetById(int id);
         /// <summary>
         /// Crée une representation
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task Create(AddRepresentationDto dto);
+        Task<ServiceResponse<RepresentationDto>> Create(AddRepresentationDto dto);
         /// <summary>
         /// mest a jour une represnetaion
         /// </summary>
@@ -54,13 +55,13 @@ namespace ApplicationTheather.BusinessService
         /// <param name="id"></param>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task Update(int id, UpdateRepresentationDto dto);
+        Task<ServiceResponse<RepresentationDto>> Update(int id, UpdateRepresentationDto dto);
         /// <summary>
         /// supprimùe un represnetation
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task Delete(int id);
+        Task<ServiceResponse<RepresentationDto>> Delete(int id);
     }
 
 }

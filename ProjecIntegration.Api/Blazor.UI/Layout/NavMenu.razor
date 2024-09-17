@@ -1,42 +1,48 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Blazor.UI</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+﻿
+<div class="top-row ps-3 navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">Navigation</a>
+            <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </div>
-</div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <i class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></i> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="profileViewer">
-                <i class="bi bi-list-nested-nav-menu" aria-hidden="true"></i> Profile
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="reservation">
-                <i class="bi bi-basket" aria-hidden="true"></i> Reservation
-            </NavLink>
-        </div>
-        <div>
-           
-        </div>
-        @if(IsAdmin)
-        {
+    <div class="@NavMenuCssClass nav-scrollable bg-dark" @onclick="ToggleNavMenu">
+        <nav class="flex-column">
             <div class="nav-item px-3">
-                <NavLink class="nav-link" href="manager">
-                    <i class="bi bi-c" aria-hidden="true"></i> Manager
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <i class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></i> Home
                 </NavLink>
-            </div>  
-        }
-    </nav>
-</div>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="profileViewer">
+                    <i class="bi bi-list-nested-nav-menu" aria-hidden="true"></i> Profile
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="reservation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+                </svg> Reservation
+                
+                </NavLink>
+            </div>
+            <div>
+           
+            </div>
+            @if(IsAdmin)
+            {
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="manager">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2" />
+                    </svg> Manager
+                    </NavLink>
+                </div>  
+            }
+        </nav>
+    </div>
 
 @code {
 

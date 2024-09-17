@@ -13,15 +13,6 @@
             <p><span>@context?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value</span></p>
         
 
-            @if (context.User.IsInRole("Admin"))
-            {
-                <p>Admin</p>
-            }
-            else
-            {
-                <p>visiteur</p>
-            }
-
         }
         <a class="nav-link" href="profileViewer"
             <img class="img-fluid border rounded" style="height:50px; width:50px" src="@context?.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value" />

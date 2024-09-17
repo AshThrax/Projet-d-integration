@@ -1,5 +1,6 @@
 using dataInfraTheather.Infrastructure.Persistence;
 using DataInfraTheather.Infrastructure.Persistence;
+using InfrastructureUser.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
@@ -42,7 +43,7 @@ builder.Services.AddSwaggerGen(opt =>
         }
     });
 });
-
+builder.Services.AddSignalR();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -69,15 +70,24 @@ if (app.Environment.IsDevelopment())
         await context.Database.MigrateAsync();
         await new SeedDbContext().SeedAsync(context);
     }
+    //userDb 
+    using (IServiceScope scope = app.Services.CreateScope()) 
+    {
+        UserDbContext dataUserContext = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+        await dataUserContext.Database.MigrateAsync();
+    }
 }
-
+//----COrs
 app.UseCors(x => x
           .AllowAnyOrigin()
           .AllowAnyMethod()
           .AllowAnyHeader()
          );
 app.UseHttpsRedirection();
+//-----SignalR
+app.MapHub<ChatHub>("/chatHub");
 
+//----Static Files For Image 
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(

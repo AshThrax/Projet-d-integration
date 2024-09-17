@@ -1,0 +1,13 @@
+﻿@inject Microsoft.AspNetCore.Components.NavigationManager manager
+<div class="m-2 btn-group rounded float-end">
+    <a type="button" class="p-1 col col-sm-3   btn btn-primary" @onclick="getProfile">profile</a>
+    <a type="button" class="p-1 col col-sm-3   btn btn-primary" @onclick="getHome">Home</a>
+    <a type="button" class="p-1 col col-sm-3   btn btn-primary" @onclick="getPrevious">Seance</a>
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public void getProfile() => manager.NavigateTo("/profileViewer");
+    public void getHome() => manager.NavigateTo("/");
+    public void getPrevious() => manager.NavigateTo($"/representation/{Id}");
+}

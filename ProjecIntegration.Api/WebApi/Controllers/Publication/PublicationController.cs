@@ -1,5 +1,6 @@
 ﻿using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Dto;
+using Domain.DataType;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -58,12 +59,14 @@ namespace WebApi.Controllers.Publication
         /// </summary>
         /// <param name="pieceId"></param>
         /// <returns></returns>
-        [HttpGet("by-piece/{pieceId}")]
-        public async Task<ActionResult> GetpublicationByPieceId(int pieceId)
+        [HttpGet("by-piece/{page}/{pieceId}")]
+        public async Task<ActionResult> GetpublicationByPieceId(int page,int pieceId)
         {
             try
             {
-                return Ok(await _publicationBl.GetPublicationByPiece(pieceId));
+                List<PublicationDto> listofPublication= (await _publicationBl.GetPublicationByPiece(pieceId)).ToList();
+                Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(listofPublication, page, 5);
+                return Ok(pagePublication);
             }
             catch (Exception)
             {
@@ -71,16 +74,18 @@ namespace WebApi.Controllers.Publication
                 throw;
             }
         }
-        [HttpGet("publication-by-user")]
+        [HttpGet("publication-by-user/{page}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicationDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetPublicationByUser()
+        public async Task<ActionResult> GetPublicationByUser(int page)
         {
             try
             {
                 var auth = await _customGetToken.GetSub();
+                List<PublicationDto> getPublication= (await _publicationBl.GetAllbyPublicationByUserId(auth)).ToList();
+                Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(getPublication, page, 5);
                 return Ok(await _publicationBl.GetAllbyPublicationByUserId(auth));
             }
             catch
@@ -136,8 +141,10 @@ namespace WebApi.Controllers.Publication
                 {
                     return BadRequest();
                 }
+
                 string UserId = await _customGetToken.GetSub();
                 AddPublication.UserId = UserId;
+               
                 await _publicationBl.CreatePublication(AddPublication);
                 return NoContent();
             }

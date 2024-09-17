@@ -1,0 +1,28 @@
+﻿@using Blazor.UI.Data.modelViews.Publication
+@using Blazor.UI.data.services.Publication
+@inject IPostService postService;
+
+<h3>AddPostComponent</h3>
+<div class="row m-2 p-2">
+    <form class="form-check">
+        <label class="form-label">Laisser un commentaire</label>
+        <textarea class="form-control"
+                  @bind="Response"
+                  style="width:800px; height:200px;word-wrap:normal border:anywhere" />
+        <button type="submit" class="btn btn-dark" @onclick="() =>AddPost(Response)">Repondre</button>
+    </form>
+</div>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public string Response { get; set; }
+    public async Task AddPost(string response)
+    {
+        AddPostDto postDto = new()
+            {
+                Content = response,
+                PublicationId = Id
+            };
+        await postService.CreatePost(Id, postDto);
+    }
+}

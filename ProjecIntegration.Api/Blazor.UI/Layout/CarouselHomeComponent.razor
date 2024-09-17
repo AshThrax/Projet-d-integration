@@ -1,0 +1,77 @@
+﻿@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+
+@inject IPieceService pieceService;
+@inject NavigationManager manager;
+@inject IJSRuntime JSRuntime;
+    @if (GetPieceDtos != null && activesPiece != null)
+    {
+        <div class="bg-dark">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <a  @onclick="() =>GetToPiece(activesPiece.Id)">
+                            <img src="https://localhost:44337/Resources/@activesPiece.Image" class="d-block w-100" alt="...">
+                         </a>
+                     </div>
+                    @foreach (var item in GetPieceDtos)
+                    {
+                        <div class="carousel-item">
+                            <a @onclick="() =>GetToPiece(item.Id)">
+                                <img src="https://localhost:44337/Resources/@item.Image" class="d-block w-100" alt="...">
+                            </a>
+                        </div>
+                    }
+           
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        
+    }
+
+@code {
+    public List<PieceDto>? GetPieceDtos { get; set; }
+
+    public PieceDto activesPiece { get; set; }
+
+
+    public BlazorSlickCarousel? theCarousel { get; set; } = null;
+    public WMBSCInitialSettings? configurations { get; set; } = null;
+    protected override async Task OnInitializedAsync()
+    {
+        GetPieceDtos = (await pieceService.Getlist()).ToList();
+        GetPieceDtos = GetPieceDtos.OrderByDescending(x => x.AddedTime).ToList();
+        activesPiece  = GetPieceDtos.ElementAt(1);
+        GetPieceDtos.RemoveAt(1);
+
+       
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("startCarousels");
+    }
+    public void GetToPiece(int id)
+    {
+        manager.NavigateTo($"/pieceinfo/{id}");
+    }
+
+    public async void Next()
+    {
+        await theCarousel.Next();
+    }
+
+    public async void Prev()
+    {
+        await theCarousel.Prev();
+    }
+  
+}

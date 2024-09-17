@@ -1,0 +1,33 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+
+<div class="col-sm-3 align-items-start me-lg-2">
+    @if (GetUser != null)
+    {
+        <div class="m-2 p-2 card">
+            @if (GetUser?.Picture != null)
+            {
+                <img class="d-block ui-w-30 rounded-circle" width="200" src="@GetUser.Picture" />
+            }
+            else
+            {
+                <img class="d-block ui-w-30 rounded-circleg" src="images/images.png" />
+            }
+            <p class="ms-4 card-text text-muted small text-truncate"><strong>Name :</strong>@GetUser?.GivenName</p>
+        </div>
+    }
+    else
+    {
+       <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>    
+    }
+   
+</div>
+@code {
+    [Parameter]
+    public string? UserId { get; set; } 
+    public UserDto? GetUser { get; set; }
+    HttpClient httpClient = new HttpClient();
+    protected override async Task OnInitializedAsync()
+    {
+        GetUser = await httpClient.GetFromJsonAsync<UserDto>($"https://localhost:44337/api/v1/User/{UserId}");
+    }
+}

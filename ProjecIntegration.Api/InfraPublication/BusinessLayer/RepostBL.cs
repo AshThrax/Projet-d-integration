@@ -32,7 +32,7 @@ namespace InfraPublication.BusinessLayer
                    Repost mappedRepost=mapper.Map<Repost>(pub);
                    mappedRepost.UpdatedDate = DateTime.Now;
                    mappedRepost.CreatedDate = DateTime.Now;
-                   repostrepository.Insert(mappedRepost);
+                   await repostrepository.Insert(mappedRepost);
                  }
             }
             catch (Exception)

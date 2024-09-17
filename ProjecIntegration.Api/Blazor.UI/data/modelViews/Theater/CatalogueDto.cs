@@ -1,6 +1,6 @@
-﻿using Blazor.UI.Data.modelViews;
+﻿using Blazor.UI.Data.ModelViews;
 
-namespace Blazor.UI.Data.modelViews.Theater;
+namespace Blazor.UI.Data.ModelViews.Theater;
 
 public class CatalogueDto : Baseview
 {

@@ -346,7 +346,6 @@ C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.AssemblyInfoInputs.cache
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.AssemblyInfo.cs
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.csproj.CoreCompileInputs.cache
-C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.sourcelink.json
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\staticwebassets.build.json
@@ -363,3 +362,14 @@ C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.pdb
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\ref\WebApi.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\RestSharp.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\Microsoft.Owin.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\Microsoft.Owin.Security.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\Owin.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\ApplicationUser.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\InfrastructureUser.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\InfrastructureUser.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\bin\Debug\net8.0\ApplicationUser.pdb
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\WebApi\obj\Debug\net8.0\WebApi.MvcApplicationPartsAssemblyInfo.cs

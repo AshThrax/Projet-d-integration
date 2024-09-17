@@ -1,18 +1,7 @@
-﻿using Auth0Net.DependencyInjection;
-using dataInfraTheather;
-using WebApi.Validator;
-using WebApi.ApiService.Authorization;
-using InfraPublication;
-using ApplicationTheather.BusinessService;
-using DataInfraTheather.BusinessService;
-using ApplicationPublication;
-using ApplicationTheather.Common.Mapping;
-using ApplicationTheather.DTO;
-using Domain.settings;
-using Microsoft.Extensions.DependencyInjection;
-using ApplicationAnnonce;
-using InfrastructureAnnonce;
+﻿
 
+using ApplicationUser;
+using InfrastructureUser;
 
 namespace WebApi.ExtensionMethods
 {
@@ -29,13 +18,16 @@ namespace WebApi.ExtensionMethods
             //ajout des service liée au service de publication
             services.AddAppPublication();
             services.AddInfraPublication(configuration);
+            //ajout des Servide liée au service utilisateur
+            services.AddUserApplication();
+            services.AddUserInfrastructure(configuration);
             //ajout service auth0
             services.AddAuthO(configuration);
             //ajout des custom Validator
             services.AddCustomValidator();
             services.AddHttpContextAccessor();
             services.AddBusiness();
-
+            services.AddSignalR();
             services.Configure<StripeSettings>(configuration.GetSection("StripeSettings"));
             return services;
         }
@@ -68,10 +60,10 @@ namespace WebApi.ExtensionMethods
       */
         public static IServiceCollection AddAuthO(this IServiceCollection services, IConfiguration configuration)
         {
-            var Domain = configuration["Auth0:Domain"];
-            var Audience = configuration["Auth0:Audience"];
-            var Clientid = configuration["Auth0:ClientId"];
-            var ClientSecret = configuration["Auth0:ClientSecret"];
+            string? Domain = configuration["Auth0:Authority"];
+            string? Audience = configuration["Auth0:ApiIdentifier"];
+            string? Clientid = configuration["Auth0:ClientId"];
+            string? ClientSecret = configuration["Auth0:ClientSecret"];
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -81,31 +73,19 @@ namespace WebApi.ExtensionMethods
             {
                 options.Authority = Domain;
                 options.Audience = Audience;
-                
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    NameClaimType = ClaimTypes.NameIdentifier,
-                    
-                };
-
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    NameClaimType = "Roles",
-                    RoleClaimType = "https://schemas.quickstarts.com/roles"
-                };
+               
                 
             });
             services.AddAuth0AuthenticationClient(options =>
             {
-                options.Domain = Domain;
-                options.ClientId = Clientid;
-                options.ClientSecret = ClientSecret;
+                options.Domain = configuration["Auth0:Authority"];
+                options.ClientId = configuration["Auth0:ClientId"];
+                options.ClientSecret = configuration["Auth0:ClientSecret"];
             });
+
             services.AddAuth0ManagementClient()
                     .AddManagementAccessToken();
             //---------------------------------
-            services.AddAuthorization();
-
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
             services.AddSingleton<ICustomGetToken, CustomGetToken>();
             return services;
@@ -129,6 +109,6 @@ namespace WebApi.ExtensionMethods
             return services;
         }
 
-    
+     
     }
 }

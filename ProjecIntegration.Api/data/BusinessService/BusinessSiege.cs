@@ -2,8 +2,10 @@
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
+using Azure;
 using DataInfraTheather.Infrastructure.Repository;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,23 +29,30 @@ namespace DataInfraTheather.BusinessService
             _commandRepository = commandRepository;
         }
 
-        public async Task<SiegeDto> CreateSiegeForSalle(AddSiegeDto siege)
+        public async Task<ServiceResponse<SiegeDto>> CreateSiegeForSalle(AddSiegeDto siege)
         {
+            ServiceResponse<SiegeDto> response = new();
             try
             {
                Siege siegeAdd= _mapper.Map<Siege>(siege);
                Siege Added= await  _siegeRepository.Insert(siegeAdd);
-                return _mapper.Map<SiegeDto>(Added);
+
+               response.Data= _mapper.Map<SiegeDto>(Added);
+               response.Success= true;
+               response.Message = "operation réussi";
+               response.Errortype=Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Errortype=Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task DeleteSiegeById(int SiegeId)
+        public async Task<ServiceResponse<SiegeDto>> DeleteSiegeById(int SiegeId)
         {
+            ServiceResponse<SiegeDto> response = new();
             try
             {
                 Siege getSiege = await _siegeRepository.GetById(SiegeId);
@@ -51,6 +60,9 @@ namespace DataInfraTheather.BusinessService
                 if (getSiege != null)
                 {
                     await _siegeRepository.Delete(SiegeId);
+                    response.Success = true;
+                    response.Message = "operation réussi";
+                    response.Errortype = Domain.Enum.Errortype.Good;
                 }
             }
             catch (Exception)
@@ -58,56 +70,76 @@ namespace DataInfraTheather.BusinessService
 
                 throw;
             }
+            return response;
         }
 
-        public async Task<SiegeDto> GetSiegeById(int siegeId)
+        public async Task<ServiceResponse<SiegeDto>> GetSiegeById(int siegeId)
         {
+            ServiceResponse<SiegeDto> response = new();
             try
             {
                 Siege getSiege = await _siegeRepository.GetById(siegeId);
 
-                return _mapper.Map<SiegeDto>(getSiege);
+                response.Data= _mapper.Map<SiegeDto>(getSiege);
+                response.Success = true;
+                response.Message = "operation réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-                return new SiegeDto();
+                response.Success = false;
+                response.Message = "une Erreurr a eu lieu lors de l'opération";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
      
-        public async Task<IEnumerable<SiegeDto>> GetSiegeFromCommand(int commandId)
+        public async Task<ServiceResponse<IEnumerable<SiegeDto>>> GetSiegeFromCommand(int commandId)
         {
+            ServiceResponse<IEnumerable<SiegeDto>> response = new();
             try
             {
 
                 var entity = await _commandRepository.GetById(commandId);
 
-                return new  List<SiegeDto>();
                
+                response.Success = true;
+                response.Message = "operation réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-                return new List<SiegeDto>();
+                response.Success = false;
+                response.Message = "";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<IEnumerable<SiegeDto>> GetSiegeFromSalleId(int salleId)
+        public async Task<ServiceResponse<IEnumerable<SiegeDto>>> GetSiegeFromSalleId(int salleId)
         {
+            ServiceResponse<IEnumerable<SiegeDto>> response = new();
             try
             {
                 IEnumerable <Siege> getSiege = await _siegeRepository.GetAllFromSalle(salleId);
 
-                return _mapper.Map<IEnumerable<SiegeDto>>(getSiege);
-
+                response.Data= _mapper.Map<IEnumerable<SiegeDto>>(getSiege);
+                response.Success = true;
+                response.Message = "operation réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                return new List<SiegeDto>();
+                response.Success = false;
+                response.Message = "une erreur";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task UpdateSiegeById(int SiegeId, UpdateSiegeDto siege)
+        public async Task<ServiceResponse<SiegeDto>> UpdateSiegeById(int SiegeId, UpdateSiegeDto siege)
         {
+            ServiceResponse<SiegeDto> response = new();
             try
             {
                 Siege getSiege = await _siegeRepository.GetById(SiegeId);
@@ -115,14 +147,19 @@ namespace DataInfraTheather.BusinessService
                 if (getSiege != null)
                 {
                     Siege SiegeToUpdate =_mapper.Map<Siege>(getSiege);
-                    _siegeRepository.Update(SiegeId, SiegeToUpdate);
+                    await _siegeRepository.Update(SiegeId, SiegeToUpdate);
+                    response.Success = true;
+                    response.Message = "operation réussi";
+                    response.Errortype = Domain.Enum.Errortype.Good;
                 }
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@inject ISalleService SalleService ;
+<div class="p-2 m-2">
+    <h4>Seance details</h4>
+    <br />
+    <p><strong>Price:</strong> @selectedRepresentation?.Prix</p>
+    <div>
+        <p><strong>Seance</strong></p>
+        <div class="">
+            <p><strong>Date :</strong>@selectedRepresentation.Seance.Date.Year/@selectedRepresentation.Seance.Date.Month/@selectedRepresentation.Seance.Date.Day</p>
+            <p><strong>Heure:</strong>@selectedRepresentation.Seance.Hour:@selectedRepresentation.Seance.Minute </p>
+        </div>
+    </div>
+    <p><strong>Salle</strong>: @GetSalle?.Name</p>
+</div>
+
+@code {
+    [Parameter]
+    public RepresentationDto? selectedRepresentation { get; set; }
+
+    public SalleDeTheatreDto GetSalle { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+
+        GetSalle = await SalleService.GetById(selectedRepresentation.SalledeTheatreId);
+    }
+}

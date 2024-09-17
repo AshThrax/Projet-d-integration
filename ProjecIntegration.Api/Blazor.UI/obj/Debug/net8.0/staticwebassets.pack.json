@@ -13,12 +13,20 @@
       "PackagePath": "staticwebassets\\Blazor.UI.styles.css"
     },
     {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\JaveScript\\JavaScript.js",
+      "PackagePath": "staticwebassets\\JaveScript\\JavaScript.js"
+    },
+    {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\appsettings.json",
       "PackagePath": "staticwebassets\\appsettings.json"
     },
     {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\blog.css",
+      "PackagePath": "staticwebassets\\css\\blog.css"
     },
     {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
@@ -33,6 +41,10 @@
       "PackagePath": "staticwebassets\\css\\custom.css"
     },
     {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\profile.css",
+      "PackagePath": "staticwebassets\\css\\profile.css"
+    },
+    {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
@@ -43,6 +55,10 @@
     {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\images\\image_processing20191110-10396-o8clav.gif",
       "PackagePath": "staticwebassets\\images\\image_processing20191110-10396-o8clav.gif"
+    },
+    {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\images\\images.png",
+      "PackagePath": "staticwebassets\\images\\images.png"
     },
     {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\index.html",

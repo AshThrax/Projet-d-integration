@@ -69,8 +69,8 @@ else
     protected override async Task OnInitializedAsync()
     {
        
-        SelectPiece = await ServPiece.Get();
-        selectSalle = await ServSalle.Get();
+        SelectPiece = await ServPiece.Getlist();
+        selectSalle = await ServSalle.Getlist();
     }
     public async Task Update()
     {
@@ -80,11 +80,11 @@ else
                 Seance = updateRepresentation.Seance,
                 PlaceCurrent = updateRepresentation.PlaceCurrent,
                 PlaceMaximum = updateRepresentation.PlaceMaximum,
-                IdPiece = updateRepresentation.IdPiece
+                PieceId = updateRepresentation.PieceId
         };
         await Servrep.Update(items);
     }
-    public async Task selectionPiece(ChangeEventArgs args)
+    public async Task selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
@@ -92,7 +92,7 @@ else
 
         }
     }
-    public async Task selectionSalle(ChangeEventArgs args)
+    public async Task selectionSalle(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {

@@ -3,8 +3,11 @@ using ApplicationTheather.BusinessService;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
+using Azure;
 using DataInfraTheather.Services;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
+using Microsoft.Extensions.Logging;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -16,6 +19,7 @@ namespace DataInfraTheather.BusinessService
         private readonly ISalleDeTheatreRepository _sallerepository;
         private readonly ISiegeCommandRepository _siegeCommandRepository;
         private readonly ISiegeRepository _siegeRepository;
+        private readonly ILogger<BusinessCommandService> _logger;
         private readonly IMapper _mapper;
 
         public BusinessCommandService(
@@ -25,7 +29,8 @@ namespace DataInfraTheather.BusinessService
             IMapper mapper,
             IRepresentationRepository representationRepository,
             ISiegeRepository siegeRepository,
-            ISiegeCommandRepository siegeCommandRepository
+            ISiegeCommandRepository siegeCommandRepository,
+            ILogger<BusinessCommandService> logger
             )
         {
             _mapper = mapper;
@@ -35,10 +40,12 @@ namespace DataInfraTheather.BusinessService
             _representationRepository = representationRepository;
             _siegeRepository=siegeRepository;
             _siegeCommandRepository=siegeCommandRepository;
+            _logger = logger;
         }
 
-        public async Task DeleteCommand(int id)
+        public async Task<ServiceResponse<CommandDto>> DeleteCommand(int id)
         {
+            ServiceResponse<CommandDto> response = new();
             try 
             {
                 
@@ -46,16 +53,24 @@ namespace DataInfraTheather.BusinessService
                 if (getEntity != null)
                 {
                     await _commandRepository.Delete(id);
+                    response.Success = true;
+                    response.Message = "opéraiton réussi";
+                    response.Errortype=Domain.Enum.Errortype.Good;
                 }
             }
-            catch (Exception) 
-            { 
+            catch (Exception ex) 
+            {
+                _logger.LogInformation(ex.Message);
+                response.Success = true;
+                response.Message = $"Une Erreur a eu lieu : message ={ex.Message}";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<List<TicketDto>> GenerateCommandTicket(int CommandeId)
+        public async Task<ServiceResponse<List<TicketDto>>> GenerateCommandTicket(int CommandeId)
         {
-
+            ServiceResponse<List<TicketDto>> response = new();
             Command command = await  _commandRepository.GetCommand(CommandeId);
             try
             {
@@ -66,16 +81,24 @@ namespace DataInfraTheather.BusinessService
                 var salle = await _sallerepository.GetById(representation.SalledeTheatreId);
                 var DateToString = representation.Seance;
                 //génération du ticket
-                return TicketGenerator.GetTicketUser(command.NombreDePlace, Piece.Titre, salle.Name,representation.Id,DateToString);
+                response.Data= TicketGenerator.GetTicketUser(command.NombreDePlace, Piece.Titre, salle.Name,representation.Id,DateToString);
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype=Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-                return new List<TicketDto>();
+                response.Data = new List<TicketDto>();
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
+            return response;
         }
 
-        public async Task AddCommand( AddCommandDto command)
+        public async Task<ServiceResponse<CommandDto>> AddCommand( AddCommandDto command)
         {
+            ServiceResponse<CommandDto> response = new();
             try
             {
                 //vérification du nombre de place a ssocié avec la commande et la representation
@@ -106,94 +129,177 @@ namespace DataInfraTheather.BusinessService
                             };
 
                             await _siegeCommandRepository.Insert(siegeCommand);
+                            response.Success = true;
+                            response.Message = $"Opération réussi";
+                            response.Errortype = Domain.Enum.Errortype.Good;
                         }
                     }
                     else
                     {
-                     //faire un truc
+                        response.Success = false;
+                        response.Message = $"aucune PLace n'est disponible ";
+                        response.Errortype = Domain.Enum.Errortype.Other;
                     }
 
                 } 
             }
-            catch(Exception)
-            { 
-
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.Message);
+                response.Success = false;
+                response.Message = $"Une Erreur a eu lieu : message ={ex.Message}";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
-          
+            return response;
         }
 
-        public async Task<IEnumerable<CommandDto>> GetAllCommand()
+        public async Task<ServiceResponse<IEnumerable<CommandDto>>> GetAllCommand()
         {
+            ServiceResponse<IEnumerable<CommandDto>> response = new();
             try
             { 
                 var getAll = await _commandRepository.GetAll();
-                return _mapper.Map<IEnumerable<CommandDto>>(getAll);
+                response.Data= _mapper.Map<IEnumerable<CommandDto>>(getAll);
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype= Domain.Enum.Errortype.Good;
             }
             catch (Exception )
             {
-                return new List<CommandDto>();
+                response.Data = new List<CommandDto>();
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
-           
+            return response;
         }
 
-        public async Task<CommandDto> GetCommand(int id)
+        public async Task<ServiceResponse<CommandDto>> GetCommand(int id)
         {
+            ServiceResponse<CommandDto> response = new();
             try 
             { 
                     Command getEntity = await _commandRepository.GetById(id);
-                    return _mapper.Map<CommandDto>(getEntity);
+                response.Data= _mapper.Map<CommandDto>(getEntity);
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch(Exception )
             {
-                return new CommandDto();
+                response.Data = new();
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
-           
-            
+            return response;
         }
 
-        public async Task<IEnumerable<CommandDto>> GetCommandUSer(string Auth)
+        public async Task<ServiceResponse<IEnumerable<CommandDto>>> GetCommandUSer(string Auth)
         {
+            ServiceResponse<IEnumerable<CommandDto>> response = new();
             try 
             {
                 IEnumerable<Command> getAll = await _commandRepository.GetAll();
                 IEnumerable<Command> userCommand = getAll.Where(x => x.AuthId == Auth)
                                     .ToList();
-                return _mapper.Map<IEnumerable<CommandDto>>(userCommand);
+                response.Data=_mapper.Map<IEnumerable<CommandDto>>(userCommand);
+                response.Success = true;
+                response.Message = "operation réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch(Exception ) 
-            { 
-                return  Enumerable.Empty<CommandDto>();
+            {
+                response.Data= Enumerable.Empty<CommandDto>();
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
-          
 
+            return response;
         }
 
-        public async Task<IEnumerable<CommandDto>> GetCommandByPiece(int PieceId)
+        public async Task<ServiceResponse<IEnumerable<CommandDto>>> GetCommandByPiece(int PieceId)
         {
+            ServiceResponse<IEnumerable<CommandDto>> response = new();
             try
             {
-                return _mapper.Map<IEnumerable<CommandDto>>(await _commandRepository.GetAllFromPiece(PieceId));
-            }
-            catch (Exception)
-            {
 
-                throw;
+                response.Data = _mapper.Map<IEnumerable<CommandDto>>(await _commandRepository.GetAllFromPiece(PieceId));
+                response.Success = true;
+                response.Message ="opération Réussi";
+                response.Errortype=Domain.Enum.Errortype.Good;
             }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.Message);
+                response.Data=new List<CommandDto>();
+                response.Success = false;
+                response.Message = "opération Réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
+            }
+            return response;
         }
 
-        public async Task UpdateCommand(int id,UpdateCommandDto command)
+        public async Task<ServiceResponse<CommandDto>> UpdateCommand(int id,UpdateCommandDto command)
         {
+            ServiceResponse<CommandDto> response = new ServiceResponse<CommandDto>();
             try
             {
                 var entityToUpdate= _mapper.Map<Command>(command);
-                 _commandRepository.Update(id, entityToUpdate);
+                await _commandRepository.Update(id, entityToUpdate);
 
+                response.Success = true;
+                response.Message = "mise a jour réussis";
+                response.Errortype=Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                _logger.LogInformation("Verified Command");
+                response.Success = false;
+                response.Message = "Une Erreur a eu lieu lors de la mise a jour";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
+        }
+
+        public async Task<ServiceResponse<bool>> VerifiedCommand(int pieceId, string userId)
+        {
+            ServiceResponse<bool> response= new ServiceResponse<bool>();
+            try
+            {
+                response.Data= await _commandRepository.DoIHaveACommandForPiece(pieceId, userId);
+                response.Success=true;
+                response.Message = "commande vérifier";
+                response.Errortype=Domain.Enum.Errortype.Good;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation("Verified Command");
+                response.Success = false;
+                response.Message = $"une erreur a eu lieur : message : {ex.Message}";
+                response.Errortype = Domain.Enum.Errortype.Good;
+            }
+            return response;
+        }
+        public async Task<ServiceResponse<bool>> CommandExist(int commandId)
+        {
+            ServiceResponse<bool> response = new ServiceResponse<bool>();
+            try
+            {
+                await _commandRepository.DoYouExist(commandId);
+                response.Success = true;
+                response.Message = "opération réussi la commande Existe";
+                response.Errortype = Domain.Enum.Errortype.Good;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation("Existed command");
+                response.Success = false;
+                response.Message = $"une erreur a eu lieur : message : {ex.Message}";
+                response.Errortype = Domain.Enum.Errortype.Bad;
+            }
+            return response;
         }
     }
 }

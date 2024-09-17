@@ -1,7 +1,6 @@
-using Blazor.UI.Client.Page;
-using Blazor.UI.Data.modelViews.Theater;
+using Blazor.UI.Data.ModelViews.Theater;
+using Data.ServiceResult;
 using System.Net.Http.Json;
-using static System.Net.WebRequestMethods;
 
 namespace Blazor.UI.Data.services.TheatherService
 {
@@ -25,11 +24,20 @@ namespace Blazor.UI.Data.services.TheatherService
 
         }
 
-        public async Task<IEnumerable<ComplexeDto>> Get()
+        public async Task<IEnumerable<ComplexeDto>?> Get()
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<IEnumerable<ComplexeDto>>(ApiUri);
+                ServiceResponse<IEnumerable<ComplexeDto>>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<ComplexeDto>>>(ApiUri);
+
+                if (response.Success)
+                {
+                   return response.Data;
+                }
+                else
+                {
+                    return null;
+                }
 
             }
             catch (Exception)
@@ -39,12 +47,19 @@ namespace Blazor.UI.Data.services.TheatherService
             }
         }
 
-        public async Task<ComplexeDto> GetById(int id)
+        public async Task<ComplexeDto?> GetById(int id)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<ComplexeDto?>($"{ApiUri}/{id}");
-
+                ServiceResponse<ComplexeDto>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<ComplexeDto>?>($"{ApiUri}/{id}");
+                if (response.Success)
+                {
+                    return response.Data;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception)
             {

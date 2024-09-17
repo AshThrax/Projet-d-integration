@@ -1,6 +1,6 @@
 ﻿using Blazor.UI.Data.modelViews;
 
-namespace Blazor.UI.data.modelViews.Annonce;
+namespace Blazor.UI.Data.ModelViews.Annonce;
 
 public class AnnonceDto :MongoView
 {

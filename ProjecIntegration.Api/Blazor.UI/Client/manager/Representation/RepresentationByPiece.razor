@@ -1,0 +1,166 @@
+﻿@page "/manager/representationPiece/{Id:int}"
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+@inject IPieceService pieceService;
+@inject IRepresentationService Representationsrvice;
+@inject ISalleService SalleService;
+@inject IComplexeService complexeService;
+<div class="flex-fill m-4 p-4">
+   
+    <div class="container">
+        <div class="row">
+            <div class="card m-2 p-4">
+                @if (GetRepresentation != null)
+                {
+                    <div class=" col-sm-8 m-2 p-2">
+                        <QuickGrid Items="@GetRepresentation.Items.AsQueryable()">
+                            <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+                            <PropertyColumn Property="@(p => p.Seance)" Sortable="true" Title="Seance" />
+                            <TemplateColumn Title="Selectioner ">
+                                <div>
+                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context.Id,context)">Details</button>
+                                </div>
+                            </TemplateColumn>
+                            <TemplateColumn Title="ajouter ">
+                                <div>
+                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceAdd()">Ajout</button>
+                                </div>
+                            </TemplateColumn>
+                            <TemplateColumn Title="modifier">
+                                <div>
+                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceUpdate(context)">Mise a jour</button>
+                                </div>
+                            </TemplateColumn>
+                            <TemplateColumn Title="Supprimer">
+                                <div>
+                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceDelete()">Supprimer</button>
+                                </div>
+                            </TemplateColumn>
+                            <!-- Add more columns for Commands if needed -->
+                        </QuickGrid>    
+                        <div class="row m-2 p-2">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3"></div>
+                            
+                            <div class="col-sm-6 btn-group m-2 p-2">
+                                <a class="btn btn-outline-dark btn-light" @onclick="PreviousPage">Previous</a>
+                                <a class="btn btn-outline-dark btn-light" @onclick="NextPage">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+        <div class="col-sm-3 m-2 p-4">
+            @if (IsDetail)
+            {
+              <Blazor.UI.Client.manager.Representation.Component.DetailsRePresentationComponent  Id="SelectRepresentationId">
+              </Blazor.UI.Client.manager.Representation.Component.DetailsRePresentationComponent>
+            }
+            else if(IsAdded)
+            {
+                <Blazor.UI.Client.manager.Representation.Component.AddRepresentationComponent>
+                </Blazor.UI.Client.manager.Representation.Component.AddRepresentationComponent>
+            }
+            else if(IsUpdate)
+            {
+                <Blazor.UI.Client.manager.Representation.Component.UpdateRepresentationComponent updateRepresentation="@SelecteRepresentation">
+                </Blazor.UI.Client.manager.Representation.Component.UpdateRepresentationComponent>
+            }
+            else if(IsDelete)
+            {
+
+            }
+            else
+            {
+                
+            }
+
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+    public int pageIndexe = 1;
+    public Pagination<RepresentationDto>? GetRepresentation { get; set; }
+    public int SelectRepresentationId { get; set; }
+    public RepresentationDto? SelecteRepresentation { get; set; } = new();
+
+    public PieceDto? GetPieceForRepresentation { get; set; } 
+    public bool IsDetail { get; set; } = false;
+    public bool IsAdded { get; set; } = false;
+    public bool IsUpdate { get; set; } = false;
+    public bool IsDelete { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetPieceForRepresentation = await pieceService.GetById(Id);
+        GetRepresentation = await Representationsrvice.GetPiece(Id, pageIndexe);
+
+    }
+
+    public async Task NextPage()
+    {
+        if (GetRepresentation.HasNextPage)
+        {
+            pageIndexe++;    
+            GetRepresentation = await Representationsrvice.GetPiece(Id, pageIndexe);
+        }
+
+    }
+    public async Task PreviousPage()
+    {
+        if (GetRepresentation.HasPreviousPage)
+        {
+            pageIndexe--;
+            GetRepresentation = await Representationsrvice.GetPiece(Id, pageIndexe);
+        }
+    }
+
+    public async Task seanceDetails(int item,RepresentationDto repItem)
+    {
+
+        await Task.Delay(1000);
+        SelectRepresentationId = item;
+        SelecteRepresentation = repItem;
+
+        IsDetail = true;
+        IsAdded = false;
+        IsUpdate = false;
+        IsDelete = false;
+    }
+    public async Task seanceUpdate(RepresentationDto item)
+    {
+        await Task.Delay(1000);
+        SelecteRepresentation = item;
+        IsDetail = false;
+        IsAdded = false;
+        IsUpdate = true;
+        IsDelete = false;
+    }
+
+    public async Task seanceDelete()
+    {
+        await Task.Delay(1000);
+        IsDetail = false;
+        IsAdded = false;
+        IsUpdate = false;
+        IsDelete = true;
+    }
+
+    public async Task seanceAdd()
+    {
+        await Task.Delay(1000);
+        IsDetail = false;
+        IsAdded = true;
+        IsUpdate = false;
+        IsDelete = false;
+    }
+}

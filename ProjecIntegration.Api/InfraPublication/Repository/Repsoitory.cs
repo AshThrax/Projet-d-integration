@@ -57,11 +57,11 @@ namespace InfraPublication.Repository
         {
             try 
             {
-               if (entity ==null)
+               if (entity ==null || string.IsNullOrEmpty(entity.Id))
                {
                     throw new ArgumentNullException(nameof(entity));
                }
-                await _mongoCollection.InsertOneAsync(entity);
+               await _mongoCollection.InsertOneAsync(entity);
             }
             catch(ArgumentNullException)
             { 
@@ -75,7 +75,7 @@ namespace InfraPublication.Repository
            
         }
 
-        public void Update(string entityId, T entity)
+        public async Task Update(string entityId, T entity)
         {
             try 
             {
@@ -83,7 +83,7 @@ namespace InfraPublication.Repository
                 {
                     throw new ArgumentNullException(nameof(entity));
                 }
-                _mongoCollection.ReplaceOne(x => x.Id == entityId, entity);  
+                _=await _mongoCollection.ReplaceOneAsync(x => x.Id == entityId, entity);  
             }
             catch (Exception )
             {
@@ -91,13 +91,13 @@ namespace InfraPublication.Repository
             }
         }
 
-        public void Delete(string entityId)
+        public async Task Delete(string entityId)
         {
             try
             {
                 if (string.IsNullOrEmpty(entityId))
                 {
-                    _mongoCollection.DeleteOne(x => x.Id == entityId);
+                   _= await _mongoCollection.DeleteOneAsync(x => x.Id == entityId);
                 }
             }
             catch(Exception )

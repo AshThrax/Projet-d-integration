@@ -11,6 +11,15 @@ namespace ApplicationPublication.Dto
     public class PostDto : BaseDto
     {
         public string Content { get; set; } = string.Empty;
+        public string PublicationId { get; set; }=string.Empty;
         public string UserId { get; set; } = string.Empty;
+        public int LikeNumber { get; set; }
+    }
+    public class AddPostDto 
+    {
+        public string Content { get; set; } = string.Empty;
+        public string PublicationId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
+        public int LikeNumber { get; set; }
     }
 }

@@ -84,5 +84,20 @@ namespace dataInfraTheather.Infrastructure.Repository
                 return Enumerable.Empty<Command>();
             }
         }
+
+        public async Task<bool> DoIHaveACommandForPiece(int pieceId, string userId)
+        {
+            try
+            {
+               int count = await _dbContext.Commands.Where(x => x.Representation.PieceId == pieceId && x.AuthId == userId).CountAsync();
+
+                return (count > 0);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

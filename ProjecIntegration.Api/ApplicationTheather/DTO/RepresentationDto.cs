@@ -7,10 +7,9 @@
         public int PlaceMaximum { get; set; }
         public int PlaceCurrent { get; set; }
         //------salle de theatre
-        public int IdSalledeTheatre { get; set; }
- 
+        public int SalledeTheatreId { get; set; }
         //-----PIece
-        public int IdPiece { get; set; }
+        public int PieceId { get; set; }
    
         //-----commande/reservation
         public List<CommandDto>? Commands { get; set; }
@@ -23,9 +22,9 @@
         public int PlaceMaximum { get; set; }
         public int PlaceCurrent { get; set; }
         //------salle de theatre
-        public int IdSalledeTheatre { get; set; }
+        public int SalledeTheatreId { get; set; }
         //-----PIece
-        public int IdPiece { get; set; }
+        public int PieceId { get; set; }
 
         //-----commande/reservation
 
@@ -38,9 +37,9 @@
         public int PlaceMaximum { get; set; }
         public int PlaceCurrent { get; set; }
         //------salle de theatre
-        public int IdSalledeTheatre { get; set; }
+        public int SalledeTheatreId { get; set; }
         //-----PIece
-        public int IdPiece { get; set; }
+        public int PieceId { get; set; }
 
     }
 }

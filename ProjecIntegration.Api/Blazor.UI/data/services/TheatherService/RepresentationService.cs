@@ -1,4 +1,7 @@
-using Blazor.UI.Data.modelViews.Theater;
+
+using Blazor.UI.Data.ModelViews.Theater;
+using Blazor.UI.Data.ServiceResult;
+using Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.Data.services.TheatherService
@@ -6,13 +9,13 @@ namespace Blazor.UI.Data.services.TheatherService
     public interface IRepresentationService
     {
 
-        Task<IEnumerable<RepresentationDto>> Get();
+        Task<Pagination<RepresentationDto>> Get(int page);
         Task<RepresentationDto> GetById(int id);
         Task Create(AddRepresentationDto data);
         Task Update(UpdateRepresentationDto data);
         Task Delete(int id);
-        Task<IEnumerable<RepresentationDto>> GetSalle(int idSalle);
-        Task<IEnumerable<RepresentationDto>> GetPiece(int idPiece);
+        Task<Pagination<RepresentationDto>> GetSalle(int idSalle,int page);
+        Task<Pagination<RepresentationDto>> GetPiece(int idPiece,int page);
         Task AddCommandRepresentation(int id, int idPlace, AddCommandDto data);
         Task DeleteCommandRepresentation(int idRep, int idCommand);
     }
@@ -27,14 +30,22 @@ namespace Blazor.UI.Data.services.TheatherService
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<RepresentationDto>> Get()
+        public async Task<Pagination<RepresentationDto>?> Get(int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<RepresentationDto>>(ApiUri);
+            return await _httpClient.GetFromJsonAsync<Pagination<RepresentationDto>>($"{ApiUri}/{page}");
         }
 
-        public async Task<RepresentationDto> GetById(int id)
+        public async Task<RepresentationDto?> GetById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<RepresentationDto>($"{ApiUri}/{id}");
+            ServiceResponse<RepresentationDto>? response = await _httpClient.GetFromJsonAsync<ServiceResponse<RepresentationDto>?>($"{ApiUri}/{id}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task Create(AddRepresentationDto data)
@@ -52,14 +63,14 @@ namespace Blazor.UI.Data.services.TheatherService
             await _httpClient.DeleteAsync($"{ApiUri}/{id}");
         }
 
-        public async Task<IEnumerable<RepresentationDto>> GetSalle(int idSalle)
+        public async Task<Pagination<RepresentationDto>?> GetSalle(int idSalle,int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<RepresentationDto>>($"{ApiUri}/get-salle/{idSalle}");
+            return await _httpClient.GetFromJsonAsync<Pagination<RepresentationDto>?>($"{ApiUri}/from-salle/{idSalle}/{page}");
         }
 
-        public async Task<IEnumerable<RepresentationDto>> GetPiece(int idPiece)
+        public async Task<Pagination<RepresentationDto>?> GetPiece(int idPiece,int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<RepresentationDto>>($"{ApiUri}/get-piece/{idPiece}");
+            return await _httpClient.GetFromJsonAsync<Pagination<RepresentationDto>>($"{ApiUri}/from-piece/{idPiece}/{page}");
         }
 
         public async Task AddCommandRepresentation(int id, int idplace, AddCommandDto data)

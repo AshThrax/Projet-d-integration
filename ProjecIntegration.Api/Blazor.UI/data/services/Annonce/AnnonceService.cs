@@ -1,11 +1,13 @@
-﻿using Blazor.UI.data.modelViews.Annonce;
+﻿
+using Blazor.UI.Data.ModelViews.Annonce;
+using Blazor.UI.Data.ServiceResult;
 using System.Net.Http.Json;
 namespace Blazor.UI.Data.services.Annonce
 {
     public interface IAnnonceService
     {
         Task<AnnonceDto> GetAnnonceById(string Id);
-        Task<IEnumerable<AnnonceDto>> GetAll();
+        Task<Pagination<AnnonceDto>> GetAll();
         Task UpdateAnnonce(string annonceId, AnnonceDto annonce);
         Task CreateAnnonce(AnnonceDto annonceDto);
         Task DeleteAnnonce(string annonceId);
@@ -30,19 +32,35 @@ namespace Blazor.UI.Data.services.Annonce
             await _httpClient.DeleteAsync($"{ApiUri}/{annonceId}");
         }
 
-        public async Task<IEnumerable<AnnonceDto>?> GetAll()
+        public async Task<Pagination<AnnonceDto>?> GetAll()
         {
-            return await _httpClient.GetFromJsonAsync<AnnonceDto[]?>(ApiUri);
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<Pagination<AnnonceDto>>(ApiUri);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<AnnonceDto?> GetAnnonceById(string id)
         {
-            return await _httpClient.GetFromJsonAsync<AnnonceDto?>($"{ApiUri}/{id}");
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<AnnonceDto?>($"{ApiUri}/{id}");
+
+            }
+            catch (Exception)
+            {
+                return new AnnonceDto();
+            }
         }
 
         public async Task UpdateAnnonce(string id, AnnonceDto annonceDto)
         {
-
+            
             await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", annonceDto);
         }
 

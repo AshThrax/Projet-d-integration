@@ -2,13 +2,11 @@
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.services.TheatherService
-@inject HttpClient Http;
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Net.Http.Headers
 @using System.Text.Json
 @using Newtonsoft.Json
-
-
+@inject HttpClient Http;
 @inject IPieceService pieceService;
 @inject IThemeService themeService;
 @inject NavigationManager manager;
@@ -90,7 +88,7 @@
 @code {
     [Parameter]
     public int Id { get; set; }
-    private int maxAllowedFiles = 1;
+
     private long maxFileSize = long.MaxValue;
     public string? fileName { get; set; }
     IBrowserFile? ImageFile { get; set; }
@@ -120,7 +118,7 @@
 
     }
 
-    public void OnselecteThem(ChangeEventArgs args)
+    public void OnselecteThem(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {

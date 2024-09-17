@@ -3,6 +3,7 @@ using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -23,76 +24,93 @@ namespace DataInfraTheather.BusinessService
             _themeRepository = themeRepository;
         }
 
-        public void CreateTheme(ThemeDto theme)
+        public async Task<ServiceResponse<ThemeDto>> CreateTheme(ThemeDto theme)
         {
-
+            ServiceResponse<ThemeDto> response = new ServiceResponse<ThemeDto>();
             try
             {
                Theme addTheme = _mapper.Map<Theme>(theme);
 
-               _themeRepository.Insert(addTheme);
-
+               response.Data=_mapper.Map<ThemeDto>( await _themeRepository.Insert(addTheme));
+               response.Success = true;
+               response.Errortype=Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public void Deletetheme(int themeId)
+        public async Task<ServiceResponse<ThemeDto>> Deletetheme(int themeId)
         {
+            ServiceResponse<ThemeDto> response = new ServiceResponse<ThemeDto>();
             try
             {
-                _themeRepository.Delete(themeId);
+                await _themeRepository.Delete(themeId);
+                response.Success = true;
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<IEnumerable<ThemeDto>> GetAllTheme()
+        public async Task<ServiceResponse<IEnumerable<ThemeDto>>> GetAllTheme()
         {
+            ServiceResponse<IEnumerable<ThemeDto>> response = new ServiceResponse<IEnumerable<ThemeDto>>();
             try
             {
-                return _mapper.Map<IEnumerable<ThemeDto>>(await  _themeRepository.GetAll());
+                response.Data=_mapper.Map<IEnumerable<ThemeDto>>(await  _themeRepository.GetAll());
+                response.Success = true;
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<ThemeDto> GetThemeById(int themeId)
+        public async Task<ServiceResponse<ThemeDto>> GetThemeById(int themeId)
         {
+            ServiceResponse<ThemeDto> response = new ServiceResponse<ThemeDto>();
             try
             {
-                return _mapper.Map<ThemeDto>(await _themeRepository.GetById(themeId));
-            
+                response.Data= _mapper.Map<ThemeDto>(await _themeRepository.GetById(themeId));
+                response.Success = true;
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public void UpdateTheme(int themeId,ThemeDto updtTheme)
+        public async Task<ServiceResponse<ThemeDto>> UpdateTheme(int themeId,ThemeDto updtTheme)
         {
+            ServiceResponse<ThemeDto> response = new ServiceResponse<ThemeDto>();
             try
             {
                 Theme entityConvert =_mapper.Map<Theme>(updtTheme);
-                _themeRepository.Update(themeId, entityConvert);
-
+                await _themeRepository.Update(themeId, entityConvert);
+                response.Success = true;
+                response.Message = "opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = true;
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
     }
 }

@@ -1,11 +1,14 @@
-using Blazor.UI.Data.modelViews.Theater;
+using Blazor.UI.Data.ModelViews.Theater;
+using Blazor.UI.Data.ServiceResult;
+using Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.Data.services.TheatherService
 {
     public interface ISalleService
     {
-        Task<IEnumerable<SalleDeTheatreDto>> Get();
+        Task<Pagination<SalleDeTheatreDto>> Get();
+        Task<IEnumerable<SalleDeTheatreDto>> Getlist();
         Task<SalleDeTheatreDto> GetById(int id);
         Task Create(AddSalleDeTheatreDto data);
         Task AddPiece(int idSalle, AddPieceDto data);
@@ -22,14 +25,35 @@ namespace Blazor.UI.Data.services.TheatherService
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<SalleDeTheatreDto>?> Get()
+        public async Task<Pagination<SalleDeTheatreDto>?> Get()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<SalleDeTheatreDto>?>(ApiUri);
+            return await _httpClient.GetFromJsonAsync<Pagination<SalleDeTheatreDto>?>(ApiUri);
+
+        }
+        public async Task<IEnumerable<SalleDeTheatreDto>?> Getlist()
+        {
+            ServiceResponse<IEnumerable<SalleDeTheatreDto>>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<SalleDeTheatreDto>>?>($"{ApiUri}/list");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<SalleDeTheatreDto?> GetById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<SalleDeTheatreDto?>($"{ApiUri}/{id}");
+            ServiceResponse<SalleDeTheatreDto>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<SalleDeTheatreDto>?>($"{ApiUri}/single/{id}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task Create(AddSalleDeTheatreDto data)

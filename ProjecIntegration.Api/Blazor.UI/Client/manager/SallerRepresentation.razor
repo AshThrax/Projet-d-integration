@@ -1,4 +1,5 @@
 ﻿@page "/manager/salle"
+@using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
@@ -82,15 +83,17 @@
 
 @code {
     public IEnumerable<SalleDeTheatreDto>? salleTab { get; set; } 
-    public IEnumerable<RepresentationDto>? representation { get; set; }
+    public Pagination<RepresentationDto>? representation { get; set; }
     public SalleDeTheatreDto? selectsalle { get; set; }
+    public int SalleId;
+    public int pageIndex=1;
     public bool isUpdate { get; set; }
     public bool isdetail { get; set; }
     public bool isAddPiece { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        salleTab = await Servsalle.Get();
+        salleTab = await Servsalle.Getlist();
         await Task.Delay(1000);
         isdetail = true;
         isUpdate = false;
@@ -99,7 +102,8 @@
     }
     public async Task loadrepresentation(int item)
     {
-        representation = await Servrep.GetSalle(item);
+        SalleId = item;
+        representation = await Servrep.GetSalle(item,pageIndex);
         await Task.Delay(100);
         isdetail = true;
         isUpdate = false;
@@ -121,5 +125,21 @@
     public void addpiecePage(int id)
     {
         manager.NavigateTo($"/addPiece/{id}");
+    }
+    public async Task NextPage()
+    {
+        if (representation.HasNextPage)
+        {
+            pageIndex++;
+            representation = await Servrep.GetSalle(SalleId,pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (representation.HasPreviousPage)
+        {
+            pageIndex++;
+            representation = await Servrep.GetSalle(SalleId ,pageIndex);
+        }
     }
 }

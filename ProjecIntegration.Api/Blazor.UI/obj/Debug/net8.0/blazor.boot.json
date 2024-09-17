@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Blazor.UI",
   "resources": {
-    "hash": "sha256-GVxtN9JMyjrJtChhBhJsjcBi/V3pySaVLuO5cgvHUAU=",
+    "hash": "sha256-cI1uH0BUyp1p7IfGCprgCgYf9665CMdHZFebox+bBpM=",
     "jsModuleNative": {
       "dotnet.native.8.0.5.re5tde2dly.js": "sha256-boyHe+0RMZDkzBKGhsrnXPhPg3oZ6UqJnTUzngJPjNY="
     },
@@ -17,6 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
+      "BlazorBootstrap.wasm": "sha256-V0ozCRYxmIQ33AkuDi4UBSvqKsTNFLckzX5jrnrdxEs=",
       "Blazor.LocalStorage.WebAssembly.wasm": "sha256-GWSiGJHk753PbJCD59B7FSgaEpI+CV4do4jMwxrfeQw=",
       "Blazor.Serialization.wasm": "sha256-S2d4rbfkkNZd6gzqxQxUJ2ZzyHpfs10yOlOh+HM/NIY=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-OLGFBcpljsXLhIaQF0m6arMwqtgxgm6RbZTaO8tfkRU=",
@@ -66,6 +67,7 @@
       "System.Security.Cryptography.ProtectedData.wasm": "sha256-W5tMSDmYEB2xQ9h2R6YF/fHX/B7hkusJMm/i/cqRTV4=",
       "System.Security.Permissions.wasm": "sha256-Kq3ZZSKQkbZ2H5kMG7Mqq4KycqKa35CdKT9M9DM6w4U=",
       "System.Windows.Extensions.wasm": "sha256-Eh4ZyIvqo34A19igrKJBmrt1iW+vrM/Cjy/zUQHTPe8=",
+      "WMBlazorSlickCarousel.wasm": "sha256-Sw5evBbWE3Nzarw3LMV5PbHzc1bMkAIXYrDeHna3Yi8=",
       "Microsoft.CSharp.wasm": "sha256-Z4zsusVqLRP0B8U6P/Q+sxj66wh1w/ZB6L7NH21zRW4=",
       "Microsoft.VisualBasic.Core.wasm": "sha256-MUHhT6I1oajsWuOKZ1MuTXbmvFmFsHSS77lxAW6TOXU=",
       "Microsoft.VisualBasic.wasm": "sha256-MenkQJq0FYsRw3NyW2KIiFV+hx3/HM9EtBOG4fxHluE=",
@@ -234,10 +236,10 @@
       "mscorlib.wasm": "sha256-XvLAB5IyfVSmj5aaGnPwgVFaaZz8jXmbN8WmeopiPBM=",
       "netstandard.wasm": "sha256-TbMssdnuTiKq1gjTPkpgROAuWN0uhvPnagvWR+wAgNs=",
       "System.Private.CoreLib.wasm": "sha256-sscg+Efk8ROPq+q4IVmhShzITuoOYvB8Bsc+Mp9vcSM=",
-      "Blazor.UI.wasm": "sha256-gAp9p6vuwC0taHMbctNtt/RxWNUdXN+imlukW5PYb6A="
+      "Blazor.UI.wasm": "sha256-w6bBqamn9K0DSzSS8quQz65Sbj/WctyXqKHITic5MtQ="
     },
     "pdb": {
-      "Blazor.UI.pdb": "sha256-YreMWGEnkdcdr6YridJYMGkc/jsGPAiOXB73ISpsRN0="
+      "Blazor.UI.pdb": "sha256-PJFSWWze1rx/sZWJpU88lLWiMMXMlH/xtpwxnwhISAU="
     }
   },
   "cacheBootResources": true,

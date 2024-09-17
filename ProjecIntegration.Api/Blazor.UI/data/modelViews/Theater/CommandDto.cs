@@ -1,6 +1,6 @@
 ﻿
 
-namespace Blazor.UI.Data.modelViews.Theater;
+namespace Blazor.UI.Data.ModelViews.Theater;
 
 public class CommandDto : Baseview
 {

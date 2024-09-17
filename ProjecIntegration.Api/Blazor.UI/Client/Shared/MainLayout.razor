@@ -1,7 +1,7 @@
 ﻿@* Client/Shared/MainLayout.razor *@
 @inherits LayoutComponentBase
 <div class="page">
-    <div class="sidebar">
+    <div class="sidebar bg-dark">
         <NavMenu />
     </div>
 
@@ -11,13 +11,12 @@
              <p> / </p>
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
-        <div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div>
+      
         <article class="content px-4">
             @Body
         </article>
     </main>
+</div>
+<div class="bottom-100">
+    <FooterComponent></FooterComponent>
 </div>

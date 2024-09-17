@@ -16,7 +16,7 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <button type="button" class="col col-sm-3  btn btn-primary" @onclick="GetAllPiece">back to profile page</button>
+            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetAllPiece">back to profile page</button>
             <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetHome">backMaineMenu</button>
             <button type="button" class="col col-sm-3   btn btn-primary" @onclick="Previous">back to reservation</button>
         </div>
@@ -37,6 +37,11 @@
                             <button type="button" class="btn btn-warning " @onclick="() => SetPiece(item)">Details</button>
                         </div>
                     </TemplateColumn>
+                    <TemplateColumn Context="item">
+                        <div>
+                            <button type="button" class="btn btn-warning " @onclick="() => GetRepresentation(item.Id)">Representation</button>
+                        </div>
+                    </TemplateColumn>
             </QuickGrid>
             </div>
             <br />
@@ -45,14 +50,14 @@
   
                     <div class="col">
                         <div>
-                            <h4 cclass="form-label for="titre">Titre:</h4>
-                            <p>@SelectedPiece.Titre</p>
+                        <h4 cclass="form-label" for="titre">Titre:</h4>
+                            <p>@SelectedPiece?.Titre</p>
                         </div>
 
                         <div class="">
 
-                            <h4 class="form-label for="duree">Duree:</h4>
-                            <p>@SelectedPiece.Duree</p>
+                            <h4 class="form-label" for="duree">Duree:</h4>
+                            <p>@SelectedPiece?.Duree</p>
                         </div>
 
                         <div>
@@ -87,12 +92,16 @@
 
     protected override async Task OnInitializedAsync()
     {
-        GetPiece = await PieceService.Get();
+        GetPiece = await PieceService.Getlist();
         await Task.Delay(1000);
     }
     public void SetPiece(PieceDto piece)
     {
         SelectedPiece = piece;   
+    }
+    public void GetRepresentation(int id)
+    {
+        manager.NavigateTo($"/manager/representationPiece/{id}");
     }
     public void GetAllPiece()
     {

@@ -1,4 +1,5 @@
 ﻿@page "/manager/addpiecetocatalogue/{Id:int}"
+@using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
@@ -35,13 +36,13 @@
                       </div>
                       <div class="card-body">
                           <div>
-                              <p><strong>Name</strong> : @selectCatalogue.Name</p>
+                              <p><strong>Name</strong> : @selectCatalogue?.Name</p>
                           </div>
                         <div>
-                            <p><strong>description</strong> : @selectCatalogue.Description</p>
+                            <p><strong>description</strong> : @selectCatalogue?.Description</p>
                         </div>
                         <div>
-                            <p><strong>description</strong> : @selectCatalogue.AddedTime</p>
+                            <p><strong>description</strong> : @selectCatalogue?.AddedTime</p>
                         </div>
                       </div>
                       <div class="card-footer p-2">
@@ -98,7 +99,7 @@
                         <div class="colcard-body">
                             @if (GetPieces != null)
                             {
-                                <QuickGrid Items="PieceFromcatalogue.AsQueryable()">
+                                <QuickGrid Items="PieceFromcatalogue?.Items.AsQueryable()">
                                     <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
                                     <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
                                     <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
@@ -128,36 +129,38 @@
 @code {
     [Parameter]
     public int Id { get; set; }
-    public List<PieceDto> GetPieces{ get; set; }
-    public List<PieceDto> PieceFromcatalogue { get; set; } = new();
-    public PieceDto selectPieceDto { get; set; }
-    public List<CatalogueDto> GetCatalogue { get; set; }
-    public CatalogueDto selectCatalogue { get; set; }
+    public List<PieceDto>? GetPieces{ get; set; }
+    public Pagination<PieceDto>? PieceFromcatalogue { get; set; } 
+    public PieceDto? selectPieceDto { get; set; }
+    public List<CatalogueDto>? GetCatalogue { get; set; }
+    public CatalogueDto? selectCatalogue { get; set; }
     public int selectCatalogueId { get; set; }
     public int selectePieceId { get; set; }
 
     public bool getlistofPiece { get; set; } = true;
     public bool getlistfromcatalogue { get; set; } = false;
 
+    public int pageIndex = 1;
     protected override async Task OnInitializedAsync()
     {
         selectCatalogueId = Id;
-        GetPieces = (await Pieceservice.Get()).ToList();
-        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId)).ToList();
+        GetPieces = (await Pieceservice.Getlist()).ToList();
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId,pageIndex));
         GetCatalogue = (await catalogueService.GetAllCatalogue()).ToList();
         selectCatalogue = await catalogueService.GetCatalogue(Id);
         await Task.Delay(1000);
     }
 
-    public async Task OnSelectedCatalogue(ChangeEventArgs args)
+    public async Task OnSelectedCatalogue(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
             selectCatalogueId = selectedId;
         }
-        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectedId)).ToList();
+        pageIndex = 1;
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectedId,pageIndex));
     }
-    public void OnselectedPiece(ChangeEventArgs args)
+    public void OnselectedPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
@@ -179,11 +182,29 @@
     public async Task AddaNewPieceToCatalogue(int pieceId)
     {
         await Pieceservice.AddToCatalogue(selectCatalogueId, pieceId);
-        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId)).ToList();
+        pageIndex = 1;
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId, pageIndex));
     }
     public async Task RemoveFromCatalogue(int pieceId)
     {
         await Pieceservice.RemovefromCatalogue(selectCatalogueId, pieceId);
-        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId)).ToList();
+        pageIndex = 1;
+        PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId, pageIndex));
+    }
+    public async Task NextPagePiece()
+    {
+        if (PieceFromcatalogue.HasNextPage)
+        {
+            pageIndex ++;
+            PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId, pageIndex));
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (PieceFromcatalogue.HasPreviousPage)
+        {
+            pageIndex--;
+            PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId, pageIndex));
+        }
     }
 }

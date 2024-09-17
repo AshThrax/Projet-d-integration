@@ -15,7 +15,7 @@ namespace ApplicationPublication.Common.Repository
         Task<IEnumerable<T>> GetAll();
         Task<T?> GetById(string id);
         Task Insert(T entity);
-        void Update(string entityId, T entity);
-        void Delete(string entityId);
+        Task Update(string entityId, T entity);
+        Task Delete(string entityId);
     }
 }

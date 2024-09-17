@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Auth0Net.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.3" />
     <PackageReference Include="Stripe.net" Version="44.8.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
    <PackageReference Include="AutoMapper" Version="13.0.1" />
@@ -36,11 +37,13 @@
     <ProjectReference Include="..\Application\ApplicationAnnonce.csproj" />
     <ProjectReference Include="..\data\DataInfraTheather.csproj" />
     <ProjectReference Include="..\InfraPublication\InfraPublication.csproj" />
+    <ProjectReference Include="..\InfrastructureUser\InfrastructureUser.csproj" />
     <ProjectReference Include="..\Infrastructure\InfrastructureAnnonce.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
 
 </Project>

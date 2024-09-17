@@ -1,5 +1,4 @@
 ﻿
-using Blazor.UI.data.modelViews;
 using Stripe;
 using Stripe.Checkout;
 

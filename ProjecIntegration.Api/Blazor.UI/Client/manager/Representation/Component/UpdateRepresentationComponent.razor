@@ -1,0 +1,101 @@
+﻿@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@inject IRepresentationService Servrep;
+@inject ISalleService ServSalle;
+@inject IPieceService ServPiece;
+
+@if (updateRepresentation != null && SelectSalle !=null && SelectPiece !=null)
+{
+    <div class="m-2 p-2">
+
+        <br />
+        <form class="card">
+            <div class="form-group card-body">
+                <div>
+
+                    <label class="form-label" for="prix">Prix:</label>
+                    <input class="form-control" id="prix" @bind="updateRepresentation.Prix" type="number" step="0.01" />
+                </div>
+                <div>
+
+                    <label class="form-label" for="seance">Seance:</label>
+                    <input class="form-control" id="seance" @bind="updateRepresentation.Seance" type="datetime-local" />
+                </div>
+                <div>
+                    <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
+
+                    <select class="form-control" @bind="SelectSalleId" @oninput="selectionSalle">
+                        <option>Choisissez une Salle</option>
+                        @foreach (var item in SelectSalle)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+
+                </div>
+
+                <div>
+                    <label class="form-label" for="idSalleDeTheatre">Piece</label>
+                    <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
+                        <option>Choisissez une piece</option>
+                        <option>Choisissez une Piece</option>
+                        @foreach (var item in SelectPiece)
+                        {
+                            <option value="@item.Id">@item.Titre.ToString()</option>
+                        }
+                    </select>
+                </div>
+
+                <button class="btn btn-outline-dark m-2 p-2" @onclick="Update">Update Representation</button>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <p>No Representation provided</p>
+}
+
+@code {
+    [Parameter]
+    public RepresentationDto? updateRepresentation { get; set; }
+    public IEnumerable<PieceDto>? SelectPiece { get; set; }
+    public IEnumerable<SalleDeTheatreDto>? SelectSalle { get; set; }
+    public int SelectPieceID { get; set; }
+    public int SelectSalleId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+
+        SelectPiece = await ServPiece.Getlist();
+        SelectSalle = await ServSalle.Getlist();
+        await Task.Delay(100);
+    }
+    public async Task Update()
+    {
+        UpdateRepresentationDto items = new UpdateRepresentationDto
+            {
+                Prix = updateRepresentation.Prix,
+                Seance = updateRepresentation.Seance,
+                PlaceCurrent = updateRepresentation.PlaceCurrent,
+                PlaceMaximum = updateRepresentation.PlaceMaximum,
+                PieceId = updateRepresentation.PieceId
+            };
+        await Servrep.Update(items);
+    }
+    public async Task selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectPieceID = selectedId;
+
+        }
+    }
+    public async Task selectionSalle(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectSalleId = selectedId;
+
+        }
+    }
+}

@@ -1,0 +1,68 @@
+﻿@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject IRepresentationService PieceRep;
+@inject ISalleService SalleService;
+
+  <div class="card m-2 p-2 bg-light rounded">
+       <div class="card-header">
+        <h5><strong>Representation</strong></h5>
+       </div>
+       <div class="card-body m-2 p-2">
+             <QuickGrid Items="@GetRepresentation?.Items.AsQueryable()">
+                    <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
+                    <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true"  />
+                    <PropertyColumn Property="@(p => p.Seance.Day)" Sortable="true"  />
+                    <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true"  />
+                    <TemplateColumn>
+                        <div>
+                    <button type="button" class="btn btn-group" @onclick="() =>OnSelectedrepresnetation(context)">Select</button>
+                </div>
+                    </TemplateColumn>
+             </QuickGrid>
+             <div>
+                     <a @onclick="PreviousPage" type="text/asa" class="btn btn-outline-dark">Previous</a>
+                     <a @onclick="NextPage" type="text/asa" class="btn btn-outline-dark">Next</a>
+             </div>
+        </div>
+  </div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public EventCallback<RepresentationDto> SelectedRepresentation { get; set; }
+
+
+    public SalleDeTheatreDto salleDeTheatre { get; set; }
+    public Pagination<RepresentationDto>? GetRepresentation { get; set; }
+    public int pageIndex = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        GetRepresentation = (await PieceRep.GetPiece(Id, pageIndex));
+
+        await Task.Delay(100);
+    }
+    public async Task NextPage()
+    {
+        if (GetRepresentation.HasNextPage)
+        {
+            pageIndex++;
+        }
+
+    }
+    public async Task PreviousPage()
+    {
+        if (GetRepresentation.HasPreviousPage)
+        {
+            pageIndex--;
+        }
+    }
+    private void OnSelectedrepresnetation(RepresentationDto representation)
+    {
+        SelectedRepresentation.InvokeAsync(representation);    
+    }
+}

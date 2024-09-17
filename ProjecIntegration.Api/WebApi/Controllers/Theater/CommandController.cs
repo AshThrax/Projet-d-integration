@@ -5,13 +5,15 @@ using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.DTO;
 using ApplicationPublication.Dto;
 using ApplicationTheather.BusinessService;
+using Domain.DataType;
+using Domain.ServiceResponse;
 
 namespace WebApi.Controllers.Theater
 {
 
     [Route("api/v1/[controller]")]
     [ApiController]
-    [Authorize]
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class CommandController : ControllerBase
     {
         private readonly IBusinessCommandService _commandService;
@@ -27,24 +29,8 @@ namespace WebApi.Controllers.Theater
             _commandService = commandService;
             _mapper = mapper;
         }
-        [HttpGet("get-auth")]
-      
-        private async Task<ActionResult> GetAuth()
-        {
-            try
-            {
-                string subClaim = await gtk.GetSub();
-                string MailClaim = await gtk.GetEmail();
-                return Ok(subClaim);
-            }
-            catch (Exception ex)
-            {
-                // Log or handle the exception appropriately
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
+
         [HttpGet("{id}")]
-    
         public async Task<ActionResult<CommandDto>> GetById(int id)
         
         {
@@ -63,16 +49,16 @@ namespace WebApi.Controllers.Theater
                 return NotFound(ex.Message);
             }
         }
-        [HttpGet("get-command-user")]
+        [HttpGet("get-command-user/{page}")]
      
-        public async Task<ActionResult<CommandDto>> GetByUser()
+        public async Task<ActionResult<Pagination<CommandDto>>> GetByUser(int page)
         {
             try
             {
                 var auth0UserId = gtk.GetSub().Result;
-
-                var entities = _mapper.Map<IEnumerable<CommandDto>>(await _commandService.GetCommandUSer(auth0UserId));
-                return Ok(entities);
+                ServiceResponse<IEnumerable<CommandDto>> response = (await _commandService.GetCommandUSer(auth0UserId));
+                Pagination<CommandDto> pageCommande = Pagination<CommandDto>.ToPagedList(response.Data.ToList(), page, 10);
+                return Ok(pageCommande);
 
             }
             catch (ValidationException ex)
@@ -84,15 +70,15 @@ namespace WebApi.Controllers.Theater
                 return NotFound(ex.Message);
             }
         }
-        [HttpGet("get-piece/{idPiece}")]
+        [HttpGet("get-piece/{idPiece}/{page}")]
     
-        public async Task<ActionResult<IEnumerable<Command>>> GetByPiece(int idPiece)
+        public async Task<ActionResult<Pagination<CommandDto>>> GetByPiece(int idPiece, int page)
         {
             try
             {
-                var entities = _mapper.Map<IEnumerable<CommandDto>>
-                    (await _commandService.GetCommandByPiece(idPiece));
-                return Ok(entities);
+                ServiceResponse<IEnumerable<CommandDto>> response = await _commandService.GetCommandByPiece(idPiece);
+                Pagination<CommandDto> pageCommande = Pagination<CommandDto>.ToPagedList(response.Data.ToList(), page, 10);
+                return Ok(pageCommande);
 
             }
             catch (ValidationException ex)
@@ -114,11 +100,11 @@ namespace WebApi.Controllers.Theater
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IEnumerable<CommandDto>>> GetAll()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<CommandDto>>>> GetAll()
         {
             try
             {
-                IEnumerable<CommandDto> entities = await _commandService.GetAllCommand();
+                ServiceResponse<IEnumerable<CommandDto>> entities = await _commandService.GetAllCommand();
                 return Ok(entities);
 
             }
@@ -219,5 +205,36 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("exist/{pieceid}")]
+        public async Task<ActionResult<bool>> DoIHaveACommand(int pieceid) 
+        {
+            try
+            {
+                string userId = await gtk.GetSub();
+                ServiceResponse<bool> response= await _commandService.VerifiedCommand(pieceid, userId);
+
+                if (response.Success)
+                {
+                    return Ok(response.Data);
+                }
+                else 
+                {
+                    return BadRequest(response.Message);
+                }
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

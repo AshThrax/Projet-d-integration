@@ -7,17 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Blazor.UI.Client.manager;
 using Blazor.UI.Data.modelViews.Theater;
+using Blazor.UI.Data.ModelViews.Theater;
+using Blazor.UI.Data.ServiceResult;
+using BlazorBootstrap;
+using Data.ServiceResult;
 using Newtonsoft.Json;
 
 namespace Blazor.UI.Data.services.TheatherService
 {
     public interface IPieceService
     {
-        Task<IEnumerable<PieceDto>> Get();
+        Task<Pagination<PieceDto>> Get(int page);
+        Task<IEnumerable<PieceDto>> Getlist();
         Task<PieceDto> GetById(int id);
-        Task<IEnumerable<PieceDto>> GetByComplexe(int id);
-        Task<IEnumerable<PieceDto>> GetByCatalogue(int id);
-        Task<IEnumerable<PieceDto>> GetByTheme(int id);
+        Task<Pagination<PieceDto>> GetByComplexe(int id,int page);
+        Task<Pagination<PieceDto>> GetByCatalogue(int id,int page);
+        Task<Pagination<PieceDto>> GetByTheme(int id,int page);
         Task Create(AddPieceDto data);
         Task AddRepresentation(int pieceId, AddRepresentationDto data);
         Task AddToCatalogue(int catalogueId, int pieceId);
@@ -39,19 +44,39 @@ namespace Blazor.UI.Data.services.TheatherService
 
         }
 
-        public async Task<IEnumerable<PieceDto?>?> Get()
+        public async Task<Pagination<PieceDto?>?> Get(int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto?>?>(ApiUri);
+            return await _httpClient.GetFromJsonAsync<Pagination<PieceDto?>?>($"{ApiUri}/{page}");
         }
+        public async Task<IEnumerable<PieceDto?>?> Getlist()
+        {
+            ServiceResponse <IEnumerable<PieceDto>>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<PieceDto>>?>($"{ApiUri}/list");
 
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else { 
+                return null;
+            }
+        }
         public async Task<PieceDto?> GetById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<PieceDto?>($"{ApiUri}/{id}");
+            ServiceResponse<PieceDto>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<PieceDto>?>($"{ApiUri}/single/{id}");
+
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public async Task<IEnumerable<PieceDto?>?> GetByComplexe(int id)
+        public async Task<Pagination<PieceDto?>?> GetByComplexe(int id,int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto?>?>($"{ApiUri}/get-complexe/{id}");
+            return await _httpClient.GetFromJsonAsync<Pagination<PieceDto?>?>($"{ApiUri}/get-complexe/{id}/{page}");
         }
 
         public async Task Create(AddPieceDto piecedata)
@@ -81,13 +106,13 @@ namespace Blazor.UI.Data.services.TheatherService
             await _httpClient.DeleteAsync($"{ApiUri}/delete-representation/{idPiece}/{idRepresentation}");
         }
 
-        public async Task<IEnumerable<PieceDto>?> GetByCatalogue(int id)
+        public async Task<Pagination<PieceDto>?> GetByCatalogue(int id, int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto>>($"{ApiUri}/catalogue/{id}");
+            return await _httpClient.GetFromJsonAsync<Pagination<PieceDto>>($"{ApiUri}/catalogue/{id}/{page}");
         }
-        public async  Task<IEnumerable<PieceDto>?> GetByTheme(int id)
+        public async  Task<Pagination<PieceDto>?> GetByTheme(int id,int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PieceDto>>($"{ApiUri}/theme/{id}");
+            return await _httpClient.GetFromJsonAsync<Pagination<PieceDto>>($"{ApiUri}/theme/{id}/{page}");
         }
 
         public async Task AddToCatalogue(int catalogueId, int pieceId)

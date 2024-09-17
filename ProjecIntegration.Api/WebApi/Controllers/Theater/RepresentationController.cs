@@ -2,7 +2,9 @@
 using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
+using Domain.DataType;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 
 namespace WebApi.Controllers.Theater
 {
@@ -23,13 +25,14 @@ namespace WebApi.Controllers.Theater
             _mapper = mapper;
             this.gtk = gtk;
         }
-        [HttpGet]
+        [HttpGet("bypage/{page}")]
         
-        public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAll()
+        public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAll(int page )
         {
             try
             {
-                IEnumerable<RepresentationDto> entities = await _businessRepService.GetAll();
+                ServiceResponse<IEnumerable<RepresentationDto>> entities = await _businessRepService.GetAll();
+                Pagination<RepresentationDto> pageEntities= Pagination<RepresentationDto>.ToPagedList(entities.Data.ToList(),page,10);
                 return Ok(entities);
 
             }
@@ -52,7 +55,7 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                RepresentationDto entities = await _businessRepService.GetById(id);
+                ServiceResponse<RepresentationDto> entities = await _businessRepService.GetById(id);
              
                 return Ok(entities);
             }
@@ -70,14 +73,15 @@ namespace WebApi.Controllers.Theater
             }
         }
       
-        [HttpGet("from-piece/{idpiece}")]
+        [HttpGet("from-piece/{pieceId}/{page}")]
      
-        public async Task<ActionResult<IEnumerable<RepresentationDto>>> GetAllpieceById(int pieceId)
+        public async Task<ActionResult<Pagination<RepresentationDto>>> GetAllpieceById(int pieceId,int page)
         {
             try
             {
-                IEnumerable<RepresentationDto> entities = await _businessRepService.GetAllFromPiece(pieceId);
-                return Ok(entities);
+                ServiceResponse<IEnumerable<RepresentationDto>> entities = await _businessRepService.GetAllFromPiece(pieceId);
+                Pagination<RepresentationDto> pageEntities = Pagination<RepresentationDto>.ToPagedList(entities.Data.ToList(), page, 10);
+                return Ok(pageEntities);
             }
             catch (ValidationException ex)
             {
@@ -92,13 +96,14 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("from-salle/{salleId}")]
+        [HttpGet("from-salle/{salleId}/{page}")]
 
-        public async Task<ActionResult<RepresentationDto>> GetAllSalleById(int salleId)
+        public async Task<ActionResult<Pagination<RepresentationDto>>> GetAllSalleById(int salleId, int page)
         {
             try
             {
-              IEnumerable<RepresentationDto> getfromsalle=  await _businessRepService.GetAllFromSalle(salleId);
+                ServiceResponse<IEnumerable<RepresentationDto>> getfromsalle=  await _businessRepService.GetAllFromSalle(salleId);
+                Pagination<RepresentationDto> pageEntities = Pagination<RepresentationDto>.ToPagedList(getfromsalle.Data.ToList(), page, 10);
                 return Ok(getfromsalle);
             }
             catch (ValidationException ex)

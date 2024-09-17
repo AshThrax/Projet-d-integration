@@ -3,6 +3,7 @@ using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -26,24 +27,29 @@ namespace DataInfraTheather.BusinessService
             _mapper = mapper;
         }
 
-        public void Create(AddPieceDto Entity)
+        public async Task<ServiceResponse<PieceDto>> Create(AddPieceDto Entity)
         {
+            ServiceResponse<PieceDto> response = new();
             try
             {
                 Piece entittyConversion = _mapper.Map<Piece>(Entity);
                
-                _pieceRepository.Insert(entittyConversion);
-
+                await _pieceRepository.Insert(entittyConversion);
+                response.Success = true;
+                response.Message = "opération réussi";
+                
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
 
-        public async Task Delete(int idPiece)
+        public async Task<ServiceResponse<PieceDto>> Delete(int idPiece)
         {
+            ServiceResponse<PieceDto> response = new();
             try
             {
                 Piece getPiece = await _pieceRepository.GetById(idPiece);
@@ -55,65 +61,80 @@ namespace DataInfraTheather.BusinessService
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
 
-        public async Task<PieceDto> Get(int idPIece)
+        public async Task<ServiceResponse<PieceDto>> Get(int idPIece)
         {
+            ServiceResponse<PieceDto> response = new();
             try
             {
-                Piece GetPiece = await _pieceRepository.GetById(idPIece,c =>c.Image);
+               Piece GetPiece = await _pieceRepository.GetById(idPIece,c =>c.Image);
                 
                PieceDto GetPieceDto= new PieceDto().ConvertToDtos(GetPiece,_mapper);
 
-              
-               return GetPieceDto;
+              response.Data=GetPieceDto;
+                response.Success = true;
+                response.Message = "opération reussi"; 
+             
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<PieceDto>> GetAll()
+        public async Task<ServiceResponse<IEnumerable<PieceDto>>> GetAll()
         {
+            ServiceResponse<IEnumerable<PieceDto>> response = new();
             try
             {
                 IEnumerable<Piece> GetPiece = await _pieceRepository.GetAll(c=>c.Image);
                 List<PieceDto> PieceDtos=new PieceDto().ConvertToDtos(GetPiece.ToList(),_mapper  );
 
-             
-                return PieceDtos;
+                response.Data = PieceDtos;
+                response.Success = true;
+                response.Message = "opération reussi";
+
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
-
-        public async Task<IEnumerable<PieceDto>> GetPieceByTheme(int themeId)
+        /// <summary>
+        /// recupéraiton des Piece par theme
+        /// </summary>
+        /// <param name="themeId"></param>
+        /// <returns></returns>
+        public async Task<ServiceResponse<IEnumerable<PieceDto>>> GetPieceByTheme(int themeId)
         {
+            ServiceResponse<IEnumerable<PieceDto>> response = new();
             try
             {
                 IEnumerable<Piece?> GetPieces = await _pieceRepository.GetPieceByTheme(themeId);
 
                 List<PieceDto> PieceDtos = new PieceDto().ConvertToDtos(GetPieces.ToList(), _mapper );
-
-
-                return PieceDtos;
+                response.Data = PieceDtos;
+                response.Success = true;
+                response.Message = "opération reussi";
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
 
         /// <summary>
@@ -121,22 +142,24 @@ namespace DataInfraTheather.BusinessService
         /// </summary>
         /// <param name="catalogueId"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<PieceDto>> GetPiecefromCatalogue(int catalogueId)
+        public async Task<ServiceResponse<IEnumerable<PieceDto>>> GetPiecefromCatalogue(int catalogueId)
         {
+            ServiceResponse<IEnumerable<PieceDto>> response = new();
             try
             {
                 IEnumerable<int> GetPieceIds = await _cataloguePieceRepository.GetPieceFromCatalogue(catalogueId);
                 IEnumerable<Piece> GetPieces = await _pieceRepository.GetPieceByListId(GetPieceIds.ToList());
                 List<PieceDto> PieceDtos = new PieceDto().ConvertToDtos(GetPieces.ToList(),_mapper );
-
-
-                return PieceDtos;
+                response.Data = PieceDtos;
+                response.Success = true;
+                response.Message = "opération reussi";
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
         /// <summary>
         /// mise a jour des piece de theatre
@@ -144,23 +167,28 @@ namespace DataInfraTheather.BusinessService
         /// <param name="idPiece"></param>
         /// <param name="Entity"></param>
         /// <returns></returns>
-        public async Task Update(int idPiece, UpdatePieceDto Entity)
+        public async Task<ServiceResponse<PieceDto>> Update(int idPiece, UpdatePieceDto Entity)
         {
+            ServiceResponse<PieceDto> response = new();
             try
             {
                 Piece getPiece = await _pieceRepository.GetById(idPiece);
                 if (getPiece != null)
                 {
                     Piece getConvertion = _mapper.Map<Piece>(Entity);
-                    _pieceRepository.Update(idPiece, getConvertion);
+                    await _pieceRepository.Update(idPiece, getConvertion);
+         
+                    response.Success = true;
+                    response.Message = "opération reussi";
                 }
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu lors de l'opération";
             }
+            return response;
         }
     }
 }

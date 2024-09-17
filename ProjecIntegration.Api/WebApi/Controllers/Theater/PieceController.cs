@@ -2,12 +2,16 @@
 using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
+using Domain.DataType;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
+using Stripe;
 using WebApi.ApiService.FileService;
 namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Admin")]
     public class PieceController : ControllerBase
     {
         
@@ -21,13 +25,14 @@ namespace WebApi.Controllers.Theater
             _pieceRepository = pieceRepository;
             _businessCatalogue = businessCatalogue;
         }
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<PieceDto>>> GetAllPiece()
+        [HttpGet("{page}")]
+        public async Task<ActionResult<Pagination<PieceDto>>> GetAllPiece(int page)
         {
             try
             { 
-              
-                return Ok(await _pieceRepository.GetAll());
+                ServiceResponse<IEnumerable<PieceDto>> response = await _pieceRepository.GetAll();
+                Pagination<PieceDto> pagePiece = Pagination<PieceDto>.ToPagedList(response.Data.ToList(), page, 5);
+                return Ok(pagePiece);
             }
             catch (ValidationException ex)
             {
@@ -42,14 +47,35 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-       
-        [HttpGet("{id}")]
+        [HttpGet("list")]
+        public async Task<ActionResult<ServiceResponse<IEnumerable<PieceDto>>>> GetAllPieceList()
+        {
+            try
+            {
+                ServiceResponse<IEnumerable<PieceDto>> response = await _pieceRepository.GetAll();
+               
+                return Ok(response);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("single/{id}")]
         public async Task<ActionResult<PieceDto>> GetById(int id)
         {
             try
             {
-                var entity = await _pieceRepository.Get(id);
-                return Ok(entity);
+                ServiceResponse<PieceDto> response = await _pieceRepository.Get(id);
+                return Ok(response);
             }
             catch (ValidationException ex)
             {
@@ -64,14 +90,14 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("theme/{themeId}")]
-        public async Task<ActionResult<PieceDto>> GetByThemeId(int themeId)
+        [HttpGet("theme/{themeId}/{page}")]
+        public async Task<ActionResult<PieceDto>> GetByThemeId(int themeId,int page)
         {
             try
             {
-                var entity = await _pieceRepository.GetPieceByTheme(themeId);
-              
-                return Ok(entity);
+                ServiceResponse<IEnumerable<PieceDto>> response = await _pieceRepository.GetPieceByTheme(themeId);
+                Pagination<PieceDto> pagePiece = Pagination<PieceDto>.ToPagedList(response?.Data?.ToList(), page, 5);
+                return Ok(pagePiece);
             }
             catch (ValidationException ex)
             {
@@ -86,12 +112,14 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("catalogue/{catalogueId}")]
-        public async Task<ActionResult<PieceDto>> GetByCatalogueId(int catalogueId)
+        [HttpGet("catalogue/{catalogueId}/{page}")]
+        public async Task<ActionResult<PieceDto>> GetByCatalogueId(int catalogueId,int page)
         {
             try
             {
-                return Ok(await _pieceRepository.GetPiecefromCatalogue(catalogueId));
+                ServiceResponse<IEnumerable<PieceDto>> response = await _pieceRepository.GetPiecefromCatalogue(catalogueId);
+                Pagination<PieceDto> pagePiece = Pagination<PieceDto>.ToPagedList(response.Data.ToList(), page, 5);
+                return Ok(pagePiece);
             }
             catch (ValidationException ex)
             {
@@ -113,7 +141,7 @@ namespace WebApi.Controllers.Theater
             {       if(ModelState.IsValid)
                     {
 
-                        _pieceRepository.Create(addpiece);
+                       ServiceResponse<PieceDto> response= await _pieceRepository.Create(addpiece);
                       
                         return Ok();
                     }
@@ -152,7 +180,7 @@ namespace WebApi.Controllers.Theater
                     return BadRequest();
                 }
 
-                await _businessCatalogue.AddPieceToCatalogue(catalogueId, pieceId);
+               ServiceResponse<CatalogueDto> response= await _businessCatalogue.AddPieceToCatalogue(catalogueId, pieceId);
                 return Ok();
 
             }
@@ -178,7 +206,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest();
                 }
-                await _businessCatalogue.RemovePieceToCataogue(catalogueId, pieceId);
+                ServiceResponse<CatalogueDto> response= await _businessCatalogue.RemovePieceToCataogue(catalogueId, pieceId);
                 return NoContent();
             }
             catch (Exception)
@@ -205,7 +233,7 @@ namespace WebApi.Controllers.Theater
                     updatepiece.Image = createdImageName;
                 }
 
-                await _pieceRepository.Update(updtId, updatepiece);
+                ServiceResponse<PieceDto> response= await _pieceRepository.Update(updtId, updatepiece);
                 return NoContent();
             }
             catch (ValidationException ex)
@@ -223,18 +251,16 @@ namespace WebApi.Controllers.Theater
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult<ServiceResponse<PieceDto>>> Delete(int id)
         {
 
             try
             {
-                PieceDto piece = await  _pieceRepository.Get(id);
-                if(piece !=null)
-                {
+               
                   
-                   await _pieceRepository.Delete(id);
+                ServiceResponse<PieceDto> response= await _pieceRepository.Delete(id);
 
-                }
+               
                 return NoContent();
             }
             catch (ValidationException ex)

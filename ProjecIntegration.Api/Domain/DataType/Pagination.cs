@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace Domain.DataType
 {
-    public class Pagination<T>:List<T>
+    public class Pagination<T>
     {
-        public int CurrentPage { get; private set; }
-        public int TotalPages { get; private set; }
-        public int PageSize { get; private set; }
-        public int TotalCount { get; private set; }
-        public bool HasPrevious => CurrentPage > 1;
-        public bool HasNext => CurrentPage < TotalPages;
-        public Pagination(List<T> items, int count, int pageNumber, int pageSize)
+        public List<T> Items { get; }
+        public int PageIndex { get; }
+        public int TotalPages { get; }
+        public bool HasPreviousPage => PageIndex > 1;
+        public bool HasNextPage => PageIndex < TotalPages;
+
+        public Pagination(List<T> items, int pageIndex, int totalPages)
         {
-            TotalCount = count;
-            PageSize = pageSize;
-            CurrentPage = pageNumber;
-            TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-            AddRange(items);
+            Items = items;
+            PageIndex = pageIndex;
+            TotalPages = totalPages;
         }
         public static Pagination<T> ToPagedList(List<T> Query, int pageNumber, int pageSize)
         {   
@@ -37,16 +35,17 @@ namespace Domain.DataType
                 //on force le processuss a renvoyer au moins 1 element 
                 pageSize = 1;
             }
-            
             int count = source.Count();
+            var TotalPagelist = (int)Math.Ceiling(count / (double)pageSize);
+
             List<T> items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             if (count > 0)
             {
                 // si le nombre d'item est superieur a zero on renvoie une page paginer 
                
-                return new Pagination<T>(items, count, pageNumber, pageSize);
+                return new Pagination<T>(items,pageNumber, TotalPagelist);
             }
-            return new Pagination<T>(items, count, pageNumber, pageSize); ;
+            return new Pagination<T>(items, pageNumber, TotalPagelist); ;
         }
     }
 }

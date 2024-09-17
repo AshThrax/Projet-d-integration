@@ -1,4 +1,4 @@
-﻿namespace Blazor.UI.Data.modelViews;
+﻿namespace Blazor.UI.Data.ModelViews;
 
 public class Baseview
 {
@@ -8,6 +8,6 @@ public class Baseview
 
 public class MongoView
 {
-    public string Id { get; set; }
-    public DateTime CreatedDate { get; set; }
+    public string Id { get; set; }=string.Empty;
+    public DateTime? CreatedDate { get; set; }
 }

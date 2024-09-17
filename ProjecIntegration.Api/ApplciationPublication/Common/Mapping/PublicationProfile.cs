@@ -1,4 +1,5 @@
-﻿using ApplicationPublication.Dto;
+﻿using ApplicationAnnonce.DTO;
+using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
 using System;
@@ -18,8 +19,11 @@ namespace ApplicationPublication.Common.Mapping
             CreateMap<UpdatePublicationDto, Publication>().ReverseMap();
 
             CreateMap<Post, PostDto>().ReverseMap();
+            CreateMap<AddPostDto, Post>().ReverseMap();
             CreateMap<Repost, RepostDto>().ReverseMap();
 
+
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

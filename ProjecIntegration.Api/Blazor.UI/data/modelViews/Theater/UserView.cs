@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Blazor.UI.Data.modelViews.Theater;
+namespace Blazor.UI.Data.ModelViews.Theater;
 
 public class UserView
 {

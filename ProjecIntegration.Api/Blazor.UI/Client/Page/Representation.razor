@@ -1,4 +1,5 @@
 ﻿@page "/representation/{Id:int}"
+@using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.modelViews.Theater
 @attribute [Authorize(Roles ="Admin")]
 @attribute [StreamRendering]
@@ -18,103 +19,85 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3">
-
-  
             @if (myPiece != null)
             {
-                <div class="m-2 p-2 bg-light border rounded">
-                    <div class="m-2 p-2">
+            <div class="border rounded bg-light col-md-5">
+                    <div class="col">
+                        <img class="img-thumbnail" src="https://localhost:44337/Resources/@myPiece.Image"/>
+                    </div>
+                    <div class="col ">
                         <h4>Representation Details</h4>
                         <p><strong>Title: </strong> @myPiece.Titre</p>
                         <p><strong>Duration: </strong> @myPiece.Duree</p>
-                        <p><strong>Description: </strong> @myPiece.Description</p>
-                        <p><strong>Salle : </strong>@Piecesalle?.Name</p>
+                        <p class="lead"><strong>Description: </strong> @myPiece.Description</p>
                     </div>
                 </div>
             }  
-        </div>
-        <div class="col-sm-6">
+        
+        <div class="col-md-7">
    
                 <div class="m-2 p-2">
-                    <div class="m-2 p-2">
-        
-                        <h3 class="dispaly-1">Representations: @myPiece?.Titre </h3>
-                    </div>
+                     <h3 class="dispaly-1">Representations: @myPiece?.Titre </h3>
                 </div>
-
                 <div class="m-2 p-2 bg-light rounded">
-                    <div class="m-2 p-2">
-                        <QuickGrid Items="@Myrepresnetation?.AsQueryable()">
-                            <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
-                            <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true" Title="Seance" />
-                            <PropertyColumn Property="@(p => p.Seance.Month)" Title="Mois" Sortable="true" />
-                            <PropertyColumn Property="@(p => p.Seance.Day)" Title="Jour" Sortable="true" />
-                            <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true" />
-                            <TemplateColumn Title="Selectioner une represnentation">
-                         
-                                        <div>
-                                            <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context)">Details</button>
-                                        </div>
-                            
-                                </TemplateColumn>
-                       
-                        </QuickGrid>
-
-                    </div>
+                <Blazor.UI.Client.manager.Representation.Component.GetAllRepresentationComponent Id="@Id" SelectedRepresentation="OnSelectedrepresnetationHandler"></Blazor.UI.Client.manager.Representation.Component.GetAllRepresentationComponent>
                 </div>
         </div>
     </div>
-</div>
-@if (selectedRepresentation != null)
-{
-    <div class="bg-light p-2 m-2 rounded w-25">
-        <div class=" text-md-start">
-            <div class="p-2 m-2">
-                <h4>Seance details</h4>
-                <br />
-                <p><strong>Price:</strong> @selectedRepresentation.Prix</p>
-                <div>
-                    <p><strong>Seance</strong></p>
-                    <div class="m-4">
-                        <p><strong>Date :</strong>@selectedRepresentation.Seance.Date.Year/@selectedRepresentation.Seance.Date.Month/@selectedRepresentation.Seance.Date.Day</p>
-                        <p><strong>Heure:</strong>@selectedRepresentation.Seance.Hour:@selectedRepresentation.Seance.Minute </p>
-                    </div>
+    @if (selectedRepresentation != null)
+    {
+        <div class="row">
+            <div class="bg-light rounded w-25">
+            <div class=" text-md-start">
+                <Blazor.UI.Client.manager.Representation.Component.GetSeanceComponent selectedRepresentation="@selectedRepresentation">
+
+                </Blazor.UI.Client.manager.Representation.Component.GetSeanceComponent>
+                <div class="p-2 m-2 ">
+                    <p class="lead">Desirer vous reserver cette seance la </p>
+                    <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(selectedRepresentation.Id)">Commander</button>
                 </div>
-                <p><strong>Salle</strong>: @Piecesalle?.Name</p>
-            </div>    
-            <div class="p-2 m-2 ">
-                <p class="lead">Desirer vous reserver cette seance la </p>
-                <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(selectedRepresentation.Id)">Commander</button>
+
             </div>
-
         </div>
-    </div>
-}
-else
-{
-<Blazor.UI.Client.Shared.Load loadParam="il est possible qu'aucune seance ne soit prévue"></Blazor.UI.Client.Shared.Load>    
-}
+        </div>
+    }
+    else
+    {
+
+    }
+</div>
 @code {
     [Parameter]
     public int Id { get;  set;}
     private PieceDto? myPiece { get; set; } = new();
-    private IEnumerable<RepresentationDto>? Myrepresnetation;
-    private RepresentationDto? selectedRepresentation;
-    private SalleDeTheatreDto? Piecesalle;
+    private Pagination<RepresentationDto>? Myrepresnetation;
+    private RepresentationDto? selectedRepresentation { get; set; }
+    private SalleDeTheatreDto? Piecesalle { get; set; }
+    private int? SalleId { get; set; }
+    private int? PieceId { get; set; }
+    private int? RepresentationId { get; set;}
+    public int pageIndex = 1;
     // Populate yourData with actual data, for example, in the OnInitializedAsync method
 
     protected override async Task OnInitializedAsync()
     {
         // Initialize yourData with actual data
-        Myrepresnetation = await servRep.GetPiece(Id); // Replace RepresentationService with your actual service class
+        Myrepresnetation = await servRep.GetPiece(Id,pageIndex); // Replace RepresentationService with your actual service class
+        SalleId = selectedRepresentation?.SalledeTheatreId;
+        PieceId = Id;
+
+        if (SalleId.HasValue)
+        {
+            Piecesalle = await servsalle.GetById(SalleId.Value);
+
+        }
         await ShowPieceDetails(Id);
     }
 
     private async Task ShowPieceDetails(int id)
     {
         myPiece = await servPiece.GetById(Id);
-       
+
     }
     private void seanceDetails(RepresentationDto select )
     {
@@ -122,6 +105,29 @@ else
     }
     public void MakeCommand(int id)
     {
-        NavigationManager.NavigateTo($"/makecommand/{myPiece.Id}/{Piecesalle.Id}/{id}");
+        NavigationManager.NavigateTo($"/makecommand/{PieceId}/{SalleId}/{RepresentationId}");
+    }
+    public async Task NextPage()
+    {
+        if (Myrepresnetation.HasNextPage)
+        {
+            pageIndex++;
+            Myrepresnetation = await servRep.GetPiece(Id, pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (Myrepresnetation.HasPreviousPage)
+        {
+            pageIndex++;
+            Myrepresnetation = await servRep.GetPiece(Id, pageIndex);
+        }
+    }
+    private void OnSelectedrepresnetationHandler(RepresentationDto dto)
+    {
+        selectedRepresentation = dto;
+        RepresentationId = dto.Id;
+        SalleId = dto.SalledeTheatreId;
+        PieceId = dto.PieceId;
     }
 }

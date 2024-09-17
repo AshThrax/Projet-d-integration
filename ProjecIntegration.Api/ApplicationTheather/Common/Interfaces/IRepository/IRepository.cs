@@ -10,8 +10,9 @@ namespace ApplicationTheather.Common.Interfaces.IRepository
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> GetByListIds(List<int> ListIds);
         Task<T> GetById(int id);
+        Task<bool> DoYouExist(int id);
         Task<T> Insert(T entity);
-        void Update(int updtId, T entity);
+        Task Update(int updtId, T entity);
         Task Delete(int entityid);
     }
 }

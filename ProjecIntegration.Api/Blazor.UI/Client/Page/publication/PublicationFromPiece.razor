@@ -1,0 +1,56 @@
+﻿@page "/publicationbypiece/{Id:int}"
+@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.services.Publication
+@using Blazor.UI.Data.services.TheatherService
+@inject IPieceService Servp;
+@inject IRepresentationService PieceRep;
+@inject IPublicationService pubService;
+@inject ICommandService comService;
+<PageTitle>Publication</PageTitle>
+@if (amiAutorized)
+{
+<div class=" mt-4 h-50">
+    <Blazor.UI.Client.Page.publication.Publication.AddPublicationComponent Id="Id">
+
+    </Blazor.UI.Client.Page.publication.Publication.AddPublicationComponent>
+</div>
+}
+else
+{
+        
+}
+<div class="mt-4 h-50 ">
+        <Blazor.UI.Client.Page.publication.Publication.PublicationComponent PieceId="Id">
+        </Blazor.UI.Client.Page.publication.Publication.PublicationComponent>
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public Pagination<PublicationDto>? PiecePublication { get; set; }
+    public bool amiAutorized = false;
+    public int pageIndex = 1;
+    public int pageIndexPub = 1;
+    protected override async Task OnInitializedAsync()
+    {
+        PiecePublication = await pubService.GetAllPublicationByPieceId(1, Id);
+        amiAutorized = await comService.DoIHaveacommand(Id);
+        await Task.Delay(100);
+    }
+    public async Task NextPubPage()
+    {
+        if (PiecePublication.HasNextPage)
+        {
+            pageIndexPub++;
+            PiecePublication = await pubService.GetAllPublicationByPieceId(pageIndexPub, Id);
+        }
+    }
+    public async Task PreviousPubPage()
+    {
+        if (PiecePublication.HasNextPage)
+        {
+            pageIndexPub++;
+            PiecePublication = await pubService.GetAllPublicationByPieceId(pageIndexPub, Id);
+        }
+    }
+}

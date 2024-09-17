@@ -1,4 +1,4 @@
-﻿namespace Blazor.UI.Data.modelViews.Publication;
+﻿namespace Blazor.UI.Data.ModelViews.Publication;
 
     public class PublicationDto
     {
@@ -10,21 +10,15 @@
         public string Review { get; set; } = string.Empty;
 
         public string UserId { get; set; } = string.Empty;
-
+        
         public int PieceId { get; set; }
         public ICollection<string> post { get; set; } = new List<string>();
     }
     public class AddPublicationDto
     {
-
         public string Title { get; set; } = string.Empty;
-
         public string Review { get; set; } = string.Empty;
-
-        public string UserId { get; set; } = string.Empty;
-
         public int PieceId { get; set; }
-        public ICollection<string> post { get; set; } = new List<string>();
     }
     public class UpdatePublicationDto
     {

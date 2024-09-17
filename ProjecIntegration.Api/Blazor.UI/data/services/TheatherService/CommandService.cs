@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
-using Microsoft.Extensions.Http;
-using Blazor.UI.Data.modelViews.Theater;
+using Blazor.UI.Data.ModelViews.Theater;
+using Blazor.UI.Data.ServiceResult;
+using Data.ServiceResult;
 namespace Blazor.UI.Data.services.TheatherService
 {
     public interface ICommandService
@@ -8,11 +9,12 @@ namespace Blazor.UI.Data.services.TheatherService
         Task<CommandDto[]?> Get();
         Task<string> GetAuth();
         Task<CommandDto> GetById(int id);
-        Task<CommandDto[]?> GetByUser();
+        Task<Pagination<CommandDto>> GetByUser(int page);
         Task<CommandDto[]?> GetByPiece(int idPiece);
         Task Create(AddCommandDto data);
         Task Update(int id, UpdateCommandDto data);
         Task Delete(int id);
+        Task<bool> DoIHaveacommand(int Id);
     }
     public class CommandService :
      ICommandService
@@ -37,17 +39,41 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task<CommandDto?> GetById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<CommandDto>($"{ApiUri}/{id}");
+            ServiceResponse<CommandDto>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<CommandDto>>($"{ApiUri}/{id}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public async Task<CommandDto[]?> GetByUser()
+        public async Task<Pagination<CommandDto>?> GetByUser(int page)
         {
-            return await _httpClient.GetFromJsonAsync<CommandDto[]>($"{ApiUri}/get-command-user");
+            try
+            {
+
+                return await _httpClient.GetFromJsonAsync<Pagination<CommandDto>>($"{ApiUri}/get-command-user/{page}");
+            }
+            catch (Exception)
+            {
+                return new Pagination<CommandDto>(new List<CommandDto>(), 1, 1); 
+            }
         }
 
         public async Task<CommandDto[]?> GetByPiece(int idPiece)
         {
-            return await _httpClient.GetFromJsonAsync<CommandDto[]>($"{ApiUri}/get-piece/{idPiece}");
+            ServiceResponse<CommandDto[]>? response= await _httpClient.GetFromJsonAsync<  ServiceResponse<CommandDto[]>?>($"{ApiUri}/get-piece/{idPiece}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task Create(AddCommandDto data)
@@ -63,6 +89,11 @@ namespace Blazor.UI.Data.services.TheatherService
         public async Task Delete(int id)
         {
             await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+        }
+
+        public async Task<bool> DoIHaveacommand(int Id)
+        {
+             return await _httpClient.GetFromJsonAsync<bool>($"{ApiUri}/exist/{Id}");
         }
     }
 }

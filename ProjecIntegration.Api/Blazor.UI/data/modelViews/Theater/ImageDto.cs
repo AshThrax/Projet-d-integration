@@ -1,4 +1,4 @@
-﻿namespace Blazor.UI.Data.modelViews.Theater
+﻿namespace Blazor.UI.Data.ModelViews.Theater
 {
     public class ImageDto : Baseview
     { 

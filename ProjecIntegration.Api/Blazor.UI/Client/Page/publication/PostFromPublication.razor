@@ -1,0 +1,107 @@
+﻿@page "/publication/{Id}"
+@using Blazor.UI.Client.Page.publication.Post
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.modelViews.Publication
+@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.services.Publication
+@using Blazor.UI.Data.services.TheatherService
+@using Blazor.UI.data.services.Publication
+
+@inject IPublicationService publicationService;
+@inject IPieceService pieceService;
+@inject IPostService postService;
+<PageTitle>Post</PageTitle>
+
+    @if (GetPublication != null)
+    {
+        <h4>Publication</h4>
+        <div class=" m-4 p-4 rounded shadow">
+        <section class="m-1 p-1">
+            <div class="row ">
+                        <div class="col-md-4">
+                            <GetUserComponent UserId="@GetPublication.UserId"></GetUserComponent>
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="p-2"><strong>Titre </strong>@GetPublication?.Title</h3>
+                            <div class="card-body">
+                                <p class="card-text p-2"><strong>Article </strong>@GetPublication?.Review</p>
+                                <p class="card-text p-2 bottom"><strong>Date </strong>@GetPublication?.CreatedDate</p>
+                                <p class="card-text p-2 float-end"><strong>nombre de Réponse </strong>@GetPublication?.post.Count</p>
+
+                            </div>
+                        </div>
+                </div>
+            </section>
+            @if (AfficherPost)
+            {
+                <h5>Réponses</h5>
+                <PostPublicationComponent Id="@Id"></PostPublicationComponent>
+            }
+            else
+            {
+                    
+            }
+            <div class="row m-2">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-6 float-end btn-group w-50">
+                        <a type="button" class="btn btn-dark w-25 float-end" @onclick="GetPost">Afficher </a>
+                        <a type="button" class="btn btn-dark w-25 float-end" @onclick="WriteAPost">Repondre </a>
+                        <a type="button" class="btn btn-dark w-25 float-end " @onclick="RemovePostFromView"> replier </a>
+                    </div>
+            </div>
+            @if (DoIWriteAPost)
+            {     
+               <AddPostComponent Id="@Id" ></AddPostComponent>
+            }
+            else
+            {
+                   
+            }
+        </div>
+    }
+
+@code {
+    //peut être transformer ça en composant
+    //prendre les post pat
+    [Parameter]
+    public string? Id { get; set; }
+    //public PieceDto GetPublication { get; set; } = new();
+    public PublicationDto? GetPublication { get; set; }
+
+    public string Response { get; set; } = string.Empty;
+    public string Content { get; set; } = string.Empty;
+    //state
+    public bool AfficherPost { get; set; } = false;
+    public bool DoIWriteAPost { get;set;}=false;
+    public int pageIndex { get; set; } = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetPublication = await publicationService.GetPublication(Id);
+
+    }
+    public async Task GetPost()
+    {
+        AfficherPost = true;
+        await Task.Delay(1000);
+    }
+    public void RemovePostFromView()
+    {   
+        AfficherPost = false; 
+    }
+    public void WriteAPost()
+    {
+        DoIWriteAPost=!DoIWriteAPost;
+    }
+    public async Task AddPost(string response)
+    {
+        AddPostDto postDto = new()
+            {
+                Content = response,
+                PublicationId = Id
+            };
+        await postService.CreatePost(Id,postDto);
+    }
+   
+}

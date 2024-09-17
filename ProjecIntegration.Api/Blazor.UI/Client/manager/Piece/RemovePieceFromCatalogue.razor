@@ -38,7 +38,7 @@
         public int selectCatalogueId { get; set; }
         public int selectePieceId { get; set; }
 
-        public void OnSelectedCatalogue(ChangeEventArgs args)
+    public void OnSelectedCatalogue(Microsoft.AspNetCore.Components.ChangeEventArgs args)
         {
             if (int.TryParse(args.Value?.ToString(), out int selectedId))
             {
@@ -46,7 +46,7 @@
             }
 
         }
-        public void OnselectedPiece(ChangeEventArgs args)
+    public void OnselectedPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
         {
             if (int.TryParse(args.Value?.ToString(), out int selectedId))
             {

@@ -2,8 +2,10 @@
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
+using Azure;
 using Domain.Entity.publicationEntity;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +33,9 @@ namespace DataInfraTheather.BusinessService
             _mapper= mapper;    
         }
 
-        public async Task AddPieceToCatalogue(int catalogueId, int PieceId)
+        public async Task<ServiceResponse<CatalogueDto>> AddPieceToCatalogue(int catalogueId, int PieceId)
         {
+            ServiceResponse<CatalogueDto> response = new();
             try
             {
                 Catalogue? getcatalogue =await _catalogueRepository.GetById(catalogueId) ?? throw new NullReferenceException();
@@ -49,125 +52,190 @@ namespace DataInfraTheather.BusinessService
                     UpdatedDate=DateTime.Now,
 
                 };
-
                 await _catPieceRepository.Insert(addcataloguePiece);
+                response.Success=true;
+                response.Message = "Opération réussi";
+                response.Errortype=Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "un probléme a eu lieu lors de l'opération";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public void CreateCatalogue(AddCatalogueDto addCatalogue)
+        public async Task<ServiceResponse<CatalogueDto>> CreateCatalogue(AddCatalogueDto addCatalogue)
         {
+            ServiceResponse<CatalogueDto> response = new();
             try
             {
                Catalogue newCatalogue=_mapper.Map<Catalogue>(addCatalogue);
 
-               _catalogueRepository.Insert(newCatalogue);
+               Catalogue converted =await _catalogueRepository.Insert(newCatalogue);
+                response.Data = _mapper.Map<CatalogueDto>(converted);
+                response.Success = true;
+                response.Message = "Opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "un probléme a eu lieu lors de l'opération";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task DeleteCatalogue(int catalogueId)
+        public async Task<ServiceResponse<CatalogueDto>> DeleteCatalogue(int catalogueId)
         {
+            ServiceResponse<CatalogueDto> response = new();
             try
             {
                 Catalogue getCatalogue = await _catalogueRepository.GetById(catalogueId);
                 if (getCatalogue != null)
                 {
-                   await _catalogueRepository.Delete(catalogueId);
+                    await _catalogueRepository.Delete(catalogueId);
+                    response.Success = true;
+                    response.Message = "Opération réussi";
+                    response.Errortype = Domain.Enum.Errortype.Good;
+
+                }
+                else 
+                {
+                    response.Success = false;
+                    response.Message = "une erreur a eu lieu";
+                    response.Errortype = Domain.Enum.Errortype.Null;
+
                 }
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
 
-        public async Task<IEnumerable<CatalogueDto>> GetAllCatalogue()
+        public async Task<ServiceResponse<IEnumerable<CatalogueDto>>> GetAllCatalogue()
         {
+            ServiceResponse<IEnumerable<CatalogueDto>> response = new();
             try
             {
-                return _mapper.Map<IEnumerable<CatalogueDto>>(await _catalogueRepository.GetAll());
+                response.Data= _mapper.Map<IEnumerable<CatalogueDto>>(await _catalogueRepository.GetAll());
+                response.Success = true;
+                response.Message = "Opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
+
             }
             catch (Exception)
             {
-
-               return Enumerable.Empty<CatalogueDto>();
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Domain.Enum.Errortype.Bad;
+                response.Data= Enumerable.Empty<CatalogueDto>();
             }
+            return response;
         }
 
-        public async Task<IEnumerable<CatalogueDto>> GetCatalogueByComplexe(int complexeId)
+        public async Task<ServiceResponse<IEnumerable<CatalogueDto>>> GetCatalogueByComplexe(int complexeId)
         {
+            ServiceResponse<IEnumerable<CatalogueDto>> response = new();
             try
             {
 
                 IEnumerable<Catalogue> getCatalogueByComplexeId= await _catalogueRepository.GetCatalogueFromComplexe(complexeId);
-                return _mapper.Map<IEnumerable<CatalogueDto>>(getCatalogueByComplexeId);
+                response.Data=_mapper.Map<IEnumerable<CatalogueDto>>(getCatalogueByComplexeId);
+                response.Success = true;
+                response.Message = "Opération réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Domain.Enum.Errortype.Bad;
+                response.Data = Enumerable.Empty<CatalogueDto>();
             }
+            return response;
         }
 
-        public async Task<CatalogueDto> GetCatalogueById(int catalogueId)
+        public async Task<ServiceResponse<CatalogueDto>> GetCatalogueById(int catalogueId)
         {
+            ServiceResponse<CatalogueDto> response = new(); 
             try
             {
                 Catalogue getCatalogue = await _catalogueRepository.GetById(catalogueId);
                 
-                return _mapper.Map<CatalogueDto>(getCatalogue);
+                response.Data = _mapper.Map<CatalogueDto>(getCatalogue);
+                response.Success = true;
+                response.Message = "Récupération catalogue Successfull";
+                response.Errortype = Domain.Enum.Errortype.Bad;
+               
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Domain.Enum.Errortype.Bad;
+                response.Data = null;
             }
+            return response;
         }
 
-        public async Task RemovePieceToCataogue(int catalogueId, int PieceId)
+        public async Task<ServiceResponse<CatalogueDto>> RemovePieceToCataogue(int catalogueId, int PieceId)
         {
+            ServiceResponse<CatalogueDto> response = new();
             try
             {
                 await _catPieceRepository.RemovePieceFromcatalogue(catalogueId, PieceId);
+                response.Success = true;
+                response.Message = "opération Réussi, la pièce a été correctement retiré du catalogue";
+                response.Errortype = Domain.Enum.Errortype.Good;
+               
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur est survenu";
+                response.Errortype = Domain.Enum.Errortype.Good;
             }
+            return response;
         }
 
-        public async Task UpdateCatalogue(int catalogueId, UpdateCatalogueDto updtCatalogue)
+        public async Task<ServiceResponse<CatalogueDto>> UpdateCatalogue(int catalogueId, UpdateCatalogueDto updtCatalogue)
         {
+            ServiceResponse<CatalogueDto> response = new();
             try
             {
                 Catalogue getCatalogue =await _catalogueRepository.GetById(catalogueId);
 
                 if (getCatalogue != null)
                 {
-                    Catalogue convertCatalogue =_mapper.Map<Catalogue>(updtCatalogue);
-                    _catalogueRepository.Update(catalogueId,convertCatalogue);
+                    Catalogue convertCatalogue = _mapper.Map<Catalogue>(updtCatalogue);
+                    await _catalogueRepository.Update(catalogueId, convertCatalogue);
+                    response.Success = true;
+                    response.Message = "mise a jour réussi";
+                    response.Errortype = Domain.Enum.Errortype.Good;
                 }
-               
-
+                else
+                {
+                    response.Success = false;
+                    response.Message = "la mise a jour a Echoué";
+                    response.Errortype = Domain.Enum.Errortype.Good;
+                }
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "Une Erreur a eu lieu";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
+            return response;
         }
     }
 }

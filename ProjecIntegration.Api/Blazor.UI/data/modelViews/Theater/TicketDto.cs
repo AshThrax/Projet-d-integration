@@ -1,6 +1,4 @@
-﻿using Blazor.UI.data.modelViews;
-
-namespace Blazor.UI.Data.modelViews.Theater;
+﻿namespace Blazor.UI.Data.ModelViews.Theater;
 
 public class TicketDto : Baseview
 {

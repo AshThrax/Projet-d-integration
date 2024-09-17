@@ -1,0 +1,18 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+
+<div class="m-2 p-2">
+    <h3>ProfileInfoComponent</h3>
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Nom:</strong>@GetUser.GivenName</li>
+            <li class="list-group-item"><strong>Nom de Famille:</strong> @GetUser.FamilyName</li>
+            <li class="list-group-item"><strong>Email:</strong> @GetUser.Email</li>
+            
+        </ul>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public UserDto GetUser { get; set; }
+}

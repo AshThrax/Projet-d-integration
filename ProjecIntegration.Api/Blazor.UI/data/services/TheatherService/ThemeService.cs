@@ -1,4 +1,5 @@
-﻿using Blazor.UI.Data.modelViews.Theater;
+﻿using Blazor.UI.Data.ModelViews.Theater;
+using Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.data.services.TheatherService
@@ -20,11 +21,27 @@ namespace Blazor.UI.data.services.TheatherService
 
         public async Task<IEnumerable<ThemeDto>?> GetAllTheme()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ThemeDto>?>(ApiUri);
+            ServiceResponse<IEnumerable<ThemeDto>>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<ThemeDto>>?>(ApiUri);
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
         public async Task<ThemeDto?> GetThemeById(int id)
         {
-            return await _httpClient.GetFromJsonAsync<ThemeDto?>($"{ApiUri}/{id}");
+            ServiceResponse<ThemeDto>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<ThemeDto>?>($"{ApiUri}/{id}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
     

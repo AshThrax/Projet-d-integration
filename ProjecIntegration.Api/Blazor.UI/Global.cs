@@ -1,1 +1,1 @@
-﻿
+﻿global using Blazor.UI.Data.ModelViews;

@@ -69,8 +69,8 @@
     protected override async Task OnInitializedAsync()
     {
         representation = new AddRepresentationDto();
-        SelectPiece = await ServPiece.Get();
-        selectSalle = await ServSalle.Get();
+        SelectPiece = await ServPiece.Getlist();
+        selectSalle = await ServSalle.Getlist();
     }
     private void AddRepresentation()
     {
@@ -79,7 +79,7 @@
         representation.Seance.AddMinutes(minute);
         Servrep.Create(representation);
     }
-    public async Task selectionPiece(ChangeEventArgs args)
+    public async Task selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
@@ -87,7 +87,7 @@
            
         }
     }
-    public async Task selectionSalle(ChangeEventArgs args)
+    public async Task selectionSalle(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {

@@ -1,4 +1,4 @@
-﻿namespace Blazor.UI.Data.modelViews.Publication;
+﻿namespace Blazor.UI.Data.ModelViews.Publication;
 
 public class RepostDto
 {

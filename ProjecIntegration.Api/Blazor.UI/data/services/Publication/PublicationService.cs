@@ -1,16 +1,18 @@
-﻿using Blazor.UI.Data.modelViews.Publication;
+﻿
+using Blazor.UI.Data.ModelViews.Publication;
+using Blazor.UI.Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.Data.services.Publication
 {
     public interface IPublicationService
     {
-        Task AddPublication(PublicationDto catalogueDto);
-        Task DeletePublication(string catalogueId);
-        Task<PublicationDto> GetPublication(int catalogueId);
-        Task<PublicationDto> UpdatePublication(int catalogueId, PublicationDto catalogue);
-        Task<IEnumerable<PublicationDto>> GetPublicationByUserId();
-        Task<IEnumerable<PublicationDto>> GetAllPublicationByPieceId(int id);
+        Task AddPublication(AddPublicationDto catalogueDto);
+        Task DeletePublication(string Id);
+        Task<PublicationDto> GetPublication(string Id);
+        Task<PublicationDto> UpdatePublication(string Id, PublicationDto catalogue);
+        Task<Pagination<PublicationDto>> GetPublicationByUserId(int page);
+        Task<Pagination<PublicationDto>> GetAllPublicationByPieceId(int page,int id);
 
         //--------------------------------------------------
 
@@ -26,34 +28,34 @@ namespace Blazor.UI.Data.services.Publication
             _httpClient = httpClient;
         }
 
-        public async Task AddPublication(PublicationDto catalogueDto)
+        public async Task AddPublication(AddPublicationDto catalogueDto)
         {
             await _httpClient.PostAsJsonAsync(ApiUri, catalogueDto);
         }
 
-        public async Task DeletePublication(string catalogueId)
+        public async Task DeletePublication(string Id)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/{catalogueId}");
+            await _httpClient.DeleteAsync($"{ApiUri}/{Id}");
         }
 
-        public async Task<PublicationDto?> GetPublication(int catalogueId)
+        public async Task<PublicationDto?> GetPublication(string Id)
         {
-            return await _httpClient.GetFromJsonAsync<PublicationDto>($"{ApiUri}/{catalogueId}");
+            return await _httpClient.GetFromJsonAsync<PublicationDto>($"{ApiUri}/publication-by-id/{Id}");
         }
 
-        public Task<PublicationDto> UpdatePublication(int catalogueId, PublicationDto catalogue)
+        public Task<PublicationDto> UpdatePublication(string Id, PublicationDto catalogue)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<PublicationDto>?> GetPublicationByUserId()
+        public async Task<Pagination<PublicationDto>?> GetPublicationByUserId(int page)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PublicationDto>?>($"{ApiUri}");
+            return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/{page}");
         }
 
-        public async Task<IEnumerable<PublicationDto>?> GetAllPublicationByPieceId(int id)
+        public async Task<Pagination<PublicationDto>?> GetAllPublicationByPieceId(int page,int id)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PublicationDto>?>($"{ApiUri}/by-piece/{id}");
+            return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/by-piece/{page}/{id}");
         }
     }
 }

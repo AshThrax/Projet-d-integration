@@ -1,16 +1,18 @@
-﻿using Blazor.UI.Data.modelViews.Publication;
+﻿
+using Blazor.UI.Data.ModelViews.Publication;
+using Blazor.UI.Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.data.services.Publication
 {
     public interface IPostService
     {
-        Task<IEnumerable<PostDto>> GetAllByPublicationId(string publicationId);
+        Task<Pagination<PostDto>> GetAllByPublicationId(string publicationId,int Index);
 
         Task<PostDto> GetPostById(string postId);
         Task DeletePost(string postId);
         Task UpdatePost(PostDto post);
-        Task CreatePost(PostDto post);
+        Task CreatePost(string publicationId,AddPostDto post);
     }
     public class PostService : IPostService
     {
@@ -22,29 +24,39 @@ namespace Blazor.UI.data.services.Publication
             _httpClient = httpClient;
         }
 
-        public Task CreatePost(PostDto post)
+        public async Task CreatePost(string publicationId, AddPostDto post)
         {
-            throw new NotImplementedException();
+            await _httpClient.PostAsJsonAsync<AddPostDto>($"{ApiUri}/{publicationId}", post);
         }
 
-        public Task DeletePost(string postId)
+        public async Task DeletePost(string postId)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"{ApiUri}/{postId}");
         }
 
-        public async Task<IEnumerable<PostDto>?> GetAllByPublicationId(string publicationId)
+        public async Task<Pagination<PostDto>?> GetAllByPublicationId(string publicationId,int Index)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<PostDto>?>($"{ApiUri}/publication-all/{publicationId}");
+            try
+            {
+
+                return await _httpClient.GetFromJsonAsync<Pagination<PostDto>?>($"{ApiUri}/publication-all/{publicationId}/{Index}");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Task<PostDto> GetPostById(string postId)
+        public async Task<PostDto?> GetPostById(string postId)
         {
-            throw new NotImplementedException();
+           return await _httpClient.GetFromJsonAsync<PostDto>($"{ApiUri}/{postId}");
         }
 
-        public Task UpdatePost(PostDto post)
+        public async Task UpdatePost(PostDto post)
         {
-            throw new NotImplementedException();
+            await _httpClient.PutAsJsonAsync<PostDto>($"{ApiUri}/{post.Id}",post);
         }
     }
+
 }

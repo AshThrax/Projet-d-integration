@@ -1,4 +1,5 @@
-﻿using Blazor.UI.Data.modelViews.Theater;
+﻿using Blazor.UI.Data.ModelViews.Theater;
+using Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.Data.services.TheatherService
@@ -33,19 +34,44 @@ namespace Blazor.UI.Data.services.TheatherService
             await _httpClient.DeleteAsync($"{ApiUri}/{catalogueId}");
         }
 
-        public async Task<IEnumerable<CatalogueDto>> GetAllCatalogue()
+        public async Task<IEnumerable<CatalogueDto>?> GetAllCatalogue()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<CatalogueDto>>($"{ApiUri}");
+            ServiceResponse<IEnumerable<CatalogueDto>>? response= await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<CatalogueDto>>>($"{ApiUri}");
+
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public async Task<IEnumerable<CatalogueDto>> GetAllCatalogueByComplexeId(int complexeId)
+        public async Task<IEnumerable<CatalogueDto>?> GetAllCatalogueByComplexeId(int complexeId)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<CatalogueDto>>($"{ApiUri}/complexe/{complexeId}");
+            ServiceResponse<IEnumerable<CatalogueDto>>? response = await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<CatalogueDto>>>($"{ApiUri}/complexe/{complexeId}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public async Task<CatalogueDto> GetCatalogue(int catalogueId)
+        public async Task<CatalogueDto?> GetCatalogue(int catalogueId)
         {
-            return await _httpClient.GetFromJsonAsync<CatalogueDto>($"{ApiUri}/{catalogueId}");
+            ServiceResponse < CatalogueDto >? response= await _httpClient.GetFromJsonAsync<ServiceResponse<CatalogueDto>>($"{ApiUri}/{catalogueId}");
+            if (response.Success)
+            {
+                return response.Data;
+            }
+            else
+            {
+                return null;
+            }
         }
 
       

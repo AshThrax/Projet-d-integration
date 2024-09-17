@@ -83,12 +83,12 @@ namespace dataInfraTheather.Infrastructure.Repository
             await _dbContext.SaveChangesAsync();
             return data;
         }
-        public void Update(int updtId, T entity)
+        public async Task Update(int updtId, T entity)
         {
             if (entity != null)
             {
                 _dbSet.Update(entity);
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
 
             }
         }
@@ -111,6 +111,21 @@ namespace dataInfraTheather.Infrastructure.Repository
             IEnumerable<T> values= await _dbSet.Where(x => ListIds.Contains(x.Id)).ToListAsync();
 
             return values;
+        }
+
+        public async Task<bool> DoYouExist(int id)
+        {
+            try
+            {
+                int count =await _dbSet.Where(x=>x.Id==id).CountAsync();
+
+                return count > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

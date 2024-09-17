@@ -2,6 +2,7 @@
 using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Common.Repository;
 using ApplicationPublication.Dto;
+using ApplicationTheather.Common.Interfaces.IRepository;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
 using InfraPublication.Repository;
@@ -19,12 +20,14 @@ namespace InfraPublication.BusinessLayer
     {
         private readonly IPublicationRepository _publicationRepository;
         private readonly ILogger<PublicationBL> _logger;
+        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public PublicationBL(IPublicationRepository publicationRepository, IMapper mapper, ILogger<PublicationBL> logger)
+        public PublicationBL(IPublicationRepository publicationRepository, IMapper mapper, ILogger<PublicationBL> logger, IUserRepository userRepository)
         {
             _logger = logger;
             _publicationRepository = publicationRepository;
+            _userRepository= userRepository;
             _mapper = mapper;
         }
 
@@ -56,7 +59,7 @@ namespace InfraPublication.BusinessLayer
                  //----
                  if(getPub != null) 
                 {
-                    _publicationRepository.Delete(pubId);
+                   _= _publicationRepository.Delete(pubId);
                     
                 }
                  //----
@@ -73,8 +76,10 @@ namespace InfraPublication.BusinessLayer
             {
                 IEnumerable<Publication> getPub = await _publicationRepository.GetAllPublicationByUserId(userId) 
                                                                  ?? throw new NullReferenceException("no user found inside ") ;
-                return _mapper.Map<IEnumerable<PublicationDto>>(getPub);
-                 
+                
+                IEnumerable<PublicationDto> getPublicationDto= _mapper.Map<IEnumerable<PublicationDto>>(getPub);
+                
+                return getPublicationDto;
             }
             catch(ArgumentException)
             {
@@ -111,12 +116,12 @@ namespace InfraPublication.BusinessLayer
             {
                Publication getPublic = await _publicationRepository.GetById(pubId) 
                                              ?? throw new ArgumentException() ;
-                if (string.IsNullOrEmpty(getPublic.Review))
+                if (!string.IsNullOrEmpty(getPublic.Review))
                 {
                     //----
-                    return _mapper.Map<PublicationDto>(getPublic);
+                    PublicationDto getPublication= _mapper.Map<PublicationDto>(getPublic);
 
-                    //----
+                    return getPublication;
                 }
                 return new PublicationDto();  
             } catch (Exception ex) 
@@ -132,7 +137,10 @@ namespace InfraPublication.BusinessLayer
             try
             {
                 IEnumerable<Publication> Getpublication = await _publicationRepository.GetAllPublicationByPieceId(pieceId);
-                return _mapper.Map<IEnumerable<PublicationDto>>(Getpublication);
+                IEnumerable<PublicationDto> getPublicationDto= _mapper.Map<IEnumerable<PublicationDto>>(Getpublication);
+
+               
+                return getPublicationDto;   
             }
             catch (Exception ex)
             {

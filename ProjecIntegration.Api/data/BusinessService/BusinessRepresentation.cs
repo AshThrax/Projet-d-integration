@@ -2,7 +2,12 @@
 using ApplicationTheather.Common.Interfaces.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
+using Azure;
 using Domain.Entity.TheatherEntity;
+using Domain.Enum;
+using Domain.ServiceResponse;
+using Microsoft.VisualBasic;
+using static System.Diagnostics.Activity;
 
 namespace DataInfraTheather.BusinessService
 {
@@ -21,23 +26,32 @@ namespace DataInfraTheather.BusinessService
             _ComplexeService = complexeService;
         }
 
-        public async Task Create(AddRepresentationDto dto)
+        public async Task<ServiceResponse<RepresentationDto>> Create(AddRepresentationDto dto)
         {
+            ServiceResponse<RepresentationDto> response = new();
             try
             {
-               _repservice.Insert(_mapper.Map<Representation>(dto));
+                await _repservice.Insert(_mapper.Map<Representation>(dto));
                 await Task.CompletedTask;
 
+                response.Success = true;
+                response.Message = "opération ";
+                response.Errortype = Errortype.Good;
+
+                return response;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                return response;
             }
         }
 
-        public async Task Delete(int id)
+        public async Task<ServiceResponse<RepresentationDto>> Delete(int id)
         {
+            ServiceResponse<RepresentationDto> response = new();
             try
             {
                 Representation doExistEntity =await _repservice.GetById(id);
@@ -48,27 +62,41 @@ namespace DataInfraTheather.BusinessService
 
                 await _repservice.Delete(id);
 
+                response.Success = true;
+                response.Message = "supression de la represnetation";
+                response.Errortype=Errortype.Good;
+                return response;
             }
             catch (Exception)
             {
-
-                throw;
+                
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                return response;
             }
         }
 
-        public async Task<IEnumerable<RepresentationDto>> GetAll()
+        public async Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAll()
         {
+            ServiceResponse<IEnumerable<RepresentationDto>> response = new();
             try
             {
                 IEnumerable<Representation> entity = await _repservice.GetAll();
                 IEnumerable<RepresentationDto> conversion = _mapper.Map<IEnumerable<RepresentationDto>>(entity);
-                return conversion;
+                response.Success = true;
+                response.Data = conversion;
+                response.Errortype = Errortype.Good;
+                return response;
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                response.Data= Enumerable.Empty<RepresentationDto>();
+                return response;    
             }
         }
         /// <summary>
@@ -76,19 +104,26 @@ namespace DataInfraTheather.BusinessService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<RepresentationDto>> GetAllFromPiece(int id)
+        public async Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAllFromPiece(int id)
         {
+            ServiceResponse<IEnumerable<RepresentationDto>> response = new();
             try
             {
-                IEnumerable<Representation> entity = await _repservice.GetAll();
-                IEnumerable<Representation> FromPiece = entity.Where(x => x.PieceId == id).ToList();
-                return _mapper.Map<IEnumerable<RepresentationDto>>(FromPiece);
+                IEnumerable<Representation> entity = await _repservice.GetAll(x=>x.SalleDeTheatre,c=>c.Piece);
+                IEnumerable<Representation> FromPiece = entity.Where(x => x.PieceId == id && x.Seance<=DateTime.UtcNow).ToList();
+                response.Data= _mapper.Map<IEnumerable<RepresentationDto>>(FromPiece);
+                response.Errortype = Errortype.Good;
+                response.Message = "Récupération des representation par pièce";
 
+                return response;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                response.Data = Enumerable.Empty<RepresentationDto>();
+                return response;
             }
         }
         /// <summary>
@@ -96,22 +131,29 @@ namespace DataInfraTheather.BusinessService
         /// </summary>
         /// <param name="IdComplexe"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<RepresentationDto>> GetAllFromComplexe(int IdComplexe)
+        public async Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAllFromComplexe(int IdComplexe)
         {
+            ServiceResponse<IEnumerable<RepresentationDto>> response = new(); 
             try
             {
                 IEnumerable<Representation> entity = await _repservice.GetAll();
 
                 IEnumerable<Representation> fromComplexe = entity.Where(x => x.SalleDeTheatre?.ComplexeId == IdComplexe)
-                                        .ToList();
-                var conversion = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
-                return conversion;
+                                                                 .ToList();
+               
+                response.Data = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
+                response.Errortype = Errortype.Good;
+                response.Message = "opération ";
+                return response;
 
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                response.Data = Enumerable.Empty<RepresentationDto>();
+                return response;
             }
         }
         /// <summary>
@@ -119,18 +161,24 @@ namespace DataInfraTheather.BusinessService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<RepresentationDto> GetById(int id)
+        public async Task<ServiceResponse<RepresentationDto>> GetById(int id)
         {
+            ServiceResponse<RepresentationDto> response = new();
             try
             {
                 Representation entity = await _repservice.GetById(id);
-                return _mapper.Map<RepresentationDto>(entity);
-
+                response.Data= _mapper.Map<RepresentationDto>(entity);
+                response.Errortype = Errortype.Good;
+                response.Message = "opération Réussis";
+                return response;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                response.Data = new();
+                return response;
             }
 
         }
@@ -140,22 +188,34 @@ namespace DataInfraTheather.BusinessService
         /// <param name="id"></param>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task Update(int id, UpdateRepresentationDto dto)
+        public async Task<ServiceResponse<RepresentationDto>> Update(int id, UpdateRepresentationDto dto)
         {
+            ServiceResponse<RepresentationDto> response=new();
             try
             {
                 Representation getrep = await _repservice.GetById(id);
                 if (getrep != null)
                 {
                     Representation entityToUpdate = _mapper.Map<Representation>(dto);
-                    _repservice.Update(id, entityToUpdate);
+                    await _repservice.Update(id, entityToUpdate);
+                    response.Success = true;
+                    response.Message = "mise a jour réussi";
+                    response.Errortype = Errortype.Good;
                 }
-
+                else 
+                {
+                    response.Success = true;
+                    response.Message = $"mise a jour echoué {getrep} n'existe pas";
+                    response.Errortype = Errortype.Bad;
+                }
+                return response;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = "une erreur a eu lieu";
+                response.Errortype = Errortype.Bad;
+                return response;
             }
 
         }
@@ -169,22 +229,31 @@ namespace DataInfraTheather.BusinessService
         /// </summary>
         /// <param name="salleId"></param>
         /// <returns></returns>
-        public async  Task<IEnumerable<RepresentationDto>> GetAllFromSalle(int salleId)
+        public async  Task<ServiceResponse<IEnumerable<RepresentationDto>>> GetAllFromSalle(int salleId)
         {
+            ServiceResponse<IEnumerable<RepresentationDto>> response = new();
             try
             {
                 IEnumerable<Representation> entity = await _repservice.GetAll();
 
-                IEnumerable<Representation> fromComplexe = entity.Where(x => x.SalleDeTheatre.Id == salleId)
-                                        .ToList();
-                IEnumerable<RepresentationDto> conversion = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
-                return conversion;
+                IEnumerable<Representation> fromComplexe = entity.Where(x => x.SalleDeTheatre?.Id == salleId && x.Seance<=DateTime.Now)
+                                                                 .ToList();
 
+                IEnumerable<RepresentationDto> conversion = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
+                
+                response.Success = true;
+                response.Data = conversion;
+                response.Errortype = Errortype.Good;
+                response.Message = "opération sur les salles";
+
+                return response;
             }
             catch (Exception)
             {
-
-                throw;
+                response.Success = false;
+                response.Errortype = Errortype.Bad;
+                response.Message = "opération sur les salles";
+                return response ;
             }
         }
     }

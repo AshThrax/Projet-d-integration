@@ -56,8 +56,8 @@ else
         RepresentationSum = await ServRep.GetById(Id);
         if (RepresentationSum == null)
         {
-            PieceSum = await servPiece.GetById(RepresentationSum.IdPiece );
-            SalleSum = await servSalle.GetById(RepresentationSum.IdSalledeTheatre);        
+            PieceSum = await servPiece.GetById(RepresentationSum.PieceId);
+            SalleSum = await servSalle.GetById(RepresentationSum.SalledeTheatreId);        
         }
     }
 }

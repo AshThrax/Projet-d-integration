@@ -15,27 +15,35 @@ namespace InfraPublication.BusinessLayer
     public class PostBL : IPostBL
     {
         private readonly IPostRepository _postrepository;
+        private readonly IPublicationRepository _publicationrepository;
         private readonly IMapper _mapper;
 
-        public PostBL(IPostRepository postrepository, IMapper mapper)
+        public PostBL(IPostRepository postrepository,IPublicationRepository publicationRepository, IMapper mapper)
         {
             _postrepository = postrepository;
-          
+            _publicationrepository = publicationRepository;
             _mapper = mapper;
         }
 
-        public async Task CreateAsync(string publicationId,PostDto pub)
+        public async Task CreateAsync(string publicationId,AddPostDto pub)
         {
             try
             {
                 
                   if (!string.IsNullOrEmpty(publicationId))
                   {
+                      Publication? publication = await _publicationrepository.GetById(publicationId) 
+                                                                ?? throw new NullReferenceException(); 
                       Post mapped= _mapper.Map<Post>(pub);
+
+
+                      //creation de l'objet de type de post
                       mapped.PublicationId = publicationId;
-                      mapped.Id = new ObjectId().ToString();
+                      mapped.Id = ObjectId.GenerateNewId().ToString();
                       mapped.UpdatedDate = DateTime.Now;
                       mapped.CreatedDate = DateTime.Now;
+                      publication?.post.Add(mapped.Id);
+                      await _publicationrepository.Update(publicationId,publication);
                       await _postrepository.Insert(mapped);
                   }
             }
@@ -55,7 +63,7 @@ namespace InfraPublication.BusinessLayer
                                                      ?? throw new NullReferenceException("null reference");
                 if (Getdeleted != null)
                 {
-                    _postrepository.Delete(postId);
+                    await _postrepository.Delete(postId);
                 }
 
             }

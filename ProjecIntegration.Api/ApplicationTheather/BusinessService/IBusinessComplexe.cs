@@ -1,4 +1,5 @@
 ﻿using ApplicationTheather.DTO;
+using Domain.ServiceResponse;
 
 namespace ApplicationTheather.BusinessService
 {
@@ -8,31 +9,31 @@ namespace ApplicationTheather.BusinessService
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<ComplexeDto>> GetAllComplexe();
+        Task<ServiceResponse<IEnumerable<ComplexeDto>>> GetAllComplexe();
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<ComplexeDto> GetComplexe(int id);
+        Task<ServiceResponse<ComplexeDto>> GetComplexe(int id);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="complexeDto"></param>
         /// <returns></returns>
-        void CreateAsync(ComplexeDto complexeDto);
+        Task<ServiceResponse<ComplexeDto>> CreateAsync(ComplexeDto complexeDto);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="complexeDto"></param>
         /// <returns></returns>
-        Task UpdateAsync(int id, UpdateComplexeDto complexeDto);
+        Task<ServiceResponse<ComplexeDto>> UpdateAsync(int id, UpdateComplexeDto complexeDto);
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        Task Delete(int id);
+        Task<ServiceResponse<ComplexeDto>> Delete(int id);
 
     }
 }

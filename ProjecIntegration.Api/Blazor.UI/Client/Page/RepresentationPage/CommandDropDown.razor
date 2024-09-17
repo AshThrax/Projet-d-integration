@@ -1,4 +1,6 @@
 ﻿<h3>CommandDropDown</h3>
+@using Blazor.UI.Client.Page.MakeCommand
+@using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.modelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.modelViews
@@ -13,7 +15,7 @@
 {
     <select @bind="selectedrepId" @oninput="SelectionChanged" class="form-control">
         <option value="">Select Pièce</option>
-        @foreach (var complexe in RepresentationtDtos)
+        @foreach (var complexe in RepresentationtDtos.Items)
         {
             <option value="@complexe.Id">@complexe.Seance</option>
 
@@ -25,6 +27,7 @@
         <div class="bg-light m-2 p-2 rounded-4">
             <div class="m-2 p-2">
                 <GetAllCommand getrepresnetation="@CommandTab"></GetAllCommand>
+                <></>
             </div>
         </div>
     }
@@ -41,23 +44,23 @@ else
 {
 
     [Parameter]
-    public IEnumerable<RepresentationDto>? RepresentationtDtos { get; set; }
+    public Pagination<RepresentationDto>? RepresentationtDtos { get; set; }
 
     public IEnumerable<CommandDto>?CommandTab { get; set; }
 
     public RepresentationDto? SingleRepresnetation{ get; set; }
 
     private int? selectedrepId { get; set; }
-
+    public int pageIndexe = 1;
     protected override async Task OnInitializedAsync()
     {
-        RepresentationtDtos = await ServRep.Get();
+        RepresentationtDtos = await ServRep.Get(1);
     }
     protected override void OnParametersSet()
     {
         if (RepresentationtDtos != null && selectedrepId.HasValue)
         {
-            SingleRepresnetation = RepresentationtDtos.FirstOrDefault(c => c.Id == selectedrepId);
+            SingleRepresnetation = RepresentationtDtos.Items.FirstOrDefault(c => c.Id == selectedrepId);
         }
 
 
@@ -68,11 +71,12 @@ else
         CommandTab = SingleRepresnetation.Commands;
     }
 
-    public async Task SelectionChanged(ChangeEventArgs args)
+    public async Task SelectionChanged(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
-            SingleRepresnetation = RepresentationtDtos.Where(x => x.Id == selectedrepId).FirstOrDefault();
+            SingleRepresnetation = RepresentationtDtos.Items.Where(x => x.Id == selectedrepId)
+                                                      .FirstOrDefault();
             selectedrepId = selectedId;
             await SearchCommand();
         }

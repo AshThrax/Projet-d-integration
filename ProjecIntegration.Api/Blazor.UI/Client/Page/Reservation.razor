@@ -1,9 +1,10 @@
 ﻿@page "/reservation"
 @attribute [Authorize]
 @attribute [StreamRendering]
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
-@using Blazor.UI.data.modelViews
 @using Blazor.UI.data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using Blazor.UI.Client.Page.ReservationComponent
@@ -20,7 +21,7 @@
             <li class=" nav-item m-2">
                 <h3>Theme</h3>
                 <select @oninput="OnSelectedTheme" @bind="SelectedThemeId" class="form-control form-control-sm m-2 p-2">
-                    <option>choissir un theme</option>
+                    <option value="0">choissir un theme</option>
                     @foreach (ThemeDto item in GetAllTheme)
                     {
                       <option value="@item.Id">@item.Libelle</option>  
@@ -29,9 +30,9 @@
 
             </li>
             <li class="nav-item m-2">
-                <h3>complexe</h3>
+                <h3>Complexe</h3>
                 <select @bind="SelectComplexeId" @oninput="OnSelectedComplexe" class="form-control form-control-sm  m-2 p-2">
-                    <option> choisir un complexe</option>
+                    <option value="0"> choisir un complexe</option>
                     @foreach (var item in GetComplexes)
                     {
                         <option value="@item.Id">@item.Name</option>
@@ -39,7 +40,7 @@
                 </select>
             </li>
             <li class="nav-item m-2">
-                <h3> catalogue</h3>
+                <h3>Catalogue</h3>
                 <select @bind="SelectCatalogueId" @oninput="OnSelectedCatalogue" class="form-control form-control-sm  m-2 p-2">
                     <option > Choisir un catalogue</option>
                     @foreach (var item in GetCatalogues)
@@ -48,33 +49,38 @@
                     }
                 </select>
             </li>
+           
         </ul>
     </div>
     <br />
-    <div class="col-sm-6 float-end">
+    <div class="btn-group mb-2">
+        <nav class="nav navbar btn-group float-lg-end">
+            <a class=" nav-item btn btn-dark btn-outline-secondary" @onclick="PreviousPage"> precedent</a>
+            <a class=" nav-item btn btn-dark btn-outline-secondary" @onclick="NextPage"> suivant</a>
+        </nav>
+    </div>
+    <div class="col-sm-9">
         @if (pieceDtos != null)
     {
-        @foreach (var item in pieceDtos)
+        @foreach (var item in pieceDtos.Items)
         {
-            <div class="row m-2 p-2">
-                <div class=" m-2 p-2">
+                <div class="bg-white row featurette  rounded shadow mb-2 pb-2">
                     <div class="m-2 p-2">
-                        <div class="card m-2 p-2">
+                        <div class="col-md-5 p-2">
                             <div class="card-img">
                                    <img class="img-fluid" src="https://localhost:44337/Resources/@item.Image" />
                             </div>
-                            <div class="card-body">
+                        </div>
+                        <div class="col-md-7 p-2">
                                 <p class="card-text"><strong>Auteur :</strong>@item?.Auteur</p>
                                 <p class="card-text"><strong>Descirption :</strong>@item?.Description</p>
                                 <p class="card-text"><strong>Durée de la pièce :</strong>@item?.Duree</p>
-                            </div>
-                            <div class="btn-group float-end m-2 p-2">
-                                <button @onclick="() => GetDescription(item.Id)" type="button" class="btn btn-secondary p-1">info</button>
-                                    <button @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1">Seance</button>
-                            </div>
+                                <div class="btn-group">
+                                     <a @onclick="() => GetToPublication(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Critique</a>
+                                     <a @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Seance</a>
+                                </div>
                         </div>
-                    </div>
-                </div>
+                    </div>   
             </div>
         }
     }
@@ -82,7 +88,7 @@
 </div>
 
 @code {
-    public List<PieceDto>? pieceDtos { get; set; } = new();
+    public Pagination<PieceDto>? pieceDtos { get; set; } 
     public List<ThemeDto> GetAllTheme { get; set; }=new();
     public ThemeDto singleTheme { get; set; } = new();
     public int SelectedThemeId { get; set; }
@@ -92,17 +98,23 @@
     public List<CatalogueDto> GetCatalogues { get; set; } = new();
     public CatalogueDto singleCatalogue{ get; set; } = new();
     public int SelectCatalogueId { get; set; }
+
+    //pagination variable
+    public int pageIndex = 1;
+    public bool Bycatalogue { get; set; } = false;
+    public bool GetAll { get; set; } = true;
+    public bool ByTheme { get; set; } = false;
     protected override async Task OnInitializedAsync()
     {
         //var convert  = await _complexeService.Get();
-        pieceDtos = (await pieceService.Get()).ToList();
+        pieceDtos = (await pieceService.Get(pageIndex));
         GetAllTheme = (await themeService.GetAllTheme()).ToList();
         GetComplexes = (await complexeService.Get()).ToList();
         // getComplexe = convert;
         await Task.Delay(1000);
     }
 
-    public async Task OnSelectedComplexe(ChangeEventArgs args)
+    public async Task OnSelectedComplexe(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
@@ -111,29 +123,36 @@
             GetCatalogues = (await catalogueService.GetAllCatalogueByComplexeId(selectedId)).ToList();
         }
     }
-    public async Task OnSelectedCatalogue(ChangeEventArgs args)
+    public async Task OnSelectedCatalogue(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
+            Bycatalogue = true;
+            ByTheme = false;
             SelectCatalogueId = selectedId;
             singleCatalogue = await catalogueService.GetCatalogue(SelectCatalogueId);
-            pieceDtos = (await pieceService.GetByCatalogue(SelectCatalogueId)).ToList();
+            pageIndex = 1;
+            pieceDtos = (await pieceService.GetByCatalogue(SelectCatalogueId,pageIndex));
         }
     }
 
-    public async Task OnSelectedTheme(ChangeEventArgs args)
+    public async Task OnSelectedTheme(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
+            ByTheme = true;
+            Bycatalogue = false;
             SelectedThemeId = selectedId;
             if (SelectedThemeId == 0)
             {
-                pieceDtos = (await pieceService.Get()).ToList();
+                pageIndex = 1;
+                pieceDtos = (await pieceService.Get(pageIndex));
             }
             else
             {
-                pieceDtos = (await pieceService.GetByTheme(SelectedThemeId)).ToList();
-                
+                pageIndex = 1;
+                pieceDtos = (await pieceService.GetByTheme(SelectedThemeId,pageIndex));
+
             }
         }
     }
@@ -145,5 +164,48 @@
     public void GetSeance(int id)
     {
         manager.NavigateTo($"/representation/{id}"); 
+    }
+    public void GetToPublication(int Id)
+    {
+        manager.NavigateTo($"/publicationbypiece/{Id}");
+    }
+    public async Task NextPage()
+    {
+        if (pieceDtos.HasNextPage)
+        {
+            pageIndex++;
+            if (ByTheme && !Bycatalogue)
+            {
+                pieceDtos = await pieceService.GetByTheme(SelectedThemeId, pageIndex);
+            }
+            else if (!ByTheme && Bycatalogue)
+            {
+                pieceDtos = await pieceService.GetByCatalogue(SelectCatalogueId, pageIndex);
+            }
+            else
+            {
+                pieceDtos = await pieceService.Get(pageIndex);
+            }
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (pieceDtos.HasPreviousPage)
+        {
+            pageIndex--;
+
+            if (ByTheme && !Bycatalogue)
+            {
+                pieceDtos = await pieceService.GetByTheme(SelectedThemeId, pageIndex);
+            }
+            else if (!ByTheme && Bycatalogue)
+            {
+                pieceDtos = await pieceService.GetByCatalogue(SelectCatalogueId,pageIndex);
+            }
+            else
+            {
+                pieceDtos = await pieceService.Get(pageIndex);
+            }
+        }
     }
 }
