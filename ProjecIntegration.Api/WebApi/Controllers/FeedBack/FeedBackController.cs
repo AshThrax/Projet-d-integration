@@ -5,7 +5,7 @@ using Domain.Entity.UserEntity.FeedBack;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Controllers.FeedBack
+namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

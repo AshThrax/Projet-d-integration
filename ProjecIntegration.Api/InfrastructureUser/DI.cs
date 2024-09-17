@@ -1,5 +1,6 @@
 ﻿using ApplicationTheather.Services;
 using ApplicationUser.Repository;
+using ApplicationUser.Service;
 using InfrastructureUser.Infrastructure;
 using InfrastructureUser.Repository;
 using InfrastructureUser.Service;
@@ -26,8 +27,26 @@ namespace InfrastructureUser
         }
         public static IServiceCollection AddRepository(this IServiceCollection services)
         {
+            services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+            //-------Feedback
             services.AddScoped<IFeedBackRepository,FeedbackRepository>();
             services.AddScoped<IFeedBackService, FeedBackService>();
+            //------Favorit
+            services.AddScoped<IFavorisRepository, FavorisRepository>();
+            services.AddScoped<IFavoritService, FavoritService>();
+            //------Follow
+            services.AddScoped<IFollowRepository, FollowRepository>();
+            services.AddScoped<IFollowService, FollowService>();
+            //------UserDetails------
+            services.AddScoped<IUserDetailRepository, UserDetailsRepository>(); 
+            services.AddScoped<IUserDetailService, UserDetailsService>();
+            //------Signalement------
+            services.AddScoped<ISignalementRepository, SignalementRepository>();
+            services.AddScoped<ISignalementService, SignalementService>();
+            //------Signalement------
+            services.AddScoped<ISignalementTypeRepository, SignalementTypeRepository>();
+            services.AddScoped<ISignalementTypeService, SignalementTypeService>();
+
             return services;
         }
 

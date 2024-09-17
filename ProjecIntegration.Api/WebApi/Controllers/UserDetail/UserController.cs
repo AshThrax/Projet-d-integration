@@ -9,8 +9,7 @@ using MongoDB.Bson.IO;
 using Newtonsoft.Json;
 using WebApi.ApiService.Authorization;
 
-namespace WebApi.Controllers
-{
+namespace WebApi.Controllers;
     [ApiController]
     [Route("api/v1/[controller]")]
     //[Authorize("Admin")]
@@ -19,14 +18,14 @@ namespace WebApi.Controllers
 
         private readonly IManagementApiClient _managementApiClient;
         private readonly ICustomGetToken _tok;
-        public UserController(IManagementApiClient managementApiClient,ICustomGetToken tok) 
+        public UserController(IManagementApiClient managementApiClient, ICustomGetToken tok)
         {
             _managementApiClient = managementApiClient;
-            _tok= tok;  
+            _tok = tok;
         }
 
 
-    
+
         [HttpGet("{userId}")]
         public async Task<ActionResult> GetUserID(string userId)
         {
@@ -46,10 +45,10 @@ namespace WebApi.Controllers
         [HttpDelete("userId")]
         public async Task<ActionResult> DeleteUserID(string userId)
         {
-            var apiClient =  _managementApiClient.Users.DeleteAsync(userId);
+            var apiClient = _managementApiClient.Users.DeleteAsync(userId);
 
-            return  NoContent();
+            return NoContent();
         }
 
     }
-}
+

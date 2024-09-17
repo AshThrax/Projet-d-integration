@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationUser.Repository
 {
-    public interface IFavoritRepository: IRepository<Favorit>
+    public interface IFavorisRepository: IRepository<Favorit>
     {
     }
 }

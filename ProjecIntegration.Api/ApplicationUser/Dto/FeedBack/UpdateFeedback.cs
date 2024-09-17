@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationUser.Dto.FeedBack
 {
-    public class UpdateFeedbackDto : UpdateBaseDto
+    public class UpdateFeedbackDto : UpdateUserDetailDto
     {
         int Id { get; set; }
         public string Description { get; set; } = string.Empty;

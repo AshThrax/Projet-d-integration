@@ -2,7 +2,7 @@
 using ApplicationAnnonce.DTO;
 using Domain.DataType;
 
-namespace WebApi.Controllers.Notification
+namespace WebApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]

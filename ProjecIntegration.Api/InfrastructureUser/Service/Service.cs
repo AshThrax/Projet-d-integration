@@ -14,7 +14,7 @@ namespace InfrastructureUser.Service
         where TEntity : BaseEntity
         where TDto : BasicDto
         where TAddDto : AddBaseDto
-        where TUpdateDto : UpdateBaseDto
+        where TUpdateDto : UpdateUserDetailDto
     {
         private readonly IRepository<TEntity> _repository;
         private readonly IMapper _mapper;

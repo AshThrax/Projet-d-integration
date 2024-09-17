@@ -14,7 +14,7 @@ namespace WebApi.Controllers
         where TEntity : BaseEntity
         where TDto : BasicDto
         where TAddDto : AddBaseDto
-        where TUpdateDto : UpdateBaseDto
+        where TUpdateDto : UpdateUserDetailDto
     {
         private readonly IService<TEntity, TDto, TAddDto, TUpdateDto> _service;
 

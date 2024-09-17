@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationUser.Dto.Favorit
 {
-    public class UpdateFavoritDto: UpdateBaseDto
+    public class UpdateFavoritDto: UpdateUserDetailDto
     {
         public int Id { get; set; }
         public DateTime? CreatedDate { get; set; }

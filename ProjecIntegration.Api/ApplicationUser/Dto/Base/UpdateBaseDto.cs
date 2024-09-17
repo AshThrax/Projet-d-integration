@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationUser.Dto.Base
 {
-    public class UpdateBaseDto
+    public class UpdateUserDetailDto
     {
     }
 }

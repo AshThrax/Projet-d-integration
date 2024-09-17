@@ -14,7 +14,7 @@ namespace ApplicationUser.Service
         where TEntity : BaseEntity
         where TDto : BasicDto
         where TAddDto : AddBaseDto
-        where TUpdateDto : UpdateBaseDto
+        where TUpdateDto : UpdateUserDetailDto
     {
         Task<ServiceResponse<TDto>> AddAsync(TAddDto entity);
         Task<ServiceResponse<TDto>> UpdateAsync(int Id, TUpdateDto entity);

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
-namespace WebApi.Controllers.Notification
+namespace WebApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]

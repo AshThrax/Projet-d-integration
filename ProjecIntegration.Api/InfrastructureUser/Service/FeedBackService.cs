@@ -13,8 +13,10 @@ namespace InfrastructureUser.Service
 {
     public class FeedBackService : Service<Feedback, FeedBackDto,AddFeedBackDto,UpdateFeedbackDto>, IFeedBackService
     {
+        IFeedBackRepository _repository;
         public FeedBackService(IFeedBackRepository repository, IMapper mapper) : base(repository, mapper)
         {
+            _repository = repository;
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InfrastructureUser.Repository
 {
-    public class FavorisRepository : Repository<Favorit>, IFavoritRepository
+    public class FavorisRepository : Repository<Favorit>, IFavorisRepository
     {
         public FavorisRepository(UserDbContext dbContext) : base(dbContext)
         {

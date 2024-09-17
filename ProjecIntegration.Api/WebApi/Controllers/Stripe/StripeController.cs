@@ -8,14 +8,14 @@ using Stripe.Checkout;
 
 namespace WebApi.Controllers
 {
-   
+
     [Route("api/v1/[controller]")]
     [ApiController]
     public class StripeController : ControllerBase
     {
         private readonly ILogger<StripeController> _looger;
         private readonly StripeSettings _stripeSettings;
-        public StripeController(ILogger<StripeController> logger,IOptions<StripeSettings> stripeSettings) 
+        public StripeController(ILogger<StripeController> logger, IOptions<StripeSettings> stripeSettings)
         {
             _stripeSettings = stripeSettings.Value;
             _looger = logger;
@@ -26,15 +26,15 @@ namespace WebApi.Controllers
             string currency = "eur";//currency
             string? sucessUrl = "https://localhost:7129/success";
             string? cancelUrl = "https://localhost:7129/cancel";
-            StripeConfiguration.ApiKey=_stripeSettings.SecretKey;
+            StripeConfiguration.ApiKey = _stripeSettings.SecretKey;
 
             var options = new Stripe.Checkout.SessionCreateOptions
             {
-                   PaymentMethodTypes = new List<string>
+                PaymentMethodTypes = new List<string>
                    {
                        "card"
                    },
-                   LineItems =new List<SessionLineItemOptions> 
+                LineItems = new List<SessionLineItemOptions>
                    {
                        new SessionLineItemOptions
                        {
@@ -52,14 +52,14 @@ namespace WebApi.Controllers
                        }
 
                    },
-                  Mode="payment",
-                  SuccessUrl=sucessUrl, 
-                  CancelUrl=cancelUrl
+                Mode = "payment",
+                SuccessUrl = sucessUrl,
+                CancelUrl = cancelUrl
             };
 
             var service = new Stripe.Checkout.SessionService();
             var session = service.Create(options);
-       
+
 
             return Ok(session.Url);
         }

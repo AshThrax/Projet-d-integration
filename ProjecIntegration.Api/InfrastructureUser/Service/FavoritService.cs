@@ -13,8 +13,8 @@ namespace InfrastructureUser.Service
 {
     public class FavoritService : Service<Favorit, FavoritDto, AddFavoritDto, UpdateFavoritDto>, IFavoritService
     {
-        private readonly IFavoritRepository _favoriteRepository;
-        public FavoritService(IFavoritRepository repository, IMapper mapper) : base(repository, mapper)
+        private readonly IFavorisRepository _favoriteRepository;
+        public FavoritService(IFavorisRepository repository, IMapper mapper) : base(repository, mapper)
         {
             _favoriteRepository = repository;
         }
