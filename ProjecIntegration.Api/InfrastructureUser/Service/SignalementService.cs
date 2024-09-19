@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace InfrastructureUser.Service
 {
-    public class SignalementService : Service<Signalement, GetSignalementDto, AddSignalement, UpdateSignalementDto>, ISignalementService
+    public class SignalementService : Service<Signalement, GetSignalementDto, AddSignalementDto, UpdateSignalementDto>, ISignalementService
     {
         private readonly ISignalementRepository _repository;
         public SignalementService(ISignalementRepository repository, IMapper mapper) : base(repository, mapper)

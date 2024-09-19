@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationUser.Service
 {
-    public interface ISignalementService : IService<Signalement,GetSignalementDto,AddSignalement,UpdateSignalementDto>
+    public interface ISignalementService : IService<Signalement,GetSignalementDto,AddSignalementDto,UpdateSignalementDto>
     {
     }
 }

@@ -9,9 +9,9 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SignalementController : GeneriqueController<Signalement, GetSignalementDto, AddSignalement, UpdateSignalementDto>
+    public class SignalementController : GeneriqueController<Signalement, GetSignalementDto, AddSignalementDto, UpdateSignalementDto>
     {
-        public SignalementController(IService<Signalement, GetSignalementDto, AddSignalement, UpdateSignalementDto> service) : base(service)
+        public SignalementController(IService<Signalement, GetSignalementDto, AddSignalementDto, UpdateSignalementDto> service) : base(service)
         {
         }
     }

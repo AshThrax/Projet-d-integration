@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InfrastructureChat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3e0b1534daf89c71473b0301d09092680ac70e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1692620e8dc614242aaca15d30836d82982aa8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("InfrastructureChat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InfrastructureChat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

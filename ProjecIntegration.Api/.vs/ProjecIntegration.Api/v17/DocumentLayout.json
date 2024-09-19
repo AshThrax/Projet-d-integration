@@ -1,294 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\",
+  "WorkspaceRootPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\di.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\di.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\favoritservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\favoritservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\feedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\feedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\followservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\followservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\signalementtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\signalementtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\userdetailsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\userdetailsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\service\\signalementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\signalementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\ifavorisrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\ifavorisrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\userdetail\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\userdetail\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\isignalementtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\isignalementtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\signalement\\signalementtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\signalement\\signalementtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\isignalementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\isignalementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\iuserdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\iuserdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\userdetails\\getuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\userdetails\\getuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\signalement\\signalementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\signalement\\signalementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\base\\updatebasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\base\\updatebasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\userdetails\\adduserdetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\userdetails\\adduserdetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\domain\\entity\\userentity\\userdetails\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\userentity\\userdetails\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\iuserdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\iuserdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\isignalementtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\isignalementtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\userdetails\\updateuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\userdetails\\updateuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\userdetailsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\userdetailsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\ifavoritservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\ifavoritservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\ifeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\ifeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\service\\ifollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\ifollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\signalementtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\signalementtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\publication\\publicationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\publication\\publicationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\publication\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\publication\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\notification\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\notification\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\notification\\annoncecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\notification\\annoncecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\feedback\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\feedback\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\favoris\\favoritcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\favoris\\favoritcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\stripe\\stripecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\stripe\\stripecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\controllers\\g\u00E9n\u00E9riquecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\g\u00E9n\u00E9riquecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\domain\\entity\\publicationentity\\mod\u00E9ration\\ban.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\publicationentity\\mod\u00E9ration\\ban.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\domain\\entity\\publicationentity\\mod\u00E9ration\\signalement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\publicationentity\\mod\u00E9ration\\signalement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\domain\\entity\\publicationentity\\mod\u00E9ration\\signalementtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\publicationentity\\mod\u00E9ration\\signalementtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\followrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\followrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\ifollowrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\ifollowrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\signalementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\signalementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\favorisrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\favorisrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\repository\\feedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\repository\\feedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\infrastructure\\userdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\infrastructure\\userdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\signalement\\updatesignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalement\\updatesignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\signalement\\getsignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalement\\getsignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\signalement\\addsignalement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalement\\addsignalement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\follow\\addfollowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\follow\\addfollowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\follow\\getfollowerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\follow\\getfollowerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\signalementtype\\addsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalementtype\\addsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\signalementtype\\getsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalementtype\\getsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\signalementtype\\updatesignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalementtype\\updatesignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\follow\\updatefollowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\follow\\updatefollowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\domain\\entity\\userentity\\feedback\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF652525-82B2-4ED6-A8A2-7AA8EE00FD19}|Domain\\Domain.csproj|solutionrelative:domain\\entity\\userentity\\feedback\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\favorit\\addfavoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\favorit\\addfavoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\favorit\\favoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\favorit\\favoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\favorit\\updatefavoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\favorit\\updatefavoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\common\\mapping\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\common\\mapping\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\common\\mapping\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\feedback\\updatefeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\feedback\\updatefeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\signalement\\addsignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalement\\addsignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\feedback\\feedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\feedback\\feedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\feedback\\addfeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\feedback\\addfeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\base\\basicdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\base\\basicdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\service\\ifollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\ifollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\dto\\base\\addbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\base\\addbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\favorit\\favoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\favorit\\favoritdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\di.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\di.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\signalement\\updatesignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalement\\updatesignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\infrastructureuser\\infrastructureuser.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\infrastructureuser.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\signalement\\getsignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalement\\getsignalementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\signalementtype\\updatesignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalementtype\\updatesignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\ifeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\ifeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\signalementtype\\getsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalementtype\\getsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationuser\\repository\\isignalementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\repository\\isignalementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CF94A4D7-0239-4A8E-824C-A6E28E45881F}|ApplicationTheather\\ApplicationTheather.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\applicationtheather\\common\\interfaces\\irepository\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF94A4D7-0239-4A8E-824C-A6E28E45881F}|ApplicationTheather\\ApplicationTheather.csproj|solutionrelative:applicationtheather\\common\\interfaces\\irepository\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|c:\\users\\quentin\\classicweb\\projet\\projecintegration.api\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{7F236404-FEA4-4DC1-AAD5-D183091601E9}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\signalementtype\\addsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\signalementtype\\addsignalementtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -297,960 +53,155 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1215,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 407,
-          "SelectedChildIndex": 75,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\User\\UserDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\User\\UserDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\User\\UserDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\User\\UserDto.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAswCwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T10:13:31.621Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FollowService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\FollowService.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\FollowService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\FollowService.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\FollowService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Service\\IUserService.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IUserService.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Service\\IUserService.cs",
+              "RelativeToolTip": "ApplicationUser\\Service\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T12:07:49.698Z",
+              "WhenOpened": "2024-09-19T10:11:59.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IFollowService.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFollowService.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IFollowService.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFollowService.cs",
+              "RelativeToolTip": "ApplicationUser\\Service\\IFollowService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T10:05:30.734Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SignalementTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\SignalementTypeService.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\SignalementTypeService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\SignalementTypeService.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\SignalementTypeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T12:02:29.146Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SignalementService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\SignalementService.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\SignalementService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\SignalementService.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\SignalementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T12:01:39.946Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ISignalementTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\ISignalementTypeService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\ISignalementTypeService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\ISignalementTypeService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\ISignalementTypeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T12:00:03.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ISignalementService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\ISignalementService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\ISignalementService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\ISignalementService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\ISignalementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:59:26.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "GetUserDetailsDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\UserDetails\\GetUserDetailsDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\UserDetails\\GetUserDetailsDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\UserDetails\\GetUserDetailsDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\UserDetails\\GetUserDetailsDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:54:34.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AddUserDetailDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\UserDetails\\AddUserDetailDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\UserDetails\\AddUserDetailDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\UserDetails\\AddUserDetailDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\UserDetails\\AddUserDetailDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:54:15.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "UpdateUserdetailsDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\UserDetails\\UpdateUserdetailsDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\UserDetails\\UpdateUserdetailsDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\UserDetails\\UpdateUserdetailsDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\UserDetails\\UpdateUserdetailsDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:53:53.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserDetailsService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\UserDetailsService.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\UserDetailsService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\UserDetailsService.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\UserDetailsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:50:44.306Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "IFollowService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFollowService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IFollowService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFollowService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\IFollowService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:49:52.083Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IUserDetailService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IUserDetailService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IUserDetailService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IUserDetailService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\IUserDetailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAB1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:48:50.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "PublicationController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Publication\\PublicationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:40:41.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "PostController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PostController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Publication\\PostController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Publication\\PostController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Publication\\PostController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:40:36.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "NotificationController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Notification\\NotificationController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Notification\\NotificationController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Notification\\NotificationController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Notification\\NotificationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:40:27.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "AnnonceController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Notification\\AnnonceController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:40:23.146Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "StripeController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Stripe\\StripeController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Stripe\\StripeController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Stripe\\StripeController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Stripe\\StripeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:37:43.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SignalementType.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Signalement\\SignalementType.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Signalement\\SignalementType.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Signalement\\SignalementType.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Signalement\\SignalementType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:36:43.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "SignalementController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Signalement\\SignalementController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Signalement\\SignalementController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Signalement\\SignalementController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Signalement\\SignalementController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:36:29.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "FavoritController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Favoris\\FavoritController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\Favoris\\FavoritController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\Favoris\\FavoritController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\Favoris\\FavoritController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:35:55.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "FollowRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\FollowRepository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\FollowRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\FollowRepository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\FollowRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:28:02.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "IFollowRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IFollowRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\IFollowRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IFollowRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\IFollowRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:27:27.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "GetSignalementTypeDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:02:46.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "UpdateSignalementTypeDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:02:04.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "AddSignalementTypeDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:01:51.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "UpdateSignalementDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:01:37.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "GetSignalementDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:01:18.937Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "AddSignalement.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\AddSignalement.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\AddSignalement.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\AddSignalement.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\AddSignalement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:00:57.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "UpdateFollowDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Follow\\UpdateFollowDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Follow\\UpdateFollowDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Follow\\UpdateFollowDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Follow\\UpdateFollowDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T11:00:18.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "GetFollowerDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Follow\\GetFollowerDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Follow\\GetFollowerDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Follow\\GetFollowerDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Follow\\GetFollowerDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:58:32.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "AddFollowdto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Follow\\AddFollowdto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Follow\\AddFollowdto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Follow\\AddFollowdto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Follow\\AddFollowdto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:58:07.708Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "SignalementTypeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\SignalementTypeRepository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\SignalementTypeRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\SignalementTypeRepository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\SignalementTypeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:55:46.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "SignalementRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\SignalementRepository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\SignalementRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\SignalementRepository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\SignalementRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:54:05.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "UserDetailsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\UserDetailsRepository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\UserDetailsRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\UserDetailsRepository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\UserDetailsRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:51:05.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "FavorisRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\FavorisRepository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\FavorisRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\FavorisRepository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\FavorisRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:32:01.747Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FavoritService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\FavoritService.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\FavoritService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\FavoritService.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\FavoritService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:30:36.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "IFavoritService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFavoritService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IFavoritService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFavoritService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\IFavoritService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:25:55.084Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "UpdateFavoritDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\UpdateFavoritDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Favorit\\UpdateFavoritDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\UpdateFavoritDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Favorit\\UpdateFavoritDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:17:21.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "AddFavoritDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\AddFavoritDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Favorit\\AddFavoritDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\AddFavoritDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Favorit\\AddFavoritDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:14:28.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
               "Title": "FavoritDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
               "RelativeToolTip": "ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T17:09:51.026Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "UpdateFeedback.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\FeedBack\\UpdateFeedback.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\FeedBack\\UpdateFeedback.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\FeedBack\\UpdateFeedback.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\FeedBack\\UpdateFeedback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:45:31.531Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
-              "Title": "AddFeedBack.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\FeedBack\\AddFeedBack.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\FeedBack\\AddFeedBack.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\FeedBack\\AddFeedBack.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\FeedBack\\AddFeedBack.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:45:11.645Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UpdateBaseDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Base\\UpdateBaseDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Base\\UpdateBaseDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Base\\UpdateBaseDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Base\\UpdateBaseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:42:34.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "AddBaseDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Base\\AddBaseDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Base\\AddBaseDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Base\\AddBaseDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Base\\AddBaseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:42:18.557Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "FeedbackRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\FeedbackRepository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\FeedbackRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\FeedbackRepository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\FeedbackRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:26:28.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "DI.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\DI.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\DI.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\DI.cs",
-              "RelativeToolTip": "ApplicationUser\\DI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:23:00.614Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "Automapper.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Common\\Mapping\\Automapper.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Common\\Mapping\\Automapper.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Common\\Mapping\\Automapper.cs",
-              "RelativeToolTip": "ApplicationUser\\Common\\Mapping\\Automapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:19:23.467Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FeedBackService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\FeedBackService.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\FeedBackService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\FeedBackService.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\FeedBackService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:17:13.259Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "IFeedBackService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFeedBackService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IFeedBackService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFeedBackService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\IFeedBackService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAABpAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:16:36.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\UserDetail\\UserController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\UserDetail\\UserController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\UserDetail\\UserController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\UserDetail\\UserController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:12:29.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "FeedBackController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\FeedBack\\FeedBackController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\FeedBack\\FeedBackController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\FeedBack\\FeedBackController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\FeedBack\\FeedBackController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:11:31.11Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "FeedBackDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\FeedBack\\FeedBackDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\FeedBack\\FeedBackDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\FeedBack\\FeedBackDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\FeedBack\\FeedBackDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T16:01:01.869Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "G\u00E9n\u00E9riqueController.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\G\u00E9n\u00E9riqueController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\G\u00E9n\u00E9riqueController.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\Controllers\\G\u00E9n\u00E9riqueController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\G\u00E9n\u00E9riqueController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T15:51:15.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "BasicDto.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Base\\BasicDto.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Base\\BasicDto.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Base\\BasicDto.cs",
-              "RelativeToolTip": "ApplicationUser\\Dto\\Base\\BasicDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T15:16:58.77Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Service.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\Service.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\Service.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Service\\Service.cs",
-              "RelativeToolTip": "InfrastructureUser\\Service\\Service.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwAwAAABmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T15:01:11.188Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IService.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IService.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Service\\IService.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Service\\IService.cs",
-              "RelativeToolTip": "ApplicationUser\\Service\\IService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T15:00:54.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 69,
-              "Title": "ISignalementRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\ISignalementRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\ISignalementRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\ISignalementRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\ISignalementRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:58:58.983Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ISignalementTypeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\ISignalementTypeRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\ISignalementTypeRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\ISignalementTypeRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\ISignalementTypeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:58:02.794Z",
+              "WhenOpened": "2024-09-18T15:39:02.72Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "IFavorisRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IFavorisRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\IFavorisRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IFavorisRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\IFavorisRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Title": "UpdateSignalementTypeDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:56:10.46Z",
+              "WhenOpened": "2024-09-18T15:37:39.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IUserDetailRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IUserDetailRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\IUserDetailRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IUserDetailRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\IUserDetailRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABDAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "GetSignalementTypeDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:55:16.761Z",
+              "WhenOpened": "2024-09-18T15:37:34.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "Feedback.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\UserEntity\\FeedBack\\Feedback.cs",
-              "RelativeDocumentMoniker": "Domain\\Entity\\UserEntity\\FeedBack\\Feedback.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\UserEntity\\FeedBack\\Feedback.cs",
-              "RelativeToolTip": "Domain\\Entity\\UserEntity\\FeedBack\\Feedback.cs",
+              "DocumentIndex": 10,
+              "Title": "AddSignalementTypeDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:53:19.318Z",
+              "WhenOpened": "2024-09-18T15:37:30.161Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
-              "Title": "IFeedBackRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IFeedBackRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\IFeedBackRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IFeedBackRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\IFeedBackRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "UpdateSignalementDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:51:08.629Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 67,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationUser\\Repository\\IRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\Repository\\IRepository.cs",
-              "RelativeToolTip": "ApplicationUser\\Repository\\IRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwAoAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:45:36.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 70,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\Common\\Interfaces\\IRepository\\IRepository.cs",
-              "RelativeDocumentMoniker": "ApplicationTheather\\Common\\Interfaces\\IRepository\\IRepository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\Common\\Interfaces\\IRepository\\IRepository.cs",
-              "RelativeToolTip": "ApplicationTheather\\Common\\Interfaces\\IRepository\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:44:41.664Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\Repository.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Repository\\Repository.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Repository\\Repository.cs",
-              "RelativeToolTip": "InfrastructureUser\\Repository\\Repository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:43:20.256Z",
+              "WhenOpened": "2024-09-18T15:35:25.701Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "WebApi\\appsettings.json",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\appsettings.json",
-              "RelativeToolTip": "WebApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAB7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-16T14:24:59.379Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "UserDetails.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\UserEntity\\UserDetails\\UserDetails.cs",
-              "RelativeDocumentMoniker": "Domain\\Entity\\UserEntity\\UserDetails\\UserDetails.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\UserEntity\\UserDetails\\UserDetails.cs",
-              "RelativeToolTip": "Domain\\Entity\\UserEntity\\UserDetails\\UserDetails.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "GetSignalementDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:18:31.725Z",
+              "WhenOpened": "2024-09-18T15:34:01.801Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Ban.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Ban.cs",
-              "RelativeDocumentMoniker": "Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Ban.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Ban.cs",
-              "RelativeToolTip": "Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Ban.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AddSignalementDto.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
+              "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:15:35.162Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "SignalementType.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\SignalementType.cs",
-              "RelativeDocumentMoniker": "Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\SignalementType.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\SignalementType.cs",
-              "RelativeToolTip": "Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\SignalementType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:12:41.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Signalement.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Signalement.cs",
-              "RelativeDocumentMoniker": "Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Signalement.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Signalement.cs",
-              "RelativeToolTip": "Domain\\Entity\\PublicationEntity\\Mod\u00E9ration\\Signalement.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBEAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T14:09:58.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "UserDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Infrastructure\\UserDbContext.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\Infrastructure\\UserDbContext.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\Infrastructure\\UserDbContext.cs",
-              "RelativeToolTip": "InfrastructureUser\\Infrastructure\\UserDbContext.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAqwCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T13:49:24.678Z",
+              "WhenOpened": "2024-09-18T15:17:03.727Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DI.cs",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\DI.cs",
-              "RelativeDocumentMoniker": "InfrastructureUser\\DI.cs",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\DI.cs",
-              "RelativeToolTip": "InfrastructureUser\\DI.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwC4AAAAMAAAAAAAAAA==",
+              "Title": "Automapper.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Common\\Mapping\\Automapper.cs",
+              "RelativeDocumentMoniker": "ApplicationUser\\Common\\Mapping\\Automapper.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Common\\Mapping\\Automapper.cs",
+              "RelativeToolTip": "ApplicationUser\\Common\\Mapping\\Automapper.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAuwDEAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T13:49:09.914Z",
+              "WhenOpened": "2024-09-18T15:13:12.217Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 66,
-              "Title": "InfrastructureUser.csproj",
-              "DocumentMoniker": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj",
-              "RelativeDocumentMoniker": "InfrastructureUser\\InfrastructureUser.csproj",
-              "ToolTip": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj",
-              "RelativeToolTip": "InfrastructureUser\\InfrastructureUser.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-09-16T13:45:57.658Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
