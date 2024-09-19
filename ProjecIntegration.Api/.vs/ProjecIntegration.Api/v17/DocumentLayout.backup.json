@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\infrastructureuser\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2769E48-89EF-4943-9789-05DC126DF7FD}|InfrastructureUser\\InfrastructureUser.csproj|solutionrelative:infrastructureuser\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\common\\mapping\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\common\\mapping\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\dto\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\dto\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|solutionrelative:applicationuser\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3FA87A0B-02F9-44CC-A159-D8B182D8E320}|ApplicationUser\\ApplicationUser.csproj|c:\\users\\chaos\\documents\\github\\projet-d-integration\\projecintegration.api\\applicationuser\\service\\ifollowservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,11 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\Service\\UserService.cs",
+              "RelativeDocumentMoniker": "InfrastructureUser\\Service\\UserService.cs",
+              "ToolTip": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\Service\\UserService.cs",
+              "RelativeToolTip": "InfrastructureUser\\Service\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T10:23:06.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UserDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\User\\UserDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\User\\UserDto.cs",
@@ -66,12 +83,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\User\\UserDto.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAswCwAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T10:13:31.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-19T10:13:31.621Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Service\\IUserService.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Service\\IUserService.cs",
@@ -84,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IFollowService.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Service\\IFollowService.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Service\\IFollowService.cs",
@@ -92,12 +108,11 @@
               "RelativeToolTip": "ApplicationUser\\Service\\IFollowService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T10:05:30.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-19T10:05:30.734Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "FavoritDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
@@ -105,12 +120,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\Favorit\\FavoritDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:39:02.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:39:02.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UpdateSignalementTypeDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
@@ -118,12 +132,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\UpdateSignalementTypeDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:37:39.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:37:39.434Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "GetSignalementTypeDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
@@ -131,12 +144,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\GetSignalementTypeDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:37:34.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:37:34.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "AddSignalementTypeDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
@@ -144,12 +156,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\SignalementType\\AddSignalementTypeDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:37:30.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:37:30.161Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UpdateSignalementDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
@@ -157,12 +168,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\UpdateSignalementDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:35:25.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:35:25.701Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "GetSignalementDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
@@ -170,12 +180,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\GetSignalementDto.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:34:01.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:34:01.801Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AddSignalementDto.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
@@ -183,12 +192,11 @@
               "RelativeToolTip": "ApplicationUser\\Dto\\Signalement\\AddSignalementDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T15:17:03.727Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T15:17:03.727Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Automapper.cs",
               "DocumentMoniker": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\Common\\Mapping\\Automapper.cs",
               "RelativeDocumentMoniker": "ApplicationUser\\Common\\Mapping\\Automapper.cs",
