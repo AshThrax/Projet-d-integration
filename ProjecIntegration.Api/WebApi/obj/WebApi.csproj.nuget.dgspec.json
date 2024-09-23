@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj",
         "projectName": "ApplicationPublication",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -33,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -83,21 +79,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj",
         "projectName": "ApplicationTheather",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,8 +104,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -162,21 +154,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj",
         "projectName": "ApplicationUser",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -191,8 +179,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -245,21 +233,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
         "projectName": "ApplicationAnnonce",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -274,8 +258,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -324,21 +308,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj",
         "projectName": "DataInfraTheather",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\data\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -353,11 +333,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -434,21 +414,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -513,21 +489,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj",
         "projectName": "InfraPublication",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -542,11 +514,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -611,21 +583,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj",
         "projectName": "InfrastructureUser",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -640,11 +608,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationUser\\ApplicationUser.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -697,21 +665,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj",
         "projectName": "InfrastructureAnnonce",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -726,11 +690,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -787,21 +751,17 @@
         }
       }
     },
-    "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -816,26 +776,26 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationTheather\\ApplicationTheather.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Application\\ApplicationAnnonce.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\data\\DataInfraTheather.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfraPublication\\InfraPublication.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\InfrastructureUser\\InfrastructureUser.csproj"
               },
-              "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
-                "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj"
+              "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj": {
+                "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Infrastructure\\InfrastructureAnnonce.csproj"
               }
             }
           }

@@ -13,291 +13,291 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Blazor.UI
 build_property.RootNamespace = Blazor.UI
-build_property.ProjectDir = C:\Users\Chaos\Documents\GitHub\Projet-d-integration\ProjecIntegration.Api\Blazor.UI\
+build_property.ProjectDir = C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Chaos\Documents\GitHub\Projet-d-integration\ProjecIntegration.Api\Blazor.UI
+build_property.MSBuildProjectDirectory = C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\Blazor.UI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/App.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Authentication.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XEF1dGhlbnRpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/AddCatalogue.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/AddCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXEFkZENhdGFsb2d1ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/GetAllCatalogue.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/GetAllCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXEdldEFsbENhdGFsb2d1ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/UpdateCatalogue.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/UpdateCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXFVwZGF0ZUNhdGFsb2d1ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/ComplexeSalle.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/ComplexeSalle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ29tcGxleGVTYWxsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Complexe/AddComplexe.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Complexe/AddComplexe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ29tcGxleGVcQWRkQ29tcGxleGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Complexe/ComplexegGrid.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Complexe/ComplexegGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ29tcGxleGVcQ29tcGxleGVnR3JpZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Complexe/UpdateComplexe.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Complexe/UpdateComplexe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ29tcGxleGVcVXBkYXRlQ29tcGxleGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Details.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Details.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Manager.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Manager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcTWFuYWdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/PieceRepresentation.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/PieceRepresentation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VSZXByZXNlbnRhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/AddPiece.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/AddPiece.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcQWRkUGllY2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/AddPieceToCatalogue.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/AddPieceToCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcQWRkUGllY2VUb0NhdGFsb2d1ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/PieceManager.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/PieceManager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcUGllY2VNYW5hZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/RemovePieceFromCatalogue.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/RemovePieceFromCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcUmVtb3ZlUGllY2VGcm9tQ2F0YWxvZ3VlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/UpdatePiece.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/UpdatePiece.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcVXBkYXRlUGllY2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/AddRepresentationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/AddRepresentationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUmVwcmVzZW50YXRpb25cQ29tcG9uZW50XEFkZFJlcHJlc2VudGF0aW9uQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/DetailsRePresentationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/DetailsRePresentationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUmVwcmVzZW50YXRpb25cQ29tcG9uZW50XERldGFpbHNSZVByZXNlbnRhdGlvbkNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/GetAllRepresentationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/GetAllRepresentationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUmVwcmVzZW50YXRpb25cQ29tcG9uZW50XEdldEFsbFJlcHJlc2VudGF0aW9uQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/GetSeanceComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/GetSeanceComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUmVwcmVzZW50YXRpb25cQ29tcG9uZW50XEdldFNlYW5jZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/UpdateRepresentationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/Component/UpdateRepresentationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUmVwcmVzZW50YXRpb25cQ29tcG9uZW50XFVwZGF0ZVJlcHJlc2VudGF0aW9uQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/RepresentationByPiece.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Representation/RepresentationByPiece.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUmVwcmVzZW50YXRpb25cUmVwcmVzZW50YXRpb25CeVBpZWNlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/SallerRepresentation.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/SallerRepresentation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVyUmVwcmVzZW50YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/AddSallByComplexe.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/AddSallByComplexe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVcQWRkU2FsbEJ5Q29tcGxleGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/ManagerSalle.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/ManagerSalle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVcTWFuYWdlclNhbGxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/UpdateSalle.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Salle/UpdateSalle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVcVXBkYXRlU2FsbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/manager/Siege/SiegeManager.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Siege/SiegeManager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2llZ2VcU2llZ2VNYW5hZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/AddComplexe.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/AddComplexe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxBZGRDb21wbGV4ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/Complexe.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/Complexe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxDb21wbGV4ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/ComplexeDetails.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/ComplexeDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxDb21wbGV4ZURldGFpbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/ComplexeUpdatet.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/ComplexeUpdatet.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxDb21wbGV4ZVVwZGF0ZXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/SalleDetails.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Comp/SalleDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcQ29tcFxTYWxsZURldGFpbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/GetUserComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/GetUserComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcR2V0VXNlckNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/infoPage/PieceInfo.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/infoPage/PieceInfo.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcaW5mb1BhZ2VcUGllY2VJbmZvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/DisplayCommand.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/DisplayCommand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcRGlzcGxheUNvbW1hbmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/GetAllCommand.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/GetAllCommand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcR2V0QWxsQ29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/GetCommand.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/GetCommand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcR2V0Q29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/ManageCommand.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/MakeCommand/ManageCommand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcTWFuYWdlQ29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/ProfileCard.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/ProfileCard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcUHJvZmlsZUNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/ProfileInfoComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/ProfileInfoComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcUHJvZmlsZUluZm9Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/ProfileViewer.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/ProfileViewer.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxQcm9maWxlVmlld2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/PostFromPublication.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/PostFromPublication.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VccHVibGljYXRpb25cUG9zdEZyb21QdWJsaWNhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Post/AddPostComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Post/AddPostComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VccHVibGljYXRpb25cUG9zdFxBZGRQb3N0Q29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Post/PostPublicationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Post/PostPublicationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VccHVibGljYXRpb25cUG9zdFxQb3N0UHVibGljYXRpb25Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/PublicationFromPiece.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/PublicationFromPiece.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VccHVibGljYXRpb25cUHVibGljYXRpb25Gcm9tUGllY2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Publication/AddPublicationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Publication/AddPublicationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VccHVibGljYXRpb25cUHVibGljYXRpb25cQWRkUHVibGljYXRpb25Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Publication/PublicationComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/publication/Publication/PublicationComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VccHVibGljYXRpb25cUHVibGljYXRpb25cUHVibGljYXRpb25Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Representation.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Representation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/AddRepresnetation.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/AddRepresnetation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXEFkZFJlcHJlc25ldGF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/CommandDropDown.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/CommandDropDown.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXENvbW1hbmREcm9wRG93bi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/UpdateRepresentation.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/RepresentationPage/UpdateRepresentation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVwcmVzZW50YXRpb25QYWdlXFVwZGF0ZVJlcHJlc2VudGF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/Reservation.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Reservation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationComponent/Command.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/ReservationComponent/Command.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUmVzZXJ2YXRpb25Db21wb25lbnRcQ29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Shared/AccessControl.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/AccessControl.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxBY2Nlc3NDb250cm9sLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Shared/Alert.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/Alert.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxBbGVydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Shared/Load.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/Load.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxMb2FkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Shared/UploadsFilesTest.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/UploadsFilesTest.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxVcGxvYWRzRmlsZXNUZXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Layout/ButtonComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Layout/ButtonComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEJ1dHRvbkNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Layout/CarouselHomeComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Layout/CarouselHomeComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XENhcm91c2VsSG9tZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Layout/FooterComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Layout/FooterComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEZvb3RlckNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Pages/AnnonceComponent/AnnonceComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/AnnonceComponent/AnnonceComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub25jZUNvbXBvbmVudFxBbm5vbmNlQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Pages/Counter.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Pages/Home.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Pages/PaymentSuccess.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/PaymentSuccess.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudFN1Y2Nlc3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Pages/TextComponent/TextComponent.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/TextComponent/TextComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGV4dENvbXBvbmVudFxUZXh0Q29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Pages/Weather.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/_Imports.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Client/Shared/MainLayout.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxNYWluTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-gz1xrndbfa
 
-[C:/Users/Chaos/Documents/GitHub/Projet-d-integration/ProjecIntegration.Api/Blazor.UI/Layout/NavMenu.razor]
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-s5urix2hf2

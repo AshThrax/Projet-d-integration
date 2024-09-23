@@ -336,24 +336,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Chaos\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\quentin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationChat\\ApplicationChat.csproj",
+      "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationChat\\ApplicationChat.csproj",
       "projectName": "ApplicationChat",
-      "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationChat\\ApplicationChat.csproj",
-      "packagesPath": "C:\\Users\\Chaos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\ApplicationChat\\obj\\",
+      "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationChat\\ApplicationChat.csproj",
+      "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplicationChat\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Chaos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -368,8 +363,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Chaos\\Documents\\GitHub\\Projet-d-integration\\ProjecIntegration.Api\\Domain\\Domain.csproj"
+            "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Domain\\Domain.csproj"
             }
           }
         }
