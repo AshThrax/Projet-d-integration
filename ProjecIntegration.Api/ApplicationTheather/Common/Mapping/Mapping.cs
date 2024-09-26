@@ -47,7 +47,12 @@ namespace ApplicationTheather.Common.Mapping
             CreateMap<Siege, SiegeDto>().ReverseMap();
             CreateMap<AddSiegeDto , Siege>();
             CreateMap<UpdateSiegeDto, Siege>();
-            
+            //------------------------------------------
+            CreateMap<Favoris, FavorisDto>().ReverseMap();
+            CreateMap<FavorisDto, Favoris>();
+            CreateMap<AddFavoritDto, Favoris>();
+            CreateMap<UpdateFavoritDto, Favoris>();
+
         }
     }
 }

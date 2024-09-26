@@ -1,13 +1,10 @@
 ﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.Common.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
-using Azure;
 using Domain.Entity.TheatherEntity;
 using Domain.Enum;
 using Domain.ServiceResponse;
-using Microsoft.VisualBasic;
-using static System.Diagnostics.Activity;
 
 namespace DataInfraTheather.BusinessService
 {

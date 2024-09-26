@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8dGA57pXMsc=",
+  "dgSpecHash": "MeEIbpBW7GY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\quentin\\.nuget\\packages\\auth0.authenticationapi\\7.25.1\\auth0.authenticationapi.7.25.1.nupkg.sha512",
     "C:\\Users\\quentin\\.nuget\\packages\\auth0.core\\7.25.1\\auth0.core.7.25.1.nupkg.sha512",

@@ -1,6 +1,5 @@
 ﻿using ApplicationTheather.Common.Exceptions;
-using ApplicationTheather.Common.Interfaces.IRepository;
-using ApplicationTheather.DTO;
+using ApplicationTheather.Common.IRepository;
 using Domain.Entity.TheatherEntity;
 namespace WebApi.Controllers.Theater
 {

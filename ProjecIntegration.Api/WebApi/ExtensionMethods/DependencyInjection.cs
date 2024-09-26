@@ -1,7 +1,6 @@
-﻿
-
-using ApplicationUser;
+﻿using ApplicationUser;
 using InfrastructureUser;
+using WebApi.ApiService.UserService;
 
 namespace WebApi.ExtensionMethods
 {
@@ -42,6 +41,7 @@ namespace WebApi.ExtensionMethods
             services.AddScoped<IBusinessComplexe, BusinessComplexe>(); //business Complexe Service
             services.AddScoped<IBusinessPiece, BusinessPiece>(); //Business Piece Service
             services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
         public static IServiceCollection AddApplication(this IServiceCollection services)

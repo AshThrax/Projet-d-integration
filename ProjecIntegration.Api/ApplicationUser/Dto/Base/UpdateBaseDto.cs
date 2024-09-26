@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationUser.Dto.Base
+namespace ApplicationUser.Dto
 {
     public class UpdateUserDetailDto
     {

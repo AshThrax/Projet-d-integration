@@ -1,10 +1,4 @@
-﻿using WebApi.Validator;
-using ApplicationTheather.Common.Interfaces.IRepository;
-using Domain.Entity.TheatherEntity;
-using ApplicationTheather.Common.Exceptions;
-using ApplicationTheather.DTO;
-using ApplicationPublication.Dto;
-using ApplicationTheather.BusinessService;
+﻿using ApplicationTheather.Common.Exceptions;
 using Domain.DataType;
 using Domain.ServiceResponse;
 

@@ -1,7 +1,4 @@
-﻿using ApplicationTheather.DTO;
-using FluentValidation;
-
-namespace WebApi.Validator
+﻿namespace WebApi.Validator
 {
     public class UpdtRepresentationValidator : AbstractValidator<UpdateRepresentationDto>
     {

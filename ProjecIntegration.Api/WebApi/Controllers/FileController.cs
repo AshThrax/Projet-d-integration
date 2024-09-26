@@ -1,9 +1,5 @@
-﻿using ApplicationTheather.DTO;
-using dataInfraTheather.Infrastructure.Persistence;
+﻿using dataInfraTheather.Infrastructure.Persistence;
 using Domain.Entity.TheatherEntity;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApi.ApiService.FileService;
 using WebApi.ApiService.UploadResult;
 
@@ -19,7 +15,10 @@ namespace WebApi.Controllers
         private readonly IFileService _fileService;
         private readonly ApplicationDbContext _context;
 
-        public FileController(IFileService fileService, ApplicationDbContext context,IMapper mapper, ILogger<FileController> logger)
+        public FileController(IFileService fileService, 
+                              ApplicationDbContext context,
+                              IMapper mapper, 
+                              ILogger<FileController> logger)
         {
             _mapper = mapper;
             _fileService = fileService;

@@ -1,11 +1,5 @@
-﻿using ApplicationUser.Dto.Signalement;
-using ApplicationUser.Dto.SignalementType;
-using ApplicationUser.Repository;
-using ApplicationUser.Service;
-using Auth0.ManagementApi.Models;
+﻿using ApplicationUser.Dto.SignalementType;
 using Domain.Entity.PublicationEntity.Modération;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {

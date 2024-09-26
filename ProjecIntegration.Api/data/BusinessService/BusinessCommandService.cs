@@ -1,9 +1,8 @@
 ﻿
 using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.Common.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
-using Azure;
 using DataInfraTheather.Services;
 using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;

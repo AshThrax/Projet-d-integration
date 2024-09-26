@@ -1,4 +1,4 @@
-﻿using ApplicationUser.Repository;
+﻿using ApplicationUser.Common.Repository;
 using Domain.Entity.PublicationEntity.Modération;
 using InfrastructureUser.Infrastructure;
 using System;

@@ -1,7 +1,6 @@
 ﻿global using FluentValidation;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Authorization;
-global using Microsoft.IdentityModel.Tokens;
 global using System.Security.Claims;
 global using WebApi.ApiService;
 global using AutoMapper;
@@ -23,3 +22,6 @@ global using InfrastructureAnnonce;
 global using Microsoft.Extensions.Options;
 global using WebApi.ApplicationHub;
 global using Microsoft.AspNetCore.SignalR;
+global using ApplicationUser.Service;
+global using Auth0.ManagementApi.Models;
+global using ApplicationTheater.DTO;

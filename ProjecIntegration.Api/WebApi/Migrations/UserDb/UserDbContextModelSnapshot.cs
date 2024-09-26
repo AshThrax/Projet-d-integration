@@ -49,9 +49,6 @@ namespace WebApi.Migrations.UserDb
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserDetailsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserSignaled")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -63,8 +60,6 @@ namespace WebApi.Migrations.UserDb
                     b.HasKey("Id");
 
                     b.HasIndex("SignalementTypeId");
-
-                    b.HasIndex("UserDetailsId");
 
                     b.ToTable("Signalements");
                 });
@@ -99,7 +94,7 @@ namespace WebApi.Migrations.UserDb
                     b.ToTable("signalementTypes");
                 });
 
-            modelBuilder.Entity("Domain.Entity.TheatherEntity.Image", b =>
+            modelBuilder.Entity("Domain.Entity.UserEntity.Banner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,93 +112,16 @@ namespace WebApi.Migrations.UserDb
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Image");
-                });
-
-            modelBuilder.Entity("Domain.Entity.UserEntity.Follow", b =>
-                {
-                    b.Property<string>("FollowerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FollwedId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("FollowerId", "FollwedId");
-
-                    b.ToTable("Follows");
-                });
-
-            modelBuilder.Entity("Domain.Entity.UserEntity.UserDetails.Favorit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PieceFavorite")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserDetailId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserDetailId")
-                        .IsUnique();
-
-                    b.ToTable("Favorits");
-                });
-
-            modelBuilder.Entity("Domain.Entity.UserEntity.UserDetails.UserDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("FavorisId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageId");
-
-                    b.ToTable("UserDetails");
+                    b.ToTable("Banner");
                 });
 
-            modelBuilder.Entity("Domain.Entity.publicationEntity.Feedback", b =>
+            modelBuilder.Entity("Domain.Entity.UserEntity.FeedBack.Feedback", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -237,6 +155,19 @@ namespace WebApi.Migrations.UserDb
                     b.ToTable("FeedBacks");
                 });
 
+            modelBuilder.Entity("Domain.Entity.UserEntity.Follow", b =>
+                {
+                    b.Property<string>("FollowerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FollowId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FollowerId", "FollowId");
+
+                    b.ToTable("Follows");
+                });
+
             modelBuilder.Entity("Domain.Entity.PublicationEntity.Modération.Signalement", b =>
                 {
                     b.HasOne("Domain.Entity.PublicationEntity.Modération.SignalementType", "SignalementType")
@@ -245,44 +176,7 @@ namespace WebApi.Migrations.UserDb
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entity.UserEntity.UserDetails.UserDetails", "UserDetails")
-                        .WithMany("HasSignalements")
-                        .HasForeignKey("UserDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("SignalementType");
-
-                    b.Navigation("UserDetails");
-                });
-
-            modelBuilder.Entity("Domain.Entity.UserEntity.UserDetails.Favorit", b =>
-                {
-                    b.HasOne("Domain.Entity.UserEntity.UserDetails.UserDetails", "UserDetail")
-                        .WithOne("Favoris")
-                        .HasForeignKey("Domain.Entity.UserEntity.UserDetails.Favorit", "UserDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("UserDetail");
-                });
-
-            modelBuilder.Entity("Domain.Entity.UserEntity.UserDetails.UserDetails", b =>
-                {
-                    b.HasOne("Domain.Entity.TheatherEntity.Image", "Banner")
-                        .WithMany()
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Banner");
-                });
-
-            modelBuilder.Entity("Domain.Entity.UserEntity.UserDetails.UserDetails", b =>
-                {
-                    b.Navigation("Favoris");
-
-                    b.Navigation("HasSignalements");
                 });
 #pragma warning restore 612, 618
         }

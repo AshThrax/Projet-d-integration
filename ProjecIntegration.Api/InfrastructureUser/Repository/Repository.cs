@@ -1,7 +1,8 @@
-﻿using ApplicationUser.Repository;
+﻿using ApplicationUser.Common.Repository;
 using Domain.Entity;
 using InfrastructureUser.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Linq.Expressions;
 
 
@@ -127,6 +128,27 @@ namespace InfrastructureUser.Repository
             {
 
                 throw;
+            }
+        }
+
+        public async Task<T> Get(Expression<Func<T, bool>> includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            try
+            {
+                
+                if (includeProperties !=null)
+                {
+                    query = query.Where(includeProperties); 
+                }
+             
+                return await query.SingleOrDefaultAsync() ?? throw new NullReferenceException();
+
+            }
+            catch (Exception)
+            {
+
+                return query.First();
             }
         }
     }

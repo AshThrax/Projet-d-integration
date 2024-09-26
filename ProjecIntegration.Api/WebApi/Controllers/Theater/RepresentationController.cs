@@ -1,9 +1,5 @@
-﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Exceptions;
-using ApplicationTheather.Common.Interfaces.IRepository;
-using ApplicationTheather.DTO;
+﻿using ApplicationTheather.Common.Exceptions;
 using Domain.DataType;
-using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
 
 namespace WebApi.Controllers.Theater

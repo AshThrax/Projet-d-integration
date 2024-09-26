@@ -1,6 +1,5 @@
 ﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Interfaces;
-using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.Common.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using dataInfraTheather.Infrastructure.Repository;
 using DataInfraTheather.BusinessService;
@@ -46,6 +45,7 @@ namespace dataInfraTheather
             services.AddScoped<IThemeRepository, ThemeRepository>();
             services.AddScoped<ISiegeCommandRepository, SiegeCommandRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFavorisrepository, FavorisRepository>();
 
             services.AddScoped<IBusinessCommandService, BusinessCommandService>();//commande services user
             services.AddScoped<IBusinessRepresentation, BusinessRepresntation>();//Represnetation business Service

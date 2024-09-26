@@ -1,5 +1,5 @@
 ﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.Common.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
 using Domain.Entity.TheatherEntity;

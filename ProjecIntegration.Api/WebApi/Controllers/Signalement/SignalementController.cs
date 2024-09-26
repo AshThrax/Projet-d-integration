@@ -1,4 +1,5 @@
-﻿using ApplicationUser.Dto.Signalement;
+﻿using ApplicationUser.Dto;
+using ApplicationUser.Dto.Signalement;
 using ApplicationUser.Service;
 using Auth0.ManagementApi.Models;
 using Domain.Entity.PublicationEntity.Modération;

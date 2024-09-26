@@ -1,10 +1,6 @@
-﻿using ApplicationUser.Service;
-using ApplicationUser.Dto.Base;
-using Domain.Entity;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Entity;
 using Domain.ServiceResponse;
-using ApplicationUser.Dto.FeedBack;
+using ApplicationUser.Dto;
 
 namespace WebApi.Controllers
 {

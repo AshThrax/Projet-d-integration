@@ -1,6 +1,9 @@
 ﻿using ApplicationTheather.Services;
-using ApplicationUser.Repository;
+using ApplicationUser.BusinessService;
+using ApplicationUser.Common.IRepository;
+using ApplicationUser.Common.Repository;
 using ApplicationUser.Service;
+using InfrastructureUser.BusinessService;
 using InfrastructureUser.Infrastructure;
 using InfrastructureUser.Repository;
 using InfrastructureUser.Service;
@@ -31,15 +34,13 @@ namespace InfrastructureUser
             //-------Feedback
             services.AddScoped<IFeedBackRepository,FeedbackRepository>();
             services.AddScoped<IFeedBackService, FeedBackService>();
-            //------Favorit
-            services.AddScoped<IFavorisRepository, FavorisRepository>();
-            services.AddScoped<IFavoritService, FavoritService>();
+       
             //------Follow
             services.AddScoped<IFollowRepository, FollowRepository>();
             services.AddScoped<IFollowService, FollowService>();
-            //------UserDetails------
-            services.AddScoped<IUserDetailRepository, UserDetailsRepository>(); 
-            services.AddScoped<IUserDetailService, UserDetailsService>();
+            //------Banner
+            services.AddScoped<IBannerRepository, BannerRepository>();
+            services.AddScoped<IBannerService, BannerService>();
             //------Signalement------
             services.AddScoped<ISignalementRepository, SignalementRepository>();
             services.AddScoped<ISignalementService, SignalementService>();

@@ -1,5 +1,5 @@
-﻿using ApplicationUser.Dto.Follow;
-using ApplicationUser.Repository;
+﻿using ApplicationUser.Common.Repository;
+using ApplicationUser.Dto.Follow;
 using System;
 using System.Collections.Generic;
 using System.Linq;

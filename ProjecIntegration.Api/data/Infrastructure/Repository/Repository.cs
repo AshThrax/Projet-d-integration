@@ -1,4 +1,4 @@
-﻿using ApplicationTheather.Common.Interfaces.IRepository;
+﻿using ApplicationTheather.Common.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using Domain.Entity;
 using System.Linq.Expressions;
@@ -125,6 +125,27 @@ namespace dataInfraTheather.Infrastructure.Repository
             {
 
                 throw;
+            }
+        }
+
+        public async Task<T> Get(Expression<Func<T, bool>> includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            try
+            {
+
+                if (includeProperties != null)
+                {
+                    query = query.Where(includeProperties);
+                }
+
+                return await query.SingleOrDefaultAsync() ?? throw new NullReferenceException();
+
+            }
+            catch (Exception)
+            {
+
+                return query.First();
             }
         }
     }

@@ -1,5 +1,5 @@
 ﻿using ApplicationTheater.DTO;
-using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.Common.IRepository;
 
 namespace DataInfraTheather.Infrastructure.Repository
 {

@@ -1,16 +1,9 @@
 ﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Interfaces.IRepository;
+using ApplicationTheather.Common.IRepository;
 using ApplicationTheather.DTO;
 using AutoMapper;
-using Azure;
-using DataInfraTheather.Infrastructure.Repository;
 using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataInfraTheather.BusinessService
 {

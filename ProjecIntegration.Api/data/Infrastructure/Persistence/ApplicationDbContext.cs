@@ -17,8 +17,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
         public DbSet<Theme> Theme => Set<Theme>();
         public DbSet<Siege> Siege => Set<Siege>();
         public DbSet<Image> Image => Set<Image>();
-
-
+        public DbSet<Favoris> Favoris => Set<Favoris>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -158,7 +157,7 @@ namespace dataInfraTheather.Infrastructure.Persistence
 
             //-------SiegeCommand
 
-            modelBuilder.Entity<SiegeCommand>().HasKey(x => x.Id);
+            modelBuilder.Entity<SiegeCommand>().HasKey(x => new { x.SiegeId,x.CommandId });
 
             modelBuilder.Entity<SiegeCommand>()
                         .Property(x => x.CreatedDate)
@@ -173,7 +172,10 @@ namespace dataInfraTheather.Infrastructure.Persistence
             //-----------image
 
             //----------------------------end Config
-
+            //----------------------Favorites--------------
+            modelBuilder.Entity<Favoris>()
+                        .HasKey(c => c.Id);
+            
             base.OnModelCreating(modelBuilder);
 
         }

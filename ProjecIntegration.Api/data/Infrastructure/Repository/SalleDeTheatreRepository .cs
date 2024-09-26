@@ -1,4 +1,4 @@
-﻿using ApplicationTheather.Common.Interfaces.IRepository;
+﻿using ApplicationTheather.Common.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using Domain.Entity.TheatherEntity;
 using Microsoft.EntityFrameworkCore;

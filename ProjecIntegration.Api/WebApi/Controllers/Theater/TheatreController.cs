@@ -1,9 +1,4 @@
-﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Exceptions;
-using ApplicationTheather.DTO;
-using Domain.Entity.TheatherEntity;
-
-namespace WebApi.Controllers.Theater
+﻿namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]

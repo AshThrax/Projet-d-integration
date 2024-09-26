@@ -1,11 +1,6 @@
-﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.Common.Exceptions;
-using ApplicationTheather.Common.Interfaces.IRepository;
-using ApplicationTheather.DTO;
+﻿using ApplicationTheather.Common.Exceptions;
 using Domain.DataType;
-using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
-using Stripe;
 using WebApi.ApiService.FileService;
 namespace WebApi.Controllers.Theater
 {

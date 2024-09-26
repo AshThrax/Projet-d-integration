@@ -1,6 +1,165 @@
 [
   {
-    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.publicationEntity.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBack, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedback, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
+    "Method": "AddBanner",
+    "RelativePath": "api/Banner",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "files",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.BannerDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
+    "Method": "GetBanner",
+    "RelativePath": "api/Banner",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.BannerDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
+    "Method": "UpdateBanner",
+    "RelativePath": "api/Banner/{bannerId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bannerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.BannerDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.FavorisController",
+    "Method": "CreateFavoris",
+    "RelativePath": "api/Favoris",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationTheather.DTO.FavorisDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.FavorisController",
+    "Method": "GetFavorisById",
+    "RelativePath": "api/Favoris/{page}/{favorisId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "favorisId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.DataType.Pagination\u00601[[ApplicationTheather.DTO.PieceDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.FavorisController",
+    "Method": "AddPiecetoFavoris",
+    "RelativePath": "api/Favoris/addFavoris/{favorisId}/{pieceId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "favorisId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pieceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationTheather.DTO.FavorisDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAll",
     "RelativePath": "api/FeedBack",
     "HttpMethod": "GET",
@@ -20,7 +179,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.publicationEntity.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBack, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedback, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "AddAsync",
     "RelativePath": "api/FeedBack",
     "HttpMethod": "POST",
@@ -29,7 +188,7 @@
     "Parameters": [
       {
         "Name": "AddDto",
-        "Type": "ApplicationUser.Dto.FeedBack.AddFeedBack",
+        "Type": "ApplicationUser.Dto.FeedBack.AddFeedBackDto",
         "IsRequired": true
       }
     ],
@@ -46,7 +205,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.publicationEntity.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBack, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedback, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetById",
     "RelativePath": "api/FeedBack/{Id}",
     "HttpMethod": "GET",
@@ -72,7 +231,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.publicationEntity.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBack, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedback, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "AddAsync",
     "RelativePath": "api/FeedBack/{Id}",
     "HttpMethod": "DELETE",
@@ -98,7 +257,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.publicationEntity.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBack, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedback, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "AddAsync",
     "RelativePath": "api/FeedBack/{updtId}",
     "HttpMethod": "PUT",
@@ -112,7 +271,7 @@
       },
       {
         "Name": "AddDto",
-        "Type": "ApplicationUser.Dto.FeedBack.UpdateFeedback",
+        "Type": "ApplicationUser.Dto.FeedBack.UpdateFeedbackDto",
         "IsRequired": true
       }
     ],
@@ -155,7 +314,265 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.AnnonceController",
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAll",
+    "RelativePath": "api/Signalement",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "AddAsync",
+    "RelativePath": "api/Signalement",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AddDto",
+        "Type": "ApplicationUser.Dto.AddSignalementDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetById",
+    "RelativePath": "api/Signalement/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "AddAsync",
+    "RelativePath": "api/Signalement/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "AddAsync",
+    "RelativePath": "api/Signalement/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "AddDto",
+        "Type": "ApplicationUser.Dto.Signalement.UpdateSignalementDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAll",
+    "RelativePath": "api/SignalementType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "AddAsync",
+    "RelativePath": "api/SignalementType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AddDto",
+        "Type": "ApplicationUser.Dto.SignalementType.AddSignalementTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetById",
+    "RelativePath": "api/SignalementType/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "AddAsync",
+    "RelativePath": "api/SignalementType/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "AddAsync",
+    "RelativePath": "api/SignalementType/{updtId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updtId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "AddDto",
+        "Type": "ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AnnonceController",
     "Method": "GetAll",
     "RelativePath": "api/v1/Annonce",
     "HttpMethod": "GET",
@@ -204,7 +621,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.AnnonceController",
+    "ContainingType": "WebApi.Controllers.AnnonceController",
     "Method": "CreateAnnonce",
     "RelativePath": "api/v1/Annonce",
     "HttpMethod": "POST",
@@ -253,7 +670,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.AnnonceController",
+    "ContainingType": "WebApi.Controllers.AnnonceController",
     "Method": "GetById",
     "RelativePath": "api/v1/Annonce/{annonceId}",
     "HttpMethod": "GET",
@@ -302,7 +719,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.AnnonceController",
+    "ContainingType": "WebApi.Controllers.AnnonceController",
     "Method": "UpdateAnnonce",
     "RelativePath": "api/v1/Annonce/{annonceId}",
     "HttpMethod": "PUT",
@@ -352,7 +769,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.AnnonceController",
+    "ContainingType": "WebApi.Controllers.AnnonceController",
     "Method": "UpdateAnnonce",
     "RelativePath": "api/v1/Annonce/{annonceId}",
     "HttpMethod": "DELETE",
@@ -1143,7 +1560,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.NotificationController",
+    "ContainingType": "WebApi.Controllers.NotificationController",
     "Method": "GetAll",
     "RelativePath": "api/v1/Notification/get-notification",
     "HttpMethod": "GET",
@@ -1192,7 +1609,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.NotificationController",
+    "ContainingType": "WebApi.Controllers.NotificationController",
     "Method": "GetById",
     "RelativePath": "api/v1/Notification/get-notification/{notificationId}",
     "HttpMethod": "GET",
@@ -1241,7 +1658,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.NotificationController",
+    "ContainingType": "WebApi.Controllers.NotificationController",
     "Method": "CreateAnnonce",
     "RelativePath": "api/v1/Notification/post-notification",
     "HttpMethod": "POST",
@@ -1290,7 +1707,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.NotificationController",
+    "ContainingType": "WebApi.Controllers.NotificationController",
     "Method": "UpdateAnnonce",
     "RelativePath": "api/v1/Notification/supress-notification/{notificationId}",
     "HttpMethod": "DELETE",
@@ -1335,7 +1752,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Notification.NotificationController",
+    "ContainingType": "WebApi.Controllers.NotificationController",
     "Method": "UpdateAnnonce",
     "RelativePath": "api/v1/Notification/update-notification/{notifId}",
     "HttpMethod": "PUT",
@@ -1664,7 +2081,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PostController",
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "GetPostById",
     "RelativePath": "api/v1/Post/{postById}",
     "HttpMethod": "GET",
@@ -1680,7 +2097,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PostController",
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "DeletePostFromPublication",
     "RelativePath": "api/v1/Post/{postById}",
     "HttpMethod": "DELETE",
@@ -1720,7 +2137,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PostController",
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "UpdatePostfromPublication",
     "RelativePath": "api/v1/Post/{publicationById}",
     "HttpMethod": "PUT",
@@ -1770,7 +2187,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PostController",
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "CreatePublication",
     "RelativePath": "api/v1/Post/{publicationById}",
     "HttpMethod": "POST",
@@ -1828,7 +2245,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PostController",
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "GetAllPostFromPublication",
     "RelativePath": "api/v1/Post/publication-all/{publicationId}/{page}",
     "HttpMethod": "GET",
@@ -1877,7 +2294,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PostController",
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "GetAllPostFromUser",
     "RelativePath": "api/v1/Post/user/{publicationId}",
     "HttpMethod": "GET",
@@ -1921,7 +2338,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "GetpublicationByPieceId",
     "RelativePath": "api/v1/Publication/by-piece/{page}/{pieceId}",
     "HttpMethod": "GET",
@@ -1942,7 +2359,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "CreatePublication",
     "RelativePath": "api/v1/Publication/create-publication",
     "HttpMethod": "POST",
@@ -1991,7 +2408,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "DeletePublication",
     "RelativePath": "api/v1/Publication/delete-publication/{publicationById}",
     "HttpMethod": "DELETE",
@@ -2007,7 +2424,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "GetAllPublication",
     "RelativePath": "api/v1/Publication/publication-all",
     "HttpMethod": "GET",
@@ -2050,7 +2467,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "GetPublicationById",
     "RelativePath": "api/v1/Publication/publication-by-id/{publicationId}",
     "HttpMethod": "GET",
@@ -2099,7 +2516,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "GetPublicationByUser",
     "RelativePath": "api/v1/Publication/publication-by-user/{page}",
     "HttpMethod": "GET",
@@ -2148,7 +2565,7 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.Publication.PublicationController",
+    "ContainingType": "WebApi.Controllers.PublicationController",
     "Method": "UpdatePublication",
     "RelativePath": "api/v1/Publication/update-publication/{publicationById}",
     "HttpMethod": "PUT",
@@ -2819,6 +3236,22 @@
   {
     "ContainingType": "WebApi.Controllers.UserController",
     "Method": "GetUserID",
+    "RelativePath": "api/v1/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserController",
+    "Method": "GetUserId",
     "RelativePath": "api/v1/User/{userId}",
     "HttpMethod": "GET",
     "IsController": true,

@@ -12,9 +12,9 @@ namespace ApplicationUser.Dto.User
         [JsonPropertyName("email")]
         public string Email { get; set; } = string.Empty;
         [JsonPropertyName("phone_number")]
-        public int Phone_number { get; set; }
+        public string Phone_number { get; set; }
         [JsonPropertyName("user_metadata")]
-        public string[]? UserMetadata { get; set; }
+        public dynamic UserMetadata { get; set; }
         [JsonPropertyName("blocked")]
         public bool Blocked { get; set; }
         [JsonPropertyName("email_verified")]
@@ -22,7 +22,7 @@ namespace ApplicationUser.Dto.User
         [JsonPropertyName("phone_verified")]
         public bool PhoneVerified { get; set; }
         [JsonPropertyName("app_metadata")]
-        public string[]? App_metadata { get; set; }
+        public dynamic App_metadata { get; set; }
         [JsonPropertyName("given_name")]
         public string? GivenName { get; set; }
         [JsonPropertyName("family_name")]

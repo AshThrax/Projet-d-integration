@@ -11,7 +11,7 @@ namespace WebApi.ApiService
         Task<string> GetToken();
         Task<string> GetSub();
         Task<string> GetEmail();
-        Task<UserDto> GetUser();    
+      
     }
 
     public  class CustomGetToken : ICustomGetToken
@@ -64,18 +64,6 @@ namespace WebApi.ApiService
                 throw;
             }
         }
-        public async Task<UserDto> GetUser()
-        {
-            UserDto getuser =new UserDto() 
-            {
-               Email= _contextAccessor?.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "email")?.Value,
-               Picture= _contextAccessor?.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
-               GivenName = _contextAccessor?.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value,
-               FamilyName= _contextAccessor?.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "family_name")?.Value,
-                UserName = _contextAccessor?.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "user_name")?.Value,
-               User_id= _contextAccessor?.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-            };
-            return getuser;
-        }
+       
     }
 }

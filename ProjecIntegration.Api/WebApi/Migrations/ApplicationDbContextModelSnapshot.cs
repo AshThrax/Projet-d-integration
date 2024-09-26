@@ -17,7 +17,7 @@ namespace WebApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -142,6 +142,29 @@ namespace WebApi.Migrations
                     b.ToTable("Complexe");
                 });
 
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.Favoris", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Favoris");
+                });
+
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Image", b =>
                 {
                     b.Property<int>("Id")
@@ -187,6 +210,9 @@ namespace WebApi.Migrations
                     b.Property<int>("Duree")
                         .HasColumnType("int");
 
+                    b.Property<int?>("FavorisId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
 
@@ -201,6 +227,8 @@ namespace WebApi.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FavorisId");
 
                     b.HasIndex("ImageId");
 
@@ -311,11 +339,8 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.SiegeCommand", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("SiegeId")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CommandId")
                         .HasColumnType("int");
@@ -323,17 +348,15 @@ namespace WebApi.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SiegeId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("SiegeId", "CommandId");
 
                     b.HasIndex("CommandId");
-
-                    b.HasIndex("SiegeId");
 
                     b.ToTable("SiegeCommand");
                 });
@@ -403,6 +426,10 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Piece", b =>
                 {
+                    b.HasOne("Domain.Entity.TheatherEntity.Favoris", null)
+                        .WithMany("PieceFavorite")
+                        .HasForeignKey("FavorisId");
+
                     b.HasOne("Domain.Entity.TheatherEntity.Image", "Image")
                         .WithMany()
                         .HasForeignKey("ImageId");
@@ -483,6 +510,11 @@ namespace WebApi.Migrations
                     b.Navigation("Catalogue");
 
                     b.Navigation("SalleDeTheatres");
+                });
+
+            modelBuilder.Entity("Domain.Entity.TheatherEntity.Favoris", b =>
+                {
+                    b.Navigation("PieceFavorite");
                 });
 
             modelBuilder.Entity("Domain.Entity.TheatherEntity.Piece", b =>

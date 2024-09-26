@@ -1,9 +1,4 @@
-﻿using ApplicationTheather.BusinessService;
-using ApplicationTheather.DTO;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace WebApi.Controllers.Theater
+﻿namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]

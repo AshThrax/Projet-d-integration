@@ -1,13 +1,7 @@
 ﻿using Domain.Entity.PublicationEntity.Modération;
 using Domain.Entity.UserEntity;
 using Domain.Entity.UserEntity.FeedBack;
-using Domain.Entity.UserEntity.UserDetails;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InfrastructureUser.Infrastructure
 {
@@ -17,8 +11,7 @@ namespace InfrastructureUser.Infrastructure
         { 
         }
         public DbSet<Follow> Follows { get; set; }
-        public DbSet<UserDetails> UserDetails { get; set; }
-        public DbSet<Favorit> Favorits { get; set; }
+        public DbSet<Banner> Banner { get; set; }
         public DbSet<Feedback> FeedBacks { get; set; }
         public DbSet<SignalementType> signalementTypes { get; set; }
         public DbSet<Signalement> Signalements { get; set; }
@@ -26,18 +19,12 @@ namespace InfrastructureUser.Infrastructure
         {
             //----------------------Follows----------------
             modelBuilder.Entity<Follow>()
-                        .HasKey(Follow => new { Follow.FollowerId, Follow.FollwedId });
-           //----------------------UserDetails------------
-            modelBuilder.Entity<UserDetails>()
-                        .HasKey(c=>c.Id);
-           //----------------------Favorites--------------
-            modelBuilder.Entity<Favorit>()
-                        .HasKey(c => c.Id);
+                        .HasKey(Follow => new { Follow.FollowerId, Follow.FollowId });
+           //----------------------Banner------------
+           modelBuilder.Entity<Banner>().HasKey(x=>x.Id);
 
-            modelBuilder.Entity<Favorit>()
-                        .HasOne(x => x.UserDetail)
-                        .WithOne(cd => cd.Favoris)
-                        .HasForeignKey<Favorit>(xc => xc.UserDetailId);
+  
+
            //----------------------Feedbacks-------------
             modelBuilder.Entity<Feedback>()
                         .HasKey(c => c.Id);
@@ -46,9 +33,9 @@ namespace InfrastructureUser.Infrastructure
                         .HasKey(c => c.Id);
 
             modelBuilder.Entity<Signalement>()
-                        .HasOne(c => c.UserDetails)
-                        .WithMany(x => x.HasSignalements);
-        
+                .HasOne(x => x.SignalementType)
+                .WithMany()
+                .HasForeignKey(c => c.SignalementTypeId);
             //---------------------SignalementType-------
             modelBuilder.Entity<SignalementType>().HasKey(c => c.Id);
         }

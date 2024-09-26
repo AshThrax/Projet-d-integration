@@ -1,6 +1,6 @@
-﻿using ApplicationTheather.Common.Interfaces.IRepository;
+﻿using ApplicationTheather.Common.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
-using Domain.Entity.TheatherEntity; 
+using Domain.Entity.TheatherEntity;
 
 namespace dataInfraTheather.Infrastructure.Repository
 {

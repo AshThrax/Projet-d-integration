@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj": {}
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
     "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\ApplciationPublication\\ApplicationPublication.csproj": {
@@ -751,14 +751,14 @@
         }
       }
     },
-    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj": {
+    "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\webapi\\obj\\",
+        "outputPath": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",

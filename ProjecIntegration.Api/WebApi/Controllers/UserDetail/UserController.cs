@@ -1,54 +1,87 @@
-﻿using Auth0.ManagementApi.Models;
-using Auth0.ManagementApi.Paging;
-using Auth0.ManagementApi;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ApplicationTheather.DTO;
-using ApplicationAnnonce.DTO;
-using MongoDB.Bson.IO;
-using Newtonsoft.Json;
-using WebApi.ApiService.Authorization;
+﻿using ApplicationUser.Dto.User;
+using Auth0.ManagementApi.Models;
+using Domain.ServiceResponse;
+using WebApi.ApiService.UserService;
 
 namespace WebApi.Controllers;
-    [ApiController]
-    [Route("api/v1/[controller]")]
-    //[Authorize("Admin")]
-    public class UserController : ControllerBase
+[ApiController]
+[Route("api/v1/[controller]")]
+//[Authorize("Admin")]
+public class UserController : ControllerBase
+{
+
+    private readonly IUserService _userService; 
+    public UserController(IUserService userService)
     {
-
-        private readonly IManagementApiClient _managementApiClient;
-        private readonly ICustomGetToken _tok;
-        public UserController(IManagementApiClient managementApiClient, ICustomGetToken tok)
-        {
-            _managementApiClient = managementApiClient;
-            _tok = tok;
-        }
-
-
-
-        [HttpGet("{userId}")]
-        public async Task<ActionResult> GetUserID(string userId)
-        {
-            User apiClient = await _managementApiClient.Users.GetAsync(userId);
-            UserDto dto = new UserDto()
-            {
-                Email = apiClient.Email,
-                FamilyName = apiClient.LastName,
-                GivenName = apiClient.FirstName,
-                Name = apiClient.NickName,
-                Picture = apiClient.Picture,
-                UserName = apiClient.UserName,
-                User_id = apiClient.UserId,
-            };
-            return Ok(dto);
-        }
-        [HttpDelete("userId")]
-        public async Task<ActionResult> DeleteUserID(string userId)
-        {
-            var apiClient = _managementApiClient.Users.DeleteAsync(userId);
-
-            return NoContent();
-        }
-
+           _userService = userService;
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    [HttpGet("{userId}")]
+    public async Task<ActionResult> GetUserId(string userId)
+    {
+        try
+        {
+            ServiceResponse<User> response = await _userService.GetById(userId);
+            if (!response.Success)
+            {
+               return BadRequest(response.Message);      
+            }
+            return Ok(response);
+
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="userIds"></param>
+    /// <returns></returns>
+    [HttpGet()]
+    public async Task<ActionResult> GetUserID([FromQuery] List<string> userIds)
+    {
+       try
+       {
+            ServiceResponse<List<User>> response = await _userService.GetlistId(userIds);
+            if (!response.Success)
+            {
+                    return BadRequest(response.Message);
+            }
+            return Ok(response);
+       }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    [HttpDelete("userId")]
+    public async Task<ActionResult> DeleteUserID(string userId)
+    {
+        try
+        {
+            ServiceResponse<User> response = await _userService.DeleteId(userId);
+            if (!response.Success)
+            {
+                return BadRequest(response.Message);
+            }
+            return Ok(response);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+
+}
 
