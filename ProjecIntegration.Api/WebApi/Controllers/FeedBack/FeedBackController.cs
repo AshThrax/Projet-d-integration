@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class FeedBackController : GeneriqueController<Feedback, FeedBackDto, AddFeedBackDto, UpdateFeedbackDto>
     {

@@ -1,0 +1,109 @@
+﻿.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.cover-photo {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: #f3f3f3;
+}
+
+.cover-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    position:relative;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.profile-photo {
+    position: absolute; /* Permet de positionner l'image de profil au-dessus de la bannière */
+    
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 3px solid white;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-details {
+    margin-top: 10px;
+}
+
+    .user-details h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .user-details p {
+        color: gray;
+        font-size: 14px;
+    }
+
+.btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 15px 0;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-count {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: gray;
+}
+
+.post-feed {
+    margin-top: 20px;
+}
+
+.post {
+    margin-bottom: 20px;
+}
+
+.post-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.post p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}

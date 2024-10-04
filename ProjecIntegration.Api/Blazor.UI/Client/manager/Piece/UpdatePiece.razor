@@ -1,4 +1,15 @@
 ﻿@page "/manager/updatePiece/{Id:int}"
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.Services.User
+@using Blazor.UI.Data.services.TheatherService
+@using Blazor.UI.data.services.TheatherService
+@using Newtonsoft.Json
+@inject HttpClient Http;
+@inject IPieceService pieceService;
+@inject IThemeService themeService;
+@inject IFileService fileService;
+@inject NavigationManager manager;
+
 <div class="flex-fill m-4 p-4">
 <h3>UpdatePiece</h3>
 <div class=" m-4 p-4">
@@ -6,20 +17,101 @@
         <div class="col"></div>
         <div class="col"></div>
         <div class="col"></div>
-        <button type="button" class="col col-sm-3  btn btn-primary" @onclick="GetAllPiece">back to profile page</button>
+        <button type="button" class="col col-sm-3  btn btn-primary" @onclick="GetAllPiece"></button>
         <button type="button" class="col col-sm-3   btn btn-warning" @onclick="GetHome">backMaineMenu</button>
         <button type="button" class="col col-sm-3   btn btn-warning" @onclick="Previous">back to reservation</button>
     </div>
 </div>
 <div>
+        @if (GetPiece !=null)
+        {
+           <p>hello there </p>
+           <form>
+                <div class="form-group mb-3 w-50">
+                    <div>
+                        <label class="form-label for="titre">Titre:</label>
+                        <input class="form-control" id="titre" @bind="GetPiece.Titre" />
+                    </div>
 
-</div>
+                    <div>
+                        <label class="form-label for="duree">Duree:</label>
+                        <input class="form-control" id="duree" @bind="GetPiece.Duree" type="number" />
+                    </div>
+
+                    <div>
+                        <label class="form-label for="description">Description:</label>
+                        <textarea class="form-control " id="description" @bind="GetPiece.Description" rows="3">
+                        </textarea>
+                    </div>
+                    <div>
+                        <label class="form-label for="auteur">Auteur :</label>
+                        <input class="form-control" id="titre" @bind="GetPiece.Auteur" />
+                    </div>
+                    <div>
+                        <label class="form-label for="auteur">Theme</label>
+                        <select class="form-control" @oninput="OnselecteThem" @bind="selectTheme">
+                            <option></option>
+                            @foreach (var item in Getalltheme)
+                            {
+                                <option value="@item.Id"> @item.Libelle</option>
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label for="File">Photo :</label>
+                        <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
+                        <div>
+                            <button type="button" class="btn btn-warning" @onclick="UploadImage"> Upload Image</button>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                    <br />
+                    <div>
+                        <button class="btn-primary" type="btn" @onclick="() => UpdatedPiece()">ajouter</button>
+                    </div>
+
+                </div>
+           </form>
+        }
+    </div>
 </div>
 
 @code {
-    private Task GetAllPiece(MouseEventArgs e)
+    [Parameter]
+    public int Id { get; set; }
+    public PieceDto GetPiece { get; set; }
+
+    private long maxFileSize = long.MaxValue;
+    public string? fileName { get; set; }
+    IBrowserFile? ImageFile { get; set; }
+    public ImageDto ImageValue { get; set; } = new();
+    public List<ThemeDto> Getalltheme { get; set; } = new();
+    public int selectTheme { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-        throw new NotImplementedException();
+        GetPiece = await pieceService.GetById(Id);
+        await Task.Delay(1000);
+    }
+
+    public async Task UpdatedPiece()
+    {
+        UpdatePieceDto piece = new UpdatePieceDto
+            {
+                Titre = GetPiece.Titre,
+                Auteur = GetPiece.Auteur,
+                Description = GetPiece.Description,
+                Duree = GetPiece.Duree,
+                Id = GetPiece.Id,
+                Image = GetPiece.Image,
+                ThemeId = GetPiece.ThemeId
+            };
+        await pieceService.Update(piece.Id, piece);
+    }
+    private void GetAllPiece(MouseEventArgs e)
+    {
+        manager.NavigateTo("/manager/piece");
     }
     private Task GetHome(MouseEventArgs e)
     {
@@ -28,5 +120,42 @@
     private void Previous(MouseEventArgs e)
     {
         throw new NotImplementedException();
+    }
+    public void OnselecteThem(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            selectTheme = selectedId;
+        }
+    }
+    private void OnFileSelected(InputFileChangeEventArgs e)
+    {
+        ImageFile = e.File;
+
+    }
+    public async Task UploadImage()
+    {
+        using var content = new MultipartFormDataContent();
+
+        var file = ImageFile;
+        var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+        fileName = file.Name;
+
+        content.Add(
+            content: fileContent,
+            name: "\"files\"",
+            fileName: file.Name);
+
+
+        var response = await Http.PostAsync("/api/File", content);
+        if (response.IsSuccessStatusCode)
+        {
+            var ImgContent = await response.Content.ReadAsStringAsync();
+            ImageValue = JsonConvert.DeserializeObject<ImageDto>(ImgContent);
+
+        }
+
     }
 }

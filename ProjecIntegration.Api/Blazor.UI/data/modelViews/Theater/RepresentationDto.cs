@@ -28,8 +28,6 @@ public class AddRepresentationDto
     //-----PIece
     public int PieceId { get; set; }
 
-    //-----commande/reservation
-
 }
 //mets a jout une representation dans la database
 public class UpdateRepresentationDto : Baseview

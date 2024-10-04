@@ -1,4 +1,5 @@
-﻿@using Blazor.UI.Data.modelViews.Theater
+﻿@page "/manager/addrepresentation"
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @inject IRepresentationService Servrep;
 @inject ISalleService ServSalle;
@@ -11,16 +12,13 @@
         <div class="form-group card-body">
             <div>
                 <label class="form-label" for="prix">Prix:</label>
-                <input class="form-control" id="prix" @bind="representation.Prix" type="number" step="0.01" />
+                <input class="form-control" id="prix" @bind="Price" type="number" step="0.01" />
             </div>
             <div>
                 <!-- manage the date -->
                 <label class="form-label" for="seance">Seance:</label>
                 <input class="form-control" id="seance" @bind="Date" type="datetime-local" />
-                <label class="form-label" for="heure">heure:</label>
-                <input class="form-control" id="heure" @bind="heure" type="number" />
-                <label class="form-label" for="minute">Minute:</label>
-                <input class="form-control" id="minute" @bind="minute" type="number" />
+              
             </div>
             <div>
                 <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
@@ -38,7 +36,6 @@
 
                 <div>
                     <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
-                        <option>Choisissez une piece</option>
                         <option>Choisissez une Piece</option>
                         @foreach (var item in SelectPiece)
                         {
@@ -48,7 +45,22 @@
                 </div>
             </div>
             <div class="p-4 m-4">
-                <button class="btn btn-outline-dark" @onclick="AddRepresentation">Add Representation</button>
+                <button class="btn btn-outline-dark" @onclick="() =>AddRepresentation()">Add Representation</button>
+            </div>
+            <div>
+                @if (representation != null)
+                {
+                    <p>@representation.Seance</p> 
+                    <p>@representation.PlaceCurrent</p>
+                    <p>@representation.PlaceMaximum</p>
+                    <p>@representation.SalledeTheatreId</p>
+                    <p>@representation.PieceId</p>
+
+                }
+                else
+                {
+                    
+                }
             </div>
         </div>
     </form>
@@ -62,39 +74,46 @@ else { }
     public int SelectPieceID { get; set; }
     public int SelectSalleId { get; set; }
     //-------heure
-    public DateTime Date { get; set; }
+    public DateTime Date { get; set; } = DateTime.Now;
     public int heure { get; set; }
     public int minute { get; set; }
+    public int Price { get; set; }
+    public SalleDeTheatreDto salle { get; set; } = new();
+    public PieceDto piece {get;set;}
     //-------enti
     public AddRepresentationDto representation { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
     {
-        representation = new AddRepresentationDto();
         SelectPiece = await ServPiece.Getlist();
         selectSalle = await ServSalle.Getlist();
     }
-    private void AddRepresentation()
+    private async Task AddRepresentation()
     {
         representation.Seance = Date;
-        representation.Seance.AddHours(heure);
-        representation.Seance.AddMinutes(minute);
-        Servrep.Create(representation);
+        representation.Prix = Price;
+        representation.PlaceCurrent = salle.PlaceMax;
+        representation.PlaceMaximum = salle.PlaceMax;
+        representation.SalledeTheatreId = salle.Id;
+        representation.PieceId = piece.Id;
+        await Servrep.Create(representation);
     }
-    public void selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    public async Task selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
             SelectPieceID = selectedId;
-
+            piece = await ServPiece.GetById(selectedId);
+            representation.PieceId = piece.Id;
         }
     }
-    public void selectionSalle(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    public async Task selectionSalle(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))
         {
             SelectSalleId = selectedId;
-
+            salle = await ServSalle.GetById(selectedId);
+            representation.SalledeTheatreId = salle.Id;
         }
     }
 }

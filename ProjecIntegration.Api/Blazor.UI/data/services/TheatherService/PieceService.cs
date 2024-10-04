@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
-using Blazor.UI.Client.manager;
-using Blazor.UI.Data.modelViews.Theater;
 using Blazor.UI.Data.ModelViews.Theater;
 using Blazor.UI.Data.ServiceResult;
-using BlazorBootstrap;
 using Data.ServiceResult;
 using Newtonsoft.Json;
 
@@ -35,7 +27,7 @@ namespace Blazor.UI.Data.services.TheatherService
     public class PieceService : IPieceService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/Piece";
+        private const string ApiUri = "https://localhost:7170/api/v1/Piece";
 
         public PieceService(HttpClient httpClient)
         {
@@ -98,7 +90,7 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task Delete(PieceDto data)
         {
-            await _httpClient.DeleteAsync(ApiUri);
+            await _httpClient.DeleteAsync(ApiUri+$"/{data.Id}");
         }
 
         public async Task DeleteRepresentation(int idPiece, int idRepresentation)

@@ -137,11 +137,11 @@ namespace DataInfraTheather.BusinessService
             ServiceResponse<SalleDeTheatreDto> response = new();
             try
             {
-                SalleDeTheatre GetEntity = await _salleDeTheatreRepository.GetById(idSalle);
-                if (entity == null)
+                 bool GetEntity = await _salleDeTheatreRepository.DoYouExist(idSalle);
+                if (!GetEntity)
                     throw new ArgumentNullException(nameof(entity) + "this Salle detheatre entity doesn't exist");
 
-                var converison = _mapper.Map<SalleDeTheatre>(GetEntity);
+                var converison = _mapper.Map<SalleDeTheatre>(entity);
 
                await _salleDeTheatreRepository.Update(idSalle, converison);
                 

@@ -1,10 +1,13 @@
 ﻿@page "/manager/complexe"
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
+@using Blazor.UI.Client.Shared;
 
 @inject IComplexeService comp;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+@inject IJSRuntime JsRuntime;
+
 <PageTitle>Complexe</PageTitle>
 <div class="flex-fill m-4 p-4">
 
@@ -20,108 +23,160 @@
         </div>
     </div>
     <br />
-    <div class="jumbotron  m-2 p-2">
-        <div class="row">
-            <div class="col bg-white m-4 p-4 w-50 shadow-sm rounded">
-
-                @if (complexetab == null)
-                {
-                    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
-                }
-                else
-                {
-                    <div class="">
-
-                        <QuickGrid Items="@complexetab.AsQueryable()">
-                            <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                            <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
-                            <PropertyColumn Property="@(p => p.Description)" Sortable="true" />
-                            <TemplateColumn Context="item">
-                                <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>SelectComplexedetails(item) " >View Details</button>
-                                </div>
-                            </TemplateColumn>
-                        
-                        </QuickGrid>
-
-                    </div>
-                }
-            </div>
-            <div class="col bg-white  m-4 p-4 w-50 rounded">
-                @if(SelectComplexe !=null && SelectComplexeId !=0)
-                {
-                    <div class=" form-group mb-3">
-                        <h4 class="form-label">Nom:</h4>
-                        <p>@SelectComplexe?.Name</p>
-
-                        <h4 class="form-label">Description:</h4>
-                        <p>@SelectComplexe?.Description</p>
-
-                        <h4 class="form-label">Address:</h4>
-                        <p>@SelectComplexe?.Adress</p>
-
-                        <h4 class="form-label" for="address">Address:</h4>
-                        <p>@SelectComplexe?.AddedTime</p>
-                        <h4 l class="form-label" for="address">Salle </h4>
-                        @if (SelectComplexe?.SalleDeTheatres?.Count > 0)
-                        {
-                            <p>Possède: @SelectComplexe?.SalleDeTheatres?.Count: Salle De théatre </p>
-                            <p>@SelectComplexe?.Catalogue?.Count</p>
-
-                        }
-                        else
-                        {
-                            <p>Ce Complexe ne Possède pas encore de Salle</p>
-
-                        }
-                        <h4 l class="form-label" for="address">Catalogue </h4>
-                        @if (SelectComplexe?.Catalogue?.Count >0)
-                        {
-                            <p>Possède :  @SelectComplexe?.Catalogue?.Count : Catalogue </p>
-                            <p>@SelectComplexe?.Catalogue?.Count</p>
-                        
-                        }
-                        else
-                        {
-                            <p>Ce Complexe ne Possède pas encore de Catalogue</p>
-                   
-                        }
-
-                        <!-- Add other input fields based on your UpdateComplexeDto properties -->
-                        <br />
-
-                        <div class="float-end">
-
-                            <button class="btn btn-primary" @onclick="()=>GetSalleByComplexe(SelectComplexeId)" type="button">Salle De théatre</button>
+    <div class="container">
+          <div class="table-wrapper">
+               <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Manage <b>Complexe</b></h2>
                         </div>
-                        
-                    
+                        <div class="col-sm-6">
+                        <a href="#addModale" 
+                           class="btn btn-success" data-toggle="modal" 
+                            @onclick="() => ShowAdd()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                        <a href="#deleteModale" 
+                                class="btn btn-danger"
+                                data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                        <a href="#deleteModale"
+                           class="btn btn-warning"
+                           data-toggle="modal" @onclick="() => ShowUpdate()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
+                        </div>
                     </div>
+                </div>
+                <div>
 
-                }
-                else
-                {
-                    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
-                
-                }
-            </div>
+                    @if (complexetab == null)
+                    {
+                        <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+                    }
+                    else
+                    {
+                        <div class="">
+
+                            <QuickGrid Items="@complexetab.AsQueryable()">
+                                <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+                                <PropertyColumn Property="@(p => p.Description)" Sortable="true" />
+                                <TemplateColumn Context="item">
+                                    <div>
+                                        <button type="button" class="btn btn-warning" @onclick="() =>SelectComplexedetails(item) ">View Details</button>
+                                    </div>
+                                </TemplateColumn>
+
+                            </QuickGrid>
+
+                        </div>
+                    }
+                </div>
         </div>
- 
+
+            <div class="row m-2 p-2">
+                <div class="row">
+                    <div class="col bg-white  m-4 p-4 w-50 rounded">
+                    @if (IsDeleting)
+                    {
+                        
+                    }
+                    else if (IsAdding)
+                    {
+                        <AddComplexe></AddComplexe>
+
+                    }
+                    else if (IsUpdating)
+                    {
+                        <UpdateComplexe></UpdateComplexe>
+                    }
+                    else if (IsDetails)
+                    {
+                        @if (SelectComplexe != null && SelectComplexeId != 0)
+                            {
+                                <div class=" form-group mb-3">
+                                    <h4 class="form-label">Nom:</h4>
+                                    <p>@SelectComplexe?.Name</p>
+
+                                    <h4 class="form-label">Description:</h4>
+                                    <p>@SelectComplexe?.Description</p>
+
+                                    <h4 class="form-label">Address:</h4>
+                                    <p>@SelectComplexe?.Adress</p>
+
+                                    <h4 class="form-label" for="address">Address:</h4>
+                                    <p>@SelectComplexe?.AddedTime</p>
+                                    <h4 l class="form-label" for="address">Salle </h4>
+                                    @if (SelectComplexe?.SalleDeTheatres?.Count > 0)
+                                    {
+                                        <p>Possède: @SelectComplexe?.SalleDeTheatres?.Count: Salle De théatre </p>
+                                        <p>@SelectComplexe?.Catalogue?.Count</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p>Ce Complexe ne Possède pas encore de Salle</p>
+
+                                    }
+                                    <h4 l class="form-label" for="address">Catalogue </h4>
+                                    @if (SelectComplexe?.Catalogue?.Count > 0)
+                                    {
+                                        <p>Possède :  @SelectComplexe?.Catalogue?.Count : Catalogue </p>
+                                        <p>@SelectComplexe?.Catalogue?.Count</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p>Ce Complexe ne Possède pas encore de Catalogue</p>
+
+                                    }
+
+                                    <!-- Add other input fields based on your UpdateComplexeDto properties -->
+                                    <br />
+
+                                    <div class="float-end">
+
+                                        <button class="btn btn-primary" @onclick="()=>GetSalleByComplexe(SelectComplexeId)" type="button">Salle De théatre</button>
+                                    </div>
+
+
+                                </div>
+
+                            }
+                            else
+                            {
+                           
+
+                            }
+                        
+                    }
+                    </div>
+                </div>
+
+            </div>
     </div>
 </div>
+    
+    <div id="addModale" class="modal fade">
+        <div class="modal-dialog">
 
+        </div>
+    </div>
+    <div id="delelteModale" class="modal fade">
+        <div class="modal-dialog">
+        </div>
+    </div>
 @code {
-    private List<ComplexeDto>? complexetab { get; set; } = new();
-    private ComplexeDto? SelectComplexe { get; set; } = new();
+    private IJSObjectReference module;
+    private List<ComplexeDto> complexetab { get; set; }
+    private ComplexeDto? SelectComplexe { get; set; } 
     private int SelectComplexeId { get; set; }
 
+    public bool IsAdding { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
     protected override async Task OnInitializedAsync()
     {
         try
         {
             complexetab =( await comp.Get()).ToList();
-
-            await Task.Delay(1000);
         }
         catch (Exception)
         {
@@ -135,6 +190,7 @@
         {
             SelectComplexe = complexe;
             SelectComplexeId = SelectComplexe.Id;
+            Showdetails();
         }
         catch (Exception)
         {
@@ -166,5 +222,33 @@
     private void GetSalleByComplexe(int id)
     {
         NavigationManager.NavigateTo($"/manager/sallebycomplexe/{id}");
+    }
+    public void ShowAdd()
+    {
+        IsAdding = true;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = false;
+    }
+    public void ShowDelete()
+    {
+        IsAdding = false;
+        IsDeleting = true;
+        IsUpdating = false;
+        IsDetails = false;
+    }
+    public void ShowUpdate()
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = true;
+        IsDetails = false;
+    }
+    public void Showdetails()
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = true;
     }
 }

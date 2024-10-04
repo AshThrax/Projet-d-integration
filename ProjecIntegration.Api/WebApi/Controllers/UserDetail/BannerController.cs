@@ -5,7 +5,7 @@ using WebApi.ApiService.FileService;
 
 namespace WebApi.Controllers.UserDetail
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BannerController : ControllerBase
     {
@@ -58,6 +58,26 @@ namespace WebApi.Controllers.UserDetail
             try
             {
                 string userId = await _customGetToken.GetSub();
+                ServiceResponse<BannerDto> response = await _bannerService.HasBanner(userId);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// get user banner
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<ServiceResponse<BannerDto>>> GetBanner(string userId)
+        {
+            try
+            {
+                
                 ServiceResponse<BannerDto> response = await _bannerService.HasBanner(userId);
                 return Ok(response);
             }

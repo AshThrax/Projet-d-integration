@@ -1,6 +1,113 @@
-﻿@page "/manager/Siege/{Id:int}"
+﻿@page "/manager/siege/{Id:int}"
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.Services.TheatherService
+
+@inject ISiegeService siegeService;
+
 <h3>SiegeManager</h3>
+<div class="mt-2">
+    <a href="#addModale"
+       class="btn btn-success" data-toggle="modal"
+       @onclick="() => ShowAdd()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+    <a href="#deleteModale"
+       class="btn btn-danger"
+       data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+    <a href="#deleteModale"
+       class="btn btn-warning"
+       data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
+</div>
+@if (GetSiegeFromSalle != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
 
+                <QuickGrid Items="GetSiegeFromSalle.AsQueryable()">
+                    <PropertyColumn Property="Page=> Page.Name"/>
+                    <PropertyColumn Property="Page=> Page.AddedTime" />
+                    <TemplateColumn>
+                        <div>
+                            <a class="btn btn-warning" @onclick="() => Showdetails()"> details</a>
+                        </div>
+                    </TemplateColumn>
+                </QuickGrid>
+            </div>
+            <div class="col">
+                @if (IsDetails)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent></Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent>
+                }
+                else if (IsAdding)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent></Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent>
+                }
+                else if (IsUpdating)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent></Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent>
+                }
+                else if (IsDeleting)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent></Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent>
+                }
+                else
+                {
+                    
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    
+}
 @code {
+    [Parameter]
+    public int Id { get; set; } //identifiant de la salle de théatre
 
+    public List<SiegeDto>? GetSiegeFromSalle { get; set; }
+    public SiegeDto? selectSiege { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetSiegeFromSalle = (await siegeService.GetAllFromsalleId(Id)).ToList();
+        
+    }
+    //state----
+    public bool IsAdding { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
+    public void ShowAdd()
+    {
+        IsAdding = true;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = false;
+
+    }
+    public void ShowDelete()
+    {
+        IsAdding = false;
+        IsDeleting = true;
+        IsUpdating = false;
+        IsDetails = false;
+    }
+    public void ShowUpdate()
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = true;
+        IsDetails = false;
+      
+    }
+    public void Showdetails()
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = true;
+       
+    }
 }

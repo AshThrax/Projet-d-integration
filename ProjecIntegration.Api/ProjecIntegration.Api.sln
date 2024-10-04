@@ -38,13 +38,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserLibs", "UserLibs", "{D9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChatLibs", "ChatLibs", "{47143A1C-B55E-4E3A-8279-34D64D68E5EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationUser", "ApplicationUser\ApplicationUser.csproj", "{3FA87A0B-02F9-44CC-A159-D8B182D8E320}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationUser", "ApplicationUser\ApplicationUser.csproj", "{3FA87A0B-02F9-44CC-A159-D8B182D8E320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureUser", "InfrastructureUser\InfrastructureUser.csproj", "{A2769E48-89EF-4943-9789-05DC126DF7FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfrastructureUser", "InfrastructureUser\InfrastructureUser.csproj", "{A2769E48-89EF-4943-9789-05DC126DF7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationChat", "ApplicationChat\ApplicationChat.csproj", "{AA945B6A-5BCB-46A9-B9CD-2B4C1A912BD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationChat", "ApplicationChat\ApplicationChat.csproj", "{AA945B6A-5BCB-46A9-B9CD-2B4C1A912BD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureChat", "InfrastructureChat\InfrastructureChat.csproj", "{F1C19DEA-AF0A-4118-97E4-D911A7A475D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfrastructureChat", "InfrastructureChat\InfrastructureChat.csproj", "{F1C19DEA-AF0A-4118-97E4-D911A7A475D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

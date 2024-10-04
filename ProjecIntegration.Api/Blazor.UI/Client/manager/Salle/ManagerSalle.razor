@@ -1,11 +1,13 @@
 ﻿@page "/manager/sallebycomplexe/{Id:int}"
 @page "/manager/sallebycomplexe"
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
+
 @inject NavigationManager manager;
 @inject IComplexeService ComplexesService;
 @inject ISalleService SalleService;
+
 <h3>Gestion des Salle</h3>
 <div class="flex-fill m-4 p-4">
     <div class="m-4 p-4">
@@ -18,75 +20,103 @@
         </div>
     </div>
     <br />
-    <div class="w-25">
+    <div class="">
         <h3>Complexe </h3>
-        <select class="form-control" @bind="SelectComplexeId" @oninput="OnSelectedChange">
+        <select class="form-control w-25" @bind="SelectComplexeId" @oninput="OnSelectedChange">
             <option>choissisez le complexe </option>
             @foreach (ComplexeDto item in GetComplexes)
             {
                 <option value="@item.Id">@item.Name <p>@item.Id</p></option>
             }
         </select>
+        <div class="mt-2">
+        <a href="#addModale"
+           class="btn btn-success" data-toggle="modal"
+           @onclick="() => ShowAdd()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+        <a href="#deleteModale"
+           class="btn btn-danger"
+           data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+       
     </div>
     <br />
     @if (SelectedComplexe != null && GetComplexes != null)
     {
-        <div class="jumbotron m-2 p-2 rounded">
+        <div class="container jumbotron m-2 p-2 rounded">
             <div class="row m-2 p-2">
-                <div class="col-sm-6 m-2 p-2">
+                <div class="col m-2 p-2">
                     <div class="card">   
                         <h3 class="card-header">Salle du complexe</h3>
-                    @if (GetSalles != null)
-                    {
-                       <div class="card-body">
-                            <QuickGrid Items="@GetSalles.AsQueryable()">
-                            <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                            <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
+                        @if (GetSalles != null)
+                        {
+                               <div class="card-body">
+                                    <QuickGrid Items="@GetSalles.AsQueryable()">
+                                        <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                        <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
 
-                            <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
-                            <TemplateColumn Context="item">
-                                <div>
-                                    <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>SelectSalle(item)">Details salle de theatre</button>
-                                </div>
-                            </TemplateColumn>
-                        </QuickGrid>    
+                                        <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
+                                        <TemplateColumn Context="item">
+                                            <div>
+                                                <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>Showdetails(item)">Details salle de theatre</button>
+                                            </div>
+                                        </TemplateColumn>
+                                            <TemplateColumn Context="item">
+                                                <div>
+                                                    <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>ShowUpdate(item)">Details salle de theatre</button>
+                                                </div>
+                                            </TemplateColumn>
+                                    </QuickGrid>    
 
-                       </div>
-                    }
+                               </div>
+                        }
                     </div>
                 </div>
-                @if (SelectedSalleDeTheatre !=null)
-                {
-                    <div class="col-sm -6 card m-2 p-2">
-                        <div class="card m-2 p-2">
-                            <h3 class="card-header"> Details</h3>
-                            <div class="m-2 p-2 card-body">
-                                <div class="m-2 p-2">
-                                    <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
-                                    <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
-                                    <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
-                                    <p><strong>Representation Number</strong> @SelectedSalleDeTheatre?.Representations?.Count</p>
-                                </div>
-                                <br/>
-                                <div class="m-2 p-2 btn-group rounded float-end">
-                                    <button type="button" class="btn btn-primary" @onclick="() =>UpdateSalle(selectedSalleId)">Update</button>
-                                </div>
-                            </div>
+                 <div class="col">
+                        <div class="col bg-white  m-4 p-4 w-50 rounded">
+                        @if (IsDeleting)
+                        {
+                        
+                        }
+                        else if (IsAdding)
+                        {
+                      
+                            <AddSallByComplexe></AddSallByComplexe>
+                        }
+                        else if (IsUpdating)
+                        {
+                            <UpdateSalle Id="selectedSalleId" ></UpdateSalle>
+                        }
+                        else if (IsDetails)
+                        {
+                            @if (SelectedSalleDeTheatre != null)
+                            {
+                                <div class="card m-2 p-2">
+                                    <div class="card m-2 p-2">
+                                        <h3 class="card-header"> Details</h3>
+                                        <div class="m-2 p-2 card-body">
+                                            <div class="m-2 p-2">
+                                                <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
+                                                <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
+                                                <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
+                                                <p><strong>Representation Number</strong> @SelectedSalleDeTheatre?.Representations?.Count</p>
+                                            </div>
+                                            <br />
+                                            <div class="m-2 p-2 btn-group rounded float-end">
+                                                <button type="button" class="btn btn-primary" @onclick="() =>siegeManager(selectedSalleId)">montrer les salles</button>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                               
+                            }
+                            
+                        
+                        }
                         </div>
                     </div>
-                }
-                else
-                {
-                    <div class="col-sm-6">
-                        <div class="m-2 p-2 ">
-                            <div class="m-2 p-2">
-                         
-                            </div>
-                        </div>
-                    </div>
-                }
-
 
             </div>
         </div>
@@ -96,7 +126,7 @@
        <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
     }
 </div>
-
+</div>
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -106,6 +136,7 @@
     public List<SalleDeTheatreDto>? GetSalles { get; set; }
     public SalleDeTheatreDto? SelectedSalleDeTheatre { get; set; } 
     public int selectedSalleId { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         SelectComplexeId = Id;
@@ -156,7 +187,7 @@
             SelectedComplexe = new();
         }
     }
-    
+
     private void AddSalle()
     {
         manager.NavigateTo("/manager/addSalle");
@@ -164,5 +195,45 @@
     private void UpdateSalle(int Id)
     {
         manager.NavigateTo($"/manager/updateSalle/{Id}");
+    }
+    //state----
+    public bool IsAdding { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
+    public void ShowAdd()
+    {
+        IsAdding = true;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = false;
+
+    }
+    public void ShowDelete()
+    {
+        IsAdding = false;
+        IsDeleting = true;
+        IsUpdating = false;
+        IsDetails = false;
+    }
+    public void ShowUpdate(SalleDeTheatreDto item)
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = true;
+        IsDetails = false;
+        selectedSalleId = item.Id;
+    }
+    public void Showdetails(SalleDeTheatreDto item)
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = true;
+        SelectSalle(item);
+    }
+    public void siegeManager(int salleId)
+    {
+        manager.NavigateTo($"/manager/siege/{salleId}");   
     }
 }

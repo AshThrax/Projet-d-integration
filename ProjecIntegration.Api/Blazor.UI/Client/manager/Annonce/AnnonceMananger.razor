@@ -1,0 +1,54 @@
+﻿@page "/manager/Annonce"
+@using Blazor.UI.Data.ModelViews.Annonce
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.services.Annonce
+<h3>AnnonceMananger</h3>
+
+@inject IAnnonceService annonceService;
+
+@code {
+    public Pagination<AnnonceDto> GetAnnoncePagination { get; set; }
+    public AnnonceDto selectedAnnonce { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();   
+    }
+    #region state
+    //state----
+    public bool IsAdding { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
+    public void ShowAdd()
+    {
+        IsAdding = true;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = false;
+
+    }
+    public void ShowDelete()
+    {
+        IsAdding = false;
+        IsDeleting = true;
+        IsUpdating = false;
+        IsDetails = false;
+    }
+    public void ShowUpdate()
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = true;
+        IsDetails = false;
+
+    }
+    public void Showdetails()
+    {
+        IsAdding = false;
+        IsDeleting = false;
+        IsUpdating = false;
+        IsDetails = true;
+
+    }
+    #endregion
+}

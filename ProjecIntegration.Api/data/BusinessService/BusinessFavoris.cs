@@ -48,7 +48,36 @@ namespace DataInfraTheather.BusinessService
             }
             return response;
         }
+        public async Task<ServiceResponse<FavorisDto>> AddToFavoris(string userId, int pieceId)
+        {
+            ServiceResponse<FavorisDto> response = new ServiceResponse<FavorisDto>();
+            try
+            {
+                bool DoIexist = await _favorisrepository.DoYouExist(x=>x.UserId==userId);
+                if (!DoIexist)
+                {
+                    throw new ArgumentException();
+                }
+                Favoris getFavorisEntity = await _favorisrepository.Get(x=>x.UserId==userId);
+                Piece GetPieceToAdd = await _pieceRepository.GetById(pieceId);
+                if (GetPieceToAdd != null)
+                {
+                    if (getFavorisEntity.PieceFavorite == null)
+                    {
+                        getFavorisEntity.PieceFavorite = new List<Piece>();
+                    }
+                    getFavorisEntity.PieceFavorite.Add(GetPieceToAdd);
+                    await _favorisrepository.Update(getFavorisEntity.Id,getFavorisEntity);
+                }
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return response;
+        }
         public async Task<ServiceResponse<FavorisDto>> CreateFavoris(string userId)
         {
             ServiceResponse<FavorisDto> response = new ServiceResponse<FavorisDto>();
@@ -105,18 +134,17 @@ namespace DataInfraTheather.BusinessService
 
         public async Task<Pagination<PieceDto>> PaginateFavoris(string userId, int page)
         {
-            Pagination<PieceDto> pagination;
             try
             {
                 Favoris favoris =await _favorisrepository.Get(x=>x.UserId==userId);
-                pagination = new Pagination<PieceDto>(_mapper.Map<List<PieceDto>>(favoris.PieceFavorite), 1, 5);
+                favoris = await _favorisrepository.GetById(favoris.Id, x => x.PieceFavorite);
+                Pagination<PieceDto> pagination = Pagination<PieceDto>.ToPagedList(_mapper.Map<List<PieceDto>>(favoris.PieceFavorite), page, 5);
                 return pagination;
             }
             catch (Exception)
             {
 
-                pagination = new Pagination<PieceDto>(new List<PieceDto>(),page,0);
-                return pagination;
+                return new Pagination<PieceDto>(new List<PieceDto>(),page,0);
             }
         }
     }

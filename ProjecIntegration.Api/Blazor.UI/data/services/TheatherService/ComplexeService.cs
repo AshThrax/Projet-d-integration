@@ -16,7 +16,7 @@ namespace Blazor.UI.Data.services.TheatherService
     public class ComplexeService : IComplexeService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/Complexe";
+        private const string ApiUri = "https://localhost:7170/api/v1/Complexe";
 
         public ComplexeService(HttpClient httpClient)
         {

@@ -1,17 +1,20 @@
 ﻿@page "/reservation"
 @attribute [Authorize]
 @attribute [StreamRendering]
+
 @using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.ServiceResult
-@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.Services.TheatherService
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using Blazor.UI.Client.Page.ReservationComponent
+
 @inject IComplexeService complexeService;
 @inject ICatalogueService catalogueService;
 @inject IPieceService pieceService;
 @inject IThemeService themeService;
+@inject IFavorisService FavorisService;
 @inject NavigationManager manager;
 <div class="flex-fill m-4 p-4">
 <h3 class=" bg-light  m-4 p-2 rounded-2 text-center">Recherche de pièce de théatre</h3>
@@ -78,6 +81,7 @@
                                 <div class="btn-group">
                                      <a @onclick="() => GetToPublication(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Critique</a>
                                      <a @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Seance</a>
+                                     <a @onclick="() => AddFavoris(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">ajouter au favoris</a>
                                 </div>
                         </div>
                     </div>   
@@ -98,7 +102,7 @@
     public List<CatalogueDto> GetCatalogues { get; set; } = new();
     public CatalogueDto singleCatalogue{ get; set; } = new();
     public int SelectCatalogueId { get; set; }
-
+    public FavorisDto getUserFavorite { get; set; }
     //pagination variable
     public int pageIndex = 1;
     public bool Bycatalogue { get; set; } = false;
@@ -156,7 +160,11 @@
             }
         }
     }
-
+    public async Task AddFavoris(int Id)
+    {
+       
+        await FavorisService.AddPiece(Id);
+    }
     public void GetDescription(int id)
     {
         manager.NavigateTo($"/pieceinfo/{id}");

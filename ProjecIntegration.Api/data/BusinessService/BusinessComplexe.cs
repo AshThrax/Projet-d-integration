@@ -19,7 +19,7 @@ namespace DataInfraTheather.BusinessService
             _complexeRepository = complexeRepository;
         }
 
-        public async Task<ServiceResponse<ComplexeDto>> CreateAsync(ComplexeDto complexeDto)
+        public async Task<ServiceResponse<ComplexeDto>> CreateAsync(AddComplexeDto complexeDto)
         {
             ServiceResponse<ComplexeDto> response = new();
             try
@@ -89,7 +89,7 @@ namespace DataInfraTheather.BusinessService
             ServiceResponse < ComplexeDto >response = new();
             try
             {
-                var GetEntity = await _complexeRepository.GetById(id);
+                var GetEntity = await _complexeRepository.GetById(id,c=>c.SalleDeTheatres);
                 response.Data= _mapper.Map<ComplexeDto>(GetEntity);
                 response.Success = true;
                 response.Message = "operation réussi";

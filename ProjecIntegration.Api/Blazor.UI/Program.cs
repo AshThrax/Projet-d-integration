@@ -11,7 +11,7 @@ builder.Services.AddTransient<CustomAuthorizationMessageHandler>();
 //inject in all htpcclient my jwt token in my header allowing my request to be validated in my
 //api side 
 builder.Services.AddHttpClient("projectAPI",client => //you need to register your api  base url here
-                 client.BaseAddress = new Uri("https://localhost:44337/api"))
+                 client.BaseAddress = new Uri("https://localhost:7170/api"))
     .AddHttpMessageHandler<CustomAuthorizationMessageHandler>()
     .SetHandlerLifetime(TimeSpan.FromMinutes(2))  //retry policies
         .AddPolicyHandler(Policices.GetRetryPolicy()); ;

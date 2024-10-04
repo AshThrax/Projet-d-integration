@@ -151,5 +151,25 @@ namespace InfrastructureUser.Repository
                 return query.First();
             }
         }
+        public async Task<bool> DoYouExist(Expression<Func<T, bool>> includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            try
+            {
+
+                if (includeProperties != null)
+                {
+                    query = query.Where(includeProperties);
+                }
+                int count = await query.CountAsync();
+                return count > 0;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

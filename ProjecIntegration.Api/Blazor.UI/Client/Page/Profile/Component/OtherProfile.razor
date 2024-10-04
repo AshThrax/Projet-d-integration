@@ -1,0 +1,157 @@
+﻿@page "/otherProfile/{userId}"
+
+@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ModelViews.User
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.Services.User
+@using Blazor.UI.Data.services.Publication
+
+@inject IPublicationService publicationService;
+@inject IUserService userService;
+@inject IBannerService bannerService;
+@inject NavigationManager manager;
+
+@if (userDto != null)
+{
+   
+
+        <div class="profile-container">
+            <div class="cover-photo">
+                @if (bannerDto != null && bannerDto.ImageRessource !=null)
+                {
+                    <img class="cover-photo-img" src="https://localhost:7170/Resources/@bannerDto.ImageRessource" alt="Alternate Text" />
+
+                }
+                else
+                {
+                    <img class="cover-photo-img" src="#" alt="Alternate Text" />
+                }
+
+            </div>
+            <div class="profile-info">
+                <div class="profile-photo">
+                    <img class="profile-img" src="@userDto.Picture" alt="Alternate Text" />
+
+                </div>
+                <div class="user-details">
+                    <h2>@userDto.GivenName</h2>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+       
+       <div class="m-2 p-2"></div>
+    <div class="profile-stats">
+
+        <div class="stat">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> <span>Follower</span></li>
+                <li class="list-group-item"> <a class="btn btn-outline-dark">Add Follower</a></li>
+            </ul>
+        </div>
+        <div class="stat">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span>Publication</span></li>
+                @if (ShowPublication)
+                {
+                    <li class="list-group-item"><a class="btn btn-outline-dark" @onclick="()=>Publication()">enlever les publication</a></li>
+                }
+                else
+                {
+                    <li class="list-group-item"> <a class="btn btn-outline-dark" @onclick="()=>Publication()">Montrer les publication</a></li>
+               
+
+                }
+            </ul>
+           
+            </div>
+          
+    </div>
+        
+   
+    
+        <div class="col-3 p-2 m-2 text-md-center">
+         
+            @if (ShowPublication)
+            {
+                @if (GetUserPublication != null)
+                {
+                    <QuickGrid Items="GetUserPublication.Items.AsQueryable()">
+                        <PropertyColumn Property="p =>p.Title" />
+                        <PropertyColumn Property="p=>p.CreatedDate" />
+                        <TemplateColumn>
+                            <div>
+                                <a></a>
+                            </div>
+                        </TemplateColumn>
+
+                    </QuickGrid>
+                    <div class="row">
+                        <div class="btn-group-sm">
+                            <a class="btn bnt-outline-dark" @onclick="() =>Previous()">Previous</a>
+                            <a class="btn btn-outline-dark" @onclick="() =>Next()">Next</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h3>@userDto.Name n'a posté aucune publication</h3>
+                }
+            }
+            else
+            {
+
+            }
+        </div>
+
+}
+else
+{
+
+}
+
+@code {
+    [Parameter]
+    public string userId { get; set; }
+
+    public Pagination<PublicationDto> GetUserPublication { get; set; }
+    public UserDto userDto { get; set; } = new UserDto();
+    public BannerDto bannerDto { get; set; } = new BannerDto();
+    public int pageIndex { get; set; } = 1;
+    public bool ShowPublication = false;
+    protected override async Task OnInitializedAsync()
+    {
+        userDto = await userService.GetUserProfile(userId);
+        bannerDto = await bannerService.Getbanner(userId);
+        await Task.Delay(100);
+    }
+    public async Task Publication()
+    {
+        ShowPublication = !ShowPublication;
+        await getPublication();
+    }
+    public async Task getPublication()
+    {
+        GetUserPublication = await publicationService.GetOtherPublicationByUserId(userId, pageIndex);
+    }
+    public async Task Next()
+    {
+        if (GetUserPublication.HasNextPage)
+        {
+            pageIndex++; 
+            await publicationService.GetOtherPublicationByUserId(userId, pageIndex);
+        }
+    }
+    public async Task Previous()
+    {
+        if (GetUserPublication.HasNextPage)
+        {
+            pageIndex--;
+            await publicationService.GetOtherPublicationByUserId(userId, pageIndex);
+        }
+    }
+    public void getHome()
+    {
+            
+    }
+}

@@ -13,10 +13,11 @@ namespace WebApi.ApiService.UserService
     public class UserService : IUserService
     {
         private readonly IManagementApiClient _managementApiClient;
-
-        public UserService(IManagementApiClient managementApiClient)
+        private readonly IMapper _mapper;
+        public UserService(IManagementApiClient managementApiClient, IMapper mapper)
         {
             _managementApiClient = managementApiClient;
+            _mapper = mapper;   
         }
         /// <summary>
         /// delete a user from the auth0
@@ -47,15 +48,33 @@ namespace WebApi.ApiService.UserService
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public async Task<ServiceResponse<User>> GetById(string userId)
+        public async Task<ServiceResponse<UserDto>> GetById(string userId)
         {
-            ServiceResponse<User> response = new();   
+            ServiceResponse<UserDto> response = new();   
             try
             {
 
                 User apiClient = await _managementApiClient.Users.GetAsync(userId);
-              
-                response.Data = apiClient;
+                UserDto dto = new UserDto()
+                {
+                    Email = apiClient.Email,
+                    EmailVerified = false,
+                    App_metadata = apiClient.AppMetadata,
+                    Blocked = false,
+                    FamilyName = apiClient.LastName,
+                    GivenName = apiClient.FirstName,
+                    PhoneVerified = false,
+                    UserName = apiClient.FirstName,
+                    User_id = apiClient.UserId,
+                    UserMetadata = apiClient.UserMetadata,
+                    Picture = apiClient.Picture,
+                    Name=string.Empty,
+                    NickName=string.Empty,
+                    Phone_number=string.Empty,
+                    VerifyMail=false,
+
+                };
+                response.Data =dto;
                 response.Success = true;
                 response.Message = "data sucessfully found";
             }
@@ -74,12 +93,22 @@ namespace WebApi.ApiService.UserService
         /// <param name="userId"></param>
         /// <param name="userDto"></param>
         /// <returns></returns>
-        public async Task<ServiceResponse<User>> UpdateById(string userId,UserUpdateRequest userDto)
+        public async Task<ServiceResponse<User>> UpdateById(string userId,UpdateUserDto userDto)
         {
             ServiceResponse<User> response = new();
             try
             {
-                var apiClient = await _managementApiClient.Users.UpdateAsync(userId,userDto);
+                UserUpdateRequest dto = new UserUpdateRequest()
+                { 
+                    FirstName = userDto.GivenName,
+                    FullName = userDto.Name,
+                    LastName = userDto.FamilyName,
+                    UserName = userDto.UserName,
+                    NickName = userDto.NickName,
+                };
+
+                dto.SetUserMetadata(userDto.UserMetadata);
+                var apiClient = await _managementApiClient.Users.UpdateAsync(userId,dto);
                 response.Success = true;
                 response.Message = "data sucessfully updated";
             }
@@ -105,7 +134,7 @@ namespace WebApi.ApiService.UserService
                 {
                     Roles=new string[] 
                     {
-                        ""
+                        "rol_s2YviglxvMJ1h1aG"
                     }
                 };
 
@@ -135,7 +164,7 @@ namespace WebApi.ApiService.UserService
                 {
                     Roles = new string[]
                     {
-                        ""
+                        "rol_iOKjiSJq4XLgBmxd"
                     }
                 };
 
@@ -152,16 +181,36 @@ namespace WebApi.ApiService.UserService
             return response;
         }
 
-        public async Task<ServiceResponse<List<User>>> GetlistId(List<string> stringIds)
+        public async Task<ServiceResponse<List<UserDto>>> GetlistId(List<string> stringIds)
         {
-            ServiceResponse<List<User>> response = new();
+            ServiceResponse<List<UserDto>> response = new();
             try
             {
-               
+                List<UserDto> GetUserDto= new List<UserDto>();
                 IPagedList<User> apiClient = await _managementApiClient.Users.GetAllAsync(new GetUsersRequest(),new PaginationInfo());
                 IEnumerable<User> getUsers = apiClient.Where(x => stringIds.Contains(x.UserId));
 
-                response.Data = getUsers.ToList();
+                foreach (User item in getUsers)
+                {
+                    UserDto dto = new UserDto()
+                    {
+                        Email = item.Email,
+                        EmailVerified = item.EmailVerified.Value,
+                        App_metadata = item.AppMetadata,
+                        Blocked = item.Blocked.Value,
+                        FamilyName = item.LastName,
+                        GivenName = item.FirstName,
+                        PhoneVerified = item.PhoneVerified.Value,
+                        UserName = item.FirstName,
+                        User_id = item.UserId,
+                        UserMetadata = item.UserMetadata,
+                        Picture = item.Picture,
+
+                    };
+                    GetUserDto.Add(dto);
+
+                }
+                response.Data = GetUserDto;
                 response.Success = true;
                 response.Message = "data sucessfully found";
             }
@@ -213,6 +262,34 @@ namespace WebApi.ApiService.UserService
                 response.Message = "an error has occured during the operation";
             }
             return response;
+        }
+
+        public async Task<ServiceResponse<User>> UnBlockedUser(string userId)
+        {
+            try
+            {
+                ServiceResponse<User> response = new();
+                try
+                {
+                    //récupérrer le sinformation de l'utilisateur 
+                   await _managementApiClient.UserBlocks.UnblockByUserIdAsync(userId);
+                    
+                    response.Success = true;
+                    response.Message = "user successfully unblocked";
+                }
+                catch (Exception)
+                {
+
+                    response.Success = false;
+                    response.Message = "an error has occured during the operation";
+                }
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

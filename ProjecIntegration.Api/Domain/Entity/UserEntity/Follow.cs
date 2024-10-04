@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.UserEntity
 {
-    public class Follow
+    public class Follow : BaseEntity
     {
         public string FollowerId { get; set; }=string.Empty;
         public string FollowId { get; set; } =string.Empty;

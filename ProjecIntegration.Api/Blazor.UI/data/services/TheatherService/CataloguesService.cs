@@ -17,7 +17,7 @@ namespace Blazor.UI.Data.services.TheatherService
     {
 
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/Catalogue";
+        private const string ApiUri = "https://localhost:7170/api/v1/Catalogue";
 
         public CataloguesService(HttpClient httpClient)
         {

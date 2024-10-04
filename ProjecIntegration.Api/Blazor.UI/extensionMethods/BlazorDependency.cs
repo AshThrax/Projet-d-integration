@@ -4,6 +4,8 @@ using Blazor.UI.Data.services.Annonce;
 using Blazor.UI.Data.services.authorization;
 using Blazor.UI.Data.services.Publication;
 using Blazor.UI.Data.services.TheatherService;
+using Blazor.UI.Data.Services.TheatherService;
+using Blazor.UI.Data.Services.User;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace Blazor.UI.extensionMethods
@@ -60,6 +62,13 @@ namespace Blazor.UI.extensionMethods
             services.AddTransient<IPublicationService,PublicationService>();
             services.AddTransient<IPostService,PostService>();
             services.AddTransient<INotificaitonService,NotificationService>();
+            services.AddTransient<IFavorisService, FavorisService>();
+            services.AddTransient<IFeedBackService, FeedBackService>();
+            services.AddTransient<IBannerService, BannerService>();
+            services.AddTransient<IFollowService, FollowService>();
+            services.AddTransient<IFileService, FileService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ISiegeService, SiegeService>();
             return services;
         }
     }

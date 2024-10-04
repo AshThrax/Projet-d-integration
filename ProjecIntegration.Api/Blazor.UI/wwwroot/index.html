@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/ProfileTest.css" />
     <link rel="stylesheet" href="css/blog.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="Blazor.UI.styles.css" rel="stylesheet" />
@@ -19,6 +20,13 @@
         function startCarousels() {
             $('.carousel').carousel({ interval: 4000 });
         }
+        window.ShowBootstrapModal = (modalId) => {
+            var myModal = new bootstrap.Modal(document.querySelector(modalId));
+            myModal.show();
+        }
+        window.HideBootstrapModal = (modalId) => {
+            var myModal = new bootstrap.Modal(document.querySelector(modalId));
+            myModal.hide();
     </script>
 </head>
 

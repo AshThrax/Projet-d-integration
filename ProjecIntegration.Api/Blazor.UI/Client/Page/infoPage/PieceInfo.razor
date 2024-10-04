@@ -1,11 +1,10 @@
 ﻿@page "/pieceinfo/{Id:int}"
 @using Blazor.UI.Data.ServiceResult
-@using Blazor.UI.Data.modelViews.Publication
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.Publication
 @using Blazor.UI.Data.services.TheatherService
 @using Blazor.UI.data.services
-@using Blazor.UI.data.modelViews
+@using Blazor.UI.Data.ModelViews.Publication
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject IPieceService Servp;
 @inject IRepresentationService PieceRep;
@@ -23,7 +22,7 @@
                         </div>
                         <div class="col-md-5">
                                 
-                                <img class="img-fluid card-img" src="https://localhost:44337/Resources/@selectPieces.Image" />
+                                <img class="img-fluid card-img" src="https://localhost:7170/Resources/@selectPieces.Image" />
                         </div>
                         <div class="col-md-7">
                                 <div class="card m-2 p-2">

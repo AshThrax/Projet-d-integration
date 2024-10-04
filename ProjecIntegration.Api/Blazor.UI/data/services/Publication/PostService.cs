@@ -17,7 +17,7 @@ namespace Blazor.UI.data.services.Publication
     public class PostService : IPostService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/V1/Post";
+        private const string ApiUri = "https://localhost:7170/api/V1/Post";
 
         public PostService(HttpClient httpClient)
         {

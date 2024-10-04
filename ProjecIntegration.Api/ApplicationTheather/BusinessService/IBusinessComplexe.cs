@@ -21,7 +21,7 @@ namespace ApplicationTheather.BusinessService
         /// </summary>
         /// <param name="complexeDto"></param>
         /// <returns></returns>
-        Task<ServiceResponse<ComplexeDto>> CreateAsync(ComplexeDto complexeDto);
+        Task<ServiceResponse<ComplexeDto>> CreateAsync(AddComplexeDto complexeDto);
         /// <summary>
         /// 
         /// </summary>

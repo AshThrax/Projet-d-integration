@@ -18,7 +18,7 @@ namespace Blazor.UI.Data.services.TheatherService
     public class SalleService : ISalleService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/V1/SallesDeTheatre";
+        private const string ApiUri = "https://localhost:7170/api/V1/SallesDeTheatre";
 
         public SalleService(HttpClient httpClient)
         {

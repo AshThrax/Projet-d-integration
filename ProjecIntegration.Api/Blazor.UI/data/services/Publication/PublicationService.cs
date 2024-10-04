@@ -12,6 +12,7 @@ namespace Blazor.UI.Data.services.Publication
         Task<PublicationDto> GetPublication(string Id);
         Task<PublicationDto> UpdatePublication(string Id, PublicationDto catalogue);
         Task<Pagination<PublicationDto>> GetPublicationByUserId(int page);
+        Task<Pagination<PublicationDto>> GetOtherPublicationByUserId(string userId,int page);
         Task<Pagination<PublicationDto>> GetAllPublicationByPieceId(int page,int id);
 
         //--------------------------------------------------
@@ -21,7 +22,7 @@ namespace Blazor.UI.Data.services.Publication
     {
 
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/Publication";
+        private const string ApiUri = "https://localhost:7170/api/v1/Publication";
 
         public PublicationService(HttpClient httpClient)
         {
@@ -50,12 +51,17 @@ namespace Blazor.UI.Data.services.Publication
 
         public async Task<Pagination<PublicationDto>?> GetPublicationByUserId(int page)
         {
-            return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/{page}");
+            return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/publication-by-user/{page}");
         }
 
         public async Task<Pagination<PublicationDto>?> GetAllPublicationByPieceId(int page,int id)
         {
             return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/by-piece/{page}/{id}");
+        }
+
+        public async Task<Pagination<PublicationDto>?> GetOtherPublicationByUserId(string userId, int page)
+        {
+            return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/publication-by-user//{userId}/{page}");
         }
     }
 }

@@ -3,7 +3,7 @@ using Domain.ServiceResponse;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class FavorisController : ControllerBase
     {
@@ -43,12 +43,13 @@ namespace WebApi.Controllers
         /// <param name="favorisId"></param>
         /// <param name="pieceId"></param>
         /// <returns></returns>
-        [HttpPost("addFavoris/{favorisId}/{pieceId}")]
+        [HttpPost("addFavoris/{pieceId}")]
         public async Task<ActionResult<ServiceResponse<FavorisDto>>> AddPiecetoFavoris(int favorisId,int pieceId)
         {
             try
             {
-                ServiceResponse<FavorisDto> response = await _businessFavoris.AddToFavoris(favorisId,pieceId);
+                string userId = await _customCetToken.GetSub();
+                ServiceResponse<FavorisDto> response = await _businessFavoris.AddToFavoris(userId,pieceId);
                 if (!response.Success)
                 {
                     return BadRequest(response.Message);
@@ -66,7 +67,7 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="favorisId"></param>
         /// <returns></returns>
-        [HttpGet("{page}/{favorisId}")]
+        [HttpGet("{page}")]
         public async Task<ActionResult<Pagination<PieceDto>>> GetFavorisById(int page) 
         {
             try

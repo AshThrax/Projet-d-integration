@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7nsxzEValMqGY8cs8p4ULpG6unUp9dU/qk/Vg5Wmgrs=",
+  "Hash": "t9mOZu+nCrR82sB7CjfmMB/YFqD/R4OgoARpTj89fys=",
   "Source": "Blazor.UI",
   "BasePath": "/",
   "Mode": "Root",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\blazor.bootstrap\\2.2.1\\staticwebassets\\pdfjs-4.0.379.worker.min.mjs"
     },
     {
-      "Identity": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
+      "Identity": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
       "SourceId": "Microsoft.AspNetCore.Components.QuickGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\",
       "BasePath": "_content/Microsoft.AspNetCore.Components.QuickGrid",
       "RelativePath": "Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
       "AssetKind": "All",
@@ -185,13 +185,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\QuickGrid.razor.js",
+      "Identity": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\QuickGrid.razor.js",
       "SourceId": "Microsoft.AspNetCore.Components.QuickGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\",
       "BasePath": "_content/Microsoft.AspNetCore.Components.QuickGrid",
       "RelativePath": "QuickGrid.razor.js",
       "AssetKind": "All",
@@ -204,7 +204,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\QuickGrid.razor.js"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.8\\staticwebassets\\QuickGrid.razor.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\8.0.5\\staticwebassets\\AuthenticationService.js",
@@ -470,7 +470,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.js"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\dotnet.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
@@ -489,15 +489,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.js.map"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\dotnet.js.map"
     },
     {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.re5tde2dly.js",
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.8.qn3jrr6167.js",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.5.re5tde2dly.js",
+      "RelativePath": "_framework/dotnet.native.8.0.8.qn3jrr6167.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -508,7 +508,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.native.js"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\dotnet.native.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
@@ -527,15 +527,15 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
     },
     {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.jk522yv588.js",
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.8.lsex9wbqpt.js",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.5.jk522yv588.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.8.lsex9wbqpt.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -546,7 +546,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
@@ -565,7 +565,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
@@ -584,7 +584,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
@@ -603,7 +603,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
@@ -622,7 +622,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
+      "OriginalItemSpec": "C:\\Users\\quentin\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.8\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.wasm",
@@ -4957,25 +4957,6 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\WMBlazorSlickCarousel.wasm"
     },
     {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\1nghg1f00i.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
-    },
-    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\1tmkz8gz3x.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -5071,6 +5052,25 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Numerics.wasm"
     },
     {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\28iddy6f9y.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
+    },
+    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\2dh7psxlfk.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -5145,6 +5145,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Core.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\32xn3gcxy1.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\33sb8o16me.gz",
@@ -5337,6 +5356,25 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.CSharp.wasm"
     },
     {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\4rybx1x4uc.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
+    },
+    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\4z5go50gpc.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -5525,25 +5563,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Runtime.CompilerServices.Unsafe.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\6nyz1howbm.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\6rlbjw2mhs.gz",
@@ -5924,6 +5943,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\993zvtgsp4.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\9aqlcq8jy7.gz",
@@ -6610,25 +6648,6 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Newtonsoft.Json.wasm"
     },
     {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\fuvpyfw665.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
-    },
-    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\fveyapdap7.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -6724,25 +6743,6 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.Http.wasm"
     },
     {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\gt1madhmj2.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
-    },
-    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\gwdafg081i.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -6779,25 +6779,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Text.Encodings.Web.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\h45tn8ao1u.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\hahuemrfjp.gz",
@@ -7161,6 +7142,25 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Collections.Concurrent.wasm"
     },
     {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\jabuhig473.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
+    },
+    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\jdbw3cb5ue.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -7199,25 +7199,6 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\BlazorBootstrap.wasm"
     },
     {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\jg7a7h7zsj.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
-    },
-    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\jilmtp8txs.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -7235,25 +7216,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Resources.Reader.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\jk522yv588.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.5.jk522yv588.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.jk522yv588.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.jk522yv588.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\k5oui7ndqm.gz",
@@ -7368,6 +7330,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Reflection.Metadata.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\lsex9wbqpt.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.8.0.8.lsex9wbqpt.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.8.lsex9wbqpt.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.8.lsex9wbqpt.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\lxfgwfzrkb.gz",
@@ -7596,25 +7577,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\n3kmyzgyz3.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.wasm.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\n9c2bk3lhl.gz",
@@ -8073,6 +8035,25 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Globalization.wasm"
     },
     {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\qn3jrr6167.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.8.qn3jrr6167.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.8.qn3jrr6167.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.8.qn3jrr6167.js"
+    },
+    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\qoh7ajvbid.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -8185,25 +8166,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.ProtectedData.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\re5tde2dly.gz",
-      "SourceId": "Blazor.UI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.5.re5tde2dly.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.re5tde2dly.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.re5tde2dly.js"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\rll8ujelim.gz",
@@ -8491,6 +8453,25 @@
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.Http.Polly.wasm"
     },
     {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\u5t7ifaxe4.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
+    },
+    {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\uiytnxgzt0.gz",
       "SourceId": "Blazor.UI",
       "SourceType": "Computed",
@@ -8508,6 +8489,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.ValueTuple.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\umapm0xg8o.gz",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\obj\\Debug\\net8.0\\compressed\\uollb45cmv.gz",
@@ -9306,6 +9306,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\profile.css"
+    },
+    {
+      "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\ProfileTest.css",
+      "SourceId": "Blazor.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/ProfileTest.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ProfileTest.css"
     },
     {
       "Identity": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\favicon.png",

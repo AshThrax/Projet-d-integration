@@ -1,0 +1,73 @@
+﻿@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.Services.TheatherService
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Blazor.UI.Data.ModelViews.Theater
+
+@inject IFavorisService favorisService
+
+<div class="shadow-sm m-2 p-2">
+    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Favoris</h6>
+    <div>
+        @if(GetFavoritePiece !=null)
+        { 
+            <div>
+                <QuickGrid Items="@GetFavoritePiece.Items.AsQueryable()">
+                    <PropertyColumn Property="Page =>Page.Id" />
+                    <PropertyColumn Property="Page =>Page.Titre"/>
+                    <PropertyColumn Property="Page =>Page.Auteur" />
+                    <PropertyColumn Property="P =>P.Duree" />
+                    <TemplateColumn>
+                        <a><img src="" alt="Alternate Text" /></a>
+                    </TemplateColumn>
+                </QuickGrid>
+            </div>
+            <div class="row">
+                <div class="float-end btn-group-sm">
+                    <a class="btn btn-outline-dark" @onclick="() =>previousPage()">Previous</a>
+                    <p>@pageIndex</p>
+                    <a class="btn btn-outline-dark" @onclick="() =>Nextpage()">Next</a>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <h3> vous n'avez pas de piece dans votre section Favorite</h3>
+            <h3><button type="button" class="btn btn-outline-dark" @onclick="() =>Create()">Désirez vous en Creer une liste de favoris?</button></h3>
+        }
+    </div>
+</div>
+@code {
+    public Pagination<PieceDto>? GetFavoritePiece { get; set; }
+    public int pageIndex { get; set; } = 1;
+
+    protected async override Task OnInitializedAsync()
+    {
+        GetFavoritePiece = await favorisService.GetFavoris(pageIndex);
+
+    }
+
+    public async Task Nextpage()
+    {
+        if (GetFavoritePiece.HasNextPage)
+        {
+            pageIndex++;
+            GetFavoritePiece =await favorisService.GetFavoris(pageIndex);
+        }
+
+    }
+    public async Task previousPage()
+    {
+        if (GetFavoritePiece.HasPreviousPage)
+        {
+            pageIndex--;
+            GetFavoritePiece = await favorisService.GetFavoris(pageIndex);
+        }
+
+    }
+    public async Task Create()
+    {
+
+       await favorisService.Create();
+    }
+}

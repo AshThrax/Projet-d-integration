@@ -55,7 +55,7 @@ namespace dataInfraTheather
             services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
             services.AddScoped<IBusinessCatalogue, BusinessCatalogue>();
             services.AddScoped<IBusinessSiege, BusinessSiege>();
-           
+            services.AddScoped<IBusinessFavoris, BusinessFavoris>();
             return services;
         }
 

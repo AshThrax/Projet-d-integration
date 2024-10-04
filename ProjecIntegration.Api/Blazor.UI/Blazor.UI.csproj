@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Blazor.Bootstrap" Version="2.2.1" />
     <PackageReference Include="Blazor.LocalStorage.WebAssembly" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.5" PrivateAssets="all" />
@@ -37,13 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Client\manager\Annonce\Component\" />
     <Folder Include="Client\manager\Catalogue\Component\" />
     <Folder Include="Client\manager\Complexe\Component\" />
-    <Folder Include="Client\manager\Piece\Component\" />
     <Folder Include="Client\manager\Salle\Component\" />
-    <Folder Include="Client\manager\Siege\Component\" />
     <Folder Include="Client\Page\MakeCommand\Component\" />
     <Folder Include="Client\Page\PiecePage\" />
+    <Folder Include="Data\Services\Modération\" />
   </ItemGroup>
 
   <ItemGroup>

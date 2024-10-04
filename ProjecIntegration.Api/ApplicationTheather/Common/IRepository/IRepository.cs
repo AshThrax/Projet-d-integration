@@ -7,6 +7,7 @@ namespace ApplicationTheather.Common.IRepository
     {
         Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includeProperties);
         Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties);
+        Task<bool> DoYouExist(Expression<Func<T,bool>> includeProperties);
         Task<T> Get(Expression<Func<T, bool>> includeProperties);
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> GetByListIds(List<int> ListIds);

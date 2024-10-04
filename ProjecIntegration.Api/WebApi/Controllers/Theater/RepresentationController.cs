@@ -116,7 +116,6 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-    
         public async Task<ActionResult> Createrepresentation([FromBody] AddRepresentationDto entity)
         {
             try

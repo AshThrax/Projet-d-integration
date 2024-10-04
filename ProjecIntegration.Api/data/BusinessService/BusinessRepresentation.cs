@@ -107,7 +107,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 IEnumerable<Representation> entity = await _repservice.GetAll(x=>x.SalleDeTheatre,c=>c.Piece);
-                IEnumerable<Representation> FromPiece = entity.Where(x => x.PieceId == id && x.Seance<=DateTime.UtcNow).ToList();
+                IEnumerable<Representation> FromPiece = entity.Where(x => x.PieceId == id && x.Seance >= DateTime.Now).ToList();
                 response.Data= _mapper.Map<IEnumerable<RepresentationDto>>(FromPiece);
                 response.Errortype = Errortype.Good;
                 response.Message = "Récupération des representation par pièce";
@@ -190,11 +190,11 @@ namespace DataInfraTheather.BusinessService
             ServiceResponse<RepresentationDto> response=new();
             try
             {
-                Representation getrep = await _repservice.GetById(id);
-                if (getrep != null)
+                bool getrep = await _repservice.DoYouExist(dto.Id.Value);
+                if (getrep)
                 {
                     Representation entityToUpdate = _mapper.Map<Representation>(dto);
-                    await _repservice.Update(id, entityToUpdate);
+                    await _repservice.Update(dto.Id.Value, entityToUpdate);
                     response.Success = true;
                     response.Message = "mise a jour réussi";
                     response.Errortype = Errortype.Good;

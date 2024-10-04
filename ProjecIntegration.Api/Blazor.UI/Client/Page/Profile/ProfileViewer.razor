@@ -4,30 +4,14 @@
 @attribute [Authorize]      
 @attribute [StreamRendering]
 @using Blazor.UI.Data.ServiceResult
-@using Blazor.UI.Data.modelViews.Publication
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.ModelViews.Publication
 @using Blazor.UI.Data.services.TheatherService
-@using Blazor.UI.data.modelViews
 @using Blazor.UI.data.services
+
 @inject ICommandService ServCom;
 <PageTitle>Profile</PageTitle>
-        <div class="row ">
-            <div class="col">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a type="button" class="btn btn-primary btn-success nav-link alert-success text-black" @onclick="() => ShowProfile()">
-                             Profile
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a type="button" class="btn btn-primary btn-success nav-link alert-success text-black" @onclick="() => ShowCommand()">
-                            Commande
-                        </a>
-                    </li>
-                </ul>
-                <br />
-            </div>
-        </div>
+       
 @if (userDto != null && CommandUser !=null)
 {
     <div class="page-content page-container bodyUser" id="page-content">
@@ -48,52 +32,87 @@
                             </div>
                             <div class="col-sm-8">
                                 <div class="card-block">
-                                        @if (isProfile)
-                                        {
-                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                    <div class="row ">
+                                        <div class="col">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item">
+                                                    <a type="button" class="btn btn-primary btn-success nav-link alert-success text-black" @onclick="() => ShowProfile()">
+                                                        Profile
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a type="button" class="btn btn-primary btn-success nav-link alert-success text-black" @onclick="() => ShowFavorite()">
+                                                        favoris
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a type="button" class="btn btn-primary btn-success nav-link alert-success text-black" @onclick="() => ShowCommand()">
+                                                        Commande
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-2 p-2">
+                        <div class="card-block">
+                            @if (isProfile)
+                            {
+                                <div class="row">
+                                    <Blazor.UI.Client.Page.Profile.Component.ProfileInfoComponent GetUser="@userDto">
+                                    </Blazor.UI.Client.Page.Profile.Component.ProfileInfoComponent>
+                                </div>
+                            }
+                            else if (isFavorite)
+                            {
+                                <div>
+                                    <Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
+                                    </Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
+                                </div>
+                            }
+                            else
+                            {
+                                if (CommandUser != null)
+                                {
+                                    @if (CommandUser.Items != null && CommandUser.Items.Count > 0)
+                                    {
+                                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
                                         <div class="row">
-                                            <Blazor.UI.Client.Page.Profile.Component.ProfileInfoComponent GetUser="@userDto">
-                                            </Blazor.UI.Client.Page.Profile.Component.ProfileInfoComponent>
+
+                                            <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
+                                                <Blazor.UI.Client.Page.MakeCommand.GetCommand lstCommand="CommandUser.Items">
+
+                                                </Blazor.UI.Client.Page.MakeCommand.GetCommand>
+                                            </div>
+                                            <div class="">
+                                                <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
+                                                <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
+                                            </div>
                                         </div>
                                     }
                                     else
                                     {
-                                        if (CommandUser != null)
-                                        {
-                                            @if (CommandUser.Items != null && CommandUser.Items.Count > 0)
-                                            {
-                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                                                <div class="row">
-
-                                                    <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
-                                                        <Blazor.UI.Client.Page.MakeCommand.GetCommand lstCommand="CommandUser.Items"></Blazor.UI.Client.Page.MakeCommand.GetCommand>
-                                                    </div>
-                                                    <div class="">
-                                                        <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
-                                                        <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
-                                                    </div>
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div class="card m-4 p-4 text-sm-center">
-                                                <h2 class="card-header-tabs">vous n'avez pas de commande</h2>
-                                                <p class="card-text"></p>
-                                                </div>
-                                            }
-                                        }
-                                        else
-                                        {
-                                           
-                                        }
+                                        <div class="card m-4 p-4 text-sm-center">
+                                            <h2 class="card-header-tabs">vous n'avez pas de commande lier a une reservation</h2>
+                                            <h2 class="card-header-tabs"><a href="/reservation">vous faire une reservation</a></h2>
+                                            <p class="card-text"></p>
+                                        </div>
                                     }
-                                    <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                            <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -111,7 +130,8 @@ else
     public Task<AuthenticationState> AuthenticationStateTask { get; set; } 
 
     public bool isProfile { get; set; } = true;
-    public bool isCommand { get; set; }
+    public bool isCommand { get; set; } = false;
+    public bool isFavorite { get; set; } = false;
 
 
     public Pagination<CommandDto>? CommandUser { get; set; }
@@ -132,11 +152,21 @@ else
     {
         isCommand = true;
         isProfile = false;
+        isFavorite = false;
     }
     public void ShowProfile()
     {
         isProfile= true;
         isCommand = false;
+        isFavorite = false;
+    }
+    public void ShowFavorite()
+    {
+
+        isProfile = false;
+        isCommand = false;
+        isFavorite = true;
+        
     }
     protected async Task auth()
     {

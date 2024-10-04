@@ -1,6 +1,5 @@
-﻿@page "/manager/updateSalle/{Id:int}"
-
-@using Blazor.UI.Data.modelViews.Theater
+﻿
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject NavigationManager manager;
@@ -8,22 +7,8 @@
 @inject ISalleService SalleService;
 
 <div class="flex-fill m-4 p-4">
-    <h3>Mise a jour d'une sallede théatre</h3>
-
-    <div class="m-4 p-4">
-        <div class=" btn-group rounded float-end">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <button type="button" class="col col-sm-3  btn btn-warning" @onclick="() => GetAllSalle(SelectComplexeId)">Voir Toute les Salles</button>
-
-        </div>
-    </div>
+    <h3>Mise a jour d'une salle de théatre</h3>
     <div class="card">
-        <div class="card-header">
-            <h3 class="display-4">Edit SalleDeTheatre</h3>
-
-        </div>
         <div class="card-body">
 
             @if (SelectedSalle != null)
@@ -68,7 +53,7 @@
 @code {
     [Parameter]
     public int Id { get; set; }
-
+    [Parameter]
     public SalleDeTheatreDto SelectedSalle { get; set; } = new();
     public int SelecteSalleId { get; set; }
     public List<ComplexeDto> AllComplexe { get; set; } = new(); 

@@ -1,13 +1,11 @@
-﻿@using Blazor.UI.Data.modelViews.Theater
+﻿@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
-@using Blazor.UI.data.modelViews
 @using Blazor.UI.data.services
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject IRepresentationService ServP;
 @inject IPieceService ServPiece;
 <div class="m-4 p-4 row">
-    <h3>Vos Commandes</h3>
-
+    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Vos Commande</h6>
     <br>    
     @if (lstCommand != null && lstCommand.Count>0)
     {

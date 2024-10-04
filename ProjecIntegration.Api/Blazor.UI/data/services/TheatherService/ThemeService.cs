@@ -12,7 +12,7 @@ namespace Blazor.UI.data.services.TheatherService
     public class ThemeService: IThemeService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/Theatre";
+        private const string ApiUri = "https://localhost:7170/api/v1/Theatre";
 
         public ThemeService(HttpClient httpClient)
         {

@@ -1,6 +1,6 @@
 ﻿@page "/manager/addpiecetocatalogue/{Id:int}"
 @using Blazor.UI.Data.ServiceResult
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 
@@ -99,6 +99,7 @@
                         <div class="colcard-body">
                             @if (GetPieces != null)
                             {
+                                
                                 <QuickGrid Items="PieceFromcatalogue?.Items.AsQueryable()">
                                     <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
                                     <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />

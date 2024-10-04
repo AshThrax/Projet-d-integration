@@ -57,15 +57,18 @@ namespace InfrastructureUser.BusinessService
             ServiceResponse<BannerDto> response = new();
             try
             {
-                Banner getBanner = await _bannerRepository.Get(x=>x.UserId==userId);
-                if (getBanner != null)
+                bool getBanner = await _bannerRepository.DoYouExist(x=>x.UserId==userId);
+                if (getBanner)
                 {
-                    response.Data=_mapper.Map<BannerDto>(getBanner);
+                    Banner getbanner = await _bannerRepository.Get(x => x.UserId == userId);
+                    response.Data=new BannerDto() {Id=getbanner.Id,ImageRessource=getbanner.ImageRessource,UserId=getbanner.UserId };
                     response.Message="banner succesfully retrieve";
                 }
-                else 
+                else
                 {
-                    
+                    response.Success = false;
+                    response.Message = "banner Unsuccesfully retrieve";
+
                 }
             }
             catch (Exception ex)

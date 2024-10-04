@@ -20,7 +20,7 @@ namespace Blazor.UI.Data.services.TheatherService
      ICommandService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/Command";
+        private const string ApiUri = "https://localhost:7170/api/v1/Command";
 
         public CommandService(HttpClient httpClient)
         {

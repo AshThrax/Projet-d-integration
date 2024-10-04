@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XEF1dGhlbnRpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Annonce/AnnonceMananger.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQW5ub25jZVxBbm5vbmNlTWFuYW5nZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Catalogue/AddCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcQ2F0YWxvZ3VlXEFkZENhdGFsb2d1ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/AddPieceToCatalogue.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcQWRkUGllY2VUb0NhdGFsb2d1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/Component/ShowFavorite.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcUGllY2VcQ29tcG9uZW50XFNob3dGYXZvcml0ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Piece/PieceManager.razor]
@@ -130,6 +138,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2FsbGVcVXBkYXRlU2FsbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Siege/Component/AddSiegeComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2llZ2VcQ29tcG9uZW50XEFkZFNpZWdlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Siege/Component/DetailsSiege.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2llZ2VcQ29tcG9uZW50XERldGFpbHNTaWVnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Siege/Component/UpdateSiegeComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2llZ2VcQ29tcG9uZW50XFVwZGF0ZVNpZWdlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/manager/Siege/SiegeManager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XG1hbmFnZXJcU2llZ2VcU2llZ2VNYW5hZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -178,12 +198,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcTWFrZUNvbW1hbmRcTWFuYWdlQ29tbWFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/OtherProfile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcT3RoZXJQcm9maWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/ProfileCard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcUHJvZmlsZUNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/ProfileInfoComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcUHJvZmlsZUluZm9Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Profile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxQcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/ProfileViewer.razor]

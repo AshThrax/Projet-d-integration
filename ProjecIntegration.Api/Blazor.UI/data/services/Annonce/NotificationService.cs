@@ -12,7 +12,7 @@ public interface INotificaitonService
 public class NotificationService : INotificaitonService
 {
     private readonly HttpClient _httpClient;
-    private const string ApiUri = "https://localhost:44337/api/v1/notification";
+    private const string ApiUri = "https://localhost:7170/api/v1/notification";
 
     public NotificationService(HttpClient httpClient)
     {

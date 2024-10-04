@@ -11,7 +11,7 @@ namespace Blazor.UI.data.services.authorization
             : base(provider, navigationManager)
         {
             ConfigureHandler(
-               authorizedUrls: new[] { "https://localhost:44337" });
+               authorizedUrls: new[] { "https://localhost:7170/api" });
 
         }
     }

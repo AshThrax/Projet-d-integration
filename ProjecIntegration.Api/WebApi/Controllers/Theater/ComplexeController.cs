@@ -1,6 +1,8 @@
 ﻿using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.IRepository;
 using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
+using Stripe;
 namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
@@ -8,10 +10,10 @@ namespace WebApi.Controllers.Theater
     [Authorize]
     public class ComplexeController : ControllerBase
     {
-        private readonly IComplexeRepository _complexeService;
+        private readonly IBusinessComplexe _complexeService;
         private readonly IMapper _mapper;
         public ComplexeController(
-            IComplexeRepository complexeService,
+            IBusinessComplexe complexeService,
             IMapper mapper)
         {
             _mapper = mapper;
@@ -27,9 +29,9 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entity = await _complexeService.GetById(id, c => c.SalleDeTheatres);
-                var conversion = _mapper.Map<ComplexeDto>(entity);
-                return Ok(conversion);
+                var entity = await _complexeService.GetComplexe(id);
+                
+                return Ok(entity);
 
             }
             catch (ValidationException ex)
@@ -57,9 +59,8 @@ namespace WebApi.Controllers.Theater
 
             try
             {
-                var entity = await _complexeService.GetAll(c => c.SalleDeTheatres);
-                var conversion = _mapper.Map<IEnumerable<ComplexeDto>>(entity);
-                return Ok(conversion);
+                ServiceResponse<IEnumerable<ComplexeDto>> response = await _complexeService.GetAllComplexe();
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -81,7 +82,7 @@ namespace WebApi.Controllers.Theater
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Create([FromBody] AddComplexeDto complexe)
+        public async Task<ActionResult> Create([FromBody] AddComplexeDto complexe)
         {
             Console.WriteLine("entering api ");
             try
@@ -90,9 +91,9 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest();
                 }
-                var conversion = _mapper.Map<Complexe>(complexe);
-                _complexeService.Insert(conversion);
-                return Ok();
+                
+                await _complexeService.CreateAsync(complexe);
+                return NoContent();
 
             }
             catch (ValidationException ex)
@@ -108,46 +109,14 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("add-Salle/{idComplexe}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddSalleDeTheatreDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult AddSalle(int idComplexe, [FromBody] AddSalleDeTheatreDto salle)
-        {
-            Console.WriteLine("entering api ");
-            try
-            {
-                if (salle == null)
-                {
-                    BadRequest();
-                }
-                var conversion = _mapper.Map<SalleDeTheatre>(salle);
-                _complexeService.AddSalledeTheatre(idComplexe, conversion);
-                return Ok();
-
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        
         [HttpPut("{updtId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Update(int updtId, [FromBody] UpdateComplexeDto complexe)
+        public async Task<ActionResult> Update(int updtId, [FromBody] UpdateComplexeDto complexe)
         {
             try
             {
@@ -155,8 +124,8 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest();
                 }
-                var conversion = _mapper.Map<Complexe>(complexe);
-                _complexeService.Update(updtId, conversion);
+             
+                await _complexeService.UpdateAsync(updtId, complexe);
                 return Ok();
 
             }
@@ -200,31 +169,6 @@ namespace WebApi.Controllers.Theater
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("delete-salle/{idComplexe}/{idSalle}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Delete(int idComplexe, int idSalle)
-        {
-            try
-            {
-                _complexeService.DeletesalleDetheatre(idComplexe, idSalle);
-                return NoContent();
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+    
     }
 }

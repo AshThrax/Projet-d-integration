@@ -93,6 +93,25 @@ namespace WebApi.Controllers
                 return NotFound();
             }
         }
+        [HttpGet("publication-by-user/{userId}/{page}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PublicationDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetPublicationByUser(string userId,int page)
+        {
+            try
+            {
+               
+                List<PublicationDto> getPublication = (await _publicationBl.GetAllbyPublicationByUserId(userId)).ToList();
+                Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(getPublication, page, 5);
+                return Ok(pagePublication);
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
         [HttpDelete("delete-publication/{publicationById}")]
         public async Task<ActionResult> DeletePublication(string publicationById)
         {

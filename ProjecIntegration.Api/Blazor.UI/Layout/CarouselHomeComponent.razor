@@ -1,4 +1,5 @@
-﻿@using Blazor.UI.Data.modelViews.Theater
+﻿@using Blazor.UI.Data.ModelViews.Theater
+
 @using Blazor.UI.Data.services.TheatherService
 
 @inject IPieceService pieceService;
@@ -11,14 +12,14 @@
                 <div class="carousel-inner">
                      <div class="carousel-item active">
                         <a  @onclick="() =>GetToPiece(activesPiece.Id)">
-                            <img src="https://localhost:44337/Resources/@activesPiece.Image" class="d-block w-100" alt="...">
+                            <img src="https://localhost:7170/Resources/@activesPiece.Image" class="d-block w-100" alt="...">
                          </a>
                      </div>
                     @foreach (var item in GetPieceDtos)
                     {
                         <div class="carousel-item">
                             <a @onclick="() =>GetToPiece(item.Id)">
-                                <img src="https://localhost:44337/Resources/@item.Image" class="d-block w-100" alt="...">
+                                <img src="https://localhost:7170/Resources/@item.Image" class="d-block w-100" alt="...">
                             </a>
                         </div>
                     }

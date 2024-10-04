@@ -15,6 +15,7 @@ namespace ApplicationUser.Service
         Task<ServiceResponse<GetFollowerDto>> DeleteFollower(string UserId,string followerId);
         Task<ServiceResponse<IEnumerable<GetFollowerDto>>> GetAllFollower(string userId);
         Task<ServiceResponse<IEnumerable<GetFollowerDto>>> GetAllFollowed(string followId);
+        Task<ServiceResponse<bool>> DoIFollow(string UserId,string followerId);
 
 
     }

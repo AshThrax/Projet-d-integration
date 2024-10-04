@@ -23,7 +23,7 @@ namespace Blazor.UI.Data.services.TheatherService
     public class RepresentationService : IRepresentationService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/V1/Representation";
+        private const string ApiUri = "https://localhost:7170/api/v1/Representation";
 
         public RepresentationService(HttpClient httpClient)
         {
@@ -50,12 +50,12 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task Create(AddRepresentationDto data)
         {
-            await _httpClient.PostAsJsonAsync(ApiUri, data);
+            await _httpClient.PostAsJsonAsync<AddRepresentationDto>(ApiUri, data);
         }
 
         public async Task Update(UpdateRepresentationDto data)
         {
-            await _httpClient.PutAsJsonAsync(ApiUri, data);
+            await _httpClient.PutAsJsonAsync<UpdateRepresentationDto>(ApiUri+$"/{data.Id}", data);
         }
 
         public async Task Delete(int id)

@@ -1,5 +1,5 @@
 ﻿@page "/manager/addComplexe"
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 
 @inject NavigationManager manager;
@@ -42,7 +42,7 @@
 
                         <!-- Add other input fields based on your UpdateComplexeDto properties -->
                         <br />
-                        <button type="button" class="btn btn-warning" @onclick="MyAddComplexe">Update Complexe</button>
+                        <button type="button" class="btn btn-warning" @onclick="() =>MyAddComplexe()">Update Complexe</button>
                     </div>
                 </form>
             }
@@ -57,7 +57,7 @@
 @code {
     public AddComplexeDto AddedComplexe { get; set; } = new AddComplexeDto();
 
-    public void MyAddComplexe()
+    public async Task MyAddComplexe()
     {
         AddComplexeDto UpdtoDate = new AddComplexeDto
             {
@@ -67,7 +67,7 @@
                 Description = AddedComplexe.Description,
 
             };
-        ComplexeService.Create(UpdtoDate);
+        await ComplexeService.Create(UpdtoDate);
 
     }
     public void GetAll()

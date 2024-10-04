@@ -1,5 +1,6 @@
 ﻿using ApplicationUser;
 using InfrastructureUser;
+using WebApi.ApiService.PaymentService;
 using WebApi.ApiService.UserService;
 
 namespace WebApi.ExtensionMethods
@@ -28,6 +29,7 @@ namespace WebApi.ExtensionMethods
             services.AddBusiness();
             services.AddSignalR();
             services.Configure<StripeSettings>(configuration.GetSection("StripeSettings"));
+            services.AddAutoMapper(typeof(UserMapper));
             return services;
         }
         /*
@@ -42,6 +44,7 @@ namespace WebApi.ExtensionMethods
             services.AddScoped<IBusinessPiece, BusinessPiece>(); //Business Piece Service
             services.AddScoped<ITheatreBusiness, TheatreBusiness>(); //Business THeatre Service
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPaymentService, PaymentService>();
             return services;
         }
         public static IServiceCollection AddApplication(this IServiceCollection services)

@@ -1,24 +1,10 @@
-﻿@page "/manager/addSalle"
-@using Blazor.UI.Data.modelViews.Theater
+﻿@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @inject ISalleService SalleServ;
 @inject IComplexeService SerComp;
 @inject NavigationManager Manager;
 <div class="flex-fill m-4 p-4">
-
-    <div class="m-4 p-4">
-        <div class=" btn-group rounded float-end">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <button type="button" class="col col-sm-3  btn btn-warning" @onclick="() => GetAll(selectedComplexeId)">Voir Toute les Salles</button>
-
-        </div>
-    </div>
-    <div class="m-4 p-4 card w-50 rounded">
-        <div class="card-header">
-            <h3>AddSalle</h3>
-        </div>
+    <div class="m-4 p-4 card  rounded">
         <div class="">
             <form class="m-1 ">
                 <div class="col-form-label">
@@ -34,6 +20,8 @@
                     </div>
 
                     <div class="p-1">
+                        @if (SelctedComplexe != null)
+                        {
                         <label class="form-label" for="complexeId">Complexe </label>
                         <select class="form-control" @bind="selectedComplexeId" @oninput="OnSelectedChange">
                             <option>choissisez le complexe </option>
@@ -41,7 +29,13 @@
                             {
                                 <option value="@item.Id">@item.Name <p>@item.Id</p></option>
                             }
-                        </select>
+                            </select>
+
+                        }
+                        else
+                        {
+                            
+                        }
                     </div>
 
                     <br />

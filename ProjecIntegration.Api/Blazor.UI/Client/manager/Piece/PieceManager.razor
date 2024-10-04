@@ -1,6 +1,6 @@
 ﻿@page "/manager/Piece"
 
-@using Blazor.UI.Data.modelViews.Theater
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject NavigationManager manager;
@@ -16,8 +16,8 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetAllPiece">back to profile page</button>
-            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetHome">backMaineMenu</button>
+            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetAllPiece">Complexe</button>
+            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetHome">menu Principale</button>
             <button type="button" class="col col-sm-3   btn btn-primary" @onclick="Previous">back to reservation</button>
         </div>
 
@@ -47,8 +47,9 @@
             <br />
             <br />
             <div class="row m-2 p-2 w-25 bg-white rounded">
-  
-                    <div class="col">
+                @if (SelectedPiece != null)
+                {
+                <div class="col">
                         <div>
                         <h4 cclass="form-label" for="titre">Titre:</h4>
                             <p>@SelectedPiece?.Titre</p>
@@ -61,11 +62,11 @@
                         </div>
 
                         <div>
-                            <h4 c class="form-label for="description">Description:</h4>
+                            <h4 c class="form-label" for="description">Description:</h4>
                             <p>@SelectedPiece.Description</p>
                         </div>
                         <div>
-                            <h4 cclass="form-label for="auteur">Auteur :</h4>
+                            <h4 cclass="form-label" for="auteur">Auteur :</h4>
                             <p>@SelectedPiece.Auteur</p>
                         </div>
               
@@ -74,21 +75,27 @@
                     </div>
                     <div class="col">
                         <div>
-                            <h4 class="form-label for="File">Photo :</h4>
+                            <h4 class="form-label" for="File">Photo :</h4>
                             <img class="img-fluid" src="https://localhost:44337/Resources/@SelectedPiece.Image" />
                         </div>
                     </div>
                     <div class="m-2 p-2 btn-group-lg float-end">
-                    <button type="button" class="btn btn-warning ">Update</button>
-                        <button type="button" class="btn btn-warning ">Delete</button>
+                        <button type="button" class="btn btn-warning p-2" @onclick="()=>UpdatePiece(SelectedPiece.Id)">Update</button>
+                        <button type="button" class="btn btn-warning p-2" @onclick="()=>DeletePiece(SelectedPiece)">Delete</button>
+                        <button type="button" class="btn-warning p-2" @onclick="()=>AddRepresentation(SelectedPiece.Id)">Add Representation</button>
                     </div>
+                }
+                else
+                {
+                    
+                }
             </div>
         </div>
     </div>
 </div>
 @code {
     public IEnumerable<PieceDto>?  GetPiece { get; set; }
-    public PieceDto? SelectedPiece { get; set; } = new();
+    public PieceDto? SelectedPiece { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -103,6 +110,10 @@
     {
         manager.NavigateTo($"/manager/representationPiece/{id}");
     }
+    public void AddRepresentation(int pieceId)
+    {
+        manager.NavigateTo($"/manager/addrepresentation");
+    }
     public void GetAllPiece()
     {
         manager.NavigateTo("/manager/piece");
@@ -113,6 +124,15 @@
     }
     public void Previous()
     {
-        manager.NavigateTo("/");
+        manager.NavigateTo("/manager");
+    }
+    public async Task DeletePiece(PieceDto pieceDto)
+    {
+        await PieceService.Delete(pieceDto);
+        GetPiece = await PieceService.Getlist();
+    }
+    public void UpdatePiece(int pieceId)
+    {
+        manager.NavigateTo($"/manager/updatePiece/{pieceId}");
     }
 }

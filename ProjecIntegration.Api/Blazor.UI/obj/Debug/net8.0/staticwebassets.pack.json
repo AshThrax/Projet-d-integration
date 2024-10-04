@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\appsettings.json"
     },
     {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\ProfileTest.css",
+      "PackagePath": "staticwebassets\\css\\ProfileTest.css"
+    },
+    {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },

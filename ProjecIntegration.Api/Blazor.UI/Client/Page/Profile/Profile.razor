@@ -1,0 +1,281 @@
+﻿@page "/profile"
+
+@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ModelViews.Theater
+@using System.Security.Claims
+@attribute [Authorize]
+@attribute [StreamRendering]
+
+@using Blazor.UI.Data.ModelViews.User
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.Services.User
+@using Blazor.UI.Data.services.TheatherService
+@using Blazor.UI.data.services
+
+@inject ICommandService ServCom;
+@inject IBannerService bannerService;
+<div class="float-end">
+    <button class="btn btn-outline-info float-end" @onclick="() =>WillUpdateBanner()">update banner</button>
+    @if (willUpdateBanner)
+    {
+        <div>
+            <label class="form-label for="File">Photo :</label>
+            <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
+            <div>
+                <button type="button" class="btn btn-warning" @onclick="UploadBanner"> Upload Image</button>
+            </div>
+        </div>
+    }
+    else
+    {
+
+    }
+</div>
+
+    <div class="profile-container">
+        <div class="cover-photo">
+            @if (bannerDto != null)
+            {
+                <img class="cover-photo-img" src="https://localhost:7170/Resources/@bannerDto.ImageRessource" alt="Alternate Text" />
+
+            }
+            else
+            {
+                
+            }
+           
+        </div>
+    <div class="m-2 p-2"></div>
+        <div class="profile-info">
+            <div class="profile-photo">
+                <img class="profile-img" src="@userDto.Picture" alt="Alternate Text" />
+
+            </div>
+            <div class="user-details pt-4">
+                <h2>@userDto.GivenName</h2>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="m-2 p-2"></div>
+    <div class="row">
+
+        <div class="profile-stats m-2 p-2">
+
+            <div class="stat">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span>Publication</span></li>
+                    @if (isfollower)
+                    {
+                        <li class="list-group-item"><a class="btn btn-outline-dark">liste des follower</a></li>
+                    }
+                    else
+                    {
+                        <li class="list-group-item"> <a class="btn btn-outline-dark">Montrer les follower</a></li>
+
+
+                    }
+                </ul>
+            </div>
+            <div class="stat">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span>Favoris</span></li>
+                @if (isfollower)
+                {
+                    <li class="list-group-item"><a class="btn btn-outline-dark">liste des Favoris</a></li>
+                }
+                else
+                {
+                    <li class="list-group-item"> <a class="btn btn-outline-dark">Montrer les favoris</a></li>
+
+
+                }
+                </ul>
+            </div>
+            <div class="stat">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span>Commande</span></li>
+                @if (isCommand)
+                {
+                    <li class="list-group-item"><a class="btn btn-outline-dark" >enlever les commande</a></li>
+                }
+                else
+                {
+                    <li class="list-group-item"> <a class="btn btn-outline-dark" >Montrer les commandes</a></li>
+
+
+                }
+            </ul>
+            </div>
+          
+        </div>
+    </div>
+    <div class="container text-md-center">
+    @if (isfollower)
+    {
+
+    }
+    else if (isCommand)
+    {
+        if (CommandUser != null)
+        {
+            @if (CommandUser.Items != null && CommandUser.Items.Count > 0)
+            {
+                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                <div class="row">
+
+                    <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
+                        <Blazor.UI.Client.Page.MakeCommand.GetCommand lstCommand="CommandUser.Items">
+
+                        </Blazor.UI.Client.Page.MakeCommand.GetCommand>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
+                        <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card m-4 p-4 text-sm-center">
+                    <h2 class="card-header-tabs">vous n'avez pas de commande lier a une reservation</h2>
+                    <h2 class="card-header-tabs"><a href="/reservation">vous faire une reservation</a></h2>
+                    <p class="card-text"></p>
+                </div>
+            }
+        }
+        else
+        {
+
+        }
+    }
+    else if (isFavorite)
+    {
+        <div>
+            <Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
+            </Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
+        </div>
+    }
+    else
+    {
+        <div class="">
+            <h3>Bienvenue @userDto.GivenName</h3>
+        </div>
+    }
+</div>
+
+@code {
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    public bool isProfile { get; set; } = true;
+    public bool isCommand { get; set; } = false;
+    public bool isFavorite { get; set; } = false;
+    public bool isfollower { get; set; } = false;
+
+    public bool willUpdateBanner { get; set; } = false;
+    private long maxFileSize = long.MaxValue;
+    public string? fileName { get; set; }
+    IBrowserFile? ImageFile { get; set; }
+
+    public Pagination<CommandDto>? CommandUser { get; set; }
+    public UserDto? userDto { get; set; } = new();
+    public BannerDto? bannerDto { get; set; }
+    public int pageindex = 1;
+    protected override async Task OnInitializedAsync()
+    {
+        await auth();
+        CommandUser = (await ServCom.GetByUser(1));
+        bannerDto = await bannerService.Getbanner();
+        await Task.Delay(1000);
+        await base.OnInitializedAsync();
+    }
+    public async void GetAuth()
+    {
+        await ServCom.GetAuth();
+    }
+    public void ShowCommand()
+    {
+        isCommand = true;
+        isProfile = false;
+        isFavorite = false;
+    }
+    public void ShowProfile()
+    {
+        isProfile = true;
+        isCommand = false;
+        isFavorite = false;
+    }
+    public void ShowFavorite()
+    {
+
+        isProfile = false;
+        isCommand = false;
+        isFavorite = true;
+
+    }
+    private void OnFileSelected(InputFileChangeEventArgs e)
+    {
+        ImageFile = e.File;
+
+    }
+    public void WillUpdateBanner()
+    {
+        willUpdateBanner = !willUpdateBanner;
+    }
+    protected async Task auth()
+    {
+
+        var state = await AuthenticationStateTask;
+        userDto = new UserDto
+            {
+                Email = state?.User?.Claims?.FirstOrDefault(c => c.Type == "email")?.Value,
+                FamilyName = state?.User.Claims.FirstOrDefault(c => c.Type == "family_name")?.Value,
+                GivenName = state?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value,
+                Name = state?.User.Claims.FirstOrDefault(c => c.Type == "user_name")?.Value,
+                Picture = state?.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
+                UserName = state?.User.Claims.FirstOrDefault(c => c.Type == "name")?.Value,
+
+
+            };
+    }
+    public async Task NextPage()
+    {
+        if (CommandUser.HasNextPage)
+        {
+            pageindex++;
+            CommandUser = await ServCom.GetByUser(pageindex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (CommandUser.HasPreviousPage)
+        {
+            pageindex--;
+            CommandUser = await (ServCom.GetByUser(pageindex));
+        }
+    }
+    public async Task UploadBanner()
+    {
+
+        using var content = new MultipartFormDataContent();
+
+        var file = ImageFile;
+        var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+        fileName = file.Name;
+
+        content.Add(
+            content: fileContent,
+            name: "\"files\"",
+            fileName: file.Name);
+
+
+
+         await bannerService.ChangeBanner(content);
+       // bannerDto = await bannerService.Getbanner();
+    }
+}

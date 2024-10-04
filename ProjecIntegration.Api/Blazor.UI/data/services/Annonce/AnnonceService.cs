@@ -15,7 +15,7 @@ namespace Blazor.UI.Data.services.Annonce
     public class AnnonceService : IAnnonceService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:44337/api/v1/annonce";
+        private const string ApiUri = "https://localhost:7170/api/v1/annonce";
 
         public AnnonceService(HttpClient httpClient)
         {
