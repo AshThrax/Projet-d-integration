@@ -191,5 +191,30 @@ namespace dataInfraTheather.Infrastructure.Repository
                 throw;
             }
         }
+
+        public async Task<IEnumerable<T>> GetAllCustomWithInclude(Expression<Func<T, bool>> findProperties, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            try
+            {
+
+                if (includeProperties != null)
+                {
+                    query = query.Where(findProperties);
+                }
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+
+                return await query.ToListAsync()?? throw new NullReferenceException();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

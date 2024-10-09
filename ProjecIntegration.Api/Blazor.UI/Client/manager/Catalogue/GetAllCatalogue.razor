@@ -70,6 +70,26 @@
                             <TemplateColumn Context="item">
                                 <button type="button" class="btn btn-warning" @onclick="() => GetToPieceCatalog(item.Id)">Piece</button>
                             </TemplateColumn>
+                            <TemplateColumn>
+                                <div class="btn-group">
+                                    <a @onclick="() =>SelecteCatalogue(context)"
+                                       class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Add"> <i class="bi bi-plus-square"></i> Add</a>
+                                    <a @onclick="() => UpdateDialogOPen()"
+                                       class="btn btn-warning"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Update"> <i class="bi bi-pencil"></i> update</a>
+                                    <a @onclick="() => DeleteDialogOPen ()"
+                                       class="btn btn-danger"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Delete"> <i class="bi bi-x-square"></i>delete</a>
+                                </div>
+                            </TemplateColumn>
                         </QuickGrid>
 
                    </div>

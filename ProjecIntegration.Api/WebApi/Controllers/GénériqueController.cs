@@ -24,11 +24,15 @@ namespace WebApi.Controllers
             try
             {
                 ServiceResponse<TDto> response = await _service.GetByIdAsync(Id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpGet()]
@@ -37,11 +41,15 @@ namespace WebApi.Controllers
             try
             {
                 ServiceResponse<List<TDto>> response = await _service.GetAsync();
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
 
@@ -51,11 +59,15 @@ namespace WebApi.Controllers
             try
             {
                 ServiceResponse<TDto> response = await _service.AddAsync(AddDto);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpPut("{updtId}")]
@@ -64,11 +76,15 @@ namespace WebApi.Controllers
             try
             {
                 ServiceResponse<TDto> response = await _service.UpdateAsync(updtId,AddDto);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpDelete("{Id}")]
@@ -77,11 +93,15 @@ namespace WebApi.Controllers
             try
             {
                 ServiceResponse<TDto> response = await _service.DeleteAsync(Id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
     }

@@ -58,19 +58,25 @@
                         <QuickGrid Items="GetAllSiegeFromSallePagination.Items.AsQueryable()">
                         <PropertyColumn Property="Page=> Page.Name"/>
                         <PropertyColumn Property="Page=> Page.AddedTime" />
-                        <TemplateColumn>
-                            <div>
-                                <a class="btn btn-primary" @onclick="() => DetailsDialogOPen(context)"> details</a>
-                            </div>
-                        </TemplateColumn>
+                      
                             <TemplateColumn>
-                                <div>
-                                    <a class="btn btn-warning" @onclick="() =>  UpdateDialogOPen(context.Id)">mettre a jour</a>
-                                </div>
-                            </TemplateColumn>
-                            <TemplateColumn>
-                                <div>
-                                    <a class="btn btn-danger" @onclick="() => DeleteDialogOPen(context.Id)">Supprimer</a>
+                                <div class="btn-group">
+                                    <a @onclick="() =>DetailsDialogOPen(context)"
+                                       class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Add"> <i class="bi bi-plus-square"></i> Add</a>
+                                    <a @onclick="() => UpdateDialogOPen(context.Id)"
+                                       class="btn btn-warning"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Update"> <i class="bi bi-pencil"></i> update</a>
+                                    <a @onclick="() => DeleteDialogOPen(context.Id)"
+                                       class="btn btn-danger"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Delete"> <i class="bi bi-x-square"></i>delete</a>
                                 </div>
                             </TemplateColumn>
                     </QuickGrid>

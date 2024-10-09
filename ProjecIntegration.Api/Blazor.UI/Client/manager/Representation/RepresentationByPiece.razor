@@ -78,22 +78,28 @@
                         <QuickGrid Items="@GetRepresentation.Items.AsQueryable()">
                             <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
                             <PropertyColumn Property="@(p => p.Seance)" Sortable="true" Title="Seance" />
-                            <TemplateColumn Title="Selectioner ">
-                                <div>
-                                    <button type="button" class="btn btn-primary" @onclick="() =>DetailsDialogOPen(context)">Details</button>
-                                </div>
-                            </TemplateColumn>
-                           
-                            <TemplateColumn Title="modifier">
-                                <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>UpdateDialogOPen(context)">Mise a jour</button>
-                                </div>
-                            </TemplateColumn>
-                            <TemplateColumn Title="Supprimer">
-                                <div>
-                                    <button type="button" class="btn btn-danger" @onclick="() =>DeleteDialogOPen(context)">Supprimer</button>
-                                </div>
-                            </TemplateColumn>
+                                <PropertyColumn Property="@(p => p.PlaceMaximum)" Sortable="true" Title="PlaceMaximum" />
+                                <PropertyColumn Property="@(p =>(p.PlaceMaximum -p.PlaceCurrent ))" Sortable="true" Title="AvailablePlace" />
+                                <TemplateColumn>
+                                    <div class="btn-group">
+                                        <a @onclick="() =>DetailsDialogOPen(context)"
+                                           class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                           data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Add"> <i class="bi bi-plus-square"></i> Add</a>
+                                        <a @onclick="() => UpdateDialogOPen(context)"
+                                           class="btn btn-warning"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Update"> <i class="bi bi-pencil"></i> update</a>
+                                        <a @onclick="() => DeleteDialogOPen (context)"
+                                           class="btn btn-danger"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Delete"> <i class="bi bi-x-square"></i>delete</a>
+                                    </div>
+                                </TemplateColumn>
                             <!-- Add more columns for Commands if needed -->
                         </QuickGrid>    
                         <div class="row m-2 p-2">

@@ -32,10 +32,9 @@
             {
                 return Ok(await _theatreBusiness.GetThemeById(themeId));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpPost("")]
@@ -48,13 +47,12 @@
                     return BadRequest();
                 }
 
-                _theatreBusiness.CreateTheme(theme);
+                await _theatreBusiness.CreateTheme(theme);
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpPut("")]
@@ -67,7 +65,7 @@
                     return BadRequest();
                 }
 
-                _theatreBusiness.UpdateTheme(themeId,theme);
+                await _theatreBusiness.UpdateTheme(themeId, theme);
                 return NoContent();
             }
             catch (Exception)
@@ -86,7 +84,7 @@
                     return BadRequest();
                 }
 
-                _theatreBusiness.Deletetheme(themeId);
+                await _theatreBusiness.Deletetheme(themeId);
                 return NoContent();
             }
             catch (Exception)

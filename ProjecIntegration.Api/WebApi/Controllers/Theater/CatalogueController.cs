@@ -1,4 +1,9 @@
-﻿namespace WebApi.Controllers.Theater
+﻿using Azure;
+using Domain.Entity.TheatherEntity;
+using Domain.ServiceResponse;
+using Microsoft.AspNet.SignalR.Hosting;
+
+namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]
@@ -16,7 +21,12 @@
         {
             try
             {
-                return Ok(await _businessCatalogue.GetCatalogueByComplexe(complexeId));
+                ServiceResponse<IEnumerable<CatalogueDto>>response= (await _businessCatalogue.GetCatalogueByComplexe(complexeId));
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(Response);
             }
             catch (Exception)
             {
@@ -29,7 +39,12 @@
         {
             try
             {
-                return Ok(await _businessCatalogue.GetAllCatalogue());
+                ServiceResponse<IEnumerable<CatalogueDto>> response = await _businessCatalogue.GetAllCatalogue();
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
             }
             catch (Exception)
             {
@@ -42,12 +57,16 @@
         {
             try
             {
-              return Ok(await _businessCatalogue.GetCatalogueById(catalogueId));
+                ServiceResponse<CatalogueDto> response = await _businessCatalogue.GetCatalogueById(catalogueId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpPut("{catalogueId}")]
@@ -55,14 +74,17 @@
         {
             try
             {
-                await _businessCatalogue.UpdateCatalogue(catalogueId, updtCatalogue);
-
+               ServiceResponse<CatalogueDto> response = await _businessCatalogue.UpdateCatalogue(catalogueId, updtCatalogue);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpDelete("{catalogueId}")]
@@ -70,14 +92,17 @@
         {
             try
             {
-                await _businessCatalogue.DeleteCatalogue(catalogueId);
-
+               ServiceResponse<CatalogueDto> response= await _businessCatalogue.DeleteCatalogue(catalogueId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
     }

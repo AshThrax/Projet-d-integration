@@ -1,6 +1,8 @@
 ﻿using ApplicationTheather.Common.Exceptions;
+using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
+using Microsoft.AspNet.SignalR.Hosting;
 
 namespace WebApi.Controllers.Theater
 {
@@ -30,8 +32,12 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entities = await _commandService.GetCommand(id);
-                return Ok(entities);
+                ServiceResponse<CommandDto> response= await _commandService.GetCommand(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -51,6 +57,10 @@ namespace WebApi.Controllers.Theater
             {
                 var auth0UserId = gtk.GetSub().Result;
                 ServiceResponse<IEnumerable<CommandDto>> response = (await _commandService.GetCommandUSer(auth0UserId));
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 Pagination<CommandDto> pageCommande = Pagination<CommandDto>.ToPagedList(response.Data.ToList(), page, 10);
                 return Ok(pageCommande);
 
@@ -71,6 +81,10 @@ namespace WebApi.Controllers.Theater
             try
             {
                 ServiceResponse<IEnumerable<CommandDto>> response = await _commandService.GetCommandByPiece(idPiece);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 Pagination<CommandDto> pageCommande = Pagination<CommandDto>.ToPagedList(response.Data.ToList(), page, 10);
                 return Ok(pageCommande);
 
@@ -98,8 +112,12 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                ServiceResponse<IEnumerable<CommandDto>> entities = await _commandService.GetAllCommand();
-                return Ok(entities);
+                ServiceResponse<IEnumerable<CommandDto>> response = await _commandService.GetAllCommand();
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -129,7 +147,11 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest();
                 }
-                await _commandService.AddCommand(CmdDtot);
+                ServiceResponse<CommandDto> response= await _commandService.AddCommand(CmdDtot);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok("Create Command");
 
             }
@@ -158,8 +180,12 @@ namespace WebApi.Controllers.Theater
                     BadRequest(ModelState);
                 }
               
-                 await _commandService.UpdateCommand(updtId,updtdto);
-                return Ok();
+               ServiceResponse<CommandDto> response=  await _commandService.UpdateCommand(updtId,updtdto);
+                if (!response.Success)
+                {
+                    
+                }
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -182,7 +208,11 @@ namespace WebApi.Controllers.Theater
             try
             {
 
-                await _commandService.DeleteCommand(id);
+                ServiceResponse<CommandDto> response =await _commandService.DeleteCommand(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok("Command Deleted SuccesFully");
 
             }

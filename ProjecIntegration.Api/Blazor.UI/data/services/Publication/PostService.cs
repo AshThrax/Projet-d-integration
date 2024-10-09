@@ -54,9 +54,9 @@ namespace Blazor.UI.data.services.Publication
            return await _httpClient.GetFromJsonAsync<PostDto>($"{ApiUri}/{postId}");
         }
 
-        public async Task UpdatePost(UpdatePostDto post)
+        public async Task UpdatePost(string Id, UpdatePostDto post)
         {
-            await _httpClient.PutAsJsonAsync<UpdatePostDto>($"{ApiUri}/{post.Id}",post);
+            await _httpClient.PutAsJsonAsync<UpdatePostDto>($"{ApiUri}/{Id}",post);
         }
 
         public async Task<bool> IsAuthor(string postId)

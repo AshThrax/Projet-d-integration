@@ -82,10 +82,9 @@ namespace WebApi.Controllers.Follow
                 response = await _followService.GetAllFollower(userId);
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         /// <summary>
@@ -106,10 +105,9 @@ namespace WebApi.Controllers.Follow
                 response = await _followService.GetAllFollowed(userId);
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpGet("do-i-follow")]
@@ -122,10 +120,9 @@ namespace WebApi.Controllers.Follow
                 response= await _followService.DoIFollow(userId,followerId);
                 return response;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
     }

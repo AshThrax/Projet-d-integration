@@ -1,6 +1,8 @@
 ﻿using ApplicationTheather.Common.Exceptions;
+using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
+using Microsoft.AspNet.SignalR.Hosting;
 
 namespace WebApi.Controllers.Theater
 {
@@ -51,9 +53,12 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                ServiceResponse<RepresentationDto> entities = await _businessRepService.GetById(id);
-             
-                return Ok(entities);
+                ServiceResponse<RepresentationDto> response = await _businessRepService.GetById(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
             }
             catch (ValidationException ex)
             {
@@ -75,8 +80,12 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                ServiceResponse<IEnumerable<RepresentationDto>> entities = await _businessRepService.GetAllFromPiece(pieceId);
-                Pagination<RepresentationDto> pageEntities = Pagination<RepresentationDto>.ToPagedList(entities.Data.ToList(), page, 10);
+                ServiceResponse<IEnumerable<RepresentationDto>> response = await _businessRepService.GetAllFromPiece(pieceId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                Pagination<RepresentationDto> pageEntities = Pagination<RepresentationDto>.ToPagedList(response.Data.ToList(), page, 10);
                 return Ok(pageEntities);
             }
             catch (ValidationException ex)
@@ -98,9 +107,13 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                ServiceResponse<IEnumerable<RepresentationDto>> getfromsalle=  await _businessRepService.GetAllFromSalle(salleId);
-                Pagination<RepresentationDto> pageEntities = Pagination<RepresentationDto>.ToPagedList(getfromsalle.Data.ToList(), page, 10);
-                return Ok(getfromsalle);
+                ServiceResponse<IEnumerable<RepresentationDto>> response=  await _businessRepService.GetAllFromSalle(salleId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                Pagination<RepresentationDto> pageEntities = Pagination<RepresentationDto>.ToPagedList(response.Data.ToList(), page, 10);
+                return Ok(pageEntities);
             }
             catch (ValidationException ex)
             {
@@ -125,7 +138,11 @@ namespace WebApi.Controllers.Theater
                     BadRequest();
                 }
                 
-                await _businessRepService.Create(entity);
+                ServiceResponse<RepresentationDto> response= await _businessRepService.Create(entity);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok();
             }
             catch (ValidationException ex)
@@ -153,7 +170,11 @@ namespace WebApi.Controllers.Theater
                     BadRequest();
                 }
                 
-                await _businessRepService.Update(updtId,entity);
+                ServiceResponse<RepresentationDto> response = await _businessRepService.Update(updtId, entity);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
 
             }
@@ -176,7 +197,11 @@ namespace WebApi.Controllers.Theater
             try
             {
 
-                await _businessRepService.Delete(id);
+                ServiceResponse<RepresentationDto> response = await _businessRepService.Delete(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
             }
             catch (ValidationException ex)

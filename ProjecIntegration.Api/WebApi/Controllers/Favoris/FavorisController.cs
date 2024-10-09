@@ -33,10 +33,9 @@ namespace WebApi.Controllers
                 }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         /// <summary>
@@ -58,10 +57,9 @@ namespace WebApi.Controllers
                 }
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         /// <summary>
@@ -79,9 +77,9 @@ namespace WebApi.Controllers
               
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
     }

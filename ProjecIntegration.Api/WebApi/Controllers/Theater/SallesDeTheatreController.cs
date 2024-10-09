@@ -1,6 +1,8 @@
 ﻿using ApplicationTheather.Common.Exceptions;
+using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
+using Microsoft.AspNet.SignalR.Hosting;
 namespace WebApi.Controllers.Theater;
 
 [Route("api/v1/[controller]")]
@@ -21,9 +23,12 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                ServiceResponse<SalleDeTheatreDto> getSalle= await _bussinessServices.GetSalle(id);
-
-                return Ok(getSalle);
+                ServiceResponse<SalleDeTheatreDto> response = await _bussinessServices.GetSalle(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
             }
           catch (ValidationException ex)
             {
@@ -43,8 +48,12 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                ServiceResponse<IEnumerable<SalleDeTheatreDto>> getSalles= await _bussinessServices.GetFromComplexe(id);
-                Pagination<SalleDeTheatreDto> pageSalle = Pagination<SalleDeTheatreDto>.ToPagedList(getSalles.Data.ToList(), page, 10);
+                ServiceResponse<IEnumerable<SalleDeTheatreDto>> response= await _bussinessServices.GetFromComplexe(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                Pagination<SalleDeTheatreDto> pageSalle = Pagination<SalleDeTheatreDto>.ToPagedList(response.Data.ToList(), page, 10);
                 return Ok(pageSalle);
             }
             catch (ValidationException ex)
@@ -66,8 +75,12 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                ServiceResponse<IEnumerable<SalleDeTheatreDto>> getSalles = await _bussinessServices.GetAllSalle();
-                Pagination<SalleDeTheatreDto> pageSalle = Pagination<SalleDeTheatreDto>.ToPagedList(getSalles.Data.ToList(), page, 10);
+                ServiceResponse<IEnumerable<SalleDeTheatreDto>> response = await _bussinessServices.GetAllSalle();
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                Pagination<SalleDeTheatreDto> pageSalle = Pagination<SalleDeTheatreDto>.ToPagedList(response.Data.ToList(), page, 10);
                 return Ok(pageSalle);
 
             }
@@ -89,9 +102,12 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                ServiceResponse<IEnumerable<SalleDeTheatreDto>> getSalles = await _bussinessServices.GetAllSalle();
-
-                return Ok(getSalles);
+                ServiceResponse<IEnumerable<SalleDeTheatreDto>> response = await _bussinessServices.GetAllSalle();
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -112,8 +128,12 @@ public class SallesDeTheatreController : ControllerBase
         {
             try
             {
-                 await _bussinessServices.CreateSalle(Entity.ComplexeId,Entity);
-                return Ok(Entity);
+                ServiceResponse<SalleDeTheatreDto> response= await _bussinessServices.CreateSalle(Entity.ComplexeId,Entity);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+            return Ok(Entity);
             }
             catch (ValidationException ex)
             {
@@ -141,8 +161,11 @@ public class SallesDeTheatreController : ControllerBase
             {
                 if (Entity == null) { return BadRequest(); }
                
-                await _bussinessServices.Updatesalle(updtId,Entity);
-
+                ServiceResponse<SalleDeTheatreDto> response = await _bussinessServices.Updatesalle(updtId, Entity);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
 
             }
@@ -169,7 +192,11 @@ public class SallesDeTheatreController : ControllerBase
             }
             try
             {
-                await _bussinessServices.DeleteSalle(id);
+                ServiceResponse<SalleDeTheatreDto> response = await _bussinessServices.DeleteSalle(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
 
             }

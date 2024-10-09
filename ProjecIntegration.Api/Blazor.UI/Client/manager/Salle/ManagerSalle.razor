@@ -73,16 +73,26 @@
                                         <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
 
                                         <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
-                                        <TemplateColumn Context="item">
-                                            <div>
-                                                <button class="shadow-sm broder rounded btn btn-primary" type="button" @onclick="() =>DetailsDialogOPen(item)">Details </button>
+                                        <TemplateColumn>
+                                            <div class="btn-group">
+                                                <a @onclick="() =>DetailsDialogOPen(context)"
+                                                   class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                   data-bs-custom-class="custom-tooltip"
+                                                   data-bs-title="Add"> <i class="bi bi-plus-square"></i> Add</a>
+                                                <a @onclick="() => UpdateDialogOPen(context)"
+                                                   class="btn btn-warning"
+                                                   data-bs-toggle="tooltip"
+                                                   data-bs-placement="top"
+                                                   data-bs-custom-class="custom-tooltip"
+                                                   data-bs-title="Update"> <i class="bi bi-pencil"></i> update</a>
+                                                <a @onclick="() => DeleteDialogOPen()"
+                                                   class="btn btn-danger"
+                                                   data-bs-toggle="tooltip"
+                                                   data-bs-placement="top"
+                                                   data-bs-custom-class="custom-tooltip"
+                                                   data-bs-title="Delete"> <i class="bi bi-x-square"></i>delete</a>
                                             </div>
                                         </TemplateColumn>
-                                            <TemplateColumn Context="item">
-                                                <div>
-                                                    <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>UpdateDialogOPen(item)">Update</button>
-                                                </div>
-                                            </TemplateColumn>
                                     </QuickGrid>
                                 <div class="row m-2 p-2">
                                     <div class="col-sm-3"></div>

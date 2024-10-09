@@ -99,10 +99,9 @@ public class UserController : ControllerBase
             await _userService.UpdateById(userId,userToupdate);
             return NoContent();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
         }
     }
     /// <summary>
@@ -122,10 +121,9 @@ public class UserController : ControllerBase
             }
             return NoContent();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
         }
     }
     /// <summary>
@@ -145,10 +143,9 @@ public class UserController : ControllerBase
             }
             return NoContent();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
         }
     }
     /// <summary>
@@ -168,10 +165,9 @@ public class UserController : ControllerBase
             }
             return NoContent();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
         }
     }
     /// <summary>
@@ -191,10 +187,9 @@ public class UserController : ControllerBase
             }
             return NoContent();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
         }
     }
 }

@@ -13,13 +13,18 @@ namespace DataInfraTheather.BusinessService
         private readonly ICommandRepository _commandRepository;
         private readonly ISalleDeTheatreRepository _salleDeTheatreRepository;
         private readonly IMapper _mapper;
-
-        public BusinessSiege(ISiegeRepository siegeRepository, ISalleDeTheatreRepository salleDeTheatreRepository,ICommandRepository commandRepository,  IMapper mapper)
+        private readonly ISiegeCommandRepository _siegeCommandRepository;
+        public BusinessSiege(ISiegeRepository siegeRepository, 
+                             ISalleDeTheatreRepository salleDeTheatreRepository,
+                             ISiegeCommandRepository siegeCommandRepository,
+                             ICommandRepository commandRepository,
+                             IMapper mapper)
         {
             _siegeRepository = siegeRepository;
             _salleDeTheatreRepository = salleDeTheatreRepository;
             _mapper = mapper;
             _commandRepository = commandRepository;
+            _siegeCommandRepository = siegeCommandRepository;
         }
 
         public async Task<ServiceResponse<SiegeDto>> CreateSiegeForSalle(AddSiegeDto siege)
@@ -63,6 +68,32 @@ namespace DataInfraTheather.BusinessService
             {
 
                 throw;
+            }
+            return response;
+        }
+
+        public async Task<ServiceResponse<IEnumerable<SiegeDto>>> GetAvailbleByrepresentationId(int representationId,int salleId)
+        {
+            ServiceResponse<IEnumerable<SiegeDto>> response = new();
+            try
+            {
+                //récupére les siege reserver sur base de la representation et de la salle
+                List<SiegeCommand> SiegeARecuperer = (await _siegeCommandRepository.GetAllCustomWithInclude(x => x.Command.IdRepresentation == representationId, c => c.Siege)).ToList();
+                IEnumerable<int> getSiegeUnavailable = SiegeARecuperer.Select(x => x.Siege.Id);
+                //récupére les Siéfe lier a la salle
+                List<Siege> getAvailableSiege = (await _siegeRepository.GetAllCustomWithInclude(x => x.SalleId == salleId)).ToList();
+                //ne récup^ére que les siege qui se sont pas présente dans la liste
+                getAvailableSiege = getAvailableSiege.Where(x => !getSiegeUnavailable.Contains(x.Id)).ToList();
+                response.Data = _mapper.Map<IEnumerable<SiegeDto>>(getAvailableSiege);
+                response.Success = true;
+                response.Message = "operation réussi";
+                response.Errortype = Domain.Enum.Errortype.Good;
+            }
+            catch (Exception)
+            {
+                response.Success = false;
+                response.Message = "une Erreurr a eu lieu lors de l'opération";
+                response.Errortype = Domain.Enum.Errortype.Bad;
             }
             return response;
         }

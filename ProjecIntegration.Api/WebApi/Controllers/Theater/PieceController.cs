@@ -113,6 +113,10 @@ namespace WebApi.Controllers.Theater
             try
             {
                 ServiceResponse<IEnumerable<PieceDto>> response = await _pieceRepository.GetPiecefromCatalogue(catalogueId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 Pagination<PieceDto> pagePiece = Pagination<PieceDto>.ToPagedList(response.Data.ToList(), page, 5);
                 return Ok(pagePiece);
             }
@@ -136,9 +140,12 @@ namespace WebApi.Controllers.Theater
             {       if(ModelState.IsValid)
                     {
 
-                       ServiceResponse<PieceDto> response= await _pieceRepository.Create(addpiece);
-                      
-                        return Ok();
+                    ServiceResponse<PieceDto> response= await _pieceRepository.Create(addpiece);
+                    if (!response.Success)
+                    {
+                        return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                    }
+                    return Ok();
                     }
                     else
                     {
@@ -176,6 +183,10 @@ namespace WebApi.Controllers.Theater
                 }
 
                ServiceResponse<CatalogueDto> response= await _businessCatalogue.AddPieceToCatalogue(catalogueId, pieceId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok();
 
             }
@@ -202,6 +213,10 @@ namespace WebApi.Controllers.Theater
                     return BadRequest();
                 }
                 ServiceResponse<CatalogueDto> response= await _businessCatalogue.RemovePieceToCataogue(catalogueId, pieceId);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
             }
             catch (Exception)
@@ -229,6 +244,10 @@ namespace WebApi.Controllers.Theater
                 }
 
                 ServiceResponse<PieceDto> response= await _pieceRepository.Update(updtId, updatepiece);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
             }
             catch (ValidationException ex)
@@ -254,8 +273,11 @@ namespace WebApi.Controllers.Theater
                
                   
                 ServiceResponse<PieceDto> response= await _pieceRepository.Delete(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
 
-               
                 return NoContent();
             }
             catch (ValidationException ex)

@@ -42,9 +42,9 @@ namespace WebApi.Controllers.UserDetail
                 ServiceResponse<BannerDto> response= await _bannerService.AddBanner(userId, createdImageName);
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         /// <summary>
@@ -61,10 +61,9 @@ namespace WebApi.Controllers.UserDetail
                 ServiceResponse<BannerDto> response = await _bannerService.HasBanner(userId);
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         /// <summary>
@@ -81,10 +80,9 @@ namespace WebApi.Controllers.UserDetail
                 ServiceResponse<BannerDto> response = await _bannerService.HasBanner(userId);
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpPost("update")]
@@ -104,10 +102,9 @@ namespace WebApi.Controllers.UserDetail
                 return Ok(response);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
         [HttpPut]
@@ -127,10 +124,9 @@ namespace WebApi.Controllers.UserDetail
                 return Ok(response);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
     }

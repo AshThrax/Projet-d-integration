@@ -112,6 +112,7 @@ namespace DataInfraTheather.BusinessService
                 IEnumerable<Representation> FromPiece = entity.Where(x => x.PieceId == id && x.Seance >= DateTime.Now).ToList();
                 response.Data= _mapper.Map<IEnumerable<RepresentationDto>>(FromPiece);
                 response.Errortype = Errortype.Good;
+                response.Success = true;
                 response.Message = "Récupération des representation par pièce";
 
                 return response;
@@ -142,6 +143,7 @@ namespace DataInfraTheather.BusinessService
                
                 response.Data = _mapper.Map<IEnumerable<RepresentationDto>>(fromComplexe);
                 response.Errortype = Errortype.Good;
+                response.Success = true;
                 response.Message = "opération ";
                 return response;
 

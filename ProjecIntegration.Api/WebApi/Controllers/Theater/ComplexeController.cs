@@ -1,7 +1,9 @@
 ﻿using ApplicationTheather.Common.Exceptions;
 using ApplicationTheather.Common.IRepository;
+using Azure;
 using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
+using Microsoft.AspNet.SignalR.Hosting;
 using Stripe;
 namespace WebApi.Controllers.Theater
 {
@@ -29,9 +31,13 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
-                var entity = await _complexeService.GetComplexe(id);
-                
-                return Ok(entity);
+                ServiceResponse<ComplexeDto> response = await _complexeService.GetComplexe(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -60,6 +66,10 @@ namespace WebApi.Controllers.Theater
             try
             {
                 ServiceResponse<IEnumerable<ComplexeDto>> response = await _complexeService.GetAllComplexe();
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok(response);
 
             }
@@ -92,7 +102,11 @@ namespace WebApi.Controllers.Theater
                     BadRequest();
                 }
                 
-                await _complexeService.CreateAsync(complexe);
+                ServiceResponse<ComplexeDto> response= await _complexeService.CreateAsync(complexe);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
 
             }
@@ -125,7 +139,11 @@ namespace WebApi.Controllers.Theater
                     BadRequest();
                 }
              
-                await _complexeService.UpdateAsync(updtId, complexe);
+               ServiceResponse<ComplexeDto> response= await _complexeService.UpdateAsync(updtId, complexe);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return Ok();
 
             }
@@ -148,12 +166,16 @@ namespace WebApi.Controllers.Theater
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
 
-                _complexeService.Delete(id);
+                ServiceResponse<ComplexeDto> response = await _complexeService.Delete(id);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
                 return NoContent();
             }
             catch (ValidationException ex)

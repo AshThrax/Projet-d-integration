@@ -10,17 +10,8 @@
     <div class="col-sm-6 btn-group float-end">
         <a href="#addModale"
            class="btn btn-success" data-toggle="modal"
-           @onclick="() => addDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-        @if (!string.IsNullOrEmpty(SelectedAnnonceId))
-        {
-            <a 
-               class="btn btn-danger"
-               data-toggle="modal" @onclick="() => DeleteDialogOPen ()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
-            <a 
-               class="btn btn-warning"
-               data-toggle="modal" @onclick="() => UpdateDialogOPen()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
-            
-        }
+           @onclick="() => addDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add New Annonce</span></a>
+      
         <a @onclick="() =>Reload()" class="btn btn-warning"><i class="material-icons">&#xE15C;</i> <span>Reload</span></a>
     </div>
     <div class="container">
@@ -33,21 +24,24 @@
                     <PropertyColumn Property="p =>p.Title"/>
                     <PropertyColumn Property="p =>p.Description"/>
                     <PropertyColumn Property="x=>x.CreatedDate"/>
-                    <TemplateColumn>
-                        <div>
-                            <a class="btn btn btn-warning" @onclick="() =>detailsDialogOPen(context.Id)"> details</a>
-                        </div>
-                    </TemplateColumn>
                         <TemplateColumn>
-                            <div>
-                                <a class="btn btn-warning"
-                                   data-toggle="modal" @onclick="() => UpdateDialogOPen()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
-                            </div>
-                        </TemplateColumn>
-                        <TemplateColumn>
-                            <div>
-                                <a class="btn btn-danger"
-                                   data-toggle="modal" @onclick="() => DeleteDialogOPen ()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                            <div class="btn-group">
+                                <a @onclick="() =>detailsDialogOPen(context.Id)"
+                                   class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Add"> <i class="bi bi-plus-square"></i> Add</a>
+                                <a @onclick="() => UpdateDialogOPen()"
+                                    class="btn btn-warning" 
+                                   data-bs-toggle="tooltip" 
+                                   data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Update"> <i class="bi bi-pencil"></i> update</a>
+                                <a @onclick="() => DeleteDialogOPen ()"
+                                   class="btn btn-danger" 
+                                   data-bs-toggle="tooltip" 
+                                   data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Delete"> <i class="bi bi-x-square"></i>delete</a>
                             </div>
                         </TemplateColumn>
                 </QuickGrid>

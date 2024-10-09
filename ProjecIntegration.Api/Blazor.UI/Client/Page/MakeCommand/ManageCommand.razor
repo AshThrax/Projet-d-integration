@@ -114,7 +114,7 @@
 </div>
 }
 else{
-    <Blazor.UI.Client.Shared.Load loadParam="en attent de chargement"></Blazor.UI.Client.Shared.Load>
+    
 }
 @code {
     [Parameter]
@@ -209,6 +209,7 @@ else{
     {
         commandeMade.NombreDePlace = ticketGen;
         commandeMade.IdRepresentation = IdRepresnetation;
+        commandeMade.SiegeIds = SiegeForCommande;
         await cardservice.AddToCart(commandeMade);
         // await Servrep.AddCommandRepresentation( IdRepresnetation,ticketGen,commandeMade);
         string urlSession = await paymentService.Checkout(ticketGen,repclt.Prix, piececlt);

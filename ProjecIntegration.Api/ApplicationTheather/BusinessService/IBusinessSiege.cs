@@ -41,5 +41,7 @@ namespace ApplicationTheather.BusinessService
         /// <param name="command"></param>
         /// <returns></returns>
         Task<ServiceResponse<IEnumerable<SiegeDto>>> GetSiegeFromCommand(int command);
+
+        Task<ServiceResponse<IEnumerable<SiegeDto>>> GetAvailbleByrepresentationId(int representationId, int salleId);
     }
 }
