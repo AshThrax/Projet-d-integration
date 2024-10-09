@@ -84,20 +84,20 @@ namespace InfrastructureUser.BusinessService
         /// <param name="UserId"></param>
         /// <param name="Imageressourcess"></param>
         /// <returns></returns>
-        public async Task<ServiceResponse<BannerDto>> UpdateBanner(int bannerId, string ImageRessourcess)
+        public async Task<ServiceResponse<BannerDto>> UpdateBanner(string userId, string ImageRessourcess)
         {
             ServiceResponse<BannerDto> response = new();
             try
             {
-                bool Doexist =await _bannerRepository.DoYouExist(bannerId);
+                bool Doexist =await _bannerRepository.DoYouExist(x=>x.UserId==userId);
                 if (!Doexist)
                 {
                     throw new NullReferenceException("");
                 }
                 
-                Banner toUpdated = await _bannerRepository.GetById(bannerId);
+                Banner toUpdated = await _bannerRepository.Get(x=>x.UserId==userId);
                 toUpdated.ImageRessource = ImageRessourcess;
-                await _bannerRepository.Update(bannerId, toUpdated);
+                await _bannerRepository.Update(toUpdated.Id, toUpdated);
                 response.Data = _mapper.Map<BannerDto>(toUpdated);
                 response.Message = "operation succesfull";
             }

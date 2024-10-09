@@ -1,20 +1,50 @@
-﻿@page "/payment-success"
-@using Stripe
-@using Stripe.Checkout
+﻿@page "/paymentsuccess"
+@using Blazor.UI.Data.Services.CartService
+@using Blazor.UI.Data.services.TheatherService
+@inject ICartService cardService;
+@inject ICommandService commandeService;
+@inject NavigationManager manager;
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-5 m-2 p-2">
+            <div class="success shadow-sm">
+                <div class="">
+                    <h2 class="">Payment Succeed</h2>
+                    <i class="bi bi-check-circle-fill"></i>
+                    <br />
+                    <div class="m-2 p-2">
+                        <h4>votre payment a bien été Accepter  </h4>
+                        <h4> nous vous remercions pour votre achat</h4>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border text-success" role="status">
+                            <h2><span class="visually-hidden">Loading...</span></h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h3>PaymentSuccess</h3>
-
-@code {
-    [SupplyParameterFromQuery(Name = "session-id")]
-    public string CheckoutSessionId { get; set; }
-
+@code
+{
     protected override async Task OnInitializedAsync()
     {
-        IStripeClient stripeClient = new StripeClient(apiKey: "pk_test_51PH98ZP7zrjxHIPVVmteGre99oSbcz9gnetBxVexQzFLUXYtMrBVTZVx7jWFneRgDeekorJjuZGPu70mw6J5jtbv009aXbGsOM");
-        var service = new SessionService(stripeClient);
-        var sessionService = new SessionService();
-        var session = await sessionService.GetAsync(CheckoutSessionId);
 
+        var item = await cardService.GetCartItems();
+        await commandeService.Create(item);    }
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+           await GetToProfile();
+        }
     }
-
+    public async Task GetToProfile()
+    {
+        await Task.Delay(100000);
+        manager.NavigateTo("/profile");    }
 }
+

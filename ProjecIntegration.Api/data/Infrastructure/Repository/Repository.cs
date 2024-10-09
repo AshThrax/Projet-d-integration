@@ -148,7 +148,29 @@ namespace dataInfraTheather.Infrastructure.Repository
                 return query.First();
             }
         }
+        public async Task<T> Get(Expression<Func<T, bool>> findProperties, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            try
+            {
 
+                if (includeProperties != null)
+                {
+                    query = query.Where(findProperties);
+                }
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+                return await query.SingleOrDefaultAsync() ?? throw new NullReferenceException();
+
+            }
+            catch (Exception)
+            {
+
+                return query.First();
+            }
+        }
         public async Task<bool> DoYouExist(Expression<Func<T, bool>> includeProperties)
         {
             IQueryable<T> query = _dbSet;

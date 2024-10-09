@@ -124,6 +124,20 @@ namespace InfraPublication.BusinessLayer
             }
         }
 
+        public async Task<bool> IsAuthor(string postId, string userId)
+        {
+            try
+            {
+                Post? getPost = await _postrepository.GetById(postId);
+                return(getPost.UserId.Equals(userId));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task UpdatePost(string postId, string content)
         {
             try

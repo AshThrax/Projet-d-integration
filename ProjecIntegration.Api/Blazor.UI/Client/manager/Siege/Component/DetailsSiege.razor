@@ -1,5 +1,63 @@
-﻿<h3>DetailsSiege</h3>
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.Services.TheatherService
 
+@inject ISiegeService siegeService ;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill text-danger"></i></a>
+            </div>
+            <div class="modal-body">
+                <p>@Text</p>
+                @if (SelectSiegeDto != null)
+                {
+                    <div>
+                        <h4 class="form-label">Numéro de Siége</h4>
+                        <p class="form-control-plaintext">@SelectSiegeDto.Name</p>
+                    </div>
+                    <div>
+                        <h4 class="form-label">Date DeCréation</h4>
+                        <p class="form-control p-2">@SelectSiegeDto.AddedTime</p>
+                    </div>
+                }
+               
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
+    [Parameter]
+    public int Id { get; set; }
+    public SiegeDto SelectSiegeDto { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        await DataLoad();
+    }
+    public async Task DataLoad()
+    {
+        SelectSiegeDto = await siegeService.GetById(Id);
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = "DetailsSiege";
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
 
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

@@ -9,34 +9,89 @@
 @inject ISalleService SalleService;
 @inject IComplexeService complexeService;
 <div class="flex-fill m-4 p-4">
-   
+   <div>
+        <select class="form-control w-25" @bind="PieceId" @oninput="OnSelectedChange">
+        <option value="value">text</option>
+        @if(GetPieceDtos !=null)
+        {
+            @foreach (PieceDto item in GetPieceDtos)
+            {
+             <option value="@item.Id" > @item.Titre</option>
+            }
+                        
+        }
+        </select>
+   </div>
+        <div class="mt-2 btn-group float-end">
+            <a class="btn btn-success"
+               @onclick="() => AddDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add Representation</span></a>
+       
+        </div>
     <div class="container">
+        <div class="table-wrapper">
         <div class="row">
-            <div class="card m-2 p-4">
+            <div class="col-sm-3">
+                    @if (GetPieceForRepresentation != null)
+                    {
+                        <div class="card rounded">
+                            <div>
+                                <h4 cclass="form-label" for="titre">Titre:</h4>
+                                <p>@GetPieceForRepresentation?.Titre</p>
+                            </div>
+                            <div class="">
+                                <div>
+                                    <h4 class="form-label" for="File">Photo :</h4>
+                                    <img class="img-fluid" src="https://localhost:7170/Resources/@GetPieceForRepresentation.Image" />
+                                </div>
+                            </div>
+
+                            <div class="">
+
+                                <h4 class="form-label" for="duree">Duree:</h4>
+                                <p>@GetPieceForRepresentation?.Duree</p>
+                            </div>
+
+                            <div>
+                                <h4 c class="form-label" for="description">Description:</h4>
+                                <p>@GetPieceForRepresentation.Description</p>
+                            </div>
+                            <div>
+                                <h4 cclass="form-label" for="auteur">Auteur :</h4>
+                                <p>@GetPieceForRepresentation.Auteur</p>
+                            </div>
+
+
+                            <br />
+                        </div>
+                       
+                    }
+                    else
+                    {
+
+                    }
+            </div>
+            <div class="col"></div>
+            <div class="col-sm-6 m-2 p-4">
                 @if (GetRepresentation != null)
                 {
-                    <div class=" col-sm-8 m-2 p-2">
+                    <div class="m-2 p-2">
                         <QuickGrid Items="@GetRepresentation.Items.AsQueryable()">
                             <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
                             <PropertyColumn Property="@(p => p.Seance)" Sortable="true" Title="Seance" />
                             <TemplateColumn Title="Selectioner ">
                                 <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceDetails(context.Id,context)">Details</button>
+                                    <button type="button" class="btn btn-primary" @onclick="() =>DetailsDialogOPen(context)">Details</button>
                                 </div>
                             </TemplateColumn>
-                            <TemplateColumn Title="ajouter ">
-                                <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceAdd()">Ajout</button>
-                                </div>
-                            </TemplateColumn>
+                           
                             <TemplateColumn Title="modifier">
                                 <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceUpdate(context)">Mise a jour</button>
+                                    <button type="button" class="btn btn-warning" @onclick="() =>UpdateDialogOPen(context)">Mise a jour</button>
                                 </div>
                             </TemplateColumn>
                             <TemplateColumn Title="Supprimer">
                                 <div>
-                                    <button type="button" class="btn btn-warning" @onclick="() =>seanceDelete()">Supprimer</button>
+                                    <button type="button" class="btn btn-danger" @onclick="() =>DeleteDialogOPen(context)">Supprimer</button>
                                 </div>
                             </TemplateColumn>
                             <!-- Add more columns for Commands if needed -->
@@ -55,30 +110,39 @@
                 }
             </div>
         </div>
-        <div class="col-sm-3 m-2 p-4">
-            @if (IsDetail)
+        <div class="col m-2 p-4">
+            @if (IsDetails)
             {
-              <Blazor.UI.Client.manager.Representation.Component.DetailsRePresentationComponent  Id="SelectRepresentationId">
+              <Blazor.UI.Client.manager.Representation.Component.DetailsRePresentationComponent  
+                    Id="SelectRepresentationId" 
+              OnClose="DetailsDialogclose">
               </Blazor.UI.Client.manager.Representation.Component.DetailsRePresentationComponent>
             }
-            else if(IsAdded)
+            else if(IsAdding)
             {
-                <Blazor.UI.Client.manager.Representation.Component.AddRepresentationComponent>
+                <Blazor.UI.Client.manager.Representation.Component.AddRepresentationComponent OnClose="AddDialogclose">
                 </Blazor.UI.Client.manager.Representation.Component.AddRepresentationComponent>
             }
-            else if(IsUpdate)
+            else if(IsUpdating)
             {
-                <Blazor.UI.Client.manager.Representation.Component.UpdateRepresentationComponent updateRepresentation="@SelecteRepresentation">
+                <Blazor.UI.Client.manager.Representation.Component.UpdateRepresentationComponent 
+                    updateRepresentation="@SelecteRepresentation" OnClose="UpdateDialogclose">
                 </Blazor.UI.Client.manager.Representation.Component.UpdateRepresentationComponent>
             }
-            else if(IsDelete)
+            else if(IsDeleting)
             {
+                <Blazor.UI.Client.manager.Representation.Component.DeleteRepresentation 
+                Id="SelectRepresentationId"
+                OnClose="DeleteDialogclose">
 
+                </Blazor.UI.Client.manager.Representation.Component.DeleteRepresentation>
             }
             else
             {
                 
             }
+
+        </div>
 
         </div>
     </div>
@@ -91,27 +155,32 @@
     public int pageIndexe = 1;
     public Pagination<RepresentationDto>? GetRepresentation { get; set; }
     public int SelectRepresentationId { get; set; }
-    public RepresentationDto? SelecteRepresentation { get; set; } = new();
+    public RepresentationDto? SelecteRepresentation { get; set; }
 
+    public IEnumerable<PieceDto> GetPieceDtos { get; set; }
+    public int PieceId { get; set; }
     public PieceDto? GetPieceForRepresentation { get; set; } 
-    public bool IsDetail { get; set; } = false;
-    public bool IsAdded { get; set; } = false;
-    public bool IsUpdate { get; set; } = false;
-    public bool IsDelete { get; set; } = false;
+
 
     protected override async Task OnInitializedAsync()
     {
-        GetPieceForRepresentation = await pieceService.GetById(Id);
-        GetRepresentation = await Representationsrvice.GetPiece(Id, pageIndexe);
+        PieceId = Id;
+        await DataLoad();
 
     }
-
+    public async Task DataLoad()
+    {
+        GetPieceForRepresentation = await pieceService.GetById(PieceId);
+        GetRepresentation = await Representationsrvice.GetPiece(PieceId, pageIndexe);
+        GetPieceDtos = await pieceService.Getlist();
+    }
+    #region pagination
     public async Task NextPage()
     {
         if (GetRepresentation.HasNextPage)
         {
             pageIndexe++;    
-            GetRepresentation = await Representationsrvice.GetPiece(Id, pageIndexe);
+            GetRepresentation = await Representationsrvice.GetPiece(PieceId, pageIndexe);
         }
 
     }
@@ -120,47 +189,76 @@
         if (GetRepresentation.HasPreviousPage)
         {
             pageIndexe--;
-            GetRepresentation = await Representationsrvice.GetPiece(Id, pageIndexe);
+            GetRepresentation = await Representationsrvice.GetPiece(PieceId, pageIndexe);
         }
     }
-
-    public async Task seanceDetails(int item,RepresentationDto repItem)
+    #endregion
+    public void Selecterepresentation(RepresentationDto item)
     {
-
-        await Task.Delay(1000);
-        SelectRepresentationId = item;
-        SelecteRepresentation = repItem;
-
-        IsDetail = true;
-        IsAdded = false;
-        IsUpdate = false;
-        IsDelete = false;
-    }
-    public async Task seanceUpdate(RepresentationDto item)
-    {
-        await Task.Delay(1000);
+        SelectRepresentationId = item.Id;
         SelecteRepresentation = item;
-        IsDetail = false;
-        IsAdded = false;
-        IsUpdate = true;
-        IsDelete = false;
     }
-
-    public async Task seanceDelete()
+    public async Task OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
-        await Task.Delay(1000);
-        IsDetail = false;
-        IsAdded = false;
-        IsUpdate = false;
-        IsDelete = true;
-    }
 
-    public async Task seanceAdd()
-    {
-        await Task.Delay(1000);
-        IsDetail = false;
-        IsAdded = true;
-        IsUpdate = false;
-        IsDelete = false;
+
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            PieceId = selectedId;
+        }
+        await DataLoad();
     }
+    #region State
+    public bool IsAdding { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
+
+    public bool OpenDialogBox { get; set; } = false;
+    private void AddDialogOPen()
+    {
+        IsAdding = true;
+        StateHasChanged();
+    }
+    private async Task AddDialogclose()
+    {
+        IsAdding = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private void DeleteDialogOPen(RepresentationDto item)
+    {
+        IsDeleting = true;
+        StateHasChanged();
+        Selecterepresentation(item);
+    }
+    private void DeleteDialogclose()
+    {
+        IsDeleting = false;
+        StateHasChanged();
+    }
+    private void UpdateDialogOPen(RepresentationDto item)
+    {
+        IsUpdating = true;
+        StateHasChanged();
+        Selecterepresentation(item);
+    }
+    private async Task UpdateDialogclose()
+    {
+        IsUpdating = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private async Task DetailsDialogOPen(RepresentationDto item)
+    {
+        IsDetails = true;
+        StateHasChanged();
+        Selecterepresentation(item);
+    }
+    private void DetailsDialogclose()
+    {
+        IsDetails = false;
+        StateHasChanged();
+    }
+    #endregion
 }

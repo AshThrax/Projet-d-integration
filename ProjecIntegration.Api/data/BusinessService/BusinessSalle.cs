@@ -27,6 +27,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 SalleDeTheatre newEntity = _mapper.Map<SalleDeTheatre>(entity);
+                newEntity.CreatedDate = DateTime.Now;
                 await _salleDeTheatreRepository.Insert(newEntity);
 
                 response.Success = true;
@@ -142,7 +143,7 @@ namespace DataInfraTheather.BusinessService
                     throw new ArgumentNullException(nameof(entity) + "this Salle detheatre entity doesn't exist");
 
                 var converison = _mapper.Map<SalleDeTheatre>(entity);
-
+                converison.UpdatedDate= DateTime.Now;
                await _salleDeTheatreRepository.Update(idSalle, converison);
                 
                 response.Success = true;

@@ -30,7 +30,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                Theme addTheme = _mapper.Map<Theme>(theme);
-
+               addTheme.CreatedDate = DateTime.Now;
                response.Data=_mapper.Map<ThemeDto>( await _themeRepository.Insert(addTheme));
                response.Success = true;
                response.Errortype=Domain.Enum.Errortype.Good;
@@ -100,6 +100,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 Theme entityConvert =_mapper.Map<Theme>(updtTheme);
+                entityConvert.UpdatedDate = DateTime.Now;
                 await _themeRepository.Update(themeId, entityConvert);
                 response.Success = true;
                 response.Message = "opération réussi";

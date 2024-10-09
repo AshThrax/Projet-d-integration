@@ -142,7 +142,7 @@ namespace InfrastructureUser.Repository
                     query = query.Where(includeProperties); 
                 }
              
-                return await query.SingleOrDefaultAsync() ?? throw new NullReferenceException();
+                return await query.FirstOrDefaultAsync() ?? throw new NullReferenceException();
 
             }
             catch (Exception)

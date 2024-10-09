@@ -10,73 +10,77 @@
 @inject IFileService fileService;
 @inject NavigationManager manager;
 
-<div class="flex-fill m-4 p-4">
-<h3>UpdatePiece</h3>
-<div class=" m-4 p-4">
-    <div class=" btn-group rounded float-end">
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <button type="button" class="col col-sm-3  btn btn-primary" @onclick="GetAllPiece"></button>
-        <button type="button" class="col col-sm-3   btn btn-warning" @onclick="GetHome">backMaineMenu</button>
-        <button type="button" class="col col-sm-3   btn btn-warning" @onclick="Previous">back to reservation</button>
-    </div>
-</div>
-<div>
-        @if (GetPiece !=null)
-        {
-           <p>hello there </p>
-           <form>
-                <div class="form-group mb-3 w-50">
-                    <div>
-                        <label class="form-label for="titre">Titre:</label>
-                        <input class="form-control" id="titre" @bind="GetPiece.Titre" />
-                    </div>
 
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div class="flex-fill m-4 p-4">
+                    <h3>UpdatePiece</h3>
+                   
                     <div>
-                        <label class="form-label for="duree">Duree:</label>
-                        <input class="form-control" id="duree" @bind="GetPiece.Duree" type="number" />
-                    </div>
+                        @if (GetPiece != null)
+                        {
+                            <p>hello there </p>
+                            <form>
+                                <div class="form-group mb-3 w-50">
+                                    <div>
+                                        <label class="form-label" for="titre">Titre:</label>
+                                        <input class="form-control" id="titre" @bind="GetPiece.Titre" />
+                                    </div>
 
-                    <div>
-                        <label class="form-label for="description">Description:</label>
-                        <textarea class="form-control " id="description" @bind="GetPiece.Description" rows="3">
-                        </textarea>
-                    </div>
-                    <div>
-                        <label class="form-label for="auteur">Auteur :</label>
-                        <input class="form-control" id="titre" @bind="GetPiece.Auteur" />
-                    </div>
-                    <div>
-                        <label class="form-label for="auteur">Theme</label>
-                        <select class="form-control" @oninput="OnselecteThem" @bind="selectTheme">
-                            <option></option>
-                            @foreach (var item in Getalltheme)
-                            {
-                                <option value="@item.Id"> @item.Libelle</option>
-                            }
-                        </select>
-                    </div>
-                    <div>
-                        <label class="form-label for="File">Photo :</label>
-                        <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
-                        <div>
-                            <button type="button" class="btn btn-warning" @onclick="UploadImage"> Upload Image</button>
-                        </div>
-                    </div>
-                    <div>
-                    </div>
-                    <br />
-                    <div>
-                        <button class="btn-primary" type="btn" @onclick="() => UpdatedPiece()">ajouter</button>
-                    </div>
+                                    <div>
+                                        <label class="form-label" for="duree">Duree:</label>
+                                        <input class="form-control" id="duree" @bind="GetPiece.Duree" type="number" />
+                                    </div>
 
+                                    <div>
+                                        <label class="form-label" for="description">Description:</label>
+                                        <textarea class="form-control " id="description" @bind="GetPiece.Description" rows="3">
+                            </textarea>
+                                    </div>
+                                    <div>
+                                        <label class="form-label" for="auteur">Auteur :</label>
+                                        <input class="form-control" id="titre" @bind="GetPiece.Auteur" />
+                                    </div>
+                                    <div>
+                                        <label class="form-label" for="auteur">Theme</label>
+                                        <select class="form-control" @oninput="OnselecteThem" @bind="selectTheme">
+                                            <option></option>
+                                            @foreach (var item in Getalltheme)
+                                            {
+                                                <option value="@item.Id"> @item.Libelle</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="form-label" for="File">Photo :</label>
+                                        <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
+                                      
+                                    </div>
+                                    <div>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <button class="btn-primary" type="btn" @onclick="() => UpdatedPiece()">ajouter</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        }
+                    </div>
                 </div>
-           </form>
-        }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
     </div>
 </div>
-
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -97,6 +101,7 @@
 
     public async Task UpdatedPiece()
     {
+        await UploadImage();
         UpdatePieceDto piece = new UpdatePieceDto
             {
                 Titre = GetPiece.Titre,
@@ -104,11 +109,12 @@
                 Description = GetPiece.Description,
                 Duree = GetPiece.Duree,
                 Id = GetPiece.Id,
-                Image = GetPiece.Image,
+                Image = ImageValue.ImageRessource,
                 ThemeId = GetPiece.ThemeId
             };
         await pieceService.Update(piece.Id, piece);
     }
+    #region page
     private void GetAllPiece(MouseEventArgs e)
     {
         manager.NavigateTo("/manager/piece");
@@ -158,4 +164,22 @@
         }
 
     }
+    #endregion
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

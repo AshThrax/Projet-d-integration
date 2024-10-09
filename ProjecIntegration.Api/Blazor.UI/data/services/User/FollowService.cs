@@ -9,7 +9,8 @@ namespace Blazor.UI.Data.Services.User
     {
         Task AddFollow(string userId);
         Task DeleteFollow(string userId);
-        Task<Pagination<FollowDto>> GetFollower(string userId);
+        Task<IEnumerable<FollowDto>> GetFollower(string userId);
+        Task<IEnumerable<FollowDto>> GetFollower();
         Task<Pagination<FollowDto>> GetFollowed(string userId);
         Task<int> GetFollowerNumber(string userId);
         Task<bool> DoIFollow(string userId);
@@ -19,10 +20,9 @@ namespace Blazor.UI.Data.Services.User
         private readonly HttpClient _httpClient;
         private readonly string ApiUri = "https://localhost:7170/api/v1/Follow";
 
-        public FollowService(HttpClient httpClient, string apiUri)
+        public FollowService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            ApiUri = apiUri;
         }
 
         public async Task AddFollow(string userId)
@@ -51,14 +51,29 @@ namespace Blazor.UI.Data.Services.User
             }
         }
 
-        public async Task<Pagination<FollowDto>> GetFollower(string userId)
+        public async Task<IEnumerable<FollowDto>> GetFollower(string userId)
         {
-            Pagination<FollowDto> response;
+            ServiceResponse<IEnumerable<FollowDto>> response;
             try
             {
-                response = await _httpClient.GetFromJsonAsync<Pagination<FollowDto>>(ApiUri + $"/follower");
-                return response;
+                response = await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<FollowDto>>>(ApiUri +$"/follower/{userId}");
+                return response.Data;
             
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<IEnumerable<FollowDto>> GetFollower()
+        {
+            ServiceResponse<IEnumerable<FollowDto>> response;
+            try
+            {
+                response = await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<FollowDto>>>(ApiUri + $"/follower");
+                return response.Data;
+
             }
             catch (Exception)
             {

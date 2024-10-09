@@ -7,7 +7,7 @@ namespace Blazor.UI.Data.services.TheatherService
 {
     public interface ISalleService
     {
-        Task<Pagination<SalleDeTheatreDto>> Get();
+        Task<Pagination<SalleDeTheatreDto>> Get(int Id,int page);
         Task<IEnumerable<SalleDeTheatreDto>> Getlist();
         Task<SalleDeTheatreDto> GetById(int id);
         Task Create(AddSalleDeTheatreDto data);
@@ -18,16 +18,16 @@ namespace Blazor.UI.Data.services.TheatherService
     public class SalleService : ISalleService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:7170/api/V1/SallesDeTheatre";
+        private const string ApiUri = "https://localhost:7170/api/v1/SallesDeTheatre";
 
         public SalleService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<Pagination<SalleDeTheatreDto>?> Get()
+        public async Task<Pagination<SalleDeTheatreDto>?> Get(int Id, int page)
         {
-            return await _httpClient.GetFromJsonAsync<Pagination<SalleDeTheatreDto>?>(ApiUri);
+            return await _httpClient.GetFromJsonAsync<Pagination<SalleDeTheatreDto>?>(ApiUri+ $"/get-complexe/{Id}/{page}");
 
         }
         public async Task<IEnumerable<SalleDeTheatreDto>?> Getlist()

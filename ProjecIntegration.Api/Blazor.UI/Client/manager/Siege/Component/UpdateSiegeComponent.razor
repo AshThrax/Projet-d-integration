@@ -1,5 +1,104 @@
-﻿<h3>UpdateComponenet</h3>
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.Services.TheatherService
+@using Blazor.UI.Data.services.TheatherService
+@inject ISalleService salleService;
+@inject ISiegeService siegeService;
+<h3>UpdateComponenet</h3>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>UpdateComponenet</h3>
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                <p>@Text</p>
+                @if (GetSiegeDto != null)
+                {
+                    <form>
+                        <div>
+                            <label class="form-label">Numéro de siége</label>
+                            <input class="form-control" @bind="GetSiegeDto.Name" />
+                        </div>
+                        <div>
+                            <label class="form-label">Salle de théatre</label>
+                            <select bindValue="@GetSiegeDto.SalleId" class="form-control w-50" @bind="SelectSalleId" @oninput="OnSelectedChange">
+                                <option>Choissisez Une Salle</option>
+                                @if (GetAllSalle != null)
+                                {
+                                    @foreach (SalleDeTheatreDto item in GetAllSalle)
+                                    {
+                                        <option value="@item.Id"> @item.Name</option>
+                                    }
 
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <a class="btn btn-warning" @onclick="() =>Update()"> Update</a>
+                        </div>
+                    </form>
+                    
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
+    [Parameter]
+    public int Id { get; set; }
+    public SiegeDto GetSiegeDto { get; set; }
+    public int SelectSalleId { get; set; }
+    public IEnumerable<SalleDeTheatreDto> GetAllSalle { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        await Dataload();
+    }
+    public async Task Dataload()
+    {
 
+        GetAllSalle = await salleService.Getlist();
+        GetSiegeDto = await siegeService.GetById(Id);
+        SelectSalleId = GetSiegeDto.SalleId;
+
+    }
+    public async Task OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            GetSiegeDto.SalleId = selectedId;
+        }
+    }
+    public async Task Update()
+    {
+        UpdateSiegeDto updateSiegeDto = new();
+        updateSiegeDto.SalleId = GetSiegeDto.SalleId;
+        updateSiegeDto.Name = GetSiegeDto.Name;
+        updateSiegeDto.AddedTime = GetSiegeDto.AddedTime;
+        await siegeService.Update(Id, updateSiegeDto);
+
+        _=ModalOk();
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

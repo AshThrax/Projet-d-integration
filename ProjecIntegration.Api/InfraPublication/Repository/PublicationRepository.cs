@@ -1,6 +1,7 @@
 ﻿using ApplicationPublication.Common.Repository;
 using Domain.Entity.notificationEntity;
 using Domain.Entity.publicationEntity;
+using Domain.Entity.TheatherEntity;
 using InfraPublication.Persistence;
 using MongoDB.Driver;
 using System;
@@ -18,6 +19,15 @@ namespace InfraPublication.Repository
         public PublicationRepository(PublicationMongoContext database):base(database) 
         {
            _collection=database.DbSet<Publication>();   
+        }
+
+        public async Task<bool> Doexist(int pieceId,string userId)
+        {
+            FilterDefinitionBuilder<Publication> builder = Builders<Publication>.Filter;
+            FilterDefinition<Publication> filter=builder.Empty;
+            filter &= builder.Eq(x=>x.UserId,userId);
+            filter &= builder.Eq(x => x.PieceId, pieceId);
+            return (await _collection.Find(filter).CountDocumentsAsync()>0);
         }
 
         public async Task<IEnumerable<Publication>> GetAllPublicationByPieceId(int PieceId)

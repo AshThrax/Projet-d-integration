@@ -10,7 +10,7 @@ namespace Blazor.UI.Data.Services.TheatherService
         Task<ServiceResponse<FavorisDto>> AddPiece(int  pieceId);
         Task Create();
         Task Update(int FavorisDto,FavorisDto favorisDto);
-        Task DeletePiece(int favorisId,int pieceId);
+        Task DeletePiece(int pieceId);
         Task<Pagination<PieceDto>> GetFavoris(int page);
         
     }
@@ -30,7 +30,7 @@ namespace Blazor.UI.Data.Services.TheatherService
             ServiceResponse<FavorisDto> response = new();
             try
             {
-                var httpmess= await _httpClient.PostAsync(ApiUri+$"/addFavoris/{pieceId}",null);
+                var httpmess= await _httpClient.PostAsync(ApiUri+$"/addfavoris/{pieceId}",null);
                 return response;
             }
             catch (Exception)
@@ -60,12 +60,12 @@ namespace Blazor.UI.Data.Services.TheatherService
             }
         }
 
-        public async Task DeletePiece(int favorisId, int pieceId)
+        public async Task DeletePiece( int pieceId)
         {
            
             try
             {
-                await _httpClient.DeleteFromJsonAsync<ServiceResponse<FavorisDto>>(ApiUri);
+                await _httpClient.DeleteFromJsonAsync<ServiceResponse<FavorisDto>>(ApiUri+$"/deletefavoris/{pieceId}");
                
             }
             catch (Exception)

@@ -1,0 +1,89 @@
+﻿@using Blazor.UI.Data.Services.User
+@inject IBannerService bannerService;
+@inject HttpClient _httpClient;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>@Id</label>
+                    <label class="form-label" for="File">Photo :</label>
+                    <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
+                    <div>
+                        @if (ImageFile != null)
+                        {
+                        <div>
+                            <button type="button" class="btn btn-warning" @onclick="UploadBanner"> Upload Image</button>
+                        </div>
+
+                        }
+                        else
+                        {
+                            
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private long maxFileSize = long.MaxValue;
+    public string? fileName { get; set; }
+    IBrowserFile? ImageFile { get; set; }
+
+    #region Banner
+    private void OnFileSelected(InputFileChangeEventArgs e)
+    {
+        ImageFile = e.File;
+
+    }
+    public async Task UploadBanner()
+    {
+        using var content = new MultipartFormDataContent();
+
+        var file = ImageFile;
+        var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+        fileName = file.Name;
+
+        content.Add(
+            content: fileContent,
+            name: "\"files\"",
+            fileName: file.Name);
+        string apiUri = "/api/v1/Banner";
+        await _httpClient.PutAsync(apiUri,content);
+        
+       
+        // bannerDto = await bannerService.Getbanner();
+    }
+    #endregion
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);    
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

@@ -65,7 +65,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                Catalogue newCatalogue=_mapper.Map<Catalogue>(addCatalogue);
-
+               newCatalogue.CreatedDate = DateTime.Now;
                Catalogue converted =await _catalogueRepository.Insert(newCatalogue);
                 response.Data = _mapper.Map<CatalogueDto>(converted);
                 response.Success = true;
@@ -210,6 +210,8 @@ namespace DataInfraTheather.BusinessService
                 if (getCatalogue != null)
                 {
                     Catalogue convertCatalogue = _mapper.Map<Catalogue>(updtCatalogue);
+                    convertCatalogue.UpdatedDate= DateTime.Now;
+                    
                     await _catalogueRepository.Update(catalogueId, convertCatalogue);
                     response.Success = true;
                     response.Message = "mise a jour réussi";

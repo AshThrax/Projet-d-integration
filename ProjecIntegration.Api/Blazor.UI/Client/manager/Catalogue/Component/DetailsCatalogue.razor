@@ -1,0 +1,122 @@
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.services.TheatherService
+
+@inject ICatalogueService catalogueService;
+@inject IPieceService pieceService;
+
+<h3>detailsCatalogue</h3>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="col">
+                    @if (SelectedCatalogue != null)
+                    {
+                        <div class="">
+                            <p><strong>Id</strong> : @SelectedCatalogue.Id</p>
+                        </div>
+                        <div class="">
+                            <p><strong>Name</strong> : @SelectedCatalogue.Name</p>
+                        </div>
+                        <div class="">
+                            <p><strong>Description</strong> : @SelectedCatalogue.Description</p>
+                        </div>
+                        <div class="">
+                            <p><strong> Date de creation</strong> : @SelectedCatalogue.AddedTime</p>
+                        </div>
+                        
+                    }
+                </div>
+                <div class="m-1 ">
+                    <div class="col">
+                        <div class="card ">
+                            <div class="m-1">
+                                <h3 class="card-header"> liste des Pieces de théatre</h3>
+                            </div>
+                            <div class="col card-body">
+                                @if (GetPieceDto != null)
+                                {
+
+                                    <QuickGrid Items="GetPieceDto.Items.AsQueryable()">
+                                        <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                        <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                                        <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                                        <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                                        <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                                    </QuickGrid>
+                                }
+                                else
+                                {
+
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public CatalogueDto SelectedCatalogue{ get; set;}
+    Pagination<PieceDto>? GetPieceDto { get; set; }
+
+    public int pageIndex = 1;
+    protected override async Task OnInitializedAsync()
+    {
+        SelectedCatalogue = await catalogueService.GetCatalogue(Id);
+        await GetPieceFromcatalogue(Id);
+    }
+    public async Task GetPieceFromcatalogue(int catalogueId)
+    {
+        GetPieceDto = (await pieceService.GetByCatalogue(catalogueId, pageIndex));
+        await Task.Delay(1000);
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+    #region Pagination
+    public async Task NextPage()
+    {
+        if (GetPieceDto.HasNextPage)
+        {
+            pageIndex++;
+            GetPieceDto = await pieceService.GetByCatalogue(Id, pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (GetPieceDto.HasPreviousPage)
+        {
+            pageIndex--;
+            GetPieceDto = await pieceService.GetByCatalogue(Id, pageIndex);
+        }
+    }
+    #endregion
+}

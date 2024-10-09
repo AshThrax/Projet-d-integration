@@ -11,6 +11,9 @@
 
 <div class="m-4 p-4">
     <h3 class="card-header display-4">SallePiece</h3>
+    <div class="btn-goup-sm float-end">
+        <a class="btn btn-warning" @onclick="() =>DataLoad()">Reload</a>
+    </div>
     <div class="row p-2">
         @if (salleTab != null)
         {
@@ -93,13 +96,18 @@
 
     protected override async Task OnInitializedAsync()
     {
+        await DataLoad();
+    }
+    public async Task DataLoad()
+    {
+        
         salleTab = await Servsalle.Getlist();
         await Task.Delay(1000);
         isdetail = true;
         isUpdate = false;
         isAddPiece = false;
-
     }
+    #region stae
     public async Task loadrepresentation(int item)
     {
         SalleId = item;
@@ -122,10 +130,12 @@
         isdetail = false;
         isAddPiece = true;
     }
+    #endregion
     public void addpiecePage(int id)
     {
         manager.NavigateTo($"/addPiece/{id}");
     }
+    #region pagination
     public async Task NextPage()
     {
         if (representation.HasNextPage)
@@ -142,4 +152,5 @@
             representation = await Servrep.GetSalle(SalleId ,pageIndex);
         }
     }
+    #endregion
 }

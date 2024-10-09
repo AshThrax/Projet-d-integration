@@ -1,4 +1,7 @@
-﻿namespace WebApi.Controllers.Theater
+﻿using Domain.DataType;
+using Domain.ServiceResponse;
+
+namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]
@@ -12,7 +15,21 @@
             _businessSiege = businessSiege;
             this.logger = logger;
         }
+        [HttpGet("from-salle/{salleId}/{page}")]
+        public async Task<ActionResult<Pagination<SiegeDto>>> GetSiegeFromSalle(int salleId,int Page)
+        {
+            try
+            {
+                ServiceResponse<IEnumerable<SiegeDto>> GetSisege = await _businessSiege.GetSiegeFromSalleId(salleId);
+                Pagination<SiegeDto> PageSiege=Pagination<SiegeDto>.ToPagedList(GetSisege.Data.ToList(), Page,10);
+                return Ok(PageSiege);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
         [HttpGet("from-salle/{salleId}")]
         public async Task<ActionResult<IEnumerable<SiegeDto>>> GetSiegeFromSalle(int salleId)
         {
@@ -40,7 +57,7 @@
             }
         }
         [HttpGet("{siegeId}")]
-        public async Task<ActionResult<SiegeDto>> GetSiegeById(int siegeId)
+        public async Task<ActionResult<ServiceResponse<SiegeDto>>> GetSiegeById(int siegeId)
         {
             try
             {
@@ -52,7 +69,7 @@
                 throw;
             }
         }
-        [HttpPost("")]
+        [HttpPost]
         public async Task<ActionResult> CreateSiege(AddSiegeDto dto)
         {
             try

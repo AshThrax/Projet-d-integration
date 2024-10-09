@@ -6,50 +6,64 @@
 @inject IComplexeService ComplexesService;
 @inject ISalleService SalleService;
 
-<div class="flex-fill m-4 p-4">
-    <h3>Mise a jour d'une salle de théatre</h3>
-    <div class="card">
-        <div class="card-body">
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="flex-fill m-4 p-4">
+                    <h3>Mise a jour d'une salle de théatre</h3>
+                    <div class="card">
+                        <div class="card-body">
 
-            @if (SelectedSalle != null)
-            {
-                <form>
-                    <div class="col-form-label">
-                        <div>
-                            <label class="form-label" for="name">Name:</label>
-                            <input class="form-control" id="name" @bind="SelectedSalle .Name" />
-                        </div>
-                        <div>
-                            <label class="form-label" for="placeMax">Place Max:</label>
-                            <input class="form-control" id="placeMax" @bind="SelectedSalle.PlaceMax" type="number" />
-                        </div>
+                            @if (SelectedSalle != null)
+                            {
+                                <form>
+                                    <div class="col-form-label">
+                                        <div>
+                                            <label class="form-label" for="name">Name:</label>
+                                            <input class="form-control" id="name" @bind="SelectedSalle .Name" />
+                                        </div>
+                                        <div>
+                                            <label class="form-label" for="placeMax">Place Max:</label>
+                                            <input class="form-control" id="placeMax" @bind="SelectedSalle.PlaceMax" type="number" />
+                                        </div>
 
-                        <div>
-                            <label class="form-label" for="complexeId">Complexe ID:</label>
-                            <select class="form-control" @bind="SelectComplexeId" @oninput="OnSelectedChange">
-                                <option>choissisez le complexe </option>
-                                @foreach (ComplexeDto item in AllComplexe)
-                                {
-                                    <option value="@item.Id">@item.Name</option>
-                                }
-                            </select>
-                        </div>
+                                        <div>
+                                            <label class="form-label" for="complexeId">Complexe ID:</label>
+                                            <select class="form-control" @bind="SelectComplexeId" @oninput="OnSelectedChange">
+                                                <option>choissisez le complexe </option>
+                                                @foreach (ComplexeDto item in AllComplexe)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            </select>
+                                        </div>
 
-                        <div class="m-2 p-2">
-                            <button type="button" class="btn btn-success" @onclick="() => UpdateSalleDeTheatre(SelectedSalle)">Update SalleDeTheatre</button>
+                                        <div class="m-2 p-2">
+                                            <button type="button" class="btn btn-success" @onclick="() => UpdateSalleDeTheatre(SelectedSalle)">Update SalleDeTheatre</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <p>No SalleDeTheatre provided</p>
+                            }
                         </div>
                     </div>
-                </form>
-            }
-            else
-            {
-                <p>No SalleDeTheatre provided</p>
-            }
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
         </div>
     </div>
-
 </div>
-
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -82,6 +96,7 @@
                 Id = SelecteSalleId
         };
         await SalleService.Update(SelecteSalleId, updatedsalle);
+        _ = ModalOk();
     }
     public void OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
@@ -95,4 +110,21 @@
     {
         manager.NavigateTo($"/manager/sallebycomplexe/{complexeId}");
     }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

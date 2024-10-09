@@ -1,0 +1,113 @@
+﻿@using Blazor.UI.Data.ModelViews.Annonce
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.services.Annonce
+@using Blazor.UI.Data.services.TheatherService
+
+@inject IAnnonceService annonceSerivece;
+@inject IPieceService pieceService;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                @if (GetannonceDto != null && GetPieceDtos != null)
+                {
+                    <div>
+                        <label>Titre</label>
+                        <p>@GetannonceDto.Title</p>
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <p>@GetannonceDto.Description</p>
+                    </div>
+                    <div>
+                        <label>Priority</label>
+                        <select bind-Value="Epriority" class="form-control" id="priority" @bind="selectPriotity" @oninput="onSelectPriority">
+                            <option>Choissisez une option</option>
+                            <option value="0">peu Importante</option>
+                            <option value="1">Importante</option>
+                        </select>
+                    </div>
+                    @if (GetannonceDto.PieceId != 0)
+                    {
+                        <div>
+                            <label class="form-label" id="piece" />
+                            <select bind-Value="getPieceDtos" class="form-control" id="piece" @bind="GetannonceDto.PieceId" @oninput="OnSelectePiece">
+                                <option>Choissisez une option</option>
+                                @foreach (PieceDto item in GetPieceDtos)
+                                {
+                                    <option value="@item.Id">@item.Titre</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public int selectPriotity { get; set; }
+    public int SelectePiece { get; set; }
+    public IEnumerable<PieceDto> GetPieceDtos { get; set; }
+    public AnnonceDto GetannonceDto { get; set; }
+    public EPrioirity priority { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetannonceDto = await annonceSerivece.GetAnnonceById(Id);
+        selectPriotity = (int)GetannonceDto.Priority;
+        GetPieceDtos = await pieceService.Getlist();
+    }
+    public void onSelectPriority(ChangeEventArgs eventArgs)
+    {
+
+            if (int.TryParse(eventArgs.Value?.ToString(), out int selectedId))
+            {
+            priority = (EPrioirity)selectedId;
+            }
+    }
+    public void OnSelectePiece(ChangeEventArgs eventArgs)
+    {
+
+            if (int.TryParse(eventArgs.Value?.ToString(), out int selectedId))
+            {
+                SelectePiece = selectedId;
+            }
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

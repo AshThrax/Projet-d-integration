@@ -22,7 +22,10 @@
     public SalleDeTheatreDto GetSalle { get; set; }
     protected override async Task OnInitializedAsync()
     {
-
+        await DataLoad();
+    }
+    public async Task DataLoad()
+    { 
         GetSalle = await SalleService.GetById(selectedRepresentation.SalledeTheatreId);
     }
 }

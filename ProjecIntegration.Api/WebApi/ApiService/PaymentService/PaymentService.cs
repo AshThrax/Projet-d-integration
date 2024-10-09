@@ -7,34 +7,42 @@ namespace WebApi.ApiService.PaymentService
 {
     public class PaymentService : IPaymentService
     {
+        
         public PaymentService()
         {
             StripeConfiguration.ApiKey = "sk_test_51PH98ZP7zrjxHIPVeUJsRJSjWqAhRglJR1FTndQvN9yHnoQ9430NxZiPPvDWxqpe53QbQc21yEpKCnSXBSVfTDPx00eB1CmwjS";
         }
 
-        public Session CreateSession(CommandDto command)
+        public Session CreateSession(int ticketNumber, int price, PieceDto getPiece)
         {
+            var lineItems = new List<SessionLineItemOptions>() 
+            {
+                new SessionLineItemOptions
+                {
+                    PriceData =new SessionLineItemPriceDataOptions 
+                    {
+                        UnitAmount = price*100,
+                        Currency ="eur",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name= getPiece.Titre,
+                            Images= new List<string> { $"https://localhost:7170/Resources/{getPiece?.Image}" }
+                        },
+                    },
+                    Quantity=ticketNumber,
+                }
+            };
+
             var options = new SessionCreateOptions
             {
-                LineItems = new List<SessionLineItemOptions>
+                PaymentMethodTypes=new List<string> 
                 {
-                  new SessionLineItemOptions
-                  {
-                    PriceData = new SessionLineItemPriceDataOptions
-                    {
-                      UnitAmount = 2000,
-                      Currency = "usd",
-                      ProductData = new SessionLineItemPriceDataProductDataOptions
-                      {
-                        Name = "T-shirt",
-                      },
-                    },
-                    Quantity = 1,
-                  },
+                    "card",
                 },
+                LineItems =lineItems,
                 Mode = "payment",
-                SuccessUrl = "http://localhost:7129/success",
-                CancelUrl = "http://localhost:7129/cancel",
+                SuccessUrl = "https://localhost:7129/paymentsuccess",
+                CancelUrl = "https://localhost:7129/paymentcancel",
             };
 
             var service = new SessionService();

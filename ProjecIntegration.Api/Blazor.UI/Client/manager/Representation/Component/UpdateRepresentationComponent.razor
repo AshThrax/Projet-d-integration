@@ -4,58 +4,77 @@
 @inject ISalleService ServSalle;
 @inject IPieceService ServPiece;
 
-@if (updateRepresentation != null && SelectSalle !=null && SelectPiece !=null)
-{
-    <div class="m-2 p-2">
-
-        <br />
-        <form class="card">
-            <div class="form-group card-body">
-                <div>
-
-                    <label class="form-label" for="prix">Prix:</label>
-                    <input class="form-control" id="prix" @bind="updateRepresentation.Prix" type="number" step="0.01" />
-                </div>
-                <div>
-
-                    <label class="form-label" for="seance">Seance:</label>
-                    <input class="form-control" id="seance" @bind="updateRepresentation.Seance" type="datetime-local" />
-                </div>
-                <div>
-                    <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
-
-                    <select class="form-control" @bind="SelectSalleId" @oninput="selectionSalle">
-                        <option>Choisissez une Salle</option>
-                        @foreach (var item in SelectSalle)
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
-                    </select>
-
-                </div>
-
-                <div>
-                    <label class="form-label" for="idSalleDeTheatre">Piece</label>
-                    <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
-                        <option>Choisissez une piece</option>
-                        <option>Choisissez une Piece</option>
-                        @foreach (var item in SelectPiece)
-                        {
-                            <option value="@item.Id">@item.Titre.ToString()</option>
-                        }
-                    </select>
-                </div>
-
-                <button class="btn btn-outline-dark m-2 p-2" @onclick="Update">Update Representation</button>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill "></i></a>
             </div>
-        </form>
-    </div>
-}
-else
-{
-    <p>No Representation provided</p>
-}
+            <div class="modal-body">
+                @if (updateRepresentation != null && SelectSalle != null && SelectPiece != null)
+                {
+                    <div class="m-2 p-2">
 
+                        <br />
+                        <form class="card">
+                            <div class="form-group card-body">
+                                <div>
+
+                                    <label class="form-label" for="Id">Id:</label>
+                                    <input class="form-control" id="Id" @bind="updateRepresentation.Id" type="number" step="0.01" />
+                                </div>
+                                <div>
+
+                                    <label class="form-label" for="prix">Prix:</label>
+                                    <input class="form-control" id="prix" @bind="updateRepresentation.Prix" type="number" step="0.01" />
+                                </div>
+                                <div>
+
+                                    <label class="form-label" for="seance">Seance:</label>
+                                    <input class="form-control" id="seance" @bind="updateRepresentation.Seance" type="datetime-local" />
+                                </div>
+                                <div>
+                                    <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
+
+                                    <select class="form-control" @bind="SelectSalleId" @oninput="selectionSalle">
+                                        <option>Choisissez une Salle</option>
+                                        @foreach (var item in SelectSalle)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+
+                                </div>
+
+                                <div>
+                                    <label class="form-label" for="idSalleDeTheatre">Piece</label>
+                                    <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
+                                        <option>Choisissez une piece</option>
+                                        <option>Choisissez une Piece</option>
+                                        @foreach (var item in SelectPiece)
+                                        {
+                                            <option value="@item.Id">@item.Titre.ToString()</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-outline-dark m-2 p-2" @onclick="Update">Update Representation</button>
+                            </div>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <p>No Representation provided</p>
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
     [Parameter]
     public RepresentationDto? updateRepresentation { get; set; }
@@ -70,7 +89,10 @@ else
     public PieceDto piece { get; set; }
     protected override async Task OnInitializedAsync()
     {
-
+        await DataLoad();
+    }
+    public async Task DataLoad()
+    {
         SelectPiece = await ServPiece.Getlist();
         SelectSalle = await ServSalle.Getlist();
         await Task.Delay(100);
@@ -88,6 +110,7 @@ else
                 PieceId = piece.Id
             };
         await Servrep.Update(items);
+        _ = ModalOk();
     }
     public async Task selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
@@ -105,4 +128,21 @@ else
             salle = await ServSalle.GetById(selectedId);
         }
     }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

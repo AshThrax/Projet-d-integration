@@ -1,42 +1,60 @@
 ﻿@using Blazor.UI.Data.ModelViews.Theater
 @using Microsoft.AspNetCore.Components.QuickGrid
-<h3>RemovePieceFromCatalogue</h3>
- <div class="row">
-            <div>
-                  <div class="col w-25">
-                <div class="card ">
-                  <div class="m-1">
-                      <h3 class="card-header"> liste des Pieces de théatre</h3>
-                  </div>
-                    <div class="col w-25 card-body">
-                      @if (GetPieces != null)
-                      {
-           
-                        <QuickGrid Items="GetPieces.AsQueryable()">
-                            <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                            <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
-                            <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
-                            <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
-                           <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
-                        </QuickGrid>
-                      }
-                      else
-                      {
-               
-                      }
-                  </div>
 
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ajouter une Piece</h4>
+                <h3>RemovePieceFromCatalogue</h3>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger">&times;</a>
             </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div>
+                        <div class="col w-25">
+                            <div class="card ">
+                                <div class="m-1">
+                                    <h3 class="card-header"> liste des Pieces de théatre</h3>
+                                </div>
+                                <div class="col w-25 card-body">
+                                    @if (GetPieces != null)
+                                    {
+
+                                        <QuickGrid Items="GetPieces.AsQueryable()">
+                                            <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                            <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                                            <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                                            <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                                            <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                                        </QuickGrid>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
             </div>
         </div>
+    </div>
 </div>
 @code {
-        public List<PieceDto> GetPieces { get; set; }
-        public PieceDto selectPieceDto { get; set; }
-        public List<CatalogueDto> GetCatalogue { get; set; }
-        public CatalogueDto selectCatalogue { get; set; }
-        public int selectCatalogueId { get; set; }
-        public int selectePieceId { get; set; }
+    [Parameter]
+    public int Id { get; set; }
+    public List<PieceDto> GetPieces { get; set; }
+    public PieceDto selectPieceDto { get; set; }
+    public List<CatalogueDto> GetCatalogue { get; set; }
+    public CatalogueDto selectCatalogue { get; set; }
+    public int selectCatalogueId { get; set; }
+    public int selectePieceId { get; set; }
 
     public void OnSelectedCatalogue(Microsoft.AspNetCore.Components.ChangeEventArgs args)
         {
@@ -54,4 +72,18 @@
             }
 
         }
+    #region  modale state
+   
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

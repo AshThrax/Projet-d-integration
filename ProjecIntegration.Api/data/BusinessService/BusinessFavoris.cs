@@ -38,6 +38,7 @@ namespace DataInfraTheather.BusinessService
                     {
                         getFavorisEntity.PieceFavorite = new List<Piece>();    
                     }
+                    getFavorisEntity.CreatedDate=DateTime.Now;
                     getFavorisEntity.PieceFavorite.Add(GetPieceToAdd);
                 }
             }
@@ -51,14 +52,15 @@ namespace DataInfraTheather.BusinessService
         public async Task<ServiceResponse<FavorisDto>> AddToFavoris(string userId, int pieceId)
         {
             ServiceResponse<FavorisDto> response = new ServiceResponse<FavorisDto>();
+            Favoris getFavorisEntity =new();
             try
             {
                 bool DoIexist = await _favorisrepository.DoYouExist(x=>x.UserId==userId);
                 if (!DoIexist)
                 {
-                    throw new ArgumentException();
+                   getFavorisEntity= await CreateFavoris(userId);
                 }
-                Favoris getFavorisEntity = await _favorisrepository.Get(x=>x.UserId==userId);
+                 getFavorisEntity = await _favorisrepository.Get(x=>x.UserId==userId);
                 Piece GetPieceToAdd = await _pieceRepository.GetById(pieceId);
                 if (GetPieceToAdd != null)
                 {
@@ -67,9 +69,11 @@ namespace DataInfraTheather.BusinessService
                         getFavorisEntity.PieceFavorite = new List<Piece>();
                     }
                     getFavorisEntity.PieceFavorite.Add(GetPieceToAdd);
+                    getFavorisEntity.CreatedDate = DateTime.Now;
                     await _favorisrepository.Update(getFavorisEntity.Id,getFavorisEntity);
                 }
-
+                response.Success = true;
+                response.Message = "favoris created";
             }
             catch (Exception)
             {
@@ -78,7 +82,7 @@ namespace DataInfraTheather.BusinessService
             }
             return response;
         }
-        public async Task<ServiceResponse<FavorisDto>> CreateFavoris(string userId)
+        public async Task<Favoris> CreateFavoris(string userId)
         {
             ServiceResponse<FavorisDto> response = new ServiceResponse<FavorisDto>();
             try
@@ -90,16 +94,16 @@ namespace DataInfraTheather.BusinessService
                     UpdatedDate = DateTime.Now,
                     UserId = userId
                 };
-                _= await _favorisrepository.Insert(createfavoris);
-                response.Success = true;
-                response.Message = "favoris created";
+                Favoris createdEntity= await _favorisrepository.Insert(createfavoris);
+                createdEntity.CreatedDate = DateTime.Now;
+                return createdEntity;
             }
             catch (Exception)
             {
 
                 throw;
             }
-            return response;
+            
         }
 
         public async Task<ServiceResponse<FavorisDto>> DeleteFromFavoris(int favorisId, int pieceid)
@@ -113,13 +117,15 @@ namespace DataInfraTheather.BusinessService
                     throw new ArgumentException();
                 }
                 Favoris getFavorisEntity = await _favorisrepository.GetById(favorisId);
-                if (getFavorisEntity.PieceFavorite !=null)
+                if (getFavorisEntity !=null)
                 {
                     if (getFavorisEntity.PieceFavorite == null)
                     {
                         getFavorisEntity.PieceFavorite = new List<Piece>();
                     }
                     getFavorisEntity.PieceFavorite.RemoveAll(x=>x.Id==pieceid);
+                    getFavorisEntity.UpdatedDate = DateTime.Now;
+                    await _favorisrepository.Update(getFavorisEntity.Id, getFavorisEntity);
                 }
                 response.Success = true;
                 response.Message = "Successfully deleted from the favorite";
@@ -131,7 +137,37 @@ namespace DataInfraTheather.BusinessService
             }
             return response;
         }
+        public async Task<ServiceResponse<FavorisDto>> DeleteFromFavoris(string userId, int pieceid)
+        {
+            ServiceResponse<FavorisDto> response = new ServiceResponse<FavorisDto>();
+            try
+            {
+                bool DoIexist = await _favorisrepository.DoYouExist(c=>c.UserId==userId);
+                if (!DoIexist)
+                {
+                    throw new ArgumentException();
+                }
+                Favoris getFavorisEntity = await _favorisrepository.Get(c=>c.UserId==userId,equals=>equals.PieceFavorite);
+                if (getFavorisEntity != null)
+                {
+                    if (getFavorisEntity.PieceFavorite == null)
+                    {
+                        getFavorisEntity.PieceFavorite = new List<Piece>();
+                    }
+                    getFavorisEntity.PieceFavorite.RemoveAll(x => x.Id == pieceid);
+                    getFavorisEntity.UpdatedDate = DateTime.Now;
+                    await _favorisrepository.Update(getFavorisEntity.Id, getFavorisEntity);
+                }
+                response.Success = true;
+                response.Message = "Successfully deleted from the favorite";
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+            return response;
+        }
         public async Task<Pagination<PieceDto>> PaginateFavoris(string userId, int page)
         {
             try

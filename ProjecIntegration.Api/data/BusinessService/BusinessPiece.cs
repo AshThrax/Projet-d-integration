@@ -33,7 +33,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 Piece entittyConversion = _mapper.Map<Piece>(Entity);
-               
+                entittyConversion.CreatedDate = DateTime.Now;
                 await _pieceRepository.Insert(entittyConversion);
                 response.Success = true;
                 response.Message = "opération réussi";
@@ -176,6 +176,7 @@ namespace DataInfraTheather.BusinessService
                 if (getPiece != null)
                 {
                     Piece getConvertion = _mapper.Map<Piece>(Entity);
+                    getConvertion.UpdatedDate = DateTime.Now;
                     await _pieceRepository.Update(idPiece, getConvertion);
          
                     response.Success = true;

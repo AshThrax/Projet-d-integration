@@ -46,5 +46,6 @@ namespace ApplicationPublication.Common.BusinessLayer
         #endregion
 
         Task<IEnumerable<PostDto>> GetPostFromUserId(string userId);
+        Task<bool> IsAuthor(string postId, string userId);
     }
 }

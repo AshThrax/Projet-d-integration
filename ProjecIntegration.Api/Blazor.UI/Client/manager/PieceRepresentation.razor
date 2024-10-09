@@ -36,8 +36,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-
-        GetPieceDto = await pieceService.Getlist();
+        await DataLoad();
     }
-  
+    public async Task DataLoad()
+    {
+        GetPieceDto = await pieceService.Getlist();
+        
+    }
+
 }

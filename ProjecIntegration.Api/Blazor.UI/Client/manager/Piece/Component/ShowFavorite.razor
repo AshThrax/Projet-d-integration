@@ -4,23 +4,35 @@
 @using Blazor.UI.Data.ModelViews.Theater
 
 @inject IFavorisService favorisService
+@inject NavigationManager manager;
 
 <div class="shadow-sm m-2 p-2">
     <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Favoris</h6>
     <div>
         @if(GetFavoritePiece !=null)
-        { 
-            <div>
-                <QuickGrid Items="@GetFavoritePiece.Items.AsQueryable()">
-                    <PropertyColumn Property="Page =>Page.Id" />
-                    <PropertyColumn Property="Page =>Page.Titre"/>
-                    <PropertyColumn Property="Page =>Page.Auteur" />
-                    <PropertyColumn Property="P =>P.Duree" />
-                    <TemplateColumn>
-                        <a><img src="" alt="Alternate Text" /></a>
-                    </TemplateColumn>
-                </QuickGrid>
-            </div>
+        {
+            @foreach (var item in GetFavoritePiece.Items)
+            {
+                <div class="bg-white row featurette  rounded shadow mb-2 pb-2">
+                    <div class="m-2 p-2">
+                        <div class="col-md-5 p-2">
+                            <div class="card-img">
+                                <img class="img-fluid" src="https://localhost:7170/Resources/@item.Image" />
+                            </div>
+                        </div>
+                        <div class="col-md-7 p-2">
+                            <p class="card-text"><strong>Auteur :</strong>@item?.Auteur</p>
+                            <p class="card-text"><strong>Descirption :</strong>@item?.Description</p>
+                            <p class="card-text"><strong>Durée de la pièce :</strong>@item?.Duree</p>
+                            <div class="btn-group">
+                                <a @onclick="() => GetToPublication(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Critique</a>
+                                
+                                <a @onclick="() => DeleteFavoris(item.Id)" type="button" class="btn btn-danger  shadow-sm">supprimer desfavoris</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
             <div class="row">
                 <div class="float-end btn-group-sm">
                     <a class="btn btn-outline-dark" @onclick="() =>previousPage()">Previous</a>
@@ -43,10 +55,12 @@
 
     protected async override Task OnInitializedAsync()
     {
-        GetFavoritePiece = await favorisService.GetFavoris(pageIndex);
-
+        await Dataload();
     }
-
+    public async Task Dataload()
+    {
+        GetFavoritePiece = await favorisService.GetFavoris(pageIndex);
+    }
     public async Task Nextpage()
     {
         if (GetFavoritePiece.HasNextPage)
@@ -68,6 +82,26 @@
     public async Task Create()
     {
 
-       await favorisService.Create();
+        await favorisService.Create();
+    }
+    public async Task DeleteFavoris(int Id)
+    {
+        await favorisService.DeletePiece(pageIndex);
+        await Dataload();
+    }
+    public void GetDescription(int id)
+    {
+        manager.NavigateTo($"/pieceinfo/{id}");
+        ;
+    }
+    public void GetSeance(int id)
+    {
+        manager.NavigateTo($"/representation/{id}");
+        ;
+    }
+    public void GetToPublication(int Id)
+    {
+        manager.NavigateTo($"/publicationbypiece/{Id}");
+        ;
     }
 }

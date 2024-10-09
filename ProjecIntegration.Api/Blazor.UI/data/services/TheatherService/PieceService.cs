@@ -20,7 +20,7 @@ namespace Blazor.UI.Data.services.TheatherService
         Task AddToCatalogue(int catalogueId, int pieceId);
         Task RemovefromCatalogue(int catalogueId, int pieceId);
         Task Update(int id, UpdatePieceDto data);
-        Task Delete(PieceDto data);
+        Task Delete(int Id);
         Task DeleteRepresentation(int idPiece, int idRepresentation);
     }
 
@@ -88,9 +88,9 @@ namespace Blazor.UI.Data.services.TheatherService
             await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
         }
 
-        public async Task Delete(PieceDto data)
+        public async Task Delete(int Id)
         {
-            await _httpClient.DeleteAsync(ApiUri+$"/{data.Id}");
+            await _httpClient.DeleteAsync(ApiUri+$"/{Id}");
         }
 
         public async Task DeleteRepresentation(int idPiece, int idRepresentation)

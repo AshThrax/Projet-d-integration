@@ -11,13 +11,14 @@ namespace Blazor.UI.data.services.Publication
 
         Task<PostDto> GetPostById(string postId);
         Task DeletePost(string postId);
-        Task UpdatePost(PostDto post);
+        Task UpdatePost(string Id, UpdatePostDto post);
         Task CreatePost(string publicationId,AddPostDto post);
+        Task<bool> IsAuthor(string postId);
     }
     public class PostService : IPostService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:7170/api/V1/Post";
+        private const string ApiUri = "https://localhost:7170/api/v1/Post";
 
         public PostService(HttpClient httpClient)
         {
@@ -53,9 +54,14 @@ namespace Blazor.UI.data.services.Publication
            return await _httpClient.GetFromJsonAsync<PostDto>($"{ApiUri}/{postId}");
         }
 
-        public async Task UpdatePost(PostDto post)
+        public async Task UpdatePost(UpdatePostDto post)
         {
-            await _httpClient.PutAsJsonAsync<PostDto>($"{ApiUri}/{post.Id}",post);
+            await _httpClient.PutAsJsonAsync<UpdatePostDto>($"{ApiUri}/{post.Id}",post);
+        }
+
+        public async Task<bool> IsAuthor(string postId)
+        {
+            return await _httpClient.GetFromJsonAsync<bool>(ApiUri + $"/iswriter/{postId}");
         }
     }
 

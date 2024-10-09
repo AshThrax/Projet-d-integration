@@ -3,36 +3,69 @@
 @using Blazor.UI.data.services.Publication
 @inject IPublicationService postService;
 
-<div class="m-2">
-    <h3 class="display-3">ajouter une Critique</h3>
-    <div class="row m-2 p-2">
-        <form class="form-check">
-            <label class="form-label" for="titre">Titre</label>
-            <input class="form-control w-50" id="titre" />
-            <label class="form-label">Laisser un commentaire</label>
-            <textarea class="form-control"
-                      @bind="Response"
-                      style="width:800px; height:200px;word-wrap:normal border:anywhere" />
-            <button type="submit" class="btn btn-dark mt-2" @onclick="() =>AddPost(Response)">Repondre</button>
-        </form>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div class="m-2">
+                    <h3 class="display-3">Ajouter une Critique</h3>
+                    <div class="row m-2 p-2">
+                        <form class="form-check">
+                            <label class="form-label" for="titre">Titre</label>
+                            <input @bind="reviewTitle" class="form-control w-50" id="titre" />
+                            <label class="form-label">Laisser un commentaire</label>
+                            <textarea class="form-control w-100"
+                                      @bind="Response"
+                                      style="width:800px; height:200px;word-wrap:normal border:anywhere" />
+                            <button type="submit" class="btn btn-dark mt-2" @onclick="() =>AddPost(Response)">Repondre</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
     </div>
 </div>
 @code {
     [Parameter]
     public int Id { get; set; }
-    public string Title { get; set; } = string.Empty;
+    public string reviewTitle { get; set; } = string.Empty;
     public string Response { get; set; } = string.Empty;
 
     public async Task AddPost(string response)
     {
         AddPublicationDto postDto = new()
             {
-                Title=Title,
+                Title=reviewTitle,
                 Review=response,
                 PieceId=Id
             };
         await postService.AddPublication(postDto);
+        _ = ModalOk();
     }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }
 
 

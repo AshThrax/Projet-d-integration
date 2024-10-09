@@ -1,15 +1,19 @@
 ﻿@page "/makecommand/{IdPiece:int}/{IdSalle:int}/{IdRepresnetation:int}"
 @using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.Services.CartService
+@using Blazor.UI.Data.Services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid;
-@using Blazor.UI.Data.ModelViews.Theater
+
 @using Blazor.UI.Data.services.TheatherService;
 @inject IPieceService ServPiece;
 @inject ISalleService ServSalle;
+@inject ISiegeService salleService;
 @inject IRepresentationService Servrep;
 @inject ICommandService ServCommande;
-
+@inject IPaymentService paymentService;
+@inject ICartService cardservice;
 @inject Microsoft.AspNetCore.Components.NavigationManager manager
-<div class="jumbotron m-2 p-2 bg-light text-lg-center">
+<div class="m-2 p-2 bg-light text-lg-center">
     <div class="m-2 p-2">
         <h3 class="display-3 ">Finalisation de la commande de Commande</h3>
 
@@ -26,11 +30,11 @@
             <div>
                 <h3>Résumer de la commande </h3>
             </div>
-            <div class="p-3 m-3 bg-primary bg-opacity-10 rounded-5">
+            <div class="p-3 m-3  bg-opacity-10 rounded-5">
                 <div class="bg-light m-2 p-4 rounded-5 border">
                     <div class="card">
                          <div class="card-body">
-                             <p><strong>titre</strong>: @piececlt.Titre</p>
+                             <p><strong>Titre</strong>: @piececlt.Titre</p>
                                 <p><strong>durée de la pîece</strong>: @piececlt.Duree minutes</p>
                          </div>
                          <div class="card-body">
@@ -43,10 +47,10 @@
                             </div>
                    
                             <div class="p-2 input-group m-3">
-                                <p class="pe-2"><strong>nombre de ticket</strong></p>
+                                <p class="pe-2"><strong>Nombre de ticket</strong></p>
                                 <br>
                                 <input @oninput="UpdatePrice" class="form-control p-2 ps-2 border border-dark" type="number" />
-                            </div>
+                                </div>
                          </div>
                          <div class="card-body">
                             <div>
@@ -71,12 +75,36 @@
             @if (commandeMade != null)
             {
 
-                <div class ="bg-info bg-opacity-10 m-2 p-2 rounded">
-                    <div class="m-2 p-2 bg-light">
+                <div class =" row bg-info bg-opacity-10 m-2 p-2 rounded">
+                    <div class=" col m-2 p-2 bg-light">
                         <h4>Commande</h4>
-                        <p>Auth: @commandeMade.AuthId</p>
                         <p>represnetaiton: @commandeMade.IdRepresentation</p>
                         <p>nombre de place:@commandeMade.NombreDePlace</p>
+                        <p>nombre de place dans SiegeForCommande:@SiegeForCommande.Count</p>
+                    </div>
+                    <div class="col">
+
+                        @if (ticketGen > 0)
+                        {
+                            for (int i = 0; i < ticketGen; i++)
+                            {
+                                <div>
+                                    <p>Choissez votre Siège</p>
+                                    <select class="form-control" @onchange="OnSelectSiege" >
+                                        @if(GetSiegeFromSalle !=null)
+                                        {
+                                            <option >text</option>
+                                            @foreach (SiegeDto item in GetSiegeFromSalle)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                            
+                                        }
+                                    </select>
+                                </div>
+                            }
+                        }
+                       
                     </div>
                 </div>
                
@@ -95,31 +123,48 @@ else{
     public int IdSalle { get; set; }
     [Parameter]
     public int IdRepresnetation { get; set;}
-
-
+    //le prix
     public int Priceclt { get; set; } = 0;
-
+    //les object a charger
     public PieceDto piececlt { get; set; }
     public SalleDeTheatreDto? salleclt { get; set; }
     public RepresentationDto? repclt{ get; set; }
-    public AddCommandDto commandeMade { get; set; } 
+    public AddCommandDto commandeMade { get; set; }
+    public IEnumerable<SiegeDto> GetSiegeFromSalle { get; set; } 
+
+    //nombre de ticket a gérer
     public int ticketGen { get; set; }
+    //liste des Identifiant de siege 
+    public List<int> SiegeForCommande { get; set; } = new();
     protected override async Task OnInitializedAsync()
     {
         commandeMade = new AddCommandDto();
         await Init();
     }
+    /// <summary>
+    /// fonction d'initialisation'
+    /// </summary>
+    /// <returns></returns>
     public async Task Init()
     {
         piececlt = await ServPiece.GetById(IdPiece);
         salleclt = await ServSalle.GetById(IdSalle);
         repclt = await Servrep.GetById(IdRepresnetation);
-    }
+        GetSiegeFromSalle = await salleService.GetAllFromsalleId(IdSalle);
 
+    }
+    public async Task Dataload()
+    {
+
+    }
     public void UpdatePrice(Microsoft.AspNetCore.Components.ChangeEventArgs e)
     {
         if (int.TryParse(e.Value.ToString(), out int numberOfTickets))
         {
+            if (ticketGen > numberOfTickets)
+            {
+                SiegeForCommande = (SiegeForCommande.SkipLast(1)).ToList();
+            }
             ticketGen = numberOfTickets;//nombre de ticket generer
             int TicketPrice = CalculateTicketPrice();
             int price =Math.Max (0,numberOfTickets *TicketPrice ); //calcule du pri
@@ -132,6 +177,14 @@ else{
         }
     }
 
+    public void OnSelectSiege(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int SiegeId))
+        {
+            var SiegeToChoose = GetSiegeFromSalle.FirstOrDefault(x => x.Id==SiegeId);
+            SiegeForCommande.Add(SiegeToChoose.Id);
+        }
+    }
     // Method to calculate the ticket price
     private int CalculateTicketPrice()
     {
@@ -140,26 +193,30 @@ else{
     }
     public void userCommand(int genereate)
     {
-        List<AddTicketDto> listCommande = new List<AddTicketDto>();
         commandeMade = new AddCommandDto
         {
-                AuthId ="",
                 IdRepresentation = IdRepresnetation,
                 NombreDePlace = genereate,
-               
+                SiegeIds = SiegeForCommande.ToList()
         };
         //n'entre pas dans la methodes pour une raison inconnue pour le moment a debatre 
     }
+    /// <summary>
+    /// Passez commande
+    /// </summary>
+    /// <returns></returns>
     public async Task MakingCommande()
     {
         commandeMade.NombreDePlace = ticketGen;
         commandeMade.IdRepresentation = IdRepresnetation;
-        await Servrep.AddCommandRepresentation( IdRepresnetation,ticketGen,commandeMade);
-        await Task.Delay(100);
-        getProfile();
+        await cardservice.AddToCart(commandeMade);
+        // await Servrep.AddCommandRepresentation( IdRepresnetation,ticketGen,commandeMade);
+        string urlSession = await paymentService.Checkout(ticketGen,repclt.Prix, piececlt);
+        manager.NavigateTo(urlSession);
+
     }
 
-    public void getProfile() => manager.NavigateTo("/profileViewer");
-    public void getHome() => manager.NavigateTo("/profileViewer");
+    public void getProfile() => manager.NavigateTo("/profile");
+    public void getHome() => manager.NavigateTo("/");
     public void getPrevious() => manager.NavigateTo($"/representation/{IdPiece}");
 }

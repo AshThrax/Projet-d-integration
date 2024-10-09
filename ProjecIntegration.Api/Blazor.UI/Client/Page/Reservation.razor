@@ -68,10 +68,14 @@
         @foreach (var item in pieceDtos.Items)
         {
                 <div class="bg-white row featurette  rounded shadow mb-2 pb-2">
+                <div class="float-end">
+                    
+                        <a @onclick="() => AddFavoris(item.Id)" type="button" class="bg-danger p-1 shadow-sm"><i class="bi bi-bookmark"></i></a>
+                </div>
                     <div class="m-2 p-2">
                         <div class="col-md-5 p-2">
                             <div class="card-img">
-                                   <img class="img-fluid" src="https://localhost:44337/Resources/@item.Image" />
+                                   <img class="img-fluid" src="https://localhost:7170/Resources/@item.Image" />
                             </div>
                         </div>
                         <div class="col-md-7 p-2">
@@ -79,9 +83,9 @@
                                 <p class="card-text"><strong>Descirption :</strong>@item?.Description</p>
                                 <p class="card-text"><strong>Durée de la pièce :</strong>@item?.Duree</p>
                                 <div class="btn-group">
-                                     <a @onclick="() => GetToPublication(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Critique</a>
-                                     <a @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">Seance</a>
-                                     <a @onclick="() => AddFavoris(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm">ajouter au favoris</a>
+                                <a @onclick="() => GetToPublication(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm"><i class="bi bi-arrow-left-circle"></i> Critique</a>
+                                <a @onclick="() => GetSeance(item.Id)" type="button" class="btn btn-secondary p-1 shadow-sm"><i class="bi bi-arrow-right-circle"></i> Seance</a>
+                                   
                                 </div>
                         </div>
                     </div>   
@@ -110,14 +114,18 @@
     public bool ByTheme { get; set; } = false;
     protected override async Task OnInitializedAsync()
     {
+      
+        await DataLoad();
+        // getComplexe = convert;
+        await Task.Delay(1000);
+    }
+    public async Task DataLoad()
+    {
         //var convert  = await _complexeService.Get();
         pieceDtos = (await pieceService.Get(pageIndex));
         GetAllTheme = (await themeService.GetAllTheme()).ToList();
         GetComplexes = (await complexeService.Get()).ToList();
-        // getComplexe = convert;
-        await Task.Delay(1000);
     }
-
     public async Task OnSelectedComplexe(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
         if (int.TryParse(args.Value?.ToString(), out int selectedId))

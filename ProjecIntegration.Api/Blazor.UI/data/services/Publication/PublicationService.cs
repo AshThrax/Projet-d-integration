@@ -1,6 +1,7 @@
 ﻿
 using Blazor.UI.Data.ModelViews.Publication;
 using Blazor.UI.Data.ServiceResult;
+using System;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.Data.services.Publication
@@ -10,10 +11,12 @@ namespace Blazor.UI.Data.services.Publication
         Task AddPublication(AddPublicationDto catalogueDto);
         Task DeletePublication(string Id);
         Task<PublicationDto> GetPublication(string Id);
-        Task<PublicationDto> UpdatePublication(string Id, PublicationDto catalogue);
+        Task UpdatePublication(string Id, UpdatePublicationDto catalogue);
         Task<Pagination<PublicationDto>> GetPublicationByUserId(int page);
         Task<Pagination<PublicationDto>> GetOtherPublicationByUserId(string userId,int page);
         Task<Pagination<PublicationDto>> GetAllPublicationByPieceId(int page,int id);
+        Task<bool> IsAuthor(string pubId);
+        Task<bool> Hasreview(int pieceId);
 
         //--------------------------------------------------
 
@@ -31,7 +34,7 @@ namespace Blazor.UI.Data.services.Publication
 
         public async Task AddPublication(AddPublicationDto catalogueDto)
         {
-            await _httpClient.PostAsJsonAsync(ApiUri, catalogueDto);
+            await _httpClient.PostAsJsonAsync<AddPublicationDto>(ApiUri+ "/create-publication", catalogueDto);
         }
 
         public async Task DeletePublication(string Id)
@@ -44,9 +47,9 @@ namespace Blazor.UI.Data.services.Publication
             return await _httpClient.GetFromJsonAsync<PublicationDto>($"{ApiUri}/publication-by-id/{Id}");
         }
 
-        public Task<PublicationDto> UpdatePublication(string Id, PublicationDto catalogue)
+        public async Task UpdatePublication(string Id,UpdatePublicationDto catalogue)
         {
-            throw new NotImplementedException();
+           await _httpClient.PutAsJsonAsync<UpdatePublicationDto>($"{ApiUri}/update-publication/{Id}",catalogue);
         }
 
         public async Task<Pagination<PublicationDto>?> GetPublicationByUserId(int page)
@@ -62,6 +65,17 @@ namespace Blazor.UI.Data.services.Publication
         public async Task<Pagination<PublicationDto>?> GetOtherPublicationByUserId(string userId, int page)
         {
             return await _httpClient.GetFromJsonAsync<Pagination<PublicationDto>?>($"{ApiUri}/publication-by-user//{userId}/{page}");
+        }
+
+        public async Task<bool> IsAuthor(string pubId)
+        {
+            return await _httpClient.GetFromJsonAsync<bool>(ApiUri + $"/iswriter/{pubId}");
+        }
+
+        public async Task<bool> Hasreview(int pieceId)
+        {
+            return await _httpClient.GetFromJsonAsync<bool>(ApiUri + $"/hasreview/{pieceId}");
+        
         }
     }
 }

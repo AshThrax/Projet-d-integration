@@ -21,12 +21,12 @@ namespace WebApi.Controllers
             this.annonceBl = annonceBl;
         }
 
-        [HttpGet()]
+        [HttpGet("page/{pageNumber}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<GetAnnonceDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAll([FromQuery]int pageNumber)
+        public async Task<ActionResult> GetAll(int pageNumber)
         
         {
             try

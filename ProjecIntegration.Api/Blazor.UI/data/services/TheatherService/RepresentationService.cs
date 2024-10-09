@@ -75,7 +75,7 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task AddCommandRepresentation(int id, int idplace, AddCommandDto data)
         {
-            await _httpClient.PostAsJsonAsync($"https://localhost:44337/api/Representation/add-command/{id}/{idplace}", data);
+            await _httpClient.PostAsJsonAsync($"https://localhost:7170/api/Representation/add-command/{id}/{idplace}", data);
         }
 
         public async Task DeleteCommandRepresentation(int idRep, int idCommand)

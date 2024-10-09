@@ -48,5 +48,25 @@ namespace WebApi.Controllers
                 return Ok(_mapper.Map<ImageDto>(added));
            
         }
+        [HttpPut("{Id}")]
+        public async Task<ActionResult<ImageDto>> UploadFile(int Id,IFormFile files)
+        {
+            List<UploadResult> uploadResults = new List<UploadResult>();
+
+
+            if (files.Length > 1 * 1024 * 1024)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
+            }
+            string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+            string createdImageName = await _fileService.SaveFileAsync(files, allowedFileExtentions);
+
+            ImageDto newImage = new ImageDto() { ImageRessource = createdImageName };
+            Image AddImage = _mapper.Map<Image>(newImage);
+            var added = _context.Image.Update(AddImage).Entity;
+            await _context.SaveChangesAsync();
+            return Ok(_mapper.Map<ImageDto>(added));
+
+        }
     }
 }

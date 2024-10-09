@@ -14,6 +14,6 @@ namespace ApplicationPublication.Common.Repository
         Task<IEnumerable<Publication>> GetAllPublicationByPieceId(int pieceId);
         Task<IEnumerable<Publication>> GetAllPublicationByUserId(string userId);
         Task UpdatePublicationContent(string publicationid,string title, string content);
-      
+        Task<bool> Doexist(int pieceId, string userId);
     }
 }

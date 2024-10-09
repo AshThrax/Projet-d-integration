@@ -1,0 +1,64 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.data.services.Publication
+@inject IPostService postService;
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>@Text</p>
+
+                <div class="row m-2 p-2">
+                    <form class="form-check">
+                        <label class="form-label">Laisser un commentaire</label>
+                        <textarea class="form-control w-100"
+                                  @bind="GetPost.Content"
+                                  style="width:800px; height:200px;word-wrap:normal border:anywhere" />
+                        <button type="submit" class="btn btn-dark" @onclick="() =>UpdatePost()">Repondre</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    public PostDto GetPost { get; set; }
+    public UpdatePostDto updatePostDto { get; set; } = new();
+    protected override async Task OnInitializedAsync()
+    {
+        GetPost = await postService.GetPostById(Id);
+    }
+    public async Task UpdatePost()
+    {
+        updatePostDto.Id = Id;
+        updatePostDto.Content=GetPost.Content;
+        updatePostDto.PublicationId = GetPost.PublicationId;
+        await postService.UpdatePost(Id,updatePostDto);
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

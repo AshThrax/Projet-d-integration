@@ -6,8 +6,9 @@
 
 .cover-photo {
     position: relative;
-    width: 100%;
-    height: 200px;
+   
+    height: 400px;
+    width: 600px;
     background-color: #f3f3f3;
 }
 

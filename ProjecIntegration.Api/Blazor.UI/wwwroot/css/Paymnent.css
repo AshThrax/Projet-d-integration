@@ -1,0 +1,16 @@
+﻿.failed {
+ border-bottom: solid 5px red;
+}
+.success {
+ border-bottom:solid 5px #00ff21;
+}
+
+.failed i 
+{
+    color:red;
+}
+
+.success i 
+{
+    color:#00ff21;
+}

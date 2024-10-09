@@ -1,0 +1,40 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ModelViews.User
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.Services.User
+
+@inject IUserService userService;
+@inject IFollowService followService;
+@if (GetUserDto != null && GetfollowerDto != null)
+{
+    <h3>ListeFollowerComponent</h3>
+    <div class="container">
+        <div class="row">
+            @foreach (UserDto item in GetUserDto.Items)
+            {
+                <p class="col">@item.FamilyName</p>
+                <p class="col">@item.GivenName</p>
+                <img class="img-fluid col" src="https://localhost:7129/Ressource/@item.Picture"/>
+            }
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="container">
+        <h3> your Friend list is Empty</h3>
+    </div>
+}
+@code {
+    [Parameter]
+    public string Id { get; set; } 
+    public IEnumerable<FollowDto> GetfollowerDto { get; set; }
+    public Pagination<UserDto> GetUserDto { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        GetfollowerDto = await followService.GetFollower(Id);
+        List<string> userIds = (GetfollowerDto.Select(x => x.FollowerId)).ToList();
+        GetUserDto = await userService.GetListUser(userIds);
+    }
+}

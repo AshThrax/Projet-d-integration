@@ -11,7 +11,7 @@ namespace Blazor.UI.Data.Services.User
         Task<BannerDto> Getbanner();
         Task<BannerDto> Getbanner(string userId);
         Task  Createbanner(MultipartFormDataContent addContent);
-        Task ChangeBanner(MultipartFormDataContent uploadContent);
+        Task ChangeBanner(int id,MultipartFormDataContent uploadContent);
     }
     public class BannerService : IBannerService
     {
@@ -24,17 +24,12 @@ namespace Blazor.UI.Data.Services.User
 
         }
 
-        public async Task ChangeBanner(MultipartFormDataContent uploadContent)
+        public async Task ChangeBanner(int bannerId,MultipartFormDataContent uploadContent)
         {
             try
             {
-                var response = await _httpClient.PostAsync(apiBaseUrl, uploadContent);
-                if (response.IsSuccessStatusCode)
-                {
-                    var ImgContent = await response.Content.ReadAsStringAsync();
-                    BannerDto banner = JsonConvert.DeserializeObject<BannerDto>(ImgContent);
-
-                }
+                var response = await _httpClient.PutAsync(apiBaseUrl+$"/{bannerId}", uploadContent);
+              
             }
             catch (Exception)
             {

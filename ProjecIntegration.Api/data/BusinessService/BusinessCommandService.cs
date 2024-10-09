@@ -104,8 +104,9 @@ namespace DataInfraTheather.BusinessService
                if (command != null)
                 {
                     Representation vérification =await _representationRepository.GetById(command.IdRepresentation);
-                    SalleDeTheatre salle = await _sallerepository.GetById(vérification.SalleDeTheatre.Id);
+                    SalleDeTheatre salle = await _sallerepository.GetById(vérification.SalledeTheatreId);
                     int maxPlace= salle.PlaceMax;
+
                     if (vérification.PlaceCurrent + command.NombreDePlace <= vérification.PlaceMaximum)
                     {
                         //validation
@@ -246,6 +247,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 var entityToUpdate= _mapper.Map<Command>(command);
+                entityToUpdate.UpdatedDate = DateTime.Now;
                 await _commandRepository.Update(id, entityToUpdate);
 
                 response.Success = true;

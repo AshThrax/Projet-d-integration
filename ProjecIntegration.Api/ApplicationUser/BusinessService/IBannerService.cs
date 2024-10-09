@@ -7,6 +7,6 @@ namespace ApplicationUser.BusinessService
     {
         Task<ServiceResponse<BannerDto>> AddBanner(string userId, string Imageressourcess);
         Task<ServiceResponse<BannerDto>> HasBanner(string userId);
-        Task<ServiceResponse<BannerDto>> UpdateBanner(int bannerId, string ImageRessourcess);
+        Task<ServiceResponse<BannerDto>> UpdateBanner(string userId, string ImageRessourcess);
     }
 }

@@ -18,6 +18,8 @@
     </div>
     <div class="p-2">
         <div class="w-25">
+            @if (GetComplexe != null)
+            {
             <select class="form-control" @bind="SelectedComplexeId" @oninput="OnSelectedChange">
                 <option value="value">choose Complexe</option>
                 @foreach (var item in GetComplexe)
@@ -26,16 +28,38 @@
 
                 }
             </select>
+                
+            }
         </div>
+      
     </div>
     <div class="row w-50">
         @if (GetCatalogue != null)
         {
 
-           <div class="col w-25">
-                <div class="card">
-                   <h3 class="card-header">les catalogues</h3>
-                   <div class="card-body">
+           <div class="col">
+                <div class="">
+                   <h3 class="table-wrapper">Manage catalogues</h3>
+                    <div class="table-title">
+                            <div class="btn-group-sm float-end ">
+                                <a type="button"
+                                   class="btn btn-success"
+                                   @onclick="() =>addDialogOPen()">
+                                    Ajouter un catalogue
+                                </a>
+                                <a type="button"
+                                   class="btn btn-warning"
+                                   @onclick="() =>UpdateDialogOPen()">
+                                    Update
+                                </a>
+                                <a type="button"
+                                   class="btn btn-danger"
+                                   @onclick="() =>DeleteDialogOPen()">
+                                    Delete
+                                </a>
+                            </div>
+                   </div>
+                   <div class="">
                         <QuickGrid Items="GetCatalogue.AsQueryable()" >
                                 <PropertyColumn Property="p =>p.Name" Sortable="true"/>
                                 <PropertyColumn Property="p =>p.Description" Sortable="true" />
@@ -43,6 +67,9 @@
                                 <TemplateColumn Context="item">
                                     <button type="button" class="btn btn-warning" @onclick="() => SelecteCatalogue(item)">details</button>
                                 </TemplateColumn>
+                            <TemplateColumn Context="item">
+                                <button type="button" class="btn btn-warning" @onclick="() => GetToPieceCatalog(item.Id)">Piece</button>
+                            </TemplateColumn>
                         </QuickGrid>
 
                    </div>
@@ -56,98 +83,31 @@
         }
     </div>
     <br />
-    <div class="row rounded">
-  
-        @if (SelectedCatalogue != null)
-        {
-           <div class="col w-25">
-            
-                <div class="card">
-                      
-                    <h3 class="card-header">Details</h3>
-                    <div class="w-25 row card-body">
-                        <div class="col">
-                                <div class="">
-                                    <p><strong>Id</strong> : @SelectedCatalogue.Id</p>
-                                </div>
-                                <div class="">
-                                    <p><strong>Name</strong> : @SelectedCatalogue.Name</p>
-                                </div>
-                                <div class="">
-                                    <p><strong>Description</strong> : @SelectedCatalogue.Description</p>
-                                </div>
-                                <div class="">
-                                    <p><strong> Date de creation</strong> : @SelectedCatalogue.AddedTime</p>
-                                </div>
-                        </div>
-                         <div class="m-1 ">
-                       
-                            <div class="col">
-                                <div class="col col-10 btn-group float-lg-end m-4">
-                                    <button type="button"
-                                            class="btn btn-warning"
-                                            @onclick="() =>GetToAddCatalog()">
-                                       Ajouter un catalogue
-                                    </button>
-                                    <button type="button"
-                                            class="btn btn-warning"
-                                            @onclick="() =>GetToUpdateCatalog(SelectedCatalogueId)">
-                                        Update
-                                    </button>
-                                    <button type="button"
-                                            class="btn btn-warning"
-                                            @onclick="() =>GetPieceFromcatalogue(SelectedCatalogueId)">
-                                        Ajouter une piece
-                                    </button>
-                                    <button type="button"
-                                            class="btn btn-danger"
-                                            @onclick="() =>GetToDeleteCatalog(SelectedCatalogueId)">
-                                        Delete
-                                    </button>
-                                    <button type="button"
-                                            class="btn btn-warning"
-                                            @onclick="() =>GetPieceFromcatalogue(SelectedCatalogueId)">
-                                        Liste de Piece
-                                    </button>
-
-                                </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-           </div>
-      
-        }
-        else
-        {
-            <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
-        }
-        <div class="col w-25">
-            <div class="card ">
-              <div class="m-1">
-                  <h3 class="card-header"> liste des Pieces de théatre</h3>
-              </div>
-                <div class="col w-25 card-body">
-                  @if (GetPieceDto != null)
-                  {
-           
-                    <QuickGrid Items="GetPieceDto.Items.AsQueryable()">
-                        <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                        <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
-                        <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
-                        <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
-                       <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
-                    </QuickGrid>
-                  }
-                  else
-                  {
-               
-                  }
-              </div>
-
-        </div>
-        </div>
-    </div>
+    
+    @if(IsDetails)
+    {
+        <Blazor.UI.Client.manager.Catalogue.Component.detailsCatalogue Id="SelectedCatalogueId" OnClose="DetailsDialogclose"></Blazor.UI.Client.manager.Catalogue.Component.detailsCatalogue>
+    }
+    else if(IsAdding)
+    {
+        <Blazor.UI.Client.manager.Catalogue.Component.AddCatalogue OnClose="addDialogclose"></Blazor.UI.Client.manager.Catalogue.Component.AddCatalogue>
+    }
+    else if (IsAddingPiece)
+    {
+        <Blazor.UI.Client.manager.Piece.AddPieceToCatalogue Id="SelectedCatalogueId" OnClose="addPieceDialogclose"></Blazor.UI.Client.manager.Piece.AddPieceToCatalogue>
+    }
+    else if (IsDeleting)
+    {
+        <Blazor.UI.Client.manager.Catalogue.Component.DeleteCatalogue Id="SelectedCatalogueId" OnClose="DeleteDialogclose"></Blazor.UI.Client.manager.Catalogue.Component.DeleteCatalogue>
+    }
+    else if (IsUpdating)
+    {
+        <Blazor.UI.Client.manager.Catalogue.Component.UpdateCatalogue Id="SelectedCatalogueId" OnClose="UpdateDialogclose"></Blazor.UI.Client.manager.Catalogue.Component.UpdateCatalogue>
+    }
+    else if (IsdeletingPiece)
+    {
+      <Blazor.UI.Client.manager.Piece.RemovePieceFromCatalogue Id="SelectedCatalogueId" OnClose="DeletePieceDialogclose"></Blazor.UI.Client.manager.Piece.RemovePieceFromCatalogue>
+    }
 </div>
 
 @code {
@@ -157,27 +117,35 @@
     List<ComplexeDto>? GetComplexe { get; set; } 
     ComplexeDto? SelectedComplexe { get; set; } 
     public int SelectedComplexeId { get; set; }
+
     List<CatalogueDto>? GetCatalogue { get; set; }
     CatalogueDto? SelectedCatalogue { get; set; } 
     public int SelectedCatalogueId { get; set; }
-    Pagination<PieceDto>? GetPieceDto { get; set; }
-    public int pageIndex = 1;
+
     protected async override Task OnInitializedAsync()
+    {
+        await DataLoad();
+    }
+    public async Task DataLoad()
     {
         SelectedComplexeId = Id;
         GetComplexe = (await ComplexeService.Get()).ToList();
         GetCatalogue = (await CatalogueService.GetAllCatalogueByComplexeId(SelectedComplexeId)).ToList();
         await Task.Delay(1000);
+        
     }
+    #region selectData
     public void SelecteCatalogue(CatalogueDto selected)
     {
         SelectedCatalogue = selected;
         SelectedCatalogueId = SelectedCatalogue.Id;
+        detailsDialogOPen();
     }
-    public async Task GetPieceFromcatalogue(int catalogueId)
+    public void SelecteCataloguePiece(CatalogueDto selected)
     {
-        GetPieceDto = (await PieceService.GetByCatalogue(catalogueId,pageIndex));
-        await Task.Delay(1000);
+        SelectedCatalogue = selected;
+        SelectedCatalogueId = SelectedCatalogue.Id;
+        addPieceDialogOPen();
     }
     public async Task OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
@@ -194,6 +162,8 @@
         GetCatalogue = (await CatalogueService.GetAllCatalogueByComplexeId(SelectedComplexeId)).ToList();
         await Task.Delay(1000);
     }
+    #endregion
+    #region page 
     public void GetToAddCatalog()
     {
         manager.NavigateTo("/manager/addcatalogue");
@@ -206,20 +176,79 @@
     {
         manager.NavigateTo($"/manager/Deletecatalogue/{catalogueId}");
     }
-    public async Task NextPage()
+    public void GetToPieceCatalog(int catalogueId)
     {
-        if (GetPieceDto.HasNextPage)
-        {
-            pageIndex++;  
-            GetPieceDto = await PieceService.GetByCatalogue(SelectedCatalogueId, pageIndex);
-        }
+        manager.NavigateTo($"/manager/cataloguePiece/{catalogueId}");
     }
-    public async Task PreviousPage()
+    #endregion
+    #region State
+    public bool IsAdding { get; set; }
+    public bool IsAddingPiece { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsdeletingPiece { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
+
+    public bool OpenDialogBox { get; set; } = false;
+    private void addDialogOPen()
     {
-        if (GetPieceDto.HasPreviousPage)
-        {
-            pageIndex--;
-            GetPieceDto = await PieceService.GetByCatalogue(SelectedCatalogueId, pageIndex);
-        }
+        IsAdding = true;
+        StateHasChanged();
     }
+    private void addDialogclose()
+    {
+        IsAdding = false;
+        StateHasChanged();
+    }
+    private void addPieceDialogOPen()
+    {
+        IsAddingPiece = true;
+        StateHasChanged();
+    }
+    private void addPieceDialogclose()
+    {
+        IsAddingPiece = false;
+        StateHasChanged();
+    }
+    private void DeleteDialogOPen()
+    {
+        IsDeleting = true;
+        StateHasChanged();
+    }
+    private void DeleteDialogclose()
+    {
+        IsDeleting = false;
+        StateHasChanged();
+    }
+    private void DeletePieceDialogOPen()
+    {
+        IsdeletingPiece = true;
+        StateHasChanged();
+    }
+    private void DeletePieceDialogclose()
+    {
+        IsdeletingPiece = false;
+        StateHasChanged();
+    }
+    private void UpdateDialogOPen()
+    {
+        IsUpdating = true;
+        StateHasChanged();
+    }
+    private void UpdateDialogclose()
+    {
+        IsUpdating = false;
+        StateHasChanged();
+    }
+    private void detailsDialogOPen()
+    {
+        IsDetails = true;
+        StateHasChanged();
+    }
+    private void DetailsDialogclose()
+    {
+        IsDetails = false;
+        StateHasChanged();
+    }
+#endregion
 }

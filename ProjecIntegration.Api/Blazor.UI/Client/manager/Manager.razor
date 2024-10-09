@@ -14,7 +14,10 @@
     </li>
     <li class ="nav-item">
         <a type="button" class="btn btn-primary nav-link text-black" @onclick="() => GetToPieceSection()">Pieces</a>
-    </li>    
+    </li>
+    <li class="nav-item">
+        <a type="button" class="btn btn-primary nav-link text-black" @onclick="() => GetToManagerSection()">Annonce</a>
+    </li>
 </ul>
 <br />
 <div class="jumbotron bg-white">
@@ -58,7 +61,10 @@
     {
         manager.NavigateTo("manager/piece");
     }
-
+    public void GetToManagerSection()
+    {
+        manager.NavigateTo("/manager/Annonce");
+    }
     public void GetToRepresentationSection()
     {
         manager.NavigateTo("manager/representation");

@@ -15,16 +15,18 @@ namespace WebApi.Controllers
             _customCetToken = customCetToken;
         }
         /// <summary>
-        /// Create the favorite 
+        /// add a piece to favorite
         /// </summary>
+        /// <param name="favorisId"></param>
+        /// <param name="pieceId"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult<ServiceResponse<FavorisDto>>> CreateFavoris()
+        [HttpPost("addfavoris/{pieceId}")]
+        public async Task<ActionResult<ServiceResponse<FavorisDto>>> AddPiecetoFavoris(int pieceId)
         {
             try
             {
-                string userId =await _customCetToken.GetSub();
-                ServiceResponse<FavorisDto> response=await _businessFavoris.CreateFavoris(userId);
+                string userId = await _customCetToken.GetSub();
+                ServiceResponse<FavorisDto> response = await _businessFavoris.AddToFavoris(userId,pieceId);
                 if (!response.Success)
                 {
                     return BadRequest(response.Message);
@@ -43,13 +45,13 @@ namespace WebApi.Controllers
         /// <param name="favorisId"></param>
         /// <param name="pieceId"></param>
         /// <returns></returns>
-        [HttpPost("addFavoris/{pieceId}")]
-        public async Task<ActionResult<ServiceResponse<FavorisDto>>> AddPiecetoFavoris(int favorisId,int pieceId)
+        [HttpDelete("deletefavoris/{pieceId}")]
+        public async Task<ActionResult<ServiceResponse<FavorisDto>>> DeletePiecetoFavoris(int pieceId)
         {
             try
             {
                 string userId = await _customCetToken.GetSub();
-                ServiceResponse<FavorisDto> response = await _businessFavoris.AddToFavoris(userId,pieceId);
+                ServiceResponse<FavorisDto> response = await _businessFavoris.DeleteFromFavoris(userId, pieceId);
                 if (!response.Success)
                 {
                     return BadRequest(response.Message);

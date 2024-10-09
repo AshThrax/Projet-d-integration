@@ -1,6 +1,7 @@
 ﻿using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Dto;
 using Domain.DataType;
+using InfraPublication.BusinessLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -130,15 +131,16 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdatePublication(string publicationById,string Title, string Content)
+        public async Task<ActionResult> UpdatePublication(string publicationById,[FromBody] UpdatePublicationDto publication)
         {
             try
             {
-                if(Content == null)
+                if(publicationById == null)
                 {
                     return BadRequest();
                 }
-                await _publicationBl.UpdatePublication(publicationById,Title,Content);
+
+                await _publicationBl.UpdatePublication(publicationById,publication.Title,publication.Review);
                 return NoContent(); 
             }
             catch
@@ -172,6 +174,36 @@ namespace WebApi.Controllers
                 return NoContent();
             }
 
+        }
+        [HttpGet("iswriter/{publicationId}")]
+        public async Task<ActionResult> IsAuthor(string publicationId)
+        {
+            try
+            {
+                string userId = await _customGetToken.GetSub();
+                bool iswriter = await _publicationBl.IsAuthor(publicationId, userId);
+                return Ok(iswriter);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpGet("hasreview/{pieceId}")]
+        public async Task<ActionResult>  HasReview(int pieceId)
+        {
+            try
+            {
+                string userId = await _customGetToken.GetSub();
+                bool Hasreview = await _publicationBl.Hasreview(pieceId, userId);
+                return Ok(Hasreview);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

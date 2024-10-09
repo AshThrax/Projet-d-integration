@@ -1,4 +1,5 @@
 ﻿using Blazor.UI.Data.ModelViews.Publication;
+using Blazor.UI.Data.ServiceResult;
 using Data.ServiceResult;
 using Stripe;
 using System.Net.Http.Json;
@@ -8,7 +9,7 @@ namespace Blazor.UI.Data.Services.User
     public interface IUserService
     {
         Task<UserDto> GetUserProfile(string userId);
-        
+        Task<Pagination<UserDto>> GetListUser(List<string> userId);
         Task<IEnumerable<UserDto>> GetAllUser();
         Task DeleteUser(string userId);
         Task UnBlockuser (string userId);
@@ -28,7 +29,7 @@ namespace Blazor.UI.Data.Services.User
 
         public async Task BlockUser(string userId)
         {
-           await _httpClient.DeleteAsync(ApiUri+$"/block/{userId}");
+            await _httpClient.DeleteAsync(ApiUri + $"/block/{userId}");
         }
 
         public async Task DeleteUser(string userId)
@@ -43,7 +44,7 @@ namespace Blazor.UI.Data.Services.User
 
         public async Task<UserDto> GetUserProfile(string userId)
         {
-            ServiceResponse<UserDto>? reponse= await _httpClient.GetFromJsonAsync<ServiceResponse<UserDto>>(ApiUri+$"/{userId}");
+            ServiceResponse<UserDto>? reponse = await _httpClient.GetFromJsonAsync<ServiceResponse<UserDto>>(ApiUri + $"/{userId}");
             if (reponse.Success)
             {
                 return reponse.Data;
@@ -56,14 +57,17 @@ namespace Blazor.UI.Data.Services.User
 
         public async Task UnBlockuser(string userId)
         {
-            await _httpClient.PostAsJsonAsync<string>(ApiUri+$"/unblock/{userId}","");
+            await _httpClient.PostAsJsonAsync<string>(ApiUri + $"/unblock/{userId}", "");
         }
         public async Task nominateAdmin(string userId)
         {
-            await _httpClient.PostAsJsonAsync<string>(ApiUri+$"nom-admin/{userId}","");
+            await _httpClient.PostAsJsonAsync<string>(ApiUri + $"nom-admin/{userId}", "");
         }
 
-
+        public async Task<Pagination<UserDto>> GetListUser(List<string> userId)
+        {
+            return await _httpClient.GetFromJsonAsync<Pagination<UserDto>>(ApiUri+"/fromlist");
+        }
         public async Task UnnominateasAdmin(string userId)
         {
             await _httpClient.PutAsJsonAsync<string>(ApiUri + $"/unnom-admin/{userId}","");

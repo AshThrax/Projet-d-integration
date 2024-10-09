@@ -1,6 +1,8 @@
 ﻿@page "/manager/sallebycomplexe/{Id:int}"
 @page "/manager/sallebycomplexe"
+@using Blazor.UI.Client.manager.Salle.Component
 @using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 
@@ -10,15 +12,6 @@
 
 <h3>Gestion des Salle</h3>
 <div class="flex-fill m-4 p-4">
-    <div class="m-4 p-4">
-        <div class=" btn-group rounded float-end">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-
-            <button type="button" class="col col-sm-3   btn btn-warning" @onclick="AddSalle">Ajouter une Salle</button>
-        </div>
-    </div>
     <br />
     <div class="">
         <h3>Complexe </h3>
@@ -29,91 +22,102 @@
                 <option value="@item.Id">@item.Name <p>@item.Id</p></option>
             }
         </select>
-        <div class="mt-2">
+        <div class="mt-2 btn-group float-end">
         <a href="#addModale"
            class="btn btn-success" data-toggle="modal"
-           @onclick="() => ShowAdd()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+           @onclick="() => addDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add New Salle</span></a>
         <a href="#deleteModale"
            class="btn btn-danger"
-           data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+               data-toggle="modal" @onclick="() =>DeleteDialogOPen()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+            <a href="#deleteModale"
+               class="btn btn-warning"
+               data-toggle="modal" @onclick="() => DataLoad()"><i class="material-icons">&#xE15C;</i> <span>Reload</span></a>
        
     </div>
     <br />
     @if (SelectedComplexe != null && GetComplexes != null)
     {
-        <div class="container jumbotron m-2 p-2 rounded">
-            <div class="row m-2 p-2">
-                <div class="col m-2 p-2">
-                    <div class="card">   
-                        <h3 class="card-header">Salle du complexe</h3>
-                        @if (GetSalles != null)
-                        {
-                               <div class="card-body">
-                                    <QuickGrid Items="@GetSalles.AsQueryable()">
+            <div class="table-wrapper">
+                <div class="m-2 p-2">
+                    <div class="row ">
+                        <div class="col-sm-3">  
+                            @if (SelectedComplexe != null)
+                            {
+                                <div class="card">
+                                    <h4 class="form-label">Nom:</h4>
+                                    <p>@SelectedComplexe?.Name</p>
+
+                                    <h4 class="form-label">Description:</h4>
+                                    <p>@SelectedComplexe?.Description</p>
+
+                                    <h4 class="form-label">Address:</h4>
+                                    <p>@SelectedComplexe?.Adress</p>
+
+                                    <h4 class="form-label" for="address">Address:</h4>
+                                    <p>@SelectedComplexe?.AddedTime</p>
+                              
+                                </div>
+                            }
+                            else
+                            {
+                                
+                            }
+                        </div>
+                        <div class="col"></div>
+                        <div class="col-sm-6">
+                        <h3 class="card-header text-center">Salle du complexe</h3>
+                                @if ( GetSallePagination != null)
+                                {
+                                <QuickGrid Items="@GetSallePagination.Items.AsQueryable()">
                                         <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
                                         <PropertyColumn Property="@(p =>p.Name)" Sortable="true" />
 
                                         <PropertyColumn Property="@(p => p.PlaceMax)" Sortable="true" />
                                         <TemplateColumn Context="item">
                                             <div>
-                                                <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>Showdetails(item)">Details salle de theatre</button>
+                                                <button class="shadow-sm broder rounded btn btn-primary" type="button" @onclick="() =>DetailsDialogOPen(item)">Details </button>
                                             </div>
                                         </TemplateColumn>
                                             <TemplateColumn Context="item">
                                                 <div>
-                                                    <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>ShowUpdate(item)">Details salle de theatre</button>
+                                                    <button class="shadow-sm broder rounded btn btn-warning" type="button" @onclick="() =>UpdateDialogOPen(item)">Update</button>
                                                 </div>
                                             </TemplateColumn>
-                                    </QuickGrid>    
+                                    </QuickGrid>
+                                <div class="row m-2 p-2">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3"></div>
 
-                               </div>
-                        }
+                                    <div class="col-sm-6 btn-group m-2 p-2">
+                                        <a class="btn btn-outline-dark btn-light" @onclick="PreviousPage">Previous</a>
+                                        <a class="btn btn-outline-dark btn-light" @onclick="NextPage">Next</a>
+                                    </div>
+                                </div>
+                                }
+                                else
+                                {
+                                }
+                        </div>
                     </div>
-                </div>
-                 <div class="col">
+                 <div class="">
                         <div class="col bg-white  m-4 p-4 w-50 rounded">
                         @if (IsDeleting)
                         {
-                        
+                            <DeleteSalle Id="selectedSalleId" OnClose="DeleteDialogclose"></DeleteSalle>
                         }
                         else if (IsAdding)
                         {
                       
-                            <AddSallByComplexe></AddSallByComplexe>
+                            <AddSallByComplexe OnClose="addDialogclose"></AddSallByComplexe>
                         }
                         else if (IsUpdating)
                         {
-                            <UpdateSalle Id="selectedSalleId" ></UpdateSalle>
+                            <UpdateSalle Id="selectedSalleId" OnClose="UpdateDialogclose" ></UpdateSalle>
                         }
                         else if (IsDetails)
                         {
-                            @if (SelectedSalleDeTheatre != null)
-                            {
-                                <div class="card m-2 p-2">
-                                    <div class="card m-2 p-2">
-                                        <h3 class="card-header"> Details</h3>
-                                        <div class="m-2 p-2 card-body">
-                                            <div class="m-2 p-2">
-                                                <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
-                                                <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
-                                                <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
-                                                <p><strong>Representation Number</strong> @SelectedSalleDeTheatre?.Representations?.Count</p>
-                                            </div>
-                                            <br />
-                                            <div class="m-2 p-2 btn-group rounded float-end">
-                                                <button type="button" class="btn btn-primary" @onclick="() =>siegeManager(selectedSalleId)">montrer les salles</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                               
-                            }
-                            
-                        
+                           
+                           <DetailsSalle Id="selectedSalleId" OnClose="DetailsDialogclose"></DetailsSalle>
                         }
                         </div>
                     </div>
@@ -133,17 +137,25 @@
     public List<ComplexeDto> GetComplexes { get; set; } = new();
     public ComplexeDto SelectedComplexe { get; set; } = new();
     public int SelectComplexeId { get; set; }
+
     public List<SalleDeTheatreDto>? GetSalles { get; set; }
+    public Pagination<SalleDeTheatreDto> GetSallePagination { get; set; }
     public SalleDeTheatreDto? SelectedSalleDeTheatre { get; set; } 
     public int selectedSalleId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         SelectComplexeId = Id;
+        await DataLoad();
+    }
+    public async Task DataLoad()
+    {
+
         GetComplexes = (await ComplexesService.Get()).ToList();
         SelectedComplexe = await ComplexesService.GetById(SelectComplexeId);
         GetSalles = SelectedComplexe?.SalleDeTheatres;
-        await Task.Delay(1000);
+        pageIndexe=1;
+        GetSallePagination = await SalleService.Get(SelectComplexeId, pageIndexe);
     }
     public void SelectSalle(SalleDeTheatreDto salleDeTheatreDto)
     {
@@ -172,8 +184,7 @@
             SelectedComplexe = await ComplexesService.GetById(SelectComplexeId);
             if (SelectedComplexe.SalleDeTheatres?.Count >= 0)
             {
-                GetSalles = SelectedComplexe.SalleDeTheatres;
-                SelectedSalleDeTheatre = null;
+                await DataLoad();
             }
             else
             {
@@ -187,7 +198,7 @@
             SelectedComplexe = new();
         }
     }
-
+    #region Page
     private void AddSalle()
     {
         manager.NavigateTo("/manager/addSalle");
@@ -196,44 +207,82 @@
     {
         manager.NavigateTo($"/manager/updateSalle/{Id}");
     }
+    public void siegeManager(int salleId)
+    {
+        manager.NavigateTo($"/manager/siege/{salleId}");   
+    }
+    #endregion
+    #region State
     //state----
     public bool IsAdding { get; set; }
     public bool IsDeleting { get; set; }
     public bool IsUpdating { get; set; }
     public bool IsDetails { get; set; }
-    public void ShowAdd()
+
+    public bool OpenDialogBox { get; set; } = false;
+    private void addDialogOPen()
     {
         IsAdding = true;
-        IsDeleting = false;
-        IsUpdating = false;
-        IsDetails = false;
-
+        StateHasChanged();
     }
-    public void ShowDelete()
+    private async Task addDialogclose()
     {
         IsAdding = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private void DeleteDialogOPen()
+    {
         IsDeleting = true;
-        IsUpdating = false;
-        IsDetails = false;
+        StateHasChanged();
     }
-    public void ShowUpdate(SalleDeTheatreDto item)
+    private void DeleteDialogclose()
     {
-        IsAdding = false;
         IsDeleting = false;
+        StateHasChanged();
+    }
+    private void UpdateDialogOPen(SalleDeTheatreDto item)
+    {
         IsUpdating = true;
-        IsDetails = false;
-        selectedSalleId = item.Id;
-    }
-    public void Showdetails(SalleDeTheatreDto item)
-    {
-        IsAdding = false;
-        IsDeleting = false;
-        IsUpdating = false;
-        IsDetails = true;
+        StateHasChanged();
         SelectSalle(item);
     }
-    public void siegeManager(int salleId)
+    private async Task UpdateDialogclose()
     {
-        manager.NavigateTo($"/manager/siege/{salleId}");   
+        IsUpdating = false;
+        StateHasChanged();
+        await DataLoad();
     }
+    private void DetailsDialogOPen(SalleDeTheatreDto item)
+    {
+        IsDetails = true;
+        StateHasChanged();
+        SelectSalle(item);
+    }
+    private void DetailsDialogclose()
+    {
+        IsDetails = false;
+        StateHasChanged();
+    }
+    #endregion
+    #region pagination
+    public int pageIndexe {get;set;}=1;
+    public async Task NextPage()
+    {
+        if (GetSallePagination.HasNextPage)
+        {
+            pageIndexe++;
+            GetSallePagination = await SalleService.Get(Id, pageIndexe);
+        }
+
+    }
+    public async Task PreviousPage()
+    {
+        if (GetSallePagination.HasPreviousPage)
+        {
+            pageIndexe--;
+            GetSallePagination = await SalleService.Get(Id, pageIndexe);
+        }
+    }
+    #endregion
 }

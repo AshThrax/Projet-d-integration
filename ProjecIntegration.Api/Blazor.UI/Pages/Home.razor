@@ -54,11 +54,31 @@
 </div>
 
 @code{
-    public Pagination<AnnonceDto>? GetAnnonceDto { get; set; } 
-
+    //public Pagination<AnnonceDto>? GetAnnonceDto { get; set; }
+    public int pageIndex { get; set; } = 1;
     protected override async Task OnInitializedAsync()
     {
-        GetAnnonceDto = await AnnonceService.GetAll();
-        await Task.Delay(1000);
+        await base.OnInitializedAsync();
     }
+    #region pagination
+    /*
+     * 
+        public async Task NextPage()
+        {
+            if ( GetAnnonceDto.HasNextPage)
+            {
+                pageIndex++;
+                GetAnnonceDto = await AnnonceService.GetAll(pageIndex);
+            }
+        }
+        public async Task PreviousPage()
+        {
+            if (GetAnnonceDto.HasPreviousPage)
+            {
+                pageIndex--;
+                GetAnnonceDto = await AnnonceService.GetAll(pageIndex);
+            }
+        }
+     */
+    #endregion
 }

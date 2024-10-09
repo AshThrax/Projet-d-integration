@@ -28,7 +28,9 @@ namespace DataInfraTheather.BusinessService
             ServiceResponse<RepresentationDto> response = new();
             try
             {
-                await _repservice.Insert(_mapper.Map<Representation>(dto));
+                Representation Entity = _mapper.Map<Representation>(dto);
+                Entity.CreatedDate=DateTime.Now;
+                await _repservice.Insert(Entity);
                 await Task.CompletedTask;
 
                 response.Success = true;
@@ -166,6 +168,7 @@ namespace DataInfraTheather.BusinessService
                 Representation entity = await _repservice.GetById(id);
                 response.Data= _mapper.Map<RepresentationDto>(entity);
                 response.Errortype = Errortype.Good;
+                response.Success = true;
                 response.Message = "opération Réussis";
                 return response;
             }
@@ -194,6 +197,7 @@ namespace DataInfraTheather.BusinessService
                 if (getrep)
                 {
                     Representation entityToUpdate = _mapper.Map<Representation>(dto);
+                    entityToUpdate.UpdatedDate=DateTime.Now;
                     await _repservice.Update(dto.Id.Value, entityToUpdate);
                     response.Success = true;
                     response.Message = "mise a jour réussi";

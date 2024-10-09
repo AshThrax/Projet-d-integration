@@ -1,10 +1,9 @@
 ﻿@page "/representation/{Id:int}"
 @using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.ModelViews.Theater
-//-------
-@attribute [Authorize(Roles ="Admin")]
+@attribute [Authorize]
 @attribute [StreamRendering]
-//-------
+
 @using Blazor.UI.Data.services.TheatherService
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
@@ -15,7 +14,7 @@
 
 <div class="flex-fill m-4 p-4">
     <div class="jumbotron bg-light m-2 p-2 rounded">
-        <div class="m-2 p-2  m-2 p-2 border rounded-4">
+        <div class="m-2 p-2  m-2 p-2 ">
             <h3 class="dispaly-1">Representation Summary</h3>
 
         </div>
@@ -23,9 +22,9 @@
     <div class="row">
             @if (myPiece != null)
             {
-            <div class="border rounded bg-light col-md-5">
-                    <div class="col">
-                        <img class="img-thumbnail" src="https://localhost:44337/Resources/@myPiece.Image"/>
+            <div class="rounded bg-light col-md-5">
+                    <div class="col mt-2 pt-2">
+                        <img class="img-thumbnail" src="https://localhost:7170/Resources/@myPiece.Image"/>
                     </div>
                     <div class="col ">
                         <h4>Representation Details</h4>
@@ -48,20 +47,19 @@
     </div>
     @if (selectedRepresentation != null)
     {
-        <div class="row">
-            <div class="bg-light rounded w-25">
-            <div class=" text-md-start">
-                <Blazor.UI.Client.manager.Representation.Component.GetSeanceComponent selectedRepresentation="@selectedRepresentation">
-
-                </Blazor.UI.Client.manager.Representation.Component.GetSeanceComponent>
-                <div class="p-2 m-2 ">
-                    <p class="lead">Desirer vous reserver cette seance la </p>
-                    <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(selectedRepresentation.Id)">Commander</button>
-                </div>
-
-            </div>
-        </div>
-        </div>
+        @if (OpenDialogBox)
+        {
+            <Blazor.UI.Client.Page.ReservationComponent.GetSeanceComponent 
+                    Representation="selectedRepresentation" 
+                    PieceId="PieceId.Value" 
+                    SalleId="SalleId.Value" 
+                    OnClose="OnDialogBoxClose">
+            </Blazor.UI.Client.Page.ReservationComponent.GetSeanceComponent>
+        }
+        else
+        {
+            
+        }
     }
     else
     {
@@ -131,5 +129,17 @@
         RepresentationId = dto.Id;
         SalleId = dto.SalledeTheatreId;
         PieceId = dto.PieceId;
+        OnDialogBoxOpen();
+    }
+    public bool OpenDialogBox = false;
+    public void OnDialogBoxOpen()
+    {
+        OpenDialogBox =true;
+        StateHasChanged();
+    }
+    public void OnDialogBoxClose()
+    {
+        OpenDialogBox =false;
+        StateHasChanged();
     }
 }

@@ -3,6 +3,7 @@
 @inject ISalleService SalleServ;
 @inject IComplexeService SerComp;
 @inject NavigationManager Manager;
+
 <div class="flex-fill m-4 p-4">
     <div class="m-4 p-4 card  rounded">
         <div class="">
@@ -48,6 +49,64 @@
         </div>
     </div>
 </div>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="flex-fill m-4 p-4">
+                    <div class="m-4 p-4 card  rounded">
+                        <div class="">
+                            <form class="m-1 ">
+                                <div class="col-form-label">
+                                    <div class="p1">
+                                        <label class="form-label" for="name">Name:</label>
+                                        <input class="form-control" id="name" @bind="salleDeTheatre.Name" />
+                                    </div>
+                                    <div class="p-1">
+                                        <label class="form-label" for="placeMax">Place Max:</label>
+                                        <input class="form-control" id="placeMax" @bind="salleDeTheatre.PlaceMax" type="number" />
+                                    </div>
+
+                                    <div class="p-1">
+                                        @if (SelctedComplexe != null)
+                                        {
+                                            <label class="form-label" for="complexeId">Complexe </label>
+                                            <select class="form-control" @bind="selectedComplexeId" @oninput="OnSelectedChange">
+                                                <option>choissisez le complexe </option>
+                                                @foreach (var item in SelctedComplexe)
+                                                {
+                                                    <option value="@item.Id">@item.Name <p>@item.Id</p></option>
+                                                }
+                                            </select>
+
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    </div>
+
+                                    <br />
+                                    <div class="p1">
+
+                                        <button type="button" class="btn btn-success" @onclick="AddSalldetheatre">Update SalleDeTheatre</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
     public AddSalleDeTheatreDto salleDeTheatre { get; set; } = new();
     public IEnumerable<ComplexeDto>? SelctedComplexe { get; set; }
@@ -65,6 +124,7 @@
             salleDeTheatre.ComplexeId = selectedComplexeId;
             await SalleServ.Create(salleDeTheatre);
         }
+        _ = ModalOk();
 
     }
     public void OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
@@ -80,4 +140,21 @@
     {
         Manager.NavigateTo($"/manager/sallebycomplexe/{complexeId}");    
     }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

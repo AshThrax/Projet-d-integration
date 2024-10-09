@@ -5,69 +5,67 @@
 @inject ISalleService ServSalle;
 @inject IPieceService ServPiece;
 
-@if (selectSalle != null && SelectPiece !=null)
-{
-    
-    <form class="card form text-md-start">
-        <div class="form-group card-body">
-            <div>
-                <label class="form-label" for="prix">Prix:</label>
-                <input class="form-control" id="prix" @bind="Price" type="number" step="0.01" />
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill"></i></a>
             </div>
-            <div>
-                <!-- manage the date -->
-                <label class="form-label" for="seance">Seance:</label>
-                <input class="form-control" id="seance" @bind="Date" type="datetime-local" />
-              
-            </div>
-            <div>
-                <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
-
-                <select class="form-control" @bind="SelectSalleId" @oninput="selectionSalle">
-                    <option>Choisissez une Salle</option>
-                    @foreach (var item in selectSalle)
-                    {
-                        <option value="@item.Id">@item.Name</option>
-                    }
-                </select>
-            </div>
-            <div>
-                <label class="form-label" for="idPiece">Piece</label>
-
-                <div>
-                    <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
-                        <option>Choisissez une Piece</option>
-                        @foreach (var item in SelectPiece)
-                        {
-                            <option value="@item.Id">@item.Titre.ToString()</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="p-4 m-4">
-                <button class="btn btn-outline-dark" @onclick="() =>AddRepresentation()">Add Representation</button>
-            </div>
-            <div>
-                @if (representation != null)
+            <div class="modal-body">
+                @if (selectSalle != null && SelectPiece != null)
                 {
-                    <p>@representation.Seance</p> 
-                    <p>@representation.PlaceCurrent</p>
-                    <p>@representation.PlaceMaximum</p>
-                    <p>@representation.SalledeTheatreId</p>
-                    <p>@representation.PieceId</p>
 
+                    <form class="card form text-md-start">
+                        <div class="form-group card-body">
+                            <div>
+                                <label class="form-label" for="prix">Prix:</label>
+                                <input class="form-control" id="prix" @bind="Price" type="number" step="0.01" />
+                            </div>
+                            <div>
+                                <!-- manage the date -->
+                                <label class="form-label" for="seance">Seance:</label>
+                                <input class="form-control" id="seance" @bind="Date" type="datetime-local" />
+
+                            </div>
+                            <div>
+                                <label class="form-label" for="idSalleDeTheatre">Salle De Theatre </label>
+
+                                <select class="form-control" @bind="SelectSalleId" @oninput="selectionSalle">
+                                    <option>Choisissez une Salle</option>
+                                    @foreach (var item in selectSalle)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="idPiece">Piece</label>
+
+                                <div>
+                                    <select class="form-control" @bind="SelectPieceID" @oninput="selectionPiece">
+                                        <option>Choisissez une Piece</option>
+                                        @foreach (var item in SelectPiece)
+                                        {
+                                            <option value="@item.Id">@item.Titre.ToString()</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="p-4 m-4">
+                                <button class="btn btn-outline-dark" @onclick="() =>AddRepresentation()">Add Representation</button>
+                            </div>
+                        </div>
+                    </form>
                 }
-                else
-                {
-                    
-                }
+                else { }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
             </div>
         </div>
-    </form>
-}
-else { }
-
-
+    </div>
+</div>
 @code {
     public IEnumerable<PieceDto> SelectPiece { get; set; }
     public IEnumerable<SalleDeTheatreDto> selectSalle { get; set; }
@@ -97,6 +95,7 @@ else { }
         representation.SalledeTheatreId = salle.Id;
         representation.PieceId = piece.Id;
         await Servrep.Create(representation);
+        _ = ModalOk();
     }
     public async Task selectionPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
     {
@@ -116,4 +115,21 @@ else { }
             representation.SalledeTheatreId = salle.Id;
         }
     }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

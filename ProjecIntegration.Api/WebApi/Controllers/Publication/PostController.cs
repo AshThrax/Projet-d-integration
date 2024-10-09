@@ -127,5 +127,20 @@ namespace WebApi.Controllers
             }
 
         }
+        [HttpGet("iswriter/{postId}")]
+        public async Task<ActionResult> IsAuthor(string PostId)
+        {
+            try
+            {
+                string userId = await _customGetToken.GetSub();
+                bool iswriter= await postBL.IsAuthor(PostId,userId);
+                return Ok(iswriter);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

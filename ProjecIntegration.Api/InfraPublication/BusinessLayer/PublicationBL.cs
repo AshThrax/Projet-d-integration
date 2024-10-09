@@ -50,7 +50,11 @@ namespace InfraPublication.BusinessLayer
             }//----
               
         }
-
+        /// <summary>
+        /// supprimer une publication par Id
+        /// </summary>
+        /// <param name="pubId"></param>
+        /// <returns></returns>
         public async Task DeletePublication(string pubId)
         {
             try
@@ -70,6 +74,11 @@ namespace InfraPublication.BusinessLayer
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
             }//----
         }
+        /// <summary>
+        /// récu^pére toutes les publication 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<PublicationDto>> GetAllbyPublicationByUserId(string userId)
         {
             try
@@ -94,7 +103,10 @@ namespace InfraPublication.BusinessLayer
             }//----
 
         }
-
+        /// <summary>
+        /// récupére toutes les publications 
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<PublicationDto>> GetAllPublication()
         {
             try
@@ -109,7 +121,11 @@ namespace InfraPublication.BusinessLayer
             }
            
         }
-
+        /// <summary>
+        /// récupére les publication par Id
+        /// </summary>
+        /// <param name="pubId"></param>
+        /// <returns></returns>
         public async Task<PublicationDto> GetPublicationById(string pubId)
         {
             try
@@ -131,7 +147,11 @@ namespace InfraPublication.BusinessLayer
             }
            
         }
-
+        /// <summary>
+        /// récupére toutes les publication lier a une piece 
+        /// </summary>
+        /// <param name="pieceId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<PublicationDto>> GetPublicationByPiece(int pieceId)
         {
             try
@@ -149,6 +169,42 @@ namespace InfraPublication.BusinessLayer
             }
         }
 
+        public async Task<bool> Hasreview(int pieceId, string userId)
+        {
+            try
+            {
+                bool hasreview = await _publicationRepository.Doexist(pieceId,userId);
+                return (hasreview);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// vérifie qu'un utilisateur est bie propriétaire d'une publication
+        /// </summary>
+        /// <param name="pubId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<bool> IsAuthor(string pubId, string userId)
+        {
+            try
+            {
+                Publication? getpublication =await _publicationRepository.GetById(pubId);
+                return (getpublication.UserId.Equals(userId));
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
+                return false;
+            }
+        }
+
         public async Task UpdatePublication(string pubId, string title, string content)
         {
             try
@@ -157,6 +213,7 @@ namespace InfraPublication.BusinessLayer
                                     ?? throw new NullReferenceException("null reference");
                 if (getPub != null)
                 {
+                    
                     await _publicationRepository.UpdatePublicationContent(pubId ,title,content);
                     //----
                 }

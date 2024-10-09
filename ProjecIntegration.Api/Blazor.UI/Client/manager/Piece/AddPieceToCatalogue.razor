@@ -1,4 +1,4 @@
-﻿@page "/manager/addpiecetocatalogue/{Id:int}"
+﻿@page "/manager/cataloguePiece/{Id:int}"
 @using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.services.TheatherService
@@ -7,134 +7,148 @@
 @inject IPieceService Pieceservice;
 @inject ICatalogueService catalogueService;
 
-<h3>AddPieceToCatalogue</h3>
-
-<div class="flex-fill m-4 p-4">
-        <div class="row btn-group-lg float-md-start">
-            <div class="col">
-            <div class="card  m-2 p-2">
-                    <h3>Catalogue</h3>
-                    <select class="form-control" @bind="selectCatalogueId" @oninput="OnSelectedCatalogue">
-                        <option value="value">text</option>
-                        @foreach (var item in GetCatalogue)
-                        {
-                            <option value="@item.Id">@item.Name</option>   
-                        }
-                    </select>
-                </div>
-           
-
+<h3>ajouter des pieces au catalogue</h3>
+<div >
+    <div class="">
+        <div class="">
+            <div class="">
+               
             </div>
-            <div class="card-footer"></div>
-        </div>
-        <div class="row m-4 p-4">
-            <div>
-              <div class="col m-2">
-                  <div class="card">
-                      <div>
-                          <h3 class="card-header">Details </h3>
-                      </div>
-                      <div class="card-body">
-                          <div>
-                              <p><strong>Name</strong> : @selectCatalogue?.Name</p>
-                          </div>
-                        <div>
-                            <p><strong>description</strong> : @selectCatalogue?.Description</p>
-                        </div>
-                        <div>
-                            <p><strong>description</strong> : @selectCatalogue?.AddedTime</p>
-                        </div>
-                      </div>
-                      <div class="card-footer p-2">
-                        <button class="btn btn btn-secondary" type="button" @onclick="()=>GetListOfPiece()">liste des piece </button>
-                        <button class="btn btn btn-secondary" type="button" @onclick="()=>GetListOfCatalogues()"> liste du catalogue</button>
-                      </div>
-                  </div>
-              </div>
-              <br />
-            @if (getlistofPiece)
-            {
+            <div class="modal-body">
+                <div class=" m-4 p-4">
+                    <div class="row btn-group-lg float-md-start">
+                        <div class="col">
+                            <div class="card  m-2 p-2">
+                                <h3>Catalogue</h3>
+                                <select class="form-control" @bind="selectCatalogueId" @oninput="OnSelectedCatalogue">
+                                    <option value="value">text</option>
+                                    @if(GetCatalogue != null)
+                                    {
+                                        @foreach (var item in GetCatalogue)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                        
+                                    }
+                                </select>
+                            </div>
 
-                <div class="col m-2 ">
-                    <div class="card ">
-                        <div class="m-1">
-                            <h3 class="card-header">Liste des pieces </h3>
+
                         </div>
-                        <div class="colcard-body">
-                            @if (GetPieces != null)
+                        
+                    </div>
+                    <div class="row m-4 p-4 border-1 rounded">
+                        <div>
+                            <div class=" m-2">
+                                <div class="">
+                                    <div>
+                                        <h3 class="card-header">Details </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                            <p><strong>Name</strong> : @selectCatalogue?.Name</p>
+                                        </div>
+                                        <div>
+                                            <p><strong>description</strong> : @selectCatalogue?.Description</p>
+                                        </div>
+                                        <div>
+                                            <p><strong>description</strong> : @selectCatalogue?.AddedTime</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer p-2">
+                                        <button class="btn btn btn-secondary" type="button" @onclick="()=>GetListOfPiece()">liste des piece </button>
+                                        <button class="btn btn btn-secondary" type="button" @onclick="()=>GetListOfCatalogues()"> liste du catalogue</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            @if (getlistofPiece)
                             {
-                                <QuickGrid Items="GetPieces.AsQueryable()">
-                                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
-                                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
-                                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
-                                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
-                                    <TemplateColumn Context="item">
-                                        <button type="button" class="btn btn-outline-success" @onclick="() =>AddaNewPieceToCatalogue(item.Id)">ajouter au catalogue</button>
-                                    </TemplateColumn>
-                                </QuickGrid>
+
+                                <div class="m-2 ">
+                                    <div class="">
+                                        <div class="m-1">
+                                            <h3 class="card-header">Liste des pieces </h3>
+                                        </div>
+                                        <div class="colcard-body">
+                                            @if (GetPieces != null)
+                                            {
+                                                <QuickGrid Items="GetPieces.AsQueryable()">
+                                                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                                                    <TemplateColumn Context="item">
+                                                        <button type="button" class="btn btn-outline-success" @onclick="() =>AddaNewPieceToCatalogue(item.Id)">ajouter au catalogue</button>
+                                                    </TemplateColumn>
+                                                </QuickGrid>
+                                            }
+                                            else
+                                            {
+
+                                            }
+
+                                        </div>
+                                        <div class="card-footer">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br />
                             }
                             else
                             {
+                                <div class=" m-2 ">
+                                    <div class="">
+                                        <div class="m-1">
+                                            <h3 class="">Piece presente dans le catalogue</h3>
+                                        </div>
+                                        <div class="colcard-body">
+                                            @if (GetPieces != null)
+                                            {
 
+                                                <QuickGrid Items="PieceFromcatalogue?.Items.AsQueryable()">
+                                                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                                                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                                                    <TemplateColumn Context="item">
+                                                        <button type="button" class="btn btn-outline-success" @onclick="() =>RemoveFromCatalogue(item.Id)"> Supprimer du catalogue</button>
+                                                    </TemplateColumn>
+                                                </QuickGrid>
+                                            }
+                                            else
+                                            {
+
+                                            }
+
+                                        </div>
+                                        <div class="card-footer">
+                                        </div>
+                                    </div>
+
+                                </div>
                             }
-
-                        </div>
-                        <div class="card-footer">
-
                         </div>
                     </div>
-
                 </div>
-                <br />
-            }
-            else
-            {
-                
-                <div class="col m-2 ">
-                    <div class="card ">
-                        <div class="m-1">
-                            <h3 class="card-header">Piece presente dans le catalogue</h3>
-                        </div>
-                        <div class="colcard-body">
-                            @if (GetPieces != null)
-                            {
-                                
-                                <QuickGrid Items="PieceFromcatalogue?.Items.AsQueryable()">
-                                    <PropertyColumn Property="@(p => p.Id)" Sortable="true" />
-                                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
-                                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
-                                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
-                                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
-                                    <TemplateColumn Context="item">
-                                        <button type="button" class="btn btn-outline-success" @onclick="() =>RemoveFromCatalogue(item.Id)"> Supprimer du catalogue</button>
-                                    </TemplateColumn>
-                                </QuickGrid>
-                            }
-                            else
-                            {
-
-                            }
-
-                        </div>
-                        <div class="card-footer">
-                        </div>
-                    </div>
-
-                </div>
-            }
+            </div>
+           
         </div>
     </div>
 </div>
-
 @code {
     [Parameter]
     public int Id { get; set; }
+
     public List<PieceDto>? GetPieces{ get; set; }
     public Pagination<PieceDto>? PieceFromcatalogue { get; set; } 
     public PieceDto? selectPieceDto { get; set; }
     public List<CatalogueDto>? GetCatalogue { get; set; }
     public CatalogueDto? selectCatalogue { get; set; }
+
     public int selectCatalogueId { get; set; }
     public int selectePieceId { get; set; }
 
@@ -159,6 +173,7 @@
             selectCatalogueId = selectedId;
         }
         pageIndex = 1;
+        selectCatalogue = await catalogueService.GetCatalogue(selectedId);
         PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectedId,pageIndex));
     }
     public void OnselectedPiece(Microsoft.AspNetCore.Components.ChangeEventArgs args)
@@ -192,6 +207,7 @@
         pageIndex = 1;
         PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId, pageIndex));
     }
+    #region Pagination
     public async Task NextPagePiece()
     {
         if (PieceFromcatalogue.HasNextPage)
@@ -208,4 +224,22 @@
             PieceFromcatalogue = (await Pieceservice.GetByCatalogue(selectCatalogueId, pageIndex));
         }
     }
+    #endregion
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
 }

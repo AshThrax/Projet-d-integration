@@ -25,7 +25,7 @@ namespace WebApi.Controllers.UserDetail
             _customGetToken = customGetToken;
             _bannerService = bannerService;
         }
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<ServiceResponse<BannerDto>>> AddBanner(IFormFile files)
         {
             try
@@ -87,20 +87,43 @@ namespace WebApi.Controllers.UserDetail
                 throw;
             }
         }
-        [HttpPut("{bannerId}")]
-        public async Task<ActionResult<ServiceResponse<BannerDto>>> UpdateBanner(int bannerId,IFormFile file)
+        [HttpPost("update")]
+        public async Task<ActionResult<ServiceResponse<BannerDto>>> UpdateBanner(IFormFile files)
         {
             try
             {
                 string userId = await _customGetToken.GetSub();
                 //---
-                if (file.Length > 1 * 1200 * 2400)
+                if (files.Length > 1 * 1200 * 2400)
                 {
                     return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
                 }
                 string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
-                string createdImageName = await _fileService.SaveFileAsync(file, allowedFileExtentions);
-                ServiceResponse<BannerDto> response = await _bannerService.UpdateBanner(bannerId,createdImageName);
+                string createdImageName = await _fileService.SaveFileAsync(files, allowedFileExtentions);
+                ServiceResponse<BannerDto> response = await _bannerService.UpdateBanner(userId,createdImageName);
+                return Ok(response);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<BannerDto>>> UpdateProfileBanner(IFormFile files)
+        {
+            try
+            {
+                string userId = await _customGetToken.GetSub();
+                //---
+                if (files.Length > 1 * 1200 * 2400)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
+                }
+                string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+                string createdImageName = await _fileService.SaveFileAsync(files, allowedFileExtentions);
+                ServiceResponse<BannerDto> response = await _bannerService.UpdateBanner(userId, createdImageName);
                 return Ok(response);
 
             }

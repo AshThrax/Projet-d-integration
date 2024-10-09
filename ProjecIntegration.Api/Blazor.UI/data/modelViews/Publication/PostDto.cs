@@ -15,3 +15,9 @@ public class AddPostDto
     public string Content { get; set; } = string.Empty;
     public string PublicationId { get; set; } = string.Empty;
 }
+public class UpdatePostDto 
+{
+    public string Id { get; set; }
+    public string Content { get; set; } = string.Empty;
+    public string PublicationId { get; set; } = string.Empty;
+}

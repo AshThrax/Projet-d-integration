@@ -1,0 +1,50 @@
+﻿@using Blazor.UI.Data.services.TheatherService
+@inject ISalleService salleService;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill"></i></a>
+            </div>
+            <div class="modal-body">
+                <p class="text-center ">@Text</p>
+                <a class="btn btn-danger" @onclick="()=>Delete()">Supprimer</a>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();   
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = "Voulez vous vraimer supprimer cette Salles?";
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+    public async Task Delete()
+    {
+        await salleService.Delete(Id);
+        _ = ModalOk();
+    }
+}

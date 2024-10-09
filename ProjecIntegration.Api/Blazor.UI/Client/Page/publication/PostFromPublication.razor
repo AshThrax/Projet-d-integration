@@ -17,6 +17,18 @@
         <h4>Publication</h4>
         <div class=" m-4 p-4 rounded shadow">
         <section class="m-1 p-1">
+                         <div class="btn-group float-end">
+                               <div class="dropdown">
+                                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" @onclick="GetPost">Afficher </a></li>
+                                        <li><a class="dropdown-item" @onclick="WriteAPost">Repondre </a></li>
+                                        <li><a class="dropdown-item" @onclick="RemovePostFromView"> replier </a></li>
+                                    </ul>
+                                </div>
+                         </div>
             <div class="row ">
                         <div class="col-md-4">
                             <GetUserComponent UserId="@GetPublication.UserId"></GetUserComponent>
@@ -35,24 +47,16 @@
             @if (AfficherPost)
             {
                 <h5>Réponses</h5>
-                <PostPublicationComponent Id="@Id"></PostPublicationComponent>
+                <PostPublicationComponent Id="@Id" ></PostPublicationComponent>
             }
             else
             {
                     
             }
-            <div class="row m-2">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-3"></div>
-                    <div class="col-6 float-end btn-group w-50">
-                        <a type="button" class="btn btn-dark w-25 float-end" @onclick="GetPost">Afficher </a>
-                        <a type="button" class="btn btn-dark w-25 float-end" @onclick="WriteAPost">Repondre </a>
-                        <a type="button" class="btn btn-dark w-25 float-end " @onclick="RemovePostFromView"> replier </a>
-                    </div>
-            </div>
+            <br />
             @if (DoIWriteAPost)
             {     
-               <AddPostComponent Id="@Id" ></AddPostComponent>
+               <AddPostComponent Id="@Id" OnClose="CloseDialogBox"></AddPostComponent>
             }
             else
             {
@@ -103,5 +107,17 @@
             };
         await postService.CreatePost(Id,postDto);
     }
-   
+    #region ModelState
+    public bool DialogBox { get; set; } = false;
+    public void OnOpenDialogBox()
+    {
+        DoIWriteAPost = true;
+        StateHasChanged();
+    }
+    public void CloseDialogBox()
+    {
+        DoIWriteAPost = false;
+        StateHasChanged();
+    }
+    #endregion
 }

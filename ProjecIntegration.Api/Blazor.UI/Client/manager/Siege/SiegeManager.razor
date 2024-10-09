@@ -2,112 +2,234 @@
 @using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.Services.TheatherService
+@using Blazor.UI.Data.services.TheatherService
 
 @inject ISiegeService siegeService;
-
+@inject ISalleService salleService;
+@inject IComplexeService complexeService;
 <h3>SiegeManager</h3>
-<div class="mt-2">
-    <a href="#addModale"
-       class="btn btn-success" data-toggle="modal"
-       @onclick="() => ShowAdd()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-    <a href="#deleteModale"
-       class="btn btn-danger"
-       data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
-    <a href="#deleteModale"
-       class="btn btn-warning"
-       data-toggle="modal" @onclick="() => ShowDelete()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
+<div>
+    <select class="form-control w-25" @bind="SelectSalleId" @oninput="OnSelectedChange">
+        <option >Choissisez Une Salle</option>
+        @if (GetAllSalle != null)
+        {
+            @foreach (SalleDeTheatreDto item in GetAllSalle)
+            {
+                <option value="@item.Id"> @item.Name</option>
+            }
+
+        }
+    </select>
 </div>
+<div class="mt-2 btn-group-sm float-end">
+    <a 
+       class="btn btn-success" 
+       @onclick="() =>  AddDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add Siege</span></a>
+    <a class="btn btn-warning"
+    @onclick="() =>DataLoad()"><i class="material-icons">&#xE15C;</i><span>Reload</span></a>
+</div>
+<div class="row"></div>
 @if (GetSiegeFromSalle != null)
 {
     <div class="container">
-        <div class="row">
-            <div class="col">
+        <div class="table-wrapper">
+            <div class="row">
+            <div class="col-sm-3">
+                @if (GetSalle != null && GetComplexe != null)
+                {
+                    <h3>Salle de Théatre</h3>
+                    <div class=" card m-2 p-2">
+                        <p><strong>Name:</strong> @GetSalle.Name</p>
+                        <p><strong>Place Max:</strong> @GetSalle.PlaceMax</p>
+                        <p><strong>Complexe ID:</strong> @GetComplexe.Name</p>
+                        <p><strong>Representation Number</strong> @GetSalle?.Representations?.Count</p>
+                    </div>
 
-                <QuickGrid Items="GetSiegeFromSalle.AsQueryable()">
-                    <PropertyColumn Property="Page=> Page.Name"/>
-                    <PropertyColumn Property="Page=> Page.AddedTime" />
-                    <TemplateColumn>
-                        <div>
-                            <a class="btn btn-warning" @onclick="() => Showdetails()"> details</a>
-                        </div>
-                    </TemplateColumn>
-                </QuickGrid>
-            </div>
-            <div class="col">
-                @if (IsDetails)
-                {
-                    <Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent></Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent>
-                }
-                else if (IsAdding)
-                {
-                    <Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent></Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent>
-                }
-                else if (IsUpdating)
-                {
-                    <Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent></Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent>
-                }
-                else if (IsDeleting)
-                {
-                    <Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent></Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent>
                 }
                 else
                 {
                     
                 }
             </div>
+            <div class="col m-1"></div>
+            <div class="col-sm-6 m-2 p-2">
+                    @if (GetAllSiegeFromSallePagination != null)
+                    {
+                        <QuickGrid Items="GetAllSiegeFromSallePagination.Items.AsQueryable()">
+                        <PropertyColumn Property="Page=> Page.Name"/>
+                        <PropertyColumn Property="Page=> Page.AddedTime" />
+                        <TemplateColumn>
+                            <div>
+                                <a class="btn btn-primary" @onclick="() => DetailsDialogOPen(context)"> details</a>
+                            </div>
+                        </TemplateColumn>
+                            <TemplateColumn>
+                                <div>
+                                    <a class="btn btn-warning" @onclick="() =>  UpdateDialogOPen(context.Id)">mettre a jour</a>
+                                </div>
+                            </TemplateColumn>
+                            <TemplateColumn>
+                                <div>
+                                    <a class="btn btn-danger" @onclick="() => DeleteDialogOPen(context.Id)">Supprimer</a>
+                                </div>
+                            </TemplateColumn>
+                    </QuickGrid>
+                    }
+                    else
+                    {
+                        
+                    }
+            </div>
+            <div class="col">
+                @if (IsDetails)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.DetailsSiege Id="SiegeId" OnClose="DetailsDialogclose">
+
+                    </Blazor.UI.Client.manager.Siege.Component.DetailsSiege>
+                }
+                else if (IsAdding)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent OnClose="AddDialogclose">
+
+                    </Blazor.UI.Client.manager.Siege.Component.AddSiegeComponent>
+                }
+                else if (IsUpdating)
+                {
+                        <Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent Id="SiegeId" OnClose="UpdateDialogclose">
+
+                    </Blazor.UI.Client.manager.Siege.Component.UpdateSiegeComponent>
+                }
+                else if (IsDeleting)
+                {
+                    <Blazor.UI.Client.manager.Siege.Component.DeleteSiege Id="SiegeId" OnClose="DeleteDialogclose">
+
+                    </Blazor.UI.Client.manager.Siege.Component.DeleteSiege>
+                }
+                else
+                {
+
+                }
+            </div>
+        </div>
         </div>
     </div>
 }
 else
 {
-    
+
 }
 @code {
     [Parameter]
     public int Id { get; set; } //identifiant de la salle de théatre
-
+    public int SelectSalleId { get; set; }
+    public int SiegeId { get; set; }
+    public SalleDeTheatreDto GetSalle {get;set;}
+    public ComplexeDto GetComplexe { get; set; }
     public List<SiegeDto>? GetSiegeFromSalle { get; set; }
+    public Pagination<SiegeDto> GetAllSiegeFromSallePagination { get; set; }
     public SiegeDto? selectSiege { get; set; }
 
+    public int pageIndexe { get; set; } = 1;
+    public IEnumerable<SalleDeTheatreDto> GetAllSalle {get; set; }
     protected override async Task OnInitializedAsync()
     {
-        GetSiegeFromSalle = (await siegeService.GetAllFromsalleId(Id)).ToList();
-        
+        SelectSalleId = Id;
+        await DataLoad();
     }
+    public async Task DataLoad()
+    {
+        pageIndexe = 1;
+        GetSiegeFromSalle = (await siegeService.GetAllFromsalleId(SelectSalleId)).ToList();
+        GetSalle = (await salleService.GetById(SelectSalleId));
+        GetComplexe = await complexeService.GetById(GetSalle.ComplexeId);
+        GetAllSalle = await salleService.Getlist();
+        GetAllSiegeFromSallePagination = await siegeService.GetAllFromsalleId(SelectSalleId, pageIndexe);
+    }
+
+    #region pagination
+    public async Task NextPage()
+    {
+        if (GetAllSiegeFromSallePagination.HasNextPage)
+        {
+            pageIndexe++;
+            siegeService.GetAllFromsalleId(SelectSalleId, pageIndexe);
+        }
+
+    }
+    public async Task PreviousPage()
+    {
+        if (GetAllSiegeFromSallePagination.HasPreviousPage)
+        {
+            pageIndexe--;
+            siegeService.GetAllFromsalleId(SelectSalleId, pageIndexe);
+        }
+    }
+    #endregion
+    public async Task OnSelectedChange(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+
+
+        if (int.TryParse(args.Value?.ToString(), out int selectedId))
+        {
+            SelectSalleId = selectedId;
+        }
+        await DataLoad();
+    }
+
+    #region State
     //state----
+
     public bool IsAdding { get; set; }
     public bool IsDeleting { get; set; }
     public bool IsUpdating { get; set; }
     public bool IsDetails { get; set; }
-    public void ShowAdd()
+
+    public bool OpenDialogBox { get; set; } = false;
+    private void AddDialogOPen()
     {
         IsAdding = true;
+        StateHasChanged();
+    }
+    private async Task AddDialogclose()
+    {
+        IsAdding = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private void DeleteDialogOPen(int Id)
+    {
+        IsDeleting = true;
+        StateHasChanged();
+        SiegeId = Id;
+    }
+    private void DeleteDialogclose()
+    {
         IsDeleting = false;
-        IsUpdating = false;
-        IsDetails = false;
+        StateHasChanged();
+    }
+    private void UpdateDialogOPen(int Id)
+    {
+        SiegeId = Id;
+        IsUpdating = true;
+        StateHasChanged();
 
     }
-    public void ShowDelete()
+    private async Task UpdateDialogclose()
     {
-        IsAdding = false;
-        IsDeleting = true;
         IsUpdating = false;
-        IsDetails = false;
+        StateHasChanged();
+        await DataLoad();
     }
-    public void ShowUpdate()
+    private async Task DetailsDialogOPen(SiegeDto item)
     {
-        IsAdding = false;
-        IsDeleting = false;
-        IsUpdating = true;
-        IsDetails = false;
-      
-    }
-    public void Showdetails()
-    {
-        IsAdding = false;
-        IsDeleting = false;
-        IsUpdating = false;
+        SiegeId = item.Id;
         IsDetails = true;
-       
+        StateHasChanged();
     }
+    private void DetailsDialogclose()
+    {
+        IsDetails = false;
+        StateHasChanged();
+    }
+    #endregion
 }

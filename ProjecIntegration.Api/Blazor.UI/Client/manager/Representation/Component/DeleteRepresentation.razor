@@ -1,0 +1,83 @@
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+
+@inject IRepresentationService Servrep;
+@inject ISalleService ServSalle;
+@inject IPieceService ServPiece;
+@inject IComplexeService ServComp;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill"></i></a>
+            </div>
+            <div class="modal-body">
+                <p>@Text</p>
+                @if (SelecteRepresentation != null )
+                {
+                    <div class="card m-2 p-2">
+                        <h3 class="card-title">Representation</h3>
+                        <div class="card-body">
+                            <p class="card-text"><strong>Seance :</strong> @SelecteRepresentation.Seance</p>
+                            <p class="card-text"><strong>Complexe :</strong> @GetComplexe?.Name</p>
+                            <p class="card-text"><strong>Salle :</strong> @GetSalle?.Name</p>
+                            <p class="card-text"><strong>Place Current :</strong> @SelecteRepresentation.PlaceCurrent</p>
+                            <p class="card-text"><strong>Place Maximum :</strong> @SelecteRepresentation.PlaceMaximum</p>
+                            <p class="card-text"><strong>Nombre de Commande :</strong> @SelecteRepresentation.Commands?.Count</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public RepresentationDto SelecteRepresentation;
+    public SalleDeTheatreDto GetSalle;
+    public ComplexeDto GetComplexe;
+    protected override async  Task OnInitializedAsync()
+    {
+        SelecteRepresentation = await Servrep.GetById(Id);
+        if (SelecteRepresentation != null)
+        {
+            int salleId = SelecteRepresentation.SalledeTheatreId;
+            GetSalle = await ServSalle.GetById(salleId);
+            GetComplexe = await ServComp.GetById(GetSalle.ComplexeId);
+
+        }
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+    public async Task Delete()
+    {
+        await Servrep.Delete(Id);
+        _ = ModalOk();
+    }
+}
+}

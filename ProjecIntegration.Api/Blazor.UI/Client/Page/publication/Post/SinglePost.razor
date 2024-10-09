@@ -1,0 +1,58 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.data.services.Publication
+
+@inject IPostService postService;
+<h3>SinglePost</h3>
+<div class="shadow">
+            <div class="btn-group float-end h-50 w-25">
+                <div class="dropdown">
+                     <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                    @if (IsAuthor)
+                {
+                    <li> <a class="dropdown-item btn btn-warning float-end ">Delete</a></li>
+                    <li> <a class="dropdown-item btn btn-warning float-end ">Updating</a></li>
+                }
+                else
+                {
+                    <li> <a class="dropdown-item btn btn-warning float-end ">Signaler</a></li>
+                }
+            </ul>
+                </div>
+              
+             </div>
+    <div class="row g-0 text-center featurette">
+        <div class="col-6 col-md-4 w-50">
+            <GetUserComponent UserId="@Item.UserId"></GetUserComponent>
+        </div>
+        <div class="col-sm-6 col-md-8">
+            <h3 class="ms-2 mb-0"><strong>Reponse :</strong></h3>
+            <section class="mt-2 mb-2">
+                <p class="ps-2 pt-4 pb-2 text-body-secondary lead">@Item.Content</p>
+                <p class="ps-2 bottom blog-post-meta">@Item.CreatedDate</p>
+            </section>
+        </div>
+    </div>
+</div>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+@code {
+    [Parameter]
+    public PostDto Item { get; set; }
+    public bool IsAuthor {get;set;}
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsAuthor = await postService.IsAuthor(Item.Id);
+    }
+}

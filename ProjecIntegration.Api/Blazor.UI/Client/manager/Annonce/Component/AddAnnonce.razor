@@ -1,0 +1,125 @@
+﻿@using Blazor.UI.Data.ModelViews.Annonce
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.services.Annonce
+@using Blazor.UI.Data.services.TheatherService
+@inject IAnnonceService annonceService;
+@inject IPieceService pieceService;
+
+<h3>AddAnnonce</h3>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="btn-group-sm">
+                        <a @onclick="() =>linkedToPIece()" class="btn btn-outline-dark"> associer a une piece</a>
+                    </div>
+                    <form class="m-1 bg-white">
+                        <div class="col-form-label">
+                            <div>
+                                <label class="form-label" for="name">Titre:</label>
+                                <input class="form-control" id="name" @bind="AddnewAnnonce.Title" />
+
+                            </div>
+                            <div>
+                                <label class="form-label" for="description">Description:</label>
+                                <input class="form-control" id="description" @bind="AddnewAnnonce.Description" />
+                            </div>
+                            <div>
+                                <label class="form-label" for="priority">Prioritiy:</label>
+                                <select bind-Value="Epriority" class="form-control" id="priority" @bind="selectPriotity" @oninput="onSelectPriority">
+                                    <option>Choissisez une option</option>
+                                    <option value="0">peu Importante</option>
+                                    <option value="1">Importante</option>
+                                </select>
+                            </div>
+                            @if (isLinkedToPiece)
+                            {
+                                <div>
+                                    <label class="form-label" id="piece" />
+                                    <select bind-Value="getPieceDtos" class="form-control" id="piece" @bind="SelectePiece" @oninput="OnSelectePiece">
+                                        <option>Choissisez une option</option>
+                                        @foreach (PieceDto item in GetPieceDtos)
+                                        {
+                                            <option value="@item.Id">@item.Titre</option>
+                                        }
+                                    </select>
+                                </div>
+                            }
+                            <br />
+                            <button type="button" class="btn btn-warning" @onclick="() =>Sendannonce()"> Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    public AddAnnonceDto AddnewAnnonce { get; set; } = new();
+    public EPrioirity ePrioirity { get; set; }
+    public IEnumerable<PieceDto> GetPieceDtos { get; set; }
+    public int selectPriotity { get; set; }
+    public int SelectePiece { get; set; }
+    public bool isLinkedToPiece {get;set;} =false;
+    protected override async Task OnInitializedAsync()
+    {
+        GetPieceDtos = await pieceService.Getlist();
+    }
+
+    private async Task Sendannonce()
+    {
+        AddnewAnnonce.Priority =(EPrioirity) selectPriotity;
+        if (isLinkedToPiece)
+        {
+            AddnewAnnonce.PieceId = SelectePiece;
+
+        }
+        await annonceService.CreateAnnonce(AddnewAnnonce);
+        _ = ModalOk();
+    }
+    public void onSelectPriority(ChangeEventArgs eventArgs)
+    {
+
+        if (int.TryParse(eventArgs.Value?.ToString(), out int selectedId))
+        {
+            ePrioirity = (EPrioirity)selectedId;
+        }
+    }
+    public void OnSelectePiece(ChangeEventArgs eventArgs)
+    {
+
+        if (int.TryParse(eventArgs.Value?.ToString(), out int selectedId))
+        {
+            SelectePiece = selectedId;
+        }
+    }
+    public void linkedToPIece()
+    {
+        isLinkedToPiece = !isLinkedToPiece;    
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

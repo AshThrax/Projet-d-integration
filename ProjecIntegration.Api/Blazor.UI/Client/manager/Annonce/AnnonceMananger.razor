@@ -2,53 +2,178 @@
 @using Blazor.UI.Data.ModelViews.Annonce
 @using Blazor.UI.Data.ServiceResult
 @using Blazor.UI.Data.services.Annonce
-<h3>AnnonceMananger</h3>
+
 
 @inject IAnnonceService annonceService;
+@if(GetAnnoncePagination !=null)
+{
+    <div class="col-sm-6 btn-group float-end">
+        <a href="#addModale"
+           class="btn btn-success" data-toggle="modal"
+           @onclick="() => addDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+        @if (!string.IsNullOrEmpty(SelectedAnnonceId))
+        {
+            <a 
+               class="btn btn-danger"
+               data-toggle="modal" @onclick="() => DeleteDialogOPen ()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+            <a 
+               class="btn btn-warning"
+               data-toggle="modal" @onclick="() => UpdateDialogOPen()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
+            
+        }
+        <a @onclick="() =>Reload()" class="btn btn-warning"><i class="material-icons">&#xE15C;</i> <span>Reload</span></a>
+    </div>
+    <div class="container">
+        <div class="table-wrapper">
+            <h3>AnnonceMananger</h3>
+        <div class="row">
+            <div class="">
+            
+                <QuickGrid  Items="GetAnnoncePagination.Items.AsQueryable()">
+                    <PropertyColumn Property="p =>p.Title"/>
+                    <PropertyColumn Property="p =>p.Description"/>
+                    <PropertyColumn Property="x=>x.CreatedDate"/>
+                    <TemplateColumn>
+                        <div>
+                            <a class="btn btn btn-warning" @onclick="() =>detailsDialogOPen(context.Id)"> details</a>
+                        </div>
+                    </TemplateColumn>
+                        <TemplateColumn>
+                            <div>
+                                <a class="btn btn-warning"
+                                   data-toggle="modal" @onclick="() => UpdateDialogOPen()"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
+                            </div>
+                        </TemplateColumn>
+                        <TemplateColumn>
+                            <div>
+                                <a class="btn btn-danger"
+                                   data-toggle="modal" @onclick="() => DeleteDialogOPen ()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                            </div>
+                        </TemplateColumn>
+                </QuickGrid>
+                <div class="">
+                    <div class="btn-group-sm">
+                        <a class="btn btn btn-outline-dark" @onclick="()=>PreviousPage()">previous</a>
+                        <a class="btn btn-outline-dark" @onclick="()=>NextPage()">next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+      <div class="">
+                @if (IsAdding)
+                {
+                    <Blazor.UI.Client.manager.Annonce.Component.AddAnnonce OnClose="addDialogclose"></Blazor.UI.Client.manager.Annonce.Component.AddAnnonce>
+                        
+                }
+                else if (IsDeleting)
+                {
+                        <Blazor.UI.Client.manager.Annonce.Component.DeleteAnnonce Id="@SelectedAnnonceId" OnClose="DeleteDialogclose"></Blazor.UI.Client.manager.Annonce.Component.DeleteAnnonce>
+                      
+                }
+                else if (IsUpdating)
+                {
+                    <Blazor.UI.Client.manager.Annonce.Component.UpdateAnnocce Id="@SelectedAnnonceId" OnClose="UpdateDialogclose"></Blazor.UI.Client.manager.Annonce.Component.UpdateAnnocce>
+                        
+                }
 
+                else if (IsDetails)
+                {
+                    <Blazor.UI.Client.manager.Annonce.Component.DetailAnnonce Id="@SelectedAnnonceId" OnClose="DetailsDialogclose"></Blazor.UI.Client.manager.Annonce.Component.DetailAnnonce>
+                       
+                }
+                else
+                {
+                }
+      </div>
+    </div>
+}
+else
+{
+    
+}
 @code {
     public Pagination<AnnonceDto> GetAnnoncePagination { get; set; }
     public AnnonceDto selectedAnnonce { get; set; }
+    public string SelectedAnnonceId { get; set; }
+    public int pageIndex { get; set; } = 1;
     protected override async Task OnInitializedAsync()
     {
-        return base.OnInitializedAsync();   
+        GetAnnoncePagination = await annonceService.GetAll(pageIndex);
     }
+    #region pagination
+    public async Task NextPage()
+    {
+        if (GetAnnoncePagination.HasNextPage)
+        {
+            pageIndex++;
+            GetAnnoncePagination = await annonceService.GetAll(pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (GetAnnoncePagination.HasPreviousPage)
+        {
+            pageIndex--;
+            GetAnnoncePagination = await annonceService.GetAll(pageIndex);
+        }
+    }
+    private async Task Reload()
+    {
+        pageIndex = 1;
+        GetAnnoncePagination = await annonceService.GetAll(pageIndex);
+    }
+    #endregion
     #region state
     //state----
+    #region Callback
     public bool IsAdding { get; set; }
     public bool IsDeleting { get; set; }
     public bool IsUpdating { get; set; }
     public bool IsDetails { get; set; }
-    public void ShowAdd()
+
+    public bool OpenDialogBox { get; set; } = false;
+    private void addDialogOPen()
     {
         IsAdding = true;
-        IsDeleting = false;
-        IsUpdating = false;
-        IsDetails = false;
-
+        StateHasChanged();
     }
-    public void ShowDelete()
+    private void addDialogclose()
     {
         IsAdding = false;
+        StateHasChanged();
+    }
+    private void DeleteDialogOPen()
+    {
         IsDeleting = true;
-        IsUpdating = false;
-        IsDetails = false;
+        StateHasChanged();
     }
-    public void ShowUpdate()
+    private void DeleteDialogclose()
     {
-        IsAdding = false;
         IsDeleting = false;
+        StateHasChanged();
+    }
+    private void UpdateDialogOPen()
+    {
         IsUpdating = true;
-        IsDetails = false;
-
+        StateHasChanged();
     }
-    public void Showdetails()
+    private void UpdateDialogclose()
     {
-        IsAdding = false;
-        IsDeleting = false;
         IsUpdating = false;
-        IsDetails = true;
-
+        StateHasChanged();
     }
+    private void detailsDialogOPen(string id)
+    {
+        IsDetails = true;
+        SelectedAnnonceId = id;
+        StateHasChanged();
+    }
+    private void DetailsDialogclose()
+    {
+        IsDetails = false;
+        StateHasChanged();
+    }
+    #endregion
     #endregion
 }

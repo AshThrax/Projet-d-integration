@@ -1,0 +1,78 @@
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@inject ISalleService salleService ;
+@inject NavigationManager manager;
+<h3>DetailsSalle</h3>
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                <p>@Text</p>
+                @if (SelectedSalleDeTheatre != null)
+                {
+                    <div class="card m-2 p-2">
+                        <div class="">
+                            <h3 class="card-header"> Details</h3>
+                            <div class="m-2 p-2 card-body">
+                                <div class="m-2 p-2">
+                                    <p><strong>Name:</strong> @SelectedSalleDeTheatre.Name</p>
+                                    <p><strong>Place Max:</strong> @SelectedSalleDeTheatre.PlaceMax</p>
+                                    <p><strong>Complexe ID:</strong> @SelectedSalleDeTheatre.ComplexeId</p>
+                                    <p><strong>Representation Number</strong> @SelectedSalleDeTheatre?.Representations?.Count</p>
+                                </div>
+                                <br />
+                                <div class="m-2 p-2 btn-group rounded float-end">
+                                    <button type="button" class="btn btn-primary" @onclick="() =>siegeManager(Id)">montrer les salles</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    public SalleDeTheatreDto SelectedSalleDeTheatre { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        SelectedSalleDeTheatre = await salleService.GetById(Id);
+    }
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+    public void siegeManager(int salleId)
+    {
+        manager.NavigateTo($"/manager/siege/{salleId}");
+    }
+}

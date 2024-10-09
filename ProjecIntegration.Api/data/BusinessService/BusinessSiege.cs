@@ -28,6 +28,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                Siege siegeAdd= _mapper.Map<Siege>(siege);
+               siegeAdd.CreatedDate = DateTime.Now;
                Siege Added= await  _siegeRepository.Insert(siegeAdd);
 
                response.Data= _mapper.Map<SiegeDto>(Added);
@@ -140,6 +141,7 @@ namespace DataInfraTheather.BusinessService
                 if (getSiege != null)
                 {
                     Siege SiegeToUpdate =_mapper.Map<Siege>(getSiege);
+                    SiegeToUpdate.UpdatedDate = DateTime.Now;
                     await _siegeRepository.Update(SiegeId, SiegeToUpdate);
                     response.Success = true;
                     response.Message = "operation réussi";

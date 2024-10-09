@@ -1,0 +1,52 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.services.Publication
+@inject IPublicationService publicationService;
+@inject NavigationManager manager;
+<div class="card-body py-3">
+    <div class="btn-group float-end">
+
+        <div class="dropdown me-2">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" @onclick="()=>GetPost(item.Id)">Repondre</a></li>
+                @if (IsAuthor)
+                {
+                   <li> <a class="dropdown-item">Delete</a></li>
+                    <li><a class="dropdown-item">Update</a></li>
+                }
+               
+            </ul>
+        </div>
+       
+    </div>
+    <div class="row g-0 text-center">
+        <div class="col-6 col-md-4">
+
+            <GetUserComponent UserId="@item.UserId"></GetUserComponent>
+        </div>
+        <div class="col-6 col-md-4 m-2 p-2">
+            <section class="container-md text-center ">
+                <div class="m-2 p-2">
+                    <h3 class="text-md-start m-2 p-2">@item.Title</h3>
+                    <p>@item.Review</p>
+                </div>
+            </section>
+        </div>
+      
+    </div>
+</div>
+@code {
+    [Parameter]
+    public PublicationDto item { get; set; }
+    public bool IsAuthor { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        IsAuthor = await publicationService.IsAuthor(item.Id);
+    }
+    public void GetPost(string annId)
+    {
+        manager.NavigateTo($"/publication/{annId}");
+    }
+}

@@ -1,0 +1,63 @@
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@inject NavigationManager manager;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger"><i class="bi bi-x-circle-fill text-danger"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="bg-light rounded w-100">
+                        <div class=" text-md-start">
+                            <Blazor.UI.Client.manager.Representation.Component.GetSeanceComponent selectedRepresentation="@Representation">
+
+                            </Blazor.UI.Client.manager.Representation.Component.GetSeanceComponent>
+                            <div class="p-2 m-2 ">
+                                <p class="lead">Desirer vous reserver cette seance la </p>
+                                <button type="button" class="btn btn-warning" @onclick="() => MakeCommand(Representation.Id)">Commander</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int PieceId { get; set; }
+    [Parameter]
+    public int SalleId { get; set; }
+    [Parameter]
+    public RepresentationDto Representation { get; set; }
+    #region 
+    public void MakeCommand(int id)
+    {
+        manager.NavigateTo($"/makecommand/{PieceId}/{SalleId}/{id}");
+    }
+    #endregion
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

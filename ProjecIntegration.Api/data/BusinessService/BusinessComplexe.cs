@@ -25,6 +25,7 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 var entity = _mapper.Map<Complexe>(complexeDto);
+                entity.CreatedDate = DateTime.Now;
                 await _complexeRepository.Insert(entity);
 
                 response.Success = true;
@@ -113,6 +114,7 @@ namespace DataInfraTheather.BusinessService
                 if (getEntity != null)
                 {
                     Complexe conversion = _mapper.Map<Complexe>(getEntity);
+                    conversion.UpdatedDate=DateTime.Now;
                     await _complexeRepository.Update(id, conversion);
                     
                     response.Success = true;

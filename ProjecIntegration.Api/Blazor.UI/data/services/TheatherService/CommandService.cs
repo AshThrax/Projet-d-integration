@@ -78,7 +78,7 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task Create(AddCommandDto data)
         {
-            await _httpClient.PostAsJsonAsync(ApiUri, data);
+            await _httpClient.PostAsJsonAsync<AddCommandDto>(ApiUri, data);
         }
 
         public async Task Update(int id, UpdateCommandDto data)

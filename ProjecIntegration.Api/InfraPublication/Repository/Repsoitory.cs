@@ -57,7 +57,7 @@ namespace InfraPublication.Repository
         {
             try 
             {
-               if (entity ==null || string.IsNullOrEmpty(entity.Id))
+               if (entity ==null )
                {
                     throw new ArgumentNullException(nameof(entity));
                }

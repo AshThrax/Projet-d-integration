@@ -1,0 +1,69 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.services.Publication
+@inject IPublicationService publicationService;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>@Text</p>
+                <div class="m-2">
+                    <h3 class="display-3">Ajouter une Critique</h3>
+                    <div class="row m-2 p-2">
+                        <form class="form-check">
+                            <label class="form-label" for="titre">Titre</label>
+                            <input @bind="getPost.Title" class="form-control w-50" id="titre" />
+                            <label class="form-label">Laisser un commentaire</label>
+                            <textarea class="form-control w-100"
+                                      @bind="getPost.Review"
+                                      style="width:800px; height:200px;word-wrap:normal border:anywhere" />
+                            <button type="submit" class="btn btn-dark mt-2" @onclick="() =>Update()">Repondre</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public PublicationDto getPost { get; set; }
+    public UpdatePublicationDto UpdatePost {get;set;}
+    protected override async Task OnInitializedAsync()
+    {
+        getPost = await publicationService.GetPublication(Id);
+    }
+    public async Task Update()
+    {
+        UpdatePost.Title = getPost.Title;
+        UpdatePost.Review = getPost.Review;
+        UpdatePost.Id = getPost.Id;
+        UpdatePost.UserId = getPost.UserId;
+        await publicationService.UpdatePublication(Id, UpdatePost);
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

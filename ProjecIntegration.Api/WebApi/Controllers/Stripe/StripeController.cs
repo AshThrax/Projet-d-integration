@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using Stripe.BillingPortal;
 using Stripe.Checkout;
+using WebApi.ApiService.PaymentService;
 
 namespace WebApi.Controllers
 {
@@ -14,53 +15,16 @@ namespace WebApi.Controllers
     public class StripeController : ControllerBase
     {
         private readonly ILogger<StripeController> _looger;
-        private readonly StripeSettings _stripeSettings;
-        public StripeController(ILogger<StripeController> logger, IOptions<StripeSettings> stripeSettings)
+        private readonly IPaymentService _paymentService;
+        public StripeController(ILogger<StripeController> logger, IPaymentService paymentService)
         {
-            _stripeSettings = stripeSettings.Value;
+            _paymentService= paymentService;
             _looger = logger;
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateCheckoutSession(string amount, int Quantity)
+        [HttpPost("check-out/{ticketNumber}/{price}")]
+        public ActionResult CreateCheckoutSession(int ticketNumber, int price,[FromBody]PieceDto getPiece)
         {
-            string currency = "eur";//currency
-            string? sucessUrl = "https://localhost:7129/success";
-            string? cancelUrl = "https://localhost:7129/cancel";
-            StripeConfiguration.ApiKey = _stripeSettings.SecretKey;
-
-            var options = new Stripe.Checkout.SessionCreateOptions
-            {
-                PaymentMethodTypes = new List<string>
-                   {
-                       "card"
-                   },
-                LineItems = new List<SessionLineItemOptions>
-                   {
-                       new SessionLineItemOptions
-                       {
-                           PriceData = new SessionLineItemPriceDataOptions
-                           {
-                               Currency = currency,
-                               UnitAmount= Convert.ToInt32(amount),
-                               ProductData= new SessionLineItemPriceDataProductDataOptions
-                               {
-                                   Name="PIéce de théatre",
-                                   Description="nom de la pièce ?"
-                               },
-                           },
-                           Quantity=Quantity
-                       }
-
-                   },
-                Mode = "payment",
-                SuccessUrl = sucessUrl,
-                CancelUrl = cancelUrl
-            };
-
-            var service = new Stripe.Checkout.SessionService();
-            var session = service.Create(options);
-
-
+            var session = _paymentService.CreateSession(ticketNumber, price,  getPiece);
             return Ok(session.Url);
         }
     }

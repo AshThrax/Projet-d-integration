@@ -17,16 +17,25 @@
 @inject ICommandService ServCom;
 @inject IBannerService bannerService;
 <div class="float-end">
-    <button class="btn btn-outline-info float-end" @onclick="() =>WillUpdateBanner()">update banner</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Option</button>
+
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Personnalisation du profile Utilisateur</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <button class="btn btn-outline-info float-end" @onclick="() =>WillUpdateBannerOpen()">update banner</button>
+            
+        </div>
+    </div>
     @if (willUpdateBanner)
     {
-        <div>
-            <label class="form-label for="File">Photo :</label>
-            <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
-            <div>
-                <button type="button" class="btn btn-warning" @onclick="UploadBanner"> Upload Image</button>
-            </div>
-        </div>
+       @if(bannerDto !=null)
+       {
+        <Blazor.UI.Client.Page.Profile.Component.ChangerBanner Id="bannerDto.Id" OnClose="WillUpdateBannerClose"></Blazor.UI.Client.Page.Profile.Component.ChangerBanner>
+            
+       }
     }
     else
     {
@@ -69,11 +78,11 @@
                     <li class="list-group-item"><span>Publication</span></li>
                     @if (isfollower)
                     {
-                        <li class="list-group-item"><a class="btn btn-outline-dark">liste des follower</a></li>
+                        <li class="list-group-item"><a class="btn btn-outline-dark" @onclick="()=>ShowFollower()">liste des follower</a></li>
                     }
                     else
                     {
-                        <li class="list-group-item"> <a class="btn btn-outline-dark">Montrer les follower</a></li>
+                    <li class="list-group-item"> <a class="btn btn-outline-dark" @onclick="()=>ShowFollower()">Montrer les follower</a></li>
 
 
                     }
@@ -84,11 +93,11 @@
                 <li class="list-group-item"><span>Favoris</span></li>
                 @if (isfollower)
                 {
-                    <li class="list-group-item"><a class="btn btn-outline-dark">liste des Favoris</a></li>
+                    <li class="list-group-item"><a class="btn btn-outline-dark" @onclick="() =>ShowFavorite()">liste des Favoris</a></li>
                 }
                 else
                 {
-                    <li class="list-group-item"> <a class="btn btn-outline-dark">Montrer les favoris</a></li>
+                    <li class="list-group-item"> <a class="btn btn-outline-dark" @onclick="() =>ShowFavorite()">Montrer les favoris</a></li>
 
 
                 }
@@ -99,11 +108,11 @@
                 <li class="list-group-item"><span>Commande</span></li>
                 @if (isCommand)
                 {
-                    <li class="list-group-item"><a class="btn btn-outline-dark" >enlever les commande</a></li>
+                    <li class="list-group-item"><a class="btn btn-outline-dark" @onclick="()=>ShowCommand()">enlever les commande</a></li>
                 }
                 else
                 {
-                    <li class="list-group-item"> <a class="btn btn-outline-dark" >Montrer les commandes</a></li>
+                    <li class="list-group-item"> <a class="btn btn-outline-dark" @onclick="()=>ShowCommand()">Montrer les commandes</a></li>
 
 
                 }
@@ -113,72 +122,74 @@
         </div>
     </div>
     <div class="container text-md-center">
-    @if (isfollower)
-    {
-
-    }
-    else if (isCommand)
-    {
-        if (CommandUser != null)
+        @if (isfollower)
         {
-            @if (CommandUser.Items != null && CommandUser.Items.Count > 0)
+            <p>hello</p>
+            <Blazor.UI.Client.Page.Profile.Component.ListeFollowerComponent  ></Blazor.UI.Client.Page.Profile.Component.ListeFollowerComponent>
+        }
+        else if (isCommand)
+        {
+            if (CommandUser != null)
             {
-                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                <div class="row">
+                @if (CommandUser.Items != null && CommandUser.Items.Count > 0)
+                {
+                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                    <div class="row">
 
-                    <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
-                        <Blazor.UI.Client.Page.MakeCommand.GetCommand lstCommand="CommandUser.Items">
+                        <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
+                            <Blazor.UI.Client.Page.MakeCommand.GetCommand lstCommand="CommandUser.Items">
 
-                        </Blazor.UI.Client.Page.MakeCommand.GetCommand>
+                            </Blazor.UI.Client.Page.MakeCommand.GetCommand>
+                        </div>
+                        <div class="">
+                            <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
+                            <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
+                        </div>
                     </div>
-                    <div class="">
-                        <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
-                        <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
+                }
+                else
+                {
+                    <div class="card m-4 p-4 text-sm-center">
+                        <h2 class="card-header-tabs">vous n'avez pas de commande lier a une reservation</h2>
+                        <h2 class="card-header-tabs"><a href="/reservation">vous faire une reservation</a></h2>
+                        <p class="card-text"></p>
                     </div>
-                </div>
+                }
             }
             else
             {
-                <div class="card m-4 p-4 text-sm-center">
-                    <h2 class="card-header-tabs">vous n'avez pas de commande lier a une reservation</h2>
-                    <h2 class="card-header-tabs"><a href="/reservation">vous faire une reservation</a></h2>
-                    <p class="card-text"></p>
-                </div>
+
             }
+        }
+        else if (isFavorite)
+        {
+            <div>
+                <Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
+                </Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
+            </div>
+        }
+        else if(isProfile)
+        {
+            <div class="">
+                <h3>Bienvenue @userDto.GivenName</h3>
+        </div>
         }
         else
         {
-
+          <p>Tested</p>
         }
-    }
-    else if (isFavorite)
-    {
-        <div>
-            <Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
-            </Blazor.UI.Client.manager.Piece.Component.ShowFavorite>
-        </div>
-    }
-    else
-    {
-        <div class="">
-            <h3>Bienvenue @userDto.GivenName</h3>
-        </div>
-    }
 </div>
 
 @code {
     [CascadingParameter]
     public Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
-    public bool isProfile { get; set; } = true;
+    public bool isProfile { get; set; } = false;
     public bool isCommand { get; set; } = false;
     public bool isFavorite { get; set; } = false;
     public bool isfollower { get; set; } = false;
-
     public bool willUpdateBanner { get; set; } = false;
-    private long maxFileSize = long.MaxValue;
-    public string? fileName { get; set; }
-    IBrowserFile? ImageFile { get; set; }
+
 
     public Pagination<CommandDto>? CommandUser { get; set; }
     public UserDto? userDto { get; set; } = new();
@@ -187,10 +198,13 @@
     protected override async Task OnInitializedAsync()
     {
         await auth();
+        await Dataload();
+        await Task.Delay(100);
+    }
+    public async Task Dataload()
+    {
         CommandUser = (await ServCom.GetByUser(1));
         bannerDto = await bannerService.Getbanner();
-        await Task.Delay(1000);
-        await base.OnInitializedAsync();
     }
     public async void GetAuth()
     {
@@ -201,12 +215,14 @@
         isCommand = true;
         isProfile = false;
         isFavorite = false;
+        isfollower = false;
     }
     public void ShowProfile()
     {
         isProfile = true;
         isCommand = false;
         isFavorite = false;
+        isfollower = false;
     }
     public void ShowFavorite()
     {
@@ -214,23 +230,31 @@
         isProfile = false;
         isCommand = false;
         isFavorite = true;
-
+        isfollower = false;
     }
-    private void OnFileSelected(InputFileChangeEventArgs e)
+    public void ShowFollower()
     {
-        ImageFile = e.File;
 
+        isProfile = false;
+        isCommand = false;
+        isFavorite = false;
+        isfollower = true;
     }
-    public void WillUpdateBanner()
+    public void WillUpdateBannerOpen()
     {
-        willUpdateBanner = !willUpdateBanner;
+        willUpdateBanner = true;
+    }
+    public async Task WillUpdateBannerClose()
+    {
+        willUpdateBanner = false;
+        await Dataload();
     }
     protected async Task auth()
     {
-
         var state = await AuthenticationStateTask;
         userDto = new UserDto
             {
+                User_id= state?.User.Claims?.FirstOrDefault(c=>c.Type=="user_id")?.Value,
                 Email = state?.User?.Claims?.FirstOrDefault(c => c.Type == "email")?.Value,
                 FamilyName = state?.User.Claims.FirstOrDefault(c => c.Type == "family_name")?.Value,
                 GivenName = state?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value,
@@ -257,25 +281,5 @@
             CommandUser = await (ServCom.GetByUser(pageindex));
         }
     }
-    public async Task UploadBanner()
-    {
-
-        using var content = new MultipartFormDataContent();
-
-        var file = ImageFile;
-        var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
-        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
-
-        fileName = file.Name;
-
-        content.Add(
-            content: fileContent,
-            name: "\"files\"",
-            fileName: file.Name);
-
-
-
-         await bannerService.ChangeBanner(content);
-       // bannerDto = await bannerService.Getbanner();
-    }
+   
 }

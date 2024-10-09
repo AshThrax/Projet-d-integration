@@ -8,6 +8,7 @@ namespace Blazor.UI.Data.Services.TheatherService
     public interface ISiegeService
     {
         Task<IEnumerable<SiegeDto>> GetAllFromsalleId(int siegeId);
+        Task<Pagination<SiegeDto>> GetAllFromsalleId(int siegeId,int page);
         Task<IEnumerable<SiegeDto>> GetAllFromCommandId(int commandId);
         Task<SiegeDto> GetById(int siegeId);
         Task Create(AddSiegeDto siegeDto);
@@ -45,10 +46,14 @@ namespace Blazor.UI.Data.Services.TheatherService
             var response= await _httpClient.GetFromJsonAsync<ServiceResponse<IEnumerable<SiegeDto>>>(ApiUri +$"/from-salle/{siegeId}");
             return response.Data;
         }
-
+        public async Task<Pagination<SiegeDto>> GetAllFromsalleId(int siegeId,int page)
+        {
+            var response = await _httpClient.GetFromJsonAsync<Pagination<SiegeDto>>(ApiUri + $"/from-salle/{siegeId}/{page}");
+            return response;
+        }
         public async Task<SiegeDto> GetById(int siegeId)
         {
-          return  await _httpClient.GetFromJsonAsync<SiegeDto>(ApiUri + $"/{siegeId}");
+          return  (await _httpClient.GetFromJsonAsync<ServiceResponse<SiegeDto>>(ApiUri + $"/{siegeId}")).Data;
         }
 
         public async Task Update(int updtId, UpdateSiegeDto siegeDto)

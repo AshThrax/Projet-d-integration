@@ -4,27 +4,39 @@ using Blazor.UI.Data.services.Annonce;
 using Blazor.UI.Data.services.authorization;
 using Blazor.UI.Data.services.Publication;
 using Blazor.UI.Data.services.TheatherService;
+using Blazor.UI.Data.Services.CartService;
 using Blazor.UI.Data.Services.TheatherService;
 using Blazor.UI.Data.Services.User;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace Blazor.UI.extensionMethods
 {
     public static class BlazorDependency
     {
-
+        /// <summary>
+        /// rassemble tout les middleware present dans la classe BlazorDependency
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
         public static IServiceCollection AddBlazor(this IServiceCollection services,
                                                     IConfiguration configuration)
         {
-          
-
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
                                                     .CreateClient("projectAPI"));
+            services.AddBlazoredLocalStorage();
+            //services.AddBlazoredToast();
             services.AddAuthService(configuration);
             services.CustomService();
             return services;
         } 
-       
+       /// <summary>
+       /// ajout de l'authentification
+       /// </summary>
+       /// <param name="services"></param>
+       /// <param name="configuration"></param>
+       /// <returns></returns>
         public static IServiceCollection AddAuthService(this IServiceCollection services,
                                                     IConfiguration configuration)
         {
@@ -39,6 +51,11 @@ namespace Blazor.UI.extensionMethods
             }).AddAccountClaimsPrincipalFactory<ArrayClaimsPrincipalFactory<RemoteUserAccount>>(); ;
             return services;
         }
+        /// <summary>
+        /// ajout dses service propre a blazor
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection CustomService(this IServiceCollection services)
         {
 
@@ -53,9 +70,9 @@ namespace Blazor.UI.extensionMethods
 
             services.AddTransient<ISalleService, SalleService>();
             ;
-
+            services.AddScoped<IPaymentService, PaymentService>();
             services.AddTransient<IRepresentationService, RepresentationService>();
-            ;
+            services.AddTransient<ICartService,CartService>();
             services.AddTransient<ICatalogueService, CataloguesService>();
             services.AddTransient < IThemeService , ThemeService > ();
             services.AddTransient<IAnnonceService, AnnonceService>();

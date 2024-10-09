@@ -21,7 +21,7 @@ namespace ApplicationPublication.Common.Mapping
             CreateMap<Post, PostDto>().ReverseMap();
             CreateMap<AddPostDto, Post>().ReverseMap();
             CreateMap<Repost, RepostDto>().ReverseMap();
-
+            CreateMap<UpdatePostDto,Post>().ReverseMap();
 
             CreateMap<User, UserDto>().ReverseMap();
         }

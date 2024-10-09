@@ -4,6 +4,6 @@ namespace WebApi.ApiService.PaymentService
 {
     public interface IPaymentService
     {
-        Session CreateSession(CommandDto Command);
+        Session CreateSession(int ticketNumber, int price,PieceDto getPiece);
     }
 }

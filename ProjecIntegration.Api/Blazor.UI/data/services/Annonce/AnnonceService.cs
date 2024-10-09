@@ -7,24 +7,24 @@ namespace Blazor.UI.Data.services.Annonce
     public interface IAnnonceService
     {
         Task<AnnonceDto> GetAnnonceById(string Id);
-        Task<Pagination<AnnonceDto>> GetAll();
-        Task UpdateAnnonce(string annonceId, AnnonceDto annonce);
-        Task CreateAnnonce(AnnonceDto annonceDto);
+        Task<Pagination<AnnonceDto>> GetAll(int page);
+        Task UpdateAnnonce(string annonceId, UpdateAnnonceDto annonce);
+        Task CreateAnnonce(AddAnnonceDto annonceDto);
         Task DeleteAnnonce(string annonceId);
     }
     public class AnnonceService : IAnnonceService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiUri = "https://localhost:7170/api/v1/annonce";
+        private const string ApiUri = "https://localhost:7170/api/v1/Annonce";
 
         public AnnonceService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task CreateAnnonce(AnnonceDto annonceDto)
+        public async Task CreateAnnonce(AddAnnonceDto annonceDto)
         {
-            await _httpClient.PostAsJsonAsync(ApiUri, annonceDto);
+            await _httpClient.PostAsJsonAsync<AddAnnonceDto>(ApiUri, annonceDto);
         }
 
         public async Task DeleteAnnonce(string annonceId)
@@ -32,11 +32,11 @@ namespace Blazor.UI.Data.services.Annonce
             await _httpClient.DeleteAsync($"{ApiUri}/{annonceId}");
         }
 
-        public async Task<Pagination<AnnonceDto>?> GetAll()
+        public async Task<Pagination<AnnonceDto>?> GetAll(int page)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<Pagination<AnnonceDto>>(ApiUri);
+                return await _httpClient.GetFromJsonAsync<Pagination<AnnonceDto>>(ApiUri+$"/page/{page}");
 
             }
             catch (Exception)
@@ -58,10 +58,10 @@ namespace Blazor.UI.Data.services.Annonce
             }
         }
 
-        public async Task UpdateAnnonce(string id, AnnonceDto annonceDto)
+        public async Task UpdateAnnonce(string id, UpdateAnnonceDto annonceDto)
         {
             
-            await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", annonceDto);
+            await _httpClient.PutAsJsonAsync<UpdateAnnonceDto>($"{ApiUri}/{id}", annonceDto);
         }
 
 

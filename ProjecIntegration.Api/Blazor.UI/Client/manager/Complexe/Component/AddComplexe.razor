@@ -1,0 +1,101 @@
+﻿@page "/manager/addComplexe"
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+
+@inject NavigationManager manager;
+@inject IComplexeService ComplexeService;
+<h3>Ajouter un complexe</h3>
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger m-2 btn"><i class="bi bi-x-circle-fill "></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="m-4 p-4">
+                    <div class="m-2 p-2">
+                        <div class="m-2 p-2 card rounded w-100">
+                            @if (AddedComplexe != null)
+                            {
+                                <div class="card-header">
+                                    <h3> ajouter un complexe a la base de donnéé</h3>
+                                </div>
+                                <form class="m-1 bg-white">
+                                    <div class="col-form-label">
+                                        <div>
+                                            <label class="form-label" for="name">Name:</label>
+                                            <input class="form-control" id="name" @bind="AddedComplexe .Name" />
+
+                                        </div>
+                                        <div>
+                                            <label class="form-label" for="description">Description:</label>
+                                            <textarea class="form-control w-100"
+                                                      @bind="AddedComplexe.Description"
+                                                      style="width:800px; height:200px;word-wrap:normal border:anywhere" />
+                                        </div>
+                                        <div>
+                                            <label class="form-label" for="address">Address:</label>
+                                            <input class="form-control" id="address" @bind="AddedComplexe .Adress" />
+                                        </div>
+
+                                        <!-- Add other input fields based on your UpdateComplexeDto properties -->
+                                        <br />
+                                        <button type="button" class="btn btn-warning" @onclick="() =>MyAddComplexe()">Update Complexe</button>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <Blazor.UI.Client.Shared.Load loadParam="No Complexe provided"></Blazor.UI.Client.Shared.Load>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    public AddComplexeDto AddedComplexe { get; set; } = new AddComplexeDto();
+
+    public async Task MyAddComplexe()
+    {
+        AddComplexeDto UpdtoDate = new AddComplexeDto
+            {
+
+                Name = AddedComplexe.Name,
+                Adress = AddedComplexe.Adress,
+                Description = AddedComplexe.Description,
+
+            };
+        await ComplexeService.Create(UpdtoDate);
+
+    }
+    public void GetAll()
+    {
+        manager.NavigateTo("/manager/Complexe");
+    }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+}

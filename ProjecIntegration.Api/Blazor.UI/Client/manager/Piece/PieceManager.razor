@@ -11,101 +11,87 @@
     <h3>PieceManager</h3>
     <h4> Piece </h4>
 
-    <div class=" m-4 p-4">
-        <div class=" btn-group rounded float-end">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetAllPiece">Complexe</button>
-            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="GetHome">menu Principale</button>
-            <button type="button" class="col col-sm-3   btn btn-primary" @onclick="Previous">back to reservation</button>
-        </div>
-
-    </div>
-    <br />
-    <div class="jumbotron m-4 p-4">
-        <div class="row">
-            <div class="col bg-white m-4 p-4 w-50 rounded" >
-              <QuickGrid Items="@GetPiece?.AsQueryable()">
-                <PropertyColumn Property="@(p => p.Id)" Sortable="true"/>
-                <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
-                <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
-                <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
-                <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
-                    <TemplateColumn Context="item">
-                        <div>
-                            <button type="button" class="btn btn-warning " @onclick="() => SetPiece(item)">Details</button>
-                        </div>
-                    </TemplateColumn>
-                    <TemplateColumn Context="item">
-                        <div>
-                            <button type="button" class="btn btn-warning " @onclick="() => GetRepresentation(item.Id)">Representation</button>
-                        </div>
-                    </TemplateColumn>
-            </QuickGrid>
-            </div>
-            <br />
-            <br />
-            <div class="row m-2 p-2 w-25 bg-white rounded">
-                @if (SelectedPiece != null)
-                {
-                <div class="col">
-                        <div>
-                        <h4 cclass="form-label" for="titre">Titre:</h4>
-                            <p>@SelectedPiece?.Titre</p>
-                        </div>
-
-                        <div class="">
-
-                            <h4 class="form-label" for="duree">Duree:</h4>
-                            <p>@SelectedPiece?.Duree</p>
-                        </div>
-
-                        <div>
-                            <h4 c class="form-label" for="description">Description:</h4>
-                            <p>@SelectedPiece.Description</p>
-                        </div>
-                        <div>
-                            <h4 cclass="form-label" for="auteur">Auteur :</h4>
-                            <p>@SelectedPiece.Auteur</p>
-                        </div>
-              
+   <div class="table-wrapper">
+        <div class="col-sm-6 float-end btn-group">
+                <a class="btn btn-success"
+                   @onclick="() => addDialogOPen()"><i class="material-icons">&#xE147;</i> <span>Add Piece </span></a>
           
-                        <br />
-                    </div>
-                    <div class="col">
-                        <div>
-                            <h4 class="form-label" for="File">Photo :</h4>
-                            <img class="img-fluid" src="https://localhost:44337/Resources/@SelectedPiece.Image" />
-                        </div>
-                    </div>
-                    <div class="m-2 p-2 btn-group-lg float-end">
-                        <button type="button" class="btn btn-warning p-2" @onclick="()=>UpdatePiece(SelectedPiece.Id)">Update</button>
-                        <button type="button" class="btn btn-warning p-2" @onclick="()=>DeletePiece(SelectedPiece)">Delete</button>
-                        <button type="button" class="btn-warning p-2" @onclick="()=>AddRepresentation(SelectedPiece.Id)">Add Representation</button>
-                    </div>
-                }
-                else
-                {
-                    
-                }
+                <a class="btn btn-warning" @onclick="() =>DataLoad()">Reload</a>
+           
+        </div>
+        <br />
+        <div class="jumbotron m-4 p-4">
+            <div class="row">
+                <div class="col bg-white m-4 p-4 w-50 rounded" >
+                  <QuickGrid Items="@GetPiece?.AsQueryable()">
+                    <PropertyColumn Property="@(p => p.Id)" Sortable="true"/>
+                    <PropertyColumn Property="@(p =>p.Titre)" Sortable="true" />
+                    <PropertyColumn Property="@(p => p.Auteur)" Sortable="true" />
+                    <PropertyColumn Property="@(p =>p.Description)" Sortable="true" />
+                    <PropertyColumn Property="@(p =>p.AddedTime)" Sortable="true" />
+                        <TemplateColumn Context="item">
+                            <div>
+                                <a type="button" class="btn btn-primary" @onclick="() => detailsDialogOPen(item.Id)">Details</a>
+                            </div>
+                        </TemplateColumn>
+                        <TemplateColumn Context="item">
+                            <div>
+                                <a class="btn btn-warning"
+                                   @onclick="() => UpdateDialogOPen(item.Id)"><i class="material-icons">&#xE15C;</i> <span>Update</span></a>
+                            </div>
+                        </TemplateColumn>
+                        <TemplateColumn Context="item">
+                            <div>
+                                <a class="btn btn-danger"
+                                   @onclick="() => DeleteDialogOPen(item.Id)"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                            </div>
+                        </TemplateColumn>
+                </QuickGrid>
+                </div>
+                <br />
+                <br />
+                <div class="row m-2 p-2 w-25 bg-white rounded">
+                   
+                        @if (IsAdding)
+                        {
+                            <Blazor.UI.Client.manager.Piece.Component.AddPiece OnClose="addDialogclose"></Blazor.UI.Client.manager.Piece.Component.AddPiece>
+                        }
+                        else if (IsDeleting)
+                        {
+                            <Blazor.UI.Client.manager.Piece.Component.DeletePiece Id="@SelectedPieceId" OnClose="DeleteDialogclose"></Blazor.UI.Client.manager.Piece.Component.DeletePiece>
+                        }
+                        else if (IsDetails)
+                        {
+                            <Blazor.UI.Client.manager.Piece.Component.PieceDetails Id="@SelectedPieceId" OnClose="DetailsDialogclose"></Blazor.UI.Client.manager.Piece.Component.PieceDetails>
+                        }
+                        else if (IsUpdating)
+                        {
+                            <UpdatePiece Id="SelectedPieceId" OnClose="UpdateDialogclose"></UpdatePiece>
+                        }
+                        else
+                        {
+                        
+                        }
+                </div>
             </div>
         </div>
-    </div>
+   </div> 
 </div>
 @code {
     public IEnumerable<PieceDto>?  GetPiece { get; set; }
     public PieceDto? SelectedPiece { get; set; }
-
+    public int SelectedPieceId { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        GetPiece = await PieceService.Getlist();
-        await Task.Delay(1000);
+        await DataLoad();
     }
-    public void SetPiece(PieceDto piece)
+    public async Task DataLoad()
     {
-        SelectedPiece = piece;   
+        GetPiece = await PieceService.Getlist();
+
     }
+
+    #region page
     public void GetRepresentation(int id)
     {
         manager.NavigateTo($"/manager/representationPiece/{id}");
@@ -126,13 +112,70 @@
     {
         manager.NavigateTo("/manager");
     }
-    public async Task DeletePiece(PieceDto pieceDto)
-    {
-        await PieceService.Delete(pieceDto);
-        GetPiece = await PieceService.Getlist();
-    }
     public void UpdatePiece(int pieceId)
     {
         manager.NavigateTo($"/manager/updatePiece/{pieceId}");
+    }
+    #endregion
+    #region Callback
+    public bool IsAdding { get; set; }
+    public bool IsDeleting { get; set; }
+    public bool IsUpdating { get; set; }
+    public bool IsDetails { get; set; }
+
+    public bool OpenDialogBox { get; set; } = false;
+    private void addDialogOPen()
+    {
+        IsAdding = true;
+        StateHasChanged();
+    }
+    private async Task addDialogclose()
+    {
+        IsAdding = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private void DeleteDialogOPen(int Id)
+    {
+        SelectedPieceId = Id;
+        IsDeleting = true;
+        StateHasChanged();
+    }
+    private async Task DeleteDialogclose()
+    {
+        IsDeleting = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private void UpdateDialogOPen(int Id)
+    {
+        SelectedPieceId = Id;
+        IsUpdating = true;
+        StateHasChanged();
+    }
+    private async Task UpdateDialogclose()
+    {
+        IsUpdating = false;
+        StateHasChanged();
+        await DataLoad();
+    }
+    private void detailsDialogOPen(int Id)
+    {
+        SelectedPieceId = Id;
+        IsDetails = true;
+       
+        StateHasChanged();
+
+    }
+    private void DetailsDialogclose()
+    {
+        IsDetails = false;
+        StateHasChanged();
+    }
+    #endregion
+    public async Task DeletePiece(PieceDto pieceDto)
+    {
+        await PieceService.Delete(pieceDto.Id);
+        GetPiece = await PieceService.Getlist();
     }
 }

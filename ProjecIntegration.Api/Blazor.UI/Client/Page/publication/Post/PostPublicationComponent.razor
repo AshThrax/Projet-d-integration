@@ -3,38 +3,30 @@
 @using Blazor.UI.data.services.Publication
 @inject IPostService PostService;
 
-<div class="h-50 w-75">
-    @if (GetPostFromPublication != null)
+<div class="h-50 w-75 justify-content-end">
+    @if (GetPostFromPublication != null )
     {
         @foreach (PostDto subItem in GetPostFromPublication.Items)
         {   <br/>
-            <div class="row featurette shadow">
-                <div class="col-sm-3 me-2">
-                    <GetUserComponent UserId="@subItem.UserId"></GetUserComponent>
-                </div>
-                <div class="col-sm-1">
-                </div>
-                <div class="col-sm-7 ms-4">
-                    <h3 class="ms-2 mb-0"><strong>Reponse :</strong></h3>
-                    <div class="mt-2 mb-2">
-                        <p class="ps-2 pt-4 pb-2 text-body-secondary">@subItem.Content</p>
-                        <p class="ps-2 bottom blog-post-meta">@subItem.CreatedDate</p>
-                    </div>
-                </div>
-
-            </div>
+            <SinglePost Item="subItem"></SinglePost>
         }
     }
     <div class="row">
         
         <nav class="nav float-end">
             <a @onclick="() =>PreviousPage()" class="nav-item btn btn-outline-dark">Previous</a>
+            <a>@pageIndex</a>
             <a @onclick="()=>NextPage()" class="nav-item btn btn-outline-dark">suivant</a>
         </nav>
     </div>
 </div>
 
 @code {
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    public UserDto GetUserDto { get; set; } = new();
+
     [Parameter]
     public string Id { get; set; }
 
@@ -45,8 +37,29 @@
     {
         GetPostFromPublication = await PostService.GetAllByPublicationId(Id, pageIndex);
         pageIndex = GetPostFromPublication.PageIndex;
+        await auth();
 
     }
+    #region auth
+    protected async Task auth()
+    {
+
+        var state = await AuthenticationStateTask;
+        GetUserDto = new UserDto
+            {
+                User_id = state?.User.Claims?.FirstOrDefault(c => c.Type == "user_id")?.Value,
+                Email = state?.User?.Claims?.FirstOrDefault(c => c.Type == "email")?.Value,
+                FamilyName = state?.User.Claims.FirstOrDefault(c => c.Type == "family_name")?.Value,
+                GivenName = state?.User.Claims.FirstOrDefault(c => c.Type == "given_name")?.Value,
+                Name = state?.User.Claims.FirstOrDefault(c => c.Type == "user_name")?.Value,
+                Picture = state?.User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
+                UserName = state?.User.Claims.FirstOrDefault(c => c.Type == "name")?.Value,
+
+
+            };
+    }
+    #endregion
+    #region Pagination
     public async Task NextPage()
     {
         if (GetPostFromPublication.HasNextPage)
@@ -65,4 +78,5 @@
 
         }
     }
+    #endregion
 }

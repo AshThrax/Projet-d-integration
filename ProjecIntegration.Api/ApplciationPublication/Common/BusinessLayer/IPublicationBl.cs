@@ -18,6 +18,8 @@ namespace ApplicationPublication.Common.BusinessLayer
         Task<IEnumerable<PublicationDto>> GetAllbyPublicationByUserId(string userId);
         Task CreatePublication(AddPublicationDto pub);
         Task UpdatePublication(string pubId,string Title, string content);
+        Task<bool> IsAuthor(string pubId, string userId);
+        Task<bool> Hasreview(int pieceId, string userId);
         #endregion
 
     }

@@ -26,6 +26,37 @@
     ]
   },
   {
+    "ContainingType": "WebApi.Controllers.FileController",
+    "Method": "UploadFile",
+    "RelativePath": "api/File/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "files",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApplicationTheather.DTO.ImageDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAll",
     "RelativePath": "api/Signalement",
@@ -285,55 +316,6 @@
   },
   {
     "ContainingType": "WebApi.Controllers.AnnonceController",
-    "Method": "GetAll",
-    "RelativePath": "api/v1/Annonce",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ApplicationAnnonce.DTO.GetAnnonceDto, ApplicationAnnonce, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 500
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.AnnonceController",
     "Method": "CreateAnnonce",
     "RelativePath": "api/v1/Annonce",
     "HttpMethod": "POST",
@@ -526,28 +508,51 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
-    "Method": "AddBanner",
-    "RelativePath": "api/v1/Banner",
-    "HttpMethod": "POST",
+    "ContainingType": "WebApi.Controllers.AnnonceController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/Annonce/page/{pageNumber}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "files",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.BannerDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ApplicationAnnonce.DTO.GetAnnonceDto, ApplicationAnnonce, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
       }
     ]
   },
@@ -573,19 +578,14 @@
   },
   {
     "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
-    "Method": "UpdateBanner",
-    "RelativePath": "api/v1/Banner/{bannerId}",
+    "Method": "UpdateProfileBanner",
+    "RelativePath": "api/v1/Banner",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bannerId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "file",
+        "Name": "files",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
@@ -614,6 +614,58 @@
         "Name": "userId",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.BannerDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
+    "Method": "AddBanner",
+    "RelativePath": "api/v1/Banner/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "files",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationUser.Dto.BannerDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UserDetail.BannerController",
+    "Method": "UpdateBanner",
+    "RelativePath": "api/v1/Banner/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "files",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -1254,26 +1306,6 @@
   },
   {
     "ContainingType": "WebApi.Controllers.FavorisController",
-    "Method": "CreateFavoris",
-    "RelativePath": "api/v1/Favoris",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationTheather.DTO.FavorisDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.FavorisController",
     "Method": "GetFavorisById",
     "RelativePath": "api/v1/Favoris/{page}",
     "HttpMethod": "GET",
@@ -1301,16 +1333,37 @@
   {
     "ContainingType": "WebApi.Controllers.FavorisController",
     "Method": "AddPiecetoFavoris",
-    "RelativePath": "api/v1/Favoris/addFavoris/{pieceId}",
+    "RelativePath": "api/v1/Favoris/addfavoris/{pieceId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "favorisId",
+        "Name": "pieceId",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationTheather.DTO.FavorisDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.FavorisController",
+    "Method": "DeletePiecetoFavoris",
+    "RelativePath": "api/v1/Favoris/deletefavoris/{pieceId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "pieceId",
         "Type": "System.Int32",
@@ -2275,6 +2328,22 @@
   },
   {
     "ContainingType": "WebApi.Controllers.PostController",
+    "Method": "IsAuthor",
+    "RelativePath": "api/v1/Post/iswriter/{postId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PostId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PostController",
     "Method": "GetAllPostFromPublication",
     "RelativePath": "api/v1/Post/publication-all/{publicationId}/{page}",
     "HttpMethod": "GET",
@@ -2446,6 +2515,38 @@
     "Parameters": [
       {
         "Name": "publicationById",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PublicationController",
+    "Method": "HasReview",
+    "RelativePath": "api/v1/Publication/hasreview/{pieceId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pieceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.PublicationController",
+    "Method": "IsAuthor",
+    "RelativePath": "api/v1/Publication/iswriter/{publicationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "publicationId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -3067,7 +3168,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ApplicationTheather.DTO.SiegeDto",
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[ApplicationTheather.DTO.SiegeDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -3167,22 +3268,58 @@
     ]
   },
   {
+    "ContainingType": "WebApi.Controllers.Theater.SiegeController",
+    "Method": "GetSiegeFromSalle",
+    "RelativePath": "api/v1/Siege/from-salle/{salleId}/{page}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.DataType.Pagination\u00601[[ApplicationTheather.DTO.SiegeDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WebApi.Controllers.StripeController",
     "Method": "CreateCheckoutSession",
-    "RelativePath": "api/v1/Stripe",
+    "RelativePath": "api/v1/Stripe/check-out/{ticketNumber}/{price}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "amount",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "ticketNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
       },
       {
-        "Name": "Quantity",
+        "Name": "price",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
+      },
+      {
+        "Name": "getPiece",
+        "Type": "ApplicationTheather.DTO.PieceDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

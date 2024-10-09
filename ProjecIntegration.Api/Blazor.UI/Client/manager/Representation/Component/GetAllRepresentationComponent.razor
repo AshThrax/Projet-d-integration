@@ -5,19 +5,20 @@
 @inject IRepresentationService PieceRep;
 @inject ISalleService SalleService;
 
-  <div class="card m-2 p-2 bg-light rounded">
-       <div class="card-header">
+  <div class="m-2 p-2 bg-light rounded">
+       <div class="">
         <h5><strong>Representation</strong></h5>
        </div>
-       <div class="card-body m-2 p-2">
+       <div class="m-2 p-2">
              <QuickGrid Items="@GetRepresentation?.Items.AsQueryable()">
                     <PropertyColumn Property="@(p => p.Prix)" Sortable="true" Title="Price" />
-                    <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true"  />
+                    <PropertyColumn Property="@(p => p.Seance.Year)" Sortable="true"  />
+                    <PropertyColumn Property="@(p => p.Seance.Month)" Sortable="true" />
                     <PropertyColumn Property="@(p => p.Seance.Day)" Sortable="true"  />
                     <PropertyColumn Property="@(p => p.Seance.Hour+":"+ p.Seance.Hour)" Sortable="true"  />
                     <TemplateColumn>
                         <div>
-                    <button type="button" class="btn btn-group" @onclick="() =>OnSelectedrepresnetation(context)">Select</button>
+                    <button type="button" class="btn btn-primary" @onclick="() =>OnSelectedrepresnetation(context)">Select</button>
                 </div>
                     </TemplateColumn>
              </QuickGrid>
@@ -40,6 +41,10 @@
     public int pageIndex = 1;
 
     protected override async Task OnInitializedAsync()
+    {
+        await Dataload();
+    }
+    public async Task Dataload()
     {
 
         GetRepresentation = (await PieceRep.GetPiece(Id, pageIndex));

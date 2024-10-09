@@ -7,25 +7,12 @@
 <h3>Avis :</h3>
 <div class="flex-fill m-4 p-4">
     <div class="container-fluid">
-    <div class="row">
+    <div class="row shadow-sm">
             @if (PiecePublication != null && PiecePublication.Items.Count > 0)
             {
                 @foreach (var item in PiecePublication.Items)
                 {
-                    <div class="card-body py-3">
-                        <div class="row no-gutters align-items-center">
-                          
-                                <GetUserComponent UserId="@item.UserId"></GetUserComponent>
-
-                         
-                            <div class="d-flex d-md-block col-6">
-                               <section class="container-md text-center ">
-                                   @item.Review
-                               </section>
-                               <div class="col container-md text-center"><a @onclick="()=>GetPost(item.Id)" class="text-big font-weight-semibold btn btn-dark" data-abc="true">Réponse</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    <SinglePublication item="item"></SinglePublication>
                 }
                 <nav class="row  m-2 p-2 float-end">
                
@@ -37,7 +24,11 @@
             }
             else
             {
-        
+                <div>
+                    <h3>
+                        cette Piéce ne posséde aucun avis pour le momment
+                    </h3>
+                </div>
             } 
         </div>
     </div>

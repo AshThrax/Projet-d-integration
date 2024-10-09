@@ -1,0 +1,114 @@
+﻿@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.services.TheatherService
+@inject NavigationManager manager;
+@inject IPieceService PieceService;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <a @onclick="()=>ModalCancel()" type="button" class="btn-danger btn m-2"><i class="bi bi-x-circle-fill"></i></a>
+            </div>
+            <div class="modal-body">
+                @if (SelectedPiece != null)
+                {
+                    <div class="col">
+                        <div>
+                            <h4 cclass="form-label" for="titre">Titre:</h4>
+                            <p>@SelectedPiece?.Titre</p>
+                        </div>
+
+                        <div class="">
+
+                            <h4 class="form-label" for="duree">Duree:</h4>
+                            <p>@SelectedPiece?.Duree</p>
+                        </div>
+
+                        <div>
+                            <h4 c class="form-label" for="description">Description:</h4>
+                            <p>@SelectedPiece.Description</p>
+                        </div>
+                        <div>
+                            <h4 cclass="form-label" for="auteur">Auteur :</h4>
+                            <p>@SelectedPiece.Auteur</p>
+                        </div>
+
+
+                        <br />
+                    </div>
+                    <div class="col">
+                        <div>
+                            <h4 class="form-label" for="File">Photo :</h4>
+                            <img class="img-fluid" src="https://localhost:44337/Resources/@SelectedPiece.Image" />
+                        </div>
+                    </div>
+                    <div class="m-2 p-2 btn-group-lg float-end">
+                      
+                        <button type="button" class="btn-warning p-2" @onclick="()=> GetRepresentation(SelectedPiece.Id)">voir les Representation</button>
+                    </div>
+                }
+                else
+                {
+
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="()=>ModalOk()" type="button" class="btn btn-primary"> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        SelectedPiece = await PieceService.GetById(Id);
+    }
+    public PieceDto? SelectedPiece { get; set; }
+    #region  modale state
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+    #endregion
+    #region page
+    public void GetRepresentation(int id)
+    {
+        manager.NavigateTo($"/manager/representationPiece/{id}");
+    }
+    public void AddRepresentation(int pieceId)
+    {
+        manager.NavigateTo($"/manager/addrepresentation");
+    }
+    public void GetAllPiece()
+    {
+        manager.NavigateTo("/manager/piece");
+    }
+    public void GetHome()
+    {
+        manager.NavigateTo("/");
+    }
+    public void Previous()
+    {
+        manager.NavigateTo("/manager");
+    }
+    public void UpdatePiece(int pieceId)
+    {
+        manager.NavigateTo($"/manager/updatePiece/{pieceId}");
+    }
+    #endregion
+}

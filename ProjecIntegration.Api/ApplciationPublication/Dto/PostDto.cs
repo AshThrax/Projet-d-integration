@@ -22,4 +22,10 @@ namespace ApplicationPublication.Dto
         public string UserId { get; set; } = string.Empty;
         public int LikeNumber { get; set; }
     }
+    public class UpdatePostDto
+    {
+        public string Id { get; set; }
+        public string Content { get; set; } = string.Empty;
+        public string PublicationId { get; set; } = string.Empty;
+    }
 }
