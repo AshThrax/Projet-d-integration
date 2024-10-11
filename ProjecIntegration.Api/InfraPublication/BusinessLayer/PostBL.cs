@@ -3,6 +3,8 @@ using ApplicationPublication.Common.Repository;
 using ApplicationPublication.Dto;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
+using Domain.Enum;
+using Domain.ServiceResponse;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -25,13 +27,16 @@ namespace InfraPublication.BusinessLayer
             _mapper = mapper;
         }
 
-        public async Task CreateAsync(string publicationId,AddPostDto pub)
+        public async Task<ServiceResponse<PostDto>> CreateAsync(string publicationId,AddPostDto pub)
         {
+            ServiceResponse<PostDto> response = new();
             try
             {
-                
-                  if (!string.IsNullOrEmpty(publicationId))
-                  {
+
+                if (string.IsNullOrEmpty(publicationId))
+                {
+                    throw new ArgumentException("");
+                }
                       Publication? publication = await _publicationrepository.GetById(publicationId) 
                                                                 ?? throw new NullReferenceException(); 
                       Post mapped= _mapper.Map<Post>(pub);
@@ -45,83 +50,101 @@ namespace InfraPublication.BusinessLayer
                       publication?.post.Add(mapped.Id);
                       await _publicationrepository.Update(publicationId,publication);
                       await _postrepository.Insert(mapped);
-                  }
+                response.Success = true;
+                response.Message = "operation sucess";
+                response.Errortype=Errortype.Good;
+                  
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
-          
+          return response;
         }
 
-        public async Task DeletePost(string postId)
+        public async Task<ServiceResponse<PostDto>> DeletePost(string postId)
         {
+            ServiceResponse<PostDto> response = new();
             try
              { 
                 Post Getdeleted=await _postrepository.GetById(postId)
                                                      ?? throw new NullReferenceException("null reference");
-                if (Getdeleted != null)
-                {
-                    await _postrepository.Delete(postId);
-                }
+               
+                await _postrepository.Delete(postId);
+                response.Success = true;
+                response.Message = "operation sucess";
+                response.Errortype = Errortype.Good;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
-           
+            return response;
         }
 
-        public async Task<IEnumerable<PostDto>> GetAllPostFromPublicationId(string PubId)
+        public async Task<ServiceResponse<IEnumerable<PostDto>>> GetAllPostFromPublicationId(string PubId)
         {
+            ServiceResponse<IEnumerable<PostDto>> response = new();
             try
             {
                 IEnumerable<Post> post = await _postrepository.GetAllFromPublication(PubId);
-                return _mapper.Map<IEnumerable<PostDto>>(post);
+                response.Data =_mapper.Map<IEnumerable<PostDto>>(post);
+                response.Success = true;
+                response.Message = "operation sucess";
+                response.Errortype = Errortype.Good;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
-            
+            return response;
         }
 
-        public async Task<Post> GetPostById(string postId)
+        public async Task<ServiceResponse<PostDto>> GetPostById(string postId)
         {
+            ServiceResponse<PostDto> response = new();
             try
             {
-                Post Getdeleted = await _postrepository.GetById(postId) ?? throw new NullReferenceException("null reference");
-                if (Getdeleted != null)
-                {
-                    return Getdeleted;
-                }
-                return new Post();
+                Post GetPosted = await _postrepository.GetById(postId) ?? throw new NullReferenceException("null reference");
+                response.Data = _mapper.Map<PostDto>(GetPosted);
+                response.Success = true;
+                response.Message = "operation sucess";
+                response.Errortype = Errortype.Good;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return new Post();
-
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
+            return response ;
         }
 
-        public async  Task<IEnumerable<PostDto>> GetPostFromUserId(string userId)
+        public async  Task<ServiceResponse<IEnumerable<PostDto>>> GetPostFromUserId(string userId)
         {
+            ServiceResponse<IEnumerable<PostDto>> response= new ServiceResponse<IEnumerable<PostDto>>();
             try
             {
                 IEnumerable<Post> post = await _postrepository.GetAllFromUserId(userId);
-                return _mapper.Map<IEnumerable<PostDto>>(post);
+                response.Data= _mapper.Map<IEnumerable<PostDto>>(post);
+                response.Success = true;
+                response.Errortype = Errortype.Good;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
+            return response ;
         }
 
         public async Task<bool> IsAuthor(string postId, string userId)
@@ -129,7 +152,7 @@ namespace InfraPublication.BusinessLayer
             try
             {
                 Post? getPost = await _postrepository.GetById(postId);
-                return(getPost.UserId.Equals(userId));
+                return (getPost.UserId.Equals(userId));
             }
             catch (Exception)
             {
@@ -138,23 +161,29 @@ namespace InfraPublication.BusinessLayer
             }
         }
 
-        public async Task UpdatePost(string postId, string content)
+        public async Task<ServiceResponse<PostDto>> UpdatePost(string postId, string content)
         {
+            ServiceResponse<PostDto> response= new ServiceResponse<PostDto>();
             try
             {
-              Post Getdeleted = await _postrepository.GetById(postId) ?? throw new NullReferenceException("null reference");
-              if (Getdeleted != null)
-              {
-               await _postrepository.Update(postId,content);
-              }
+                Post Getdeleted = await _postrepository.GetById(postId) ?? throw new NullReferenceException("null reference");
+                if (Getdeleted == null)
+                {
+                    throw new ArgumentException("argument null inside de data");
+                }
+                await _postrepository.Update(postId,content);
+                response.Success = true;
+                response.Errortype = Errortype.Good;
+                return response ;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
-          
-           
+            return response;
+
         }
     }
 }

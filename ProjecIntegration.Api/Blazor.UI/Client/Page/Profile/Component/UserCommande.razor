@@ -1,0 +1,110 @@
+﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ModelViews.Theater
+@using Blazor.UI.Data.Services.Pdf
+@using Blazor.UI.Data.Services.TheatherService
+@using Blazor.UI.Data.Services.User
+@using Blazor.UI.Data.services.TheatherService
+@using Blazor.UI.Pages
+
+@using PuppeteerSharp
+@using webenology.blazor.components.BlazorPdfComponent
+@inject ISiegeService siegeService;
+@inject IRepresentationService representationService;
+@inject IPieceService pieceservice;
+@inject IUserService userservice;
+@inject IPdfService pdfService;
+@inject ISalleService salleervice;
+@inject NavigationManager manager;
+@inject IJSRuntime JSRuntime;
+
+@if (commandDto != null  && Getrepresentation !=null )
+{
+    <div class="m-2 p-2 shadow-sm rounded">
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <div class="card">
+
+                <div class="">
+                    <h2><strong>Titre :</strong> @GetPiece.Titre</h2>
+                </div>
+                    <img class="img-fluid card-img" src="https://localhost:7170/Resources/@GetPiece.Image" />
+                    <div >
+                        @if (GetPiece != null)
+                        {
+                            <div class=" m-2 p-2">
+                                <h3 class="">Description</h3>
+                                <p class="lead">@GetPiece.Auteur</p>
+                                <p class="lead">@GetPiece.Description</p>
+                                <p class="">@GetPiece.Duree: minutes</p>
+                            </div>
+                        
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="">
+                        <h2><strong>Résumer de votre Séance:</strong></h2>
+                    </div>
+                    @if (GetSiegeDtos !=null)
+                    {
+                        <p>Seannce : @Getrepresentation.Seance</p>
+                        <h3>Nombre de Siege; @GetSiegeDtos.Count</h3>
+                        @foreach (SiegeDto item in GetSiegeDtos)
+                        {
+                            <p>Numéros de Siege : @item.Name</p>   
+                        }
+                    
+                    }
+                    <a class="btn btn-outline-dark" @onclick="()=> GetPublicaitonByPiece()">Désirez vous donnez votre avis sur la Piece</a>
+                </div>
+                <a hidden="true" class="btn btn-outline-dark" @onclick="()=>Printeticket()">Imprimer le ticket</a>
+            </div>
+        </div>
+    </div>
+    <embed style="width: 100%; height: 650px;" src="data:application/pdf;base64,@_base64Results">
+}
+
+@code {
+    [Parameter]
+    public CommandDto commandDto { get; set; }
+    public UserDto GetUserdto { get; set; }
+    public PieceDto GetPiece { get; set; }
+    public SalleDeTheatreDto GetSalle { get; set; }
+    public RepresentationDto Getrepresentation { get; set; }
+    public List<SiegeDto>? GetSiegeDtos { get; set; }
+
+    public CommandDto Forrender { get; set; }
+    [Inject]
+    private IBlazorPdf blazorPdf { get; set; }
+    private string? _base64Results ;
+    protected override async Task OnInitializedAsync()
+    {
+        Getrepresentation = await representationService.GetById(commandDto.IdRepresentation);
+        GetPiece = await pieceservice.GetById(Getrepresentation.PieceId);
+        GetSalle = await salleervice.GetById(Getrepresentation.SalledeTheatreId);
+        GetSiegeDtos =( await siegeService.GetAllFromCommandId(commandDto.Id)).ToList();
+        GetUserdto = await userservice.GetUserProfile(commandDto.AuthId);
+        Forrender = commandDto;
+    }
+    public void GetPublicaitonByPiece()
+    {
+        manager.NavigateTo($"/publicationbypiece/{GetPiece.Id}");
+    }
+    public async Task Printeticket()
+    {
+        var css = new List<string>
+        {
+            "/css/bootstrap/bootstrap.min.css",
+
+        };
+        var jsFileLocations = new List<string>();
+        _base64Results = await blazorPdf.GetBlazorInPdfBase64<UserCommande>(x=>x.Add(p=>p.commandDto,Forrender), "abc", css, null);
+
+
+    }
+   
+  
+}

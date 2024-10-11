@@ -5,6 +5,8 @@ using ApplicationPublication.Dto;
 using ApplicationTheather.Common.Interfaces.IRepository;
 using AutoMapper;
 using Domain.Entity.publicationEntity;
+using Domain.Enum;
+using Domain.ServiceResponse;
 using InfraPublication.Repository;
 using Microsoft.Extensions.Logging;
 using System;
@@ -34,8 +36,9 @@ namespace InfraPublication.BusinessLayer
 
 
         #region publication
-        public async Task CreatePublication(AddPublicationDto pub)
+        public async Task<ServiceResponse<PublicationDto>> CreatePublication(AddPublicationDto pub)
         {
+            ServiceResponse<PublicationDto> response = new();
             try
             {
                 Publication mapped= _mapper.Map<Publication>(pub);
@@ -43,130 +46,154 @@ namespace InfraPublication.BusinessLayer
                 mapped.CreatedDate=DateTime.Now;
                 await _publicationRepository.Insert(mapped);
                 //----
+                response.Success = true;
+                response.Errortype = Errortype.Good;
+           
             }
             catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
-            }//----
-              
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
+            }
+            return response;
+
         }
         /// <summary>
         /// supprimer une publication par Id
         /// </summary>
         /// <param name="pubId"></param>
         /// <returns></returns>
-        public async Task DeletePublication(string pubId)
+        public async Task<ServiceResponse<PublicationDto>> DeletePublication(string pubId)
         {
+            ServiceResponse<PublicationDto> response = new();
             try
             {
                 Publication getPub = await _publicationRepository.GetById(pubId) ?? throw new NullReferenceException();
-                 //----
-                 if(getPub != null) 
-                {
+              
                    _= _publicationRepository.Delete(pubId);
-                    
-                }
-                 //----
-           
+
+                response.Success = true;
+                response.Errortype = Errortype.Good;
+
             }
             catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
-            }//----
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
+            }
+            return response ;
         }
         /// <summary>
         /// récu^pére toutes les publication 
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<PublicationDto>> GetAllbyPublicationByUserId(string userId)
+        public async Task<ServiceResponse<IEnumerable<PublicationDto>>> GetAllbyPublicationByUserId(string userId)
         {
+            ServiceResponse<IEnumerable<PublicationDto>>response = new();
             try
             {
                 IEnumerable<Publication> getPub = await _publicationRepository.GetAllPublicationByUserId(userId) 
                                                                  ?? throw new NullReferenceException("no user found inside ") ;
+                response.Data= _mapper.Map<IEnumerable<PublicationDto>>(getPub);
+                response.Success = true;
+                response.Errortype = Errortype.Good;
                 
-                IEnumerable<PublicationDto> getPublicationDto= _mapper.Map<IEnumerable<PublicationDto>>(getPub);
                 
-                return getPublicationDto;
             }
-            catch(ArgumentException)
-            {
-                IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
-                return Empty;
-            }
+
             catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
                 IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
-                return Empty;
+              
             }//----
-
+            return response;
         }
         /// <summary>
         /// récupére toutes les publications 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<PublicationDto>> GetAllPublication()
+        public async Task<ServiceResponse<IEnumerable<PublicationDto>>> GetAllPublication()
         {
+            ServiceResponse<IEnumerable<PublicationDto>> response = new();
             try
             { 
-                return _mapper.Map<IEnumerable<PublicationDto>>(await _publicationRepository.GetAll());
+                
+                response.Data =_mapper.Map<IEnumerable<PublicationDto>>(await _publicationRepository.GetAll());
+                response.Success = true;
+                response.Errortype = Errortype.Good;
             }
             catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
-                IEnumerable<PublicationDto> Empty = Enumerable.Empty<PublicationDto>();
-                return Empty;
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
-           
+            return response;
         }
         /// <summary>
         /// récupére les publication par Id
         /// </summary>
         /// <param name="pubId"></param>
         /// <returns></returns>
-        public async Task<PublicationDto> GetPublicationById(string pubId)
+        public async Task<ServiceResponse<PublicationDto>> GetPublicationById(string pubId)
         {
+            ServiceResponse<PublicationDto> response = new();
             try
             {
                Publication getPublic = await _publicationRepository.GetById(pubId) 
                                              ?? throw new ArgumentException() ;
-                if (!string.IsNullOrEmpty(getPublic.Review))
+                if (string.IsNullOrEmpty(getPublic.Review))
                 {
-                    //----
-                    PublicationDto getPublication= _mapper.Map<PublicationDto>(getPublic);
-
-                    return getPublication;
+                    throw new ArgumentException() ;
                 }
-                return new PublicationDto();  
-            } catch (Exception ex) 
+               
+                    //----
+                response.Data= _mapper.Map<PublicationDto>(getPublic);
+
+                response.Success = true;
+                response.Errortype = Errortype.Good;
+            } 
+            catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
-                return new PublicationDto();
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
-           
+            return response;
         }
         /// <summary>
         /// récupére toutes les publication lier a une piece 
         /// </summary>
         /// <param name="pieceId"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<PublicationDto>> GetPublicationByPiece(int pieceId)
+        public async Task<ServiceResponse<IEnumerable<PublicationDto>>> GetPublicationByPiece(int pieceId)
         {
+            ServiceResponse<IEnumerable<PublicationDto>> response = new();
             try
             {
                 IEnumerable<Publication> Getpublication = await _publicationRepository.GetAllPublicationByPieceId(pieceId);
-                IEnumerable<PublicationDto> getPublicationDto= _mapper.Map<IEnumerable<PublicationDto>>(Getpublication);
+                response.Data= _mapper.Map<IEnumerable<PublicationDto>>(Getpublication);
 
-               
-                return getPublicationDto;   
+                response.Success = true;
+                response.Errortype = Errortype.Good;
+              
             }
             catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
-                return Enumerable.Empty<PublicationDto>();
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
+            return response;
         }
 
         public async Task<bool> Hasreview(int pieceId, string userId)
@@ -203,27 +230,32 @@ namespace InfraPublication.BusinessLayer
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
                 return false;
             }
+
         }
 
-        public async Task UpdatePublication(string pubId, string title, string content)
+        public async Task<ServiceResponse<PublicationDto>> UpdatePublication(string pubId, string title, string content)
         {
+            ServiceResponse<PublicationDto> response = new();
             try
             {
                 Publication getPub = await _publicationRepository.GetById(pubId)
                                     ?? throw new NullReferenceException("null reference");
-                if (getPub != null)
-                {
+            
+           
                     
-                    await _publicationRepository.UpdatePublicationContent(pubId ,title,content);
-                    //----
-                }
+                await _publicationRepository.UpdatePublicationContent(pubId ,title,content);
+                response.Success = true;
+                response.Errortype = Errortype.Good;
 
             }
             catch (Exception ex)
             {
                 _logger.LogInformation($"{DateTime.Now:dd/mm/yyyy} an error occured in creationPublication  {ex}");
-               
+                response.Success = false;
+                response.Message = $"operation unSucess : {ex.Message}";
+                response.Errortype = Errortype.Bad;
             }
+            return response;
         }
         #endregion    
     }

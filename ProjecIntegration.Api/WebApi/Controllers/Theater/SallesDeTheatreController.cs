@@ -3,6 +3,7 @@ using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;
+using WebApi.Validator.Theather;
 namespace WebApi.Controllers.Theater;
 
 [Route("api/v1/[controller]")]
@@ -124,16 +125,23 @@ public class SallesDeTheatreController : ControllerBase
             }
         }
         [HttpPost("")]
-        public async Task<ActionResult> CreateSalle([FromBody] AddSalleDeTheatreDto Entity)
+    [Authorize(Roles = ("Admin"))]
+    public async Task<ActionResult> CreateSalle([FromBody] AddSalleDeTheatreDto addSalle)
         {
             try
             {
-                ServiceResponse<SalleDeTheatreDto> response= await _bussinessServices.CreateSalle(Entity.ComplexeId,Entity);
+            var Validator = new AddSalleValidator();
+            var result = Validator.Validate(addSalle);
+            if (!result.IsValid)
+            {
+                return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+            }
+            ServiceResponse<SalleDeTheatreDto> response= await _bussinessServices.CreateSalle(addSalle.ComplexeId,addSalle);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-            return Ok(Entity);
+            return Ok(addSalle);
             }
             catch (ValidationException ex)
             {
@@ -150,8 +158,8 @@ public class SallesDeTheatreController : ControllerBase
         }
 
         [HttpPut("{updtId}")]
-      
-        public async Task<ActionResult<SalleDeTheatreDto>> Update(int updtId, [FromBody] UpdateSalleDeTheatreDto Entity)
+    [Authorize(Roles = ("Admin"))]
+    public async Task<ActionResult<SalleDeTheatreDto>> Update(int updtId, [FromBody] UpdateSalleDeTheatreDto updtSalle)
         {
             if (updtId <= 0)
             {
@@ -159,14 +167,19 @@ public class SallesDeTheatreController : ControllerBase
             }
             try
             {
-                if (Entity == null) { return BadRequest(); }
-               
-                ServiceResponse<SalleDeTheatreDto> response = await _bussinessServices.Updatesalle(updtId, Entity);
+                var Validator = new UpdtSalleValidator();
+                var result = Validator.Validate(updtSalle);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+
+            ServiceResponse<SalleDeTheatreDto> response = await _bussinessServices.Updatesalle(updtId,updtSalle);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -183,8 +196,9 @@ public class SallesDeTheatreController : ControllerBase
             }
         }
         [HttpDelete("{id}")]
-       
-        public async Task<ActionResult> DeleteSalle(int id)
+    [Authorize(Roles = ("Admin"))]
+
+    public async Task<ActionResult> DeleteSalle(int id)
         {
             if(id <= 0)
             {
@@ -197,7 +211,7 @@ public class SallesDeTheatreController : ControllerBase
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
 
             }
             catch (ValidationException ex)

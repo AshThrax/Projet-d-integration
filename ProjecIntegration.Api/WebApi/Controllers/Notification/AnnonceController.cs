@@ -5,6 +5,8 @@ using Domain.Entity.notificationEntity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
+using WebApi.Validator.Annonce;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers
 {
@@ -69,12 +71,19 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> CreateAnnonce([FromBody] AddAnnonceDto annonce)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var Validator = new AddAnonceValidator();
+                    var result = Validator.Validate(annonce);
+                    if (!result.IsValid)
+                    {
+                        return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                    }
                     await annonceBl.CreateAnnonce(annonce);
                    
                     
@@ -95,13 +104,20 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateAnnonce(string annonceId,[FromBody] UpdateAnnonceDto? annonce)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult> UpdateAnnonce(string annonceId,[FromBody] UpdateAnnonceDto updtAnnonce)
         {
             try
             {
                 if (ModelState.IsValid)
-                {  
-                    await annonceBl.UpdateAnnonce(annonceId,annonce);
+                {
+                    var Validator = new UpdateAnnonceValidator();
+                    var result = Validator.Validate(updtAnnonce);
+                    if (!result.IsValid)
+                    {
+                        return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                    }
+                    await annonceBl.UpdateAnnonce(annonceId,updtAnnonce);
                     return NoContent();
                 }
 
@@ -122,6 +138,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> UpdateAnnonce(string annonceId)
         {
             try 

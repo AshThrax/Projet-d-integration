@@ -103,11 +103,11 @@ namespace DataInfraTheather.BusinessService
                 //vérification du nombre de place a ssocié avec la commande et la representation
                if (command != null)
                 {
-                    Representation vérification =await _representationRepository.GetById(command.IdRepresentation);
-                    SalleDeTheatre salle = await _sallerepository.GetById(vérification.SalledeTheatreId);
+                    Representation verification =await _representationRepository.GetById(command.IdRepresentation);
+                    SalleDeTheatre salle = await _sallerepository.GetById(verification.SalledeTheatreId);
                     int maxPlace= salle.PlaceMax;
 
-                    if (vérification.PlaceCurrent + command.NombreDePlace <= vérification.PlaceMaximum)
+                    if (verification.PlaceCurrent + command.NombreDePlace <= verification.PlaceMaximum)
                     {
                         //validation
                         //conversion Dto
@@ -126,6 +126,7 @@ namespace DataInfraTheather.BusinessService
                                 Command = Conversion,
                                 SiegeId=Item.Id,
                                 Siege=Item,
+                                CreatedDate = DateTime.Now,
                             };
 
                             await _siegeCommandRepository.Insert(siegeCommand);
@@ -133,6 +134,8 @@ namespace DataInfraTheather.BusinessService
                             response.Message = $"Opération réussi";
                             response.Errortype = Domain.Enum.Errortype.Good;
                         }
+                        verification.PlaceCurrent = verification.PlaceCurrent+command.NombreDePlace;
+                        await _representationRepository.Update(command.IdRepresentation, verification);
                     }
                     else
                     {

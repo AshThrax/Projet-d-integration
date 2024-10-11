@@ -1,6 +1,7 @@
 ﻿
 using Blazor.UI.Data.ModelViews.Publication;
 using Blazor.UI.Data.ServiceResult;
+using Data.ServiceResult;
 using System;
 using System.Net.Http.Json;
 
@@ -44,7 +45,8 @@ namespace Blazor.UI.Data.services.Publication
 
         public async Task<PublicationDto?> GetPublication(string Id)
         {
-            return await _httpClient.GetFromJsonAsync<PublicationDto>($"{ApiUri}/publication-by-id/{Id}");
+            var result= await _httpClient.GetFromJsonAsync<ServiceResponse<PublicationDto>>($"{ApiUri}/publication-by-id/{Id}");
+            return result.Data;
         }
 
         public async Task UpdatePublication(string Id,UpdatePublicationDto catalogue)

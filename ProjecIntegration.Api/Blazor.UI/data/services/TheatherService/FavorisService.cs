@@ -1,5 +1,6 @@
 ﻿using Blazor.UI.Data.ModelViews.Theater;
 using Blazor.UI.Data.ServiceResult;
+using Blazored.Toast.Services;
 using Data.ServiceResult;
 using System.Net.Http.Json;
 
@@ -17,11 +18,13 @@ namespace Blazor.UI.Data.Services.TheatherService
     public class FavorisService : IFavorisService
     {
         private readonly HttpClient _httpClient;
+        private readonly IToastService _toastService;
         private readonly string ApiUri= "https://localhost:7170/api/v1/Favoris";
 
-        public FavorisService(HttpClient httpClient)
+        public FavorisService(HttpClient httpClient, IToastService toastService)
         {
             _httpClient = httpClient;
+            _toastService = toastService;
 
         }
 
@@ -31,6 +34,16 @@ namespace Blazor.UI.Data.Services.TheatherService
             try
             {
                 var httpmess= await _httpClient.PostAsync(ApiUri+$"/addfavoris/{pieceId}",null);
+                try
+                {
+                  httpmess.EnsureSuccessStatusCode();
+                    _toastService.ShowSuccess("success fully added to the favorite");
+                }
+                catch (Exception)
+                {
+
+                    _toastService.ShowError("an error has occured");
+                }
                 return response;
             }
             catch (Exception)
@@ -65,8 +78,17 @@ namespace Blazor.UI.Data.Services.TheatherService
            
             try
             {
-                await _httpClient.DeleteFromJsonAsync<ServiceResponse<FavorisDto>>(ApiUri+$"/deletefavoris/{pieceId}");
-               
+                var httpmes=await _httpClient.DeleteAsync(ApiUri+$"/deletefavoris/{pieceId}");
+                try
+                {
+                    httpmes.EnsureSuccessStatusCode();
+                    _toastService.ShowSuccess("the data has been remove from favorite");
+                }
+                catch (Exception)
+                {
+
+                    _toastService.ShowError("an error has occured");
+                }
             }
             catch (Exception)
             {
@@ -94,8 +116,17 @@ namespace Blazor.UI.Data.Services.TheatherService
            
             try
             {
-                await _httpClient.PutAsJsonAsync<FavorisDto>(ApiUri,favorisDto);
-              
+              var result= await _httpClient.PutAsJsonAsync<FavorisDto>(ApiUri,favorisDto);
+                try
+                {
+                    result.EnsureSuccessStatusCode();
+                    _toastService.ShowSuccess("the data has successfully been updated");
+                }
+                catch (Exception)
+                {
+
+                    _toastService.ShowError("an error has occured");
+                }
 
             }
             catch (Exception)

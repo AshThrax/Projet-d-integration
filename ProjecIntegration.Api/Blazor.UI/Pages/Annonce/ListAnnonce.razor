@@ -1,0 +1,59 @@
+﻿@page "/Annonce"
+@using Blazor.UI.Data.ServiceResult
+@using Blazor.UI.Data.services.Annonce
+@using Blazor.UI.Data.ModelViews.Annonce
+@inject IAnnonceService AnnonceService;
+<div class="m-2 p-2 shadow-sm">
+
+    @if (GetAnnonceDto != null)
+    {
+        <hr class="featurette-divider">
+        <h3>vos Annonce</h3>
+
+        <div class="row featurette">
+            <div class="col-md-5">
+                <img class="img-fluid" src="Image/masks-310474_1920.png" />
+            </div>
+            <div class="col-md-7">
+                @foreach (AnnonceDto? item in GetAnnonceDto.Items)
+                {
+                  <Blazor.UI.Pages.Annonce.Component.SingleAnnonceComponent item="item"></Blazor.UI.Pages.Annonce.Component.SingleAnnonceComponent>
+                 <hr />
+                }
+            </div>
+            <div class="row">
+                <div class="btn-group float-end">
+                    <a  class="btn btn btn-outline-dark" @onclick="()=>PreviousPage()"> Previous</a>
+                    <a  class="btn btn-outline-dark" @onclick="()=>NextPage()">Next</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@code {
+    public Pagination<AnnonceDto> GetAnnonceDto { get; set; }
+    public int pageIndex { get; set; } = 1;
+    protected override async Task OnInitializedAsync()
+    {
+        GetAnnonceDto = await AnnonceService.GetAll(pageIndex);
+        await Task.Delay(1000);
+    }
+    #region pagination
+    public async Task NextPage()
+    {
+        if (GetAnnonceDto.HasNextPage)
+        {
+            pageIndex++;
+            GetAnnonceDto = await AnnonceService.GetAll(pageIndex);
+        }
+    }
+    public async Task PreviousPage()
+    {
+        if (GetAnnonceDto.HasPreviousPage)
+        {
+            pageIndex--;
+            GetAnnonceDto = await AnnonceService.GetAll(pageIndex);
+        }
+    }
+    #endregion
+}

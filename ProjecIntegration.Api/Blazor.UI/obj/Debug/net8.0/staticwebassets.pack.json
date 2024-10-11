@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\Blazor.UI.styles.css"
     },
     {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\Image\\StockCake-Solo Stage Performance_1728574260.jpg",
+      "PackagePath": "staticwebassets\\Image\\StockCake-Solo Stage Performance_1728574260.jpg"
+    },
+    {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\Image\\StockCake-Theatre stage setup_1728574221.jpg",
+      "PackagePath": "staticwebassets\\Image\\StockCake-Theatre stage setup_1728574221.jpg"
+    },
+    {
+      "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\Image\\masks-310474_1920.png",
+      "PackagePath": "staticwebassets\\Image\\masks-310474_1920.png"
+    },
+    {
       "Id": "C:\\Users\\quentin\\classicweb\\Projet\\ProjecIntegration.Api\\Blazor.UI\\wwwroot\\JaveScript\\JavaScript.js",
       "PackagePath": "staticwebassets\\JaveScript\\JavaScript.js"
     },

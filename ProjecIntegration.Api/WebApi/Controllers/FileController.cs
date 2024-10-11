@@ -29,6 +29,7 @@ namespace WebApi.Controllers
       
       
         [HttpPost]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult<ImageDto>> UploadFile(IFormFile files)
         {
             List<UploadResult> uploadResults = new List<UploadResult>();
@@ -49,6 +50,7 @@ namespace WebApi.Controllers
            
         }
         [HttpPut("{Id}")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult<ImageDto>> UploadFile(int Id,IFormFile files)
         {
             List<UploadResult> uploadResults = new List<UploadResult>();

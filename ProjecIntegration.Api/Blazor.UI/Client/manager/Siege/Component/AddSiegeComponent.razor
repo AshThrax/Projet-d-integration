@@ -67,6 +67,7 @@
     {
         AddSiegeDto.SalleId = SelectSalleId;
         await siegeService.Create(AddSiegeDto);
+        _ = ModalOk();
     }
     #region  modale state
     [Parameter]

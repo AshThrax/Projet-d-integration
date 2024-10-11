@@ -2,11 +2,12 @@
 using Domain.DataType;
 using Domain.ServiceResponse;
 using WebApi.ApiService.FileService;
+using WebApi.Validator.Theather;
 namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Admin")]
+    [Authorize]
     public class PieceController : ControllerBase
     {
         
@@ -70,7 +71,14 @@ namespace WebApi.Controllers.Theater
             try
             {
                 ServiceResponse<PieceDto> response = await _pieceRepository.Get(id);
-                return Ok(response);
+                if (response.Success)
+                {
+                    return Ok(response);
+                }
+                else 
+                {
+                    return BadRequest(response);
+                }
             }
             catch (ValidationException ex)
             {
@@ -134,23 +142,30 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> CreatePiece([FromBody]AddPieceDto addpiece)
         {
             try
-            {       if(ModelState.IsValid)
+            {       
+                if(ModelState.IsValid)
+                {
+                    var Validator = new AddPieceValidator();
+                    var result = Validator.Validate(addpiece);
+                    if (!result.IsValid)
                     {
-
+                        return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                    }
                     ServiceResponse<PieceDto> response= await _pieceRepository.Create(addpiece);
                     if (!response.Success)
                     {
                         return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                     }
-                    return Ok();
-                    }
-                    else
-                    {
+                    return Ok(response);
+                }
+                else
+                {
                         return BadRequest();
-                    }
+                }
 
             }
             catch (ValidationException ex)
@@ -173,6 +188,7 @@ namespace WebApi.Controllers.Theater
         /// <param name="pieceId"></param>
         /// <returns></returns>
         [HttpGet("add-catalogue/{catalogueId}/{pieceId}")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> AddPieceToCatalogue(int catalogueId,int pieceId)
         {
             try
@@ -187,7 +203,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok();
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -204,6 +220,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("remove-catalogue/{catalogueId}/{pieceId}")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> RemovePieceFromCatalogue(int catalogueId, int pieceId)
         {
             try
@@ -217,7 +234,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
             }
             catch (Exception)
             {
@@ -226,21 +243,18 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPut("{updtId}")]
-        public async Task<ActionResult> UpdatePiece(int updtId,[FromForm]UpdatePieceDto updatepiece)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult> UpdatePiece(int updtId,[FromBody]UpdatePieceDto updatepiece)
         {
 
             try
             {
-                 
-                if (updatepiece.ImageFile != null)
+
+                var Validator = new UpdtPieceValidator();
+                var result = Validator.Validate(updatepiece);
+                if (!result.IsValid)
                 {
-                    if (updatepiece.ImageFile?.Length > 1 * 1024 * 1024)
-                    {
-                        return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
-                    }
-                    string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
-                    string createdImageName = await fileService.SaveFileAsync(updatepiece.ImageFile, allowedFileExtentions);
-                    updatepiece.Image = createdImageName;
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
                 }
 
                 ServiceResponse<PieceDto> response= await _pieceRepository.Update(updtId, updatepiece);
@@ -248,7 +262,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
             }
             catch (ValidationException ex)
             {
@@ -278,7 +292,7 @@ namespace WebApi.Controllers.Theater
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
 
-                return NoContent();
+                return Ok(response);
             }
             catch (ValidationException ex)
             {

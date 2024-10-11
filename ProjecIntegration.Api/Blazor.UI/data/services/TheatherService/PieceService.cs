@@ -2,6 +2,7 @@ using System.Net.Http.Json;
 using System.Text;
 using Blazor.UI.Data.ModelViews.Theater;
 using Blazor.UI.Data.ServiceResult;
+using Blazored.Toast.Services;
 using Data.ServiceResult;
 using Newtonsoft.Json;
 
@@ -27,12 +28,14 @@ namespace Blazor.UI.Data.services.TheatherService
     public class PieceService : IPieceService
     {
         private readonly HttpClient _httpClient;
+        private readonly IToastService _toastService;
         private const string ApiUri = "https://localhost:7170/api/v1/Piece";
 
-        public PieceService(HttpClient httpClient)
+        public PieceService(HttpClient httpClient, IToastService toastService)
         {
 
             _httpClient = httpClient;
+            _toastService = toastService;
 
         }
 
@@ -75,27 +78,77 @@ namespace Blazor.UI.Data.services.TheatherService
         {
             var data = JsonConvert.SerializeObject(piecedata);
             var sendData = new StringContent(data, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync(ApiUri, sendData);
+            var result =await _httpClient.PostAsync(ApiUri, sendData);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task AddRepresentation(int idPiece, AddRepresentationDto data)
         {
-            await _httpClient.PostAsJsonAsync($"{ApiUri}/add-representation/{idPiece}", data);
+            var result =await _httpClient.PostAsJsonAsync($"{ApiUri}/add-representation/{idPiece}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Update(int id, UpdatePieceDto data)
         {
-            await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
+            var result=await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+               _toastService.ShowSuccess("the data has successfully been updated");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Delete(int Id)
         {
-            await _httpClient.DeleteAsync(ApiUri+$"/{Id}");
+            var result=await _httpClient.DeleteAsync(ApiUri+$"/{Id}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been deleted");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task DeleteRepresentation(int idPiece, int idRepresentation)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/delete-representation/{idPiece}/{idRepresentation}");
+            var result=await _httpClient.DeleteAsync($"{ApiUri}/delete-representation/{idPiece}/{idRepresentation}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the representation has successfully been added to this piece");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task<Pagination<PieceDto>?> GetByCatalogue(int id, int page)
@@ -109,12 +162,32 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task AddToCatalogue(int catalogueId, int pieceId)
         {
-            await _httpClient.GetAsync($"{ApiUri}/add-catalogue/{catalogueId}/{pieceId}");
+            var result =await _httpClient.GetAsync($"{ApiUri}/add-catalogue/{catalogueId}/{pieceId}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added to the catalogue");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task RemovefromCatalogue(int catalogueId, int pieceId)
         {
-            await _httpClient.GetAsync($"{ApiUri}/remove-catalogue/{catalogueId}/{pieceId}");
+            var result =await _httpClient.GetAsync($"{ApiUri}/remove-catalogue/{catalogueId}/{pieceId}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been removed");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
     }
 }

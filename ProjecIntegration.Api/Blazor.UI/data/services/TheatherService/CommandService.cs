@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 using Blazor.UI.Data.ModelViews.Theater;
 using Blazor.UI.Data.ServiceResult;
+using Blazored.Toast.Services;
 using Data.ServiceResult;
 namespace Blazor.UI.Data.services.TheatherService
 {
@@ -20,11 +21,13 @@ namespace Blazor.UI.Data.services.TheatherService
      ICommandService
     {
         private readonly HttpClient _httpClient;
+        private readonly IToastService _toastService;
         private const string ApiUri = "https://localhost:7170/api/v1/Command";
 
-        public CommandService(HttpClient httpClient)
+        public CommandService(HttpClient httpClient,IToastService toastService)
         {
             _httpClient = httpClient;
+            _toastService = toastService;
         }
 
         public async Task<CommandDto[]?> Get()
@@ -78,17 +81,47 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task Create(AddCommandDto data)
         {
-            await _httpClient.PostAsJsonAsync<AddCommandDto>(ApiUri, data);
+            var result =await _httpClient.PostAsJsonAsync<AddCommandDto>(ApiUri, data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Update(int id, UpdateCommandDto data)
         {
-            await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
+            var result =await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Delete(int id)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+           var result= await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task<bool> DoIHaveacommand(int Id)

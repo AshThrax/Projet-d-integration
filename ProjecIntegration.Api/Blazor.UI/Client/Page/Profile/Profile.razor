@@ -133,19 +133,16 @@
             {
                 @if (CommandUser.Items != null && CommandUser.Items.Count > 0)
                 {
-                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                    <div class="row">
-
-                        <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
+                    <div class="nav float-end btn-group">
+                            <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
+                            <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
+                    </div>
+                    <div class="col float-start  mb-4 mt-4 ps-2 pe-2 bg-light">
                             <Blazor.UI.Client.Page.MakeCommand.GetCommand lstCommand="CommandUser.Items">
 
                             </Blazor.UI.Client.Page.MakeCommand.GetCommand>
-                        </div>
-                        <div class="">
-                            <a class="btn btn-outline-dark" @onclick="PreviousPage">previous</a>
-                            <a class="btn btn-outline-dark" @onclick="NextPage">suivant</a>
-                        </div>
                     </div>
+             
                 }
                 else
                 {

@@ -38,6 +38,7 @@
             }
         }
         [HttpPost("")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult<ThemeDto>> CreateTheme([FromBody] ThemeDto theme)
         {
             try
@@ -56,6 +57,7 @@
             }
         }
         [HttpPut("")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult<ThemeDto>> UpdateTheme(int themeId, [FromBody] ThemeDto theme)
         {
             try
@@ -75,6 +77,7 @@
             }
         }
         [HttpDelete("")]
+        [Authorize(Roles=("Admin"))]
         public async Task<ActionResult<ThemeDto>> DeleteTheme(int themeId)
         {
             try

@@ -11,78 +11,6 @@
 @inject IThemeService themeService;
 @inject NavigationManager manager;
 
-<div class="flex-fill m-4">
-    <div class="card m-4 p-4">
-        <h3 class="card-title">AddPiece</h3>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-6">
-
-                    <form>
-                        <div class="form-group mb-3 w-50">
-                            <div>
-                                <label class="form-label for="titre">Titre:</label>
-                                <input class="form-control" id="titre" @bind="addedpiece.Titre" />
-                            </div>
-
-                            <div>
-                                <label class="form-label for="duree">Duree:</label>
-                                <input class="form-control" id="duree" @bind="addedpiece.Duree" type="number" />
-                            </div>
-
-                            <div>
-                                <label class="form-label for="description">Description:</label>
-                                <textarea class="form-control " id="description" @bind="addedpiece.Description" rows="3">
-                                </textarea>
-                            </div>
-                            <div>
-                                <label class="form-label for="auteur">Auteur :</label>
-                                <input class="form-control" id="titre" @bind="addedpiece.Auteur" />
-                            </div>
-                            <div>
-                                <label class="form-label for="auteur">Theme</label>
-                                 <select class="form-control" @oninput="OnselecteThem" @bind="selectTheme">
-                                     <option></option>
-                                    @foreach (var item in Getalltheme)
-                                    {
-                                        <option value="@item.Id"> @item.Libelle</option>    
-                                    }
-                                </select>
-                            </div>
-                            <div>
-                                <label class="form-label for="File">Photo :</label>
-                                <InputFile class="col-form-label-lg " OnChange="@OnFileSelected"/>
-                                <div>
-                                    <button type="button" class="btn btn-warning" @onclick="UploadImage"> Upload Image</button>
-                                </div>
-                            </div>
-                            <div>
-                            </div>
-                            <br />
-                            <div>
-                                <button class="btn-primary" type="btn" @onclick="() => AddPieceToDatabase(addedpiece)">ajouter</button>
-                            </div>
-                       
-                        </div>
-                    </form>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card shadow m-2 p-2">
-                        <h4>Résumé</h4>
-                        <p><strong> Auteur :</strong>@addedpiece.Auteur</p>
-                        <p><strong>Description :</strong>@addedpiece.Description</p>
-                        <p><strong>Duree :</strong>@addedpiece.Duree</p>
-                        <p><strong>Theme :</strong>@addedpiece.ThemeId</p>
-                        <p>@ImageValue.Id</p>
-                        <img class="img-fluid " src="https://localhost:44337/Resources/@ImageValue.ImageRessource" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-</div>
 <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -96,31 +24,30 @@
                         <h3 class="card-title">AddPiece</h3>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-6">
-
+                                
                                     <form>
                                         <div class="form-group mb-3 w-100">
                                             <div>
-                                                <label class="form-label for="titre">Titre:</label>
+                                                <label class="form-label" for="titre">Titre:</label>
                                                 <input class="form-control" id="titre" @bind="addedpiece.Titre" />
                                             </div>
 
                                             <div>
-                                                <label class="form-label for="duree">Duree:</label>
+                                                <label class="form-label" for="duree">Duree:</label>
                                                 <input class="form-control" id="duree" @bind="addedpiece.Duree" type="number" />
                                             </div>
 
                                             <div>
-                                                <label class="form-label for="description">Description:</label>
+                                                <label class="form-label" for="description">Description:</label>
                                                 <textarea class="form-control " id="description" @bind="addedpiece.Description" rows="3">
                                 </textarea>
                                             </div>
                                             <div>
-                                                <label class="form-label for="auteur">Auteur :</label>
+                                                <label class="form-label" for="auteur">Auteur :</label>
                                                 <input class="form-control" id="titre" @bind="addedpiece.Auteur" />
                                             </div>
                                             <div>
-                                                <label class="form-label for="auteur">Theme</label>
+                                                <label class="form-label" for="auteur">Theme</label>
                                                 <select class="form-control" @oninput="OnselecteThem" @bind="selectTheme">
                                                     <option></option>
                                                     @foreach (var item in Getalltheme)
@@ -130,7 +57,7 @@
                                                 </select>
                                             </div>
                                             <div>
-                                                <label class="form-label for="File">Photo :</label>
+                                                <label class="form-label" for="File">Photo :</label>
                                                 <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
                                                 <div>
                                                     <button type="button" class="btn btn-warning" @onclick="UploadImage"> Upload Image</button>
@@ -145,7 +72,6 @@
 
                                         </div>
                                     </form>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -188,6 +114,7 @@
         PieceToAdd.ImageId = ImageValue.Id;
         PieceToAdd.ThemeId = selectTheme;
         pieceService.Create(PieceToAdd);
+        _ = ModalOk();
 
     }
 
@@ -222,7 +149,6 @@
             ImageValue = JsonConvert.DeserializeObject<ImageDto>(ImgContent);
             
         }
-        _ = ModalOk();
     }
     #region  modale state
    

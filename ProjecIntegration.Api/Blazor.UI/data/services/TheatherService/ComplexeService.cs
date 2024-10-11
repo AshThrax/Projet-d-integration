@@ -1,4 +1,5 @@
 using Blazor.UI.Data.ModelViews.Theater;
+using Blazored.Toast.Services;
 using Data.ServiceResult;
 using System.Net.Http.Json;
 
@@ -16,11 +17,13 @@ namespace Blazor.UI.Data.services.TheatherService
     public class ComplexeService : IComplexeService
     {
         private readonly HttpClient _httpClient;
+        private readonly IToastService _toastService;
         private const string ApiUri = "https://localhost:7170/api/v1/Complexe";
 
-        public ComplexeService(HttpClient httpClient)
+        public ComplexeService(HttpClient httpClient,IToastService toastService)
         {
             _httpClient = httpClient;
+            _toastService = toastService;
 
         }
 
@@ -70,22 +73,62 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task Create(AddComplexeDto data)
         {
-            await _httpClient.PostAsJsonAsync($"{ApiUri}", data);
+            var result= await _httpClient.PostAsJsonAsync($"{ApiUri}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Update(int id, UpdateComplexeDto data)
         {
-            await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
+            var result =await _httpClient.PutAsJsonAsync($"{ApiUri}/{id}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been updated");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Delete(int id)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+           var result= await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been delete");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task AddSalle(int id, AddSalleDeTheatreDto data)
         {
-            await _httpClient.PostAsJsonAsync($"{ApiUri}/{id}", data);
+            var result =await _httpClient.PostAsJsonAsync($"{ApiUri}/{id}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
     }
 }

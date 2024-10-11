@@ -2,6 +2,7 @@
 using Domain.DataType;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers.Theater
 {
@@ -55,7 +56,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpGet("from-command/{commandId}")]
-        public async Task<ActionResult<IEnumerable<SiegeDto>>> GetSiegeFromCommand(int commandId)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<SiegeDto>>>> GetSiegeFromCommand(int commandId)
         {
             try
             {
@@ -114,16 +115,23 @@ namespace WebApi.Controllers.Theater
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> CreateSiege(AddSiegeDto dto)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult> CreateSiege(AddSiegeDto addsiegedto)
         {
             try
             {
-                ServiceResponse<SiegeDto> response = await _businessSiege.CreateSiegeForSalle(dto);
+                var Validator = new AddSiegeValidator();
+                var result = Validator.Validate(addsiegedto);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<SiegeDto> response = await _businessSiege.CreateSiegeForSalle(addsiegedto);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok();
+                return Ok(response);
             }
             catch (Exception)
             {
@@ -138,16 +146,23 @@ namespace WebApi.Controllers.Theater
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPut("{siegeId}")]
-        public async Task<ActionResult> UpdateSiege(int siegeId ,[FromBody]UpdateSiegeDto dto)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult> UpdateSiege(int siegeId ,[FromBody]UpdateSiegeDto updtSiegedto)
         {
             try
             {
-                ServiceResponse<SiegeDto> response =await _businessSiege.UpdateSiegeById(siegeId, dto);
+                var Validator = new UpdateSiegeValidator();
+                var result = Validator.Validate(updtSiegedto);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<SiegeDto> response =await _businessSiege.UpdateSiegeById(siegeId, updtSiegedto);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok();
+                return Ok(response);
             }
             catch (Exception)
             {
@@ -160,6 +175,7 @@ namespace WebApi.Controllers.Theater
         /// <param name="siegeId"></param>
         /// <returns></returns>
         [HttpDelete("{siegeId}")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> DeleteSiege(int siegeId)
         {
             try
@@ -169,7 +185,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok();
+                return Ok(response);
             }
             catch (Exception)
             {

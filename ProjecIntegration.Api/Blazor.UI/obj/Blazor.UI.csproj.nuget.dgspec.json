@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[4.5.0, )"
             },
+            "Blazored.Toast": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
             "Microsoft.AspNetCore.Components.QuickGrid": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -110,6 +114,10 @@
             "WMBlazorSlickCarousel": {
               "target": "Package",
               "version": "[1.0.1, )"
+            },
+            "webenology.blazor.components": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [

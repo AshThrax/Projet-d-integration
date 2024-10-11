@@ -1,6 +1,7 @@
 ﻿
 using Blazor.UI.Data.ModelViews.Publication;
 using Blazor.UI.Data.ServiceResult;
+using Data.ServiceResult;
 using System.Net.Http.Json;
 
 namespace Blazor.UI.data.services.Publication
@@ -51,12 +52,14 @@ namespace Blazor.UI.data.services.Publication
 
         public async Task<PostDto?> GetPostById(string postId)
         {
-           return await _httpClient.GetFromJsonAsync<PostDto>($"{ApiUri}/{postId}");
+           var result = await _httpClient.GetFromJsonAsync<ServiceResponse<PostDto>>($"{ApiUri}/{postId}");
+            return result.Data;
         }
 
         public async Task UpdatePost(string Id, UpdatePostDto post)
         {
             await _httpClient.PutAsJsonAsync<UpdatePostDto>($"{ApiUri}/{Id}",post);
+
         }
 
         public async Task<bool> IsAuthor(string postId)

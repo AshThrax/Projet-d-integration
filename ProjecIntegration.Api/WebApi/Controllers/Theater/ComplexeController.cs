@@ -5,6 +5,7 @@ using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;
 using Stripe;
+using WebApi.Validator.Theather;
 namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
@@ -31,6 +32,7 @@ namespace WebApi.Controllers.Theater
         {
             try
             {
+
                 ServiceResponse<ComplexeDto> response = await _complexeService.GetComplexe(id);
                 if (!response.Success)
                 {
@@ -92,6 +94,7 @@ namespace WebApi.Controllers.Theater
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> Create([FromBody] AddComplexeDto complexe)
         {
             Console.WriteLine("entering api ");
@@ -101,13 +104,18 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest();
                 }
-                
+                var Validator = new AddComplexeValidator();
+                var result = Validator.Validate(complexe);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
                 ServiceResponse<ComplexeDto> response= await _complexeService.CreateAsync(complexe);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -130,21 +138,24 @@ namespace WebApi.Controllers.Theater
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> Update(int updtId, [FromBody] UpdateComplexeDto complexe)
         {
             try
             {
-                if (complexe == null)
+                var Validator = new UpdtComplexeValidator();
+                var result = Validator.Validate(complexe);
+                if (!result.IsValid)
                 {
-                    BadRequest();
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
                 }
-             
-               ServiceResponse<ComplexeDto> response= await _complexeService.UpdateAsync(updtId, complexe);
+
+                ServiceResponse<ComplexeDto> response= await _complexeService.UpdateAsync(updtId, complexe);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok();
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -176,7 +187,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
             }
             catch (ValidationException ex)
             {

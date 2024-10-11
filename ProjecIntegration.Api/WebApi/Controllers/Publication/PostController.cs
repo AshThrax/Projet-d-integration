@@ -1,14 +1,18 @@
 ﻿using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Dto;
 using Domain.DataType;
+using Domain.ServiceResponse;
 using InfraPublication.BusinessLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Validator.Publication;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class PostController : ControllerBase
     {
         private readonly IPostBL postBL;
@@ -29,9 +33,17 @@ namespace WebApi.Controllers
         {
             try
             {
-                IEnumerable<PostDto> GetPost = await postBL.GetAllPostFromPublicationId(publicationId);
-                Pagination<PostDto> PagePost = Pagination<PostDto>.ToPagedList(GetPost.ToList(), page, 5);
-                return Ok(PagePost);
+                ServiceResponse<IEnumerable<PostDto>> GetPost = await postBL.GetAllPostFromPublicationId(publicationId);
+                if (GetPost.Success)
+                {
+                    Pagination<PostDto> PagePost = Pagination<PostDto>.ToPagedList(GetPost.Data.ToList(), page, 5);
+                    return Ok(PagePost);
+
+                }
+                else 
+                {
+                    return BadRequest(GetPost);
+                }
             }
             catch(Exception ex)
             {
@@ -46,8 +58,15 @@ namespace WebApi.Controllers
         {
             try
             {
-                IEnumerable<PostDto> GetPost = await postBL.GetPostFromUserId(publicationId);
-                return Ok(GetPost);
+                ServiceResponse<IEnumerable<PostDto>> GetPost = await postBL.GetPostFromUserId(publicationId);
+                if (GetPost.Success)
+                {
+                    return Ok(GetPost);
+                }
+                else
+                {
+                    return BadRequest(GetPost);
+                }
             }
             catch (Exception ex)
             {
@@ -75,8 +94,15 @@ namespace WebApi.Controllers
         {
             try
             {
-                  await postBL.DeletePost(postById);
-                return NoContent();
+                ServiceResponse<PostDto> response=  await postBL.DeletePost(postById);
+                if (response.Success)
+                {
+                    return Ok(response);
+                }
+                else 
+                {
+                    return BadRequest(response);
+                }
             }
             catch (Exception ex)
             {
@@ -87,16 +113,28 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> UpdatePostfromPublication(string postById,string content)
+        public async Task<ActionResult> UpdatePostfromPublication(string postById, [FromBody] UpdatePostDto updtPost)
         {
             try
             {
-                if (content == null)
+               
+                var Validator = new UpdatePostValidator();
+                var result = Validator.Validate(updtPost);
+                if (!result.IsValid)
                 {
-                    return BadRequest("conent null");
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
                 }
-               await postBL.UpdatePost(postById, content);
-                return NoContent();
+
+               
+                ServiceResponse<PostDto> response= await postBL.UpdatePost(postById,updtPost.Content);
+                if (response.Success)
+                {
+                    return Ok(response);
+                }
+                else 
+                {
+                    return BadRequest(response);
+                }
             }
             catch (Exception ex)
             {
@@ -108,18 +146,33 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> CreatePublication(string publicationById, [FromBody] AddPostDto AddPost)
+        public async Task<ActionResult> CreatePublication(string publicationById, [FromBody] AddPostDto addPost)
         {
             try
             {
-                if (AddPost == null)                  
+                if (addPost == null)                  
                 {
                     return BadRequest();
                 }
-                AddPost.UserId = await _customGetToken.GetSub();
-                AddPost.PublicationId=publicationById;
-                await postBL.CreateAsync(publicationById,AddPost);
-                return Ok();
+                var Validator = new AddPostValidator();
+                var result = Validator.Validate(addPost);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                addPost.UserId = await _customGetToken.GetSub();
+                addPost.PublicationId=publicationById;
+                ServiceResponse<PostDto> response= await postBL.CreateAsync(publicationById,addPost);
+                
+                if (response.Success)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
+              
             }
             catch (Exception ex)
             {

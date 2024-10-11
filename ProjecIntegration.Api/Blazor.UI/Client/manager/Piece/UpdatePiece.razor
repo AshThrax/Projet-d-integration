@@ -60,13 +60,13 @@
                                     <div>
                                         <label class="form-label" for="File">Photo :</label>
                                         <InputFile class="col-form-label-lg " OnChange="@OnFileSelected" />
-                                      
+                                        <a class="btn btn-sucess" @onclick="()=>UploadImage()">Upload Image</a>
                                     </div>
                                     <div>
                                     </div>
                                     <br />
                                     <div>
-                                        <button class="btn-primary" type="btn" @onclick="() => UpdatedPiece()">ajouter</button>
+                                        <button class="btn-primary btn" type="btn" @onclick="() => UpdatedPiece()">mettre a jour</button>
                                     </div>
 
                                 </div>
@@ -82,26 +82,27 @@
     </div>
 </div>
 @code {
-    [Parameter]
-    public int Id { get; set; }
+        [Parameter]
+        public int Id { get; set; }
     public PieceDto GetPiece { get; set; }
 
     private long maxFileSize = long.MaxValue;
     public string? fileName { get; set; }
     IBrowserFile? ImageFile { get; set; }
-    public ImageDto ImageValue { get; set; } = new();
+    public ImageDto ImageValue { get; set; } 
     public List<ThemeDto> Getalltheme { get; set; } = new();
     public int selectTheme { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         GetPiece = await pieceService.GetById(Id);
-        await Task.Delay(1000);
+        Getalltheme = (await themeService.GetAllTheme()).ToList();
+
     }
 
     public async Task UpdatedPiece()
     {
-        await UploadImage();
+       
         UpdatePieceDto piece = new UpdatePieceDto
             {
                 Titre = GetPiece.Titre,
@@ -109,10 +110,11 @@
                 Description = GetPiece.Description,
                 Duree = GetPiece.Duree,
                 Id = GetPiece.Id,
-                Image = ImageValue.ImageRessource,
+                Image = ImageValue?.ImageRessource,
                 ThemeId = GetPiece.ThemeId
             };
         await pieceService.Update(piece.Id, piece);
+        _ = ModalOk();
     }
     #region page
     private void GetAllPiece(MouseEventArgs e)
@@ -154,12 +156,13 @@
             name: "\"files\"",
             fileName: file.Name);
 
-
-        var response = await Http.PostAsync("/api/File", content);
+        int imageId = GetPiece.ImageId;
+        var response = await Http.PutAsync($"/api/File/{imageId}", content);
         if (response.IsSuccessStatusCode)
         {
             var ImgContent = await response.Content.ReadAsStringAsync();
-            ImageValue = JsonConvert.DeserializeObject<ImageDto>(ImgContent);
+            ImageValue = JsonConvert.DeserializeObject
+                            <ImageDto>(ImgContent);
 
         }
 

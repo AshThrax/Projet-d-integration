@@ -3,6 +3,7 @@ using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers.Theater
 {
@@ -129,7 +130,8 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpPost]
-        public async Task<ActionResult> Createrepresentation([FromBody] AddRepresentationDto entity)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult> Createrepresentation([FromBody] AddRepresentationDto addRepresentation)
         {
             try
             {
@@ -137,13 +139,18 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest();
                 }
-                
-                ServiceResponse<RepresentationDto> response= await _businessRepService.Create(entity);
+                var Validator = new AddRepresentationValidator();
+                var result = Validator.Validate(addRepresentation);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<RepresentationDto> response= await _businessRepService.Create(addRepresentation);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok();
+                return Ok(response);
             }
             catch (ValidationException ex)
             {
@@ -160,8 +167,8 @@ namespace WebApi.Controllers.Theater
         }
        
         [HttpPut("{updtId}")]
-     
-        public async Task<ActionResult> UpdateRepresentation(int updtId, [FromBody] UpdateRepresentationDto entity)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult> UpdateRepresentation(int updtId, [FromBody] UpdateRepresentationDto updtRepresentation)
         {
             try
             {
@@ -169,13 +176,18 @@ namespace WebApi.Controllers.Theater
                 {
                     BadRequest();
                 }
-                
-                ServiceResponse<RepresentationDto> response = await _businessRepService.Update(updtId, entity);
+                var Validator = new UpdtRepresentationValidator();
+                var result = Validator.Validate(updtRepresentation);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<RepresentationDto> response = await _businessRepService.Update(updtId, updtRepresentation);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
 
             }
             catch (ValidationException ex)
@@ -192,6 +204,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> DeleteRepresentation(int id)
         {
             try
@@ -202,7 +215,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return NoContent();
+                return Ok(response);
             }
             catch (ValidationException ex)
             {

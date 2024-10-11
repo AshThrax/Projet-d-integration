@@ -8,6 +8,7 @@ namespace WebApi.Controllers.Follow
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class FollowController : ControllerBase
     {
         private readonly IFollowService _followService;

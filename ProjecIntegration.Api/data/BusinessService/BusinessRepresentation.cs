@@ -196,11 +196,16 @@ namespace DataInfraTheather.BusinessService
             try
             {
                 bool getrep = await _repservice.DoYouExist(dto.Id.Value);
+                Representation getrepresentationById = await _repservice.GetById(id);
                 if (getrep)
                 {
-                    Representation entityToUpdate = _mapper.Map<Representation>(dto);
-                    entityToUpdate.UpdatedDate=DateTime.Now;
-                    await _repservice.Update(dto.Id.Value, entityToUpdate);
+                    getrepresentationById.Prix = dto.Prix;
+                    getrepresentationById.PlaceCurrent = dto.PlaceCurrent;
+                    getrepresentationById.PlaceMaximum = dto.PlaceMaximum;
+                    getrepresentationById.SalledeTheatreId = dto.SalledeTheatreId;
+                    getrepresentationById.Seance = dto.Seance;
+                    getrepresentationById.UpdatedDate=DateTime.Now;
+                    await _repservice.Update(dto.Id.Value, getrepresentationById);
                     response.Success = true;
                     response.Message = "mise a jour réussi";
                     response.Errortype = Errortype.Good;

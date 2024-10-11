@@ -30,7 +30,9 @@ namespace InfrastructureAnnonce.BusinessService
             {
                 if (addAnnonceDto != null)
                 {
-                    _annonceRepository.Insert(_mapper.Map<Annonce>(addAnnonceDto));
+                    Annonce createAnnonce = _mapper.Map<Annonce>(addAnnonceDto);
+                    createAnnonce.CreatedDate = DateTime.Now;
+                   await _annonceRepository.Insert(createAnnonce);
                 }
 
             }
@@ -48,7 +50,7 @@ namespace InfrastructureAnnonce.BusinessService
                 Annonce annonce = await _annonceRepository.GetById(annonceId);
                 if (annonce != null)
                 {
-                    _annonceRepository.Delete(annonceId);
+                    await _annonceRepository.Delete(annonceId);
                 }
             }
             catch (Exception)
@@ -83,7 +85,7 @@ namespace InfrastructureAnnonce.BusinessService
         {
             try
             {
-                IEnumerable<Annonce> getAllAnnonce = await _annonceRepository.GetAll();
+                IEnumerable<Annonce> getAllAnnonce = (await _annonceRepository.GetAll()).OrderByDescending(x=>x.CreatedDate);
                 return Pagination<GetAnnonceDto>.ToPagedList(_mapper.Map<List<GetAnnonceDto>>(getAllAnnonce.ToList()), pageNumber, 10);
 
             }
@@ -103,7 +105,8 @@ namespace InfrastructureAnnonce.BusinessService
                 if (annonce != null)
                 {
                     Annonce mapped = _mapper.Map<Annonce>(annonceDto);
-                    _annonceRepository.Update(annonceId, mapped);
+                    mapped.UpdatedDate = DateTime.Now;
+                    await _annonceRepository.Update(annonceId, mapped);
                 }
             }
             catch (Exception)

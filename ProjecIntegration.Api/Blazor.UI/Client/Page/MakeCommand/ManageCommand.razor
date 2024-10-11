@@ -19,9 +19,6 @@
 
     </div>
 </div>
-<div class=" btn-group rounded float-end">
-<ButtonComponent Id="IdPiece"></ButtonComponent>
-</div>
 @if (piececlt != null && repclt != null && salleclt != null)
 {  
 <div class="row">
@@ -30,67 +27,49 @@
             <div>
                 <h3>Résumer de la commande </h3>
             </div>
-            <div class="p-3 m-3  bg-opacity-10 rounded-5">
-                <div class="bg-light m-2 p-4 rounded-5 border">
+                <div class="p-3 m-3  bg-opacity-10 bg-light ">
+                
                     <div class="card">
                          <div class="card-body">
+                                <img class="img-fluid" src="https://localhost:7170/Resources/@piececlt.Image" />
                              <p><strong>Titre</strong>: @piececlt.Titre</p>
-                                <p><strong>durée de la pîece</strong>: @piececlt.Duree minutes</p>
+                             <p><strong>durée de la pîece</strong>: @piececlt.Duree minutes</p>
+                             <p><strong>Salle:</strong> @salleclt.Name</p>
+                             <p><strong>séance:</strong> @repclt.Seance </p>
+                             <p><strong>durée de la pîece</strong>: @piececlt.Description</p>
                          </div>
-                         <div class="card-body">
-
-                            <div>
-                                 <p><strong>Salle:</strong> @salleclt.Name</p>
-                            </div>
-                            <div>
-                                    <p><strong>séance:</strong> @repclt.Seance </p>
-                            </div>
-                   
-                            <div class="p-2 input-group m-3">
-                                <p class="pe-2"><strong>Nombre de ticket</strong></p>
-                                <br>
-                                <input @oninput="UpdatePrice" class="form-control p-2 ps-2 border border-dark" type="number" />
-                                </div>
-                         </div>
-                         <div class="card-body">
-                            <div>
-                                <h3>Prix</h3>
-                                <div>
-                                    <p>@Priceclt</p>
-                                </div>
-                            </div>
-                            <div>
-                               <button type="button" class="btn btn-warning p-2 float-end" @onclick="MakingCommande">
-                                        nombre de ticket désirée
-                              </button>
-                            </div>
-                         </div>
+                       
                     </div>
-                </div>
+               
+            
             </div>
-        </div>
 
-    </div>
+         </div>
+   </div>
     <div class="col flex-column">
             @if (commandeMade != null)
             {
 
                 <div class =" row bg-info bg-opacity-10 m-2 p-2 rounded">
-                    <div class=" col m-2 p-2 bg-light">
+                    <div hidden="true" class=" col m-2 p-2 bg-light">
                         <h4>Commande</h4>
                         <p>represnetaiton: @commandeMade.IdRepresentation</p>
                         <p>nombre de place:@commandeMade.NombreDePlace</p>
                         <p>nombre de place dans SiegeForCommande:@SiegeForCommande.Count</p>
                     </div>
                     <div class="col">
-
+                        <div class="input-group w-50 ">
+                            <p class="pe-2"><strong>Nombre de ticket</strong></p>
+                            <br>
+                            <input @oninput="UpdatePrice" class="form-control p-2 border border-dark" type="number" />
+                        </div>
                         @if (ticketGen > 0)
                         {
                             for (int i = 0; i < ticketGen; i++)
                             {
                                 <div>
                                     <p>Choissez votre Siège</p>
-                                    <select class="form-control" @onchange="OnSelectSiege" >
+                                    <select class="form-control w-50" @onchange="OnSelectSiege" >
                                         @if(GetSiegeFromSalle !=null)
                                         {
                                             <option >text</option>
@@ -104,13 +83,32 @@
                                 </div>
                             }
                         }
-                       
+                        <div class="card-body">
+                            <div>
+                                <h3>Prix</h3>
+                                <div>
+                                    <p>@Priceclt</p>
+                                </div>
+                            </div>
+                            <div>
+                                @if (ticketGen > 0)
+                                {
+
+                                    <button type="button" class="btn btn-warning p-2 float-end" @onclick="MakingCommande">
+                                        Payer
+                                    </button>
+                                }
+                                else
+                                {
+                                    <h3 class="text-danger lead">Veuillez choisir un nombre de place Positif</h3>   
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
                
             }
     </div>
-   
 </div>
 }
 else{
@@ -150,7 +148,7 @@ else{
         piececlt = await ServPiece.GetById(IdPiece);
         salleclt = await ServSalle.GetById(IdSalle);
         repclt = await Servrep.GetById(IdRepresnetation);
-        GetSiegeFromSalle = await salleService.GetAllFromsalleId(IdSalle);
+        GetSiegeFromSalle = await salleService.GetAllAvailableSiegeFromRepresentation(IdRepresnetation,IdSalle);
 
     }
     public async Task Dataload()

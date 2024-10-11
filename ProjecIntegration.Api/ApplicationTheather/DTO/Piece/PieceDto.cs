@@ -97,7 +97,7 @@ namespace ApplicationTheather.DTO
         public int Duree { get; set; }
         public string Description { get; set; } = string.Empty;
         public string Auteur { get; set; } = string.Empty;
-        public IFormFile? ImageFile { get; set; }
+        public int ImageId { get; set; }
         public string? Image { get; set; }
         public int? ThemeId { get; set; }
     }

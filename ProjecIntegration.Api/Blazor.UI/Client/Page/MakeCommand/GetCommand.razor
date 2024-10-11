@@ -10,38 +10,13 @@
     @if (lstCommand != null && lstCommand.Count>0)
     {
         <div class="col ">
-            <QuickGrid Items="@lstCommand.AsQueryable()">
-                <PropertyColumn Property="p =>p.Id"  Title="#"  Sortable="true" />
-                <PropertyColumn Property="p =>p.NombreDePlace" Title="nombre de place" />
-                <TemplateColumn Title="representation">
-                   <div>
-                       <button type="button" class="btn btn-warning float-end" @onclick="() =>LoadRepresentation(context.IdRepresentation)">
-                           representation</button>
-                   </div>
-                  </TemplateColumn>
-            </QuickGrid>
+            @foreach (var item in lstCommand)
+            {
+              <Blazor.UI.Client.Page.Profile.Component.UserCommande commandDto="item"></Blazor.UI.Client.Page.Profile.Component.UserCommande>
+            }
         </div>
 
-        if (selectRepresnetaion !=null && Piecerep != null)
-        {
-            <div class=" border border-end text-center">
-                <div class="m-4 p-4">
-                    <h5 class="">@Piecerep.Titre</h5>
-                </div>
-                <div class="w-50 h-25 float-end">
-                    
-
-                </div>
-            <br>
-            </div>
-            <div class="m-2 p-2">
-                <button type="button" class="btn btn-warning float-end" @onclick="Clean"> clean</button>
-            </div>
-        }
-        else
-        {
-            <Blazor.UI.Client.Shared.Load></Blazor.UI.Client.Shared.Load>
-        }
+      
     }
     else
     {
@@ -82,4 +57,5 @@
     }
     public void Clean() 
             => selectRepresnetaion = null;
+
 }

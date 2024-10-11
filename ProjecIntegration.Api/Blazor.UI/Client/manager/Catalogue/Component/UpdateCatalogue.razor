@@ -19,7 +19,7 @@
                 {
                 <div class="flex-fill m-4">
                     <div class="card m-2">
-                        <form class="w-50">
+                        <form class="w-100">
                             <h3 class="card-header">Mise a jour d'un catalogue'</h3>
                             <div class="form-group card-body mb-3 ">
 
@@ -34,7 +34,7 @@
                                 </div>
                                 <div>
                                     <label class="form-label" for="complexe">Complexe</label>
-                                    <select class="form-control" @bind="SelectedComplexeId" @oninput="OnSelectedChange">
+                                    <select class="form-control" @bind="selectCatalogue.ComplexeId" @oninput="OnSelectedChange">
                                         <option value="value">text</option>
                                         @foreach (var item in GetAllComplexe)
                                         {

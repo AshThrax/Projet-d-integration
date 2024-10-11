@@ -1,5 +1,6 @@
 ﻿using ApplicationPublication.Dto;
 using Domain.Entity.publicationEntity;
+using Domain.ServiceResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,36 +17,36 @@ namespace ApplicationPublication.Common.BusinessLayer
         /// </summary>
         /// <param name="postId">identifiant du post </param>
         /// <returns></returns>
-        Task DeletePost(string postId);
+        Task<ServiceResponse<PostDto>> DeletePost(string postId);
         /// <summary>
         /// récupère un poste par son identifiant 
         /// </summary>
         /// <param name="postId">identifiant du post a récuperer </param>
         /// <returns></returns>
-        Task<Post> GetPostById(string postId);
+        Task<ServiceResponse<PostDto>> GetPostById(string postId);
         /// <summary>
         /// retourne une liste de poste liée a une publication
         /// </summary>
         /// <param name="PubId">identifiant de la publication</param>
         /// <returns></returns>
-        Task<IEnumerable<PostDto>> GetAllPostFromPublicationId(string PubId);
+        Task<ServiceResponse<IEnumerable<PostDto>>> GetAllPostFromPublicationId(string PubId);
         /// <summary>
         ///   mets a jours un object de type poste
         /// </summary>
         /// <param name="postId">identifiant du post</param>
         /// <param name="Content">contenue a mettre a jour</param>
         /// <returns></returns>
-        Task UpdatePost(string postId, string Content);
+        Task<ServiceResponse<PostDto>> UpdatePost(string postId, string Content);
         /// <summary>
         ///    creer un object de type post
         /// </summary>
         /// <param name="publicationtid">identifiant de la publication</param>
         /// <param name="pub">object post provenant du client</param>
         /// <returns></returns>
-        Task CreateAsync(string publicationtid, AddPostDto pub);
+        Task<ServiceResponse<PostDto>> CreateAsync(string publicationtid, AddPostDto pub);
         #endregion
 
-        Task<IEnumerable<PostDto>> GetPostFromUserId(string userId);
+        Task<ServiceResponse<IEnumerable<PostDto>>> GetPostFromUserId(string userId);
         Task<bool> IsAuthor(string postId, string userId);
     }
 }

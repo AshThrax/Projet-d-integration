@@ -5,10 +5,13 @@ using Blazor.UI.Data.services.authorization;
 using Blazor.UI.Data.services.Publication;
 using Blazor.UI.Data.services.TheatherService;
 using Blazor.UI.Data.Services.CartService;
+using Blazor.UI.Data.Services.Pdf;
 using Blazor.UI.Data.Services.TheatherService;
 using Blazor.UI.Data.Services.User;
 using Blazored.LocalStorage;
+using Blazored.Toast;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using webenology.blazor.components;
 
 namespace Blazor.UI.extensionMethods
 {
@@ -26,7 +29,7 @@ namespace Blazor.UI.extensionMethods
             services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
                                                     .CreateClient("projectAPI"));
             services.AddBlazoredLocalStorage();
-            //services.AddBlazoredToast();
+            services.AddBlazoredToast();
             services.AddAuthService(configuration);
             services.CustomService();
             return services;
@@ -86,6 +89,8 @@ namespace Blazor.UI.extensionMethods
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISiegeService, SiegeService>();
+            services.AddTransient<IPdfService, PdfService>();
+            services.AddWebenologyHelpers();
             return services;
         }
     }

@@ -11,25 +11,9 @@
 <PageTitle>Publication</PageTitle>
 <div class="row">
     <div class="col-3 col-sm-3">
-        @if (SelectPieceDtos !=null)
-        {
-            <div class="rounded bg-light col-md-5">
-                <div class="col mt-2 pt-2">
-                    <img class="img-thumbnail" src="https://localhost:7170/Resources/@SelectPieceDtos.Image" />
-                </div>
-                <div class="col ">
-                    <h4>Representation Details</h4>
-                    <p><strong>Title: </strong> @SelectPieceDtos.Titre</p>
-                    <p><strong>Duration: </strong> @SelectPieceDtos.Duree</p>
-                    <p class="lead"><strong>Description: </strong> @SelectPieceDtos.Description</p>
-                </div>
-            </div>
-        }
-    </div>
-    <div class="col-3 col-sm-3">
         @if (amiAutorized)
         {
-        <div class=" mt-4 h-50 btn-group-lg float-end">
+            <div class=" mt-4 h-50 btn-group-lg float-end">
                 @if (!Hasreview)
                 {
                     <button class="btn btn-success" @onclick="() =>OnOpenDialogBox()">Ajouter une Critique</button>
@@ -48,20 +32,22 @@
                 {
             
                 }
-        </div>
+            </div>
         }
         else
         {
         
         }
-        <div class="mt-4 h-50 ">
+
+    </div>
+        <div class="mt-4  ">
                 <Blazor.UI.Client.Page.publication.Publication.PublicationComponent PieceId="Id">
                 </Blazor.UI.Client.Page.publication.Publication.PublicationComponent>
         </div>
-
-    </div>
-
 </div>
+
+       
+
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -73,7 +59,6 @@
     protected override async Task OnInitializedAsync()
     {
         await DataLoad();
-        await Task.Delay(100);
     }
     public async Task DataLoad()
     {
@@ -81,7 +66,7 @@
         amiAutorized = await comService.DoIHaveacommand(Id);
         Hasreview = await pubService.Hasreview(Id);
         SelectPieceDtos = await Servp.GetById(Id);
-        await Task.Delay(100);
+
     }
     public async Task NextPubPage()
     {
@@ -107,10 +92,11 @@
         DialogBox=true;
         StateHasChanged();
     }
-    public void CloseDialogBox()
+    public async Task CloseDialogBox()
     {
         DialogBox=false;
         StateHasChanged();
+        await DataLoad();
     }
     #endregion
 }

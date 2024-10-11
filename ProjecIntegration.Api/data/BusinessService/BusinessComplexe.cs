@@ -113,9 +113,11 @@ namespace DataInfraTheather.BusinessService
                 var getEntity = await _complexeRepository.GetById(id);
                 if (getEntity != null)
                 {
-                    Complexe conversion = _mapper.Map<Complexe>(getEntity);
-                    conversion.UpdatedDate=DateTime.Now;
-                    await _complexeRepository.Update(id, conversion);
+                    getEntity.Adress = complexeDto.Adress;
+                    getEntity.Description = complexeDto.Description;
+                    getEntity.Name = complexeDto.Name;
+                    getEntity.UpdatedDate=DateTime.Now;
+                    await _complexeRepository.Update(id,getEntity);
                     
                     response.Success = true;
                     response.Message = "operation réussi";

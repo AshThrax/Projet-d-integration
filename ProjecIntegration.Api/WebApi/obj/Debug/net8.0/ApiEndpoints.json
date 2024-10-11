@@ -130,7 +130,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "AddAsync",
+    "Method": "DeleteAsync",
     "RelativePath": "api/Signalement/{Id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -156,7 +156,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.Signalement, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.GetSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.AddSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.Signalement.UpdateSignalementDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "AddAsync",
+    "Method": "UpdateAsync",
     "RelativePath": "api/Signalement/{updtId}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -259,7 +259,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "AddAsync",
+    "Method": "DeleteAsync",
     "RelativePath": "api/SignalementType/{Id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -285,7 +285,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.PublicationEntity.Mod\u00E9ration.SignalementType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.GetSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.AddSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.SignalementType.UpdateSignalementTypeDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "AddAsync",
+    "Method": "UpdateAsync",
     "RelativePath": "api/SignalementType/{updtId}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -426,9 +426,9 @@
         "IsRequired": true
       },
       {
-        "Name": "annonce",
+        "Name": "updtAnnonce",
         "Type": "ApplicationAnnonce.DTO.UpdateAnnonceDto",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -691,6 +691,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ApplicationTheather.DTO.CatalogueDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.Theater.CatalogueController",
+    "Method": "AddCatalogue",
+    "RelativePath": "api/v1/Catalogue",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addCatalogueDto",
+        "Type": "ApplicationTheather.DTO.AddCatalogueDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApplicationTheather.DTO.CatalogueDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1456,7 +1482,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "AddAsync",
+    "Method": "DeleteAsync",
     "RelativePath": "api/v1/FeedBack/{Id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -1482,7 +1508,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.GeneriqueController\u00604[[Domain.Entity.UserEntity.FeedBack.Feedback, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.FeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.AddFeedBackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[ApplicationUser.Dto.FeedBack.UpdateFeedbackDto, ApplicationUser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "AddAsync",
+    "Method": "UpdateAsync",
     "RelativePath": "api/v1/FeedBack/{updtId}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -1965,49 +1991,9 @@
         "IsRequired": true
       },
       {
-        "Name": "Titre",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Duree",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Auteur",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ImageFile",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      },
-      {
-        "Name": "Image",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ThemeId",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Id",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "AddedTime",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
+        "Name": "updatepiece",
+        "Type": "ApplicationTheather.DTO.UpdatePieceDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -2232,9 +2218,9 @@
         "IsRequired": false
       },
       {
-        "Name": "content",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "updtPost",
+        "Type": "ApplicationPublication.Dto.UpdatePostDto",
+        "IsRequired": true
       },
       {
         "Name": "publicationById",
@@ -2282,7 +2268,7 @@
         "IsRequired": true
       },
       {
-        "Name": "AddPost",
+        "Name": "addPost",
         "Type": "ApplicationPublication.Dto.AddPostDto",
         "IsRequired": true
       }
@@ -2465,7 +2451,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "AddPublication",
+        "Name": "addPublication",
         "Type": "ApplicationPublication.Dto.AddPublicationDto",
         "IsRequired": true
       }
@@ -2807,7 +2793,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "entity",
+        "Name": "addRepresentation",
         "Type": "ApplicationTheather.DTO.AddRepresentationDto",
         "IsRequired": true
       }
@@ -2870,7 +2856,7 @@
         "IsRequired": true
       },
       {
-        "Name": "entity",
+        "Name": "updtRepresentation",
         "Type": "ApplicationTheather.DTO.UpdateRepresentationDto",
         "IsRequired": true
       }
@@ -2974,7 +2960,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Entity",
+        "Name": "addSalle",
         "Type": "ApplicationTheather.DTO.AddSalleDeTheatreDto",
         "IsRequired": true
       }
@@ -3037,7 +3023,7 @@
         "IsRequired": true
       },
       {
-        "Name": "Entity",
+        "Name": "updtSalle",
         "Type": "ApplicationTheather.DTO.UpdateSalleDeTheatreDto",
         "IsRequired": true
       }
@@ -3140,7 +3126,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
+        "Name": "addsiegedto",
         "Type": "ApplicationTheather.DTO.AddSiegeDto",
         "IsRequired": true
       }
@@ -3187,7 +3173,7 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
+        "Name": "updtSiegedto",
         "Type": "ApplicationTheather.DTO.UpdateSiegeDto",
         "IsRequired": true
       }
@@ -3226,7 +3212,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ApplicationTheather.DTO.SiegeDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Domain.ServiceResponse.ServiceResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[ApplicationTheather.DTO.SiegeDto, ApplicationTheather, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

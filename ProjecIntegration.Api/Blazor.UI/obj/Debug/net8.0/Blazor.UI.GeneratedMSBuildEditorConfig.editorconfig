@@ -278,6 +278,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcUHJvZmlsZUluZm9Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Component/UserCommande.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxDb21wb25lbnRcVXNlckNvbW1hbmRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Page/Profile/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFBhZ2VcUHJvZmlsZVxQcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -366,8 +370,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxMb2FkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/NotFoundComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxOb3RGb3VuZENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/PieChart.razor]
 build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxQaWVDaGFydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/UnauthorizedComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2xpZW50XFNoYXJlZFxVbmF1dGhvcml6ZWRDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Client/Shared/UploadsFilesTest.razor]
@@ -386,12 +398,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEZvb3RlckNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/AnnonceComponent/AnnonceComponent.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub25jZUNvbXBvbmVudFxBbm5vbmNlQ29tcG9uZW50LnJhem9y
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Annonce/AnnonceComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub25jZVxBbm5vbmNlQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/AnnonceComponent/ListAnnonce.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub25jZUNvbXBvbmVudFxMaXN0QW5ub25jZS5yYXpvcg==
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Annonce/Component/SingleAnnonceComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub25jZVxDb21wb25lbnRcU2luZ2xlQW5ub25jZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Annonce/ListAnnonce.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub25jZVxMaXN0QW5ub25jZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/quentin/classicweb/Projet/ProjecIntegration.Api/Blazor.UI/Pages/Counter.razor]

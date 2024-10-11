@@ -1,14 +1,22 @@
 ﻿using ApplicationPublication.Common.BusinessLayer;
 using ApplicationPublication.Dto;
+using Azure;
 using Domain.DataType;
+using Domain.Entity.publicationEntity;
+using Domain.ServiceResponse;
 using InfraPublication.BusinessLayer;
+using Microsoft.AspNet.SignalR.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApi.Validator.Publication;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class PublicationController : ControllerBase
     {
         private readonly IPublicationBl _publicationBl;
@@ -31,7 +39,8 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok( await _publicationBl.GetAllPublication());
+                ServiceResponse<IEnumerable<PublicationDto>> response = await _publicationBl.GetAllPublication();
+                return Ok( response);
             }
             catch
             {
@@ -47,7 +56,16 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(await _publicationBl.GetPublicationById(publicationId));
+                ServiceResponse<PublicationDto> response = await _publicationBl.GetPublicationById(publicationId);
+                if (response.Success)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
+              
             
             }
             catch
@@ -65,9 +83,17 @@ namespace WebApi.Controllers
         {
             try
             {
-                List<PublicationDto> listofPublication= (await _publicationBl.GetPublicationByPiece(pieceId)).ToList();
-                Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(listofPublication, page, 5);
-                return Ok(pagePublication);
+                ServiceResponse<IEnumerable<PublicationDto>> response= (await _publicationBl.GetPublicationByPiece(pieceId));
+                if (response.Success)
+                {
+                    Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(response.Data.ToList(), page, 5);
+                    return Ok(pagePublication);
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
+                
             }
             catch (Exception)
             {
@@ -85,9 +111,17 @@ namespace WebApi.Controllers
             try
             {
                 var auth = await _customGetToken.GetSub();
-                List<PublicationDto> getPublication= (await _publicationBl.GetAllbyPublicationByUserId(auth)).ToList();
-                Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(getPublication, page, 5);
-                return Ok(await _publicationBl.GetAllbyPublicationByUserId(auth));
+                ServiceResponse<IEnumerable<PublicationDto>> response= await _publicationBl.GetAllbyPublicationByUserId(auth);
+                if (response.Success)
+                {
+                  
+                    Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(response.Data.ToList(), page, 5);
+                    return Ok(pagePublication);
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
             }
             catch
             {
@@ -104,9 +138,16 @@ namespace WebApi.Controllers
             try
             {
                
-                List<PublicationDto> getPublication = (await _publicationBl.GetAllbyPublicationByUserId(userId)).ToList();
-                Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(getPublication, page, 5);
-                return Ok(pagePublication);
+                ServiceResponse<IEnumerable<PublicationDto>> response = (await _publicationBl.GetAllbyPublicationByUserId(userId));
+                if (response.Success)
+                {
+                    Pagination<PublicationDto> pagePublication = Pagination<PublicationDto>.ToPagedList(response.Data.ToList(), page, 5);
+                    return Ok(pagePublication);
+                }
+                else 
+                {
+                    return BadRequest(response);
+                }
             }
             catch
             {
@@ -118,8 +159,16 @@ namespace WebApi.Controllers
         {
             try
             {
-                await _publicationBl.DeletePublication(publicationById);
-                return NoContent();
+                ServiceResponse<PublicationDto>response= await _publicationBl.DeletePublication(publicationById);
+                if (response.Success)
+                {
+                    return NoContent();
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
+                
             }
             catch
             {
@@ -139,9 +188,21 @@ namespace WebApi.Controllers
                 {
                     return BadRequest();
                 }
-
-                await _publicationBl.UpdatePublication(publicationById,publication.Title,publication.Review);
-                return NoContent(); 
+                var Validator = new UpdatePublicationValidator();
+                var result = Validator.Validate(publication);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<PublicationDto> response =await _publicationBl.UpdatePublication(publicationById,publication.Title,publication.Review);
+                if (response.Success)
+                {
+                    return NoContent();
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
             }
             catch
             {
@@ -154,20 +215,32 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> CreatePublication( [FromBody] AddPublicationDto AddPublication)
+        public async Task<ActionResult> CreatePublication( [FromBody] AddPublicationDto addPublication)
         {
             try
             {
-                if (AddPublication == null)
+                if (addPublication == null)
                 {
                     return BadRequest();
                 }
-
+                var Validator = new AddPublicationValidator();
+                var result = Validator.Validate(addPublication);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
                 string UserId = await _customGetToken.GetSub();
-                AddPublication.UserId = UserId;
+                addPublication.UserId = UserId;
                
-                await _publicationBl.CreatePublication(AddPublication);
-                return NoContent();
+                ServiceResponse<PublicationDto> response= await _publicationBl.CreatePublication(addPublication);
+                if (response.Success)
+                {
+                    return NoContent();
+                }
+                else
+                {
+                    return BadRequest(response);
+                }
             }
             catch 
             {

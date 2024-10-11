@@ -14,46 +14,6 @@
 
     @if (GetPublication != null)
     {
-        <h4>Publication</h4>
-        <div class=" m-4 p-4 rounded shadow">
-        <section class="m-1 p-1">
-                         <div class="btn-group float-end">
-                               <div class="dropdown">
-                                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" @onclick="GetPost">Afficher </a></li>
-                                        <li><a class="dropdown-item" @onclick="WriteAPost">Repondre </a></li>
-                                        <li><a class="dropdown-item" @onclick="RemovePostFromView"> replier </a></li>
-                                    </ul>
-                                </div>
-                         </div>
-            <div class="row ">
-                        <div class="col-md-4">
-                            <GetUserComponent UserId="@GetPublication.UserId"></GetUserComponent>
-                        </div>
-                        <div class="col-md-7">
-                            <h3 class="p-2"><strong>Titre </strong>@GetPublication?.Title</h3>
-                            <div class="card-body">
-                                <p class="card-text p-2"><strong>Article </strong>@GetPublication?.Review</p>
-                                <p class="card-text p-2 bottom"><strong>Date </strong>@GetPublication?.CreatedDate</p>
-                                <p class="card-text p-2 float-end"><strong>nombre de Réponse </strong>@GetPublication?.post.Count</p>
-
-                            </div>
-                        </div>
-                </div>
-            </section>
-            @if (AfficherPost)
-            {
-                <h5>Réponses</h5>
-                <PostPublicationComponent Id="@Id" ></PostPublicationComponent>
-            }
-            else
-            {
-                    
-            }
-            <br />
             @if (DoIWriteAPost)
             {     
                <AddPostComponent Id="@Id" OnClose="CloseDialogBox"></AddPostComponent>
@@ -62,6 +22,43 @@
             {
                    
             }
+        <div class="row featurette shadow">
+            <div class="col-md-5">
+            <section class="m-1 p-1">
+                <div class="btn-group float-end">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            
+                            <li><a class="dropdown-item" @onclick="WriteAPost">Repondre </a></li>
+                            <li><a class="dropdown-item" @onclick="RemovePostFromView"> replier </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-5">
+                        <GetUserComponent UserId="@GetPublication.UserId"></GetUserComponent>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="p-2"><strong>Titre </strong>@GetPublication?.Title</h3>
+                        <div class="card-body">
+                            <p class="card-text p-2"><strong>Article </strong>@GetPublication?.Review</p>
+                            <p class="card-text p-2 bottom"><strong>Date </strong>@GetPublication?.CreatedDate</p>
+                            <p class="card-text p-2 float-end"><strong>nombre de Réponse </strong>@GetPublication?.post.Count</p>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+            <div class="col-md-7 " title="regarder les annonces">
+                <h5>Réponses</h5>
+                <PostPublicationComponent Id="@Id"></PostPublicationComponent>
+            
+            </div>
+
         </div>
     }
 
@@ -82,8 +79,11 @@
 
     protected override async Task OnInitializedAsync()
     {
+        await DataLoad();
+    }
+    public async Task DataLoad()
+    {
         GetPublication = await publicationService.GetPublication(Id);
-
     }
     public async Task GetPost()
     {
@@ -114,10 +114,11 @@
         DoIWriteAPost = true;
         StateHasChanged();
     }
-    public void CloseDialogBox()
+    public async Task CloseDialogBox()
     {
         DoIWriteAPost = false;
         StateHasChanged();
+        await DataLoad();
     }
     #endregion
 }

@@ -12,14 +12,42 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\quentin\.nuget\packages\" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)webenology.blazor.components\2.3.0\contentFiles\any\net7.0\_site\manifest.json" Condition="Exists('$(NuGetPackageRoot)webenology.blazor.components\2.3.0\contentFiles\any\net7.0\_site\manifest.json')">
+      <NuGetPackageId>webenology.blazor.components</NuGetPackageId>
+      <NuGetPackageVersion>2.3.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>_site\manifest.json</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)webenology.blazor.components\2.3.0\contentFiles\any\net7.0\_site\search-stopwords.json" Condition="Exists('$(NuGetPackageRoot)webenology.blazor.components\2.3.0\contentFiles\any\net7.0\_site\search-stopwords.json')">
+      <NuGetPackageId>webenology.blazor.components</NuGetPackageId>
+      <NuGetPackageVersion>2.3.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>_site\search-stopwords.json</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)webenology.blazor.components\2.3.0\contentFiles\any\net7.0\docfx.json" Condition="Exists('$(NuGetPackageRoot)webenology.blazor.components\2.3.0\contentFiles\any\net7.0\docfx.json')">
+      <NuGetPackageId>webenology.blazor.components</NuGetPackageId>
+      <NuGetPackageVersion>2.3.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>docfx.json</Link>
+    </Content>
+  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)wmblazorslickcarousel\1.0.1\buildTransitive\WMBlazorSlickCarousel.props" Condition="Exists('$(NuGetPackageRoot)wmblazorslickcarousel\1.0.1\buildTransitive\WMBlazorSlickCarousel.props')" />
+    <Import Project="$(NuGetPackageRoot)webenology.blazor.components\2.3.0\buildTransitive\webenology.blazor.components.props" Condition="Exists('$(NuGetPackageRoot)webenology.blazor.components\2.3.0\buildTransitive\webenology.blazor.components.props')" />
     <Import Project="$(NuGetPackageRoot)radzen.blazor\5.2.9\buildTransitive\Radzen.Blazor.props" Condition="Exists('$(NuGetPackageRoot)radzen.blazor\5.2.9\buildTransitive\Radzen.Blazor.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.10\build\Microsoft.NET.Sdk.WebAssembly.Pack.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.10\build\Microsoft.NET.Sdk.WebAssembly.Pack.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\8.0.10\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\8.0.10\build\Microsoft.NET.ILLink.Tasks.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.authentication\8.0.5\buildTransitive\Microsoft.AspNetCore.Components.WebAssembly.Authentication.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.authentication\8.0.5\buildTransitive\Microsoft.AspNetCore.Components.WebAssembly.Authentication.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\8.0.5\build\net8.0\Microsoft.AspNetCore.Components.WebAssembly.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\8.0.5\build\net8.0\Microsoft.AspNetCore.Components.WebAssembly.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.quickgrid\8.0.8\buildTransitive\Microsoft.AspNetCore.Components.QuickGrid.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.quickgrid\8.0.8\buildTransitive\Microsoft.AspNetCore.Components.QuickGrid.props')" />
+    <Import Project="$(NuGetPackageRoot)blazored.toast\4.2.1\buildTransitive\Blazored.Toast.props" Condition="Exists('$(NuGetPackageRoot)blazored.toast\4.2.1\buildTransitive\Blazored.Toast.props')" />
     <Import Project="$(NuGetPackageRoot)blazor.bootstrap\2.2.1\buildTransitive\Blazor.Bootstrap.props" Condition="Exists('$(NuGetPackageRoot)blazor.bootstrap\2.2.1\buildTransitive\Blazor.Bootstrap.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">

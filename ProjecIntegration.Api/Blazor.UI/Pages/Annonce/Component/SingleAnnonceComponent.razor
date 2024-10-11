@@ -1,0 +1,15 @@
+﻿@using Blazor.UI.Data.ModelViews.Annonce
+
+<div class="row">
+    <p class="text-end float-end"> @item.CreatedDate</p>
+    <h2 class="featurette-heading fw-normal lh-1">
+        <span class="text-body-secondary">@item.Title</span>
+    </h2>
+    <p class="lead m-2 p-2">
+        @item.Description
+    </p>
+</div>
+@code {
+    [Parameter]
+    public AnnonceDto? item { get; set; }
+}

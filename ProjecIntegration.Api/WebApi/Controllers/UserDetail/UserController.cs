@@ -69,6 +69,7 @@ public class UserController : ControllerBase
     /// <param name="userId"></param>
     /// <returns></returns>
     [HttpDelete("userId")]
+    [Authorize(Roles = ("Admin"))]
     public async Task<ActionResult> DeleteUserID(string userId)
     {
         try
@@ -86,6 +87,7 @@ public class UserController : ControllerBase
         }
     }
     [HttpPut]
+    [Authorize(Roles = ("Admin"))]
     public async Task<ActionResult> UpdateUserInformation([FromBody] UpdateUserDto userToupdate)
     {
         try
@@ -110,6 +112,7 @@ public class UserController : ControllerBase
     /// <param name="userId"></param>
     /// <returns></returns>
     [HttpPut("/block/{userId}")]
+    [Authorize(Roles = ("Admin"))]
     public async Task<ActionResult> BlockUser(string userId)
     {
         try
@@ -132,6 +135,7 @@ public class UserController : ControllerBase
     /// <param name="userId"></param>
     /// <returns></returns>
     [HttpPut("/unblock/{userId}")]
+    [Authorize(Roles = ("Admin"))]
     public async Task<ActionResult> UnBlockUser(string userId)
     {
         try
@@ -154,6 +158,7 @@ public class UserController : ControllerBase
     /// <param name="userId"></param>
     /// <returns></returns>
     [HttpPut("/unnom-admin/{userId}")]
+    [Authorize(Roles = ("Admin"))]
     public async Task<ActionResult> UnNominateAdmin(string userId)
     {
         try
@@ -176,6 +181,7 @@ public class UserController : ControllerBase
     /// <param name="userId"></param>
     /// <returns></returns>
     [HttpPut("/nom-admin/{userId}")]
+    [Authorize(Roles = ("Admin"))]
     public async Task<ActionResult> Nominateadmin(string userId)
     {
         try

@@ -125,9 +125,10 @@ namespace DataInfraTheather.BusinessService
             try
             {
 
-                var entity = await _commandRepository.GetById(commandId);
+                var entity = await _siegeCommandRepository.GetAllCustomWithInclude(x=>x.CommandId==commandId,d=>d.Siege);
+                IEnumerable<Siege> getSiegeFromCommand =entity.Select(x=>x.Siege).ToList();
 
-               
+                response.Data = _mapper.Map<IEnumerable<SiegeDto>>(getSiegeFromCommand);
                 response.Success = true;
                 response.Message = "operation réussi";
                 response.Errortype = Domain.Enum.Errortype.Good;
@@ -171,9 +172,11 @@ namespace DataInfraTheather.BusinessService
 
                 if (getSiege != null)
                 {
-                    Siege SiegeToUpdate =_mapper.Map<Siege>(getSiege);
-                    SiegeToUpdate.UpdatedDate = DateTime.Now;
-                    await _siegeRepository.Update(SiegeId, SiegeToUpdate);
+
+                    getSiege.UpdatedDate = DateTime.Now;
+                    getSiege.SalleId = siege.SalleId;
+                    getSiege.Name = siege.Name;
+                    await _siegeRepository.Update(SiegeId, getSiege);
                     response.Success = true;
                     response.Message = "operation réussi";
                     response.Errortype = Domain.Enum.Errortype.Good;

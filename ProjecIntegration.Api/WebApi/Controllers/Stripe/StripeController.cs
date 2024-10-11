@@ -12,6 +12,7 @@ namespace WebApi.Controllers
 
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class StripeController : ControllerBase
     {
         private readonly ILogger<StripeController> _looger;

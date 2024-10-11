@@ -47,16 +47,6 @@
                                    @onclick="() =>addDialogOPen()">
                                     Ajouter un catalogue
                                 </a>
-                                <a type="button"
-                                   class="btn btn-warning"
-                                   @onclick="() =>UpdateDialogOPen()">
-                                    Update
-                                </a>
-                                <a type="button"
-                                   class="btn btn-danger"
-                                   @onclick="() =>DeleteDialogOPen()">
-                                    Delete
-                                </a>
                             </div>
                    </div>
                    <div class="">
@@ -64,25 +54,20 @@
                                 <PropertyColumn Property="p =>p.Name" Sortable="true"/>
                                 <PropertyColumn Property="p =>p.Description" Sortable="true" />
                                 <PropertyColumn Property="p =>p.AddedTime" Sortable="true" />
-                                <TemplateColumn Context="item">
-                                    <button type="button" class="btn btn-warning" @onclick="() => SelecteCatalogue(item)">details</button>
-                                </TemplateColumn>
-                            <TemplateColumn Context="item">
-                                <button type="button" class="btn btn-warning" @onclick="() => GetToPieceCatalog(item.Id)">Piece</button>
-                            </TemplateColumn>
+                               
                             <TemplateColumn>
                                 <div class="btn-group">
                                     <a @onclick="() =>SelecteCatalogue(context)"
                                        class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Add"> <i class="bi bi-plus-square"></i> Add</a>
-                                    <a @onclick="() => UpdateDialogOPen()"
+                                       data-bs-title="Add"> <i class="bi bi-plus-square"></i>details</a>
+                                    <a @onclick="() => UpdateDialogOPen(context.Id)"
                                        class="btn btn-warning"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Update"> <i class="bi bi-pencil"></i> update</a>
-                                    <a @onclick="() => DeleteDialogOPen ()"
+                                    <a @onclick="() => DeleteDialogOPen (context.Id)"
                                        class="btn btn-danger"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
@@ -106,7 +91,7 @@
     
     @if(IsDetails)
     {
-        <Blazor.UI.Client.manager.Catalogue.Component.detailsCatalogue Id="SelectedCatalogueId" OnClose="DetailsDialogclose"></Blazor.UI.Client.manager.Catalogue.Component.detailsCatalogue>
+        <Blazor.UI.Client.manager.Catalogue.Component.DetailsCatalogue Id="SelectedCatalogueId" OnClose="DetailsDialogclose"></Blazor.UI.Client.manager.Catalogue.Component.DetailsCatalogue>
     }
     else if(IsAdding)
     {
@@ -152,7 +137,7 @@
         GetComplexe = (await ComplexeService.Get()).ToList();
         GetCatalogue = (await CatalogueService.GetAllCatalogueByComplexeId(SelectedComplexeId)).ToList();
         await Task.Delay(1000);
-        
+
     }
     #region selectData
     public void SelecteCatalogue(CatalogueDto selected)
@@ -230,8 +215,9 @@
         IsAddingPiece = false;
         StateHasChanged();
     }
-    private void DeleteDialogOPen()
+    private void DeleteDialogOPen(int Id)
     {
+        SelectedCatalogueId = Id;
         IsDeleting = true;
         StateHasChanged();
     }
@@ -250,8 +236,9 @@
         IsdeletingPiece = false;
         StateHasChanged();
     }
-    private void UpdateDialogOPen()
+    private void UpdateDialogOPen(int Id)
     {
+        SelectedCatalogueId = Id;
         IsUpdating = true;
         StateHasChanged();
     }

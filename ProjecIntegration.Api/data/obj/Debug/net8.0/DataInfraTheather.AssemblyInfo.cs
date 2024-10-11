@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataInfraTheather")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2aba143ad50de594cc1c9d006be4873be3136892")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3572fa7bee2551b199a598f68196b26fd3fbf8e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataInfraTheather")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataInfraTheather")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

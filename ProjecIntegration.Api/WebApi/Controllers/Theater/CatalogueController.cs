@@ -2,6 +2,7 @@
 using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers.Theater
 {
@@ -26,7 +27,7 @@ namespace WebApi.Controllers.Theater
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
                 }
-                return Ok(Response);
+                return Ok(response);
             }
             catch (Exception)
             {
@@ -69,12 +70,42 @@ namespace WebApi.Controllers.Theater
                 return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
             }
         }
+        [HttpPost]
+        public async Task<ActionResult<CatalogueDto>> AddCatalogue([FromBody] AddCatalogueDto addCatalogueDto )
+        {
+            try
+            {
+                var Validator= new AddCatalogueValidator();
+                var result=Validator.Validate(addCatalogueDto);
+                if (!result.IsValid)
+                {
+                   return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<CatalogueDto> response = await _businessCatalogue.CreateCatalogue(addCatalogueDto);
+                if (!response.Success)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
+                }
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{ex.Message}");
+            }
+        }
         [HttpPut("{catalogueId}")]
+        [Authorize(Roles=("Admin"))]
         public async Task<ActionResult<CatalogueDto>> UpdateCatalogues(int catalogueId, [FromBody] UpdateCatalogueDto updtCatalogue)
         {
             try
             {
-               ServiceResponse<CatalogueDto> response = await _businessCatalogue.UpdateCatalogue(catalogueId, updtCatalogue);
+                var Validator = new UpdateCatalogueValidator();
+                var result = Validator.Validate(updtCatalogue);
+                if (!result.IsValid)
+                {
+                    return BadRequest($"{DateTime.Now:dd/mm/yy} Erreur de validation");
+                }
+                ServiceResponse<CatalogueDto> response = await _businessCatalogue.UpdateCatalogue(catalogueId, updtCatalogue);
                 if (!response.Success)
                 {
                     return BadRequest($"{DateTime.Now:dd/mm/yy} error Message{response.Message}");
@@ -88,6 +119,7 @@ namespace WebApi.Controllers.Theater
             }
         }
         [HttpDelete("{catalogueId}")]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult<CatalogueDto>> DeleteCatalogue(int catalogueId)
         {
             try

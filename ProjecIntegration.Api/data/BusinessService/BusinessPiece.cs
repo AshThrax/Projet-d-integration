@@ -175,9 +175,13 @@ namespace DataInfraTheather.BusinessService
                 Piece getPiece = await _pieceRepository.GetById(idPiece);
                 if (getPiece != null)
                 {
-                    Piece getConvertion = _mapper.Map<Piece>(Entity);
-                    getConvertion.UpdatedDate = DateTime.Now;
-                    await _pieceRepository.Update(idPiece, getConvertion);
+                    getPiece.Auteur = Entity.Auteur;
+                    getPiece.Duree = Entity.Duree;
+                    getPiece.Titre = Entity.Titre;
+                    getPiece.ThemeId = Entity.ThemeId.Value;
+                    getPiece.Description = Entity.Description;
+                    getPiece.UpdatedDate = DateTime.Now;
+                    await _pieceRepository.Update(idPiece, getPiece);
          
                     response.Success = true;
                     response.Message = "opération reussi";

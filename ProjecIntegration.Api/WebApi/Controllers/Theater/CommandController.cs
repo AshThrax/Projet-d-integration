@@ -3,6 +3,7 @@ using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;
+using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers.Theater
 {

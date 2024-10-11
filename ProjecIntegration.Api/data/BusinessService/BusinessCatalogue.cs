@@ -210,9 +210,11 @@ namespace DataInfraTheather.BusinessService
                 if (getCatalogue != null)
                 {
                     Catalogue convertCatalogue = _mapper.Map<Catalogue>(updtCatalogue);
-                    convertCatalogue.UpdatedDate= DateTime.Now;
+                    getCatalogue.Description = updtCatalogue.Description;
+                    getCatalogue.Name = updtCatalogue.Name;
+                    getCatalogue.UpdatedDate= DateTime.Now;
                     
-                    await _catalogueRepository.Update(catalogueId, convertCatalogue);
+                    await _catalogueRepository.Update(catalogueId, getCatalogue);
                     response.Success = true;
                     response.Message = "mise a jour réussi";
                     response.Errortype = Domain.Enum.Errortype.Good;

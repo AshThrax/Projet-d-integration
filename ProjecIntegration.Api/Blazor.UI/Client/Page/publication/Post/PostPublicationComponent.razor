@@ -3,7 +3,7 @@
 @using Blazor.UI.data.services.Publication
 @inject IPostService PostService;
 
-<div class="h-50 w-75 justify-content-end">
+<div class="container justify-content-end">
     @if (GetPostFromPublication != null )
     {
         @foreach (PostDto subItem in GetPostFromPublication.Items)
@@ -12,7 +12,6 @@
         }
     }
     <div class="row">
-        
         <nav class="nav float-end">
             <a @onclick="() =>PreviousPage()" class="nav-item btn btn-outline-dark">Previous</a>
             <a>@pageIndex</a>

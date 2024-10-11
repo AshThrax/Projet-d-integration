@@ -16,28 +16,32 @@
     @if (selectPieces != null)
     {
         <div class="container">
-            <div class="row">
                         <div class="">
-                               <h5><strong>Titre :</strong> @selectPieces.Titre</h5>
+                            <div class="m-3 float-end btn-group">
+                                <a type="button" class="btn btn-warning shadow-sm" @onclick="GetRepresentation">Voir les Séance:</a>
+                                <a type="button" class="btn btn-warning shadow-sm" @onclick="getbackreservation">Reservation</a>
+                                <a type="button" class="btn btn-warning shadow-sm" @onclick="() => GetToPublication(Id)">Publication</a>
+                            </div>
+                        </div>
+            <div class="row">
+                <div class="card col">
+
+                        <div class="">
+                               <h2><strong>Titre :</strong> @selectPieces.Titre</h2>
                         </div>
                         <div class="col-md-5">
                                 
                                 <img class="img-fluid card-img" src="https://localhost:7170/Resources/@selectPieces.Image" />
                         </div>
                         <div class="col-md-7">
-                                <div class="card m-2 p-2">
-                                    <h5 class="card-title">Description</h5>
-                                    <p class="card-text">@selectPieces.Description</p>
-                                    <p class="card-text">@selectPieces.Duree: minutes</p>
+                                <div class=" m-2 p-2">
+                                    <h3 class="">Description</h3>
+                                    <p class="lead">@selectPieces.Auteur</p>
+                                    <p class="lead">@selectPieces.Description</p>
+                                    <p class="">@selectPieces.Duree: minutes</p>
                                 </div>
                         </div>
-                        <div class="">
-                            <div class="m-3 float-end btn-group">
-                                <a type="button" class="btn btn-warning shadow-sm" @onclick="GetRepresentation">Voir les Séance: @getSeance</a>
-                                <a type="button" class="btn btn-warning shadow-sm" @onclick="getbackreservation">Reservation</a>
-                                <a type="button" class="btn btn-warning shadow-sm" @onclick="() => GetToPublication(Id)">Publication</a>
-                            </div>
-                        </div>
+                </div>
                 <div class="col">
                     @if (getSeance)
                     {

@@ -54,6 +54,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost()]
+        [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult<ServiceResponse<List<TDto>>>> AddAsync([FromBody] TAddDto AddDto)
         {
             try
@@ -71,7 +72,7 @@ namespace WebApi.Controllers
             }
         }
         [HttpPut("{updtId}")]
-        public async Task<ActionResult<ServiceResponse<List<TDto>>>> AddAsync(int updtId,[FromBody] TUpdateDto AddDto)
+        public async Task<ActionResult<ServiceResponse<List<TDto>>>> UpdateAsync(int updtId,[FromBody] TUpdateDto AddDto)
         {
             try
             {
@@ -88,7 +89,8 @@ namespace WebApi.Controllers
             }
         }
         [HttpDelete("{Id}")]
-        public async Task<ActionResult<ServiceResponse<List<TDto>>>> AddAsync(int Id)
+        [Authorize(Roles = ("Admin"))]
+        public async Task<ActionResult<ServiceResponse<List<TDto>>>> DeleteAsync(int Id)
         {
             try
             {

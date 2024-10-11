@@ -1,59 +1,84 @@
 ﻿@using Blazor.UI.Data.ModelViews.Publication
+@using Blazor.UI.Data.ModelViews.Theater
 @using Blazor.UI.Data.ServiceResult
 
 @using Blazor.UI.Data.services.Publication
+@using Blazor.UI.Data.services.TheatherService
 @inject IPublicationService pubService;
+@inject IPieceService pieceService;
 @inject NavigationManager manager;
 <h3>Avis :</h3>
-<div class="flex-fill m-4 p-4">
-    <div class="container-fluid">
-    <div class="row shadow-sm">
-            @if (PiecePublication != null && PiecePublication.Items.Count > 0)
-            {
-                @foreach (var item in PiecePublication.Items)
-                {
-                    <SinglePublication item="item"></SinglePublication>
-                }
-                <nav class="row  m-2 p-2 float-end">
-               
-                    <div class="col-sm-3 btn-group w-25">
-                        <a type="button" class="btn btn-outline-dark" @onclick="() =>PreviousPubPage()">precedent</a>
-                        <a type="button" class="btn btn-outline-dark" @onclick="() => NextPubPage()">suivant</a>
-                    </div>
-                </nav>
-            }
-            else
-            {
-                <div>
-                    <h3>
-                        cette Piéce ne posséde aucun avis pour le momment
-                    </h3>
+<div class="row featurette">
+    <div class="col-md-5">
+        @if (SelectPieceDtos != null)
+        {
+            <div class="rounded bg-light">
+                <div class="col mt-2 pt-2">
+                    <img class="img-thumbnail" src="https://localhost:7170/Resources/@SelectPieceDtos.Image" />
                 </div>
-            } 
+                <div class="col ">
+                    <h4>Representation Details</h4>
+                    <p><strong>Title: </strong> @SelectPieceDtos.Titre</p>
+                    <p><strong>Duration: </strong> @SelectPieceDtos.Duree</p>
+                    <p class="lead"><strong>Description: </strong> @SelectPieceDtos.Description</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-7">
+        @if (PiecePublication != null)
+        {
+            @foreach (var item in PiecePublication.Items)
+            {
+           
+                    <SinglePublication item="item"></SinglePublication>
+
+                <hr />
+            }
+            
+        }
+        else
+        {
+            <div>
+                <h3>
+                    cette Piéce ne posséde aucun avis pour le momment
+                </h3>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="btn-group-sm float-end">
+            <a class="btn btn btn-outline-dark" @onclick="()=>PreviousPage()"> Previous</a>
+            <a class="btn btn btn-outline-dark"> @pageIndexPub</a>
+            <a class="btn btn-outline-dark" @onclick="()=>NextPage()">Next</a>
         </div>
     </div>
 </div>
-
 @code {
 
     [Parameter]
     public Pagination<PublicationDto>? PiecePublication { get; set; }
     [Parameter]
     public int PieceId { get; set; }
-
+    public PieceDto SelectPieceDtos { get; set; }
     public int pageIndexPub = 1;
 
     protected override async Task OnInitializedAsync()
     {
-        PiecePublication = await pubService.GetAllPublicationByPieceId(1, PieceId);
+        await Dataload();
         await Task.Delay(1000);
     }
-
+    public async Task Dataload()
+    {
+        PiecePublication = await pubService.GetAllPublicationByPieceId(1, PieceId);
+        SelectPieceDtos = await pieceService.GetById(PieceId);
+        
+    }
     public void GetPost(string annId)
     {
         manager.NavigateTo($"/publication/{annId}");
     }
-    public async Task NextPubPage()
+    public async Task NextPage()
     {
         if (PiecePublication.HasNextPage)
         {
@@ -61,7 +86,7 @@
             PiecePublication = await pubService.GetAllPublicationByPieceId(pageIndexPub, PieceId);
         }
     }
-    public async Task PreviousPubPage()
+    public async Task PreviousPage()
     {
         if (PiecePublication.HasNextPage)
         {

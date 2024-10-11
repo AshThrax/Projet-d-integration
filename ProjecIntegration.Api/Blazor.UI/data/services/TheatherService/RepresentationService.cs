@@ -1,6 +1,7 @@
 
 using Blazor.UI.Data.ModelViews.Theater;
 using Blazor.UI.Data.ServiceResult;
+using Blazored.Toast.Services;
 using Data.ServiceResult;
 using System.Net.Http.Json;
 
@@ -24,10 +25,11 @@ namespace Blazor.UI.Data.services.TheatherService
     {
         private readonly HttpClient _httpClient;
         private const string ApiUri = "https://localhost:7170/api/v1/Representation";
-
-        public RepresentationService(HttpClient httpClient)
+        private readonly IToastService _toastService;
+        public RepresentationService(HttpClient httpClient, IToastService toastService)
         {
             _httpClient = httpClient;
+            _toastService = toastService;
         }
 
         public async Task<Pagination<RepresentationDto>?> Get(int page)
@@ -50,17 +52,47 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task Create(AddRepresentationDto data)
         {
-            await _httpClient.PostAsJsonAsync<AddRepresentationDto>(ApiUri, data);
+            var result=await _httpClient.PostAsJsonAsync<AddRepresentationDto>(ApiUri, data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Update(UpdateRepresentationDto data)
         {
-            await _httpClient.PutAsJsonAsync<UpdateRepresentationDto>(ApiUri+$"/{data.Id}", data);
+            var result=await _httpClient.PutAsJsonAsync<UpdateRepresentationDto>(ApiUri+$"/{data.Id}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been updated");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task Delete(int id)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+            var result =await _httpClient.DeleteAsync($"{ApiUri}/{id}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been removed");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task<Pagination<RepresentationDto>?> GetSalle(int idSalle,int page)
@@ -75,12 +107,32 @@ namespace Blazor.UI.Data.services.TheatherService
 
         public async Task AddCommandRepresentation(int id, int idplace, AddCommandDto data)
         {
-            await _httpClient.PostAsJsonAsync($"https://localhost:7170/api/Representation/add-command/{id}/{idplace}", data);
+            var result =await _httpClient.PostAsJsonAsync($"https://localhost:7170/api/Representation/add-command/{id}/{idplace}", data);
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
 
         public async Task DeleteCommandRepresentation(int idRep, int idCommand)
         {
-            await _httpClient.DeleteAsync($"{ApiUri}/delete-command/{idRep}/{idCommand}");
+            var result =await _httpClient.DeleteAsync($"{ApiUri}/delete-command/{idRep}/{idCommand}");
+            try
+            {
+                result.EnsureSuccessStatusCode();
+                _toastService.ShowSuccess("the data has successfully been added");
+            }
+            catch (Exception)
+            {
+
+                _toastService.ShowError("an error has occured");
+            }
         }
     }
 }

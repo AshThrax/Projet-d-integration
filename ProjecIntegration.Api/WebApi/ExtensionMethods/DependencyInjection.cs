@@ -2,6 +2,7 @@
 using InfrastructureUser;
 using WebApi.ApiService.PaymentService;
 using WebApi.ApiService.UserService;
+using WebApi.Validator.Theather;
 
 namespace WebApi.ExtensionMethods
 {
