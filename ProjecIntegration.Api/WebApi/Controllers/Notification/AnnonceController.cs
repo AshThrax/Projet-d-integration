@@ -1,12 +1,7 @@
-﻿using ApplicationAnnonce.Common.businessService;
+﻿
+using ApplicationAnnonce.Common.businessService;
 using ApplicationAnnonce.DTO;
-using ApplicationPublication.Dto;
-using Domain.Entity.notificationEntity;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 using WebApi.Validator.Annonce;
-using WebApi.Validator.Theather;
 
 namespace WebApi.Controllers
 {
@@ -67,10 +62,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddAnnonceDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         [Authorize(Roles = ("Admin"))]
         public async Task<ActionResult> CreateAnnonce([FromBody] AddAnnonceDto annonce)
         {

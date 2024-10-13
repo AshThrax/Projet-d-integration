@@ -1,11 +1,12 @@
-﻿using ApplicationTheather.Common.IRepository;
+﻿using ApplicationTheater.Common;
+using ApplicationTheather.Common.IRepository;
 using dataInfraTheather.Infrastructure.Persistence;
 using Domain.Entity;
 using System.Linq.Expressions;
 
 namespace dataInfraTheather.Infrastructure.Repository
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<T> :  IRepository<T> where T : BaseEntity
     {
         private readonly ApplicationDbContext _dbContext;
         private DbSet<T> _dbSet;
@@ -29,7 +30,7 @@ namespace dataInfraTheather.Infrastructure.Repository
             catch (Exception)
             {
 
-              return Enumerable.Empty<T>();
+                return Enumerable.Empty<T>();
             }
         }
         public async Task<T> GetById(int id, params Expression<Func<T, object>>[] includeProperties)
@@ -47,7 +48,7 @@ namespace dataInfraTheather.Infrastructure.Repository
             catch (Exception)
             {
 
-               return query.First() ;
+                return query.First();
             }
         }
         public async Task<IEnumerable<T>> GetAll()
@@ -79,7 +80,7 @@ namespace dataInfraTheather.Infrastructure.Repository
         }
         public async Task<T> Insert(T entity)
         {
-            T data= _dbSet.Add(entity).Entity;
+            T data = _dbSet.Add(entity).Entity;
             await _dbContext.SaveChangesAsync();
             return data;
         }
@@ -108,7 +109,7 @@ namespace dataInfraTheather.Infrastructure.Repository
 
         public async Task<IEnumerable<T>> GetByListIds(List<int> ListIds)
         {
-            IEnumerable<T> values= await _dbSet.Where(x => ListIds.Contains(x.Id)).ToListAsync();
+            IEnumerable<T> values = await _dbSet.Where(x => ListIds.Contains(x.Id)).ToListAsync();
 
             return values;
         }
@@ -117,7 +118,7 @@ namespace dataInfraTheather.Infrastructure.Repository
         {
             try
             {
-                int count =await _dbSet.Where(x=>x.Id==id).CountAsync();
+                int count = await _dbSet.Where(x => x.Id == id).CountAsync();
 
                 return count > 0;
             }
@@ -207,7 +208,7 @@ namespace dataInfraTheather.Infrastructure.Repository
                     query = query.Include(includeProperty);
                 }
 
-                return await query.ToListAsync()?? throw new NullReferenceException();
+                return await query.ToListAsync() ?? throw new NullReferenceException();
 
             }
             catch (Exception)

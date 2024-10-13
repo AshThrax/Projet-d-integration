@@ -1,4 +1,5 @@
-﻿using Azure;
+﻿using ApplicationTheather.BusinessService.Salle;
+using Azure;
 using Domain.DataType;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;

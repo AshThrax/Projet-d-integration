@@ -1,4 +1,5 @@
-﻿using Domain.Entity.TheatherEntity;
+﻿using ApplicationTheater.Common;
+using Domain.Entity.TheatherEntity;
 
 namespace ApplicationTheather.Common.IRepository
 {

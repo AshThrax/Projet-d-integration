@@ -1,4 +1,9 @@
-﻿using Domain.Entity.TheatherEntity;
+﻿using Domain.Entity.PublicationEntity.Modération;
+using Domain.Entity.TheatherEntity;
+using Domain.Entity.UserEntity.FeedBack;
+using Domain.Entity.UserEntity;
+using Domain.Entity.publicationEntity;
+
 
 namespace dataInfraTheather.Infrastructure.Persistence
 {
@@ -16,8 +21,16 @@ namespace dataInfraTheather.Infrastructure.Persistence
         public DbSet<Piece> Pieces => Set<Piece>();
         public DbSet<Theme> Theme => Set<Theme>();
         public DbSet<Siege> Siege => Set<Siege>();
+        public DbSet<Publication> Publications => Set<Publication>();
+        public DbSet<Post> Posts => Set<Post>();
+        public DbSet<Repost> Reposts => Set<Repost>();
         public DbSet<Image> Image => Set<Image>();
         public DbSet<Favoris> Favoris => Set<Favoris>();
+        public DbSet<Follow> Follows { get; set; }
+        public DbSet<Banner> Banner { get; set; }
+        public DbSet<Feedback> FeedBacks { get; set; }
+        public DbSet<SignalementType> signalementTypes { get; set; }
+        public DbSet<Signalement> Signalements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -175,7 +188,29 @@ namespace dataInfraTheather.Infrastructure.Persistence
             //----------------------Favorites--------------
             modelBuilder.Entity<Favoris>()
                         .HasKey(c => c.Id);
-            
+
+            //----------------------Follows----------------
+            modelBuilder.Entity<Follow>()
+                        .HasKey(Follow => new { Follow.FollowerId, Follow.FollowId });
+            //----------------------Banner------------
+            modelBuilder.Entity<Banner>().HasKey(x => x.Id);
+
+
+
+            //----------------------Feedbacks-------------
+            modelBuilder.Entity<Feedback>()
+                        .HasKey(c => c.Id);
+            //---------------------Signalement-----------
+            modelBuilder.Entity<Signalement>()
+                        .HasKey(c => c.Id);
+
+            modelBuilder.Entity<Signalement>()
+                .HasOne(x => x.SignalementType)
+                .WithMany()
+                .HasForeignKey(c => c.SignalementTypeId);
+            //---------------------SignalementType-------
+            modelBuilder.Entity<SignalementType>().HasKey(c => c.Id);
+
             base.OnModelCreating(modelBuilder);
 
         }

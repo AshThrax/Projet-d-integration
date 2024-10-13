@@ -1,5 +1,6 @@
-﻿using ApplicationTheather.Services;
-using ApplicationUser.BusinessService;
+﻿using ApplicationUser.BusinessService.Banner;
+using ApplicationUser.BusinessService.FeedBack;
+using ApplicationUser.BusinessService.Follow;
 using ApplicationUser.Common.IRepository;
 using ApplicationUser.Common.Repository;
 using ApplicationUser.Service;

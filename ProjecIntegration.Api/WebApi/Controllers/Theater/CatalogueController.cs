@@ -1,4 +1,5 @@
-﻿using Azure;
+﻿using ApplicationTheather.BusinessService.Catalogue;
+using Azure;
 using Domain.Entity.TheatherEntity;
 using Domain.ServiceResponse;
 using Microsoft.AspNet.SignalR.Hosting;

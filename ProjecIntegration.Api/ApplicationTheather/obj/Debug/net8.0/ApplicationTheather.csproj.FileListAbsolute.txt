@@ -30,3 +30,4 @@ C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationTheather\obj
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationTheather\obj\Debug\net8.0\refint\ApplicationTheather.dll
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationTheather\obj\Debug\net8.0\ApplicationTheather.pdb
 C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationTheather\obj\Debug\net8.0\ref\ApplicationTheather.dll
+C:\Users\quentin\classicweb\Projet\ProjecIntegration.Api\ApplicationTheather\bin\Debug\net8.0\InfrastructureUser.dll

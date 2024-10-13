@@ -19,10 +19,7 @@ namespace WebApi.Controllers
             _notificationBl = notificationBl;
         }
         [HttpGet("get-notification")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<NotificationDto>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        
         public async Task<ActionResult> GetAll([FromQuery] int pageNumber)
         {
             try
@@ -37,10 +34,6 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("get-notification/{notificationId}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(NotificationDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetById(string notificationId)
         {
             try
@@ -55,9 +48,6 @@ namespace WebApi.Controllers
 
         [HttpPost("post-notification")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AddNotificationDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> CreateAnnonce([FromBody] AddNotificationDto notificationDto)
         {
             try
@@ -81,10 +71,7 @@ namespace WebApi.Controllers
         }
         [HttpPut("update-notification/{notifId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateAnnonce(string notifId, [FromBody] UpdateNotificationDto annonce)
+        public async Task<ActionResult> UpdateAnnonce(int notifId, [FromBody] UpdateNotificationDto annonce)
         {
             try
             {
@@ -107,10 +94,7 @@ namespace WebApi.Controllers
             }
         }
         [HttpDelete("supress-notification/{notificationId}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Not found
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      
         public async Task<ActionResult> UpdateAnnonce(string notificationId)
         {
             try

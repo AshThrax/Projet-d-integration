@@ -1,4 +1,4 @@
-﻿using ApplicationUser.BusinessService;
+﻿using ApplicationUser.BusinessService.Banner;
 using ApplicationUser.Dto;
 using Domain.ServiceResponse;
 using WebApi.ApiService.FileService;

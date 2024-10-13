@@ -1,4 +1,4 @@
-﻿using ApplicationTheather.Common.Mapping;
+﻿using ApplicationTheather.Common.Mapping.Mapping;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationTheather
@@ -7,7 +7,7 @@ namespace ApplicationTheather
     {
         public static IServiceCollection AddTheatherApp(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddAutoMapper(typeof(Mapping));
+            serviceCollection.AddAutoMapper(typeof(Theatre));
             return serviceCollection;
         }
     }

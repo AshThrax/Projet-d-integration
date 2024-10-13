@@ -19,4 +19,10 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="InfrastructureUser">
+      <HintPath>..\InfrastructureUser\obj\Debug\net8.0\ref\InfrastructureUser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

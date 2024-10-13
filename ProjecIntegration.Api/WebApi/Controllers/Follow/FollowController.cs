@@ -1,4 +1,5 @@
-﻿using ApplicationUser.Dto;
+﻿using ApplicationUser.BusinessService.Follow;
+using ApplicationUser.Dto;
 using ApplicationUser.Dto.Follow;
 using Domain.ServiceResponse;
 using Microsoft.AspNetCore.Http;

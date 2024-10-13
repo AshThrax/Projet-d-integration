@@ -1,4 +1,6 @@
-﻿using ApplicationTheather.Common.Exceptions;
+﻿using ApplicationTheather.BusinessService.Catalogue;
+using ApplicationTheather.BusinessService.Piece;
+using ApplicationTheather.Common.Exceptions;
 using Domain.DataType;
 using Domain.ServiceResponse;
 using WebApi.ApiService.FileService;

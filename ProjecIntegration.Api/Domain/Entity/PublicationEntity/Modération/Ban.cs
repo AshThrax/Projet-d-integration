@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.PublicationEntity.Modération
 {
-    public class Ban
+    public class Ban:BaseEntity
     {
     }
 }

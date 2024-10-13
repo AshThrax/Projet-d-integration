@@ -1,4 +1,11 @@
-﻿using ApplicationUser;
+﻿using ApplicationTheather.BusinessService.Command;
+using ApplicationTheather.BusinessService.Complexe;
+using ApplicationTheather.BusinessService.Piece;
+using ApplicationTheather.BusinessService.Representation;
+using ApplicationTheather.BusinessService.Salle;
+using ApplicationTheather.BusinessService.Theme;
+using ApplicationTheather.Common.Mapping.Mapping;
+using ApplicationUser;
 using InfrastructureUser;
 using WebApi.ApiService.PaymentService;
 using WebApi.ApiService.UserService;
@@ -52,7 +59,7 @@ namespace WebApi.ExtensionMethods
         {
             //injection de Dependance des services 
             //injection automapper
-            services.AddAutoMapper(typeof(Mapping));
+            services.AddAutoMapper(typeof(Theatre));
             return services;
         }
         /*

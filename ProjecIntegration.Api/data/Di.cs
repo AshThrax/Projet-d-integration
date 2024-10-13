@@ -1,12 +1,32 @@
-﻿using ApplicationTheather.BusinessService;
+﻿using ApplicationPublication.Common.Repository;
+using ApplicationTheater.Common;
+using ApplicationTheather.BusinessService;
+using ApplicationTheather.BusinessService.Catalogue;
+using ApplicationTheather.BusinessService.Command;
+using ApplicationTheather.BusinessService.Complexe;
+using ApplicationTheather.BusinessService.Piece;
+using ApplicationTheather.BusinessService.Representation;
+using ApplicationTheather.BusinessService.Salle;
+using ApplicationTheather.BusinessService.Theme;
 using ApplicationTheather.Common.IRepository;
+using ApplicationUser.BusinessService.Banner;
+using ApplicationUser.BusinessService.FeedBack;
+using ApplicationUser.BusinessService.Follow;
+using ApplicationUser.Common.IRepository;
+using ApplicationUser.Common.Repository;
+using ApplicationUser.Service;
 using dataInfraTheather.Infrastructure.Persistence;
 using dataInfraTheather.Infrastructure.Repository;
 using DataInfraTheather.BusinessService;
 using DataInfraTheather.Infrastructure.Repository;
+using InfraPublication.BusinessLayer;
+using InfraPublication.BusinessService;
+using InfraPublication.Repository;
+using InfrastructureUser.BusinessService;
+using InfrastructureUser.Repository;
+using InfrastructureUser.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 
 namespace dataInfraTheather
 {
@@ -59,9 +79,38 @@ namespace dataInfraTheather
             return services;
         }
 
-     
+        public static IServiceCollection AddRepository(this IServiceCollection services)
+        {
+            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            //-------Feedback
+            services.AddScoped<IFeedBackRepository, FeedbackRepository>();
+            services.AddScoped<IFeedBackService, FeedBackService>();
 
-       
+            //------Follow
+            services.AddScoped<IFollowRepository, FollowRepository>();
+            services.AddScoped<IFollowService, FollowService>();
+            //------Banner
+            services.AddScoped<IBannerRepository, BannerRepository>();
+            services.AddScoped<IBannerService, BannerService>();
+            //------Signalement------
+            services.AddScoped<ISignalementRepository, SignalementRepository>();
+            services.AddScoped<ISignalementService, SignalementService>();
+            //------Signalement------
+            services.AddScoped<ISignalementTypeRepository, SignalementTypeRepository>();
+
+            services.AddScoped<ISignalementTypeService, SignalementTypeService>();
+            services.AddScoped<IPublicationRepository, PublicationRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IRepostRepository, RepostRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IRepostBL, RepostBL>();
+            services.AddScoped<IPostBL, PostBL>();
+            services.AddScoped<IPublicationBL, PublicationBL>();
+            return services;
+        }
+
+
     }
 }
 

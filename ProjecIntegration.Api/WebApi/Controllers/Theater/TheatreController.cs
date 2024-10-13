@@ -1,4 +1,6 @@
-﻿namespace WebApi.Controllers.Theater
+﻿using ApplicationTheather.BusinessService.Theme;
+
+namespace WebApi.Controllers.Theater
 {
     [Route("api/v1/[controller]")]
     [ApiController]

@@ -10,7 +10,8 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Domain": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "InfrastructureUser": "1.0.0.0"
         },
         "runtime": {
           "ApplicationTheather.dll": {}
@@ -112,6 +113,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "InfrastructureUser/1.0.0.0": {
+        "runtime": {
+          "InfrastructureUser.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -193,6 +202,11 @@
     },
     "Domain/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InfrastructureUser/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

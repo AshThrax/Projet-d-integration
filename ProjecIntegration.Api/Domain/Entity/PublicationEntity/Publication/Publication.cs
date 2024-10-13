@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.publicationEntity
 {
-    public class Publication: BaseMongoEntity
-    {
-        [BsonElement("Pub_Title")]
+    public class Publication: BaseEntity
+    { 
+   
         public string Title { get; set; }=string.Empty;
-        [BsonElement("Pub_Review")]
+   
         public string Review { get; set; }= string.Empty;
-        [BsonElement("Pub_UserId")]
+   
         public string  UserId { get; set; } =string.Empty;
-        [BsonElement("Pub_Piece_Id")]
+    
         public int PieceId { get; set; }
-        [BsonElement("Pub_LikeNumber")]
+     
         public int LikeNumber { get; set; }
-        [BsonElement("Pub_Post")]
-        public ICollection<string> post { get; set; } = new List<string>();
-        [BsonElement("Pub_User")]
+      
+        public ICollection<Post> Post { get; set; } = new List<Post>();
+    
         public User? User { get; set; }
     }
 }
