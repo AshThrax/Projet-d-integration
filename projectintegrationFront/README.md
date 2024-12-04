@@ -1,4 +1,7 @@
 # ProjectintegrationFront
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
 
-#unusable 
+# waring 
+
+## The project now use blazor to run 
+
